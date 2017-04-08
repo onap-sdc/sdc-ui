@@ -1,0 +1,30 @@
+.sdc-button {
+  border: 1px solid;
+  border-color: $blue;
+  color: $blue;
+  font-weight: bolder;
+  text-align: center;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+  background-color: $white;
+  .primary-btn-text {
+    width: 100%;
+  }
+  &:hover {
+    color: $blue;
+    border-color: $blue;
+    background-color: $tlv-hover;
+    &:active {
+      color: $blue;
+      border-color: $blue;
+    }
+  }
+
+  &:focus:not(:hover) {
+    color: $blue;
+    border-color: $blue;
+    background-color: $white;
+  }
+}

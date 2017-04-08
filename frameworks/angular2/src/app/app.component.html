@@ -1,0 +1,20 @@
+<h1>sdc-ui</h1>
+
+<nav>
+  <ul>
+    <li><a [routerLink]="['/button']">Button</a></li>
+    <li><a [routerLink]="['/about']">About</a></li>
+    <li><a [routerLink]="['/github', 'angular']">Github Repos</a></li>
+    <li><a [routerLink]="['/contact']">Contact Us</a></li>
+  </ul>
+</nav>
+
+<main>
+	<router-outlet></router-outlet>
+</main>
+
+<showcase></showcase>
+
+<footer>
+  © 2017 sdc-ui
+</footer>
