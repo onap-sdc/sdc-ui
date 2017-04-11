@@ -3,34 +3,39 @@
   <head>
     <meta charset=UTF-8>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="index.css">
+
     <link rel="stylesheet" type="text/css" href="dist/main.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <!--<link href='//fonts.googleapis.com/css?family=Open Sans Condensed:300' rel='stylesheet'>-->
+    <link href='//fonts.googleapis.com/css?family=Overlock:400' rel='stylesheet'>
+    <link href='//fonts.googleapis.com/css?family=PT Sans Narrow:400' rel='stylesheet'>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    
     <title>SDC-UI Show case</title>
   </head>
   <body>
 
-    <div class='title'>
-        <h1>SDC-UI Show case</h1>
+    <header>
+        <div class='logo'>SDC-UI</div>
+        <div class='title'>Show case</div>
+    </header>
+
+    <div id='main-navigation'>
+        <div class='title'>Components</div>    
+        <ul>
+            <li id='button'>Buttons</li>
+            <li id='tiles'>Tiles</li>
+        </ul>
     </div>
 
-    <main>
-        <div id='showcase-navigation'>
-            <h3>Components</h3>    
-            <ul>
-                <li id='button'>Buttons</li>
-                <li id='tiles'>Tiles</li>
-            </ul>
-        </div>
-        <div id='showcase-content'></div>
-    </main>
+    <div id='main-content'></div>
+
+    <footer>
+        Copywrite 2017. All rights reserved.
+    </footer>    
 
   </body>
-
-  <script>
-    $("#showcase-navigation li").click(function(e){
-        $("#showcase-content").load( "./components/" + e.target.id + ".html" );
-    });
-  </script>
 
 </html>
