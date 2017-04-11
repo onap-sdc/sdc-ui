@@ -15,16 +15,13 @@ Shared UI styles and components
 	</li>
 </ul>	
 	
-	
-<h2>How to run</h2>
-----------------------
+##How to run
 Running the demo
-Enter to demo folder and run: npm start
+<br><b>Enter to demo folder and run: npm start</b>
 
-<h2>How to compile the SCSS files in demo project</h2>
-------------------------------------------------------
+##How to compile the SCSS files in demo project
 Enter to demo folder and run the command:
-npm run build-css
+<br><b>npm run build-css</b>
 
 This will create main.css file inside dist folder. The file contains all the styles defined in scss files.
 
