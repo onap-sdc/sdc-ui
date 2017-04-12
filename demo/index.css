@@ -100,6 +100,11 @@ footer {
     padding: 0.3em;
 }
 
+#main-navigation ul li.selected {
+    background-color: #009fdb;
+    color: #ffffff;
+}
+
 /* MAIN CONTENT */
 #main-content {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -113,7 +118,7 @@ footer {
 /* RESPONSIVE */
 @media screen and (min-width: 800px) {
     #main-navigation { width: 20%; }
-    #main-content { width: 80%; }
+    #main-content { width: 80%; margin-top: 4vh; }
 }
 
 /* OTHERS */
@@ -138,3 +143,30 @@ code {
 .sdc-tile.sdc-tile-1 .sdc-tile-header { background-color: #dddddd; }
 .sdc-tile.sdc-tile-1 .sdc-tile-content { background-color: #f1f1f1; }
 .sdc-tile.sdc-tile-1 .sdc-tile-footer { background-color: #dddddd; }
+
+/* SPECIFIC COMPONENT - COLORS */
+.sdc-colors-showcase li {
+    padding: 1vw;
+    margin: 1vw;
+}
+
+/* SPECIFIC COMPONENTS - BUTTONS */
+.buttons-showcase li {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
+.buttons-showcase li code {
+    flex-grow: 1;
+    margin: 1vw 0 0.5vw 0;
+}
+
+@media screen and (min-width: 600px) {
+    .buttons-showcase li {
+        margin-top: 0;
+        flex-direction: row;
+    }
+    .buttons-showcase li code {
+        margin: 0.5vw 0 0.5vw 2vw;
+    }
+}

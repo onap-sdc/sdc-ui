@@ -9,9 +9,19 @@
   cursor: pointer;
   align-self: center;
   background-color: $white;
-  .primary-btn-text {
-    width: 100%;
+
+  &.purple { 
+    background-color: $purple; 
+    color: $white; 
+    border-color: $dark-purple;
   }
+
+  &.blue { 
+    background-color: $blue; 
+    color: $white;
+    border-color: $dark-blue;
+  }
+
   &:hover {
     color: $blue;
     border-color: $blue;

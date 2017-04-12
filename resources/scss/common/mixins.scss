@@ -1,3 +1,21 @@
+/* Colors */
+.sdc-bc-blue          { background-color: $blue };
+.sdc-bc-dark-blue     { background-color: $dark-blue };
+.sdc-bc-light-blue    { background-color: $light-blue };
+.sdc-bc-green         { background-color: $green };
+.sdc-bc-dark-green    { background-color: $dark-green };
+.sdc-bc-light-green   { background-color: $light-green };
+.sdc-bc-orange        { background-color: $orange };
+.sdc-bc-yellow        { background-color: $yellow };
+.sdc-bc-dark-purple   { background-color: $dark-purple };
+.sdc-bc-purple        { background-color: $purple };
+.sdc-bc-light-purple  { background-color: $light-purple };
+.sdc-bc-black         { background-color: $black };
+.sdc-bc-dark-gray     { background-color: $dark-gray };
+.sdc-bc-gray          { background-color: $gray };
+.sdc-bc-light-gray    { background-color: $light-gray };
+.sdc-bc-white         { background-color: $white };
+
 /* Prefix */
 $box-sizing-prefix: webkit moz spec;
 $border-radius-prefix: webkit spec;
