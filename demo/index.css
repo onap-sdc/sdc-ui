@@ -130,9 +130,8 @@ footer {
     margin: 0 0 0.5em 0;
 }
 
-code {
+pre {
     padding: 1em;
-    background-color: #f2f2f2;
     display: block;
     margin: 1em 0;
     font-family: 'PT Sans Narrow';
@@ -156,7 +155,7 @@ code {
     flex-direction: column;
     margin-top: 2vh;
 }
-.buttons-showcase li code {
+.buttons-showcase li pre {
     flex-grow: 1;
     margin: 1vw 0 0.5vw 0;
 }
@@ -166,7 +165,7 @@ code {
         margin-top: 0;
         flex-direction: row;
     }
-    .buttons-showcase li code {
+    .buttons-showcase li pre {
         margin: 0.5vw 0 0.5vw 2vw;
     }
 }
