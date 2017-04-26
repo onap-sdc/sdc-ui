@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "http-server -p 2900 -o",
-    "build-css": "node-sass --include-path scss ./../resources/scss/style.scss   ./dist/main.css"
+    "build-css": "node-sass --include-path scss ../scss/style.scss   ./dist/main.css"
   },
   "dependencies": {
     "express": "~3.4.7",

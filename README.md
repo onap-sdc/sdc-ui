@@ -1,29 +1,17 @@
-# ui
-Shared UI styles and components
+# SDC-UI Style-Guide and Components
 
+This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications. 
+This repository contains the definition of all the basic widgets and reusable controllers. 
 
-<h2>The project contains the following:</h2>
-<ul>
-	<li><b>resources folder</b>: contains all scss files, images and svg files.</li>
-	<li><b>demo folder</b>: conatins simple demo using all CSS components (only styles).</li>
-	<li>
-		<b>framework folder</b>: contains 2 folders:
-		<ul>
-			<li><b>angular2 folder</b>: contains angular2 components using CSS components.</li>
-			<li><b>react folder</b>: contains react components using react components.</li>
-		</ul>
-	</li>
-</ul>	
 	
-	
-<h2>How to run</h2>
-Running the demo
-<br>Enter to demo folder and run: <b>npm start</b>
 
-<h2>How to compile the SCSS files in demo project</h2>
-Enter to demo folder and run the command:
-<br><b>npm run build-css</b>
+### How to Contribute
+**Contribution can be made only by following these guide lines**
+* This project combines both `React` & `Angular` framework libraries. Hence, every change in the basic HTML files stucture, must be followed by changes on the frameworks files accordingly.
+* There will be no any 3rd party UI framework imported (i.e. `Bootstrapp`, `Material`, `Foundation`... etc.)
+* Every pull requests will be under feature/branch and only then will be merged into master. 
 
-<br>This will create main.css file inside dist folder. The file contains all the styles defined in scss files.
+### Having some trouble? Have an issue?
+For bugs and issues, please use the [issues](https://github.com/onap-sdc/sdc-ui/issues) page
 
 
