@@ -8,3 +8,8 @@ Thumbs.db
 
 # IDEA files
 .idea
+.vscode
+
+# build files
+lib
+css
