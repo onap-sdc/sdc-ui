@@ -1,0 +1,17 @@
+.sdc-button {
+  border-radius: 2px;
+  border: solid 1px;
+  
+  &.sdc-button__primary {
+    background-color: $blue;
+    border-color: $blue;
+    color: $white;
+  }
+
+  &.sdc-button__white {
+    background-color: $white;
+    border-color: $tlv-gray;
+    color: $dark-gray;
+  }
+
+}
