@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/react -d lib/react && node-sass --include-path scss scss/style.scss css/style.css"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,19 @@
   "bugs": {
     "url": "https://github.com/onap-sdc/sdc-ui/issues"
   },
-  "homepage": "https://github.com/onap-sdc/sdc-ui#readme"
+  "files": [
+    "index.js",
+    "lib",
+    "css"
+  ],
+  "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "node-sass": "^4.5.2"
+  },
+  "dependencies": {
+    "react": "^15.5.4"
+  }
 }

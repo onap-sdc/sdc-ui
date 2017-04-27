@@ -1,0 +1,1 @@
+export {default as sdcUi} from './lib/index.js';
