@@ -1,0 +1,61 @@
+@import '../scss/style.scss';
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  margin: 15px;
+  max-width: 800px;
+}
+
+code {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border: 1px solid #eae9e9;
+  border-radius: 4px;
+  background-color: #f3f2f2;
+  color: #3a3a3a;
+}
+
+a {
+  color: #1474f3;
+  text-decoration: none;
+  border-bottom: 1px solid #1474f3;
+  padding-bottom: 2px;
+}
+
+.colors-table {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 13px;
+  .color-section {
+	display: flex;
+	flex-direction: column;
+	margin: 10px 0;
+	min-width: 150px;
+	div {
+	  align-self: center;
+	}
+	$circle-size: 40px;
+	.color-circle {
+	  height: $circle-size;
+	  width: $circle-size;
+	  border-radius: $circle-size;
+	  padding: 10px;
+	  text-align: center;
+	}
+  }
+}
+
+.typo-table {
+  .typo-section {
+	div {
+	  display: inline-block;
+	  //border: 1px solid black;
+	  width: 30%;
+	  margin: 4px 0;
+	}
+  }
+}
+

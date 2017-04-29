@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/react -d lib/react && node-sass --include-path scss scss/style.scss css/style.css"
+    "build": "babel src/react -d lib/react && node-sass --include-path scss scss/style.scss css/style.css",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -c .storybook -o docs"
   },
   "repository": {
     "type": "git",
@@ -25,12 +27,17 @@
   ],
   "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
-    "node-sass": "^4.5.2"
+    "css-loader": "^0.28.0",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1"
   },
   "dependencies": {
-    "react": "^15.5.4"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }
