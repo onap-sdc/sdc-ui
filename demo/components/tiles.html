@@ -1,26 +1,105 @@
 <div class='component'>Tiles</div>
-<p>
-    All tiles does not have size, you can define the size in the wrapping container, or adding them 
-    to css in your project.
-    <br><b>Note:</b> tile has overflow hidden, so elements/text inside the tile will be hidden if the text/elements overflow.   
-</p>
-<h3>Tile with header, content and footer</h3>
-<p>
-    Tile that has header, content and footer. The content will resize automaticly his height.
-</p>
-<div class='sdc-tile'>
-    <div class='sdc-tile-header' style='background-color: #dddddd;'>Sdc Tile Header</div>
-    <div class='sdc-tile-content' style='background-color: #f1f1f1;'>Sdc Tile Content <br> Second line</div>
-    <div class='sdc-tile-footer' style='background-color: #dddddd;'>Sdc Tile Footer</div>
-</div>
-<div class='sdc-code'></div>
 
-<h3>Empty tile</h3>
+<h3>VSP Tile</h3>
 <p>
-    The content will resize automaticly his height.
-    In this example we set the height and width to be 20 of the view height|width.
+	Example
 </p>
-<div class='sdc-tile' style='width: 20vw; height:20vw;'>
-    <div class='sdc-tile-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempor ex vel auctor scelerisque.</div>
+<div class="catalog-tile tile software-product-type sdc-code" data-test-id="software-product-type">
+    <div class="catalog-tile-top item-details">
+        <div class="catalog-tile-type software-product-type">VSP</div>
+        <div class="catalog-tile-icon software-product-type">
+            <div class="icon">
+                <div class="svg-icon-wrapper   bottom">
+                    <svg class="svg-icon vsp ">
+                        <use href="./gen/assests/icons/vsp.svg#vsp_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/vsp.svg#vsp_icon"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="catalog-tile-entity-details">
+            <div>
+                <div class="catalog-tile-vendor-name">vlm</div>
+            </div>
+            <div>
+                <div class="catalog-tile-item-name">lilach vsp</div>
+            </div>
+            <div class="catalog-tile-version-info">
+                <div class="catalog-tile-item-version" data-test-id="catalog-item-version">V 0.1</div>
+            </div>
+        </div>
+        <div class="catalog-tile-content software-product-type">
+            <div class="catalog-tile-locking-user-name">Checked Out</div>
+            <div class="catalog-tile-check-in-status">
+                <div data-test-id="catalog-item-checked-out" class="svg-icon-wrapper   bottom">
+                    <svg class="svg-icon unlocked ">
+                        <use href="./gen/assests/icons/unlocked.svg#unlocked_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/unlocked.svg#unlocked_icon"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class='sdc-code'></div>
+
+<h3>VLM Tile</h3>
+<div class="catalog-tile tile license-model-type sdc-code" data-test-id="license-model-type">
+    <div class="catalog-tile-top item-details">
+        <div class="catalog-tile-type license-model-type">VLM</div>
+        <div class="catalog-tile-icon license-model-type">
+            <div class="icon">
+                <div class="svg-icon-wrapper   bottom">
+                    <svg class="svg-icon vlm ">
+                        <use href="./gen/assests/icons/vlm.svg#vlm_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/vlm.svg#vlm_icon"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="catalog-tile-entity-details">
+            <div>
+                <div class="catalog-tile-vendor-name"></div>
+            </div>
+            <div>
+                <div class="catalog-tile-item-name">vlm</div>
+            </div>
+             <div class="catalog-tile-version-info">
+                <div class="catalog-tile-item-version" data-test-id="catalog-item-version">V 0.2</div>
+             </div>
+        </div>
+        <div class="catalog-tile-content license-model-type">
+            <div class="catalog-tile-locking-user-name">Checked In</div>
+            <div class="catalog-tile-check-in-status">
+                <div data-test-id="catalog-item-checked-in" class="svg-icon-wrapper   bottom">
+                    <svg class="svg-icon locked ">
+                        <use href="./gen/assests/icons/locked.svg#locked_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/locked.svg#locked_icon"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Vendor Tile</h3>
+<div class="catalog-tile tile vendor-type sdc-code" data-test-id="vendor-type">
+    <div class="catalog-tile-top">
+        <div class="catalog-tile-icon vendor-type">
+            <div class="icon">
+                <div class="svg-icon-wrapper   bottom">
+                    <svg class="svg-icon vendor ">
+                        <use href="./gen/assests/icons/vendor.svg#vendor_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/vendor.svg#vendor_icon"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="catalog-tile-item-name">vlm</div>
+        <div class="catalog-tile-vsp-count clickable" data-test-id="catalog-vsp-count">1 VSPs</div>
+        <div class="catalog-tile-content" data-test-id="catalog-create-new-vsp-from-vendor">
+            <div class="create-new-vsp-button">
+                <div class="svg-icon-wrapper   bottom">
+                    <svg class="svg-icon plus ">
+                        <use href="./gen/assests/icons/plus.svg#plus_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/plus.svg#plus_icon"></use>
+                    </svg>
+                </div>
+                &nbsp;&nbsp;&nbsp;Create new VSP
+            </div>
+        </div>
+    </div>
+</div>
