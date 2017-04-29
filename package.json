@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -c .storybook -o docs"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/onap-sdc/sdc-ui/issues"
   },
-  "homepage": "https://github.com/onap-sdc/sdc-ui#readme"
+  "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
+  "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
+    "css-loader": "^0.28.0",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
 }
