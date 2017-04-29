@@ -29,6 +29,9 @@ var initNavigation = function() {
 
 };
 
+/**
+ * Simple router to load components HTML based on id.
+ */
 var registerEvents = function() {
     $("#main-navigation li").click(function(e){
         page = e.target.id;
@@ -41,6 +44,9 @@ var registerEvents = function() {
     });
 };
 
+/**
+ * Wait for component to load before applying javascript actions on it.
+ */
 var doAfterComponentHtmlLoaded = function() {
     window.setTimeout(function() {
         // Build code text to show to user
@@ -51,12 +57,28 @@ var doAfterComponentHtmlLoaded = function() {
     },1000);
 };
 
+/**
+ * Build HTML code automaticly when attribute data-code exists
+ * For example:
+ * <button class='sdc-button' data-code>This is button</button>
+ * Will add the HTML of this (highlighted) button below the button.
+ */
 var buildCode = function() {
-    $('.sdc-code').each(function(index, element){
-        var result = $(element).prev()[0].outerHTML;
+    $('[data-code]').each(function(index, element){
+        var result = $(element).removeAttr('data-code')[0].outerHTML;
         var resultEncoded = $('<div/>').text(result).html();
         var newElement = $('<pre><code>' + resultEncoded + '</code></pre>')[0];  
-        $(element).replaceWith(newElement);
+        $(element).after(newElement);
+        hljs.highlightBlock(newElement);
+    });
+	
+	$('[data-code-id]').each(function(index, element){
+        var attVlue = $(element).attr('data-code-id');
+        var codeHere = $('[data-code-ref='+attVlue+']');
+        var result = $(element).removeAttr('data-code-id')[0].outerHTML;
+        var resultEncoded = $('<div/>').text(result).html();
+        var newElement = $('<pre><code>' + resultEncoded + '</code></pre>')[0];  
+        codeHere.replaceWith(newElement);
         hljs.highlightBlock(newElement);
     });
 };

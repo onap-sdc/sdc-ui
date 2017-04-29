@@ -1,0 +1,106 @@
+<div class='component'>Tiles Generic</div>
+<p>
+    Tile do not have size, you can define the size in the wrapping container, or adding them 
+    to css in your project.
+    <br><b>Note:</b> specific tiles like sdc-tile-catalog has specifc width & height.
+    <br>Tiles content has overflow auto, so if the content overflow a scroll will appear.   
+</p>
+
+<h3>Basic tile</h3>
+<p>Tile without width or height</p>
+<div class="sdc-tile" data-code>
+    <div class='sdc-tile-content'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat, lorem at vulputate sollicitudin, neque magna hendrerit diam, nec sagittis eros libero ut dolor. Donec tincidunt, elit nec vestibulum tristique, nulla tellus aliquam eros, at rutrum massa purus quis ipsum. In aliquet non augue quis condimentum. Praesent efficitur tellus quis mauris auctor, vel semper erat vulputate. Mauris rhoncus nunc et ante dapibus, id luctus urna sodales. Proin eu augue efficitur ligula tincidunt placerat. Suspendisse potenti.
+    </div>
+</div>
+
+<h3>Tile with header & footer</h3>
+<p>
+    <b>Note:</b> The background-color is just for showing header, content & footer sections.
+    This is done using inline styles which should not be included in the final component.
+    <br>The content will resize automaticly his height.
+</p>
+<div class="sdc-tile" data-code>
+    <div class="sdc-tile-header" style="background-color: #EEEEEE;">top</div>
+    <div class='sdc-tile-content' style="background-color: #CCCCCC;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat, lorem at vulputate sollicitudin, neque magna hendrerit diam, nec sagittis eros libero ut dolor. Donec tincidunt, elit nec vestibulum tristique, nulla tellus aliquam eros, at rutrum massa purus quis ipsum. In aliquet non augue quis condimentum. Praesent efficitur tellus quis mauris auctor, vel semper erat vulputate. Mauris rhoncus nunc et ante dapibus, id luctus urna sodales. Proin eu augue efficitur ligula tincidunt placerat. Suspendisse potenti.
+    </div>
+    <div class='sdc-tile-footer' style="background-color: #EEEEEE;">footer</div>
+</div>
+
+<h3>Catalog tile (VSP)</h3>
+<p>
+    Specific tile of SDC.
+    <br><b>Note:</b> The differences betweeb the tiles is the color (diffrent class) and the icons.
+    The div with class='sdc-tile-content-info-vendor-name' is not needed in the second tile.
+</p>
+
+<div class='sdc-tile-showcase-tiles'>
+
+    <div class="sdc-tile-catalog sdc-tile-fix-width" data-code-id='catalog-sample'>
+        <div class="sdc-tile-header">
+            <div class='sdc-tile-header-type blue'>
+                vsp
+            </div>
+        </div>
+        <div class='sdc-tile-content'>
+            <div class='sdc-tile-content-icon'>
+                <svg class="svg-icon blue">
+                    <use href="./gen/assests/icons/vsp.svg#vsp_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/vsp.svg#vsp_icon"></use>
+                </svg>
+            </div>
+            <div class='sdc-tile-content-info'>
+                <div class="sdc-tile-content-info-vendor-name">vlm</div>
+                <div class="sdc-tile-content-info-item-name">lilach vsp</div>
+                <div class="sdc-tile-content-info-version-info">
+                    <div class="sdc-tile-content-info-version-info-text" data-test-id="sdc-catalog-item-version">V 0.1</div>
+                </div>
+            </div>
+        </div>
+        <div class='sdc-tile-footer'>
+            <div class='sdc-tile-footer-text'>
+                Footer text
+            </div>
+            <div class='sdc-tile-footer-icon'>
+                <svg class="svg-icon unlocked black">
+                    <use href="./gen/assests/icons/unlocked.svg#unlocked_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/unlocked.svg#unlocked_icon"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="sdc-tile-catalog sdc-tile-fix-width sdc-code">
+        <div class="sdc-tile-header">
+            <div class='sdc-tile-header-type purple'>
+                vlm
+            </div>
+        </div>
+        <div class='sdc-tile-content'>
+            <div class='sdc-tile-content-icon'>
+                <svg class="svg-icon purple">
+                    <use href="./gen/assests/icons/vsp.svg#vsp_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/vsp.svg#vsp_icon"></use>
+                </svg>
+            </div>
+            <div class='sdc-tile-content-info'>
+                <div class="sdc-tile-content-info-item-name">vlm</div>
+                <div class="sdc-tile-content-info-version-info">
+                    <div class="sdc-tile-content-info-version-info-text" data-test-id="sdc-catalog-item-version">V 0.1</div>
+                </div>
+            </div>
+        </div>
+        <div class='sdc-tile-footer'>
+            <div class='sdc-tile-footer-text'>
+                Footer text
+            </div>
+            <div class='sdc-tile-footer-icon'>
+                <svg class="svg-icon unlocked black">
+                    <use href="./gen/assests/icons/locked.svg#locked_icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./assests/icons/locked.svg#locked_icon"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div data-code-ref='catalog-sample'></div>
+
