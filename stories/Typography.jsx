@@ -27,7 +27,6 @@ class Typography extends Component {
 				<h1>Typography</h1>
 				<p>
 					<h3>Font Family</h3>
-					<div>(by the following order)</div>
 					<ul>
 						<li>Helvetica Neue</li>
 						<li>Helvetica</li>

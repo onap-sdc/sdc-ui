@@ -11,4 +11,4 @@ deploy:
   github_token: $GITHUB_TOKEN
   local_dir: .out
   on:
-    branch: feature/storybook-travis-deployment
+    branch: master
