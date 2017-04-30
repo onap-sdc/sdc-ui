@@ -28,7 +28,6 @@
   "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
-    "@kadira/storybook-deployer": "^1.2.0",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
@@ -38,6 +37,7 @@
     "style-loader": "^0.16.1"
   },
   "dependencies": {
+    "@kadira/storybook-deployer": "^1.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   }
