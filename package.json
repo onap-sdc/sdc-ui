@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src/react -d lib/react && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
     "storybook": "start-storybook -p 6006",
-    "deploy-storybook": "storybook-to-ghpages"
+    "build-storybook": "build-storybook -c .storybook -o .out"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "copy": "^0.3.0"
   },
   "dependencies": {
-    "@kadira/storybook-deployer": "^1.2.0",
+    
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   }
