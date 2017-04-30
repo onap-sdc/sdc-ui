@@ -27,6 +27,7 @@ class Typography extends Component {
 				<h1>Typography</h1>
 				<p>
 					<h3>Font Family</h3>
+					<div>(by the following order)</div>
 					<ul>
 						<li>Helvetica Neue</li>
 						<li>Helvetica</li>
@@ -39,7 +40,7 @@ class Typography extends Component {
 					<h3>Font Size</h3>
 					<div className='typo-table'>
 						<TextRow className='SCSS %.class-name' size='Size (in Pixels)' text='Sample Text'/>
-						{typos.map(({...props}) => <TextRow {...props}/>)}
+						{typos.map(typo => <TextRow {...typo}/>)}
 					</div>
 				</p>
 			</div>

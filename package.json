@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src/react -d lib/react && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -c .storybook -o docs"
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
+    "@kadira/storybook-deployer": "^1.2.0",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
