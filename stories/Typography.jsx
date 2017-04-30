@@ -39,7 +39,7 @@ class Typography extends Component {
 					<h3>Font Size</h3>
 					<div className='typo-table'>
 						<TextRow className='SCSS %.class-name' size='Size (in Pixels)' text='Sample Text'/>
-						{typos.map(({...props}) => <TextRow {...props}/>)}
+						{typos.map(props => <TextRow {...props}/>)}
 					</div>
 				</p>
 			</div>
