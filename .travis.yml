@@ -2,9 +2,13 @@ language: node_js
 node_js:
 - 6
 install: npm install
-script: npm run build
+script: 
+- npm run build
+- npm run build-storybook
 deploy:
-  provider: script
-  script: npm run deploy-storybook
-  on:
-      branch: master
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: .out
+    on:
+      branch: feature/storybook-travis-deployment
