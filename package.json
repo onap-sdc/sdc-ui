@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "main": "lib/index.js",
   "directories": {
@@ -38,7 +38,6 @@
     "copy": "^0.3.0"
   },
   "dependencies": {
-
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   }
