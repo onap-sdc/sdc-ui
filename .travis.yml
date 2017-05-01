@@ -2,13 +2,20 @@ language: node_js
 node_js:
 - 6
 install: npm install
-script: 
+script:
 - npm run build
 - npm run build-storybook
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: .out
-  on:
-    branch: master
+  - provider: npm
+    email: levi.ziv@gmail.com
+    api_key:
+      secure: $NPM_TOKEN
+    on:
+      tags: true
+      repo: onap-sdc/sdc-ui
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: .out
+    on:
+      branch: master
