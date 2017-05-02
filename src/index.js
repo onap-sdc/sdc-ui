@@ -1,9 +1,12 @@
 import React from './react/index.js';
-import Angular2 from './angular2/index.ts';
+// import Angular2 from './angular2/index.ts';
 
-export {Angular2, React};
+export {
+	React,
+	// Angular2
+};
 
 export default {
-  React,
-  Angular2
+	React,
+	// Angular2
 }
