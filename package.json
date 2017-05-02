@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "main": "lib/index.js",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/react -d lib/react && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
+    "build": "babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .out"
   },
