@@ -8,6 +8,10 @@ module.exports = {
 				test: /.scss$/,
 				loaders: ['style', 'css', 'sass'],
 				include: path.resolve(__dirname, '../')
+			},
+			{
+				test: /.html$/,
+				loader: 'html'
 			}
 		]
 	}

@@ -1,4 +1,5 @@
 @import '../scss/style.scss';
+@import '~prismjs/themes/prism.css';
 
 body {
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
@@ -57,5 +58,44 @@ a {
 	  margin: 4px 0;
 	}
   }
+}
+
+.source-toggle-wrapper {
+  .source-toggle-title {
+    @extend .heading-2;
+  }
+  .source-toggle {
+    display: flex;
+    border-top: 1px solid $light-gray;
+    padding: 10px 0;
+    &:first-child {
+      border-top: none;
+    }
+    .source-toggle-example {
+      flex-basis:40%;
+      flex-shrink: 0;
+    }
+    .source-toggle-code {
+      background-color: $background-gray;
+      padding: 5px;
+      pre {
+        margin-top: 0;
+      }
+      .source-toggle-code-tabs {
+        display: flex;
+        margin-bottom: 10px;
+        .source-toggle-tab {
+          @extend .body-1-medium;
+          margin-right: 20px;
+          cursor: pointer;
+          &.selected {
+            border-bottom: 2px solid $dark-blue;
+            color: $dark-blue;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  } 
 }
 

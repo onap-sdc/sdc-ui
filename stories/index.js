@@ -1,14 +1,18 @@
 import React from 'react';
 import {storiesOf, action} from '@kadira/storybook';
 import Welcome from './Welcome';
-import Colors from './Colors.jsx';
-import Typography from './Typography.jsx';
+import Colors from './Colors.js';
+import Typography from './Typography.js';
+import Buttons from './Buttons.js';
 
 storiesOf('Welcome', module)
-	.add('to Storybook', () => <Welcome />);
+	.add('', () => <Welcome />);
 
 storiesOf('Colors', module)
-	.add('Palette', () => <Colors />);
+	.add('', () => <Colors />);
 
 storiesOf('Typography', module)
-	.add('Font Family and Size', () => <Typography />);
+	.add('', () => <Typography />);
+
+storiesOf('Buttons', module)
+	.add('', () => <Buttons />);	
