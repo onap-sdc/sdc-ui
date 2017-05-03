@@ -1,8 +1,8 @@
 import React from 'react';
 import jsxToString from './jsxToString.js';
-import Markdown from 'react-markdown';
-import CodeBlock from './CodeBlock.js';
-import {highlightBlock} from 'highlight.js';
+
+import Prism from 'prismjs';
+import PrismJsx from 'prismjs/components/prism-jsx.js';
 
 const sources = {
     React: 'React',
@@ -19,41 +19,49 @@ export default class SourceToggle extends React.Component {
     }
 
     renderFromSource() {
-        let {jsx, html, angular2Component} = this.props;
+        let {jsx, html, angular2} = this.props;
         let {source} = this.state;
+        let classname = 'source-toggle-example';
         switch (source) {
             case sources.HTML:
-                return <div dangerouslySetInnerHTML={{__html: html}} />
+                return <div className={classname} dangerouslySetInnerHTML={{__html: html}} />
             case sources.React:
             default:
-                return <div>{jsx}</div>
+                return <div className={classname}>{jsx}</div>
         }
     }
 
     renderMarkdown() {
-        let {jsx, html, angular2Component} = this.props;
+        let {jsx, html, angular2} = this.props;
         let {source} = this.state;
         switch (source) {
             case sources.HTML:
-                return <div dangerouslySetInnerHTML={{__html: html}} />
+            case sources.Angular2:
+                return {__html: Prism.highlight(html, Prism.languages.html)};
             case sources.React:
             default:
-                return '```js' + '\n' + jsxToString(jsx) + '\n' + '```';
+                return {__html: Prism.highlight(jsxToString(jsx), Prism.languages.jsx)};
         }
     }
 
     render() {
+        let {title} = this.props;
         return (
-            <div className='source-toggle'>
-                {this.renderFromSource()}
-                <Markdown 
-                    source={this.renderMarkdown()} 
-                    /*renderers={
-                        Object.assign({}, Markdown.renderers, {
-                            CodeBlock: CodeBlock
-                        })
-                    } */
-                    />
+            <div className='source-toggle-wrapper'>
+                <div className='source-toggle-title'>{title}</div>
+                <div className='source-toggle'>
+                    {this.renderFromSource()}
+                    <div className='source-toggle-code'>
+                        <div className='source-toggle-code-tabs'>
+                            {Object.keys(sources).map(source => (
+                                <div className={`source-toggle-tab${this.state.source === source ? ' selected' : ''}`} onClick={() => this.setState({source: source})}>{source}</div>
+                            ))}
+                        </div>
+                        <pre>
+                            <code dangerouslySetInnerHTML={this.renderMarkdown()} />
+                        </pre>
+                    </div>
+                </div>
             </div>
         )
     }
