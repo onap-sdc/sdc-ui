@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf, action} from '@kadira/storybook';
-import Welcome from './Welcome';
-import Colors from './Colors.js';
-import Typography from './Typography.js';
-import Buttons from './Buttons.js';
+import Welcome from './Welcome.stories.js';
+import Colors from './Colors.stories.js';
+import Typography from './Typography.stories.js';
+import Buttons from './Buttons.stories.js';
 
 storiesOf('Welcome', module)
 	.add('', () => <Welcome />);
