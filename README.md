@@ -32,7 +32,7 @@ render(){
 	);
 }
 ```
-
+###### Importing particular component from the react library
 ```js
 import {Button} from 'sdc-ui/lib/react';
 
@@ -43,7 +43,7 @@ render(){
 	);
 }
 ```
-
+###### Importing the entire library
 ```js
 import SDCUI from 'sdc-ui';
 
