@@ -28,7 +28,7 @@ import Button from 'sdc-ui/lib/react/Button.js';
 // inside component rendering...
 render(){
 	return (
-		<Button>I'm a Button</Button>
+		<Button>I am a Button</Button>
 	);
 }
 ```
@@ -39,7 +39,7 @@ import {Button} from 'sdc-ui/lib/react';
 // inside component rendering...
 render(){
 	return (
-		<Button>I'm a Button</Button>
+		<Button>I am a Button</Button>
 	);
 }
 ```
@@ -50,20 +50,27 @@ import SDCUI from 'sdc-ui';
 // inside component rendering...
 render(){
 	return (
-		<SDCUI.React.Button>I'm still a Button</SDCUI.React.Button>
+		<SDCUI.React.Button>I am still a Button</SDCUI.React.Button>
 	);
 }
 ```
- 
+### Running storybook
+The components in this library are displayed via [storybook](https://github.com/storybooks/storybook). Head to [http://onap-sdc.github.io/sdc-ui](http://onap-sdc.github.io/sdc-ui) to see the components that are in `master`.
 
+While developing, just run `npm run storybook` in your terminal to launch a local storybook server where you can see your changes. For deploying storybook to your own fork repository, refer to the guides section below.
+
+### Useful guides
+[Adding a new component](https://github.com/onap-sdc/sdc-ui/wiki/Adding-a-new-component)
+
+[Deploying storybook to a fork's github pages](https://github.com/onap-sdc/sdc-ui/wiki/Deploying-storybook-to-a-fork's-github-pages)
+ 
 ### Having some trouble? Have an issue?
 For bugs and issues, please use the [issues](https://github.com/onap-sdc/sdc-ui/issues) page
 
-
 ### How to Contribute
 **Contribution can be made only by following these guide lines**
-* This project combines both `React` & `Angular` framework libraries. Hence, every change in the basic HTML files stucture, must be followed by changes on the frameworks files accordingly.
-* There will be no any 3rd party UI framework imported (i.e. `Bootstrapp`, `Material`, `Foundation`... etc.)
-* Every pull requests will be under feature/branch and only then will be merged into master. 
+* This project combines both `React` & `Angular` framework libraries. Hence, every change in the basic HTML files structure, must be followed by changes on the frameworks files accordingly (under `src/react` and `src/angular`).
+* There will be no any 3rd party UI framework imported (i.e. `Bootstrap`, `Material`, `Foundation`... etc.).
+* Contribution is done in the [GitHub Standard Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962). Contributions submitted not in this format and guidelines will not be considered.
 
 
