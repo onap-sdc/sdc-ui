@@ -28,7 +28,7 @@ import Button from 'sdc-ui/lib/react/Button.js';
 // inside component rendering...
 render(){
 	return (
-		<Button>I'm a Button</Button>
+		<Button>I am a Button</Button>
 	);
 }
 ```
@@ -39,7 +39,7 @@ import {Button} from 'sdc-ui/lib/react';
 // inside component rendering...
 render(){
 	return (
-		<Button>I'm a Button</Button>
+		<Button>I am a Button</Button>
 	);
 }
 ```
@@ -50,7 +50,7 @@ import SDCUI from 'sdc-ui';
 // inside component rendering...
 render(){
 	return (
-		<SDCUI.React.Button>I'm still a Button</SDCUI.React.Button>
+		<SDCUI.React.Button>I am still a Button</SDCUI.React.Button>
 	);
 }
 ```
