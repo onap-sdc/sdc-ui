@@ -71,6 +71,6 @@ For bugs and issues, please use the [issues](https://github.com/onap-sdc/sdc-ui/
 **Contribution can be made only by following these guide lines**
 * This project combines both `React` & `Angular` framework libraries. Hence, every change in the basic HTML files structure, must be followed by changes on the frameworks files accordingly (under `src/react` and `src/angular`).
 * There will be no any 3rd party UI framework imported (i.e. `Bootstrap`, `Material`, `Foundation`... etc.).
-* Contribution is done in the [GitHub Standard Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962). Contributions submitted not in this format and guidelines will not be considered.
+* Contribution are done only by the [contribution guide](https://github.com/onap-sdc/sdc-ui/wiki/Contribution-guide). Contributions submitted not in this format and guidelines will not be considered.
 
 
