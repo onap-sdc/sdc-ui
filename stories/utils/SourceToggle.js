@@ -6,8 +6,7 @@ import PrismJsx from 'prismjs/components/prism-jsx.js';
 
 const sources = {
     React: 'React',
-    HTML: 'HTML',
-    Angular2: 'Angular2'
+    HTML: 'HTML'
 };
 
 export default class SourceToggle extends React.Component {
@@ -19,7 +18,7 @@ export default class SourceToggle extends React.Component {
     }
 
     renderFromSource() {
-        let {jsx, html, angular2} = this.props;
+        let {jsx, html} = this.props;
         let {source} = this.state;
         let classname = 'source-toggle-example';
         switch (source) {
@@ -32,11 +31,10 @@ export default class SourceToggle extends React.Component {
     }
 
     renderMarkdown() {
-        let {jsx, html, angular2} = this.props;
+        let {jsx, html} = this.props;
         let {source} = this.state;
         switch (source) {
             case sources.HTML:
-            case sources.Angular2:
                 return {__html: Prism.highlight(html, Prism.languages.html)};
             case sources.React:
             default:
