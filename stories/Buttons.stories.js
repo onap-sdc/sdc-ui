@@ -1,7 +1,7 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 
-import ReactButton from '../src/react/Button';
+import ReactButton from '../src/react/Button.js';
 import HTMLButtonPrimary from '../components/button/button-primary.html';
 import HTMLButtonWhite from '../components/button/button-white.html';
 

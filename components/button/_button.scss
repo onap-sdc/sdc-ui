@@ -1,17 +1,37 @@
 .sdc-button {
   border-radius: 2px;
   border: solid 1px;
+  cursor: pointer;
+  width: 94px;
+  height: 30px;
   
   &.sdc-button__primary {
     background-color: $blue;
-    border-color: $blue;
+    border-color: $blue; // #0091c8
     color: $white;
+
+    &:hover {
+      background-color: $light-blue; // #1ec2ff
+    }
   }
 
   &.sdc-button__white {
     background-color: $white;
-    border-color: $tlv-gray;
+    border-color: $light-gray; // #d8d8d8
     color: $dark-gray;
+
+    &:hover {
+      border-color: $gray;
+    }
+
+    &:active {
+      background-color: $background-gray;
+      border-color: $dark-gray; // #595959
+    }
+
+    &:disabled {
+      
+    }
   }
 
 }
