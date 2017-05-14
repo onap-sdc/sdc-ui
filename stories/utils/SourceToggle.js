@@ -52,7 +52,7 @@ export default class SourceToggle extends React.Component {
                     <div className='source-toggle-code'>
                         <div className='source-toggle-code-tabs'>
                             {Object.keys(sources).map(source => (
-                                <div className={`source-toggle-tab${this.state.source === source ? ' selected' : ''}`} onClick={() => this.setState({source: source})}>{source}</div>
+                                <div key={source} className={`source-toggle-tab${this.state.source === source ? ' selected' : ''}`} onClick={() => this.setState({source: source})}>{source}</div>
                             ))}
                         </div>
                         <pre>
