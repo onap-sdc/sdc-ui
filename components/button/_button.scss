@@ -2,9 +2,13 @@
   border-radius: 2px;
   border: solid 1px;
   cursor: pointer;
+  box-sizing: border-box;
   width: 94px;
   height: 30px;
   
+  // todo: add 'style' and 'type' subgroups
+
+  // Primary button
   &.sdc-button__primary {
     background-color: $blue;
     border-color: $blue; // #0091c8
@@ -15,6 +19,7 @@
     }
   }
 
+  // White button
   &.sdc-button__white {
     background-color: $white;
     border-color: $light-gray; // #d8d8d8
@@ -30,8 +35,15 @@
     }
 
     &:disabled {
-      
+      color: $dark-gray;
+      border-color: $light-gray; // #d8d8d8
     }
+  }
+
+  &.sdc-button__gray {
+    background-color: $tlv-gray;
+    border-color: $light-gray; // #d8d8d8
+    color: $text-black; // #d8d8d8
   }
 
 }

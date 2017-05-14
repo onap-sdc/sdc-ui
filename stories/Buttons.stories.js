@@ -4,6 +4,7 @@ import Examples from './utils/Examples.js';
 import ReactButton from '../src/react/Button.js';
 import HTMLButtonPrimary from '../components/button/button-primary.html';
 import HTMLButtonWhite from '../components/button/button-white.html';
+import HTMLButtonGray from '../components/button/button-gray.html';
 
 let examples = {
         Primary: {
@@ -13,6 +14,10 @@ let examples = {
         White: {
             jsx: <ReactButton type='white'>Click Me</ReactButton>,
             html: HTMLButtonWhite
+        },
+        Gray: {
+            jsx: <ReactButton type='gray'>Click Me</ReactButton>,
+            html: HTMLButtonGray
         }
     };
 
