@@ -1,121 +1,180 @@
 .sdc-button {
   border-radius: 2px;
   border: solid 1px;
-  cursor: pointer;
   box-sizing: border-box;
   width: 94px;
   height: 30px;
-  font-family: sans-serif; // OpenSans
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: $white;
-  text-align: center;
 
   &:disabled {
     opacity: 0.3;
   }
-  
-  // todo: add 'style' and 'type' subgroups
 
-  // Commented colors are colors specified in buttons_SG.psd that do not exist in variables.scss. Closest matching color used
 
-  // Primary button
-  &.sdc-button__primary {
-    background-color: $blue;
-    border-color: $blue; // #0091c8
+  // Default type
+  &.sdc-button-default {
 
-    &:hover {
-      background-color: $light-blue; // #1ec2ff
+    // Primary default button
+    &.sdc-button__primary {
+      background-color: $blue;
+      border-color: $pacific-blue;
+
+      &:hover {
+        background-color: $dodger-blue;
+      }
+
+      &:active {
+        background-color: $pacific-blue;
+        border-color: $orient;
+      }
     }
 
-    &:active {
-      background-color: $blue; // #0091c7
-      border-color: $dark-blue; // #006186
-    }
-  }
-
-  // White button
-  &.sdc-button__white {
-    color: $dark-gray;
-    background-color: $white;
-    border-color: $light-gray; // #d8d8d8
-
-    &:hover {
-      border-color: $gray;
-    }
-
-    &:active {
-      background-color: $background-gray;
-      border-color: $dark-gray; // #595959
-    }
-
-    &:disabled {
+    // White default button
+    &.sdc-button__white {
       color: $dark-gray;
-      opacity: 1;
-    }
-  }
-
-  &.sdc-button__gray {
-    color: $text-black;
-    background-color: $tlv-gray;
-    border-color: $light-gray; // #d8d8d8
-
-    &:hover {
-      border-color: $gray;
-    }
-
-    &:active {
-      background-color: $light-gray; // #d7d7d7
-      border-color: $dark-gray; // #595959
-    }
-
-    &:disabled {
-      color: #333;
       background-color: $white;
-      opacity: 0.3;
+      border-color: $light-gray;
+
+      &:hover {
+        border-color: $gray;
+      }
+
+      &:active {
+        background-color: $background-gray;
+        border-color: $dark-gray;
+      }
+    }
+
+    // Gray default button
+    &.sdc-button__gray {
+      color: $text-black;
+      background-color: $tlv-gray;
+      border-color: $light-gray;
+
+      &:hover {
+        border-color: $gray;
+      }
+
+      &:active {
+        background-color: $light-gray;
+        border-color: $dark-gray;
+      }
+    }
+
+    // Positive default button
+    &.sdc-button__positive {
+      background-color: $green;
+      border-color: $limeade;
+
+      &:hover {
+        background-color: $lima;
+      }
+
+      &:active {
+        background-color: $limeade;
+        border-color: $japanese-laurel;
+      }
+    }
+
+    // Negative default button
+    &.sdc-button__negative {
+      background-color: $red;
+      border-color: $shiraz;
+
+      &:hover {
+        background-color: $torch-red;
+      }
+
+      &:active {
+        background-color: $shiraz;
+        border-color: $red-oxide;
+      }
+    }
+
+    // Warning default button
+    &.sdc-button__warning {
+      background-color: $yellow;
+      border-color: $buttercup;
+
+      &:hover {
+        background-color: $gold;
+      }
+
+      &:active {
+        background-color: $buttercup;
+        border-color: $pirate-gold;
+      }
     }
   }
 
-  &.sdc-button__positive {
-    background-color: $green;
-    border-color: $green; // #45a006
 
-    &:hover {
-      background-color: $functional-green; // #5ec616
+  // Outline type
+  &.sdc-button-outline {
+
+    // Primary outline button
+    &.sdc-button__primary {
+      color: $blue;
+      background-color: rgba($blue, 0);
+      border-color: $blue;
+
+      &:hover {
+        background-color: rgba($blue, 0.1);
+      }
+
+      &:active {
+        background-color: rgba($blue, 0.3);
+      }
     }
 
-    &:active {
-      background-color: $green; // #3f9c0a
-      border-color: $dark-green; // #2c6604
+    // Gray outline button
+    &.sdc-button__gray {
+      color: $dark-gray;
+      background-color: rgba($gray, 0);
+      border-color: $gray;
+
+      &:hover {
+        background-color: rgba($gray, 0.1);
+      }
+
+      &:active {
+        background-color: rgba($gray, 0.3);
+      }
     }
+
+    // Positive outline button
+    &.sdc-button__positive {
+      color: $green;
+      background-color: rgba($green, 0);
+      border-color: $green;
+
+      &:hover {
+        background-color: rgba($green, 0.1);
+      }
+
+      &:active {
+        background-color: rgba($green, 0.3);
+      }
+    }
+
+    // Negative outline button
+    &.sdc-button__negative {
+      color: $red;
+      background-color: rgba($red, 0);
+      border-color: $red;
+
+      &:hover {
+        background-color: rgba($red, 0.1);
+      }
+
+      &:active {
+        background-color: rgba($red, 0.3);
+      }
+    }
+
   }
-
-  &.sdc-button__negative {
-    background-color: $red;
-    border-color: $crimson; // #b30a3c
-
-    &:hover {
-      background-color: #fc1b1b;
-    }
-
-    &:active {
-      border-color: #730202;
-      background-color: #a01a1a;
-    }
-  }
-
-  &.sdc-button__warning {
-    background-color: $yellow;
-    border-color: #f4ac0d;
-
-    &:hover {
-      background-color: #ffd200;
-    }
-
-    &:active {
-      background-color: #ebaa14;
-      border-color: #c08502;
-    }
-  }
-
 }
