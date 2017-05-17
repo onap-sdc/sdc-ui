@@ -7,7 +7,7 @@ import SVGIcon from '../src/react/SVGIcon';
 
 let examples = {
         Primary: {
-            jsx: <SVGIcon label='test' name='vendor'/>
+            jsx: <SVGIcon label='test1' name='vendor'/>
         }        
     };
 
