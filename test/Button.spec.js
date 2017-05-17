@@ -37,12 +37,12 @@ describe('Button', () => {
   });
 
   test('Button - Default - Negative', () => {
-    const button = mount(<Button color='white'>Click Me</Button>);
+    const button = mount(<Button color='negative'>Click Me</Button>);
     expect(button.html()).toEqual(HTMLButtonDefaultNegative);
   });
 
   test('Button - Default - Warning', () => {
-    const button = mount(<Button color='gray'>Click Me</Button>);
+    const button = mount(<Button color='warning'>Click Me</Button>);
     expect(button.html()).toEqual(HTMLButtonDefaultWarning);
   });
 
