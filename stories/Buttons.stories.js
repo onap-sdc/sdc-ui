@@ -41,7 +41,7 @@ let examples = {
     },
     'Warning Default': {
         jsx: <ReactButton color='warning' onClick={() => {}}>Click Me</ReactButton>,
-        html: HTMLButtonDefaultWarning
+        html: HTMLButtonDefaultPrimary
     },
 
     // Outline buttons
@@ -103,7 +103,7 @@ let examples = {
     },
     'Negative Outline Disabled': {
         jsx: <ReactButton type='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonOutlineNegative
+        html: HTMLButtonOutlinePrimary
     }
 };
 
