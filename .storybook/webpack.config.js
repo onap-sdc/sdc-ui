@@ -1,5 +1,6 @@
 
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
 	module: {
@@ -17,5 +18,10 @@ module.exports = {
 				}
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+			'ICON_PATH': '"./"'
+		})
+	]
 };
