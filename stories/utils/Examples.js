@@ -1,8 +1,8 @@
 import React from 'react';
 import SourceToggle from './SourceToggle.js';
 
-const Examples = ({examples}) => (
-  <div className='examples'>
+const Examples = ({examples, className}) => (
+  <div className={`examples${className ? (' ' + className) : ''}`}>
     {Object.keys(examples).map(key => {
       let title = key;
       let {jsx, html} = examples[key];

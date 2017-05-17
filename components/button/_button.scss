@@ -1,6 +1,7 @@
 .sdc-button {
   border-radius: 2px;
   border: solid 1px;
+  outline: none;
   box-sizing: border-box;
   width: 94px;
   height: 30px;
@@ -13,6 +14,15 @@
 
   &:disabled {
     opacity: 0.3;
+    cursor: default;
+  }
+
+  &:focus {
+    // outline: 1px solid $white;
+    // outline-offset: -4px;
+    outline: 1px solid $light-gray;
+    outline-offset: -3px;
+    box-shadow: 0 0 0 1px $white inset;
   }
 
 
@@ -32,6 +42,14 @@
         background-color: $pacific-blue;
         border-color: $orient;
       }
+
+      &:focus {
+        outline-color: $pacific-blue;
+      }
+
+      &:disabled {
+        background-color: $blue;
+      }
     }
 
     // White default button
@@ -47,6 +65,14 @@
       &:active {
         background-color: $background-gray;
         border-color: $dark-gray;
+      }
+
+      &:focus {
+        outline-color: $light-gray;
+      }
+
+      &:disabled {
+        border-color: $light-gray;
       }
     }
 
@@ -64,6 +90,15 @@
         background-color: $light-gray;
         border-color: $dark-gray;
       }
+
+      &:focus {
+        outline-color: $light-gray;
+        background-color: $background-gray;
+      }
+
+      &:disabled {
+        border-color: $light-gray;
+      }
     }
 
     // Positive default button
@@ -78,6 +113,10 @@
       &:active {
         background-color: $limeade;
         border-color: $japanese-laurel;
+      }
+
+      &:disabled {
+        background-color: $green;
       }
     }
 
@@ -94,6 +133,10 @@
         background-color: $shiraz;
         border-color: $red-oxide;
       }
+
+      &:disabled {
+        background-color: $red;
+      }
     }
 
     // Warning default button
@@ -108,6 +151,10 @@
       &:active {
         background-color: $buttercup;
         border-color: $pirate-gold;
+      }
+
+      &:disabled {
+        background-color: $yellow;
       }
     }
   }
@@ -129,6 +176,10 @@
       &:active {
         background-color: rgba($blue, 0.3);
       }
+
+      &:disabled {
+        background-color: transparent;
+      }
     }
 
     // Gray outline button
@@ -143,6 +194,10 @@
 
       &:active {
         background-color: rgba($gray, 0.3);
+      }
+
+      &:disabled {
+        background-color: transparent;
       }
     }
 
@@ -159,6 +214,10 @@
       &:active {
         background-color: rgba($green, 0.3);
       }
+
+      &:disabled {
+        background-color: transparent;
+      }
     }
 
     // Negative outline button
@@ -173,6 +232,10 @@
 
       &:active {
         background-color: rgba($red, 0.3);
+      }
+
+      &:disabled {
+        background-color: transparent;
       }
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
+import {action} from '@kadira/storybook';
 
 import ReactButton from '../src/react/Button.js';
 
@@ -19,51 +20,95 @@ let examples = {
 
     // Default buttons
     'Primary Default': {
-        jsx: <ReactButton>Click Me</ReactButton>,
+        jsx: <ReactButton onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultPrimary
     },
     'White Default': {
-        jsx: <ReactButton color='white'>Click Me</ReactButton>,
+        jsx: <ReactButton color='white' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultWhite
     },
     'Gray Default': {
-        jsx: <ReactButton color='gray'>Click Me</ReactButton>,
+        jsx: <ReactButton color='gray' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultGray
     },
     'Positive Default': {
-        jsx: <ReactButton color='positive'>Click Me</ReactButton>,
+        jsx: <ReactButton color='positive' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultPositive
     },
     'Negative Default': {
-        jsx: <ReactButton color='negative'>Click Me</ReactButton>,
+        jsx: <ReactButton color='negative' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultNegative
     },
     'Warning Default': {
-        jsx: <ReactButton color='warning'>Click Me</ReactButton>,
+        jsx: <ReactButton color='warning' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultWarning
     },
 
     // Outline buttons
     'Primary Outline': {
-        jsx: <ReactButton type='outline'>Click Me</ReactButton>,
+        jsx: <ReactButton type='outline' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonOutlinePrimary
     },
     'Gray Outline': {
-        jsx: <ReactButton type='outline' color='gray'>Click Me</ReactButton>,
+        jsx: <ReactButton type='outline' color='gray' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonOutlineGray
     },
     'Positive Outline': {
-        jsx: <ReactButton type='outline' color='positive'>Click Me</ReactButton>,
+        jsx: <ReactButton type='outline' color='positive' onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonOutlinePositive
     },
     'Negative Outline': {
-        jsx: <ReactButton type='outline' color='negative'>Click Me</ReactButton>,
+        jsx: <ReactButton type='outline' color='negative' onClick={() => {}}>Click Me</ReactButton>,
+        html: HTMLButtonOutlineNegative
+    },
+
+    // Default buttons disabled
+    'Primary Default Disabled': {
+        jsx: <ReactButton onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonDefaultPrimary
+    },
+    'White Default Disabled': {
+        jsx: <ReactButton color='white' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonDefaultWhite
+    },
+    'Gray Default Disabled': {
+        jsx: <ReactButton color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonDefaultGray
+    },
+    'Positive Default Disabled': {
+        jsx: <ReactButton color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonDefaultPositive
+    },
+    'Negative Default Disabled': {
+        jsx: <ReactButton color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonDefaultNegative
+    },
+    'Warning Default Disabled': {
+        jsx: <ReactButton color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonDefaultWarning
+    },
+
+    // Outline buttons disabled
+    'Primary Outline Disabled': {
+        jsx: <ReactButton type='outline' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonOutlinePrimary
+    },
+    'Gray Outline Disabled': {
+        jsx: <ReactButton type='outline' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonOutlineGray
+    },
+    'Positive Outline Disabled': {
+        jsx: <ReactButton type='outline' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+        html: HTMLButtonOutlinePositive
+    },
+    'Negative Outline Disabled': {
+        jsx: <ReactButton type='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
         html: HTMLButtonOutlineNegative
     }
 };
 
 const Buttons = () => (
-    <Examples examples={examples} />
+    <Examples className='button-examples' examples={examples} />
 );
 
 export default Buttons;

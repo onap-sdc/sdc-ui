@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test-dev": "jest --watch",
     "build": "babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .out"
