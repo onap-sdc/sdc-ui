@@ -6,7 +6,7 @@ const Examples = ({examples}) => (
     {Object.keys(examples).map(key => {
       let title = key;
       let {jsx, html} = examples[key];
-      return <SourceToggle key={key} title={title} jsx={jsx} html={html} />
+      return <SourceToggle title={title} jsx={jsx} html={html} />
     })}
   </div>
 );
