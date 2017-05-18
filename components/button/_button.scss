@@ -18,11 +18,7 @@
   }
 
   &:focus {
-    // outline: 1px solid $white;
-    // outline-offset: -4px;
-    outline: 1px solid $light-gray;
     outline-offset: -3px;
-    box-shadow: 0 0 0 1px $white inset;
   }
 
 
@@ -31,20 +27,25 @@
 
     // Primary default button
     &.sdc-button__primary {
-      background-color: $blue;
       border-color: $pacific-blue;
+      background-color: $blue;
 
       &:hover {
         background-color: $dodger-blue;
       }
 
       &:active {
-        background-color: $pacific-blue;
         border-color: $orient;
+        background-color: $pacific-blue;
       }
 
       &:focus {
-        outline-color: $pacific-blue;
+        box-shadow: 0 0 0 1px $white inset;
+        border-color: $blue;
+
+        &:active {
+          border-color: $orient;
+        }
       }
 
       &:disabled {
@@ -55,20 +56,26 @@
     // White default button
     &.sdc-button__white {
       color: $dark-gray;
-      background-color: $white;
       border-color: $light-gray;
+      background-color: $white;
 
       &:hover {
         border-color: $gray;
       }
 
       &:active {
-        background-color: $background-gray;
+        outline: none;
         border-color: $dark-gray;
+        background-color: $background-gray;
       }
 
       &:focus {
-        outline-color: $light-gray;
+        outline: 1px solid $gray;
+        border-color: $gray;
+
+        &:active {
+          border-color: $dark-gray;
+        }
       }
 
       &:disabled {
@@ -79,21 +86,27 @@
     // Gray default button
     &.sdc-button__gray {
       color: $text-black;
-      background-color: $tlv-gray;
       border-color: $light-gray;
+      background-color: $tlv-gray;
 
       &:hover {
         border-color: $gray;
       }
 
       &:active {
-        background-color: $light-gray;
         border-color: $dark-gray;
+        background-color: $light-gray;
       }
 
       &:focus {
-        outline-color: $light-gray;
+        outline: 1px solid $gray;
+        border-color: $gray;
         background-color: $background-gray;
+
+        &:active {
+          border-color: $dark-gray;
+          background-color: $light-gray;
+        }
       }
 
       &:disabled {
@@ -103,16 +116,25 @@
 
     // Positive default button
     &.sdc-button__positive {
-      background-color: $green;
       border-color: $limeade;
+      background-color: $green;
 
       &:hover {
         background-color: $lima;
       }
 
       &:active {
-        background-color: $limeade;
         border-color: $japanese-laurel;
+        background-color: $limeade;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px $white inset;
+        border-color: $green;
+
+        &:active {
+          border-color: $japanese-laurel;
+        }
       }
 
       &:disabled {
@@ -122,8 +144,8 @@
 
     // Negative default button
     &.sdc-button__negative {
-      background-color: $red;
       border-color: $shiraz;
+      background-color: $red;
 
       &:hover {
         background-color: $torch-red;
@@ -132,6 +154,15 @@
       &:active {
         background-color: $shiraz;
         border-color: $red-oxide;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px $white inset;
+        border-color: $red;
+
+        &:active {
+          border-color: $shiraz;
+        }
       }
 
       &:disabled {
@@ -151,6 +182,15 @@
       &:active {
         background-color: $buttercup;
         border-color: $pirate-gold;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px $white inset;
+        border-color: $yellow;
+
+        &:active {
+          border-color: $buttercup;
+        }
       }
 
       &:disabled {
@@ -177,6 +217,10 @@
         background-color: rgba($blue, 0.3);
       }
 
+      &:focus {
+        outline: 1px solid $blue;
+      }
+
       &:disabled {
         background-color: transparent;
       }
@@ -194,6 +238,10 @@
 
       &:active {
         background-color: rgba($gray, 0.3);
+      }
+
+      &:focus {
+        outline: 1px solid $gray;
       }
 
       &:disabled {
@@ -215,6 +263,10 @@
         background-color: rgba($green, 0.3);
       }
 
+      &:focus {
+        outline: 1px solid $green;
+      }
+
       &:disabled {
         background-color: transparent;
       }
@@ -232,6 +284,10 @@
 
       &:active {
         background-color: rgba($red, 0.3);
+      }
+
+      &:focus {
+        outline: 1px solid $red;
       }
 
       &:disabled {

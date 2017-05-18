@@ -16,6 +16,18 @@ import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html
 import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
 import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
 
+import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-default-primary-disabled.html';
+import HTMLButtonDefaultWhiteDisabled from '../components/button/button-default-white-disabled.html';
+import HTMLButtonDefaultGrayDisabled from '../components/button/button-default-gray-disabled.html';
+import HTMLButtonDefaultPositiveDisabled from '../components/button/button-default-positive-disabled.html';
+import HTMLButtonDefaultNegativeDisabled from '../components/button/button-default-negative-disabled.html';
+import HTMLButtonDefaultWarningDisabled from '../components/button/button-default-warning-disabled.html';
+
+import HTMLButtonOutlinePrimaryDisabled from '../components/button/button-outline-primary-disabled.html';
+import HTMLButtonOutlineGrayDisabled from '../components/button/button-outline-gray-disabled.html';
+import HTMLButtonOutlinePositiveDisabled from '../components/button/button-outline-positive-disabled.html';
+import HTMLButtonOutlineNegativeDisabled from '../components/button/button-outline-negative-disabled.html';
+
 let examples = {
 
     // Default buttons
@@ -41,7 +53,7 @@ let examples = {
     },
     'Warning Default': {
         jsx: <ReactButton color='warning' onClick={() => {}}>Click Me</ReactButton>,
-        html: HTMLButtonDefaultPrimary
+        html: HTMLButtonDefaultWarning
     },
 
     // Outline buttons
@@ -65,45 +77,45 @@ let examples = {
     // Default buttons disabled
     'Primary Default Disabled': {
         jsx: <ReactButton onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonDefaultPrimary
+        html: HTMLButtonDefaultPrimaryDisabled
     },
     'White Default Disabled': {
         jsx: <ReactButton color='white' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonDefaultWhite
+        html: HTMLButtonDefaultWhiteDisabled
     },
     'Gray Default Disabled': {
         jsx: <ReactButton color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonDefaultGray
+        html: HTMLButtonDefaultGrayDisabled
     },
     'Positive Default Disabled': {
         jsx: <ReactButton color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonDefaultPositive
+        html: HTMLButtonDefaultPositiveDisabled
     },
     'Negative Default Disabled': {
         jsx: <ReactButton color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonDefaultNegative
+        html: HTMLButtonDefaultNegativeDisabled
     },
     'Warning Default Disabled': {
         jsx: <ReactButton color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonDefaultWarning
+        html: HTMLButtonDefaultWarningDisabled
     },
 
     // Outline buttons disabled
     'Primary Outline Disabled': {
         jsx: <ReactButton type='outline' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonOutlinePrimary
+        html: HTMLButtonOutlinePrimaryDisabled
     },
     'Gray Outline Disabled': {
         jsx: <ReactButton type='outline' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonOutlineGray
+        html: HTMLButtonOutlineGrayDisabled
     },
     'Positive Outline Disabled': {
         jsx: <ReactButton type='outline' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonOutlinePositive
+        html: HTMLButtonOutlinePositiveDisabled
     },
     'Negative Outline Disabled': {
         jsx: <ReactButton type='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
-        html: HTMLButtonOutlinePrimary
+        html: HTMLButtonOutlinePrimaryDisabled
     }
 };
 
