@@ -1,15 +1,16 @@
 
 .sdc-button {
+  outline: none;
   border-radius: 2px;
   border: solid 1px;
-  outline: none;
+
   width: 94px;
   height: 30px;
   cursor: pointer;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
+
+  @include base-font-medium;
+  font-size: $body-font-1;
   color: $white;
 
   &:disabled {
