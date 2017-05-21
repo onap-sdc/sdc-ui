@@ -5,8 +5,8 @@ const Examples = ({examples, className}) => (
   <div className={`examples${className ? (' ' + className) : ''}`}>
     {Object.keys(examples).map(key => {
       let title = key;
-      let {jsx, html} = examples[key];
-      return <SourceToggle title={title} jsx={jsx} html={html}  key={key} />
+      let {jsx, html, displayTitle = true} = examples[key];
+      return <SourceToggle title={displayTitle && title} jsx={jsx} html={html}  key={key} />
     })}
   </div>
 );

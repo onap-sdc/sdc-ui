@@ -12,6 +12,9 @@
   font-weight: 600;
   color: $white;
 
+  margin-bottom: 10px;
+  margin-right: 10px;
+
   &:disabled {
     opacity: 0.3;
     cursor: default;
@@ -45,6 +48,23 @@
 
         &:active {
           border-color: $orient;
+          background-color: $pacific-blue;
+        }
+
+        &.michal-one {
+          &:active {
+            box-shadow: none;
+          }
+
+          &:hover {
+            box-shadow: none;
+          }
+        }
+
+        &.michal-two {
+          &:active {
+            box-shadow: none;
+          }
         }
       }
 
@@ -59,24 +79,31 @@
       border-color: $light-gray;
       background-color: $white;
 
-      &:hover {
-        border-color: $gray;
-      }
-
-      &:active {
-        outline: none;
-        border-color: $dark-gray;
-        background-color: $background-gray;
-      }
-
-      &:focus {
-        outline: 1px solid $gray;
+      &:hover, &:focus {
         border-color: $gray;
 
         &:active {
           border-color: $dark-gray;
+          background-color: $background-gray;
         }
       }
+
+      // &:active {
+      //   outline: none;
+      //   border-color: $dark-gray;
+      // }
+
+      // &:focus {
+      //   outline: 1px solid $gray;
+      //   border-color: $gray;
+
+      //   &:active {
+      //     border-color: $dark-gray;
+      //   }
+
+      // }
+
+
 
       &:disabled {
         border-color: $light-gray;
@@ -89,25 +116,27 @@
       border-color: $light-gray;
       background-color: $tlv-gray;
 
-      &:hover {
+      &:hover, &:focus {
         border-color: $gray;
-      }
-
-      &:active {
-        border-color: $dark-gray;
-        background-color: $light-gray;
-      }
-
-      &:focus {
-        outline: 1px solid $gray;
-        border-color: $gray;
-        background-color: $background-gray;
 
         &:active {
           border-color: $dark-gray;
           background-color: $light-gray;
         }
       }
+
+      
+
+      // &:focus {
+      //   outline: 1px solid $gray;
+      //   border-color: $gray;
+      //   background-color: $background-gray;
+
+      //   &:active {
+      //     border-color: $dark-gray;
+      //     background-color: $light-gray;
+      //   }
+      // }
 
       &:disabled {
         border-color: $light-gray;
@@ -119,23 +148,23 @@
       border-color: $limeade;
       background-color: $green;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: $lima;
-      }
-
-      &:active {
-        border-color: $japanese-laurel;
-        background-color: $limeade;
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 1px $white inset;
-        border-color: $green;
 
         &:active {
           border-color: $japanese-laurel;
+          background-color: $limeade;
         }
       }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $green;
+
+      //   &:active {
+      //     border-color: $japanese-laurel;
+      //   }
+      // }
 
       &:disabled {
         background-color: $green;
@@ -147,23 +176,23 @@
       border-color: $shiraz;
       background-color: $red;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: $torch-red;
-      }
-
-      &:active {
-        background-color: $shiraz;
-        border-color: $red-oxide;
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 1px $white inset;
-        border-color: $red;
 
         &:active {
-          border-color: $shiraz;
+          background-color: $shiraz;
+          border-color: $red-oxide;
         }
       }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $red;
+
+      //   &:active {
+      //     border-color: $shiraz;
+      //   }
+      // }
 
       &:disabled {
         background-color: $red;
@@ -175,23 +204,23 @@
       background-color: $yellow;
       border-color: $buttercup;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: $gold;
-      }
-
-      &:active {
-        background-color: $buttercup;
-        border-color: $pirate-gold;
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 1px $white inset;
-        border-color: $yellow;
 
         &:active {
-          border-color: $buttercup;
+          background-color: $buttercup;
+          border-color: $pirate-gold;
         }
       }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $yellow;
+
+      //   &:active {
+      //     border-color: $buttercup;
+      //   }
+      // }
 
       &:disabled {
         background-color: $yellow;
@@ -209,17 +238,17 @@
       background-color: rgba($blue, 0);
       border-color: $blue;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: rgba($blue, 0.1);
+
+        &:active {
+          background-color: rgba($blue, 0.3);
+        }
       }
 
-      &:active {
-        background-color: rgba($blue, 0.3);
-      }
-
-      &:focus {
-        outline: 1px solid $blue;
-      }
+      // &:focus {
+      //   outline: 1px solid $blue;
+      // }
 
       &:disabled {
         background-color: transparent;
@@ -232,17 +261,17 @@
       background-color: rgba($gray, 0);
       border-color: $gray;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: rgba($gray, 0.1);
+
+        &:active {
+          background-color: rgba($gray, 0.3);
+        }
       }
 
-      &:active {
-        background-color: rgba($gray, 0.3);
-      }
-
-      &:focus {
-        outline: 1px solid $gray;
-      }
+      // &:focus {
+      //   outline: 1px solid $gray;
+      // }
 
       &:disabled {
         background-color: transparent;
@@ -255,17 +284,17 @@
       background-color: rgba($green, 0);
       border-color: $green;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: rgba($green, 0.1);
+
+        &:active {
+          background-color: rgba($green, 0.3);
+        }
       }
 
-      &:active {
-        background-color: rgba($green, 0.3);
-      }
-
-      &:focus {
-        outline: 1px solid $green;
-      }
+      // &:focus {
+      //   outline: 1px solid $green;
+      // }
 
       &:disabled {
         background-color: transparent;
@@ -278,17 +307,17 @@
       background-color: rgba($red, 0);
       border-color: $red;
 
-      &:hover {
+      &:hover, &:focus {
         background-color: rgba($red, 0.1);
+
+        &:active {
+          background-color: rgba($red, 0.3);
+        }
       }
 
-      &:active {
-        background-color: rgba($red, 0.3);
-      }
-
-      &:focus {
-        outline: 1px solid $red;
-      }
+      // &:focus {
+      //   outline: 1px solid $red;
+      // }
 
       &:disabled {
         background-color: transparent;
