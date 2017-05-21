@@ -32,7 +32,7 @@ let examples = {
 
     // Default buttons
     'Primary Default': {
-        jsx: <ReactButton onClick={() => {}} useSet={true}>Click Me</ReactButton>,
+        jsx: <ReactButton onClick={() => {}}>Click Me</ReactButton>,
         html: HTMLButtonDefaultPrimary
     },
     'Primary Default Disabled': {
