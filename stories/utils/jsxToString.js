@@ -4,7 +4,13 @@ function stringRepresentationForJsx(item) {
     } else if (typeof item === 'number') {
         return item.toString();
     } else if (Array.isArray(item)) {
-        return `[${item.map(val => stringRepresentationForJsx(val)).toString()}]`
+        return `[${item.map(val => stringRepresentationForJsx(val)).toString()}]`;
+    }
+    else if (typeof item === 'boolean') {
+            return item.toString();
+    }
+    else if (typeof item === 'function') {
+        return item.toString();
     } else if (typeof item === 'object') {
         let repr = '{';
         for (let key in item) {
@@ -23,7 +29,7 @@ function parseProps(jsx) {
         if (prop !== 'children') {
             let repr = stringRepresentationForJsx(value);
             let isString = repr.startsWith("'");
-            result += ` ${prop}=${isString ? '' : '{'}${stringRepresentationForJsx(value)}${isString ? '' : '}'}`;
+            result += `\n   ${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
         }
     }
     return result;
@@ -37,7 +43,7 @@ function jsxToString(jsx) {
     let name = jsx.type.name;
 
     if (jsx.props.hasOwnProperty('children')) {
-        return `<${name}${parseProps(jsx)}>${jsxToString(jsx.props.children)}</${name}>`
+        return `<${name}${parseProps(jsx)}>\n   ${jsxToString(jsx.props.children)}\n</${name}>`
     }
 
     return `<${name} ${parseProps(jsx)}/>`
