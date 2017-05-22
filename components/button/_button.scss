@@ -101,14 +101,14 @@
 
     // Negative default button
     &.sdc-button__negative {
-      border-color: $shiraz;
+      border-color: $tamarillo;
       background-color: $red;
 
       &:hover, &:focus {
         background-color: $torch-red;
 
         &:active {
-          background-color: $shiraz;
+          background-color: $tamarillo;
           border-color: $red-oxide;
         }
       }
