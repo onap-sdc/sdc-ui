@@ -1,17 +1,296 @@
+
 .sdc-button {
+  outline: none;
   border-radius: 2px;
   border: solid 1px;
-  
-  &.sdc-button__primary {
-    background-color: $blue;
-    border-color: $blue;
-    color: $white;
+
+  width: 94px;
+  height: 30px;
+  cursor: pointer;
+  text-align: center;
+
+  @include base-font-medium;
+  font-size: $body-font-1;
+  color: $white;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
   }
 
-  &.sdc-button__white {
-    background-color: $white;
-    border-color: $tlv-gray;
-    color: $dark-gray;
+  // NOTE: temporarily keeping old focus styling commented until the new style is finalized
+
+  // &:focus {
+  //   outline-offset: -3px;
+  // }
+
+
+  // Default type
+  &.sdc-button-default {
+
+    // Primary default button
+    &.sdc-button__primary {
+      border-color: $pacific-blue;
+      background-color: $blue;
+
+      &:hover, &:focus {
+        background-color: $dodger-blue;
+
+        &:active {
+          border-color: $orient;
+          background-color: $pacific-blue;
+        }
+      }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $blue;
+      //   &:active {
+      //     border-color: $orient;
+      //     background-color: $pacific-blue;
+      //   }
+      // }
+
+      &:disabled {
+        background-color: $blue;
+      }
+    }
+
+    // White default button
+    &.sdc-button__white {
+      color: $dark-gray;
+      border-color: $light-gray;
+      background-color: $white;
+
+      &:hover, &:focus {
+        border-color: $gray;
+
+        &:active {
+          border-color: $dark-gray;
+          background-color: $background-gray;
+        }
+      }
+
+      // &:focus {
+      //   outline: 1px solid $gray;
+      //   border-color: $gray;
+      //   &:active {
+      //     border-color: $dark-gray;
+      //   }
+      // }
+
+      &:disabled {
+        border-color: $light-gray;
+      }
+    }
+
+    // Gray default button
+    &.sdc-button__gray {
+      color: $text-black;
+      border-color: $light-gray;
+      background-color: $tlv-gray;
+
+      &:hover, &:focus {
+        border-color: $gray;
+
+        &:active {
+          border-color: $dark-gray;
+          background-color: $light-gray;
+        }
+      }
+
+      // &:focus {
+      //   outline: 1px solid $gray;
+      //   border-color: $gray;
+      //   background-color: $background-gray;
+      //   &:active {
+      //     border-color: $dark-gray;
+      //     background-color: $light-gray;
+      //   }
+      // }
+
+      &:disabled {
+        border-color: $light-gray;
+      }
+    }
+
+    // Positive default button
+    &.sdc-button__positive {
+      border-color: $limeade;
+      background-color: $green;
+
+      &:hover, &:focus {
+        background-color: $lima;
+
+        &:active {
+          border-color: $japanese-laurel;
+          background-color: $limeade;
+        }
+      }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $green;
+      //   &:active {
+      //     border-color: $japanese-laurel;
+      //   }
+      // }
+
+      &:disabled {
+        background-color: $green;
+      }
+    }
+
+    // Negative default button
+    &.sdc-button__negative {
+      border-color: $shiraz;
+      background-color: $red;
+
+      &:hover, &:focus {
+        background-color: $torch-red;
+
+        &:active {
+          background-color: $shiraz;
+          border-color: $red-oxide;
+        }
+      }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $red;
+      //   &:active {
+      //     border-color: $shiraz;
+      //   }
+      // }
+
+      &:disabled {
+        background-color: $red;
+      }
+    }
+
+    // Warning default button
+    &.sdc-button__warning {
+      background-color: $yellow;
+      border-color: $buttercup;
+
+      &:hover, &:focus {
+        background-color: $gold;
+
+        &:active {
+          background-color: $buttercup;
+          border-color: $pirate-gold;
+        }
+      }
+
+      // &:focus {
+      //   box-shadow: 0 0 0 1px $white inset;
+      //   border-color: $yellow;
+      //   &:active {
+      //     border-color: $buttercup;
+      //   }
+      // }
+
+      &:disabled {
+        background-color: $yellow;
+      }
+    }
   }
 
+
+  // Outline type
+  &.sdc-button-outline {
+
+    // Primary outline button
+    &.sdc-button__primary {
+      color: $blue;
+      background-color: rgba($blue, 0);
+      border-color: $blue;
+
+      &:hover, &:focus {
+        background-color: rgba($blue, 0.1);
+
+        &:active {
+          background-color: rgba($blue, 0.3);
+        }
+      }
+
+      // &:focus {
+      //   outline: 1px solid $blue;
+      // }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    // Gray outline button
+    &.sdc-button__gray {
+      color: $dark-gray;
+      background-color: rgba($gray, 0);
+      border-color: $gray;
+
+      &:hover, &:focus {
+        background-color: rgba($gray, 0.1);
+
+        &:active {
+          background-color: rgba($gray, 0.3);
+        }
+      }
+
+      // &:focus {
+      //   outline: 1px solid $gray;
+      // }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    // Positive outline button
+    &.sdc-button__positive {
+      color: $green;
+      background-color: rgba($green, 0);
+      border-color: $green;
+
+      &:hover, &:focus {
+        background-color: rgba($green, 0.1);
+
+        &:active {
+          background-color: rgba($green, 0.3);
+        }
+      }
+
+      // &:focus {
+      //   outline: 1px solid $green;
+      // }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    // Negative outline button
+    &.sdc-button__negative {
+      color: $red;
+      background-color: rgba($red, 0);
+      border-color: $red;
+
+      &:hover, &:focus {
+        background-color: rgba($red, 0.1);
+
+        &:active {
+          background-color: rgba($red, 0.3);
+        }
+      }
+
+      // &:focus {
+      //   outline: 1px solid $red;
+      // }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+  }
 }
