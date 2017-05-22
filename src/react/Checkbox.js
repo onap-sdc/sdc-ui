@@ -1,13 +1,6 @@
 import React from 'react';
 
 class Checkbox extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			checked: props.checked ? props.checked : false
-		};
-	}
-
 	render() {
 		let {checked, disabled, value, label, inputRef, name} = this.props;
 		let dataTestId = this.props['data-test-id'];
@@ -20,20 +13,16 @@ class Checkbox extends React.Component {
 
 	onChange(e) {
 		let {onChange} = this.props;
-		this.setState({
-			checked: e.target.checked
-		});
 		onChange && onChange(e.target.checked);
 	}
 
 	getChecked() {
-		return this.state.checked;
+		return this.props.checked;
 	}
 
 	getValue() {
 		return this.props.value;
 	}
-
 }
 
 export default Checkbox;
