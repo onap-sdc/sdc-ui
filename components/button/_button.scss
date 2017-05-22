@@ -1,4 +1,3 @@
-
 .sdc-button {
   outline: none;
   border-radius: 2px;
@@ -17,13 +16,7 @@
     opacity: 0.3;
     cursor: default;
   }
-
-  // NOTE: temporarily keeping old focus styling commented until the new style is finalized
-
-  // &:focus {
-  //   outline-offset: -3px;
-  // }
-
+  
 
   // Default type
   &.sdc-button-default {
@@ -41,15 +34,6 @@
           background-color: $pacific-blue;
         }
       }
-
-      // &:focus {
-      //   box-shadow: 0 0 0 1px $white inset;
-      //   border-color: $blue;
-      //   &:active {
-      //     border-color: $orient;
-      //     background-color: $pacific-blue;
-      //   }
-      // }
 
       &:disabled {
         background-color: $blue;
@@ -71,14 +55,6 @@
         }
       }
 
-      // &:focus {
-      //   outline: 1px solid $gray;
-      //   border-color: $gray;
-      //   &:active {
-      //     border-color: $dark-gray;
-      //   }
-      // }
-
       &:disabled {
         border-color: $light-gray;
       }
@@ -99,16 +75,6 @@
         }
       }
 
-      // &:focus {
-      //   outline: 1px solid $gray;
-      //   border-color: $gray;
-      //   background-color: $background-gray;
-      //   &:active {
-      //     border-color: $dark-gray;
-      //     background-color: $light-gray;
-      //   }
-      // }
-
       &:disabled {
         border-color: $light-gray;
       }
@@ -127,14 +93,6 @@
           background-color: $limeade;
         }
       }
-
-      // &:focus {
-      //   box-shadow: 0 0 0 1px $white inset;
-      //   border-color: $green;
-      //   &:active {
-      //     border-color: $japanese-laurel;
-      //   }
-      // }
 
       &:disabled {
         background-color: $green;
@@ -155,14 +113,6 @@
         }
       }
 
-      // &:focus {
-      //   box-shadow: 0 0 0 1px $white inset;
-      //   border-color: $red;
-      //   &:active {
-      //     border-color: $shiraz;
-      //   }
-      // }
-
       &:disabled {
         background-color: $red;
       }
@@ -181,14 +131,6 @@
           border-color: $pirate-gold;
         }
       }
-
-      // &:focus {
-      //   box-shadow: 0 0 0 1px $white inset;
-      //   border-color: $yellow;
-      //   &:active {
-      //     border-color: $buttercup;
-      //   }
-      // }
 
       &:disabled {
         background-color: $yellow;
@@ -214,10 +156,6 @@
         }
       }
 
-      // &:focus {
-      //   outline: 1px solid $blue;
-      // }
-
       &:disabled {
         background-color: transparent;
       }
@@ -236,10 +174,6 @@
           background-color: rgba($gray, 0.3);
         }
       }
-
-      // &:focus {
-      //   outline: 1px solid $gray;
-      // }
 
       &:disabled {
         background-color: transparent;
@@ -260,10 +194,6 @@
         }
       }
 
-      // &:focus {
-      //   outline: 1px solid $green;
-      // }
-
       &:disabled {
         background-color: transparent;
       }
@@ -282,10 +212,6 @@
           background-color: rgba($red, 0.3);
         }
       }
-
-      // &:focus {
-      //   outline: 1px solid $red;
-      // }
 
       &:disabled {
         background-color: transparent;
