@@ -8,12 +8,8 @@ import HTMLRadioGroupDisabled from '../components/radioGroup/radio-group-disable
 import HTMLRadioGroupNoTitle from '../components/radioGroup/radio-group-no-title.html';
 
 let examples = {
-	'Default Value': {
-		jsx: <RadioGroup name='grp1' defaultValue='2' title='Group A' onChange={()=>{}} data-test-id='grp1' options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />,
-		html: ''
-	},
 	'Value': {
-		jsx: <RadioGroup name='grp2' defaultValue='2' value='1' title='Group B' onChange={()=>{}} data-test-id='grp2' options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />,
+		jsx: <RadioGroup name='grp2' value='1' title='Group B' onChange={()=>{}} data-test-id='grp2' options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />,
 		html: HTMLRadioGroupValue
 	},
 	'No Value': {
