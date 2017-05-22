@@ -3,14 +3,32 @@ import RadioGroup from '../src/react/RadioGroup.js';
 
 import {mount, simulate} from 'enzyme';
 
-describe('RadioGroup', () => {
-	test('RadioGroup - can be assigned default value', () => {
-		const radio = mount(<RadioGroup name='grp1' defaultValue='2' title='Group A'
-								onChange={()=>{}} data-test-id='grp1'
-								options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />);
-		expect(radio.instance().getValue()).toEqual('2');
-	});
+class RadioGroupForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {value: undefined};
+		this.handleChange = this.handleChange.bind(this);
+	}
 
+	handleChange(val) {
+		this.setState({value: val});
+	}
+
+	getValue() {
+		return this.grp.getValue();
+	}
+
+	render() {
+		return (
+			<form >
+				<RadioGroup name='grp1' title='Group A' value={this.state.value} ref={(grp) => { this.grp = grp;}} onChange={this.handleChange} data-test-id='grp1'
+					options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />
+			</form>
+		);
+	}
+}
+
+describe('RadioGroup', () => {
 	test('RadioGroup - value overrides default value', () => {
 		const radio = mount(<RadioGroup name='grp1' defaultValue='2' value='1' title='Group A'
 								onChange={()=>{}} data-test-id='grp1'
@@ -33,9 +51,7 @@ describe('RadioGroup', () => {
 	});
 
 	test('RadioGroup - value changes', () => {
-		const radio = mount(<RadioGroup name='grp1' title='Group A'
-										onChange={()=>{}} data-test-id='grp1'
-										options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />);
+		const radio = mount(<RadioGroupForm  />);
 		expect(radio.instance().getValue()).toEqual(undefined);
 		radio.find('input[value="1"]').simulate('change', { target : { checked: true }});
 		expect(radio.instance().getValue()).toEqual('1');
