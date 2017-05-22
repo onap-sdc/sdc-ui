@@ -2,7 +2,7 @@ import React from 'react';
 
 class Checkbox extends React.Component {
 	render() {
-		let {checked, disabled, value, label, inputRef, name} = this.props;
+		let {checked = false, disabled, value, label, inputRef, name} = this.props;
 		let dataTestId = this.props['data-test-id'];
 		return (<div className='sdc-checkbox'>
 			<input ref={inputRef} data-test-id={dataTestId} type='checkbox' checked={checked}  disabled={disabled}
