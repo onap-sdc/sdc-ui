@@ -11,7 +11,8 @@ module.exports = {
 			},
 			{
 				test: /.html$/,
-				loader: 'html'
+				loader: 'html',
+				query: { minimize: false }
 			}
 		]
 	}

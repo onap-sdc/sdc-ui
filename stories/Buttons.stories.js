@@ -126,7 +126,7 @@ let examples = {
 };
 
 const Buttons = () => (
-    <Examples className='button-examples' examples={examples} />
+    <Examples examples={examples} />
 );
 
 export default Buttons;
