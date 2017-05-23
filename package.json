@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test-coverage": "jest --coverage && start ./coverage/lcov-report/index.html",
     "build": "babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .out"
@@ -29,11 +30,15 @@
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
     "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "copy": "^0.3.0",
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^7.0.1",
     "html-loader": "^0.4.5",
     "jest": "^20.0.0",
     "node-sass": "^4.5.2",
@@ -54,6 +59,19 @@
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.html$": "<rootDir>/test/utils/htmlLoader.js"
-    }
+    },
+    "coveragePathIgnorePatterns" : [
+      "<rootDir>/src/react/index.js",
+      "<rootDir>/src/index.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageReporters": [
+      "lcov"
+    ]
   }
 }
