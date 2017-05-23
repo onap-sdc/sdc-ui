@@ -13,7 +13,9 @@ class Radio extends React.Component {
 
 	onChange(e) {
 		let {onChange} = this.props;
-		onChange && onChange(e.target.checked);
+		if (onChange) {
+			onChange(e.target.checked);
+		}
 	}
 
 	getChecked() {

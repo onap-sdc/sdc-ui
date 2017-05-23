@@ -18,58 +18,58 @@ import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-defaul
 import {mount} from 'enzyme';
 
 describe('Button', () => {
-  test('Button - Default - Primary', () => {
-    const button = mount(<Button>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultPrimary);
-  });
+	test('Button - Default - Primary', () => {
+		const button = mount(<Button>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultPrimary);
+	});
 
-  test('Button - Default - Primary - Disabled', () => {
-    const button = mount(<Button disabled>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultPrimaryDisabled);
-  });
+	test('Button - Default - Primary - Disabled', () => {
+		const button = mount(<Button disabled>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultPrimaryDisabled);
+	});
 
-  test('Button - Default - White', () => {
-    const button = mount(<Button color='white'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultWhite);
-  });
+	test('Button - Default - White', () => {
+		const button = mount(<Button color='white'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultWhite);
+	});
 
-  test('Button - Default - Gray', () => {
-    const button = mount(<Button color='gray'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultGray);
-  });
+	test('Button - Default - Gray', () => {
+		const button = mount(<Button color='gray'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultGray);
+	});
 
-  test('Button - Default - Positive', () => {
-    const button = mount(<Button color='positive'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultPositive);
-  });
+	test('Button - Default - Positive', () => {
+		const button = mount(<Button color='positive'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultPositive);
+	});
 
-  test('Button - Default - Negative', () => {
-    const button = mount(<Button color='negative'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultNegative);
-  });
+	test('Button - Default - Negative', () => {
+		const button = mount(<Button color='negative'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultNegative);
+	});
 
-  test('Button - Default - Warning', () => {
-    const button = mount(<Button color='warning'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonDefaultWarning);
-  });
+	test('Button - Default - Warning', () => {
+		const button = mount(<Button color='warning'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonDefaultWarning);
+	});
 
-  test('Button - Outline - Primary', () => {
-    const button = mount(<Button type='outline'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonOutlinePrimary);
-  });
+	test('Button - Outline - Primary', () => {
+		const button = mount(<Button type='outline'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonOutlinePrimary);
+	});
 
-  test('Button - Outline - Gray', () => {
-    const button = mount(<Button type='outline' color='gray'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonOutlineGray);
-  });
+	test('Button - Outline - Gray', () => {
+		const button = mount(<Button type='outline' color='gray'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonOutlineGray);
+	});
 
-  test('Button - Outline - Positive', () => {
-    const button = mount(<Button type='outline' color='positive'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonOutlinePositive);
-  });
+	test('Button - Outline - Positive', () => {
+		const button = mount(<Button type='outline' color='positive'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonOutlinePositive);
+	});
 
-  test('Button - Outline - Negative', () => {
-    const button = mount(<Button type='outline' color='negative'>Click Me</Button>);
-    expect(button.html()).toEqual(HTMLButtonOutlineNegative);
-  });
+	test('Button - Outline - Negative', () => {
+		const button = mount(<Button type='outline' color='negative'>Click Me</Button>);
+		expect(button.html()).toEqual(HTMLButtonOutlineNegative);
+	});
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {storiesOf, action} from '@kadira/storybook';
+import {storiesOf} from '@kadira/storybook';
 import Welcome from './Welcome.stories.js';
 import Colors from './Colors.stories.js';
 import Typography from './Typography.stories.js';

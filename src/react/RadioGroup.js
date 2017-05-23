@@ -16,10 +16,10 @@ class RadioGroup extends React.Component {
 			{options.map(option => {
 				let rName = name + '_' + option.value;
 				return (<Radio ref={(radio) => {this.radios[rName] = radio;}} data-test-id={dataTestId + '_' + option.value}
-						   key={rName} value={option.value}
-						   label={option.label} checked={value === option.value} disabled={disabled}
-						   name={name} onChange={(e) => this.onChange(rName)} />
-			);})}
+					   key={rName} value={option.value}
+					   label={option.label} checked={value === option.value} disabled={disabled}
+					   name={name} onChange={() => this.onChange(rName)} />
+				);})}
 			</div>
 		</div>);
 	}
@@ -27,7 +27,9 @@ class RadioGroup extends React.Component {
 	onChange(rName) {
 		let {onChange} = this.props;
 		let val = this.radios[rName].getValue();
-		onChange && onChange(val);
+		if (onChange) {
+			onChange(val);
+		}
 	}
 
 	getValue() {

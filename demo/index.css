@@ -40,7 +40,7 @@ footer {
 
 /* HEADER */
 header {
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
     height: 50px;
     line-height: 50px;
     z-index: 9;
@@ -51,7 +51,7 @@ header {
 
 header .logo {
     font-size: 22px;
-    font-weight: 700;    
+    font-weight: 700;
 }
 
 header .title {
@@ -74,7 +74,7 @@ footer {
 #main-navigation {
     align-content: stretch;
     z-index: 8;
-    box-shadow: 2px 0px 0px 0px rgba(68,68,68,0.2);
+    box-shadow: 2px 0 0 0 rgba(68,68,68,0.2);
 }
 
 #main-navigation .title {
@@ -124,7 +124,7 @@ footer {
 
 /* OTHERS */
 .component {
-    background-color: #009fdb; 
+    background-color: #009fdb;
     color: #ffffff;
     font-size: 20px;
     padding: 0.5em 1em;

@@ -3,7 +3,7 @@ import Checkbox from '../src/react/Checkbox.js';
 import HTMLCheckboxDisabled from '../components/checkbox/checkbox-disabled.html';
 import HTMLCheckboxUnchecked from '../components/checkbox/checkbox-unchecked.html';
 
-import {mount, simulate} from 'enzyme';
+import {mount} from 'enzyme';
 
 class CheckboxForm extends React.Component {
 	constructor(props) {
@@ -58,4 +58,4 @@ describe('Checkbox', () => {
 		expect(checkbox.instance().getValue()).toEqual('myVal');
 	});
 
-})
+});
