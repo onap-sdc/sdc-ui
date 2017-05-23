@@ -46,7 +46,7 @@ export default class SourceToggle extends React.Component {
         let {title} = this.props;
         return (
             <div className='source-toggle-wrapper'>
-                <div className='source-toggle-title'>{title}</div>
+                {title && <div className='source-toggle-title'>{title}</div>}
                 <div className='source-toggle'>
                     {this.renderFromSource()}
                     <div className='source-toggle-code'>
