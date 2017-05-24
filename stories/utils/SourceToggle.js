@@ -4,6 +4,8 @@ import jsxToString from './jsxToString.js';
 
 import Prism from 'prismjs';
 
+import PrismJsx from 'prismjs/components/prism-jsx.js'; // eslint-disable-line no-unused-vars
+
 const sources = {
 	React: 'React',
 	HTML: 'HTML'
@@ -45,7 +47,7 @@ export default class SourceToggle extends React.Component {
 		let {title} = this.props;
 		return (
 			<div className='source-toggle-wrapper'>
-				<div className='source-toggle-title'>{title}</div>
+				{title && <div className='source-toggle-title'>{title}</div>}
 				<div className='source-toggle'>
 					{this.renderFromSource()}
 					<div className='source-toggle-code'>
