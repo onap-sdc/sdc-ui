@@ -1,14 +1,7 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
-import {select} from '@kadira/storybook-addon-knobs';
-
-
 import SVGIcon from '../src/react/SVGIcon';
 import HTMLSvgIcon from '../components/icon/svg-icon.html';
-
-function selectType() {
-    return select('Item type' , icons, icons[0]);
-}
 
 const iconLabelPositions = [
     'bottom','top', 'left', 'right'
@@ -20,14 +13,14 @@ function buildExamples(iconName, iconLabel, labelPosition) {
             jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='svg-icon purple storybook-big' name={iconName} />,
             html: HTMLSvgIcon
         }
-    }
+    };
 }
 
 const SelectOption = ({option}) => {
     return (
         <option key={option} value={option}>{option}</option>
     );
-}
+};
 
 const IconsList = ({icons}) => {
     return (
@@ -36,7 +29,7 @@ const IconsList = ({icons}) => {
                 icons.map(icon => <div className='icon-section'><SVGIcon label={icon} iconClassName='svg-icon purple storybook-small' name={icon}/></div>)
             }
         </div>
-    )
+    );
 };
 
 class Icons extends React.Component {
@@ -69,7 +62,7 @@ class Icons extends React.Component {
                 <Examples examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition)} />    
                 <IconsList icons={ICON_NAMES}/>
            </div> 
-        )
+        );
     };
 }
 
