@@ -9,8 +9,8 @@ export {Radio};
 export {RadioGroup};
 
 export default {
-  Button,
-  Checkbox,
-  Radio,
-  RadioGroup
-}
+	Button,
+	Checkbox,
+	Radio,
+	RadioGroup
+};

@@ -3,7 +3,32 @@ import Radio from '../src/react/Radio.js';
 import HTMLRadioDisabled from '../components/radio/radio-disabled.html';
 import HTMLRadioUnchecked from '../components/radio/radio-unchecked.html';
 
-import {mount, simulate} from 'enzyme';
+import {mount} from 'enzyme';
+
+class RadioForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {checked: false};
+
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(val) {
+		this.setState({checked: val});
+	}
+
+	getChecked() {
+		return this.radio.getChecked();
+	}
+
+	render() {
+		return (
+			<form >
+				<Radio ref={(radio)=>{this.radio = radio;}} name='grp1' checked={this.state.checked} label='This is the radio label' value='1' onChange={this.handleChange} />
+			</form>
+		);
+	}
+}
 
 describe('Radio', () => {
 	test('Radio - unchecked', () => {
@@ -17,12 +42,15 @@ describe('Radio', () => {
 	});
 
 	test('Radio - checked state changes', () => {
-		const radio = mount(<Radio label='This is the radio label' />);
+		const radio = mount(<RadioForm />);
 		expect(radio.instance().getChecked()).toEqual(false);
+		expect(radio.instance().getChecked()).toEqual(radio.find('input').props().checked);
 		radio.find('input').simulate('change', { target : { checked: true }});
 		expect(radio.instance().getChecked()).toEqual(true);
+		expect(radio.instance().getChecked()).toEqual(radio.find('input').props().checked);
 		radio.find('input').simulate('change', { target : { checked: false }});
 		expect(radio.instance().getChecked()).toEqual(false);
+		expect(radio.instance().getChecked()).toEqual(radio.find('input').props().checked);
 	});
 
 	test('Radio - returns its value', () => {
@@ -30,4 +58,4 @@ describe('Radio', () => {
 		expect(radio.instance().getValue()).toEqual('myVal');
 	});
 
-})
+});

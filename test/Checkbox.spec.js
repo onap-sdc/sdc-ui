@@ -3,7 +3,32 @@ import Checkbox from '../src/react/Checkbox.js';
 import HTMLCheckboxDisabled from '../components/checkbox/checkbox-disabled.html';
 import HTMLCheckboxUnchecked from '../components/checkbox/checkbox-unchecked.html';
 
-import {mount, simulate} from 'enzyme';
+import {mount} from 'enzyme';
+
+class CheckboxForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {checked: false};
+
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(val) {
+		this.setState({checked: val});
+	}
+
+	getChecked() {
+		return this.checkbox.getChecked();
+	}
+
+	render() {
+		return (
+			<form >
+				<Checkbox ref={(checkbox)=>{this.checkbox = checkbox;}} checked={this.state.checked} onChange={this.handleChange} label='This is the checkbox label' />
+			</form>
+		);
+	}
+}
 
 describe('Checkbox', () => {
 	test('Checkbox - unchecked', () => {
@@ -17,12 +42,15 @@ describe('Checkbox', () => {
 	});
 
 	test('Checkbox - checked state changes', () => {
-		const checkbox = mount(<Checkbox label='This is the checkbox label' />);
+		const checkbox = mount(<CheckboxForm  />);
 		expect(checkbox.instance().getChecked()).toEqual(false);
+		expect(checkbox.instance().getChecked()).toEqual(checkbox.find('input').props().checked);
 		checkbox.find('input').simulate('change', { target : { checked: true }});
+		expect(checkbox.instance().getChecked()).toEqual(checkbox.find('input').props().checked);
 		expect(checkbox.instance().getChecked()).toEqual(true);
 		checkbox.find('input').simulate('change', { target : { checked: false }});
 		expect(checkbox.instance().getChecked()).toEqual(false);
+		expect(checkbox.instance().getChecked()).toEqual(checkbox.find('input').props().checked);
 	});
 
 	test('Checkbox - returns its value', () => {
@@ -30,4 +58,4 @@ describe('Checkbox', () => {
 		expect(checkbox.instance().getValue()).toEqual('myVal');
 	});
 
-})
+});

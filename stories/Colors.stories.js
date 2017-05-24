@@ -37,7 +37,7 @@ const secondaryColors = {
 function Color({colorName, palette}) {
 	return (
 		<div key={colorName} className='color-section'>
-			<div className='color-circle' style={{backgroundColor: palette[colorName]}}></div>
+			<div className='color-circle' style={{backgroundColor: palette[colorName]}} />
 			<div>{colorName.replace('$', '')}</div>
 			<div>{palette[colorName]}</div>
 		</div>
