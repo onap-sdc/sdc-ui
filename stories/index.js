@@ -28,8 +28,8 @@ storiesOf('Radios', module)
 	.add('', () => <Radios />);
 
 storiesOf('RadioGroups', module)
-	.add('', () => <RadioGroups />)
-	.add('', () => <Buttons />);	
+	.add('', () => <RadioGroups />);
+	
 
 storiesOf('Icons', module)
 	.add('', () => <Icons />);	

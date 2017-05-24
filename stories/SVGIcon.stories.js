@@ -4,52 +4,73 @@ import {select} from '@kadira/storybook-addon-knobs';
 
 
 import SVGIcon from '../src/react/SVGIcon';
-// import HTMLButtonPrimary from '../components/button/button-primary.html';
-// import HTMLButtonWhite from '../components/button/button-white.html';
-
-
-
-
-const icons = [
-    'vendor',
-    'vsp',
-    'vlm'
-];
+import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
 function selectType() {
     return select('Item type' , icons, icons[0]);
 }
 
+const iconLabelPositions = [
+    'bottom','top', 'left', 'right'
+];
 
-function buildExamples(iconName) {
+function buildExamples(iconName, iconLabel, labelPosition) {
     return {
-        Primary: {
-            jsx: <SVGIcon label='test' name={iconName} />
-        }  
+        Example: {
+            jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='svg-icon purple storybook-big' name={iconName} />,
+            html: HTMLSvgIcon
+        }
     }
 }
+
+const SelectOption = ({option}) => {
+    return (
+        <option key={option} value={option}>{option}</option>
+    );
+}
+
+const IconsList = ({icons}) => {
+    return (
+        <div className='icons-table'>            
+            {
+                icons.map(icon => <div className='icon-section'><SVGIcon label={icon} iconClassName='svg-icon purple storybook-small' name={icon}/></div>)
+            }
+        </div>
+    )
+};
 
 class Icons extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            iconName: 'vendor'
+            iconName: ICON_NAMES[0],
+            iconLabel: '',
+            labelPosition: iconLabelPositions[0]
         }
     }
     render() {
         return (  
-            <div>
-                <select onChange={e => this.setState({iconName: e.target.value})}>{icons.map(option => <SelectOption option={option}/>)}</select>
-                <Examples examples={buildExamples(this.state.iconName)} />    
+            <div>                
+                <h1>Icons</h1>                
+                <div className='icons-option-selector'>
+                    <div className='option-container'>
+                        <label>Icon name:</label>
+                        <select onChange={e => this.setState({iconName: e.target.value})}>{ICON_NAMES.map(option => <SelectOption option={option}/>)}</select>
+                    </div>
+                    <div className='option-container'>
+                        <label>Icon label</label>
+                        <input value={this.state.iconLabel} onChange={e => this.setState({iconLabel: e.target.value})} />
+                    </div>
+                    <div className='option-container'>
+                        <label>Label position</label>
+                        <select onChange={e => this.setState({labelPosition: e.target.value})}>{iconLabelPositions.map(option => <SelectOption option={option}/>)}</select>
+                    </div>
+                </div>
+                <Examples examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition)} />    
+                <IconsList icons={ICON_NAMES}/>
            </div> 
         )
     };
-}
-
-const SelectOption = ({option}) => {
-    return (
-        <option value={option}>{option}</option>
-    );
 }
 
 export default Icons;
