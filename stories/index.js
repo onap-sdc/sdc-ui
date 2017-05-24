@@ -7,6 +7,7 @@ import Buttons from './Buttons.stories.js';
 import Checkboxes from './Checkbox.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
+import Icons from './SVGIcon.stories.js';
 
 storiesOf('Welcome', module)
 	.add('', () => <Welcome />);
@@ -28,3 +29,8 @@ storiesOf('Radios', module)
 
 storiesOf('RadioGroups', module)
 	.add('', () => <RadioGroups />);
+	
+
+storiesOf('Icons', module)
+	.add('', () => <Icons />);	
+
