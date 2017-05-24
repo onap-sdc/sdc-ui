@@ -2,10 +2,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const testFolder = './assests/icons/';
+const svgFolder = './assests/icons/';
 const fs = require('fs');
 let svgIcons = []
-fs.readdirSync(testFolder).forEach(file => {
+fs.readdirSync(svgFolder).forEach(file => {
 	let fileName = file.split('.');
 	if (fileName[0] && fileName[1] === 'svg') {
 		svgIcons.push(fileName[0]);
