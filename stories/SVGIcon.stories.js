@@ -4,7 +4,7 @@ import SVGIcon from '../src/react/SVGIcon';
 import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
 const iconLabelPositions = [
-    'bottom','top', 'left', 'right'
+	'bottom','top', 'left', 'right'
 ];
 
 function buildExamples(iconName, iconLabel, labelPosition) {
