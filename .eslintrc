@@ -14,6 +14,10 @@
     "classes": true,
     "modules": true
   },
+  "globals": {
+    "ICON_PATH": true,
+    "ICON_NAMES": true
+  },
   "rules": {
     "linebreak-style": 0,
     "no-unused-vars": 2,
