@@ -1,3 +1,4 @@
+import React from 'react';
 function stringRepresentationForJsx(item) {
 	if (typeof item === 'string') {
 		return `'${item}'`;
@@ -40,10 +41,19 @@ function jsxToString(jsx) {
 		return jsx;
 	}
 
-	let name = jsx.type.name;
+	let name = typeof jsx.type === 'string' ? jsx.type : jsx.type.name;
 
 	if (jsx.props.hasOwnProperty('children')) {
-		return `<${name}${parseProps(jsx)}>\n	 ${jsxToString(jsx.props.children)}\n</${name}>`;
+		let result = `<${name} ${parseProps(jsx)}>\n`;
+		if (React.isValidElement(jsx.props.children)) {
+			result += `${jsxToString(jsx.props.children)}\n`;
+		} else if (typeof jsx.props.children === 'string') {
+			result +=  jsx.props.children;
+		}
+		else {
+			jsx.props.children.map(child => { result += `${jsxToString(child)}\n`;} );
+		}
+		return result + `</${name}>` ;
 	}
 
 	return `<${name} ${parseProps(jsx)}/>`;
