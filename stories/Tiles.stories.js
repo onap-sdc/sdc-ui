@@ -7,9 +7,9 @@ import HTMLVendorTile from '../components/tile/vendor-tile.html';
 
 let examples = {
 	Vsp: {
-		jsx:<Tile headerText='VSP' 
-			contentIconName='vsp' 
-			vendorName='vlm' 
+		jsx:<Tile headerText='VSP'
+			contentIconName='vsp'
+			vendorName='vlm'
 			tileName='demo vsp'
 			versionName='1.1'
 			footerText='Locked'
@@ -19,16 +19,16 @@ let examples = {
 		html: HTMLVspTile
 	},
 	Vlm: {
-		jsx:<Tile headerText='VLM' 
-			contentIconName='vlm' 			
+		jsx:<Tile headerText='VLM'
+			contentIconName='vlm'
 			tileName='demo vlm'
 			versionName='1.1'
 			footerText='Unlocked'
 			className='purple'
 			onClick={()=>{}}
 			footerIconName='unlocked'/>,
-		html: HTMLVlmTile      
-    },
+		html: HTMLVlmTile
+	},
 	Vendor: {
 		jsx:<Tile
 			contentIconName='vendor'
@@ -38,8 +38,8 @@ let examples = {
 			onVendorButtonClick={()=>{}}
 			onFooterIconClick={()=>{}}
 			footerIconName='plus'/>,
-		html: HTMLVendorTile                
-    }        
+		html: HTMLVendorTile
+	}
 };
 
 const Tiles = () => (

@@ -35,14 +35,14 @@ const VendorTileContent = ({vendorName, buttonText, onClick, className, iconName
             <div className='sdc-tile-content-icon'>
                 <SVGIcon iconClassName={className} name={iconName}/>
             </div>
-            <div className='sdc-tile-content-info vendor-tile'>                
+            <div className='sdc-tile-content-info vendor-tile'>
                 <div className='sdc-tile-content-info-item-name'>{vendorName}</div>
                 <Button type='outline-rounded vendor-count-button' color='gray'onClick={()=>onClick()}>
                     {buttonText}
-                </Button>    
+                </Button>
             </div>
         </div>
-    );
+	);
 };
 
 const TileFooter = ({footerText, iconName}) => {
@@ -60,7 +60,7 @@ const TileFooter = ({footerText, iconName}) => {
 
 const VendorTileFooter = ({footerText, iconName, onFooterIconClick}) => {
 	return (
-        <div className='sdc-vendor-tile-footer'>           
+        <div className='sdc-vendor-tile-footer'>
             <div className='sdc-vendor-tile-footer-icon'>
                 <SVGIcon onClick={onFooterIconClick} label={footerText} labelPosition='right' name={iconName}/>
             </div>
@@ -70,15 +70,15 @@ const VendorTileFooter = ({footerText, iconName, onFooterIconClick}) => {
 
 const Tile = (props) => {
 	let {headerText, contentIconName, vendorName, tileName, versionName, footerText, footerIconName,
-         className, vendorTile, vendorButtonText, onVendorButtonClick, onFooterIconClick, onClick} = props;  
+         className, vendorTile, vendorButtonText, onVendorButtonClick, onFooterIconClick, onClick} = props;
 	return(
             <div onClick={onClick} className='sdc-tile-catalog sdc-tile-fix-width' data-code-id='catalog-sample'>
                 <TileHeader className={className} headerText={headerText}/>
                 {!vendorTile && <TileContent className={className} vendorName={vendorName} tileName={tileName} iconName={contentIconName} versionName={versionName}/>}
-                {vendorTile && <VendorTileContent vendorName={vendorName} iconName={contentIconName} buttonText={vendorButtonText} onClick={onVendorButtonClick}/>}            
-                {!vendorTile &&<TileFooter footerText={footerText} iconName={footerIconName}/>}
+                {vendorTile && <VendorTileContent vendorName={vendorName} iconName={contentIconName} buttonText={vendorButtonText} onClick={onVendorButtonClick}/>}
+                {!vendorTile && <TileFooter footerText={footerText} iconName={footerIconName}/>}
                 {vendorTile && <VendorTileFooter onFooterIconClick={onFooterIconClick} footerText={'Create new VSP'} iconName={footerIconName}/>}
-            </div>                
+            </div>
 	);
 };
 
