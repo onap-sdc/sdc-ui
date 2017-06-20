@@ -10,8 +10,8 @@
     "test": "jest",
     "test-coverage": "jest --coverage && start ./coverage/lcov-report/index.html",
     "build": "babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -c .storybook -o .out"
+    "storybook": "start-storybook -p 6006 -s ./assests/icons",
+    "build-storybook": "build-storybook -c .storybook -o .out -s ./assests/icons"
   },
   "repository": {
     "type": "git",

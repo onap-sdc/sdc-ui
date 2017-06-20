@@ -3,7 +3,7 @@ import Radio from '../src/react/Radio.js';
 import HTMLRadioDisabled from '../components/radio/radio-disabled.html';
 import HTMLRadioUnchecked from '../components/radio/radio-unchecked.html';
 
-import {mount, simulate} from 'enzyme';
+import {mount} from 'enzyme';
 
 class RadioForm extends React.Component {
 	constructor(props) {
@@ -58,4 +58,4 @@ describe('Radio', () => {
 		expect(radio.instance().getValue()).toEqual('myVal');
 	});
 
-})
+});

@@ -9,7 +9,7 @@ Thumbs.db
 # IDEA files
 .idea
 .vscode
-
+.history
 # build files
 lib
 css

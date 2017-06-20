@@ -13,7 +13,7 @@
   }
 }
 
-.catalog-tile {    
+.catalog-tile {
     &:hover {
         box-shadow: 0.3px 5px 12.8px 1.3px rgba(24, 24, 25, 0.15);
         border: 1px solid $light-gray;
@@ -54,12 +54,12 @@
             .catalog-tile-vendor-name {
                 @extend .body-3-medium;
                 color: $gray;
-                line-height: 12px;			
+                line-height: 12px;
                 @include ellipsis(auto,inline-block,178px);
             }
-        } 
+        }
         .catalog-tile-item-name {
-            @extend .heading-5-medium;			
+            @extend .heading-5-medium;
             color: $black;
             @include ellipsis(auto,inline-block,175px);
         }
@@ -160,16 +160,16 @@
 			border: 1px solid $dark-gray;
 			padding: 0 15px 0 15px;
 			border-radius: 15px;
-			
+
 			&.clickable {
 				&:hover {
 					background-color: #eceff3;
 					color: $dark-gray ;
-				}	
-			}			
+				}
+			}
 			&.active {
 				background-color: $white;
-				color: $dark-gray ;				
+				color: $dark-gray ;
 			}
 		}
   }
@@ -183,7 +183,7 @@
 		display: block;
 		background-color: $white;
 		margin-bottom: 7px;
-		padding-bottom: 0px;
+		padding-bottom: 0;
 		.create-new-vsp-button {
 			margin-top: 1px;
 		}
