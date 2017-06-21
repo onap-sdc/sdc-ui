@@ -219,4 +219,83 @@
     }
     
   }
+  // Outline-rounded type
+  &.sdc-button-outline-rounded {
+    border-radius: 30px;
+    // Primary outline button
+    &.sdc-button__primary {
+      color: $blue;
+      background-color: rgba($blue, 0);
+      border-color: $blue;      
+      &:hover, &:focus {
+        background-color: rgba($blue, 0.1);
+
+        &:active {
+          background-color: rgba($blue, 0.3);
+        }
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    // Gray outline button
+    &.sdc-button__gray {
+      color: $dark-gray;
+      background-color: rgba($gray, 0);
+      border-color: $gray;
+
+      &:hover, &:focus {
+        background-color: rgba($gray, 0.1);
+
+        &:active {
+          background-color: rgba($gray, 0.3);
+        }
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    // Positive outline button
+    &.sdc-button__positive {
+      color: $green;
+      background-color: rgba($green, 0);
+      border-color: $green;
+
+      &:hover, &:focus {
+        background-color: rgba($green, 0.1);
+
+        &:active {
+          background-color: rgba($green, 0.3);
+        }
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    // Negative outline button
+    &.sdc-button__negative {
+      color: $red;
+      background-color: rgba($red, 0);
+      border-color: $red;
+
+      &:hover, &:focus {
+        background-color: rgba($red, 0.1);
+
+        &:active {
+          background-color: rgba($red, 0.3);
+        }
+      }
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+    
+  }
 }

@@ -1,0 +1,31 @@
+.sdc-tabs {
+  .sdc-tab {
+	display: inline-block;
+	cursor: pointer;
+	@extend .text-capitalize;
+	color: $dark-gray;
+	padding: 0px 10px 7px 10px;
+	margin-right: 20px;
+	&:last-child {
+	  margin-right: 0;
+	}
+	&.sdc-tab-active {
+	  color: $blue;
+	  border-bottom: 2px solid $blue;
+	}
+  }
+  &.sdc-tabs-header {
+	.sdc-tab {
+	  @extend .heading-2;
+	}
+  }
+  &.sdc-tabs-menu {
+	.sdc-tab {
+	  @extend .body-1;
+	  padding: 0px 10px 4px 10px;
+	}
+  }
+  .sdc-tab-content {
+	margin-top: 30px;
+  }
+}

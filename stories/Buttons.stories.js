@@ -15,6 +15,12 @@ import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html
 import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
 import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
 
+import HTMLButtonOutlineRoundedPrimary from '../components/button/button-outline-rounded-primary.html';
+import HTMLButtonOutlineRoundedGray from '../components/button/button-outline-rounded-gray.html';
+import HTMLButtonOutlineRoundedPositive from '../components/button/button-outline-rounded-positive.html';
+import HTMLButtonOutlineRoundedNegative from '../components/button/button-outline-rounded-negative.html';
+
+
 import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-default-primary-disabled.html';
 import HTMLButtonDefaultWhiteDisabled from '../components/button/button-default-white-disabled.html';
 import HTMLButtonDefaultGrayDisabled from '../components/button/button-default-gray-disabled.html';
@@ -26,6 +32,12 @@ import HTMLButtonOutlinePrimaryDisabled from '../components/button/button-outlin
 import HTMLButtonOutlineGrayDisabled from '../components/button/button-outline-gray-disabled.html';
 import HTMLButtonOutlinePositiveDisabled from '../components/button/button-outline-positive-disabled.html';
 import HTMLButtonOutlineNegativeDisabled from '../components/button/button-outline-negative-disabled.html';
+
+import HTMLButtonOutlineRoundedPrimaryDisabled from '../components/button/button-outline-rounded-primary-disabled.html';
+import HTMLButtonOutlineRoundedGrayDisabled from '../components/button/button-outline-rounded-gray-disabled.html';
+import HTMLButtonOutlineRoundedPositiveDisabled from '../components/button/button-outline-rounded-positive-disabled.html';
+import HTMLButtonOutlineRoundedNegativeDisabled from '../components/button/button-outline-rounded-negative-disabled.html';
+
 
 let examples = {
 	// Default buttons
@@ -119,6 +131,43 @@ let examples = {
 	'Negative Outline Disabled': {
 		jsx: <ReactButton type='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineNegativeDisabled,
+		displayTitle: false
+	},
+	// Outline rounded buttons
+	'Primary Outline Rounded': {
+		jsx: <ReactButton type='outline-rounded' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedPrimary
+	},
+	'Primary Outline Rounded Disabled': {
+		jsx: <ReactButton type='outline-rounded' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedPrimaryDisabled,
+		displayTitle: false
+	},
+	'Gray Outline Rounded': {
+		jsx: <ReactButton type='outline-rounded' color='gray' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedGray
+	},
+	'Gray Outline Rounded Disabled': {
+		jsx: <ReactButton type='outline-rounded' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedGrayDisabled,
+		displayTitle: false
+	},
+	'Positive Rounded Outline': {
+		jsx: <ReactButton type='outline-rounded' color='positive' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedPositive
+	},
+	'Positive Rounded Outline Disabled': {
+		jsx: <ReactButton type='outline-rounded' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedPositiveDisabled,
+		displayTitle: false
+	},
+	'Negative Rounded Outline': {
+		jsx: <ReactButton type='outline-rounded' color='negative' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedNegative
+	},
+	'Negative Rounded Outline Disabled': {
+		jsx: <ReactButton type='outline-rounded' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedNegativeDisabled,
 		displayTitle: false
 	}
 };

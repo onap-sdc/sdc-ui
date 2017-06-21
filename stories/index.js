@@ -8,6 +8,8 @@ import Checkboxes from './Checkbox.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
 import Icons from './SVGIcon.stories.js';
+import Tiles from './Tiles.stories.js';
+import Tabs from './Tabs.stories.js';
 
 storiesOf('Welcome', module)
 	.add('', () => <Welcome />);
@@ -29,8 +31,12 @@ storiesOf('Radios', module)
 
 storiesOf('RadioGroups', module)
 	.add('', () => <RadioGroups />);
-	
 
 storiesOf('Icons', module)
-	.add('', () => <Icons />);	
+	.add('', () => <Icons />);
 
+storiesOf('Tiles', module)
+	.add('', () => <Tiles />);
+
+storiesOf('Tabs', module)
+	.add('', () => <Tabs />);
