@@ -15,6 +15,9 @@ code {
   border-radius: 4px;
   background-color: #f3f2f2;
   color: #3a3a3a;
+  .token {
+	line-height: 20px;
+  }
 }
 
 a {
@@ -46,6 +49,38 @@ a {
 	  padding: 10px;
 	  text-align: center;
 	}
+  }
+}
+.icons-option-selector {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+  .option-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    input {
+      height: 1px;
+    }
+  }
+}
+.icons-table {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid $light-gray;
+  justify-content: space-between;
+  .icon-section {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    min-width: 150px;
+    .svg-icon-label {
+      font-size: 12px;
+    }
   }
 }
 
@@ -96,6 +131,6 @@ a {
         }
       }
     }
-  } 
+  }
 }
 

@@ -2,12 +2,12 @@ import React from 'react';
 import SourceToggle from './SourceToggle.js';
 
 const Examples = ({examples}) => (
-  <div className='examples'>
+  <div className={'examples'}>
     {Object.keys(examples).map(key => {
-      let title = key;
-      let {jsx, html, angular2} = examples[key];
-      return <SourceToggle title={title} jsx={jsx} html={html} angular2={angular2} />
-    })}
+	let title = key;
+	let {jsx, html, displayTitle = true} = examples[key];
+	return <SourceToggle title={displayTitle && title} jsx={jsx} html={html}  key={key} />;
+})}
   </div>
 );
 

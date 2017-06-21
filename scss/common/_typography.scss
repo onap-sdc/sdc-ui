@@ -1,19 +1,24 @@
 /* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700');
 
 @mixin base-font-regular() {
-  font-family: omnes-regular, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+
 }
 
 @mixin base-font-light() {
-  font-family: omnes-light, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 300;
 }
 
 @mixin base-font-medium() {
-  font-family: omnes-medium, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 600;
 }
 
 @mixin base-font-bold() {
-  font-family: omnes-bold, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: bold;
 }
 
 $heading-font-1: 36px;
