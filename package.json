@@ -29,7 +29,7 @@
   ],
   "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
   "devDependencies": {
-    "@islavi/ng2-component-lab": "^1.0.1",
+    "@islavi/ng2-component-lab": "^1.0.3",
     "@kadira/storybook": "^2.21.0",
     "@types/node": "^7.0.27",
     "angular2-router-loader": "^0.3.4",
@@ -53,9 +53,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "typescript": "^2.3.4",
-    "url-parse": "^1.1.9",
-    "webpack": "2.1.0-beta.27",
-    "webpack-dev-server": "2.1.0-beta.11"
+    "url-parse": "^1.1.9"
   },
   "dependencies": {
     "react": "^15.5.4",

@@ -1,4 +1,4 @@
-var getWebPackConfig = require('./../ng2-component-lab.webpack.config');
+var getWebPackConfig = require('../ng2-component-lab.webpack.config.js');
 
 module.exports = {
   webpackConfig: getWebPackConfig,
