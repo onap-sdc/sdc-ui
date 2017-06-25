@@ -14,15 +14,15 @@ fs.readdirSync(svgFolder).forEach(file => {
 
 module.exports = {
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /.scss$/,
-				loaders: ['style', 'css', 'sass'],
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 				include: path.resolve(__dirname, '../')
 			},
 			{
 				test: /.html$/,
-				loader: 'html',
+				loader: 'html-loader',
 				query: {
 					minimize: false
 				}
