@@ -2,7 +2,7 @@
 @import '~prismjs/themes/prism.css';
 
 body {
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  @include base-font-regular();
   margin: 15px;
   max-width: 800px;
 }
@@ -84,16 +84,25 @@ a {
   }
 }
 
-.typo-table {
-  .typo-section {
-	div {
-	  display: inline-block;
-	  //border: 1px solid black;
-	  width: 30%;
-	  margin: 4px 0;
-	}
+.typography-screen {
+  .typography-section {
+    margin: 30px 0;
+  }
+  ul {
+    font-size: 18px;
+  }
+  .typo-table {
+    .typo-section {
+      div {
+        display: inline-block;
+        //border: 1px solid black;
+        width: 30%;
+        margin: 4px 0;
+      }
+    }
   }
 }
+
 
 .source-toggle-wrapper {
   .source-toggle-title {
