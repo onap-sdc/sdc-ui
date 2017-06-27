@@ -98,75 +98,75 @@ let examples = {
 
 	// Outline buttons
 	'Primary Outline': {
-		jsx: <ReactButton type='outline' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePrimary
 	},
 	'Primary Outline Disabled': {
-		jsx: <ReactButton type='outline' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePrimaryDisabled,
 		displayTitle: false
 	},
 	'Gray Outline': {
-		jsx: <ReactButton type='outline' color='gray' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='gray' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineGray
 	},
 	'Gray Outline Disabled': {
-		jsx: <ReactButton type='outline' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineGrayDisabled,
 		displayTitle: false
 	},
 	'Positive Outline': {
-		jsx: <ReactButton type='outline' color='positive' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='positive' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePositive
 	},
 	'Positive Outline Disabled': {
-		jsx: <ReactButton type='outline' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePositiveDisabled,
 		displayTitle: false
 	},
 	'Negative Outline': {
-		jsx: <ReactButton type='outline' color='negative' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='negative' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineNegative
 	},
 	'Negative Outline Disabled': {
-		jsx: <ReactButton type='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineNegativeDisabled,
 		displayTitle: false
 	},
 	// Outline rounded buttons
 	'Primary Outline Rounded': {
-		jsx: <ReactButton type='outline-rounded' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPrimary
 	},
 	'Primary Outline Rounded Disabled': {
-		jsx: <ReactButton type='outline-rounded' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPrimaryDisabled,
 		displayTitle: false
 	},
 	'Gray Outline Rounded': {
-		jsx: <ReactButton type='outline-rounded' color='gray' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='gray' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedGray
 	},
 	'Gray Outline Rounded Disabled': {
-		jsx: <ReactButton type='outline-rounded' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedGrayDisabled,
 		displayTitle: false
 	},
 	'Positive Rounded Outline': {
-		jsx: <ReactButton type='outline-rounded' color='positive' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='positive' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPositive
 	},
 	'Positive Rounded Outline Disabled': {
-		jsx: <ReactButton type='outline-rounded' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPositiveDisabled,
 		displayTitle: false
 	},
 	'Negative Rounded Outline': {
-		jsx: <ReactButton type='outline-rounded' color='negative' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='negative' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedNegative
 	},
 	'Negative Rounded Outline Disabled': {
-		jsx: <ReactButton type='outline-rounded' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedNegativeDisabled,
 		displayTitle: false
 	}
