@@ -1,4 +1,3 @@
-var webpack = require('webpack');
 var path = require('path');
 
 // const svgFolder = './assests/icons/';
@@ -16,28 +15,28 @@ var webpackConfig = {
   devtool: 'source-map',
 
   plugins: [
-		// new webpack.DefinePlugin({
-		// 	'ICON_PATH': '"./"',
-		// 	'ICON_NAMES':JSON.stringify(svgIcons)
-		// })
-	],
+    // new webpack.DefinePlugin({
+    // 	'ICON_PATH': '"./"',
+    // 	'ICON_NAMES':JSON.stringify(svgIcons)
+    // })
+  ],
 
   module: {
-    loaders: [
+    rules: [
       // .ts files for TypeScript
       {
         test: /.ts$/,
-        loaders: [
+        use: [
           'awesome-typescript-loader',
           'angular2-template-loader',
           'angular2-router-loader'
         ]
       },
       {
-				test: /.scss$/,
-				loaders: ['style-loader', 'css-loader', 'sass-loader'],
-				include: path.resolve(__dirname, '../')
-			},
+        test: /.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        include: path.resolve(__dirname, '../')
+      },
     ]
   },
 

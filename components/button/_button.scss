@@ -10,7 +10,6 @@
 
   @include base-font-medium;
   font-size: $body-font-1;
-  color: $white;
 
   &:disabled {
     opacity: 0.3;
@@ -20,6 +19,8 @@
 
   // Default type
   &.sdc-button-default {
+
+    color: $white;
 
     // Primary default button
     &.sdc-button__primary {
@@ -217,7 +218,7 @@
         background-color: transparent;
       }
     }
-    
+
   }
   // Outline-rounded type
   &.sdc-button-outline-rounded {
@@ -226,7 +227,7 @@
     &.sdc-button__primary {
       color: $blue;
       background-color: rgba($blue, 0);
-      border-color: $blue;      
+      border-color: $blue;
       &:hover, &:focus {
         background-color: rgba($blue, 0.1);
 
@@ -296,6 +297,6 @@
         background-color: transparent;
       }
     }
-    
+
   }
 }
