@@ -1,23 +1,41 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700');
 
-@mixin base-font-regular() {
-  font-family: 'Open Sans', Arial, sans-serif;
+/* Currently loaded */
+// OpenSans-Regular
+// OpenSans-Light
+// OpenSans-Italic
+// OpenSans-Semibold
+// OpenSans-Bold
 
+/* Currently not loaded but part of the font */
+// OpenSans-SemiboldItalic
+// OpenSans-BoldItlaic
+// OpenSans-ExtraBold
+// OpenSans-ExtraBoldItalic
+// OpenSans-LightItalic
+
+@mixin base-font-regular() {
+  font-family: OpenSans, OpenSans-Regular, 'Open Sans', Arial, sans-serif;
 }
 
 @mixin base-font-light() {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: OpenSans-Light, 'Open Sans', Arial, sans-serif;
   font-weight: 300;
 }
 
+@mixin base-font-italic(){
+  font-family: OpenSans-Italic, 'Open Sans', Arial, sans-serif;
+  font-style: italic;
+}
+
 @mixin base-font-medium() {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: OpenSans-Semibold, 'Open Sans', Arial, sans-serif;
   font-weight: 600;
 }
 
 @mixin base-font-bold() {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: OpenSans-Bold, 'Open Sans', Arial, sans-serif;
   font-weight: bold;
 }
 
@@ -138,4 +156,20 @@ $radio-font-family: Arial;
 .circle-icon-text {
   @include base-font-medium;
   font-size: $body-font-1;
+}
+
+.OpenSans{
+  @include base-font-regular();
+}
+.OpenSans-Light{
+  @include base-font-light();
+}
+.OpenSans-Italic{
+  @include base-font-italic();
+}
+.OpenSans-Semibold{
+  @include base-font-medium();
+}
+.OpenSans-Bold{
+  @include base-font-bold();
 }

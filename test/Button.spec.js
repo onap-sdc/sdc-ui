@@ -54,22 +54,22 @@ describe('Button', () => {
 	});
 
 	test('Button - Outline - Primary', () => {
-		const button = mount(<Button type='outline'>Click Me</Button>);
+		const button = mount(<Button btnType='outline'>Click Me</Button>);
 		expect(button.html()).toEqual(HTMLButtonOutlinePrimary);
 	});
 
 	test('Button - Outline - Gray', () => {
-		const button = mount(<Button type='outline' color='gray'>Click Me</Button>);
+		const button = mount(<Button btnType='outline' color='gray'>Click Me</Button>);
 		expect(button.html()).toEqual(HTMLButtonOutlineGray);
 	});
 
 	test('Button - Outline - Positive', () => {
-		const button = mount(<Button type='outline' color='positive'>Click Me</Button>);
+		const button = mount(<Button btnType='outline' color='positive'>Click Me</Button>);
 		expect(button.html()).toEqual(HTMLButtonOutlinePositive);
 	});
 
 	test('Button - Outline - Negative', () => {
-		const button = mount(<Button type='outline' color='negative'>Click Me</Button>);
+		const button = mount(<Button btnType='outline' color='negative'>Click Me</Button>);
 		expect(button.html()).toEqual(HTMLButtonOutlineNegative);
 	});
 });
