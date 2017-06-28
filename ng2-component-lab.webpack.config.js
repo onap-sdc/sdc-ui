@@ -1,6 +1,6 @@
 var path = require('path');
 
-// const svgFolder = './assests/icons/';
+// const svgFolder = './assets/icons/';
 // const fs = require('fs');
 // let svgIcons = []
 // fs.readdirSync(svgFolder).forEach(file => {
