@@ -18,3 +18,5 @@ demo/gen
 
 #coverage files
 coverage
+
+src/react/utils
