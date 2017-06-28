@@ -9,9 +9,9 @@
   "scripts": {
     "test": "jest",
     "test-coverage": "jest --coverage && start ./coverage/lcov-report/index.html",
-    "build": "babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
-    "storybook": "start-storybook -p 6006 -s ./assests/icons",
-    "build-storybook": "build-storybook -c .storybook -o .out -s ./assests/icons",
+    "build": "node create-icon-map.js && babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
+    "storybook": "node create-icon-map.js && start-storybook -p 6006",
+    "build-storybook": "node create-icon-map.js && build-storybook -c .storybook -o .out",
     "lab": "ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature"
   },
   "repository": {
@@ -25,7 +25,9 @@
   },
   "files": [
     "lib",
-    "css"
+    "css",
+    "assets",
+    "README.md"
   ],
   "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
   "devDependencies": {
@@ -67,6 +69,7 @@
     "react-dom": "^15.5.4",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.12",
+    "svg-react-loader": "^0.4.4",
     "zone.js": "~0.6.26"
   },
   "jest": {

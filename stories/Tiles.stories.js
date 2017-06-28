@@ -15,7 +15,7 @@ let examples = {
 			footerText='Locked'
 			className='blue'
 			onClick={()=>{}}
-			footerIconName='locked'/>,
+			footerIconName='plus'/>,
 		html: HTMLVspTile
 	},
 	Vlm: {
@@ -26,7 +26,7 @@ let examples = {
 			footerText='Unlocked'
 			className='purple'
 			onClick={()=>{}}
-			footerIconName='unlocked'/>,
+			footerIconName='close'/>,
 		html: HTMLVlmTile
 	},
 	Vendor: {
