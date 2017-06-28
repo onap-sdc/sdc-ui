@@ -1,15 +1,15 @@
 import React, {PropTypes} from 'react';
+import iconMap from './utils/iconMap.js';
 
 const SVGIcon = ({name, onClick, label, className, iconClassName, labelClassName, labelPosition, other}) => {
 
 	let classes = `svg-icon-wrapper ${className} ${onClick ? 'clickable' : ''} ${labelPosition}`;
+	let camelCasedName = name.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+	let IconComponent = iconMap[camelCasedName];
 
 	return (
 		<div {...other} onClick={onClick} className={classes}>
-			<svg className={`svg-icon ${name} ${iconClassName}`}  >
-				<use href={ICON_PATH + name + '.svg#' + name + '_icon' }
-					xlinkHref={ICON_PATH + name + '.svg#' + name + '_icon' } />
-			</svg>
+			<IconComponent className={`svg-icon ${name} ${iconClassName}`} />
 			{label && <span className={`svg-icon-label ${labelClassName}`}>{label}</span>}
 		</div>
 	);
