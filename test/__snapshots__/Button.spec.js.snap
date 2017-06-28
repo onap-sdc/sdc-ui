@@ -90,14 +90,7 @@ exports[`Button Button - Link - Primary - With Icon 1`] = `
     className="svg-icon-wrapper   bottom"
     onClick={undefined}
   >
-    <svg
-      className="svg-icon plus "
-    >
-      <use
-        href="./plus.svg#plus_icon"
-        xlinkHref="./plus.svg#plus_icon"
-      />
-    </svg>
+    <svg />
     
   </div>
   Click Me

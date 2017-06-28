@@ -1,20 +1,6 @@
 import React from 'react';
 import Button from '../src/react/Button.js';
 
-import HTMLButtonDefaultPrimary from '../components/button/button-default-primary.html';
-import HTMLButtonDefaultWhite from '../components/button/button-default-white.html';
-import HTMLButtonDefaultGray from '../components/button/button-default-gray.html';
-import HTMLButtonDefaultPositive from '../components/button/button-default-positive.html';
-import HTMLButtonDefaultNegative from '../components/button/button-default-negative.html';
-import HTMLButtonDefaultWarning from '../components/button/button-default-warning.html';
-
-import HTMLButtonOutlinePrimary from '../components/button/button-outline-primary.html';
-import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html';
-import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
-import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
-
-import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-default-primary-disabled.html';
-
 import renderer from 'react-test-renderer';
 
 describe('Button', () => {
