@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test-dev": "jest --watch",
     "test-coverage": "jest --coverage && start ./coverage/lcov-report/index.html",
     "build": "node create-icon-map.js && babel src/react -d lib/react && babel src/index.js -o lib/index.js && node-sass --include-path scss scss/style.scss css/style.css && node build-demo.js",
     "storybook": "node create-icon-map.js && start-storybook -p 6006",
@@ -71,28 +72,5 @@
     "rxjs": "5.0.0-beta.12",
     "svg-react-loader": "^0.4.4",
     "zone.js": "~0.6.26"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "html"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.html$": "<rootDir>/test/utils/htmlLoader.js"
-    },
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/src/react/index.js",
-      "<rootDir>/src/index.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "coverageReporters": [
-      "lcov"
-    ]
   }
 }

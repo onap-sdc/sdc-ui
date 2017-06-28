@@ -15,61 +15,76 @@ import HTMLButtonOutlineNegative from '../components/button/button-outline-negat
 
 import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-default-primary-disabled.html';
 
-import {mount} from 'enzyme';
+import renderer from 'react-test-renderer';
 
 describe('Button', () => {
 	test('Button - Default - Primary', () => {
-		const button = mount(<Button>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultPrimary);
+		const button = renderer.create(<Button>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Default - Primary - Disabled', () => {
-		const button = mount(<Button disabled>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultPrimaryDisabled);
+		const button = renderer.create(<Button disabled>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Default - White', () => {
-		const button = mount(<Button color='white'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultWhite);
+		const button = renderer.create(<Button color='white'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Default - Gray', () => {
-		const button = mount(<Button color='gray'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultGray);
+		const button = renderer.create(<Button color='gray'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Default - Positive', () => {
-		const button = mount(<Button color='positive'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultPositive);
+		const button = renderer.create(<Button color='positive'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Default - Negative', () => {
-		const button = mount(<Button color='negative'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultNegative);
+		const button = renderer.create(<Button color='negative'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Default - Warning', () => {
-		const button = mount(<Button color='warning'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonDefaultWarning);
+		const button = renderer.create(<Button color='warning'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Outline - Primary', () => {
-		const button = mount(<Button btnType='outline'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonOutlinePrimary);
+		const button = renderer.create(<Button btnType='outline'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Outline - Gray', () => {
-		const button = mount(<Button btnType='outline' color='gray'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonOutlineGray);
+		const button = renderer.create(<Button btnType='outline' color='gray'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Outline - Positive', () => {
-		const button = mount(<Button btnType='outline' color='positive'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonOutlinePositive);
+		const button = renderer.create(<Button btnType='outline' color='positive'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 
 	test('Button - Outline - Negative', () => {
-		const button = mount(<Button btnType='outline' color='negative'>Click Me</Button>);
-		expect(button.html()).toEqual(HTMLButtonOutlineNegative);
+		const button = renderer.create(<Button btnType='outline' color='negative'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
+	});
+
+	test('Button - Link - Primary', () => {
+		const button = renderer.create(<Button btnType='link' color='primary'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
+	});
+
+	test('Button - Link - Primary - Disabled', () => {
+		const button = renderer.create(<Button btnType='link' color='primary' disabled>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
+	});
+
+	test('Button - Link - Primary - With Icon', () => {
+		const button = renderer.create(<Button btnType='link' color='primary' iconName='plus'>Click Me</Button>).toJSON();
+		expect(button).toMatchSnapshot();
 	});
 });
