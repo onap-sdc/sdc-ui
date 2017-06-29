@@ -17,6 +17,7 @@
 
 @mixin base-font-regular() {
   font-family: OpenSans, OpenSans-Regular, 'Open Sans', Arial, sans-serif;
+  font-weight: 400;
 }
 
 @mixin base-font-light() {
@@ -29,7 +30,7 @@
   font-style: italic;
 }
 
-@mixin base-font-medium() {
+@mixin base-font-semibold() {
   font-family: OpenSans-Semibold, 'Open Sans', Arial, sans-serif;
   font-weight: 600;
 }
@@ -39,7 +40,7 @@
   font-weight: bold;
 }
 
-$heading-font-1: 36px;
+$heading-font-1: 28px;
 $heading-font-2: 24px;
 $heading-font-3: 20px;
 $heading-font-4: 18px;
@@ -48,6 +49,7 @@ $heading-font-5: 16px;
 $body-font-1: 14px;
 $body-font-2: 13px;
 $body-font-3: 12px;
+$body-font-4: 10px;
 
 $icon-font-size: 11px;
 $icon-font-family: Arial;
@@ -87,8 +89,8 @@ $radio-font-family: Arial;
   @extend .text-uppercase !optional;
 }
 
-.heading-3-medium {
-  @include base-font-medium;
+.heading-3-semibold {
+  @include base-font-semibold;
   font-size: $heading-font-3;
   @extend .text-uppercase !optional;
 }
@@ -98,8 +100,8 @@ $radio-font-family: Arial;
   font-size: $heading-font-4;
 }
 
-.heading-4-medium {
-  @include base-font-medium;
+.heading-4-semibold {
+  @include base-font-semibold;
   font-size: $heading-font-4;
 }
 
@@ -108,8 +110,8 @@ $radio-font-family: Arial;
   font-size: $heading-font-5;
 }
 
-.heading-5-medium {
-  @include base-font-medium;
+.heading-5-semibold {
+  @include base-font-semibold;
   font-size: $heading-font-5;
 }
 
@@ -118,8 +120,8 @@ $radio-font-family: Arial;
   font-size: $body-font-1;
 }
 
-.body-1-medium {
-  @include base-font-medium;
+.body-1-semibold {
+  @include base-font-semibold;
   font-size: $body-font-1;
 }
 
@@ -133,8 +135,8 @@ $radio-font-family: Arial;
   font-size: $body-font-2;
 }
 
-.body-2-medium {
-  @include base-font-medium;
+.body-2-semibold {
+  @include base-font-semibold;
   font-size: $body-font-2;
 }
 
@@ -143,8 +145,8 @@ $radio-font-family: Arial;
   font-size: $body-font-3;
 }
 
-.body-3-medium {
-  @include base-font-medium;
+.body-3-semibold {
+  @include base-font-semibold;
   font-size: $body-font-3;
 }
 
@@ -153,8 +155,18 @@ $radio-font-family: Arial;
   font-size: $body-font-3;
 }
 
+.body-4 {
+  @include base-font-regular;
+  font-size: $body-font-4;
+}
+
+.body-4-semibold {
+  @include base-font-semibold;
+  font-size: $body-font-4;
+}
+
 .circle-icon-text {
-  @include base-font-medium;
+  @include base-font-semibold;
   font-size: $body-font-1;
 }
 
@@ -168,7 +180,7 @@ $radio-font-family: Arial;
   @include base-font-italic();
 }
 .OpenSans-Semibold{
-  @include base-font-medium();
+  @include base-font-semibold();
 }
 .OpenSans-Bold{
   @include base-font-bold();

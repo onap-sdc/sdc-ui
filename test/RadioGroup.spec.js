@@ -1,6 +1,7 @@
 import React from 'react';
 import RadioGroup from '../src/react/RadioGroup.js';
 
+import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
 
 class RadioGroupForm extends React.Component {
@@ -29,6 +30,13 @@ class RadioGroupForm extends React.Component {
 }
 
 describe('RadioGroup', () => {
+	test('RadioGroup - basic rendering', () => {
+		const radio = renderer.create(<RadioGroup name='grp1' defaultValue='2' value='1' title='Group A'
+			onChange={()=>{}} data-test-id='grp1'
+			options={[{value: '1', label: 'option 1'}, {value: '2', label: 'option 2'}]} />).toJSON();
+		expect(radio).toMatchSnapshot();
+	});
+
 	test('RadioGroup - value overrides default value', () => {
 		const radio = mount(<RadioGroup name='grp1' defaultValue='2' value='1' title='Group A'
 			onChange={()=>{}} data-test-id='grp1'

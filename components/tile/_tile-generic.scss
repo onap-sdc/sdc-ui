@@ -87,7 +87,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
 
     .sdc-tile-content-info {
       padding-bottom: 4px;
-      width: $sdc-tile-catalog-width-less-padding;	
+      width: $sdc-tile-catalog-width-less-padding;
       @include ellipsis(auto,inline-block,178px);
 
       &.vendor-tile {
@@ -98,13 +98,13 @@ $sdc-tile-catalog-content-icon-height: 60px;
       }
 
       .sdc-tile-content-info-vendor-name {
-        @extend .body-3-medium;
+        @extend .body-3-semibold;
         color: $gray;
-        line-height: 12px;			
+        line-height: 12px;
       }
 
       .sdc-tile-content-info-item-name {
-        @extend .heading-5-medium;			
+        @extend .heading-5-semibold;
         color: $black;
       }
 
@@ -130,7 +130,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
     display: flex;
     flex-direction: row;
     border-top: 1px solid $background-gray;
-    padding: 5px 0 0px 0;    
+    padding: 5px 0 0px 0;
     width: $sdc-tile-catalog-width-less-padding;
 
     .sdc-tile-footer-text {
@@ -149,14 +149,14 @@ $sdc-tile-catalog-content-icon-height: 60px;
           fill: $gray;
         }
     }
-        
+
   }
 
   .sdc-vendor-tile-footer {
     display: flex;
     flex-direction: row;
     border-top: 1px solid $background-gray;
-    padding: 5px 0 0px 0;    
+    padding: 5px 0 0px 0;
     width: $sdc-tile-catalog-width-less-padding;
     justify-content: center;
 
@@ -172,6 +172,6 @@ $sdc-tile-catalog-content-icon-height: 60px;
           fill: $blue;
         }
     }
-  }  
-  
+  }
+
 }

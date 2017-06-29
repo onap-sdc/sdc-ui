@@ -2,6 +2,7 @@ import React from 'react';
 import Tab from '../src/react/Tab.js';
 import Tabs from '../src/react/Tabs.js';
 
+import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
 
 class TabsForm extends React.Component {
@@ -33,6 +34,12 @@ class TabsForm extends React.Component {
 }
 
 describe('Tabs', () => {
+
+	test('Tabs - basic rendering', () => {
+		const tabs = renderer.create(<TabsForm disabled={false} />).toJSON();
+		expect(tabs).toMatchSnapshot();
+	});
+
 	test('Tabs - when active tab id is changed, the respective tab is shown', () => {
 		const tabs = mount(<TabsForm disabled={false} />);
 		expect(tabs.instance().tabsInst.props.activeTab).toEqual('1');
