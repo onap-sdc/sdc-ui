@@ -6,8 +6,6 @@
 npm-debug.log*
 Thumbs.db
 
-src/react/utils/iconMap.js
-
 # IDEA files
 .idea
 .vscode

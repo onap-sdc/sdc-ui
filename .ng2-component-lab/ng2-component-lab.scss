@@ -1,1 +1,26 @@
 @import '../scss/style.scss';
+
+.colors-table {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 13px;
+  .color-section {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    min-width: 150px;
+    div {
+      align-self: center;
+    }
+    $circle-size: 40px;
+    .color-circle {
+      height: $circle-size;
+      width: $circle-size;
+      border-radius: $circle-size;
+      padding: 10px;
+      text-align: center;
+    }
+  }
+}
