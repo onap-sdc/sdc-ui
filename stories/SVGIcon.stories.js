@@ -1,6 +1,6 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
-import SVGIcon from '../src/react/SVGIcon';
+import SVGIcon from '../src/react/SVGIcon.js';
 import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
 const iconLabelPositions = [

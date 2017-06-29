@@ -1,7 +1,7 @@
 const copy = require('copy');
 const fs = require('fs');
 const path = require('path')
-const svgFolder = './assests/icons';
+const svgFolder = './assets/icons';
 const svgOutputFile = './scss/common/_icons.scss';
 
 var copyFiles = function() {
@@ -10,8 +10,8 @@ var copyFiles = function() {
         console.log('Copied to: ' + file[0].dest);
     });
 
-    // Copy assests folder to demo/gen folder
-    copy('assests/**/*.*', 'demo/gen/assests', function(err, file) {
+    // Copy assets folder to demo/gen folder
+    copy('assets/**/*.*', 'demo/gen/assets', function(err, file) {
         //console.log('Copied to: ' + file[0].dest);
     });
 };

@@ -1,16 +1,17 @@
 
 const path = require('path');
 const webpack = require('webpack');
-
-const svgFolder = './assests/icons/';
+const svgFolder = './assets/icons/';
 const fs = require('fs');
-let svgIcons = []
+
+let iconNames = [];
+
 fs.readdirSync(svgFolder).forEach(file => {
 	let fileName = file.split('.');
 	if (fileName[0] && fileName[1] === 'svg') {
-		svgIcons.push(fileName[0]);
-	}    
-})
+		iconNames.push(fileName[0]);
+	}
+});
 
 module.exports = {
 	module: {
@@ -23,16 +24,16 @@ module.exports = {
 			{
 				test: /.html$/,
 				loader: 'html-loader',
-				query: {
+				options: {
 					minimize: false
 				}
 			}
 		]
 	},
-	plugins: [
+		plugins: [
 		new webpack.DefinePlugin({
 			'ICON_PATH': '"./"',
-			'ICON_NAMES':JSON.stringify(svgIcons)
+			'ICON_NAMES':JSON.stringify(iconNames)
 		})
 	]
 };
