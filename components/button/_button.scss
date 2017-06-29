@@ -8,7 +8,7 @@
   cursor: pointer;
   text-align: center;
 
-  @include base-font-medium;
+  @include base-font-semibold();
   font-size: $body-font-1;
 
   &:disabled {
