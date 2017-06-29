@@ -1,8 +1,7 @@
 import React from 'react';
 import Checkbox from '../src/react/Checkbox.js';
-import HTMLCheckboxDisabled from '../components/checkbox/checkbox-disabled.html';
-import HTMLCheckboxUnchecked from '../components/checkbox/checkbox-unchecked.html';
 
+import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
 
 class CheckboxForm extends React.Component {
@@ -32,13 +31,13 @@ class CheckboxForm extends React.Component {
 
 describe('Checkbox', () => {
 	test('Checkbox - unchecked', () => {
-		const checkbox = mount(<Checkbox label='This is the checkbox label'/>);
-		expect(checkbox.html().replace(/\s/g,'')).toEqual(HTMLCheckboxUnchecked.replace(/\s/g,''));
+		const checkbox = renderer.create(<Checkbox label='This is the checkbox label'/>).toJSON();
+		expect(checkbox).toMatchSnapshot();
 	});
 
 	test('Checkbox - disabled', () => {
-		const checkbox = mount(<Checkbox disabled={true} label='This is the checkbox label' />);
-		expect(checkbox.html().replace(/\s/g,'')).toEqual(HTMLCheckboxDisabled.replace(/\s/g,''));
+		const checkbox = renderer.create(<Checkbox disabled={true} label='This is the checkbox label' />).toJSON();
+		expect(checkbox).toMatchSnapshot();
 	});
 
 	test('Checkbox - checked state changes', () => {
