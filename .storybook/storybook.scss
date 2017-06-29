@@ -129,7 +129,7 @@ a {
         display: flex;
         margin-bottom: 10px;
         .source-toggle-tab {
-          @extend .body-1-medium;
+          @extend .body-1-semibold;
           margin-right: 20px;
           cursor: pointer;
           &.selected {
