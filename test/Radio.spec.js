@@ -1,8 +1,7 @@
 import React from 'react';
 import Radio from '../src/react/Radio.js';
-import HTMLRadioDisabled from '../components/radio/radio-disabled.html';
-import HTMLRadioUnchecked from '../components/radio/radio-unchecked.html';
 
+import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
 
 class RadioForm extends React.Component {
@@ -32,13 +31,13 @@ class RadioForm extends React.Component {
 
 describe('Radio', () => {
 	test('Radio - unchecked', () => {
-		const radio = mount(<Radio name='grp4' label='This is the radio label' value='1' />);
-		expect(radio.html().replace(/\s/g,'')).toEqual(HTMLRadioUnchecked.replace(/\s/g,''));
+		const radio = renderer.create(<Radio name='grp4' label='This is the radio label' value='1' />).toJSON();
+		expect(radio).toMatchSnapshot();
 	});
 
 	test('Radio - disabled', () => {
-		const radio = mount(<Radio name='grp2' disabled={true} label='This is the radio label' value='1' />);
-		expect(radio.html().replace(/\s/g,'')).toEqual(HTMLRadioDisabled.replace(/\s/g,''));
+		const radio = renderer.create(<Radio name='grp2' disabled={true} label='This is the radio label' value='1' />).toJSON();
+		expect(radio).toMatchSnapshot();
 	});
 
 	test('Radio - checked state changes', () => {

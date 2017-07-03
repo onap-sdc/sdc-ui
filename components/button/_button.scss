@@ -8,7 +8,7 @@
   cursor: pointer;
   text-align: center;
 
-  @include base-font-medium;
+  @include base-font-semibold();
   font-size: $body-font-1;
 
   &:disabled {
@@ -298,5 +298,63 @@
       }
     }
 
+  }
+  // Link type
+  &.sdc-button-link {
+    border: none;
+    background-color: transparent;
+    @extend .body-1;
+
+    // Primary link button
+    &.sdc-button__primary {
+      color: $blue;
+
+      &:not([disabled]):hover, &:active {
+        color: $dark-blue;
+      }
+
+      &.sdc-button__with-icon {
+        .svg-icon-wrapper {
+          margin-right: 5px;
+        }
+        .svg-icon {
+          width: 10px;
+          height: 10px;
+          fill: $blue;
+        }
+
+        &:not([disabled]):hover, &:active {
+          .svg-icon {
+            fill: $dark-blue;
+          }
+        }
+      }
+    }
+
+    // Secondary link button
+    &.sdc-button__secondary {
+      color: $gray;
+
+      &:not([disabled]):hover, &:active {
+        color: $dark-gray;
+      }
+
+      &.sdc-button__with-icon {
+        .svg-icon-wrapper {
+          margin-right: 5px;
+        }
+        .svg-icon {
+          width: 10px;
+          height: 10px;
+          fill: $gray;
+        }
+
+        &:not([disabled]):hover, &:active {
+          .svg-icon {
+            fill: $dark-gray;
+          }
+        }
+      }
+    }
   }
 }
