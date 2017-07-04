@@ -87,7 +87,7 @@ exports[`Button Button - Link - Primary - With Icon 1`] = `
   onClick={undefined}
 >
   <div
-    className="svg-icon-wrapper   bottom"
+    className="svg-icon-wrapper plus   bottom"
     onClick={undefined}
   >
     <svg />
