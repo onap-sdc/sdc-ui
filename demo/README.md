@@ -2,7 +2,7 @@
 
 ### How to compile
 Go to <b>root</b> folder (sdc-ui) and run: `npm run build`
-This will compile all scss files and will copy generated style.css and assests folder to gen folder inside demo project. 
+This will compile all scss files and will copy generated style.css and assets folder to gen folder inside demo project. 
 
 ### How to run
 Go to <b>demo</b> and run: `npm start`
