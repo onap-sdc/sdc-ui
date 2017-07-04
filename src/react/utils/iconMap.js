@@ -3,6 +3,7 @@ import angleDoubleRight from '-!svg-react-loader!../../../assets/icons/angleDoub
 import angleLeft from '-!svg-react-loader!../../../assets/icons/angleLeft.svg';
 import angleRight from '-!svg-react-loader!../../../assets/icons/angleRight.svg';
 import back from '-!svg-react-loader!../../../assets/icons/back.svg';
+import calendar from '-!svg-react-loader!../../../assets/icons/calendar.svg';
 import caretDown from '-!svg-react-loader!../../../assets/icons/caretDown.svg';
 import check from '-!svg-react-loader!../../../assets/icons/check.svg';
 import checkCircle from '-!svg-react-loader!../../../assets/icons/checkCircle.svg';
@@ -37,6 +38,7 @@ export default {
 	angleLeft,
 	angleRight,
 	back,
+	calendar,
 	caretDown,
 	check,
 	checkCircle,

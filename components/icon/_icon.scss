@@ -30,45 +30,5 @@
     .svg-icon {
         width: 20px;
         height: 20px;
-        &.storybook-big {
-            width: 120px;
-            height:120px;
-        }
-        &.storybook-small {
-            width: 60px;
-            height:60px;
-        }
-        &.purple {
-            fill: $purple;
-        }
-
-        &.purple-hover {
-            fill: $purple;
-            &:hover {
-                fill: $light-purple;
-            }
-        }
-
-        &.blue {
-            fill: $blue;
-        }
-
-        &.blue-hover {
-            fill: $blue;
-            &:hover {
-                fill: $light-blue;
-            }
-        }
-
-        &.black {
-            fill: $black;
-        }
-
-        &.black-hover {
-            fill: $black;
-            &:hover {
-                fill: $light-gray;
-            }
-        }
     }
 }
