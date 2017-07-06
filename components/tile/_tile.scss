@@ -52,14 +52,14 @@
                 }
             }
             .catalog-tile-vendor-name {
-                @extend .body-3-medium;
+                @extend .body-3-semibold;
                 color: $gray;
                 line-height: 12px;
                 @include ellipsis(auto,inline-block,178px);
             }
         }
         .catalog-tile-item-name {
-            @extend .heading-5-medium;
+            @extend .heading-5-semibold;
             color: $black;
             @include ellipsis(auto,inline-block,175px);
         }
@@ -111,7 +111,7 @@
         margin-top:2px;
         padding-bottom: 3px;
         height:30px;
-        @extend .body-2-medium;
+        @extend .body-2-semibold;
         .svg-icon.plus {
             height: 9px;
             width: 9px;
@@ -152,7 +152,7 @@
 			margin-top:21px;
 		}
 		.catalog-tile-vsp-count {
-			@extend .body-3-medium;
+			@extend .body-3-semibold;
 			margin-top: 8px;
 			margin-left: 54px;
 			margin-bottom: 9px;

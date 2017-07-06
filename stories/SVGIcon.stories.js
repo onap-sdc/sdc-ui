@@ -1,6 +1,6 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
-import SVGIcon from '../src/react/SVGIcon';
+import SVGIcon from '../src/react/SVGIcon.js';
 import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
 const iconLabelPositions = [
@@ -10,7 +10,7 @@ const iconLabelPositions = [
 function buildExamples(iconName, iconLabel, labelPosition) {
 	return {
 		Example: {
-			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='svg-icon purple storybook-big'
+			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='storybook-big'
 				  name={iconName}/>,
 			html: HTMLSvgIcon
 		}
@@ -28,7 +28,7 @@ const IconsList = ({icons}) => {
 		<div className='icons-table'>
 			{
 				icons.map(icon => (<div className='icon-section'><SVGIcon label={icon}
-					 iconClassName='svg-icon purple storybook-small'
+					 iconClassName='storybook-small'
 					 name={icon}/></div>))
 			}
 		</div>
@@ -47,7 +47,7 @@ class Icons extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='icons-screen'>
 				<h1>Icons</h1>
 				<div className='icons-option-selector'>
 					<div className='option-container'>

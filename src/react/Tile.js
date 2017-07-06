@@ -37,7 +37,7 @@ const VendorTileContent = ({vendorName, buttonText, onClick, className, iconName
             </div>
             <div className='sdc-tile-content-info vendor-tile'>
                 <div className='sdc-tile-content-info-item-name'>{vendorName}</div>
-                <Button type='outline-rounded vendor-count-button' color='gray'onClick={()=>onClick()}>
+                <Button btnType='outline-rounded vendor-count-button' color='gray'onClick={()=>onClick()}>
                     {buttonText}
                 </Button>
             </div>
