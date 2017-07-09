@@ -10,17 +10,6 @@ import HTMLButtonDefaultPositive from '../components/button/button-default-posit
 import HTMLButtonDefaultNegative from '../components/button/button-default-negative.html';
 import HTMLButtonDefaultWarning from '../components/button/button-default-warning.html';
 
-import HTMLButtonOutlinePrimary from '../components/button/button-outline-primary.html';
-import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html';
-import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
-import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
-
-import HTMLButtonOutlineRoundedPrimary from '../components/button/button-outline-rounded-primary.html';
-import HTMLButtonOutlineRoundedGray from '../components/button/button-outline-rounded-gray.html';
-import HTMLButtonOutlineRoundedPositive from '../components/button/button-outline-rounded-positive.html';
-import HTMLButtonOutlineRoundedNegative from '../components/button/button-outline-rounded-negative.html';
-
-
 import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-default-primary-disabled.html';
 import HTMLButtonDefaultWhiteDisabled from '../components/button/button-default-white-disabled.html';
 import HTMLButtonDefaultGrayDisabled from '../components/button/button-default-gray-disabled.html';
@@ -28,15 +17,29 @@ import HTMLButtonDefaultPositiveDisabled from '../components/button/button-defau
 import HTMLButtonDefaultNegativeDisabled from '../components/button/button-default-negative-disabled.html';
 import HTMLButtonDefaultWarningDisabled from '../components/button/button-default-warning-disabled.html';
 
+import HTMLButtonOutlinePrimary from '../components/button/button-outline-primary.html';
+import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html';
+import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
+import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
+import HTMLButtonOutlineWarning from '../components/button/button-outline-warning.html';
+
 import HTMLButtonOutlinePrimaryDisabled from '../components/button/button-outline-primary-disabled.html';
 import HTMLButtonOutlineGrayDisabled from '../components/button/button-outline-gray-disabled.html';
 import HTMLButtonOutlinePositiveDisabled from '../components/button/button-outline-positive-disabled.html';
 import HTMLButtonOutlineNegativeDisabled from '../components/button/button-outline-negative-disabled.html';
+import HTMLButtonOutlineWarningDisabled from '../components/button/button-outline-warning-disabled.html';
+
+import HTMLButtonOutlineRoundedPrimary from '../components/button/button-outline-rounded-primary.html';
+import HTMLButtonOutlineRoundedGray from '../components/button/button-outline-rounded-gray.html';
+import HTMLButtonOutlineRoundedPositive from '../components/button/button-outline-rounded-positive.html';
+import HTMLButtonOutlineRoundedNegative from '../components/button/button-outline-rounded-negative.html';
+import HTMLButtonOutlineRoundedWarning from '../components/button/button-outline-rounded-warning.html';
 
 import HTMLButtonOutlineRoundedPrimaryDisabled from '../components/button/button-outline-rounded-primary-disabled.html';
 import HTMLButtonOutlineRoundedGrayDisabled from '../components/button/button-outline-rounded-gray-disabled.html';
 import HTMLButtonOutlineRoundedPositiveDisabled from '../components/button/button-outline-rounded-positive-disabled.html';
 import HTMLButtonOutlineRoundedNegativeDisabled from '../components/button/button-outline-rounded-negative-disabled.html';
+import HTMLButtonOutlineRoundedWarningDisabled from '../components/button/button-outline-rounded-warning-disabled.html';
 
 import HTMLButtonLinkPrimary from '../components/button/button-link-primary.html';
 import HTMLButtonLinkPrimaryDisabled from '../components/button/button-link-primary-disabled.html';
@@ -143,6 +146,16 @@ let examples = {
 		html: HTMLButtonOutlineNegativeDisabled,
 		displayTitle: false
 	},
+	'Warning Outline': {
+		jsx: <ReactButton btnType='outline' color='warning' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineWarning
+	},
+	'Warning Outline Disabled': {
+		jsx: <ReactButton btnType='outline' color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineWarning,
+		displayTitle: false
+	},
+
 	// Outline rounded buttons
 	'Primary Outline Rounded': {
 		jsx: <ReactButton btnType='outline-rounded' onClick={() => {}}>Click Me</ReactButton>,
@@ -180,6 +193,16 @@ let examples = {
 		html: HTMLButtonOutlineRoundedNegativeDisabled,
 		displayTitle: false
 	},
+	'Warning Rounded Outline': {
+		jsx: <ReactButton btnType='outline-rounded' color='warning' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedNegative
+	},
+	'Warning Rounded Outline Disabled': {
+		jsx: <ReactButton btnType='outline-rounded' color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedNegativeDisabled,
+		displayTitle: false
+	},
+
 	// Link Buttons
 	'Primary Link': {
 		jsx: <ReactButton btnType='link' color='primary' onClick={() => {}}>Click Me</ReactButton>,
