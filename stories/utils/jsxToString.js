@@ -1,4 +1,7 @@
 import React from 'react';
+
+const INDENT = '  ';
+
 function stringRepresentationForJsx(item) {
 	if (typeof item === 'string') {
 		return `'${item}'`;
@@ -27,10 +30,10 @@ function parseProps(jsx) {
 	let result = '';
 	for (let prop in jsx.props) {
 		let value = jsx.props[prop];
-		if (prop !== 'children') {
+		if (prop !== 'children' && value) {
 			let repr = stringRepresentationForJsx(value);
 			let isString = repr.startsWith("'");
-			result += `\n	 ${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
+			result += '\n' + INDENT + `${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
 		}
 	}
 	return result;
@@ -48,12 +51,12 @@ function jsxToString(jsx) {
 		if (React.isValidElement(jsx.props.children)) {
 			result += `${jsxToString(jsx.props.children)}\n`;
 		} else if (typeof jsx.props.children === 'string') {
-			result +=  jsx.props.children;
+			result += INDENT + jsx.props.children;
 		}
 		else {
 			jsx.props.children.map(child => { result += `${jsxToString(child)}\n`;} );
 		}
-		return result + `</${name}>` ;
+		return result + `\n</${name}>` ;
 	}
 
 	return `<${name} ${parseProps(jsx)}/>`;
