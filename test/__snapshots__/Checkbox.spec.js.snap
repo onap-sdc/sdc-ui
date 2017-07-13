@@ -2,7 +2,7 @@
 
 exports[`Checkbox Checkbox - disabled 1`] = `
 <div
-  className="sdc-checkbox"
+  className="sdc-checkbox "
 >
   <input
     checked={false}
@@ -24,7 +24,7 @@ exports[`Checkbox Checkbox - disabled 1`] = `
 
 exports[`Checkbox Checkbox - unchecked 1`] = `
 <div
-  className="sdc-checkbox"
+  className="sdc-checkbox "
 >
   <input
     checked={false}
