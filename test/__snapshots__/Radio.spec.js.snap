@@ -2,7 +2,7 @@
 
 exports[`Radio Radio - disabled 1`] = `
 <div
-  className="sdc-radio"
+  className="sdc-radio "
 >
   <input
     checked={false}
@@ -24,7 +24,7 @@ exports[`Radio Radio - disabled 1`] = `
 
 exports[`Radio Radio - unchecked 1`] = `
 <div
-  className="sdc-radio"
+  className="sdc-radio "
 >
   <input
     checked={false}
