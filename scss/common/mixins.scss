@@ -16,6 +16,16 @@
 .sdc-bc-light-gray    { background-color: $light-gray };
 .sdc-bc-white         { background-color: $white };
 
+// Secondary colors
+.sdc-bc-red                 { background-color: $red };
+.sdc-bc-background-gray     { background-color: $background-gray };
+.sdc-bc-text-black          { background-color: $text-black };
+.sdc-bc-link-blue           { background-color: $link-blue };
+.sdc-bc-functional-green    { background-color: $functional-green };
+.sdc-bc-tlv-gray            { background-color: $tlv-gray };
+.sdc-bc-tlv-light-gray      { background-color: $tlv-light-gray };
+.sdc-bc-tlv-hover           { background-color: $tlv-hover };
+
 /* Prefix */
 $box-sizing-prefix: webkit moz spec;
 $border-radius-prefix: webkit spec;

@@ -21,23 +21,19 @@ const primaryColors = {
 
 const secondaryColors = {
 	$red: '#cf2a2a',
-	$crimson: '#a94442',
-	'$background-alice-blue': '#e5f5fb',
 	'$background-gray': '#f2f2f2',
 	'$text-black': '#191919',
 	'$link-blue': '#056bae',
 	'$functional-green': '#007a3e',
-	'$functional-yellow': '#ffb81c',
 	'$tlv-gray': '#f8f8f8',
 	'$tlv-light-gray': '#eaeaea',
 	'$tlv-hover': '#e6f6fb',
-	'$highlight-gray': '#eceff3'
 };
 
 function Color({colorName, palette}) {
 	return (
 		<div key={colorName} className='color-section'>
-			<div className='color-circle' style={{backgroundColor: palette[colorName]}}></div>
+			<div className='color-circle' style={{backgroundColor: palette[colorName]}} />
 			<div>{colorName.replace('$', '')}</div>
 			<div>{palette[colorName]}</div>
 		</div>
