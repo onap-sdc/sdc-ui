@@ -6,7 +6,7 @@ exports[`Tabs Tabs - basic rendering 1`] = `
     disabled={false}
   >
     <div
-      className="sdc-tabs sdc-tabs-menu"
+      className="sdc-tabs sdc-tabs-menu "
     >
       <ul
         className="sdc-tabs-list"
@@ -15,6 +15,7 @@ exports[`Tabs Tabs - basic rendering 1`] = `
         <li
           className="sdc-tab sdc-tab-active "
           data-test-id="1"
+          disabled={undefined}
           onClick={[Function]}
           role="tab"
         >
@@ -23,6 +24,7 @@ exports[`Tabs Tabs - basic rendering 1`] = `
         <li
           className="sdc-tab "
           data-test-id="2"
+          disabled={undefined}
           onClick={[Function]}
           role="tab"
         >
@@ -31,6 +33,7 @@ exports[`Tabs Tabs - basic rendering 1`] = `
         <li
           className="sdc-tab "
           data-test-id="3"
+          disabled={undefined}
           onClick={[Function]}
           role="tab"
         >
