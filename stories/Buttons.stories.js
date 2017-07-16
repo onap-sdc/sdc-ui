@@ -152,7 +152,7 @@ let examples = {
 	},
 	'Warning Outline Disabled': {
 		jsx: <ReactButton btnType='outline' color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonOutlineWarning,
+		html: HTMLButtonOutlineWarningDisabled,
 		displayTitle: false
 	},
 
@@ -195,11 +195,11 @@ let examples = {
 	},
 	'Warning Rounded Outline': {
 		jsx: <ReactButton btnType='outline-rounded' color='warning' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonOutlineRoundedNegative
+		html: HTMLButtonOutlineRoundedWarning
 	},
 	'Warning Rounded Outline Disabled': {
 		jsx: <ReactButton btnType='outline-rounded' color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonOutlineRoundedNegativeDisabled,
+		html: HTMLButtonOutlineRoundedWarningDisabled,
 		displayTitle: false
 	},
 
