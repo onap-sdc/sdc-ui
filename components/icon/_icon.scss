@@ -27,16 +27,19 @@
             margin-right: 5px;
         }
     }
-    .svg-icon-small {
-        width: 10px;
-        height: 10px;
-    }
-    .svg-icon-medium {
-        width: 15px;
-        height: 15px;
-    }
-    .svg-icon-large {
-        width: 20px;
-        height: 20px;
+
+    .svg-icon {
+        &.svg-icon--small {
+            width: 10px;
+            height: 10px;
+        }
+        &.svg-icon--medium {
+            width: 15px;
+            height: 15px;
+        }
+        &.svg-icon--large {
+            width: 20px;
+            height: 20px;
+        }
     }
 }

@@ -43,27 +43,9 @@ import HTMLButtonOutlineRoundedWarningDisabled from '../components/button/button
 
 import HTMLButtonLinkPrimary from '../components/button/button-link-primary.html';
 import HTMLButtonLinkPrimaryDisabled from '../components/button/button-link-primary-disabled.html';
-import HTMLButtonLinkPrimaryWithIcon from '../components/button/button-link-primary-with-icon.html';
-import HTMLButtonLinkPrimaryWithIconDisabled from '../components/button/button-link-primary-with-icon-disabled.html';
-import HTMLButtonLinkPrimaryWithIconSmall from '../components/button/button-link-primary-with-icon-small.html';
-import HTMLButtonLinkPrimaryWithIconDisabledSmall from '../components/button/button-link-primary-with-icon-disabled-small.html';
-import HTMLButtonLinkPrimaryWithIconMedium from '../components/button/button-link-primary-with-icon-medium.html';
-import HTMLButtonLinkPrimaryWithIconDisabledMedium from '../components/button/button-link-primary-with-icon-disabled-medium.html';
-import HTMLButtonLinkPrimaryWithIconLarge from '../components/button/button-link-primary-with-icon-large.html';
-import HTMLButtonLinkPrimaryWithIconDisabledLarge from '../components/button/button-link-primary-with-icon-disabled-large.html';
-
 
 import HTMLButtonLinkSecondary from '../components/button/button-link-secondary.html';
 import HTMLButtonLinkSecondaryDisabled from '../components/button/button-link-secondary-disabled.html';
-import HTMLButtonLinkSecondaryWithIcon from '../components/button/button-link-secondary-with-icon.html';
-import HTMLButtonLinkSecondaryWithIconDisabled from '../components/button/button-link-secondary-with-icon-disabled.html';
-import HTMLButtonLinkSecondaryWithIconSmall from '../components/button/button-link-secondary-with-icon-small.html';
-import HTMLButtonLinkSecondaryWithIconDisabledSmall from '../components/button/button-link-secondary-with-icon-disabled-small.html';
-import HTMLButtonLinkSecondaryWithIconMedium from '../components/button/button-link-secondary-with-icon-medium.html';
-import HTMLButtonLinkSecondaryWithIconDisabledMedium from '../components/button/button-link-secondary-with-icon-disabled-medium.html';
-import HTMLButtonLinkSecondaryWithIconLarge from '../components/button/button-link-secondary-with-icon-large.html';
-import HTMLButtonLinkSecondaryWithIconDisabledLarge from '../components/button/button-link-secondary-with-icon-disabled-large.html';
-
 
 
 let examples = {
@@ -228,39 +210,31 @@ let examples = {
 		displayTitle: false
 	},
 	'Primary Link With Icon': {
-		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIcon
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Primary Link With Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconDisabled,
 		displayTitle: false
 	},
 	'Primary Link With Small Icon': {
-		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='small' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconSmall
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='small' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Primary Link With Small Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='small' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconDisabledSmall,
 		displayTitle: false
 	},
 	'Primary Link With Medium Icon': {
-		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='medium' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconMedium
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='medium' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Primary Link With Medium Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='medium' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconDisabledMedium,
 		displayTitle: false
 	},
 	'Primary Link With Large Icon': {
-		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='large' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconLarge
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='large' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Primary Link With Large Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='large' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconDisabledLarge,
 		displayTitle: false
 	},
 	'Secondary Link': {
@@ -273,39 +247,31 @@ let examples = {
 		displayTitle: false
 	},
 	'Secondary Link With Icon': {
-		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIcon
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Secondary Link With Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconDisabled,
 		displayTitle: false
 	},
 	'Secondary Link With Small Icon': {
-		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconsize='small' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconSmall
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconsize='small' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Secondary Link With Small Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='small' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconDisabledSmall,
 		displayTitle: false
 	},
 	'Secondary Link With Medium Icon': {
-		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='medium' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconMedium
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='medium' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Secondary Link With Nedium Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='medium' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconDisabledMedium,
 		displayTitle: false
 	},
 	'Secondary Link With Large Icon': {
-		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='large' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconLarge
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='large' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Secondary Link With Large Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='large' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconDisabledLarge,
 		displayTitle: false
 	}
 };

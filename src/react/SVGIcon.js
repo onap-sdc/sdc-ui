@@ -9,7 +9,7 @@ const SVGIcon = ({name, onClick, label, className, iconClassName, labelClassName
 
 	return (
 		<div {...other} onClick={onClick} className={classes}>
-			<IconComponent className={`svg-icon-${size}`} />
+			<IconComponent className={`svg-icon svg-icon--${size}`} />
 			{label && <span className={`svg-icon-label ${labelClassName}`}>{label}</span>}
 		</div>
 	);
