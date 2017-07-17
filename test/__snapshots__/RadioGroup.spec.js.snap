@@ -2,7 +2,7 @@
 
 exports[`RadioGroup RadioGroup - basic rendering 1`] = `
 <div
-  className="sdc-radio-group"
+  className="sdc-radio-group "
   data-test-id="grp1"
 >
   <label
@@ -14,7 +14,7 @@ exports[`RadioGroup RadioGroup - basic rendering 1`] = `
     className="sdc-radio-group__radios"
   >
     <div
-      className="sdc-radio"
+      className="sdc-radio "
     >
       <input
         checked={true}
@@ -33,7 +33,7 @@ exports[`RadioGroup RadioGroup - basic rendering 1`] = `
       </label>
     </div>
     <div
-      className="sdc-radio"
+      className="sdc-radio "
     >
       <input
         checked={false}
