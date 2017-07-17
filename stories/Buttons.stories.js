@@ -43,13 +43,8 @@ import HTMLButtonOutlineRoundedWarningDisabled from '../components/button/button
 
 import HTMLButtonLinkPrimary from '../components/button/button-link-primary.html';
 import HTMLButtonLinkPrimaryDisabled from '../components/button/button-link-primary-disabled.html';
-import HTMLButtonLinkPrimaryWithIcon from '../components/button/button-link-primary-with-icon.html';
-import HTMLButtonLinkPrimaryWithIconDisabled from '../components/button/button-link-primary-with-icon-disabled.html';
-
 import HTMLButtonLinkSecondary from '../components/button/button-link-secondary.html';
 import HTMLButtonLinkSecondaryDisabled from '../components/button/button-link-secondary-disabled.html';
-import HTMLButtonLinkSecondaryWithIcon from '../components/button/button-link-secondary-with-icon.html';
-import HTMLButtonLinkSecondaryWithIconDisabled from '../components/button/button-link-secondary-with-icon-disabled.html';
 
 
 let examples = {
@@ -214,12 +209,10 @@ let examples = {
 		displayTitle: false
 	},
 	'Primary Link With Icon': {
-		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIcon
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Primary Link With Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkPrimaryWithIconDisabled,
 		displayTitle: false
 	},
 	'Secondary Link': {
@@ -232,18 +225,16 @@ let examples = {
 		displayTitle: false
 	},
 	'Secondary Link With Icon': {
-		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIcon
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>
 	},
 	'Secondary Link With Icon Disabled': {
 		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}} disabled>Click Me</ReactButton>,
-		html: HTMLButtonLinkSecondaryWithIconDisabled,
 		displayTitle: false
 	}
 };
 
 const Buttons = () => (
-		<Examples examples={examples} />
+	<Examples examples={examples} />
 );
 
 export default Buttons;

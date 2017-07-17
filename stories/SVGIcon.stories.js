@@ -10,9 +10,7 @@ const iconLabelPositions = [
 function buildExamples(iconName, iconLabel, labelPosition) {
 	return {
 		Example: {
-			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='storybook-big'
-				  name={iconName}/>,
-			html: HTMLSvgIcon
+			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='storybook-big' name={iconName}/>
 		}
 	};
 }
@@ -23,17 +21,19 @@ const SelectOption = ({option}) => {
 	);
 };
 
-const IconsList = ({icons}) => {
-	return (
-		<div className='icons-table'>
-			{
-				icons.map(icon => (<div className='icon-section'><SVGIcon label={icon}
-					 iconClassName='storybook-small'
-					 name={icon}/></div>))
-			}
-		</div>
-	);
-};
+const IconTable = ({onClick}) => (
+	<div className='icons-table'>
+		{ICON_NAMES.map(icon => (
+			<div key={icon} className='icon-section'>
+				<SVGIcon
+					onClick={() => onClick(icon)}
+					label={icon}
+					iconClassName='storybook-small'
+					name={icon}/>
+			</div>
+		))}
+	</div>
+);
 
 class Icons extends React.Component {
 	constructor(props) {
@@ -52,8 +52,9 @@ class Icons extends React.Component {
 				<div className='icons-option-selector'>
 					<div className='option-container'>
 						<label>Icon name:</label>
-						<select onChange={e => this.setState({iconName: e.target.value})}>{ICON_NAMES.map(option =>
-							<SelectOption option={option}/>)}</select>
+						<select onChange={e => this.setState({iconName: e.target.value})}>
+							{ICON_NAMES.map(option => <SelectOption key={option} option={option}/>)}
+						</select>
 					</div>
 					<div className='option-container'>
 						<label>Icon label</label>
@@ -61,14 +62,14 @@ class Icons extends React.Component {
 					</div>
 					<div className='option-container'>
 						<label>Label position</label>
-						<select
-							onChange={e => this.setState({labelPosition: e.target.value})}>{iconLabelPositions.map(option =>
-							<SelectOption option={option}/>)}</select>
+						<select onChange={e => this.setState({labelPosition: e.target.value})}>
+							{iconLabelPositions.map(option => <SelectOption key={option} option={option}/>)}
+						</select>
 					</div>
 				</div>
 				<Examples
 					examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition)}/>
-				<IconsList icons={ICON_NAMES}/>
+				<IconTable onClick={icon => this.setState({iconName: icon})} />
 			</div>
 		);
 	};
