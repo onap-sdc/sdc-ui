@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700');
 @import '../scss/style.scss';
 @import '~prismjs/themes/prism.css';
 
@@ -52,6 +53,12 @@ a {
   }
 }
 
+pre {
+	overflow-x: auto;
+	overflow-y: hidden;
+	max-width: 800px;
+}
+
 .icons-screen {
   .icons-option-selector {
 	margin-top: 20px;
@@ -81,9 +88,15 @@ a {
 	  flex-direction: column;
 	  margin: 10px 0;
 	  min-width: 150px;
-	  .svg-icon-label {
-		font-size: 12px;
-	  }
+	  .svg-icon-wrapper {
+	  	cursor: pointer;
+	  	width: 20px;
+	  	margin-left: auto;
+	  	margin-right: auto;
+		  .svg-icon-label {
+				font-size: 12px;
+		  }
+		}
 	}
   }
 
@@ -138,6 +151,7 @@ a {
 	  padding: 5px;
 	  pre {
 		margin-top: 0;
+		user-select: text;
 	  }
 	  .source-toggle-code-tabs {
 		display: flex;
