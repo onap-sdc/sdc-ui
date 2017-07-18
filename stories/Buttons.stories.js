@@ -10,17 +10,6 @@ import HTMLButtonDefaultPositive from '../components/button/button-default-posit
 import HTMLButtonDefaultNegative from '../components/button/button-default-negative.html';
 import HTMLButtonDefaultWarning from '../components/button/button-default-warning.html';
 
-import HTMLButtonOutlinePrimary from '../components/button/button-outline-primary.html';
-import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html';
-import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
-import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
-
-import HTMLButtonOutlineRoundedPrimary from '../components/button/button-outline-rounded-primary.html';
-import HTMLButtonOutlineRoundedGray from '../components/button/button-outline-rounded-gray.html';
-import HTMLButtonOutlineRoundedPositive from '../components/button/button-outline-rounded-positive.html';
-import HTMLButtonOutlineRoundedNegative from '../components/button/button-outline-rounded-negative.html';
-
-
 import HTMLButtonDefaultPrimaryDisabled from '../components/button/button-default-primary-disabled.html';
 import HTMLButtonDefaultWhiteDisabled from '../components/button/button-default-white-disabled.html';
 import HTMLButtonDefaultGrayDisabled from '../components/button/button-default-gray-disabled.html';
@@ -28,15 +17,35 @@ import HTMLButtonDefaultPositiveDisabled from '../components/button/button-defau
 import HTMLButtonDefaultNegativeDisabled from '../components/button/button-default-negative-disabled.html';
 import HTMLButtonDefaultWarningDisabled from '../components/button/button-default-warning-disabled.html';
 
+import HTMLButtonOutlinePrimary from '../components/button/button-outline-primary.html';
+import HTMLButtonOutlineGray from '../components/button/button-outline-gray.html';
+import HTMLButtonOutlinePositive from '../components/button/button-outline-positive.html';
+import HTMLButtonOutlineNegative from '../components/button/button-outline-negative.html';
+import HTMLButtonOutlineWarning from '../components/button/button-outline-warning.html';
+
 import HTMLButtonOutlinePrimaryDisabled from '../components/button/button-outline-primary-disabled.html';
 import HTMLButtonOutlineGrayDisabled from '../components/button/button-outline-gray-disabled.html';
 import HTMLButtonOutlinePositiveDisabled from '../components/button/button-outline-positive-disabled.html';
 import HTMLButtonOutlineNegativeDisabled from '../components/button/button-outline-negative-disabled.html';
+import HTMLButtonOutlineWarningDisabled from '../components/button/button-outline-warning-disabled.html';
+
+import HTMLButtonOutlineRoundedPrimary from '../components/button/button-outline-rounded-primary.html';
+import HTMLButtonOutlineRoundedGray from '../components/button/button-outline-rounded-gray.html';
+import HTMLButtonOutlineRoundedPositive from '../components/button/button-outline-rounded-positive.html';
+import HTMLButtonOutlineRoundedNegative from '../components/button/button-outline-rounded-negative.html';
+import HTMLButtonOutlineRoundedWarning from '../components/button/button-outline-rounded-warning.html';
 
 import HTMLButtonOutlineRoundedPrimaryDisabled from '../components/button/button-outline-rounded-primary-disabled.html';
 import HTMLButtonOutlineRoundedGrayDisabled from '../components/button/button-outline-rounded-gray-disabled.html';
 import HTMLButtonOutlineRoundedPositiveDisabled from '../components/button/button-outline-rounded-positive-disabled.html';
 import HTMLButtonOutlineRoundedNegativeDisabled from '../components/button/button-outline-rounded-negative-disabled.html';
+import HTMLButtonOutlineRoundedWarningDisabled from '../components/button/button-outline-rounded-warning-disabled.html';
+
+import HTMLButtonLinkPrimary from '../components/button/button-link-primary.html';
+import HTMLButtonLinkPrimaryDisabled from '../components/button/button-link-primary-disabled.html';
+
+import HTMLButtonLinkSecondary from '../components/button/button-link-secondary.html';
+import HTMLButtonLinkSecondaryDisabled from '../components/button/button-link-secondary-disabled.html';
 
 
 let examples = {
@@ -98,76 +107,171 @@ let examples = {
 
 	// Outline buttons
 	'Primary Outline': {
-		jsx: <ReactButton type='outline' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePrimary
 	},
 	'Primary Outline Disabled': {
-		jsx: <ReactButton type='outline' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePrimaryDisabled,
 		displayTitle: false
 	},
 	'Gray Outline': {
-		jsx: <ReactButton type='outline' color='gray' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='gray' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineGray
 	},
 	'Gray Outline Disabled': {
-		jsx: <ReactButton type='outline' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineGrayDisabled,
 		displayTitle: false
 	},
 	'Positive Outline': {
-		jsx: <ReactButton type='outline' color='positive' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='positive' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePositive
 	},
 	'Positive Outline Disabled': {
-		jsx: <ReactButton type='outline' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlinePositiveDisabled,
 		displayTitle: false
 	},
 	'Negative Outline': {
-		jsx: <ReactButton type='outline' color='negative' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='negative' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineNegative
 	},
 	'Negative Outline Disabled': {
-		jsx: <ReactButton type='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineNegativeDisabled,
 		displayTitle: false
 	},
+	'Warning Outline': {
+		jsx: <ReactButton btnType='outline' color='warning' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineWarning
+	},
+	'Warning Outline Disabled': {
+		jsx: <ReactButton btnType='outline' color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineWarningDisabled,
+		displayTitle: false
+	},
+
 	// Outline rounded buttons
 	'Primary Outline Rounded': {
-		jsx: <ReactButton type='outline-rounded' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPrimary
 	},
 	'Primary Outline Rounded Disabled': {
-		jsx: <ReactButton type='outline-rounded' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPrimaryDisabled,
 		displayTitle: false
 	},
 	'Gray Outline Rounded': {
-		jsx: <ReactButton type='outline-rounded' color='gray' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='gray' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedGray
 	},
 	'Gray Outline Rounded Disabled': {
-		jsx: <ReactButton type='outline-rounded' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='gray' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedGrayDisabled,
 		displayTitle: false
 	},
 	'Positive Rounded Outline': {
-		jsx: <ReactButton type='outline-rounded' color='positive' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='positive' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPositive
 	},
 	'Positive Rounded Outline Disabled': {
-		jsx: <ReactButton type='outline-rounded' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='positive' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedPositiveDisabled,
 		displayTitle: false
 	},
 	'Negative Rounded Outline': {
-		jsx: <ReactButton type='outline-rounded' color='negative' onClick={() => {}}>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='negative' onClick={() => {}}>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedNegative
 	},
 	'Negative Rounded Outline Disabled': {
-		jsx: <ReactButton type='outline-rounded' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
+		jsx: <ReactButton btnType='outline-rounded' color='negative' onClick={() => {}} disabled>Click Me</ReactButton>,
 		html: HTMLButtonOutlineRoundedNegativeDisabled,
+		displayTitle: false
+	},
+	'Warning Rounded Outline': {
+		jsx: <ReactButton btnType='outline-rounded' color='warning' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedWarning
+	},
+	'Warning Rounded Outline Disabled': {
+		jsx: <ReactButton btnType='outline-rounded' color='warning' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonOutlineRoundedWarningDisabled,
+		displayTitle: false
+	},
+
+	// Link Buttons
+	'Primary Link': {
+		jsx: <ReactButton btnType='link' color='primary' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonLinkPrimary
+	},
+	'Primary Link Disabled': {
+		jsx: <ReactButton btnType='link' color='primary' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonLinkPrimaryDisabled,
+		displayTitle: false
+	},
+	'Primary Link With Icon': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Primary Link With Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Primary Link With Small Icon': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='small' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Primary Link With Small Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='small' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Primary Link With Medium Icon': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='medium' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Primary Link With Medium Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='medium' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Primary Link With Large Icon': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='large' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Primary Link With Large Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='primary' iconName='plus' iconSize='large' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Secondary Link': {
+		jsx: <ReactButton btnType='link' color='secondary' onClick={() => {}}>Click Me</ReactButton>,
+		html: HTMLButtonLinkSecondary
+	},
+	'Secondary Link Disabled': {
+		jsx: <ReactButton btnType='link' color='secondary' onClick={() => {}} disabled>Click Me</ReactButton>,
+		html: HTMLButtonLinkSecondaryDisabled,
+		displayTitle: false
+	},
+	'Secondary Link With Icon': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Secondary Link With Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Secondary Link With Small Icon': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconsize='small' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Secondary Link With Small Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='small' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Secondary Link With Medium Icon': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='medium' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Secondary Link With Nedium Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='medium' onClick={() => {}} disabled>Click Me</ReactButton>,
+		displayTitle: false
+	},
+	'Secondary Link With Large Icon': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='large' onClick={() => {}}>Click Me</ReactButton>
+	},
+	'Secondary Link With Large Icon Disabled': {
+		jsx: <ReactButton btnType='link' color='secondary' iconName='plus' iconSize='large' onClick={() => {}} disabled>Click Me</ReactButton>,
 		displayTitle: false
 	}
 };

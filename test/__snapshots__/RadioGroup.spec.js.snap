@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroup RadioGroup - basic rendering 1`] = `
+<div
+  className="sdc-radio-group "
+  data-test-id="grp1"
+>
+  <label
+    className="sdc-radio-group__legend"
+  >
+    Group A
+  </label>
+  <div
+    className="sdc-radio-group__radios"
+  >
+    <div
+      className="sdc-radio "
+    >
+      <input
+        checked={true}
+        className="sdc-radio__input"
+        data-test-id="grp1_1"
+        disabled={undefined}
+        name="grp1"
+        onChange={[Function]}
+        type="radio"
+        value="1"
+      />
+      <label
+        className="sdc-radio__label"
+      >
+        option 1
+      </label>
+    </div>
+    <div
+      className="sdc-radio "
+    >
+      <input
+        checked={false}
+        className="sdc-radio__input"
+        data-test-id="grp1_2"
+        disabled={undefined}
+        name="grp1"
+        onChange={[Function]}
+        type="radio"
+        value="2"
+      />
+      <label
+        className="sdc-radio__label"
+      >
+        option 2
+      </label>
+    </div>
+  </div>
+</div>
+`;

@@ -1,38 +1,39 @@
 
 const path = require('path');
 const webpack = require('webpack');
-
-const svgFolder = './assests/icons/';
+const svgFolder = './assets/icons/';
 const fs = require('fs');
-let svgIcons = []
+
+let iconNames = [];
+
 fs.readdirSync(svgFolder).forEach(file => {
 	let fileName = file.split('.');
 	if (fileName[0] && fileName[1] === 'svg') {
-		svgIcons.push(fileName[0]);
-	}    
-})
+		iconNames.push(fileName[0]);
+	}
+});
 
 module.exports = {
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /.scss$/,
-				loaders: ['style', 'css', 'sass'],
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 				include: path.resolve(__dirname, '../')
 			},
 			{
 				test: /.html$/,
-				loader: 'html',
-				query: {
+				loader: 'html-loader',
+				options: {
 					minimize: false
 				}
 			}
 		]
 	},
-	plugins: [
+		plugins: [
 		new webpack.DefinePlugin({
 			'ICON_PATH': '"./"',
-			'ICON_NAMES':JSON.stringify(svgIcons)
+			'ICON_NAMES':JSON.stringify(iconNames)
 		})
 	]
 };
