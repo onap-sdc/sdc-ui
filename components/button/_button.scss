@@ -47,6 +47,11 @@
   @include base-font-semibold();
   font-size: $body-font-1;
 
+  .sdc-button-link-icon {
+    display: flex;
+    align-items: center;
+  }
+
   &:not(.sdc-button-link) {
     width: 94px;
     height: 30px;
