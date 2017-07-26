@@ -22,7 +22,7 @@ const TileContent = ({iconName, vendorName, tileName, versionName, className}) =
                 <div className='sdc-tile-content-info-vendor-name'>{vendorName}</div>
                 <div className='sdc-tile-content-info-item-name'>{tileName}</div>
                 <div className='sdc-tile-content-info-version-info'>
-                    <div className='sdc-tile-content-info-version-info-text' data-test-id='sdc-catalog-item-version'>{versionName}</div>
+                    <div className='sdc-tile-content-info-version-info-text' data-test-id='sdc-catalog-item-version'>{`V ${versionName}`}</div>
                 </div>
             </div>
         </div>
@@ -37,8 +37,8 @@ const VendorTileContent = ({vendorName, buttonText, onClick, className, iconName
             </div>
             <div className='sdc-tile-content-info vendor-tile'>
                 <div className='sdc-tile-content-info-item-name'>{vendorName}</div>
-                <Button btnType='outline-rounded vendor-count-button' color='gray'onClick={()=>onClick()}>
-                    {buttonText}
+                <Button btnType='outline-rounded vendor-count-button' color='gray' onClick={()=>onClick()}>
+                    {`${buttonText} VSPs`}
                 </Button>
             </div>
         </div>
