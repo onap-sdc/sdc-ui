@@ -73,4 +73,5 @@ describe('Button', () => {
 		const button = renderer.create(<Button btnType='link' color='primary' iconName='plus'>Click Me</Button>).toJSON();
 		expect(button).toMatchSnapshot();
 	});
+
 });
