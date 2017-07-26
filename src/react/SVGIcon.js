@@ -1,15 +1,16 @@
 import React, {PropTypes} from 'react';
 import iconMap from './utils/iconMap.js';
 
-const SVGIcon = ({name, onClick, label, className, iconClassName, labelClassName, labelPosition, size, ...other}) => {
+const SVGIcon = ({name, onClick, label, className, iconClassName, labelClassName, labelPosition, color, disabled, ...other}) => {
 
-	let classes = `svg-icon-wrapper ${name} ${iconClassName} ${className} ${onClick ? 'clickable' : ''} ${labelPosition}`;
+	let colorClass = (color !== '') ? '__'+color : '';
+	let classes = `svg-icon-wrapper ${iconClassName} ${className} ${colorClass} ${onClick ? 'clickable' : ''} ${disabled ? 'disabled' : ''} ${labelPosition}`;
 	let camelCasedName = name.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
 	let IconComponent = iconMap[camelCasedName];
 
 	return (
 		<div {...other} onClick={onClick} className={classes}>
-			<IconComponent className={`svg-icon svg-icon--${size}`} />
+			<IconComponent className={`svg-icon __${name} ${disabled ? 'disabled' : ''}`} />
 			{label && <span className={`svg-icon-label ${labelClassName}`}>{label}</span>}
 		</div>
 	);
@@ -24,7 +25,8 @@ SVGIcon.propTypes = {
 	className: PropTypes.string,
 	iconClassName: PropTypes.string,
 	labelClassName: PropTypes.string,
-	size: PropTypes.string
+	color: PropTypes.string,
+	disabled: PropTypes.boolean
 };
 
 SVGIcon.defaultProps = {
@@ -34,7 +36,8 @@ SVGIcon.defaultProps = {
 	iconClassName: '',
 	labelClassName: '',
 	labelPosition: 'bottom',
-	size: 'large'
+	color: '',
+	disabled: false
 };
 
 export default SVGIcon;

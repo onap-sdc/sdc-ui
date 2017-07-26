@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "main": "lib/index.js",
   "directories": {

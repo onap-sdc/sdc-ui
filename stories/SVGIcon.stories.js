@@ -3,26 +3,33 @@ import Examples from './utils/Examples.js';
 import SVGIcon from '../src/react/SVGIcon.js';
 import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
-const size = [
-	'large', 'medium', 'small'
-];
-
 const iconLabelPositions = [
-	'bottom', 'top', 'left', 'right'
+	'', 'bottom', 'top', 'left', 'right'
 ];
 
-function buildExamples(iconName, iconLabel, labelPosition, size) {
+const iconColors =[
+	'',
+	'primary',
+	'secondary',
+	'positive',
+	'negative',
+	'warning'
+]
+
+const disabled = ['false', 'true'];
+
+function buildExamples(iconName, iconLabel, labelPosition, color, disabled) {
 	return {
 		Example: {
-			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='storybook-big'
-				  name={iconName} size={size}/>
+			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition}
+				  color={color} name={iconName} disabled={disabled === 'true'}/>
 		}
 	};
 }
 
-const SelectOption = ({option}) => {
+const SelectOption = ({option, selected}) => {
 	return (
-		<option key={option} value={option}>{option}</option>
+		<option key={option} selected={selected} value={option}>{option}</option>
 	);
 };
 
@@ -47,7 +54,7 @@ class Icons extends React.Component {
 			iconName: ICON_NAMES[0],
 			iconLabel: '',
 			labelPosition: iconLabelPositions[0],
-			size : size[0]
+			color : iconColors[0]
 		};
 	}
 
@@ -59,7 +66,7 @@ class Icons extends React.Component {
 					<div className='option-container'>
 						<label>Icon name:</label>
 						<select onChange={e => this.setState({iconName: e.target.value})}>{ICON_NAMES.map(option =>
-							<SelectOption option={option}/>)}</select>
+							<SelectOption option={option} selected={this.state.iconName === option}/>)}</select>
 					</div>
 					<div className='option-container'>
 						<label>Icon label</label>
@@ -72,14 +79,20 @@ class Icons extends React.Component {
 							<SelectOption option={option}/>)}</select>
 					</div>
 					<div className='option-container'>
-						<label>Size</label>
+						<label>Color</label>
 						<select
-							onChange={e => this.setState({size: e.target.value})}>{size.map(option =>
+							onChange={e => this.setState({color: e.target.value})}>{iconColors.map(option =>
+							<SelectOption option={option}/>)}</select>
+					</div>
+					<div className='option-container'>
+						<label>Disabled</label>
+						<select
+							onChange={e => this.setState({disabled: e.target.value})}>{disabled.map(option =>
 							<SelectOption option={option}/>)}</select>
 					</div>
 				</div>
 				<Examples
-					examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition, this.state.size)}/>
+					examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition, this.state.color, this.state.disabled)}/>
 				<IconTable onClick={icon => this.setState({iconName: icon})} />
 			</div>
 		);
