@@ -6,7 +6,15 @@ exports[`Button Button - Default - Gray 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -16,7 +24,15 @@ exports[`Button Button - Default - Negative 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -26,7 +42,15 @@ exports[`Button Button - Default - Positive 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -36,7 +60,15 @@ exports[`Button Button - Default - Primary - Disabled 1`] = `
   disabled={true}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -46,7 +78,15 @@ exports[`Button Button - Default - Primary 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -56,7 +96,15 @@ exports[`Button Button - Default - Warning 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -66,7 +114,15 @@ exports[`Button Button - Default - White 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -76,7 +132,15 @@ exports[`Button Button - Link - Primary - Disabled 1`] = `
   disabled={true}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -87,13 +151,21 @@ exports[`Button Button - Link - Primary - With Icon 1`] = `
   onClick={undefined}
 >
   <div
-    className="svg-icon-wrapper plus    bottom"
-    onClick={undefined}
+    className="sdc-button-link-icon"
   >
-    <svg />
-    
+    <div
+      className="svg-icon-wrapper  sdc-button-icon    bottom"
+      onClick={undefined}
+    >
+      <svg />
+      
+    </div>
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
   </div>
-  Click Me
 </button>
 `;
 
@@ -103,7 +175,15 @@ exports[`Button Button - Link - Primary 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -113,7 +193,15 @@ exports[`Button Button - Outline - Gray 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -123,7 +211,15 @@ exports[`Button Button - Outline - Negative 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -133,7 +229,15 @@ exports[`Button Button - Outline - Positive 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;
 
@@ -143,6 +247,14 @@ exports[`Button Button - Outline - Primary 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  Click Me
+  <div
+    className={null}
+  >
+    <div
+      className="sdc-button-label"
+    >
+      Click Me
+    </div>
+  </div>
 </button>
 `;

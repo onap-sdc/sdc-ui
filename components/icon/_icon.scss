@@ -1,3 +1,14 @@
+@mixin color-icon($primary-color, $secondary-color) {
+    color: $primary-color;
+    fill: $primary-color;
+
+    &:not([disabled]):hover, &:active, &:focus {
+        &.clickable {
+            color: $secondary-color;
+            fill: $secondary-color;
+        }
+    }
+}
 
 .svg-icon-wrapper {
     display: inline-flex;
@@ -27,8 +38,196 @@
             margin-right: 5px;
         }
     }
-    .svg-icon {
-        width: 20px;
-        height: 20px;
+
+    &.__warning {
+        @include color-icon($yellow, $gold);
     }
+
+    &.__primary {
+        @include color-icon($blue, $dark-blue);
+    }
+
+    &.__secondary {
+        @include color-icon($gray, $dark-gray);
+    }
+
+    &.__positive {
+        @include color-icon($green, $lima);
+    }
+
+    &.__negative {
+        @include color-icon($red, $torch-red);
+    }
+}
+
+
+.svg-icon {
+    width: 20px;
+    height: 20px;
+
+    &.__angleDoubleLeft {
+        width: 14px;
+        height: 14px;
+    }
+    &.__angleDoubleRight {
+        width: 14px;
+        height: 14px;
+    }
+    &.__angleLeft {
+        width: 14px;
+        height: 14px;
+    }
+    &.__angleRight {
+        width: 14px;
+        height: 14px;
+    }
+    &.__artifacts {
+        width: 13px;
+        height: 17px;
+    }
+    &.__back {
+        width: 25px;
+        height: 25px;
+    }
+    &.__base {
+        //
+    }
+    &.__calendar {
+        //
+    }
+    &.__caretDown {
+    }
+    &.__check {
+    }
+    &.__checkCircle {
+        width: 16px;
+        height: 16px;
+    }
+    &.__chevronDown{
+        height: 7px;
+        width: 10px;
+    }
+    &.__chevronUp {
+        height: 7px;
+        width: 11px;
+    }
+    &.__close {
+        height: 10px;
+        width: 10px;
+    }
+    &.__download {
+        width: 16px;
+        height: 14px;
+    }
+    &.__env {
+        height: 15px;
+        width: 16px;
+    }
+    &.__error {
+        width: 14px;
+        height: 14px;
+    }
+    &.__errorCircle {
+        width: 16px;
+        height: 16px;
+    }
+    &.__exclamationTriangleFull {
+        height: 13px;
+        width: 15px;
+    }
+    &.__exclamationTriangleLine {
+        height: 13px;
+        width: 15px;
+    }
+    &.__filter {
+        //
+    }
+    &.__locked {
+        width: 11px;
+    }
+    &.__module {
+        //
+    }
+    &.__nestedHeat {
+        height: 14px;
+        width: 16px;
+    }
+    &.__network {
+        width: 12px;
+        height: 12px;
+    }
+    &.__others {
+        width: 12px;
+        height: 12px;
+    }
+    &.__pencil {
+        width: 15px;
+        height: 15px;
+    }
+    &.__plus {
+        width: 9px;
+        height: 9px;
+    }
+    &.__plusCircle {
+        height: 16px;
+        width: 16px;
+    }
+    &.__proceedToOverview {
+        height: 15px;
+        width: 18px;
+    }
+    &.__search {
+        //
+    }
+    &.__sliders {
+    }
+    &.__trashO {
+        height: 18px;
+        width: 18px;
+    }
+    &.__unlocked {
+        width: 11px;
+    }
+    &.__upload {
+        width: 16px;
+        height: 14px;
+    }
+    &.__vendor {
+        width: 53px;
+        height: 47px;
+    }
+    &.__versionControllerLockClosed {
+        width: 21px;
+        height: 23px;
+    }
+    &.__versionControllerLockOpen {
+        width: 24px;
+        height: 28px;
+    }
+    &.__versionControllerRevert {
+        //
+    }
+    &.__versionControllerSave {
+        //
+    }
+    &.__versionControllerSubmit {
+        //
+    }
+    &.__vlm {
+        width: 53px;
+        height: 47px;
+    }
+    &.__vsp {
+        width: 53px;
+        height: 47px;
+    }
+    &.__zip {
+        width: 23px;
+        height: 28px;
+    }
+
+
+
+
+
 }
