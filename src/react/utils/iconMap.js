@@ -27,6 +27,7 @@ import others from '-!svg-react-loader!../../../assets/icons/others.svg';
 import pencil from '-!svg-react-loader!../../../assets/icons/pencil.svg';
 import plus from '-!svg-react-loader!../../../assets/icons/plus.svg';
 import plusCircle from '-!svg-react-loader!../../../assets/icons/plusCircle.svg';
+import plusThin from '-!svg-react-loader!../../../assets/icons/plusThin.svg';
 import proceedToOverview from '-!svg-react-loader!../../../assets/icons/proceedToOverview.svg';
 import search from '-!svg-react-loader!../../../assets/icons/search.svg';
 import sliders from '-!svg-react-loader!../../../assets/icons/sliders.svg';
@@ -73,6 +74,7 @@ export default {
 	pencil,
 	plus,
 	plusCircle,
+	plusThin,
 	proceedToOverview,
 	search,
 	sliders,
