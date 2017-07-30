@@ -1,7 +1,6 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 import SVGIcon from '../src/react/SVGIcon.js';
-import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
 const iconLabelPositions = [
 	'', 'bottom', 'top', 'left', 'right'
@@ -16,22 +15,37 @@ const iconColors =[
 	'warning'
 ]
 
-const disabled = ['false', 'true'];
+const disabledStates = ['false', 'true'];
 
-function buildExamples(iconName, iconLabel, labelPosition, color, disabled) {
+function buildExamples({iconName, iconLabel, labelPosition, color, disabled}) {
 	return {
 		Example: {
-			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition}
-				  color={color} name={iconName} disabled={disabled === 'true'}/>
+			jsx: <SVGIcon
+						label={iconLabel}
+						labelPosition={labelPosition}
+						color={color}
+						name={iconName}
+						disabled={disabled === 'true'} />
 		}
 	};
 }
 
-const SelectOption = ({option, selected}) => {
+const SelectOption = ({option}) => {
 	return (
-		<option key={option} selected={selected} value={option}>{option}</option>
+		<option key={option} value={option}>{option}</option>
 	);
 };
+
+const DropdownMenu = ({title, value, onChange, options}) => (
+	<div className='option-container'>
+		<label>{title}</label>
+		<select value={value} onChange={onChange}>
+			{options.map(option =>
+				<SelectOption key={option} option={option} />
+			)}
+		</select>
+	</div>
+);
 
 const IconTable = ({onClick}) => (
 	<div className='icons-table'>
@@ -41,7 +55,7 @@ const IconTable = ({onClick}) => (
 					onClick={() => onClick(icon)}
 					label={icon}
 					iconClassName='storybook-small'
-					name={icon}/>
+					name={icon} />
 			</div>
 		))}
 	</div>
@@ -59,40 +73,37 @@ class Icons extends React.Component {
 	}
 
 	render() {
+		let {iconName, iconLabel, labelPosition, color, disabled} = this.state;
 		return (
 			<div className='icons-screen'>
 				<h1>Icons</h1>
 				<div className='icons-option-selector'>
-					<div className='option-container'>
-						<label>Icon name:</label>
-						<select onChange={e => this.setState({iconName: e.target.value})}>{ICON_NAMES.map(option =>
-							<SelectOption option={option} selected={this.state.iconName === option}/>)}</select>
-					</div>
+					<DropdownMenu
+						title='Icon name'
+						value={iconName}
+						onChange={e => this.setState({iconName: e.target.value})}
+						options={ICON_NAMES} />
 					<div className='option-container'>
 						<label>Icon label</label>
-						<input value={this.state.iconLabel} onChange={e => this.setState({iconLabel: e.target.value})}/>
+						<input value={iconLabel} onChange={e => this.setState({iconLabel: e.target.value})}/>
 					</div>
-					<div className='option-container'>
-						<label>Label position</label>
-						<select
-							onChange={e => this.setState({labelPosition: e.target.value})}>{iconLabelPositions.map(option =>
-							<SelectOption option={option}/>)}</select>
-					</div>
-					<div className='option-container'>
-						<label>Color</label>
-						<select
-							onChange={e => this.setState({color: e.target.value})}>{iconColors.map(option =>
-							<SelectOption option={option}/>)}</select>
-					</div>
-					<div className='option-container'>
-						<label>Disabled</label>
-						<select
-							onChange={e => this.setState({disabled: e.target.value})}>{disabled.map(option =>
-							<SelectOption option={option}/>)}</select>
-					</div>
+					<DropdownMenu
+						title='Label position'
+						value={labelPosition}
+						onChange={e => this.setState({labelPosition: e.target.value})}
+						options={iconLabelPositions} />
+					<DropdownMenu
+						title='Color'
+						value={color}
+						onChange={e => this.setState({color: e.target.value})}
+						options={iconColors} />
+					<DropdownMenu
+						title='Disabled'
+						value={disabled}
+						onChange={e => this.setState({disabled: e.target.value})}
+						options={disabledStates} />
 				</div>
-				<Examples
-					examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition, this.state.color, this.state.disabled)}/>
+				<Examples examples={buildExamples({iconName, iconLabel, labelPosition, color, disabled})} />
 				<IconTable onClick={icon => this.setState({iconName: icon})} />
 			</div>
 		);
