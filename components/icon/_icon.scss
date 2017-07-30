@@ -82,8 +82,8 @@
         height: 14px;
     }
     &.__artifacts {
-        width: 13px;
-        height: 17px;
+        width: 16px;
+        height: 20px;
     }
     &.__back {
         width: 25px;
@@ -104,24 +104,24 @@
         height: 16px;
     }
     &.__chevronDown{
-        height: 7px;
         width: 10px;
+        height: 7px;
     }
     &.__chevronUp {
-        height: 7px;
         width: 11px;
+        height: 7px;
     }
     &.__close {
-        height: 10px;
         width: 10px;
+        height: 10px;
     }
     &.__download {
-        width: 16px;
-        height: 14px;
+        width: 15px;
+        height: 11px;
     }
     &.__env {
-        height: 15px;
-        width: 16px;
+        width: 15px;
+        height: 14px;
     }
     &.__error {
         width: 14px;
@@ -132,12 +132,12 @@
         height: 16px;
     }
     &.__exclamationTriangleFull {
-        height: 13px;
         width: 15px;
+        height: 13px;
     }
     &.__exclamationTriangleLine {
-        height: 13px;
         width: 15px;
+        height: 13px;
     }
     &.__filter {
         //
@@ -149,12 +149,12 @@
         //
     }
     &.__nestedHeat {
-        height: 14px;
-        width: 16px;
+        width: 15px;
+        height: 13px;
     }
     &.__network {
-        width: 12px;
-        height: 12px;
+        width: 13px;
+        height: 13px;
     }
     &.__others {
         width: 12px;
@@ -169,12 +169,16 @@
         height: 9px;
     }
     &.__plusCircle {
-        height: 16px;
         width: 16px;
+        height: 16px;
+    }
+    &.__plusThin {
+        width: 9px;
+        height: 9px;
     }
     &.__proceedToOverview {
-        height: 15px;
-        width: 18px;
+        width: 24px;
+        height: 20px;
     }
     &.__search {
         //
@@ -182,15 +186,15 @@
     &.__sliders {
     }
     &.__trashO {
-        height: 18px;
-        width: 18px;
+        width: 15px;
+        height: 16px;
     }
     &.__unlocked {
         width: 11px;
     }
     &.__upload {
-        width: 16px;
-        height: 14px;
+        width: 15px;
+        height: 11px;
     }
     &.__vendor {
         width: 53px;
@@ -222,12 +226,7 @@
         height: 47px;
     }
     &.__zip {
-        width: 23px;
-        height: 28px;
+        width: 29px;
+        height: 23px;
     }
-
-
-
-
-
 }
