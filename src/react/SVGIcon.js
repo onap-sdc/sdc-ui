@@ -26,7 +26,7 @@ SVGIcon.propTypes = {
 	iconClassName: PropTypes.string,
 	labelClassName: PropTypes.string,
 	color: PropTypes.string,
-	disabled: PropTypes.boolean
+	disabled: PropTypes.bool
 };
 
 SVGIcon.defaultProps = {
