@@ -1,5 +1,5 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
-import { CheckboxComponent } from "./../../src/angular2/checkbox.component";
+import { CheckboxComponent } from "./../../src/angular/checkbox.component";
 
 export default experimentOn('Checkbox')
   .case('Normal Checkbox', {
