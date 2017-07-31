@@ -60,7 +60,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
 
   .sdc-tile-header {
     .sdc-tile-header-type {
-      font-size: $heading-font-5;
+      font-size: $body-font-1;
       text-transform: uppercase;
       min-height: 22px;
       &.purple {
@@ -123,7 +123,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
       }
 
       .sdc-tile-content-info-item-name {
-        @extend .heading-5-semibold;
+        @extend .body-1-semibold;
         color: $text-black;
         @include ellipsis;
         text-align: center;
@@ -139,7 +139,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
           justify-content: space-between;
           line-height: 0.8;
           .sdc-tile-content-info-version-info-text {
-            @extend .body-2;
+            @extend .body-3;
           }
       }
       .vendor-count-button {
