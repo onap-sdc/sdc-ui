@@ -14,26 +14,34 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
     &.bottom {
         flex-direction: column;
         .svg-icon-label {
             margin-bottom: 5px;
         }
     }
+
     &.right {
         float: none;
         .svg-icon-label {
             margin-left: 5px;
         }
     }
+
     &.top {
-        flex-direction: column-reverse;;
+        flex-direction: column-reverse;
         .svg-icon-label {
             margin-top: 5px;
         }
     }
+    
     &.left {
-        flex-direction: row-reverse;;
+        flex-direction: row-reverse;
         .svg-icon-label {
             margin-right: 5px;
         }

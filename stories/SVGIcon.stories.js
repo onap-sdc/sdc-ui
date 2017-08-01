@@ -1,5 +1,6 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
+import DropdownMenu from './utils/components/DropdownMenu.js';
 import SVGIcon from '../src/react/SVGIcon.js';
 
 const iconLabelPositions = [
@@ -29,23 +30,6 @@ function buildExamples({iconName, iconLabel, labelPosition, color, disabled}) {
 		}
 	};
 }
-
-const SelectOption = ({option}) => {
-	return (
-		<option key={option} value={option}>{option}</option>
-	);
-};
-
-const DropdownMenu = ({title, value, onChange, options}) => (
-	<div className='option-container'>
-		<label>{title}</label>
-		<select value={value} onChange={onChange}>
-			{options.map(option =>
-				<SelectOption key={option} option={option} />
-			)}
-		</select>
-	</div>
-);
 
 const IconTable = ({onClick}) => (
 	<div className='icons-table'>
