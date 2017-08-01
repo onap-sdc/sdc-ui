@@ -14,13 +14,15 @@ function stringRepresentationForJsx(item) {
 		return item.toString();
 	}
 	else if (typeof item === 'function') {
-		return item.toString();
+		return item.toString().replace(/\s{2,}/g, ' ');
 	} else if (typeof item === 'object') {
 		let repr = '{';
 		for (let key in item) {
-			repr += `${key}: ${stringRepresentationForJsx(item[key])}, `;
+			if (item.hasOwnProperty(key)) {
+				repr += `${key}: ${stringRepresentationForJsx(item[key])}, `;
+			}
 		}
-		repr = repr.slice(0, repr.length - 2);
+		repr = repr.slice(0, -2);
 		repr += '}';
 		return repr;
 	}
@@ -33,7 +35,7 @@ function parseProps(jsx) {
 		if (prop !== 'children' && value) {
 			let repr = stringRepresentationForJsx(value);
 			let isString = repr.startsWith("'");
-			result += '\n' + INDENT + `${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
+			result += `\n${INDENT}${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
 		}
 	}
 	return result;

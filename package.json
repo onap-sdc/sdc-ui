@@ -5,16 +5,17 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "test-dev": "jest --watch",
-    "test-coverage": "jest --coverage && start coverage/lcov-report/index.html",
+    "test": "npm run build-icons && jest",
+    "test-dev": "npm run build-icons && jest --watch",
+    "test-coverage": "npm run build-icons && jest --coverage && start coverage/lcov-report/index.html",
     "build-demo": "node utils/build-demo.js",
-    "build-common": "node utils/create-icon-map.js && node-sass --include-path scss scss/style.scss css/style.css",
+    "build-icons": "node utils/create-icon-map.js",
+    "build-common": "npm run build-icons && node-sass --include-path scss scss/style.scss css/style.css",
     "build-react": "babel src/react -d lib/react && babel src/index.js -o lib/index.js",
     "build-angular": "ngc -p tsconfig.json && ncp src/index.d.ts lib/index.d.ts",
     "build": "npm run build-common && npm run build-react && npm run build-angular",
-    "storybook": "node utils/create-icon-map.js && start-storybook -p 6006",
-    "build-storybook": "node utils/create-icon-map.js && build-storybook -c .storybook -o .out",
+    "storybook": "npm run build-icons && start-storybook -p 6006",
+    "build-storybook": "npm run build-icons && build-storybook -c .storybook -o .out",
     "lab": "ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature"
   },
   "repository": {
