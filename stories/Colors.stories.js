@@ -46,22 +46,18 @@ class Colors extends Component {
 		return (
 			<div>
 				<h1>Colors Palette</h1>
-				<p>
 					<h3>Primary Colors</h3>
 					<div className='colors-table'>
 						{
-							Object.keys(primaryColors).map(colorName => <Color palette={primaryColors} colorName={colorName}/>)
+							Object.keys(primaryColors).map(colorName => <Color key={colorName} palette={primaryColors} colorName={colorName}/>)
 						}
 					</div>
-				</p>
-				<p>
 					<h3>Secondary Colors</h3>
 					<div className='colors-table'>
 						{
-							Object.keys(secondaryColors).map(colorName => <Color palette={secondaryColors} colorName={colorName}/>)
+							Object.keys(secondaryColors).map(colorName => <Color key={colorName} palette={secondaryColors} colorName={colorName}/>)
 						}
 					</div>
-				</p>
 			</div>
 		);
 	}
