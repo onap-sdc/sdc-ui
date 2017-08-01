@@ -6,8 +6,8 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "test": "node utils/create-icon-map.js && jest",
-    "test-dev": "jest --watch",
-    "test-coverage": "jest --coverage && start coverage/lcov-report/index.html",
+    "test-dev": "node utils/create-icon-map.js && jest --watch",
+    "test-coverage": "node utils/create-icon-map.js && jest --coverage && start coverage/lcov-report/index.html",
     "build-demo": "node utils/build-demo.js",
     "build-common": "node utils/create-icon-map.js && node-sass --include-path scss scss/style.scss css/style.css",
     "build-react": "babel src/react -d lib/react && babel src/index.js -o lib/index.js",
