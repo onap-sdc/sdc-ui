@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "jest",
+    "test": "node utils/create-icon-map.js && jest",
     "test-dev": "jest --watch",
     "test-coverage": "jest --coverage && start coverage/lcov-report/index.html",
     "build-demo": "node utils/build-demo.js",
