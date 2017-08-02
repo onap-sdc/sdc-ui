@@ -1,12 +1,24 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
-import Tile from '../src/react/Tile.js';
+import Tile, {Tile2} from '../src/react/Tile.js';
 import HTMLVspTile from '../components/tile/vsp-tile.html';
 import HTMLVlmTile from '../components/tile/vlm-tile.html';
 import HTMLVendorTile from '../components/tile/vendor-tile.html';
 
 let examples = {
-	Vsp: {
+	Tile2: {
+		jsx:<Tile
+					headerText='VSP'
+					contentIconName='vsp'
+					content={[
+						{jsx: 'vlm', fontColor: 'gray', fontSize: 'small'},
+						{jsx: 'demo vsp', fontSize: 'large'},
+						{jsx: 'V 1.1'}
+					]}
+					footerText='Locked'
+					footerIconName='locked' />
+	},
+	/*Vsp: {
 		jsx:<Tile headerText='VSP'
 			contentIconName='vsp'
 			vendorName='vlm'
@@ -39,7 +51,7 @@ let examples = {
 			onFooterIconClick={()=>{}}
 			footerIconName='plus'/>,
 		html: HTMLVendorTile
-	}
+	}*/
 };
 
 const Tiles = () => (

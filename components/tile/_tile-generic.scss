@@ -6,7 +6,58 @@ $sdc-tile-catalog-footer-icon-height: 15px;
 $sdc-tile-catalog-content-icon-width: 60px;
 $sdc-tile-catalog-content-icon-height: 60px;
 
-.sdc-tile, .sdc-tile-catalog {
+.sdc-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $sdc-tile-catalog-width;
+  height: $sdc-tile-catalog-height;
+  border: 1px solid $tlv-light-gray;
+  border-radius: 2px;
+  padding: 11px;
+  background: $white;
+  color: $text-black;
+  font-size: $body-font-3;
+  @include base-font-regular();
+  @include box-shadow(0 1px 4px 0 rgba(24, 24, 25, 0.06));
+
+  &:hover {
+    @include box-shadow(0.3px 5px 12.8px 2.3px rgba(24, 24, 25, 0.25));
+  }
+
+  .font-purple { color: $purple; } // amethyst
+  .font-gray { color: $gray; }
+  .font-light-gray { color: $light-gray; }
+  .font-large { font-size: $body-font-1; }
+  &.centered { text-align: center; }
+
+  .tile-header { font-size: $body-font-1; }
+  .tile-content {
+    .tile-content-icon {
+      width: 100%;
+      text-align: center;
+      .svg-icon-wrapper {
+        height: 60px;
+        width: 40px;
+      }
+    }
+    .tile-content-info {
+      .tile-content-text {
+        
+      }
+    }
+  }
+  .tile-footer {
+    hr {
+      border: none;
+      border-top: 1px solid $tlv-light-gray;
+    }
+    .tile-footer-text { color: $dark-gray; }
+    .tile-footer-icon { float: right; }
+  }
+}
+
+.sdc-tile-catalog {
   box-sizing: border-box;
   background-color: $white;
   display: flex;
