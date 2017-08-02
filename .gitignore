@@ -15,6 +15,7 @@ lib
 css
 demo/gen
 .out
+src/react/utils/iconMap.js
 
 #coverage files
 coverage

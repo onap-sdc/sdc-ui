@@ -1,8 +1,8 @@
 $sdc-tile-catalog-width: 204px;
 $sdc-tile-catalog-height: 200px;
 $sdc-tile-catalog-width-less-padding: $sdc-tile-catalog-width - 24px;
-$sdc-tile-catalog-footer-icon-width: 16px;
-$sdc-tile-catalog-footer-icon-height: 20px;
+$sdc-tile-catalog-footer-icon-width: 11px;
+$sdc-tile-catalog-footer-icon-height: 15px;
 $sdc-tile-catalog-content-icon-width: 60px;
 $sdc-tile-catalog-content-icon-height: 60px;
 
@@ -11,9 +11,10 @@ $sdc-tile-catalog-content-icon-height: 60px;
   background-color: $white;
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 5px 10px;
+  padding: 8px 10px 3px 10px;
   cursor: pointer;
   border: 1px solid $tlv-light-gray;
+  border-radius: 2px;
   @include box-shadow(0.5px 0.8px 4px 0 rgba(24, 24, 25, 0.05));
 
   &:active {
@@ -61,6 +62,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
     .sdc-tile-header-type {
       font-size: $heading-font-5;
       text-transform: uppercase;
+      min-height: 22px;
       &.purple {
         color: $purple;
       }
@@ -77,8 +79,21 @@ $sdc-tile-catalog-content-icon-height: 60px;
       display: flex;
       flex-direction: column;
       width: 100%;
-      padding-top: 20px;
-
+      padding-top: 13px;
+      .vsp.blue svg {
+        fill: $light-blue;
+        height: 40px;
+      }
+      .vlm.purple svg {
+        width: 45px;
+        height: 53px;
+        fill: $purple;
+      }
+      .vendor svg {
+        width: 53px;
+        height: 47px;
+        fill: $dark-gray;
+      }
       svg {
         width: $sdc-tile-catalog-content-icon-width;
         height: $sdc-tile-catalog-content-icon-height;
@@ -86,7 +101,7 @@ $sdc-tile-catalog-content-icon-height: 60px;
     }
 
     .sdc-tile-content-info {
-      padding-bottom: 4px;
+      padding-bottom: 12px;
       width: $sdc-tile-catalog-width-less-padding;
       @include ellipsis(auto,inline-block,178px);
 
@@ -101,16 +116,28 @@ $sdc-tile-catalog-content-icon-height: 60px;
         @extend .body-3-semibold;
         color: $gray;
         line-height: 12px;
+        text-transform: lowercase;
+        &:first-letter {
+          text-transform: capitalize;
+        }
       }
 
       .sdc-tile-content-info-item-name {
         @extend .heading-5-semibold;
-        color: $black;
+        color: $text-black;
+        @include ellipsis;
+        text-align: center;
+        text-transform: lowercase;
+        letter-spacing: 0.01em;
+        &:first-letter {
+          text-transform: capitalize;
+        }
       }
 
       .sdc-tile-content-info-version-info{
           display: flex;
           justify-content: space-between;
+          line-height: 0.8;
           .sdc-tile-content-info-version-info-text {
             @extend .body-2;
           }
@@ -119,9 +146,10 @@ $sdc-tile-catalog-content-icon-height: 60px;
         width: initial;
         min-width: 71px;
         height: 20px;
-        font-size: $icon-font-size;
-        margin-bottom: 10px;
+        font-size: $body-font-3;
         margin-top: 5px;
+        border-color: $dark-gray;
+        color: $dark-gray;
       }
     }
   }
@@ -137,6 +165,8 @@ $sdc-tile-catalog-content-icon-height: 60px;
         flex: 1;
         @extend .body-2;
         @include ellipsis(auto,inline-block,($sdc-tile-catalog-width-less-padding - $sdc-tile-catalog-footer-icon-width));
+        color: $dark-gray;
+      text-transform: capitalize;
     }
 
     .sdc-tile-footer-icon {
@@ -147,6 +177,9 @@ $sdc-tile-catalog-content-icon-height: 60px;
           width: $sdc-tile-catalog-footer-icon-width;
           height: $sdc-tile-catalog-footer-icon-height;
           fill: $gray;
+          &#unlocked_icon {
+            height: $sdc-tile-catalog-footer-icon-height + 1;
+          }
         }
     }
 
@@ -161,11 +194,11 @@ $sdc-tile-catalog-content-icon-height: 60px;
     justify-content: center;
 
     .sdc-vendor-tile-footer-icon {
-        margin-top: 5px;
         margin-bottom: 5px;
         flex-shrink: 1;
         overflow: hidden;
-        font-size: $icon-font-size;
+        @extend .body-2-semibold;
+        color: $blue;
         svg {
           width: 10px;
           height: 10px;

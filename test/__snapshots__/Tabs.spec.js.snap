@@ -22,7 +22,7 @@ exports[`Tabs Tabs - basic rendering 1`] = `
           tab 1
         </li>
         <li
-          className="sdc-tab "
+          className="sdc-tab  "
           data-test-id="2"
           disabled={undefined}
           onClick={[Function]}
@@ -31,7 +31,7 @@ exports[`Tabs Tabs - basic rendering 1`] = `
           tab 2
         </li>
         <li
-          className="sdc-tab "
+          className="sdc-tab  "
           data-test-id="3"
           disabled={undefined}
           onClick={[Function]}
