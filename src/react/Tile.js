@@ -93,8 +93,8 @@ Tile.propTypes = {
 	vendorTile: PropTypes.bool,
 	className: PropTypes.string,
 	vendorButtonText: PropTypes.string,
-	onVendorButtonClick: PropTypes.string,
-	onFooterIconClick: PropTypes.string
+	onVendorButtonClick: PropTypes.func,
+	onFooterIconClick: PropTypes.func
 };
 
 export default Tile;
