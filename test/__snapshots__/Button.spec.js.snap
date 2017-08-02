@@ -154,8 +154,7 @@ exports[`Button Button - Link - Primary - With Icon 1`] = `
     className="sdc-button-link-icon"
   >
     <div
-      className="svg-icon-wrapper  sdc-button-icon   bottom"
-      disabled={undefined}
+      className="svg-icon-wrapper  sdc-button-icon    bottom"
       onClick={undefined}
     >
       <svg />
