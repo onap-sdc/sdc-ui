@@ -1,4 +1,4 @@
-const copy = require('copy');
+const ncp = require('ncp').ncp;
 const fs = require('fs');
 const path = require('path')
 const svgFolder = './assets/icons';
@@ -6,13 +6,17 @@ const svgOutputFile = './scss/common/_icons.scss';
 
 var copyFiles = function() {
     // Copy generated style.css to demo/gen folder
-    copy('css/style.css', 'demo/gen', function(err, file) {
-        console.log('Copied to: ' + file[0].dest);
+    ncp('lib/css/style.css', 'demo/gen', function (err) {
+        if (err) {
+            return console.error(err);
+        }
     });
 
     // Copy assets folder to demo/gen folder
-    copy('assets/**/*.*', 'demo/gen/assets', function(err, file) {
-        //console.log('Copied to: ' + file[0].dest);
+    ncp('assets', 'demo/gen/assets', function (err) {
+        if (err) {
+            return console.error(err);
+        }
     });
 };
 
@@ -32,7 +36,7 @@ var copyFiles = function() {
 // var writeFile = function(filePath){
 //     const text = `.sdc-icon {
 //     display: inline-block;
-//     text-rendering: auto; 
+//     text-rendering: auto;
 //     -webkit-font-smoothing: antialiased;
 //     -moz-osx-font-smoothing: grayscale;
 //     width: 16px;
