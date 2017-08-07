@@ -47,6 +47,12 @@
   @include base-font-semibold();
   font-size: $body-font-1;
 
+  .sdc-button-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &:not(.sdc-button-link) {
     width: 94px;
     height: 30px;
@@ -166,10 +172,6 @@
     &.sdc-button__with-icon {
       .svg-icon-wrapper {
         margin-right: 5px;
-      }
-      .svg-icon {
-        width: 10px;
-        height: 10px;
       }
     }
 
