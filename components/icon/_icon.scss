@@ -238,3 +238,8 @@
         height: 23px;
     }
 }
+
+.svg-icon-missing {
+    @extend .body-2;
+    color: $red;
+}
