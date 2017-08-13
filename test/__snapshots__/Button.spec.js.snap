@@ -7,13 +7,9 @@ exports[`Button Button - Default - Gray 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -25,13 +21,9 @@ exports[`Button Button - Default - Negative 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -43,13 +35,9 @@ exports[`Button Button - Default - Positive 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -61,13 +49,9 @@ exports[`Button Button - Default - Primary - Disabled 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -79,13 +63,9 @@ exports[`Button Button - Default - Primary 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -97,13 +77,9 @@ exports[`Button Button - Default - Warning 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -115,13 +91,9 @@ exports[`Button Button - Default - White 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -133,13 +105,9 @@ exports[`Button Button - Link - Primary - Disabled 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -151,21 +119,16 @@ exports[`Button Button - Link - Primary - With Icon 1`] = `
   onClick={undefined}
 >
   <div
-    className="sdc-button-link-icon"
+    className="svg-icon-wrapper  sdc-button-icon   right"
+    disabled={undefined}
+    onClick={undefined}
   >
-    <div
-      className="svg-icon-wrapper  sdc-button-icon   bottom"
-      disabled={undefined}
-      onClick={undefined}
-    >
-      <svg />
-      
-    </div>
-    <div
-      className="sdc-button-label"
+    <svg />
+    <span
+      className="svg-icon-label sdc-button-label"
     >
       Click Me
-    </div>
+    </span>
   </div>
 </button>
 `;
@@ -177,13 +140,9 @@ exports[`Button Button - Link - Primary 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -195,13 +154,9 @@ exports[`Button Button - Outline - Gray 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -213,13 +168,9 @@ exports[`Button Button - Outline - Negative 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -231,13 +182,9 @@ exports[`Button Button - Outline - Positive 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;
@@ -249,13 +196,9 @@ exports[`Button Button - Outline - Primary 1`] = `
   onClick={undefined}
 >
   <div
-    className={null}
+    className="sdc-button-label"
   >
-    <div
-      className="sdc-button-label"
-    >
-      Click Me
-    </div>
+    Click Me
   </div>
 </button>
 `;

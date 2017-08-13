@@ -1,261 +1,170 @@
-$sdc-tile-catalog-width: 204px;
-$sdc-tile-catalog-height: 200px;
-$sdc-tile-catalog-width-less-padding: $sdc-tile-catalog-width - 24px;
-$sdc-tile-catalog-footer-icon-width: 11px;
-$sdc-tile-catalog-footer-icon-height: 15px;
-$sdc-tile-catalog-content-icon-width: 60px;
-$sdc-tile-catalog-content-icon-height: 60px;
+.sdc-tile, .sdc-tile-catalog {
+	$tile-full-width: 204px;
+	$tile-full-height: 200px;
+	$tile-padding: 11px;
 
-.sdc-tile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: $sdc-tile-catalog-width;
-  height: $sdc-tile-catalog-height;
-  border: 1px solid $tlv-light-gray;
-  border-radius: 2px;
-  padding: 11px;
-  background: $white;
-  color: $text-black;
-  font-size: $body-font-3;
-  @include base-font-regular();
-  @include box-shadow(0 1px 4px 0 rgba(24, 24, 25, 0.06));
+	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
+	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
 
-  &:hover {
-    @include box-shadow(0.3px 5px 12.8px 2.3px rgba(24, 24, 25, 0.25));
-  }
+	$header-height: 10px;
+	$footer-height: 31px;
+	$content-height: $tile-height-less-padding - $header-height - ($footer-height - 11px);
 
-  .font-purple { color: $purple; } // amethyst
-  .font-gray { color: $gray; }
-  .font-light-gray { color: $light-gray; }
-  .font-large { font-size: $body-font-1; }
-  &.centered { text-align: center; }
+	width: $tile-full-width;
+	height: $tile-full-height;
+	padding: $tile-padding;
+	border: 1px solid $tlv-light-gray;
+	border-radius: 2px;
 
-  .tile-header { font-size: $body-font-1; }
-  .tile-content {
-    .tile-content-icon {
-      width: 100%;
-      text-align: center;
-      .svg-icon-wrapper {
-        height: 60px;
-        width: 40px;
-      }
-    }
-    .tile-content-info {
-      .tile-content-text {
-        
-      }
-    }
-  }
-  .tile-footer {
-    hr {
-      border: none;
-      border-top: 1px solid $tlv-light-gray;
-    }
-    .tile-footer-text { color: $dark-gray; }
-    .tile-footer-icon { float: right; }
-  }
-}
+	position: relative;
+	@include box-sizing;
 
-.sdc-tile-catalog {
-  box-sizing: border-box;
-  background-color: $white;
-  display: flex;
-  flex-direction: column;
-  padding: 8px 10px 3px 10px;
-  cursor: pointer;
-  border: 1px solid $tlv-light-gray;
-  border-radius: 2px;
-  @include box-shadow(0.5px 0.8px 4px 0 rgba(24, 24, 25, 0.05));
+	cursor: pointer;
+	user-select: none;
 
-  &:active {
-	  border: 1px solid $light-blue;
-  }
+	background: $white;
+	color: $text-black;
+	fill: $dark-gray;
+	@extend .body-3;
+	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
 
-  &:hover {
-    box-shadow: 0.3px 5px 12.8px 1.3px rgba(24, 24, 25, 0.15);
-    border: 1px solid $light-gray;
-  }
+	&:hover {
+		border: 1px solid $light-gray;
+		@include box-shadow(0.3px 5px 12.8px 2.3px rgba($text-black, 0.25));
+	}
 
-  .sdc-tile-header {
-    position: relative;
-    flex-shrink: 0;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
+	.blue {
+		color: $light-blue; //#00aeef;
+		fill: $light-blue;
+	}
 
-  .sdc-tile-content {
-    position: relative;
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    overflow: auto;
-    justify-content: space-between;
-  }
+	.purple {
+		color: $purple;
+		fill: $purple;
+	}
 
-  .sdc-tile-footer {
-    position: relative;
-    flex-shrink: 0;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
+	.centered {
+		width: 100%;
+		text-align: center;
+	}
 
-}
+	.sdc-tile-header {
+		font-size: $body-font-1;
+		line-height: $header-height;
+		height: $header-height;
+		@extend .text-uppercase;
+		@include ellipsis($display: block);
+	}
 
-.sdc-tile-catalog {
-  width: $sdc-tile-catalog-width;
-  height: $sdc-tile-catalog-height;
+	.sdc-tile-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: $content-height - 6px;
 
-  .sdc-tile-header {
-    .sdc-tile-header-type {
-      font-size: $heading-font-5;
-      text-transform: uppercase;
-      min-height: 22px;
-      &.purple {
-        color: $purple;
-      }
-      &.blue {
-        color: $blue;
-      }
-    }
-  }
+		.sdc-tile-content-icon {
+			margin-top: 27px;
 
-  .sdc-tile-content {
+			svg {
+				width: 50px;
+				height: 50px;
 
-    .sdc-tile-content-icon {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding-top: 13px;
-      .vsp.blue svg {
-        fill: $light-blue;
-        height: 40px;
-      }
-      .vlm.purple svg {
-        width: 45px;
-        height: 53px;
-        fill: $purple;
-      }
-      .vendor svg {
-        width: 53px;
-        height: 47px;
-        fill: $dark-gray;
-      }
-      svg {
-        width: $sdc-tile-catalog-content-icon-width;
-        height: $sdc-tile-catalog-content-icon-height;
-      }
-    }
+				&.__vsp {
+					width: 60px;
+					height: 40px;
+				}
+				&.__vlm {
+					width: 45px;
+					height: 53px;
+				}
+				&.__vendor {
+					width: 53px;
+					height: 47px;
+				}
+			}
+		}
 
-    .sdc-tile-content-info {
-      padding-bottom: 12px;
-      width: $sdc-tile-catalog-width-less-padding;
-      @include ellipsis(auto,inline-block,178px);
+		.sdc-tile-content-info {
+			display: flex;
+			flex-direction: column;
 
-      &.vendor-tile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
+			.sdc-tile-info-line {
+				line-height: 1.5;
+				@extend .text-capitalize;
+				@include ellipsis;
 
-      .sdc-tile-content-info-vendor-name {
-        @extend .body-3-semibold;
-        color: $gray;
-        line-height: 12px;
-        text-transform: lowercase;
-        &:first-letter {
-          text-transform: capitalize;
-        }
-      }
+				&.supertitle {
+					line-height: 1.2;
+					color: $gray;
+				}
+				&.title {
+					line-height: 1.8;
+					color: $text-black;
+					@extend .body-1-semibold;
+				}
+				&.subtitle {
+					color: $dark-gray;
+				}
+				button {
+					height: 1.67em;
+					width: initial;
+					margin-bottom: 5px;
+					padding: 0 8px;
+					font-size: inherit;
+					&:disabled {
+						opacity: 0.7;
+						.sdc-button-label { opacity: 1; }
+					}
+				}
+			}
+		}
+	}
 
-      .sdc-tile-content-info-item-name {
-        @extend .heading-5-semibold;
-        color: $text-black;
-        @include ellipsis;
-        text-align: center;
-        text-transform: lowercase;
-        letter-spacing: 0.01em;
-        &:first-letter {
-          text-transform: capitalize;
-        }
-      }
+	.sdc-tile-footer {
+		@include box-sizing;
+		width: $tile-width-less-padding;
+		height: $footer-height;
 
-      .sdc-tile-content-info-version-info{
-          display: flex;
-          justify-content: space-between;
-          line-height: 0.8;
-          .sdc-tile-content-info-version-info-text {
-            @extend .body-2;
-          }
-      }
-      .vendor-count-button {
-        width: initial;
-        min-width: 71px;
-        height: 20px;
-        font-size: $body-font-3;
-        margin-top: 5px;
-        border-color: $dark-gray;
-        color: $dark-gray;
-      }
-    }
-  }
+		border-top: 1px solid $tlv-light-gray;
+		padding-bottom: 2px;
 
-  .sdc-tile-footer {
-    display: flex;
-    flex-direction: row;
-    border-top: 1px solid $background-gray;
-    padding: 5px 0 0px 0;
-    width: $sdc-tile-catalog-width-less-padding;
+		position: absolute;
+		bottom: 0;
+		display: flex;
+		align-items: center;
 
-    .sdc-tile-footer-text {
-        flex: 1;
-        @extend .body-2;
-        @include ellipsis(auto,inline-block,($sdc-tile-catalog-width-less-padding - $sdc-tile-catalog-footer-icon-width));
-        color: $dark-gray;
-      text-transform: capitalize;
-    }
+		@extend .text-capitalize;
+		color: $dark-gray;
+		fill: $dark-gray;
 
-    .sdc-tile-footer-icon {
-        flex-shrink: 1;
-        overflow: hidden;
+		.sdc-tile-footer-content {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
 
-        svg {
-          width: $sdc-tile-catalog-footer-icon-width;
-          height: $sdc-tile-catalog-footer-icon-height;
-          fill: $gray;
-          &#unlocked_icon {
-            height: $sdc-tile-catalog-footer-icon-height + 1;
-          }
-        }
-    }
+			span {
+				display: flex;
+			}
+			.sdc-tile-footer-text {
+				@include ellipsis;
+			}
+			svg {
+				margin-left: 5px;
+				height: 12px;
+				width: 20px;
+			}
+		}
 
-  }
+		.sdc-tile-button-footer {
+			button {
+				width: initial;
+				height: initial;
 
-  .sdc-vendor-tile-footer {
-    display: flex;
-    flex-direction: row;
-    border-top: 1px solid $background-gray;
-    padding: 5px 0 0px 0;
-    width: $sdc-tile-catalog-width-less-padding;
-    justify-content: center;
+				.sdc-button-label {
+					font-size: $body-font-3;
+				}
+			}
+		}
 
-    .sdc-vendor-tile-footer-icon {
-        margin-bottom: 5px;
-        flex-shrink: 1;
-        overflow: hidden;
-        @extend .body-2-semibold;
-        color: $blue;
-        svg {
-          width: 10px;
-          height: 10px;
-          fill: $blue;
-        }
-    }
-  }
-
+	}
 }

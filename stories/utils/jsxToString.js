@@ -1,6 +1,6 @@
 import React from 'react';
 
-const INDENT = '  ';
+const INDENT = '   ';
 
 function stringRepresentationForJsx(item) {
 	if (typeof item === 'string') {
@@ -28,40 +28,45 @@ function stringRepresentationForJsx(item) {
 	}
 }
 
-function parseProps(jsx) {
+function parseProps(jsx, indentCount) {
 	let result = '';
 	for (let prop in jsx.props) {
 		let value = jsx.props[prop];
 		if (prop !== 'children' && value) {
 			let repr = stringRepresentationForJsx(value);
 			let isString = repr.startsWith("'");
-			result += `\n${INDENT}${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
+			result += `\n${INDENT.repeat(indentCount)}${prop}`;
+			if (value !== true) {
+				result += `=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'}`
+			}
 		}
 	}
 	return result;
 }
 
-function jsxToString(jsx) {
+function jsxToString(jsx, indentCount=0) {
 	if (typeof jsx === 'string'){
 		return jsx;
 	}
 
 	let name = typeof jsx.type === 'string' ? jsx.type : jsx.type.name;
+	let result = `${INDENT.repeat(indentCount)}<${name}${parseProps(jsx, indentCount + 1)}`;
 
 	if (jsx.props.hasOwnProperty('children')) {
-		let result = `<${name} ${parseProps(jsx)}>\n`;
+		let {children} = jsx.props;
+		result += '>\n';
 		if (React.isValidElement(jsx.props.children)) {
-			result += `${jsxToString(jsx.props.children)}\n`;
-		} else if (typeof jsx.props.children === 'string') {
-			result += INDENT + jsx.props.children;
+			result += `${jsxToString(children, indentCount + 1)}\n`;
+		} else if (typeof children === 'string') {
+			result += `${INDENT.repeat(indentCount + 1)}${children}\n`;
 		}
 		else {
-			jsx.props.children.map(child => { result += `${jsxToString(child)}\n`;} );
+			children.map((child, i) => { result += `${jsxToString(child, indentCount + 1)}\n`;} );
 		}
-		return result + `\n</${name}>` ;
+		return result + `${INDENT.repeat(indentCount)}</${name}>`;
 	}
 
-	return `<${name} ${parseProps(jsx)}/>`;
+	return result + ' />';
 }
 
 export default jsxToString;
