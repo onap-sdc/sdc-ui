@@ -1,33 +1,28 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "declaration": true,
-        "experimentalDecorators": true,
-        "strict": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "outDir": "lib",
-        "rootDir": "src",
-        "sourceMap": true,
-        "inlineSources": true,
-        "target": "es2015",
-        "skipLibCheck": true,
-        "lib": [
-            "es2015",
-            "dom"
-        ]
-    },
-    "include": [
-        "src/angular"
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": ".",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types"
     ],
-    "files": [
-        "node_modules/zone.js/dist/zone.js.d.ts"
-    ],
-    "angularCompilerOptions": {
-        "skipTemplateCodegen": true,
-        "annotateForClosureCompiler": true,
-        "strictMetadataEmit": true,
-        "flatModuleOutFile": "index.js",
-        "flatModuleId": "sdc-ui"
-    }
+    "lib": ["es6", "dom"]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true
+  },
+  "angularCompilerOptions": {
+    "debug": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false }
 }

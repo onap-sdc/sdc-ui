@@ -40,6 +40,10 @@ a {
 }
 
 .icons-screen {
+  	.missing-icon-section {
+	  border-top: 1px solid $light-gray;
+	  padding-top: 10px;
+	}
 	.icons-option-selector {
 		margin-top: 20px;
 		margin-bottom: 20px;

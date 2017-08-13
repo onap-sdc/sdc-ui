@@ -1,6 +1,3 @@
-/**
- * Created by ob0695 on 6/27/2017.
- */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
 const primaryColors = {

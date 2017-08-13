@@ -1,19 +1,19 @@
-export default function BeautifyHTML({html, indentChar = '    ', startingIndentCount = 0}) {
+export default function beautifyHTML({html, indentChar = '    ', startingIndentCount = 0}) {
 	html = html.replace(/[ ]{2,}/g, ' ');
 
 	let result = '', indentCount = startingIndentCount, parsingText = false;
-	for (let i=0; i<html.length; i++) {
+	for (let i = 0; i < html.length; i++) {
 
 		let startOfTag, endOfTag, closingTag, upcomingTag, afterTag, numTabs;
-		if (html[i] == '<') { startOfTag = true; }
-		else if (html[i] == '>') { endOfTag = true; }
-		else if (html[i-1] == '>') { afterTag = true; }
-		if (html[i+1] == '/') { closingTag = true; }
-		else if (html[i+1] == '<') { upcomingTag = true; }
+		if (html[i] === '<') { startOfTag = true; }
+		else if (html[i] === '>') { endOfTag = true; }
+		else if (html[i - 1] === '>') { afterTag = true; }
+		if (html[i + 1] === '/') { closingTag = true; }
+		else if (html[i + 1 ] === '<') { upcomingTag = true; }
 
 		if (startOfTag) {
-				if (closingTag) { numTabs = --indentCount; }
-				else { numTabs = indentCount++; }
+			if (closingTag) { numTabs = --indentCount; }
+			else { numTabs = indentCount++; }
 		}
 
 		if (parsingText && afterTag) {
