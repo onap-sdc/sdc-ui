@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tile Empty tile 1`] = `
+<div
+  className="sdc-tile "
+  data-test-id={undefined}
+  onClick={undefined}
+>
+  <div
+    className="sdc-tile-header "
+  />
+  <div
+    className="sdc-tile-content"
+  >
+    <div
+      className="sdc-tile-content-icon "
+    />
+  </div>
+</div>
+`;
+
+exports[`Tile Tile with content info 1`] = `
+<div
+  className="sdc-tile "
+  data-test-id={undefined}
+  onClick={undefined}
+>
+  <div
+    className="sdc-tile-header "
+  />
+  <div
+    className="sdc-tile-content"
+  >
+    <div
+      className="sdc-tile-content-icon "
+    />
+    <div
+      className="sdc-tile-content-info centered"
+    >
+      <div
+        className="sdc-tile-info-line title "
+        data-test-id={undefined}
+      >
+        Info
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tile Tile with footer 1`] = `
+<div
+  className="sdc-tile "
+  data-test-id={undefined}
+  onClick={undefined}
+>
+  <div
+    className="sdc-tile-header "
+  />
+  <div
+    className="sdc-tile-content"
+  >
+    <div
+      className="sdc-tile-content-icon "
+    />
+  </div>
+  <div
+    className="sdc-tile-footer centered"
+  >
+    <span
+      className="sdc-tile-footer-cell "
+      data-test-id={undefined}
+    >
+      Footer
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Tile Tile with props 1`] = `
+<div
+  className="sdc-tile "
+  data-test-id={undefined}
+  onClick={undefined}
+>
+  <div
+    className="sdc-tile-header blue"
+  >
+    header
+  </div>
+  <div
+    className="sdc-tile-content"
+  >
+    <div
+      className="sdc-tile-content-icon blue"
+    >
+      <div
+        className="svg-icon-wrapper     bottom"
+        disabled={undefined}
+        onClick={undefined}
+      >
+        <svg />
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;

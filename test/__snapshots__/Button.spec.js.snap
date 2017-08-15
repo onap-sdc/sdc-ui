@@ -6,11 +6,7 @@ exports[`Button Button - Default - Gray 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -20,11 +16,7 @@ exports[`Button Button - Default - Negative 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -34,11 +26,7 @@ exports[`Button Button - Default - Positive 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -48,11 +36,7 @@ exports[`Button Button - Default - Primary - Disabled 1`] = `
   disabled={true}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -62,11 +46,7 @@ exports[`Button Button - Default - Primary 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -76,11 +56,7 @@ exports[`Button Button - Default - Warning 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -90,11 +66,7 @@ exports[`Button Button - Default - White 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -104,11 +76,7 @@ exports[`Button Button - Link - Primary - Disabled 1`] = `
   disabled={true}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -119,13 +87,13 @@ exports[`Button Button - Link - Primary - With Icon 1`] = `
   onClick={undefined}
 >
   <div
-    className="svg-icon-wrapper  sdc-button-icon   right"
+    className="svg-icon-wrapper     right"
     disabled={undefined}
     onClick={undefined}
   >
     <svg />
     <span
-      className="svg-icon-label sdc-button-label"
+      className="svg-icon-label "
     >
       Click Me
     </span>
@@ -139,11 +107,7 @@ exports[`Button Button - Link - Primary 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -153,11 +117,7 @@ exports[`Button Button - Outline - Gray 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -167,11 +127,7 @@ exports[`Button Button - Outline - Negative 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -181,11 +137,7 @@ exports[`Button Button - Outline - Positive 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;
 
@@ -195,10 +147,6 @@ exports[`Button Button - Outline - Primary 1`] = `
   disabled={undefined}
   onClick={undefined}
 >
-  <div
-    className="sdc-button-label"
-  >
-    Click Me
-  </div>
+  Click Me
 </button>
 `;

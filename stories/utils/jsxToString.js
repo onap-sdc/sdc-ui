@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Children} from 'react';
 
 const INDENT = '   ';
 
@@ -54,14 +54,12 @@ function jsxToString(jsx, indentCount=0) {
 
 	if (jsx.props.hasOwnProperty('children')) {
 		let {children} = jsx.props;
+		let childrenArr = Children.toArray(children);
 		result += '>\n';
-		if (React.isValidElement(jsx.props.children)) {
-			result += `${jsxToString(children, indentCount + 1)}\n`;
-		} else if (typeof children === 'string') {
+		if (typeof children === 'string') {
 			result += `${INDENT.repeat(indentCount + 1)}${children}\n`;
-		}
-		else {
-			children.map((child, i) => { result += `${jsxToString(child, indentCount + 1)}\n`;} );
+		} else {
+			childrenArr.forEach(child => result += `${jsxToString(child, indentCount + 1)}\n`);
 		}
 		return result + `${INDENT.repeat(indentCount)}</${name}>`;
 	}

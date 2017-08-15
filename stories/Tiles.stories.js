@@ -1,38 +1,75 @@
 import React from 'react';
+
 import Examples from './utils/Examples.js';
-import Tile, {TileInfo, TileFooter, TileButtonFooter, TileInfoLine, Tile2} from '../src/react/Tile.js';
+import SVGIcon from '../src/react/SVGIcon.js';
 import Button from '../src/react/Button.js';
+
+import Tile from '../src/react/Tile.js';
+import TileInfo from '../src/react/TileInfo.js';
+import TileInfoLine from '../src/react/TileInfoLine.js';
+import TileFooter from '../src/react/TileFooter.js';
+import TileFooterCell from '../src/react/TileFooterCell.js';
+
 import HTMLVspTile from '../components/tile/vsp-tile.html';
 import HTMLVlmTile from '../components/tile/vlm-tile.html';
 import HTMLVendorTile from '../components/tile/vendor-tile.html';
+import HTMLVfcTile from '../components/tile/vfc-tile.html';
 
 let examples = {
+	VFC: {
+		jsx: <Tile headerText='vfc' headerColor='purple' iconName='network'>
+					<TileInfo>
+						<TileInfoLine type='title'>Title</TileInfoLine>
+						<TileInfoLine type='subtitle'>V 1.0</TileInfoLine>
+					</TileInfo>
+					<TileFooter>
+						<TileFooterCell>Certified</TileFooterCell>
+					</TileFooter>
+				</Tile>,
+		html: HTMLVfcTile
+	},
 	VSP: {
-		jsx:<Tile headerText='vsp' contentIconName='vsp' headerColor='blue' iconColor='blue'>
+		jsx: <Tile headerText='vsp' headerColor='blue' iconName='vsp' iconColor='blue'>
 					<TileInfo>
 						<TileInfoLine type='supertitle'>VLM</TileInfoLine>
 						<TileInfoLine type='title'>VSP name</TileInfoLine>
 					</TileInfo>
-					<TileFooter>Draft</TileFooter>
-				</Tile>
+					<TileFooter>
+						<TileFooterCell>Draft</TileFooterCell>
+					</TileFooter>
+				</Tile>,
+		html: HTMLVspTile
 	},
 	VLM: {
-		jsx:<Tile headerText='vlm' contentIconName='vlm' headerColor='purple' iconColor='purple'>
+		jsx: <Tile headerText='vlm' headerColor='purple' iconName='vlm' iconColor='purple'>
 					<TileInfo>
 						<TileInfoLine type='title'>VLM name</TileInfoLine>
 					</TileInfo>
-					<TileFooter iconText='Contributor' iconName='versionControllerPermissions'>Certified</TileFooter>
-				</Tile>
+					<TileFooter>
+						<TileFooterCell>Certified</TileFooterCell>
+						<TileFooterCell>
+							<SVGIcon name='versionControllerPermissions' label='Owner' labelPosition='left' />
+						</TileFooterCell>
+					</TileFooter>
+				</Tile>,
+		html: HTMLVlmTile
 	},
 	Vendor: {
-		jsx:<Tile	contentIconName='vendor' iconColor='dark-gray'>
-					<TileInfo alignCenter>
+		jsx: <Tile iconName='vendor' iconColor='dark-gray'>
+					<TileInfo align='center'>
 						<TileInfoLine type='title'>Vendor name</TileInfoLine>
-						<TileInfoLine><Button btnType='outline-rounded' color='dark-gray' onClick={() => {}}>100 VSPs</Button></TileInfoLine>
+						<TileInfoLine>
+							<Button btnType='outline-rounded' color='dark-gray' onClick={() => {}}>100 VSPs</Button>
+						</TileInfoLine>
 					</TileInfo>
-					<TileButtonFooter btnType='link' color='primary' iconName='plusThin' onClick={() => {}}>Create new VSP</TileButtonFooter>
-				</Tile>
-	}
+					<TileFooter align='center'>
+						<TileFooterCell>
+							<Button btnType='link' color='primary' iconName='plusThin' onClick={() => {}}>Create new VSP</Button>
+						</TileFooterCell>
+					</TileFooter>
+				</Tile>,
+		html: HTMLVendorTile
+	},
 };
 
 const Tiles = () => (

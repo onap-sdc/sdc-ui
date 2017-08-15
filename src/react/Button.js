@@ -8,10 +8,11 @@ const Button = (props) => {
 						className={`sdc-button sdc-button-${btnType} sdc-button__${color} ${className || ''} ${iconName ? 'sdc-button__with-icon' : ''}`}
 						disabled={disabled}
 						{...other}>
-			{iconName ?
-				<SVGIcon className='sdc-button-icon' name={iconName} label={children} labelPosition='right' labelClassName='sdc-button-label' />
+			{
+				iconName ?
+					<SVGIcon name={iconName} label={children} labelPosition='right' />
 				:
-				<div className='sdc-button-label'>{children}</div>
+					children
 			}
 		</button>
 	);

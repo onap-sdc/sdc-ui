@@ -1,59 +1,18 @@
 import React, {PropTypes, Children} from 'react';
 import SVGIcon from './SVGIcon.js';
-import Button from './Button.js';
 
-export const TileInfo = ({alignCenter, children}) => (
-	<div className={`sdc-tile-content-info ${alignCenter ? 'centered' : ''}`}>
-		{Children.toArray(children).filter(e => e.type === TileInfoLine)}
-	</div>
-);
-
-export const TileInfoLine = ({type, children}) => (
-	<div className={`sdc-tile-info-line ${type || ''}`}>{children}</div>
-);
-
-export const TileFooter = ({children, iconText, iconName, onIconClick}) => (
-	<div className='sdc-tile-footer-content'>
-		<span className='sdc-tile-footer-text'>{children}</span>
-		<span>
-			{iconText &&
-				<span className='sdc-tile-footer-text'>{iconText}</span>
-			}
-			{iconName &&
-				<SVGIcon
-					name={iconName}
-					onClick={onIconClick} />
-			}
-		</span>
-	</div>
-);
-
-export const TileButtonFooter = ({btnType, color, iconName, onClick, children}) => (
-	<span className='sdc-tile-button-footer centered'>
-		<Button
-			btnType={btnType}
-			color={color}
-			iconName={iconName}
-			onClick={onClick}>
-			{children}
-		</Button>
-	</span>
-);
-
-const Tile = ({headerText, headerColor, contentIconName, iconColor, className, onClick, children}) => {
+const Tile = ({headerText, headerColor, iconName, iconColor, className, onClick, children, dataTestId}) => {
 	let childrenArr = Children.toArray(children);
 	return (
-		<div className={`sdc-tile ${className || ''}`} onClick={onClick}>
+		<div className={`sdc-tile ${className || ''}`} onClick={onClick} data-test-id={dataTestId}>
 			<div className={`sdc-tile-header ${headerColor || ''}`}>{headerText}</div>
 			<div className='sdc-tile-content'>
-				<div className={`sdc-tile-content-icon centered ${iconColor || ''}`}>
-					<SVGIcon name={contentIconName}/>
+				<div className={`sdc-tile-content-icon ${iconColor || ''}`}>
+					{iconName && <SVGIcon name={iconName}/>}
 				</div>
-				{childrenArr.find(e => e.type === TileInfo)}
+				{childrenArr.find(e => e.type && e.type.name && e.type.name === 'TileInfo')}
 			</div>
-			<div className='sdc-tile-footer'>
-				{childrenArr.find(e => e.type === TileFooter || e.type === TileButtonFooter)}
-			</div>
+			{childrenArr.find(e => e.type && e.type.name && e.type.name === 'TileFooter')}
 		</div>
 	);
 };
@@ -61,10 +20,11 @@ const Tile = ({headerText, headerColor, contentIconName, iconColor, className, o
 Tile.propTypes = {
 	headerText: PropTypes.string,
 	headerColor: PropTypes.string,
-	contentIconName: PropTypes.string,
+	iconName: PropTypes.string,
 	iconColor: PropTypes.string,
 	className: PropTypes.string,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	dataTestId: PropTypes.string
 };
 
 export default Tile;

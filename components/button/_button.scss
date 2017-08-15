@@ -44,14 +44,7 @@
   cursor: pointer;
   text-align: center;
 
-  @include base-font-semibold();
-  font-size: $body-font-1;
-
-  .sdc-button-link-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  @extend .body-1-semibold;
 
   &:not(.sdc-button-link) {
     width: 94px;
