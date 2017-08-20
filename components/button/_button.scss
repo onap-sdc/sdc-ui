@@ -44,14 +44,7 @@
   cursor: pointer;
   text-align: center;
 
-  @include base-font-semibold();
-  font-size: $body-font-1;
-
-  .sdc-button-link-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  @extend .body-1-semibold;
 
   &:not(.sdc-button-link) {
     width: 94px;
@@ -141,6 +134,11 @@
       @include outline-button($blue);
     }
 
+    // Dark gray outline button
+    &.sdc-button__dark-gray {
+      @include outline-button($dark-gray);
+    }
+
     // Gray outline button
     &.sdc-button__gray {
       @include outline-button($gray);
@@ -168,12 +166,6 @@
     border: none;
     background-color: transparent;
     @extend .body-1;
-
-    &.sdc-button__with-icon {
-      .svg-icon-wrapper {
-        margin-right: 5px;
-      }
-    }
 
     // Primary link button
     &.sdc-button__primary {
