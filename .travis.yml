@@ -10,6 +10,7 @@ deploy:
   - provider: npm
     email: onap.sdc@gmail.com
     api_key: $NPM_TOKEN
+    skip_cleanup: true
     on:
       tags: true
       repo: onap-sdc/sdc-ui
