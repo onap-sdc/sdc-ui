@@ -7,16 +7,20 @@
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
 
 	$header-height: 10px;
-	$footer-height: 31px;
-	$content-height: $tile-height-less-padding - $header-height - ($footer-height - 5px);
+	$footer-height: 23px;
+	$content-height: 100%;
 
 	width: $tile-full-width;
 	height: $tile-full-height;
 
 	padding: $tile-padding;
 	border: 1px solid $tlv-light-gray;
-	border-radius: 2px;
+	@include border-radius(2px);
 	@include box-sizing;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 
 	position: relative;
 	cursor: pointer;
@@ -29,7 +33,7 @@
 	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
 
 	&:hover {
-		border: 1px solid $light-gray;
+		border-color: $light-gray;
 		@include box-shadow(0.3px 5px 12.8px 2.3px rgba($text-black, 0.25));
 	}
 
@@ -53,11 +57,12 @@
 	}
 
 	.sdc-tile-header {
-		font-size: $body-font-1;
+		height: $body-font-1;
 		line-height: $header-height;
-		height: $header-height;
-		@extend .text-uppercase;
 		@include ellipsis($display: block);
+
+		font-size: $body-font-1;
+		@extend .text-uppercase;
 	}
 
 	.sdc-tile-content {
@@ -65,6 +70,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
+		margin-bottom: -4px;
 
 		.sdc-tile-content-icon {
 			margin-top: 27px;
@@ -117,8 +123,8 @@
 					@extend .body-1-semibold;
 				}
 				&.subtitle {
-					height: 1.5em;
-					line-height: 1.5;
+					height: 1.6em;
+					line-height: 1.6;
 					color: $dark-gray;
 				}
 			}
@@ -128,17 +134,16 @@
 	.sdc-tile-footer {
 		width: $tile-width-less-padding;
 		height: $footer-height;
+		@include box-sizing;
 
 		border-top: 1px solid $tlv-light-gray;
-		padding-bottom: 2px;
-		@include box-sizing;
+		margin-top: 7px;
+		padding-top: 9px;
 
 		color: $dark-gray;
 		fill: $dark-gray;
 		@extend .text-capitalize;
 
-		position: absolute;
-		bottom: 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

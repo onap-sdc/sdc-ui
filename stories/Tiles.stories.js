@@ -10,12 +10,22 @@ import TileInfoLine from '../src/react/TileInfoLine.js';
 import TileFooter from '../src/react/TileFooter.js';
 import TileFooterCell from '../src/react/TileFooterCell.js';
 
+import HTMLTileWithoutFooter from '../components/tile/tile-without-footer.html';
 import HTMLVspTile from '../components/tile/vsp-tile.html';
 import HTMLVlmTile from '../components/tile/vlm-tile.html';
 import HTMLVendorTile from '../components/tile/vendor-tile.html';
 import HTMLVfcTile from '../components/tile/vfc-tile.html';
 
 let examples = {
+	'Without footer': {
+		jsx: <Tile headerText='header' headerColor='blue' iconName='vsp' iconColor='blue'>
+					<TileInfo>
+						<TileInfoLine type='supertitle'>Supertitle</TileInfoLine>
+						<TileInfoLine type='title'>Title</TileInfoLine>
+					</TileInfo>
+				</Tile>,
+		html: HTMLTileWithoutFooter
+	},
 	VFC: {
 		jsx: <Tile headerText='vfc' headerColor='purple' iconName='network'>
 					<TileInfo>
