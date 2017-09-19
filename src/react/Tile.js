@@ -1,4 +1,6 @@
 import React, {PropTypes, Children} from 'react';
+import TileInfo from './TileInfo.js';
+import TileFooter from './TileFooter.js';
 import SVGIcon from './SVGIcon.js';
 
 const Tile = ({headerText, headerColor, iconName, iconColor, className, onClick, children, dataTestId}) => {
@@ -10,9 +12,9 @@ const Tile = ({headerText, headerColor, iconName, iconColor, className, onClick,
 				<div className={`sdc-tile-content-icon ${iconColor || ''}`}>
 					{iconName && <SVGIcon name={iconName}/>}
 				</div>
-				{childrenArr.find(e => e.type && e.type.name && e.type.name === 'TileInfo')}
+				{childrenArr.find(e => e.type === TileInfo)}
 			</div>
-			{childrenArr.find(e => e.type && e.type.name && e.type.name === 'TileFooter')}
+			{childrenArr.find(e => e.type === TileFooter)}
 		</div>
 	);
 };
