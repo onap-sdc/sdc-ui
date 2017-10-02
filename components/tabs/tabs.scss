@@ -13,6 +13,10 @@
 	  color: $blue;
 	  border-bottom: 2px solid $blue;
 	}
+	&[disabled] {
+		opacity: 0.3;
+    cursor: default;
+	}
   }
   &.sdc-tabs-header {
 	.sdc-tab {

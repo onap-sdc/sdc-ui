@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {Children} from 'react';
+
+const INDENT = '   ';
+
 function stringRepresentationForJsx(item) {
 	if (typeof item === 'string') {
 		return `'${item}'`;
@@ -11,52 +14,57 @@ function stringRepresentationForJsx(item) {
 		return item.toString();
 	}
 	else if (typeof item === 'function') {
-		return item.toString();
+		return item.toString().replace(/\s{2,}/g, ' ');
 	} else if (typeof item === 'object') {
 		let repr = '{';
 		for (let key in item) {
-			repr += `${key}: ${stringRepresentationForJsx(item[key])}, `;
+			if (item.hasOwnProperty(key)) {
+				repr += `${key}: ${stringRepresentationForJsx(item[key])}, `;
+			}
 		}
-		repr = repr.slice(0, repr.length - 2);
+		repr = repr.slice(0, -2);
 		repr += '}';
 		return repr;
 	}
 }
 
-function parseProps(jsx) {
+function parseProps(jsx, indentCount) {
 	let result = '';
 	for (let prop in jsx.props) {
 		let value = jsx.props[prop];
-		if (prop !== 'children') {
+		if (prop !== 'children' && value) {
 			let repr = stringRepresentationForJsx(value);
 			let isString = repr.startsWith("'");
-			result += `\n	 ${prop}=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'} `;
+			result += `\n${INDENT.repeat(indentCount)}${prop}`;
+			if (value !== true) {
+				result += `=${isString ? '' : '{ '}${stringRepresentationForJsx(value)}${isString ? '' : ' }'}`
+			}
 		}
 	}
 	return result;
 }
 
-function jsxToString(jsx) {
+function jsxToString(jsx, indentCount=0) {
 	if (typeof jsx === 'string'){
 		return jsx;
 	}
 
 	let name = typeof jsx.type === 'string' ? jsx.type : jsx.type.name;
+	let result = `${INDENT.repeat(indentCount)}<${name}${parseProps(jsx, indentCount + 1)}`;
 
 	if (jsx.props.hasOwnProperty('children')) {
-		let result = `<${name} ${parseProps(jsx)}>\n`;
-		if (React.isValidElement(jsx.props.children)) {
-			result += `${jsxToString(jsx.props.children)}\n`;
-		} else if (typeof jsx.props.children === 'string') {
-			result +=  jsx.props.children;
+		let {children} = jsx.props;
+		let childrenArr = Children.toArray(children);
+		result += '>\n';
+		if (typeof children === 'string') {
+			result += `${INDENT.repeat(indentCount + 1)}${children}\n`;
+		} else {
+			childrenArr.forEach(child => result += `${jsxToString(child, indentCount + 1)}\n`);
 		}
-		else {
-			jsx.props.children.map(child => { result += `${jsxToString(child)}\n`;} );
-		}
-		return result + `</${name}>` ;
+		return result + `${INDENT.repeat(indentCount)}</${name}>`;
 	}
 
-	return `<${name} ${parseProps(jsx)}/>`;
+	return result + ' />';
 }
 
 export default jsxToString;

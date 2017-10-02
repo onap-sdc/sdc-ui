@@ -1,39 +1,49 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
+import DropdownMenu from './utils/components/DropdownMenu.js';
 import SVGIcon from '../src/react/SVGIcon.js';
-import HTMLSvgIcon from '../components/icon/svg-icon.html';
 
 const iconLabelPositions = [
-	'bottom', 'top', 'left', 'right'
+	'', 'bottom', 'top', 'left', 'right'
 ];
 
-function buildExamples(iconName, iconLabel, labelPosition) {
+const iconColors = [
+	'',
+	'primary',
+	'secondary',
+	'positive',
+	'negative',
+	'warning'
+];
+
+const disabledStates = ['false', 'true'];
+
+function buildExamples({iconName, iconLabel, labelPosition, color, disabled}) {
 	return {
 		Example: {
-			jsx: <SVGIcon label={iconLabel} labelPosition={labelPosition} iconClassName='svg-icon purple storybook-big'
-				  name={iconName}/>,
-			html: HTMLSvgIcon
+			jsx: <SVGIcon
+				label={iconLabel}
+				labelPosition={labelPosition}
+				color={color}
+				name={iconName}
+				disabled={disabled === 'true'} />
 		}
 	};
 }
 
-const SelectOption = ({option}) => {
-	return (
-		<option key={option} value={option}>{option}</option>
-	);
-};
-
-const IconsList = ({icons}) => {
-	return (
-		<div className='icons-table'>
-			{
-				icons.map(icon => (<div className='icon-section'><SVGIcon label={icon}
-					 iconClassName='svg-icon purple storybook-small'
-					 name={icon}/></div>))
-			}
-		</div>
-	);
-};
+const IconTable = ({onClick}) => (
+	<div className='icons-table'>
+		{ICON_NAMES.map(icon => (
+			<div key={icon} className='icon-section'>
+				<SVGIcon
+					onClick={() => onClick(icon)}
+					label={icon}
+					iconClassName='storybook-small'
+					name={icon} />
+			</div>
+		))}
+	</div>
+);
 
 class Icons extends React.Component {
 	constructor(props) {
@@ -41,34 +51,50 @@ class Icons extends React.Component {
 		this.state = {
 			iconName: ICON_NAMES[0],
 			iconLabel: '',
-			labelPosition: iconLabelPositions[0]
+			labelPosition: iconLabelPositions[0],
+			color : iconColors[0]
 		};
 	}
 
 	render() {
+		let {iconName, iconLabel, labelPosition, color, disabled} = this.state;
 		return (
-			<div>
+			<div className='icons-screen'>
 				<h1>Icons</h1>
 				<div className='icons-option-selector'>
-					<div className='option-container'>
-						<label>Icon name:</label>
-						<select onChange={e => this.setState({iconName: e.target.value})}>{ICON_NAMES.map(option =>
-							<SelectOption option={option}/>)}</select>
-					</div>
+					<DropdownMenu
+						title='Icon name'
+						value={iconName}
+						onChange={e => this.setState({iconName: e.target.value})}
+						options={ICON_NAMES} />
 					<div className='option-container'>
 						<label>Icon label</label>
-						<input value={this.state.iconLabel} onChange={e => this.setState({iconLabel: e.target.value})}/>
+						<input value={iconLabel} onChange={e => this.setState({iconLabel: e.target.value})}/>
 					</div>
-					<div className='option-container'>
-						<label>Label position</label>
-						<select
-							onChange={e => this.setState({labelPosition: e.target.value})}>{iconLabelPositions.map(option =>
-							<SelectOption option={option}/>)}</select>
-					</div>
+					<DropdownMenu
+						title='Label position'
+						value={labelPosition}
+						onChange={e => this.setState({labelPosition: e.target.value})}
+						options={iconLabelPositions} />
+					<DropdownMenu
+						title='Color'
+						value={color}
+						onChange={e => this.setState({color: e.target.value})}
+						options={iconColors} />
+					<DropdownMenu
+						title='Disabled'
+						value={disabled}
+						onChange={e => this.setState({disabled: e.target.value})}
+						options={disabledStates} />
 				</div>
-				<Examples
-					examples={buildExamples(this.state.iconName, this.state.iconLabel, this.state.labelPosition)}/>
-				<IconsList icons={ICON_NAMES}/>
+				<Examples examples={buildExamples({iconName, iconLabel, labelPosition, color, disabled})} />
+				<IconTable onClick={icon => this.setState({iconName: icon})} />
+				<div className='missing-icon-section'>
+					<div >You will see the following if the icon name you used is not found:</div>
+					<SVGIcon
+						onClick={() => {}}
+						name='MissingIcon' />
+				</div>
 			</div>
 		);
 	};

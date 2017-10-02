@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs Tabs - basic rendering 1`] = `
+<form>
+  <fieldset
+    disabled={false}
+  >
+    <div
+      className="sdc-tabs sdc-tabs-menu "
+    >
+      <ul
+        className="sdc-tabs-list"
+        role="tablist"
+      >
+        <li
+          className="sdc-tab sdc-tab-active "
+          data-test-id="1"
+          disabled={undefined}
+          onClick={[Function]}
+          role="tab"
+        >
+          tab 1
+        </li>
+        <li
+          className="sdc-tab  "
+          data-test-id="2"
+          disabled={undefined}
+          onClick={[Function]}
+          role="tab"
+        >
+          tab 2
+        </li>
+        <li
+          className="sdc-tab  "
+          data-test-id="3"
+          disabled={undefined}
+          onClick={[Function]}
+          role="tab"
+        >
+          tab 3
+        </li>
+      </ul>
+      <div
+        className="sdc-tab-content"
+        role="tabpanel"
+      >
+        Tab #1
+      </div>
+    </div>
+  </fieldset>
+</form>
+`;

@@ -43,6 +43,7 @@ export default class SourceToggle extends React.Component {
 				return {__html: Prism.highlight(jsxToString(jsx), Prism.languages.jsx)};
 		}
 	}
+
 	render() {
 		let {title} = this.props;
 		return (
@@ -52,10 +53,13 @@ export default class SourceToggle extends React.Component {
 					{this.renderFromSource()}
 					<div className='source-toggle-code'>
 						<div className='source-toggle-code-tabs'>
-							{Object.keys(sources).map(source => (
-									<div key={title + '_' + (Math.floor(Math.random() * (1000 - 1)) + 1)}
+							{Object.keys(sources).map((source, i) => (
+									<div
+										key={i}
 										className={`source-toggle-tab${this.state.source === source ? ' selected' : ''}`}
-										onClick={() => this.setState({source: source})}>{source}</div>
+										onClick={() => this.setState({source})}>
+										{source}
+									</div>
 							))}
 						</div>
 						<pre>

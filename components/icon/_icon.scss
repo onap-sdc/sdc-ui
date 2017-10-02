@@ -1,74 +1,248 @@
+@mixin color-icon($primary-color, $secondary-color) {
+    color: $primary-color;
+    fill: $primary-color;
+
+    &:not([disabled]):hover, &:active, &:focus {
+        &.clickable {
+            color: $secondary-color;
+            fill: $secondary-color;
+        }
+    }
+}
 
 .svg-icon-wrapper {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
     &.bottom {
         flex-direction: column;
         .svg-icon-label {
             margin-bottom: 5px;
         }
     }
+
     &.right {
         float: none;
         .svg-icon-label {
             margin-left: 5px;
         }
     }
+
     &.top {
-        flex-direction: column-reverse;;
+        flex-direction: column-reverse;
         .svg-icon-label {
             margin-top: 5px;
         }
     }
+
     &.left {
-        flex-direction: row-reverse;;
+        flex-direction: row-reverse;
         .svg-icon-label {
             margin-right: 5px;
         }
     }
-    .svg-icon {
-        width: 20px;
-        height: 20px;
-        &.storybook-big {
-            width: 120px;
-            height:120px;
-        }
-        &.storybook-small {
-            width: 60px;
-            height:60px;
-        }
-        &.purple {
-            fill: $purple;
-        }
 
-        &.purple-hover {
-            fill: $purple;
-            &:hover {
-                fill: $light-purple;
-            }
-        }
-
-        &.blue {
-            fill: $blue;
-        }
-
-        &.blue-hover {
-            fill: $blue;
-            &:hover {
-                fill: $light-blue;
-            }
-        }
-
-        &.black {
-            fill: $black;
-        }
-
-        &.black-hover {
-            fill: $black;
-            &:hover {
-                fill: $light-gray;
-            }
-        }
+    &.__warning {
+        @include color-icon($yellow, $gold);
     }
+
+    &.__primary {
+        @include color-icon($blue, $dark-blue);
+    }
+
+    &.__secondary {
+        @include color-icon($gray, $dark-gray);
+    }
+
+    &.__positive {
+        @include color-icon($green, $lima);
+    }
+
+    &.__negative {
+        @include color-icon($red, $torch-red);
+    }
+}
+
+
+.svg-icon {
+    width: 20px;
+    height: 20px;
+
+    &.__angleDoubleLeft {
+        width: 14px;
+        height: 14px;
+    }
+    &.__angleDoubleRight {
+        width: 14px;
+        height: 14px;
+    }
+    &.__angleLeft {
+        width: 14px;
+        height: 14px;
+    }
+    &.__angleRight {
+        width: 14px;
+        height: 14px;
+    }
+    &.__artifacts {
+        width: 16px;
+        height: 20px;
+    }
+    &.__back {
+        width: 25px;
+        height: 25px;
+    }
+    &.__base {
+        //
+    }
+    &.__calendar {
+        //
+    }
+    &.__caretDown {
+    }
+    &.__check {
+    }
+    &.__checkCircle {
+        width: 16px;
+        height: 16px;
+    }
+    &.__chevronDown{
+        width: 10px;
+        height: 7px;
+    }
+    &.__chevronUp {
+        width: 11px;
+        height: 7px;
+    }
+    &.__close {
+        width: 10px;
+        height: 10px;
+    }
+    &.__download {
+        width: 15px;
+        height: 11px;
+    }
+    &.__env {
+        width: 15px;
+        height: 14px;
+    }
+    &.__error {
+        width: 14px;
+        height: 14px;
+    }
+    &.__errorCircle {
+        width: 16px;
+        height: 16px;
+    }
+    &.__exclamationTriangleFull {
+        width: 15px;
+        height: 13px;
+    }
+    &.__exclamationTriangleLine {
+        width: 15px;
+        height: 13px;
+    }
+    &.__filter {
+        //
+    }
+    &.__locked {
+        width: 11px;
+    }
+    &.__module {
+        //
+    }
+    &.__nestedHeat {
+        width: 15px;
+        height: 13px;
+    }
+    &.__network {
+        width: 13px;
+        height: 13px;
+    }
+    &.__others {
+        width: 12px;
+        height: 12px;
+    }
+    &.__pencil {
+        width: 15px;
+        height: 15px;
+    }
+    &.__plus {
+        width: 9px;
+        height: 9px;
+    }
+    &.__plusCircle {
+        width: 19px;
+        height: 19px;
+    }
+    &.__plusThin {
+        width: 9px;
+        height: 9px;
+    }
+    &.__proceedToOverview {
+        width: 24px;
+        height: 20px;
+    }
+    &.__search {
+        //
+    }
+    &.__sliders {
+    }
+    &.__trashO {
+        width: 15px;
+        height: 16px;
+    }
+    &.__unlocked {
+        width: 11px;
+    }
+    &.__upload {
+        width: 15px;
+        height: 11px;
+    }
+    &.__vendor {
+        width: 53px;
+        height: 47px;
+    }
+    &.__versionControllerLockClosed {
+        width: 21px;
+        height: 23px;
+    }
+    &.__versionControllerLockOpen {
+        width: 24px;
+        height: 28px;
+    }
+    &.__versionControllerRevert {
+        //
+    }
+    &.__versionControllerSave {
+        //
+    }
+    &.__versionControllerSubmit {
+        //
+    }
+    &.__versionControllerPermissions {
+        //
+    }
+    &.__vlm {
+        width: 53px;
+        height: 47px;
+    }
+    &.__vsp {
+        width: 53px;
+        height: 47px;
+    }
+    &.__zip {
+        width: 29px;
+        height: 23px;
+    }
+}
+
+.svg-icon-missing {
+    @extend .body-2;
+    color: $red;
 }
