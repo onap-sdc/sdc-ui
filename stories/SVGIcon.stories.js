@@ -7,14 +7,14 @@ const iconLabelPositions = [
 	'', 'bottom', 'top', 'left', 'right'
 ];
 
-const iconColors =[
+const iconColors = [
 	'',
 	'primary',
 	'secondary',
 	'positive',
 	'negative',
 	'warning'
-]
+];
 
 const disabledStates = ['false', 'true'];
 
@@ -22,11 +22,11 @@ function buildExamples({iconName, iconLabel, labelPosition, color, disabled}) {
 	return {
 		Example: {
 			jsx: <SVGIcon
-						label={iconLabel}
-						labelPosition={labelPosition}
-						color={color}
-						name={iconName}
-						disabled={disabled === 'true'} />
+				label={iconLabel}
+				labelPosition={labelPosition}
+				color={color}
+				name={iconName}
+				disabled={disabled === 'true'} />
 		}
 	};
 }
@@ -89,6 +89,12 @@ class Icons extends React.Component {
 				</div>
 				<Examples examples={buildExamples({iconName, iconLabel, labelPosition, color, disabled})} />
 				<IconTable onClick={icon => this.setState({iconName: icon})} />
+				<div className='missing-icon-section'>
+					<div >You will see the following if the icon name you used is not found:</div>
+					<SVGIcon
+						onClick={() => {}}
+						name='MissingIcon' />
+				</div>
 			</div>
 		);
 	};

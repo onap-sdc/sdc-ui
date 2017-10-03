@@ -225,6 +225,9 @@
     &.__versionControllerSubmit {
         //
     }
+    &.__versionControllerPermissions {
+        //
+    }
     &.__vlm {
         width: 53px;
         height: 47px;
@@ -237,4 +240,9 @@
         width: 29px;
         height: 23px;
     }
+}
+
+.svg-icon-missing {
+    @extend .body-2;
+    color: $red;
 }
