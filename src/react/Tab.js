@@ -6,7 +6,7 @@ class Tab extends React.Component {
 		const dataTestId = this.props['data-test-id'];
 		return (
 			<li
-				className={`sdc-tab ${activeTab == tabId ? 'sdc-tab-active' : ''} ${className}`}
+				className={`sdc-tab ${activeTab === tabId ? 'sdc-tab-active' : ''} ${className}`}
 				onClick={!disabled && onClick}
 				data-test-id={dataTestId}
 				role='tab'
