@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
-  selector: "sdc-button",
-  template: `
+    selector: "sdc-button",
+    template: `
   <button class="sdc-button sdc-button__{{color}} sdc-button-{{type}}"
        [disabled] = disabled>
         <ng-content></ng-content>
@@ -10,15 +10,14 @@ import { Component, Input } from "@angular/core";
 })
 export class ButtonComponent {
 
-  @Input() color: string;
-  @Input() type: string;
-  @Input() disabled: boolean;
+    @Input() color:string;
+    @Input() type:string;
+    @Input() disabled:boolean;
 
-  constructor() {
-    this.color = 'primary';
-    this.type = 'default';
-  }
-
+    constructor() {
+        this.color = 'primary';
+        this.type = 'default';
+    }
 
 
 }

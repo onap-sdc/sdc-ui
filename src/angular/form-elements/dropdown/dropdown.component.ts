@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core'
-import {FormElementBase, FormElementBaseInterface} from '../form-base.component';
+import {Component, EventEmitter, Input, Output} from '@angular/core'
 
 export class DropdownValue {
     value:any;
@@ -15,21 +14,15 @@ export class DropdownValue {
     selector: 'sdc-dropdown',
     templateUrl: './dropdown.component.html',
 })
-export class DropDownComponent extends FormElementBase implements FormElementBaseInterface {
-    @Input()
-    options: DropdownValue[] | string[];
+export class DropDownComponent {
 
-    constructor() {
-        super();
+    @Output('valueChange') baseEmitter:EventEmitter<any> = new EventEmitter<any>();
 
-    }
-
-    ngOnInit(){
-
-    }
-
-    onSave() {
-        this.baseEmitter.emit(this.value);
-    }
+    @Input() label:string;
+    @Input() options:DropdownValue[] | string[];
+    @Input() value:any;
+    @Input() disabled:boolean;
+    @Input() placeHolder:string;
+    @Input() required:boolean;
 
 }

@@ -7,10 +7,10 @@
         [name]="name"
         [(ngModel)]="value"
         (change)="onSave()"
-        [attr.maxlength]="maxLength"
-        [attr.minlength]="minLength"
+        [maxlength]="maxLength"
+        [minlength]="minLength"
         [pattern]="pattern"
         [formControl]="control"
-        [attr.disabled]=disabled
+        [disabled]=disabled
     />
 </div>

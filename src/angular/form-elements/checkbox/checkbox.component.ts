@@ -7,6 +7,7 @@ import {Component, Input, Output, EventEmitter, ViewEncapsulation} from '@angula
 })
 export class CheckboxComponent {
 
+
     @Input() label:string;
     @Input() checked:boolean;
     @Input() disabled:boolean;
