@@ -22,7 +22,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormControl } from '@angular/forms';
 
 export interface FormElementBaseInterface {
-    onSave();
+    onSave(): void;
 }
 
 @Component({
@@ -34,8 +34,8 @@ export class FormElementBase {
     protected control: FormControl;
 
     // Two way binding for value (need to write the "Change" word like this)
-    @Output('valueChange') baseEmitter: EventEmitter<string> = new EventEmitter<any>();
-    @Input('value') set setValueValue(value) {
+    @Output('valueChange') baseEmitter: EventEmitter<any> = new EventEmitter<any>();
+    @Input('value') set setValueValue(value: any) {
         this.value = value;
     }
 
