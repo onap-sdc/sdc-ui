@@ -15,7 +15,6 @@ import {Component, Input} from "@angular/core";
                 <div>{{tableMapColors[color]}}</div>
               </div>
         </div>
-        
 `
 })
 export class ColorsTable {

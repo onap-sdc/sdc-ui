@@ -19,4 +19,6 @@ export class ButtonComponent {
     this.type = 'default';
   }
 
+
+
 }
