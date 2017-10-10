@@ -1,5 +1,4 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
-import {ButtonComponent} from "./../../src/angular2/button.component";
 
 export default experimentOn('Button')
     .case('Primary Default', {

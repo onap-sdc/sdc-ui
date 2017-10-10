@@ -3,7 +3,7 @@ import { Component, Input } from "@angular/core";
 @Component({
   selector: "sdc-button",
   template: `
-  <button class="sdc-button sdc-button__{{color}} sdc-button-{{type}}" 
+  <button class="sdc-button sdc-button__{{color}} sdc-button-{{type}}"
        [disabled] = disabled>
         <ng-content></ng-content>
   </button>`
