@@ -14,5 +14,5 @@ insert_final_newline = true
 [framework/**.js]
 [framework/**.jsx]
 [resources/**.scss]
-indent_style = tab
-
+indent_style = space
+indent_size = 4

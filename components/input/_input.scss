@@ -1,0 +1,27 @@
+.sdc-input {
+
+  .sdc-input__label {
+    margin-bottom: 5px;
+    display: block;
+    @extend .body-3;
+
+    &.required::before {
+      content: '*';
+      color: $red;
+      margin: 0 4px 0 0;
+    }
+  }
+
+  .sdc-input__input {
+    text-indent: 6px;
+    border: solid 1px $light-gray;
+
+    &.error {
+      border: solid 1px $red;
+      color: $red;
+      outline: none;
+
+    }
+  }
+
+}
