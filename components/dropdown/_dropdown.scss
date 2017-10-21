@@ -1,0 +1,31 @@
+.sdc-dropdown {
+
+  .sdc-dropdown__select {
+
+    @include base-font-regular;
+    text-indent: 6px;
+    border: solid 1px $light-gray;
+    width: 100%;
+
+    &.disabled {
+      opacity: 0.7;
+    }
+
+    option {
+      padding: 3px;
+    }
+  }
+
+  .sdc-dropdown__label {
+    margin-bottom: 5px;
+    display: block;
+    @extend .body-3;
+
+    &.required::before {
+      content: '*';
+      color: $red;
+      margin: 0 4px 0 0;
+    }
+  }
+
+}
