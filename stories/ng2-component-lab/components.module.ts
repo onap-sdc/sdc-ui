@@ -4,6 +4,7 @@ import {CommonModule} from "@angular/common";
 import {ColorsTable} from "./components/colors-table.component";
 import {FormElementsModule} from "../../src/angular/form-elements/form-elements.module";
 import {ButtonsModule} from "../../src/angular/buttons/buttons.module";
+import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 
 @NgModule({
     declarations: [
@@ -13,13 +14,15 @@ import {ButtonsModule} from "../../src/angular/buttons/buttons.module";
     imports: [
         CommonModule,
         FormElementsModule,
-        ButtonsModule
+        ButtonsModule,
+        PopupMenuModule
     ],
     entryComponents: [],
     exports: [
         ColorsTable,
         FormElementsModule,
-        ButtonsModule
+        ButtonsModule,
+        PopupMenuModule
     ],
     providers: [KeysPipe]
 })
