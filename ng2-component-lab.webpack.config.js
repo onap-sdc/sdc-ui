@@ -1,5 +1,6 @@
 var path = require('path');
 var HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin')
+var baseHref = process.env.NODE_ENV === 'build' ? '<base href="/angular/">' : '<base href="/">'
 
 var webpackConfig = {
 
@@ -13,7 +14,7 @@ var webpackConfig = {
   plugins: [
     new HtmlReplaceWebpackPlugin([{
       pattern: '<base href="/">',
-      replacement: '<base href="/angular/">'
+      replacement: baseHref
     }])
   ],
 
@@ -28,6 +29,7 @@ var webpackConfig = {
           'angular2-router-loader'
         ]
       },
+      { test: /\.html$/, loader: "html-loader" },
       {
         test: /.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
