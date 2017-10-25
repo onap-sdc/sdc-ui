@@ -12,8 +12,9 @@
         <div class="sdc-modal__footer">
             <sdc-button *ngFor="let button of buttons"
                     [type]="button.type"
-                    [disabled] = "button.getDisabled && button.getDisabled()"
-                    (click) = "button.callback()">{{button.text}}</sdc-button>
+                    [disabled] = "button.disabled"
+                    (click) = "button.callback()"
+                    [modal-close]="button.closeModal">{{button.text}}</sdc-button>
         </div>
     </div>
 </div>

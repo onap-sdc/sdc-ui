@@ -4,6 +4,8 @@
 import {Component, Input} from "@angular/core";
 import {ModalService} from "../../../src/angular/modals/modal.service";
 import {InnerContent} from "./inner-content.component";
+import {ButtonModel} from "../../../src/angular/modals/button";
+import {IModalConfig} from "../../../src/angular/modals/modal";
 
 @Component({
     selector: "button-modal",
@@ -32,6 +34,8 @@ export class ButtonModal {
 
     }
 
+    private result: string;
+
     openErrorModal() {
         this.modalService.openErrorModal('ERROR!');
     }
@@ -45,6 +49,28 @@ export class ButtonModal {
     }
 
     openCustomModal() {
-        this.modalService.openCustomModal(InnerContent);
+        let actionButton:ButtonModel = new ButtonModel('Done', 'default', true, this.actionCallbackExample);
+        let saveButton:ButtonModel = new ButtonModel('Save', 'outline', false);
+        let cancelButton:ButtonModel = new ButtonModel('cancel', 'outline', true);
+        let modalConfig:IModalConfig = <IModalConfig> {
+            onClose: this.modalService.closeModal,
+            size: 'sm',
+            title: 'Test',
+            type: 'custom',
+            buttons: [actionButton, saveButton, cancelButton]
+        };
+        this.modalService.openCustomModal(modalConfig, InnerContent, {name: "Orit"});
+
+        this.modalService.afterClosed().subscribe(result => {
+            console.log('The dialog was closed, result is: ', result);
+            this.result = result;
+        });
+    }
+
+
+    public actionCallbackExample = ()=> {
+        setTimeout(()=> { alert("AFTER CALLBACK"); }, 100);
+        // this.modalService.closeModal();
+
     }
 }
