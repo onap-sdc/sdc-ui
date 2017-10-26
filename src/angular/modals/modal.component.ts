@@ -21,8 +21,10 @@
 /**
  * Created by rc2122 on 6/1/2017.
  */
-import {Component, Input, ViewContainerRef, ViewChild, ComponentRef, ElementRef} from '@angular/core';
-import {ButtonModel} from "./button";
+import {
+    Component, Input, ViewContainerRef, ViewChild
+} from '@angular/core';
+import {ModalButtonConfig} from "./models/modal-button-config";
 
 
 @Component({
@@ -35,18 +37,9 @@ export class ModalComponent {
     @Input() size:string; 'xl|l|md|sm|xsm';
     @Input() title:string;
     @Input() message:string;
-    @Input() buttons:Array<ButtonModel>;
+    @Input() buttons:Array<ModalButtonConfig>;
     @Input() type:string; 'info|error|alert';
-    @Input() onClose: Function;
 
-    @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer:ViewContainerRef; //Allows for custom component as body instead of simple message. See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
-
-    constructor(private el: ElementRef ) {
-
-    }
-
-    close():void {
-        this.onClose();
-        console.log(this.el);
-    }
+    //Allows for custom component as body instead of simple message. See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
+    @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer:ViewContainerRef;
 }

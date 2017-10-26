@@ -10,11 +10,6 @@ export class InputComponent {
     protected control:FormControl;
 
     @Output('valueChange') baseEmitter:EventEmitter<any> = new EventEmitter<any>();
-
-    @Input('value') set setValueValue(value:any) {
-        this.value = value;
-    }
-
     @Input() label:string;
     @Input() value:any;
     @Input() pattern:any;
@@ -26,5 +21,9 @@ export class InputComponent {
 
     constructor() {
         this.control = new FormControl('', []);
+    }
+
+    onValueChange() {
+        this.baseEmitter.emit(this.value);
     }
 }

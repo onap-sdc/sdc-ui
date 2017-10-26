@@ -2,7 +2,7 @@
     <div class="sdc-modal__content ">
         <div class="sdc-modal__header sdc-modal-type-{{type}}">
             <span class="title">{{ title }}</span>
-            <span class="close-button" (click)="close()"></span>
+            <button class="close-button" [button-modal-click]="{closeModal: true}"></button>
         </div>
         <div class="sdc-modal__body sdc-modal-type-{{type}}" >
             <div *ngIf="message">{{message}}</div>
@@ -11,10 +11,9 @@
 
         <div class="sdc-modal__footer">
             <sdc-button *ngFor="let button of buttons"
-                    [type]="button.type"
+                    [sdcButtonStyle]="button.sdcButtonStyle"
                     [disabled] = "button.disabled"
-                    (click) = "button.callback()"
-                    [modal-close]="button.closeModal">{{button.text}}</sdc-button>
+                    [button-modal-click]="button">{{button.text}}</sdc-button>
         </div>
     </div>
 </div>
