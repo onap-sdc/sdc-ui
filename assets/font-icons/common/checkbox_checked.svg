@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>form/checkbox_checked</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons-for-Dev" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="form/checkbox_checked">
+            <rect id="Rectangle-Copy-2" fill="#5A5A5A" x="0" y="0" width="14" height="14" rx="2"></rect>
+            <path d="M3.85355339,6.54977605 C3.65829124,6.35451391 3.34170876,6.35451391 3.14644661,6.54977605 C2.95118446,6.7450382 2.95118446,7.06162069 3.14644661,7.25688283 L5.71469032,9.82512654 C5.93114093,10.0415771 6.28952386,10.0144698 6.47095446,9.76792438 L10.8653572,3.79638422 C11.0290275,3.57397322 10.9814087,3.26099251 10.7589977,3.09732224 C10.5365867,2.93365198 10.223606,2.98127076 10.0599357,3.20368177 L6.01038326,8.70660592 L3.85355339,6.54977605 Z" id="Page-1" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>
