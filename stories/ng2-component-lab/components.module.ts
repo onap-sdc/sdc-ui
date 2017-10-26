@@ -4,15 +4,15 @@ import {CommonModule} from "@angular/common";
 import {ColorsTable} from "./components/colors-table.component";
 import {FormElementsModule} from "../../src/angular/form-elements/form-elements.module";
 import {ButtonsModule} from "../../src/angular/buttons/buttons.module";
-import {ButtonModal} from "./components/button-modal.component";
+import {ButtonModalExample} from "./components/button-modal-example.component";
 import {ModalModule} from "../../src/angular/modals/modal.module";
-import {InnerContent} from "./components/inner-content.component";
+import {InnerContent} from "./components/inner-content-example.component";
 
 @NgModule({
     declarations: [
         ColorsTable,
         InnerContent,
-        ButtonModal,
+        ButtonModalExample,
         KeysPipe
     ],
     imports: [
@@ -26,7 +26,7 @@ import {InnerContent} from "./components/inner-content.component";
         InnerContent,
         ModalModule,
         ColorsTable,
-        ButtonModal,
+        ButtonModalExample,
         FormElementsModule,
         ButtonsModule
     ],
