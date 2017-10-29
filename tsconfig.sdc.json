@@ -3,7 +3,7 @@
         "baseUrl": ".",
         "declaration": true,
         "experimentalDecorators": true,
-        "strict": true,
+
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "lib",
