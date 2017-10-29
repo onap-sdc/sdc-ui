@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
-const WebfontPlugin = require('webpack-webfont').default;
 const baseHref = process.env.NODE_ENV === 'build' ? '<base href="/angular/">' : '<base href="">';
 
 var webpackConfig = {
@@ -16,21 +15,7 @@ var webpackConfig = {
         new HtmlReplaceWebpackPlugin([{
             pattern: '<base href="/">',
             replacement: baseHref
-        }]),
-        new WebfontPlugin({
-            files: path.resolve(__dirname, 'assets/font-icons/**/*.svg'),
-            fontName: 'icons-font',
-            template: 'css',
-            normalize: true,
-            formats: ['woff2', 'woff', 'ttf', 'eot', 'svg'],
-            cssTemplateClassName: 'si',
-            cssTemplateFontPath: '/fonts/custom/',
-            dest: {
-                fontsDir: path.resolve(__dirname, 'assets/fonts/custom/'),
-                stylesDir: path.resolve(__dirname, 'scss/custom-fonts/'),
-                outputFilename: 'icons-font.css'
-            }
-        })
+        }])
     ],
 
     module: {

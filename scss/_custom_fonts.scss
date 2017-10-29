@@ -1,9 +1,4 @@
-@import "/../scss/custom-fonts/icons-font.css";
-
-%custom-font-icon {
-    text-align: center;
-}
+@import "/../scss/custom-fonts/common.css";
 
 .si {
-    @extend %custom-font-icon;
 }

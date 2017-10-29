@@ -1,7 +1,7 @@
 @font-face {
-    font-family: icons-font;
-    src: url("/fonts/custom/icons-font.eot");
-    src: url("/fonts/custom/icons-font.eot?#iefix") format("embedded-opentype"), url("/fonts/custom/icons-font.woff2") format("woff2"), url("/fonts/custom/icons-font.woff") format("woff"), url("/fonts/custom/icons-font.ttf") format("truetype"), url("/fonts/custom/icons-font.svg#icons-font") format("svg");
+    font-family: icons-font-common;
+    src: url("/fonts/icons/icons-font-common.eot");
+    src: url("/fonts/icons/icons-font-common.eot?#iefix") format("embedded-opentype"), url("/fonts/icons/icons-font-common.woff2") format("woff2"), url("/fonts/icons/icons-font-common.woff") format("woff"), url("/fonts/icons/icons-font-common.ttf") format("truetype"), url("/fonts/icons/icons-font-common.svg#icons-font-common") format("svg");
     font-style: normal;
     font-weight: 400;
 }
@@ -10,7 +10,7 @@
     display: inline-block;
     transform: translate(0, 0);
     text-rendering: auto;
-    font: normal normal 400 14px/1 icons-font;
+    font: normal normal 400 14px/1 icons-font-common;
     font-size: inherit;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;

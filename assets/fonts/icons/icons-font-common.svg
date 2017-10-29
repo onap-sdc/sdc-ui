@@ -2,8 +2,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <font id="icons-font" horiz-adv-x="32">
-    <font-face font-family="icons-font"
+  <font id="icons-font-common" horiz-adv-x="32">
+    <font-face font-family="icons-font-common"
       units-per-em="32" ascent="32"
       descent="0" />
     <missing-glyph horiz-adv-x="0" />
