@@ -15,7 +15,7 @@ export class ModalButtonConfig implements IModalButtonConfig {
     closeModal:boolean;
 
     constructor(text?:string, sdcButtonStyle?:string, closeModal?:boolean, buttonClickActionCallback?:Function) {
-        this.text = text;
+        this.text = text || '';
         this.sdcButtonStyle = sdcButtonStyle || 'default';
         this.callback = buttonClickActionCallback;
         this.closeModal = closeModal == null ? true: closeModal;
