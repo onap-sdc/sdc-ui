@@ -1,7 +1,7 @@
 @font-face {
-    font-family: icons-font-common;
-    src: url("/fonts/icons/icons-font-common.eot");
-    src: url("/fonts/icons/icons-font-common.eot?#iefix") format("embedded-opentype"), url("/fonts/icons/icons-font-common.woff2") format("woff2"), url("/fonts/icons/icons-font-common.woff") format("woff"), url("/fonts/icons/icons-font-common.ttf") format("truetype"), url("/fonts/icons/icons-font-common.svg#icons-font-common") format("svg");
+    font-family: font-icons-common;
+    src: url("/fonts/icons/font-icons-common.eot");
+    src: url("/fonts/icons/font-icons-common.eot?#iefix") format("embedded-opentype"), url("/fonts/icons/font-icons-common.woff2") format("woff2"), url("/fonts/icons/font-icons-common.woff") format("woff"), url("/fonts/icons/font-icons-common.ttf") format("truetype"), url("/fonts/icons/font-icons-common.svg#font-icons-common") format("svg");
     font-style: normal;
     font-weight: 400;
 }
@@ -10,7 +10,7 @@
     display: inline-block;
     transform: translate(0, 0);
     text-rendering: auto;
-    font: normal normal 400 14px/1 icons-font-common;
+    font: normal normal 400 14px/1 font-icons-common;
     font-size: inherit;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -64,15 +64,15 @@
 }
 
 .si-information::before {
-    content: "\ea08";
-}
-
-.si-radio_checked::before {
     content: "\ea06";
 }
 
-.si-radio_disabled::before {
+.si-radio_checked::before {
     content: "\ea07";
+}
+
+.si-radio_disabled::before {
+    content: "\ea08";
 }
 
 .si-radio_idle::before {

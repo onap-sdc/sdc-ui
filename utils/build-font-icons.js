@@ -47,7 +47,7 @@ function buildFontIcons(iconsCategory, webfontOptions) {
     const iconsDir = `${iconsMainDir}/${iconsCategory}`;
     const options = Object.assign({}, webfontOptionsDefault, webfontOptions, {
         files: `${iconsDir}/**/*${iconExtension}`,
-        fontName: `icons-font-${iconsCategory}`
+        fontName: `font-icons-${iconsCategory}`
     });
 
     return webfont(options).then(
