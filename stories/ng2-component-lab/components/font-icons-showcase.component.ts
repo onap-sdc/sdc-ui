@@ -1,15 +1,20 @@
 import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
 
+interface IIcon {
+    category: string;
+    name: string;
+}
+
 @Component({
     selector: "font-icons-table",
     template: `
         <div class="font-icons-table">
-            <div *ngFor="let category of fontIconsCategories" class="font-icons-category">
-                <h2 class="category-header">{{category}}</h2>
+            <div *ngFor="let iconCategory of fontIconsCategories" class="font-icons-category">
+                <h2 class="category-header">{{iconCategory}}</h2>
                 <div class="font-icons-container">
-                    <div class="font-icon-cell" *ngFor="let iconName of fontIconsMap[category]">
-                        <div class="font-icon-box" (click)="selectFontIcon(iconName)" [ngClass]="{'selected': iconName === selectedIconName}">
-                            <div class="font-icon-sym"><i class="si si-{{iconName}}"></i></div>
+                    <div class="font-icon-cell" *ngFor="let iconName of fontIconsMap[iconCategory]">
+                        <div class="font-icon-box" (click)="selectFontIcon({category: iconCategory, name: iconName})" [ngClass]="{'selected': iconName === selectedIcon?.name && iconCategory === selectedIcon?.category}">
+                            <div class="font-icon-sym" [innerHTML]="getFontIconCode({category: iconCategory, name: iconName})"></div>
                             <div class="font-icon-name">{{iconName}}</div>
                         </div>
                     </div>
@@ -17,17 +22,17 @@ import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
             </div>
         </div>
         <div class="font-icon-view">
-            <ng-container *ngIf="selectedIconName">
-                <div class="font-icon-sym" #selectedIconSymbol [innerHTML]="getFontIconCode(selectedIconName, selectedIconSize)"></div>
-                <div class="font-icon-name">{{selectedIconName}}</div>
+            <ng-container *ngIf="selectedIcon">
+                <div class="font-icon-sym" #selectedIconSymbol [innerHTML]="getFontIconCode(selectedIcon, selectedIconSize)"></div>
+                <div class="font-icon-name"><b>{{selectedIcon?.category}}</b>-<i>{{selectedIcon?.name}}</i></div>
                 <div class="font-icon-size">
                     Size: <select [(ngModel)]="selectedIconSize">
                         <option *ngFor="let iconSize of iconSizes" [ngValue]="iconSize">{{iconSize}}</option>
                     </select>
                 </div>
-                <div class="font-icon-code"><input type="text" disabled="true" value="{{selectedIconName ? selectedIconSymbol.innerHTML : ''}}" /></div>
+                <div class="font-icon-code"><input type="text" disabled="true" value="{{selectedIcon ? selectedIconSymbol.innerHTML : ''}}" /></div>
             </ng-container>
-            <ng-container *ngIf="!selectedIconName">
+            <ng-container *ngIf="!selectedIcon">
                 Please select icon to view...
             </ng-container>
         </div>
@@ -134,7 +139,7 @@ export class FontIconsShowcaseComponent implements OnChanges {
     @Input() public fontIconsMap: {[index: string]: string[]};
     public fontIconsCategories: string[];
     public iconSizes: string[] = ['', 'lg', '2x', '3x', '4x', '5x'];
-    public selectedIconName: string;
+    public selectedIcon: IIcon;
     public selectedIconSize: string = '';
 
     public ngOnChanges(changes: SimpleChanges) {
@@ -143,14 +148,18 @@ export class FontIconsShowcaseComponent implements OnChanges {
         }
     }
 
-    public selectFontIcon(iconName) {
-        this.selectedIconName = this.selectedIconName === iconName ? undefined : iconName;
+    public selectFontIcon(icon: IIcon) {
+        if (this.selectedIcon === icon) {
+            this.selectedIcon = undefined;
+        }
+        this.selectedIcon = icon;
+        // this.selectedIconName = this.selectedIconName === iconName ? undefined : iconName;
     }
 
-    public getFontIconCode(iconName, iconSize) {
-        return '<i class="si' +
-            (this.selectedIconSize ? ' si-' + this.selectedIconSize : '') +
-            ' si-' + this.selectedIconName +
+    public getFontIconCode(icon: IIcon, iconSize: string) {
+        return '<i class="i-' + icon.category +
+            (iconSize ? ' i-' + icon.category + '-' + iconSize : '') +
+            ' i-' + icon.category + '-' + icon.name +
             '"></i>';
     }
 }

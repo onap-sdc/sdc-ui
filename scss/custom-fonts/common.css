@@ -6,7 +6,7 @@
     font-weight: 400;
 }
 
-.si {
+.i-common {
     display: inline-block;
     transform: translate(0, 0);
     text-rendering: auto;
@@ -16,73 +16,73 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.si-lg {
+.i-common-lg {
     vertical-align: -15%;
     line-height: 0.75em;
     font-size: 1.33333333em;
 }
 
-.si-2x {
+.i-common-2x {
     font-size: 2em;
 }
 
-.si-3x {
+.i-common-3x {
     font-size: 3em;
 }
 
-.si-4x {
+.i-common-4x {
     font-size: 4em;
 }
 
-.si-5x {
+.i-common-5x {
     font-size: 5em;
 }
 
-.si-fw {
+.i-common-fw {
     width: 1.28571429em;
     text-align: center;
 }
 
-.si-browse::before {
+.i-common-browse::before {
     content: "\ea01";
 }
 
-.si-checkbox_checked::before {
+.i-common-checkbox_checked::before {
     content: "\ea02";
 }
 
-.si-checkbox_disabled::before {
+.i-common-checkbox_disabled::before {
     content: "\ea03";
 }
 
-.si-checkbox_idle::before {
+.i-common-checkbox_idle::before {
     content: "\ea04";
 }
 
-.si-failed::before {
+.i-common-failed::before {
     content: "\ea05";
 }
 
-.si-information::before {
+.i-common-information::before {
     content: "\ea06";
 }
 
-.si-radio_checked::before {
+.i-common-radio_checked::before {
     content: "\ea07";
 }
 
-.si-radio_disabled::before {
+.i-common-radio_disabled::before {
     content: "\ea08";
 }
 
-.si-radio_idle::before {
+.i-common-radio_idle::before {
     content: "\ea09";
 }
 
-.si-warning::before {
+.i-common-warning::before {
     content: "\ea0a";
 }
 
-.si-x::before {
+.i-common-x::before {
     content: "\ea0b";
 }

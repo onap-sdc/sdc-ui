@@ -11,7 +11,7 @@ const webfontOptionsDefault = {
     template: 'css',
     normalize: true,
     formats: ['woff2', 'woff', 'ttf', 'eot', 'svg'],
-    cssTemplateClassName: 'si',
+    cssTemplateClassName: 'i',
     cssTemplateFontPath: '/fonts/icons/'
 };
 
@@ -19,7 +19,7 @@ const webfontOptionsDefault = {
 const destFontIconsMapFile = './src/font-icons-map.ts';
 
 
-function createDir(dir) {
+function initializeDir(dir) {
     let curDir;
     dir.split('/').forEach((subDir) => {
         curDir = curDir === undefined ? subDir : `${curDir}/${subDir}`;
@@ -29,13 +29,19 @@ function createDir(dir) {
             fs.mkdirSync(curDir);
         }
     });
+    fs.readdirSync(dir).forEach((fname) => {
+        const file = `${dir}/${fname}`;
+        if (fs.statSync(file).isFile()) {
+            fs.unlinkSync(file);
+        }
+    });
 }
 
 function writeFontIconsMapFile(destPath, iconsMap) {
     let dataToWrite = '';
-    dataToWrite += 'export default {\n    ';
+    dataToWrite += 'export default {';
     dataToWrite += Object.keys(iconsMap).map((category) =>
-        `'${category}': [\n        ${iconsMap[category].map((name) => `'${name}'`).join(',\n        ')}\n    ]`);
+        `\n    '${category}': [${iconsMap[category].map((name) => `\n        '${name}'`).join(',')}\n    ]`);
     dataToWrite += '\n};\n';
 
     fs.writeFileSync(destPath, dataToWrite);
@@ -47,7 +53,8 @@ function buildFontIcons(iconsCategory, webfontOptions) {
     const iconsDir = `${iconsMainDir}/${iconsCategory}`;
     const options = Object.assign({}, webfontOptionsDefault, webfontOptions, {
         files: `${iconsDir}/**/*${iconExtension}`,
-        fontName: `font-icons-${iconsCategory}`
+        fontName: `font-icons-${iconsCategory}`,
+        cssTemplateClassName: `${webfontOptionsDefault.cssTemplateClassName}-${iconsCategory}`
     });
 
     return webfont(options).then(
@@ -68,15 +75,16 @@ function buildFontIcons(iconsCategory, webfontOptions) {
 
 Promise.all(fs.readdirSync(iconsMainDir).map((dirname) => buildFontIcons(dirname))).then(
     (results) => {
+        initializeDir(destFonts);
+        initializeDir(destStyles);
+
         const fontIconsMap = {};
 
         results.forEach((result) => {
-            createDir(destFonts);
             result.config.formats.forEach((fontFormat) => {
                 fs.writeFileSync(`${destFonts}/${result.config.fontName}.${fontFormat}`, result[fontFormat]);
             });
 
-            createDir(destStyles);
             fs.writeFileSync(`${destStyles}/${result.config.iconsCategory}.css`, result.styles);
 
             fontIconsMap[result.config.iconsCategory] = result.config.foundFiles.map((filePath) => {
