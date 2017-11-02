@@ -7,6 +7,7 @@ import {ButtonsModule} from "../../src/angular/buttons/buttons.module";
 import {ButtonModalExample} from "./components/button-modal-example.component";
 import {ModalModule} from "../../src/angular/modals/modal.module";
 import {InnerContent} from "./components/inner-content-example.component";
+import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import {InnerContent} from "./components/inner-content-example.component";
         ModalModule,
         CommonModule,
         FormElementsModule,
-        ButtonsModule
+        ButtonsModule,
+        PopupMenuModule
     ],
     entryComponents: [InnerContent],
     exports: [
@@ -28,7 +30,8 @@ import {InnerContent} from "./components/inner-content-example.component";
         ColorsTable,
         ButtonModalExample,
         FormElementsModule,
-        ButtonsModule
+        ButtonsModule,
+        PopupMenuModule
     ],
     providers: [KeysPipe]
 })
