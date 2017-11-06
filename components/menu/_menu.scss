@@ -1,0 +1,61 @@
+.sdc-menu-list {
+    position: fixed;
+    z-index: 100;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: $light-gray;
+    box-sizing: border-box;
+    background-color: $white;
+    width: 91px;
+    padding: 6px 0;
+    @include box-shadow(0px 2px 2px 0px rgba($text-black, 0.1));
+
+    .sdc-menu-item {
+        font-size: 14px;
+        line-height: 14px;
+        color: $dark-gray;
+        padding: 3px 6px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $light-blue;
+        }
+
+        &.disabled {
+            cursor: default;
+            color: $gray;
+
+            &:hover {
+                cursor: default;
+                background-color: inherit;
+            }
+        }
+
+        &.line {
+            cursor: default;
+
+            &::before {
+                content: '';
+                display: block;
+                height: 1px;
+                width: 100%;
+                border-top: 1px solid $gray;
+                margin-top: 1px;
+            }
+
+            &:hover {
+                cursor: default;
+                background-color: inherit;
+            }
+        }
+    }
+
+    &.relative {
+        position: relative;
+    }
+
+    &.static {
+        position: static;
+    }
+}
