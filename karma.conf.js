@@ -68,7 +68,11 @@ module.exports = function (config) {
         /**
          * Load webpack test configuration file
          */
-        webpack: require('./webpack/webpack.test'),
+        webpack: require('./webpack/webpack.test.js'),
+
+        webpackMiddleware: {
+          noInfo: true
+        },
 
         /**
          * Hide webpack bundle information messages
