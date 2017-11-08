@@ -14,7 +14,7 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-
+const helpers = require('./helpers');
 module.exports = {
     /**
      * Choose a developer tool to enhance debugging. inline-source-map - A SourceMap is added as DataUrl to the JavaScript file.
@@ -46,6 +46,17 @@ module.exports = {
 
         ]
     },
+
+    plugins: [
+        // Workaround for angular/angular#11580
+        new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            ///angular(\\|\/)core(\\|\/)@angular/,
+            /@angular(\\|\/)core(\\|\/)/,
+            helpers.root('./src'), // location of your src
+            {} // a map of your routes
+        ),
+    ],
 
     /**
      * This section lets Webpack know which types of file extensions it should be loading.
