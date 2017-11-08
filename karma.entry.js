@@ -4,9 +4,11 @@
  ***************************************************************************************/
 
 /**
- * Load dependencies we'll be using:
- * core-js/es6 - To support es6 code on unsupported browsers
- * Zone library - angular library angular uses for change detection
+ * Load dependencies:
+ * - core-js/es6 - Javascript polyfills support es6 code on unsupported browsers
+ * - reflect-metadata - support for decorators and reflection.
+ * - Zone library - Monkey patch all asynchronous actions and jasmine so changes could be detected
+ *                  as well as long stack traces (To get the root cause of errors).
  */
 
 require('core-js/es6');
@@ -16,11 +18,10 @@ require('reflect-metadata');
 require('zone.js/dist/zone');
 require('zone.js/dist/async-test');
 require('zone.js/dist/fake-async-test');
-require('zone.js/dist/long-stack-trace-zone');
+require('zone.js/dist/long-stack-trace-zone'); // Gives us a long backward trace of actions and errors
 require('zone.js/dist/proxy');
 require('zone.js/dist/sync-test');
 require('zone.js/dist/jasmine-patch');
-
 
 /**
  * RxJS
@@ -43,7 +44,7 @@ coreTesting.TestBed.initTestEnvironment(
  * Webpack method. requires all the files and subdirectories of a pattern.
  * Checkout {@link https://webpack.github.io/docs/context.html}
  */
-const context = require.context('./src/', true, /\.spec\.ts$/);
+const context = require.context('./src/angular/', true, /\.spec\.ts$/);
 
 /**
  * Get all the files, for each file, call the context function
