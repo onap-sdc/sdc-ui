@@ -39,12 +39,19 @@ h1, h2, h3, h4, h5, h6, ul {
   padding: 0;
 }
 
-input {
-  padding: 7px 10px;
+input, select {
+  padding: 4px 10px;
+  width: 100%;
 }
 
-.disabled {
-  opacity: 0.7 !important;
+input[type="checkbox"] {
+  width: auto;
+}
+
+input, select, button {
+  @include base-font-regular;
+  font-size: $body-font-1;
+  box-sizing: border-box;
 }
 
 fieldset {
@@ -53,7 +60,7 @@ fieldset {
 
 fieldset {
   label {
-	display: inline-block;
+    display: inline-block;
   }
 }
 

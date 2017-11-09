@@ -1,24 +1,21 @@
 var path = require('path');
-
-// const svgFolder = './assets/icons/';
-// const fs = require('fs');
-// let svgIcons = []
-// fs.readdirSync(svgFolder).forEach(file => {
-// 	let fileName = file.split('.');
-// 	if (fileName[0] && fileName[1] === 'svg') {
-// 		svgIcons.push(fileName[0]);
-// 	}
-// })
+var HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin')
+var baseHref = process.env.NODE_ENV === 'build' ? '<base href="/angular/">' : '<base href="">'
 
 var webpackConfig = {
 
   devtool: 'source-map',
 
+  output: {
+    path: path.resolve('.out/angular'),
+    publicPath: ''
+  },
+
   plugins: [
-    // new webpack.DefinePlugin({
-    // 	'ICON_PATH': '"./"',
-    // 	'ICON_NAMES':JSON.stringify(svgIcons)
-    // })
+    new HtmlReplaceWebpackPlugin([{
+      pattern: '<base href="/">',
+      replacement: baseHref
+    }])
   ],
 
   module: {
@@ -32,6 +29,7 @@ var webpackConfig = {
           'angular2-router-loader'
         ]
       },
+      { test: /\.html$/, loader: "html-loader" },
       {
         test: /.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -41,8 +39,8 @@ var webpackConfig = {
   },
 
   resolve: {
-    extensions: [ '.ts', '.js' ],
-    modules: [ path.resolve(__dirname, 'node_modules') ]
+    extensions: ['.ts', '.js'],
+    modules: [path.resolve(__dirname, 'node_modules')]
   },
 
   node: {

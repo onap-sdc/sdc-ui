@@ -1,9 +1,12 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
-import { CheckboxComponent } from "./../../src/angular2/checkbox.component";
 
 export default experimentOn('Checkbox')
-  .case('Normal Checkbox', {
-    template: `
-      <sdc-checkbox name="myCheckBox" label="This is checkbox label"></sdc-checkbox>
+    .case('Normal Checkbox', {
+        template: `
+     <sdc-checkbox label="Checked"></sdc-checkbox>
     `
-  });
+    }).case('Disabled Checkbox', {
+        template: `
+     <sdc-checkbox label="Checked" [disabled]="true"></sdc-checkbox>
+    `
+    });

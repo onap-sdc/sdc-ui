@@ -1,16 +1,22 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import iconMap from './utils/iconMap.js';
 
 const SVGIcon = ({name, onClick, label, className, iconClassName, labelClassName, labelPosition, color, disabled, ...other}) => {
 
-	let colorClass = (color !== '') ? '__'+color : '';
-	let classes = `svg-icon-wrapper ${iconClassName} ${className} ${colorClass} ${onClick ? 'clickable' : ''} ${disabled ? 'disabled' : ''} ${labelPosition}`;
+	let colorClass = (color !== '') ? '__' + color : '';
+	let classes = `svg-icon-wrapper ${iconClassName} ${className} ${colorClass} ${onClick ? 'clickable' : ''} ${labelPosition}`;
 	let camelCasedName = name.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
 	let IconComponent = iconMap[camelCasedName];
+	if (!IconComponent) {
+		console.error('Icon by the name ' + camelCasedName + ' is missing.');
+	}
 
 	return (
-		<div {...other} onClick={onClick} className={classes}>
-			<IconComponent className={`svg-icon __${name} ${disabled ? 'disabled' : ''}`} />
+		<div {...other} onClick={onClick} className={classes} disabled={disabled}>
+			{ IconComponent && <IconComponent className={`svg-icon __${name}`} /> }
+			{ !IconComponent && <span className='svg-icon-missing'>Missing Icon</span> }
 			{label && <span className={`svg-icon-label ${labelClassName}`}>{label}</span>}
 		</div>
 	);
@@ -25,8 +31,7 @@ SVGIcon.propTypes = {
 	className: PropTypes.string,
 	iconClassName: PropTypes.string,
 	labelClassName: PropTypes.string,
-	color: PropTypes.string,
-	disabled: PropTypes.boolean
+	color: PropTypes.string
 };
 
 SVGIcon.defaultProps = {
@@ -36,8 +41,7 @@ SVGIcon.defaultProps = {
 	iconClassName: '',
 	labelClassName: '',
 	labelPosition: 'bottom',
-	color: '',
-	disabled: false
+	color: ''
 };
 
 export default SVGIcon;
