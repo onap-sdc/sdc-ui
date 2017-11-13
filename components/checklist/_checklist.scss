@@ -1,0 +1,14 @@
+.checkbox-item{
+  margin: 7px 0;
+ .sdc-checkbox__label{
+    @extend .body-2-semibold;
+  }
+}
+.checkbox-sublist{
+  padding-left: 20px;
+  .checkbox-item{
+    .sdc-checkbox__label{
+      @extend .body-2;
+    }
+  }
+}
