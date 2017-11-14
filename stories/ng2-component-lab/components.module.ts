@@ -8,6 +8,7 @@ import {ButtonModalExample} from "./components/button-modal-example.component";
 import {ModalModule} from "../../src/angular/modals/modal.module";
 import {InnerContent} from "./components/inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
+import {TileModule} from "../../lib/angular/tiles/tile.module";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
         CommonModule,
         FormElementsModule,
         ButtonsModule,
-        PopupMenuModule
+        PopupMenuModule,
+        TileModule
     ],
     entryComponents: [InnerContent],
     exports: [
@@ -31,7 +33,8 @@ import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
         ButtonModalExample,
         FormElementsModule,
         ButtonsModule,
-        PopupMenuModule
+        PopupMenuModule,
+        TileModule
     ],
     providers: [KeysPipe]
 })
