@@ -25,7 +25,7 @@ import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-s
         ButtonsModule,
         TileModule,
         ButtonsModule,
-        PopupMenuModule
+        PopupMenuModule,
         InfiniteScrollModule
     ],
     entryComponents: [InnerContent],
