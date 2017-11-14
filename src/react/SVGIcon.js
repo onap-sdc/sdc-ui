@@ -1,4 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import iconMap from './utils/iconMap.js';
 
 const SVGIcon = ({name, onClick, label, className, iconClassName, labelClassName, labelPosition, color, disabled, ...other}) => {
