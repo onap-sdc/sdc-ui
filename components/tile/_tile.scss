@@ -154,9 +154,7 @@
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
-			&:first-child {
-				@include ellipsis;
-			}
+
 			svg{
 				width: 20px;
 				height: 12px;
