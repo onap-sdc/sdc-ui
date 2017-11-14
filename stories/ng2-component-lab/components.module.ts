@@ -1,14 +1,10 @@
-import {NgModule, Injector} from "@angular/core";
+import {NgModule} from "@angular/core";
+import {SdcUiComponentsModule} from "../../src/angular/index";
 import {KeysPipe} from "./utils/pipes/keys.pipe";
 import {CommonModule} from "@angular/common";
 import {ColorsTable} from "./components/colors-table.component";
-import {FormElementsModule} from "../../src/angular/form-elements/form-elements.module";
-import {ButtonsModule} from "../../src/angular/buttons/buttons.module";
 import {ButtonModalExample} from "./components/button-modal-example.component";
-import {ModalModule} from "../../src/angular/modals/modal.module";
 import {InnerContent} from "./components/inner-content-example.component";
-import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
-import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 
 @NgModule({
     declarations: [
@@ -18,24 +14,14 @@ import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-s
         KeysPipe
     ],
     imports: [
-        ModalModule,
         CommonModule,
-        FormElementsModule,
-        ButtonsModule,
-        PopupMenuModule,
-        InfiniteScrollModule
+        SdcUiComponentsModule
     ],
     entryComponents: [InnerContent],
     exports: [
-        CommonModule,
         InnerContent,
-        ModalModule,
         ColorsTable,
-        ButtonModalExample,
-        FormElementsModule,
-        ButtonsModule,
-        PopupMenuModule,
-        InfiniteScrollModule
+        ButtonModalExample
     ],
     providers: [KeysPipe]
 })

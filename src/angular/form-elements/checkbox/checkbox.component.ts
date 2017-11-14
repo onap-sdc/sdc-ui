@@ -1,12 +1,12 @@
 import {Component, Input, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
+import template from "./checkbox.component.html";
 
 @Component({
     selector: 'sdc-checkbox',
-    templateUrl: './checkbox.component.html',
+    template: template,
     encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent {
-
 
     @Input() label:string;
     @Input() checked:boolean;
@@ -17,4 +17,3 @@ export class CheckboxComponent {
         this.checkedChange.emit(newValue);
     }
 }
-
