@@ -3,6 +3,10 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
+const valueChange = (value: any): void => {
+    alert(value);
+};
+
 export default experimentOn('Input')
     .case('Normal input', {
         showSource: true,
@@ -29,5 +33,18 @@ export default experimentOn('Input')
         showSource: true,
         template: `
       <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
+    `
+    }).case('Input with placeholder', {
+        showSource: true,
+        template: `
+      <sdc-input placeHolder="TEXT"></sdc-input>
+    `
+    }).case('Input with debounce time', {
+        showSource: true,
+        context: {
+            changeEvent: valueChange
+        },
+        template: `
+      <sdc-input [debounceTime]="5000" (valueChange)="changeEvent($event)"></sdc-input>
     `
     });
