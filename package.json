@@ -5,10 +5,11 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "npm run build-icons && jest",
+    "test": "npm run build-icons && jest && npm run karma",
     "test-dev": "npm run build-icons && jest --watch",
     "test-coverage": "npm run build-icons && jest --coverage && start coverage/lcov-report/index.html",
-    "test angular": "karma start",
+    "karma":"karma start --single-run --browsers PhantomJS",
+    "karma-dev": "karma start",
     "build-demo": "node utils/build-demo.js",
     "build-icons": "node utils/create-icon-map.js",
     "build-common": "npm run build-icons && node-sass --include-path scss scss/style.scss css/style.css",
