@@ -1,7 +1,9 @@
+
 @mixin default-button($primary, $hover, $active, $active-border, $border: $active, $hover-border: $border, $text: $white) {
   color: $text;
   border-color: $border;
   background-color: $primary;
+  font-size: 12px;
 
   &:not([disabled]) {
     &:hover, &:focus {
@@ -19,10 +21,15 @@
   background-color: transparent;
   color: $color;
   border-color: $color;
-
   &:not([disabled]) {
-    &:hover, &:focus { background-color: rgba($color, 0.1); }
-    &:active { background-color: rgba($color, 0.3); }
+    &:hover, &:active {
+      color: rgba($color, 0.75);
+      border-color: ($color, 0.75);
+    }
+    &:focus {
+      color: rgba(0,159,219,1);
+      border-color: rgba(5,104,174,1);
+    }
   }
 }
 
@@ -36,20 +43,31 @@
   }
 }
 
+.btn-large{
+  width: $btn-large;
+}
+
+.btn-medium{
+  width: $btn-medium;
+}
+
+.btn-small{
+  width: $btn-small;
+}
+
 .sdc-button {
   outline: none;
   border-radius: 2px;
   border: solid 1px;
-
+  min-width: 110px;
+  height: 36px;
+  padding: 0 12px;
+  text-transform: uppercase;
   cursor: pointer;
   text-align: center;
-
   @extend .body-1-semibold;
 
-  &:not(.sdc-button-link) {
-    width: 94px;
-    height: 30px;
-  }
+
 
   &:disabled {
     opacity: 0.3;
@@ -62,22 +80,24 @@
     // Primary default button
     &.sdc-button__primary {
       $primary:       $blue;
+      border:         none;
       $hover:         $dodger-blue;
       $active:        $pacific-blue;
       $active-border: $orient;
       @include default-button($primary, $hover, $active, $active-border);
+      &:focus{
+        border: 1px solid #0568AE;
+      }
     }
 
     // White default button
     &.sdc-button__white {
-      $primary:       $white;
-      $border:        $light-gray;
-      $hover:         $primary;
-      $hover-border:  $gray;
-      $active:        $background-gray;
-      $active-border: $dark-gray;
-      $text:          $dark-gray;
-      @include default-button($primary, $hover, $active, $active-border, $border, $hover-border, $text);
+
+      @include outline-button($blue);
+      &:hover, &:active {
+        border:1px solid #1EB9F3;
+        background-color: #ffffff;
+      }
     }
 
     // Gray default button
@@ -162,20 +182,37 @@
   } // End of outline type
 
   // Link type
-  &.sdc-button-link {
+  &.sdc-button__link {
     border: none;
     background-color: transparent;
+    color: $blue;
+    &:hover{
+      color:$hover-blue;
+    }
     @extend .body-1;
 
-    // Primary link button
-    &.sdc-button__primary {
-      @include link-button($blue, $dark-blue);
-    }
-
-    // Secondary link button
-    &.sdc-button__secondary {
-      @include link-button($gray, $dark-gray);
-    }
 
   } // End of link type
+}
+
+
+
+.button-tile{
+  margin: 0px auto;
+  .sdc-button {
+      height: 1.67em;
+      width: initial;
+      margin-bottom: 5px;
+      padding: 0 8px;
+      font-size: inherit;
+      background-color: transparent;
+      color: #5a5a5a;
+      border-color: #5a5a5a;
+  }
+  :hover, :focus {
+    background-color: rgba(90, 90, 90, 0.1);
+  }
+  button {
+    margin: auto;
+  }
 }
