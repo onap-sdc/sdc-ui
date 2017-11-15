@@ -1,0 +1,29 @@
+.action-button{
+    cursor:pointer;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    right: 11px;
+}
+
+.search-bar-button {
+    bottom: 44px;
+      svg{
+        height: 17px;
+        width: 17px;
+        path{
+          fill: $gray;
+        }
+      }
+}
+
+.clear-search-x {
+    bottom: 42px;
+    svg{
+      height: 10px;
+      width: 10px;
+      g{
+        fill: $gray;
+      }
+    }
+}

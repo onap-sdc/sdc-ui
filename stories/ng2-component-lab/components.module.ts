@@ -8,20 +8,26 @@ import {ButtonModalExample} from "./components/button-modal-example.component";
 import {ModalModule} from "../../src/angular/modals/modal.module";
 import {InnerContent} from "./components/inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
+import {SearchBarModule} from "../../src/angular/searchbox/search-bar.module";
+import {SearchFilterPipe} from "./utils/pipes/search.pipe";
+import {SearchBarExample} from "./components/search-bar-example.component";
 
 @NgModule({
     declarations: [
         ColorsTable,
         InnerContent,
         ButtonModalExample,
-        KeysPipe
+        SearchBarExample,
+        KeysPipe,
+        SearchFilterPipe
     ],
     imports: [
         ModalModule,
         CommonModule,
         FormElementsModule,
         ButtonsModule,
-        PopupMenuModule
+        PopupMenuModule,
+        SearchBarModule
     ],
     entryComponents: [InnerContent],
     exports: [
@@ -29,11 +35,13 @@ import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
         ModalModule,
         ColorsTable,
         ButtonModalExample,
+        SearchBarExample,
         FormElementsModule,
         ButtonsModule,
-        PopupMenuModule
+        PopupMenuModule,
+        SearchBarModule
     ],
-    providers: [KeysPipe]
+    providers: [KeysPipe, SearchFilterPipe]
 })
 
 export class ComponentsModule {
