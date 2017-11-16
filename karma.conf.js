@@ -65,6 +65,8 @@ module.exports = function (config) {
          */
         singleRun: false,
 
+        failOnEmptyTestSuite:false,
+
         /**
          * Load webpack test configuration file
          */
