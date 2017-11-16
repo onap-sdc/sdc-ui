@@ -12,6 +12,8 @@ import {SearchBarModule} from "../../src/angular/searchbox/search-bar.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 import {SearchFilterPipe} from "./utils/pipes/search.pipe";
 import {SearchBarExample} from "./components/search-bar-example.component";
+import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autocomplete/search-with-autocomplete.module";
+import {SearchWithAutocompleteExample} from "./components/search-with-autocomplete-example.component";
 
 @NgModule({
     declarations: [
@@ -19,6 +21,7 @@ import {SearchBarExample} from "./components/search-bar-example.component";
         InnerContent,
         ButtonModalExample,
         SearchBarExample,
+        SearchWithAutocompleteExample,
         KeysPipe,
         SearchFilterPipe
     ],
@@ -29,7 +32,8 @@ import {SearchBarExample} from "./components/search-bar-example.component";
         ButtonsModule,
         PopupMenuModule,
         SearchBarModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        SearchWithAutoCompleteModule
     ],
     entryComponents: [InnerContent],
     exports: [
@@ -39,11 +43,13 @@ import {SearchBarExample} from "./components/search-bar-example.component";
         ColorsTable,
         ButtonModalExample,
         SearchBarExample,
+        SearchWithAutocompleteExample,
         FormElementsModule,
         ButtonsModule,
         PopupMenuModule,
         SearchBarModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        SearchWithAutoCompleteModule
     ],
     providers: [KeysPipe, SearchFilterPipe]
 })
