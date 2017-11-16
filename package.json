@@ -12,7 +12,8 @@
     "karma-dev": "karma start",
     "build-demo": "node utils/build-demo.js",
     "build-icons": "node utils/create-icon-map.js",
-    "build-common": "npm run build-icons && node-sass --include-path scss scss/style.scss css/style.css",
+    "build-font-icons": "node utils/build-font-icons.js",
+    "build-common": "npm run build-font-icons && npm run build-icons && node-sass --include-path scss scss/style.scss css/style.css",
     "build-react": "babel src/react -d lib/react && babel src/index.js -o lib/index.js",
     "build-angular": "ngc -p tsconfig.sdc.json && ncp src/index.d.ts lib/index.d.ts",
     "build": "npm run build-common && npm run build-react && npm run build-angular",
@@ -58,6 +59,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^7.0.1",
+    "file-loader": "^1.1.5",
     "html-loader": "^0.4.5",
     "html-replace-webpack-plugin": "^2.2.6",
     "jasmine-spec-reporter": "^4.1.1",
@@ -82,7 +84,9 @@
     "tslint": "5.4.3",
     "typescript": "2.3.4",
     "uglify-js": "2.8.29",
-    "url-parse": "^1.1.9"
+    "url-loader": "^0.6.2",
+    "url-parse": "^1.1.9",
+    "webfont": "^7.1.4"
   },
   "dependencies": {
     "@angular/common": "~2.4.8",

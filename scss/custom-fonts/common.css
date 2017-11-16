@@ -1,0 +1,88 @@
+@font-face {
+    font-family: font-icons-common;
+    src: url("/fonts/icons/font-icons-common.eot");
+    src: url("/fonts/icons/font-icons-common.eot?#iefix") format("embedded-opentype"), url("/fonts/icons/font-icons-common.woff2") format("woff2"), url("/fonts/icons/font-icons-common.woff") format("woff"), url("/fonts/icons/font-icons-common.ttf") format("truetype"), url("/fonts/icons/font-icons-common.svg#font-icons-common") format("svg");
+    font-style: normal;
+    font-weight: 400;
+}
+
+.i-common {
+    display: inline-block;
+    transform: translate(0, 0);
+    text-rendering: auto;
+    font: normal normal 400 14px/1 font-icons-common;
+    font-size: inherit;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.i-common-lg {
+    vertical-align: -15%;
+    line-height: 0.75em;
+    font-size: 1.33333333em;
+}
+
+.i-common-2x {
+    font-size: 2em;
+}
+
+.i-common-3x {
+    font-size: 3em;
+}
+
+.i-common-4x {
+    font-size: 4em;
+}
+
+.i-common-5x {
+    font-size: 5em;
+}
+
+.i-common-fw {
+    width: 1.28571429em;
+    text-align: center;
+}
+
+.i-common-browse::before {
+    content: "\ea01";
+}
+
+.i-common-checkbox_checked::before {
+    content: "\ea02";
+}
+
+.i-common-checkbox_disabled::before {
+    content: "\ea03";
+}
+
+.i-common-checkbox_idle::before {
+    content: "\ea04";
+}
+
+.i-common-failed::before {
+    content: "\ea05";
+}
+
+.i-common-information::before {
+    content: "\ea06";
+}
+
+.i-common-radio_checked::before {
+    content: "\ea07";
+}
+
+.i-common-radio_disabled::before {
+    content: "\ea08";
+}
+
+.i-common-radio_idle::before {
+    content: "\ea09";
+}
+
+.i-common-warning::before {
+    content: "\ea0a";
+}
+
+.i-common-x::before {
+    content: "\ea0b";
+}
