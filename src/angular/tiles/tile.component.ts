@@ -8,9 +8,9 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
 export class TileComponent {
     @Input() public color: string;
     @Input() public header: string;
-    @Input() public main_icon: string;
-    @Input() public title: string;
-    @Input() public pre_title: string;
+    @Input() public info_icon: string;
+    @Input() public info_text: string;
+    @Input() public info_pre_title: string;
     @Input() public footer: string;
     @Input() public footer_icon: string;
     @Output() tileClick: EventEmitter<any> = new EventEmitter();

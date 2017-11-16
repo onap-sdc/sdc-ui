@@ -9,19 +9,10 @@ export default experimentOn('Tiles')
             console: console1
         },
         showSource: true,
-        template: `<sdc-tile [color] = "'purple'" [header] = "'R'"  [title] = "'Router'" [pre_title] = "'V 0.1'"  [footer] ="'Ready'" (tileClick)="alert($event)" [footer_icon]="true" ></sdc-tile>`
-    }).case('Tile Sample blue', {
-        context: {
-            alert: alert1,
-            console: console1
-        },
-        showSource: true,
-        template: `<sdc-tile [color] = "'blue'" [header] = "'S'"  [title] = "'Router2'" [pre_title] = "'V 0.2'"  [footer] ="'Pending'" (tileClick)="alert($event)" [footer_icon]="true"></sdc-tile>`
-    }).case('Tile Sample without footer icon', {
-        context: {
-            alert: alert1,
-            console: console1
-        },
-        showSource: true,
-        template: `<sdc-tile [color] = "'blue'" [header] = "'VS'"  [title] = "'Router2'" [pre_title] = "'V 1.2'"  [footer] ="'Finished'" (tileClick)="alert($event)"></sdc-tile>`
+        template: `
+                <sdc-tile>
+                    <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
+                    <sdc-tile-info text="Router" color = "purple" pre_title="test" info></sdc-tile-info>
+                    <sdc-tile-info text="Footer" icon="test" footer></sdc-tile-info>
+                </sdc-tile>`
     });

@@ -61,7 +61,7 @@
 	}
 
 	.sdc-tile-header {
-		height: $heading-font-5 + 2px;
+		height: $body-font-1 + 2px;
 		@include ellipsis($display: block);
 		font-size: $heading-font-5;
 		margin-top: -4px;
@@ -119,7 +119,7 @@
 				&.supertitle {
 					line-height: 1.2;
 					color: $dark-gray;
-					font-size: 12px;
+					font-size: $body-font-3;
 				}
 
 				&.title {
@@ -129,7 +129,6 @@
 				}
 				&.subtitle {
 					height: 1.6em;
-					font-family: OpenSans;
 					line-height: 1.6;
 					color: $dark-gray;
 				}
@@ -154,7 +153,9 @@
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
-
+			&:first-child {
+				@include ellipsis;
+			}
 			svg{
 				width: 20px;
 				height: 12px;
