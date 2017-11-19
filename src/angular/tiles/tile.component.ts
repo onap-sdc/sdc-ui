@@ -13,13 +13,4 @@ export class TileComponent {
     @Input() public info_pre_title: string;
     @Input() public footer: string;
     @Input() public footer_icon: string;
-    @Output() tileClick: EventEmitter<any> = new EventEmitter();
-
-    constructor() {
-
-    }
-
-    onClick(ev) {
-        this.tileClick.emit(true);
-    }
 }
