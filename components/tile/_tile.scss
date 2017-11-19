@@ -10,7 +10,7 @@
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
 
 	$header-height: 10px;
-	$footer-height: 23px;
+	$footer-height: 18px;
 	$content-height: 100%;
 
 	width: $tile-full-width;
@@ -64,8 +64,6 @@
 		height: $body-font-1 + 2px;
 		@include ellipsis($display: block);
 		font-size: $heading-font-5;
-		margin-top: -4px;
-		margin-left: -3px;
 		@extend .text-uppercase;
 	}
 
@@ -149,15 +147,11 @@
 		height: $footer-height;
 		@include box-sizing;
 		border-top: 1px solid $light-gray;
-		margin-top: 7px;
-		padding-top: 7px;
-
 		color: $dark-gray;
 		fill: $dark-gray;
 		@extend .text-capitalize;
-
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
