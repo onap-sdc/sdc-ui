@@ -12,10 +12,13 @@ export class CheckboxComponent {
     @Input() disabled:boolean;
     @Input() value: any;
     @Output() checkedChange:EventEmitter<any> = new EventEmitter<any>();
-    toggleState(new_value:boolean) {
+
+    public toggleState(new_value:boolean) {
         this.value.state = new_value;
         this.checkedChange.emit(this.value);
         alert(this.value.name + ' ' + this.value.state);
+        console.log(this)
+        return this;
     }
 }
 
