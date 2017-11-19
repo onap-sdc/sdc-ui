@@ -1,10 +1,10 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
-import {default as TabsComp} from '../src/react/Tabs.js';
-import Tab from '../src/react/Tab.js';
-import HTMLTabsHeader from '../components/tabs/tabs-header.html';
-import HTMLTabsDisabled from '../components/tabs/tabs-disabled.html';
-import HTMLTabsMenu from '../components/tabs/tabs-menu.html';
+import {default as TabsComp} from '../../src/react/Tabs.js';
+import Tab from '../../src/react/Tab.js';
+import HTMLTabsHeader from '../../components/tabs/tabs-header.html';
+import HTMLTabsDisabled from '../../components/tabs/tabs-disabled.html';
+import HTMLTabsMenu from '../../components/tabs/tabs-menu.html';
 
 let examples = {
 	'Menu Tabs': {
