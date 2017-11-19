@@ -16,6 +16,9 @@
   "exclude": [
     "node_modules"
   ],
+  "types":[
+    "jasmine"
+  ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
   },
