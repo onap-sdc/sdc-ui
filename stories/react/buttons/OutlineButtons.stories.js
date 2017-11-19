@@ -1,19 +1,19 @@
 import React from 'react';
 import Examples from '../utils/Examples.js';
 
-import ReactButton from '../../src/react/Button.js';
+import ReactButton from '../../../src/react/Button.js';
 
-import HTMLButtonOutlinePrimary from '../../components/button/button-outline-primary.html';
-import HTMLButtonOutlineGray from '../../components/button/button-outline-gray.html';
-import HTMLButtonOutlinePositive from '../../components/button/button-outline-positive.html';
-import HTMLButtonOutlineNegative from '../../components/button/button-outline-negative.html';
-import HTMLButtonOutlineWarning from '../../components/button/button-outline-warning.html';
+import HTMLButtonOutlinePrimary from '../../../components/button/button-outline-primary.html';
+import HTMLButtonOutlineGray from '../../../components/button/button-outline-gray.html';
+import HTMLButtonOutlinePositive from '../../../components/button/button-outline-positive.html';
+import HTMLButtonOutlineNegative from '../../../components/button/button-outline-negative.html';
+import HTMLButtonOutlineWarning from '../../../components/button/button-outline-warning.html';
 
-import HTMLButtonOutlinePrimaryDisabled from '../../components/button/button-outline-primary-disabled.html';
-import HTMLButtonOutlineGrayDisabled from '../../components/button/button-outline-gray-disabled.html';
-import HTMLButtonOutlinePositiveDisabled from '../../components/button/button-outline-positive-disabled.html';
-import HTMLButtonOutlineNegativeDisabled from '../../components/button/button-outline-negative-disabled.html';
-import HTMLButtonOutlineWarningDisabled from '../../components/button/button-outline-warning-disabled.html';
+import HTMLButtonOutlinePrimaryDisabled from '../../../components/button/button-outline-primary-disabled.html';
+import HTMLButtonOutlineGrayDisabled from '../../../components/button/button-outline-gray-disabled.html';
+import HTMLButtonOutlinePositiveDisabled from '../../../components/button/button-outline-positive-disabled.html';
+import HTMLButtonOutlineNegativeDisabled from '../../../components/button/button-outline-negative-disabled.html';
+import HTMLButtonOutlineWarningDisabled from '../../../components/button/button-outline-warning-disabled.html';
 
 let examples = {
 	'Primary Outline': {

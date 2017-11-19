@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../src/react/Button.js';
+import Button from '../../src/react/Button.js';
 
 import renderer from 'react-test-renderer';
 

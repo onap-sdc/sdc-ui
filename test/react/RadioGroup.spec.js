@@ -1,5 +1,5 @@
 import React from 'react';
-import RadioGroup from '../src/react/RadioGroup.js';
+import RadioGroup from '../../src/react/RadioGroup.js';
 
 import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
