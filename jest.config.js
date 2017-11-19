@@ -18,7 +18,10 @@ module.exports = {
 		'<rootDir>/src/index.js'
 	],
 	testPathIgnorePatterns: [
-		'<rootDir>/node_modules/'
+		'<rootDir>/node_modules/',
+        '<rootDir>/webpack/webpack.test.js',
+        '<rootDir>/src/angular/',
+        '<rootDir>/lib/angular/'
 	],
 	collectCoverageFrom: [
 		'src/**/*.{js,jsx}'
