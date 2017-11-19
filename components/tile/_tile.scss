@@ -69,12 +69,20 @@
 		@extend .text-uppercase;
 	}
 
-	.sdc-tile-content {
+	sdc-tile-info {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
-		margin-bottom: -4px;
+
+
+		.sdc-tile-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			height: $content-height;
+			margin-bottom: -4px;
+		}
 
 		.sdc-tile-content-icon {
 			margin-top: 22px;
