@@ -16,11 +16,12 @@ describe("Test", ()=>{
         }).compileComponents();
         const fixture = TestBed.createComponent(CheckboxComponent);
         component = fixture.componentInstance;
-        de = fixture.debugElement.query(By.css('.sdc-tile'));
-        element  = de.nativeElement;
     }));
 
-    it("Create Component should be!", async(()=> {
-        expect(component).toBeTruthy();
+    it("Test Value suppose to be true", async(()=> {
+        component.value = 'test';
+        component.toggleState(true);
+
+        expect(component.value.state);
     }));
 })
