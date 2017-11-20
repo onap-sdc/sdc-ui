@@ -10,7 +10,7 @@
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
 
 	$header-height: 10px;
-	$footer-height: 18px;
+	$footer-height: 23px;
 	$content-height: 100%;
 
 	width: $tile-full-width;
@@ -61,26 +61,20 @@
 	}
 
 	.sdc-tile-header {
-		height: $body-font-1 + 2px;
+		height: $heading-font-5 + 2px;
 		@include ellipsis($display: block);
 		font-size: $heading-font-5;
+		margin-top: -4px;
+		margin-left: -3px;
 		@extend .text-uppercase;
 	}
 
-	sdc-tile-info {
+	.sdc-tile-content {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
-
-
-		.sdc-tile-content {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			height: $content-height;
-			margin-bottom: -4px;
-		}
+		margin-bottom: -4px;
 
 		.sdc-tile-content-icon {
 			margin-top: 22px;
@@ -125,7 +119,7 @@
 				&.supertitle {
 					line-height: 1.2;
 					color: $dark-gray;
-					font-size: $body-font-3;
+					font-size: 12px;
 				}
 
 				&.title {
@@ -135,6 +129,7 @@
 				}
 				&.subtitle {
 					height: 1.6em;
+					font-family: OpenSans;
 					line-height: 1.6;
 					color: $dark-gray;
 				}
@@ -147,17 +142,19 @@
 		height: $footer-height;
 		@include box-sizing;
 		border-top: 1px solid $light-gray;
+		margin-top: 7px;
+		padding-top: 7px;
+
 		color: $dark-gray;
 		fill: $dark-gray;
 		@extend .text-capitalize;
+
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
-			&:first-child {
-				@include ellipsis;
-			}
+
 			svg{
 				width: 20px;
 				height: 12px;

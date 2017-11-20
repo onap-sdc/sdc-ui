@@ -3,8 +3,8 @@ import {Component, Input} from "@angular/core";
 
 @Component({
     selector:'sdc-tile-info',
-    templateUrl:'./tile-info.component.html'
-
+    templateUrl:'./tile-info.component.html',
+    host:{ class: 'sdc-tile-content'}
 })
 
 export class TileInfoComponent {

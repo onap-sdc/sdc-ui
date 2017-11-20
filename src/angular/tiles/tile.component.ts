@@ -2,7 +2,7 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
     selector: "sdc-tile",
-    templateUrl: './tile.component.html'
+    templateUrl: './tile.component.html',
 })
 
 export class TileComponent {
