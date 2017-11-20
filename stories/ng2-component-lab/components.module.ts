@@ -9,6 +9,7 @@ import {ButtonModalExample} from "./components/button-modal-example.component";
 import {ModalModule} from "../../src/angular/modals/modal.module";
 import {InnerContent} from "./components/inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
+import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 
 @NgModule({
@@ -25,6 +26,7 @@ import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-s
         ButtonsModule,
         TileModule,
         ButtonsModule,
+        ChecklistModule,
         PopupMenuModule,
         InfiniteScrollModule
     ],
@@ -39,6 +41,7 @@ import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-s
         ButtonsModule,
         TileModule,
         ButtonsModule,
+        ChecklistModule,
         PopupMenuModule,
         InfiniteScrollModule
     ],

@@ -1,20 +1,20 @@
 import React from 'react';
 
 import Examples from './utils/Examples.js';
-import SVGIcon from '../src/react/SVGIcon.js';
-import Button from '../src/react/Button.js';
+import SVGIcon from '../../src/react/SVGIcon.js';
+import Button from '../../src/react/Button.js';
 
-import Tile from '../src/react/Tile.js';
-import TileInfo from '../src/react/TileInfo.js';
-import TileInfoLine from '../src/react/TileInfoLine.js';
-import TileFooter from '../src/react/TileFooter.js';
-import TileFooterCell from '../src/react/TileFooterCell.js';
+import Tile from '../../src/react/Tile.js';
+import TileInfo from '../../src/react/TileInfo.js';
+import TileInfoLine from '../../src/react/TileInfoLine.js';
+import TileFooter from '../../src/react/TileFooter.js';
+import TileFooterCell from '../../src/react/TileFooterCell.js';
 
-import HTMLTileWithoutFooter from '../components/tile/tile-without-footer.html';
-import HTMLVspTile from '../components/tile/vsp-tile.html';
-import HTMLVlmTile from '../components/tile/vlm-tile.html';
-import HTMLVendorTile from '../components/tile/vendor-tile.html';
-import HTMLVfcTile from '../components/tile/vfc-tile.html';
+import HTMLTileWithoutFooter from '../../components/tile/tile-without-footer.html';
+import HTMLVspTile from '../../components/tile/vsp-tile.html';
+import HTMLVlmTile from '../../components/tile/vlm-tile.html';
+import HTMLVendorTile from '../../components/tile/vendor-tile.html';
+import HTMLVfcTile from '../../components/tile/vfc-tile.html';
 
 let examples = {
 	'Without footer': {
