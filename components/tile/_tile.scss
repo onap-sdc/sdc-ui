@@ -63,9 +63,7 @@
 	.sdc-tile-header {
 		height: $heading-font-5 + 2px;
 		@include ellipsis($display: block);
-		font-size: $heading-font-5;
-		margin-top: -4px;
-		margin-left: -3px;
+		font-size: $body-font-1;
 		@extend .text-uppercase;
 	}
 
