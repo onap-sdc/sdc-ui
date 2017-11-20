@@ -1,11 +1,11 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 
-import RadioGroup from '../src/react/RadioGroup';
-import HTMLRadioGroup from '../components/radioGroup/radio-group.html';
-import HTMLRadioGroupValue from '../components/radioGroup/radio-group-value.html';
-import HTMLRadioGroupDisabled from '../components/radioGroup/radio-group-disabled.html';
-import HTMLRadioGroupNoTitle from '../components/radioGroup/radio-group-no-title.html';
+import RadioGroup from '../../src/react/RadioGroup';
+import HTMLRadioGroup from '../../components/radioGroup/radio-group.html';
+import HTMLRadioGroupValue from '../../components/radioGroup/radio-group-value.html';
+import HTMLRadioGroupDisabled from '../../components/radioGroup/radio-group-disabled.html';
+import HTMLRadioGroupNoTitle from '../../components/radioGroup/radio-group-no-title.html';
 
 let examples = {
 	'Value': {

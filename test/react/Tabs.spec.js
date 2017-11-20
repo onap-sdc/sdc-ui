@@ -1,6 +1,6 @@
 import React from 'react';
-import Tab from '../src/react/Tab.js';
-import Tabs from '../src/react/Tabs.js';
+import Tab from '../../src/react/Tab.js';
+import Tabs from '../../src/react/Tabs.js';
 
 import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
