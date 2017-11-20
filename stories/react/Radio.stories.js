@@ -1,11 +1,11 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 
-import Radio from '../src/react/Radio';
-import HTMLRadioChecked from '../components/radio/radio-checked.html';
-import HTMLRadioUnchecked from '../components/radio/radio-unchecked.html';
-import HTMLRadioDisabled from '../components/radio/radio-disabled.html';
-import HTMLRadioDisabledChecked from '../components/radio/radio-disabled-checked.html';
+import Radio from '../../src/react/Radio';
+import HTMLRadioChecked from '../../components/radio/radio-checked.html';
+import HTMLRadioUnchecked from '../../components/radio/radio-unchecked.html';
+import HTMLRadioDisabled from '../../components/radio/radio-disabled.html';
+import HTMLRadioDisabledChecked from '../../components/radio/radio-disabled-checked.html';
 
 let examples = {
 	Checked: {

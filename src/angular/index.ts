@@ -4,6 +4,8 @@ import {ButtonsModule} from "./buttons/buttons.module";
 import {ModalModule} from "./modals/modal.module";
 import {PopupMenuModule} from "./popup-menu/popup-menu.module";
 import {InfiniteScrollModule} from "./infinite-scroll/infinite-scroll.module";
+import {TileModule} from "./tiles/tile.module";
+import {ChecklistModule} from "./checklist/checklist.module";
 
 @NgModule({
     imports: [
@@ -11,14 +13,18 @@ import {InfiniteScrollModule} from "./infinite-scroll/infinite-scroll.module";
         FormElementsModule,
         ButtonsModule,
         PopupMenuModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        TileModule,
+        ChecklistModule
     ],
     exports: [
         ModalModule,
         FormElementsModule,
         ButtonsModule,
         PopupMenuModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        TileModule,
+        ChecklistModule
     ]
 })
 export class SdcUiComponentsModule {
