@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
 
+
 @Component({
     selector: 'sdc-checkbox',
     templateUrl: './checkbox.component.html',
@@ -16,7 +17,6 @@ export class CheckboxComponent {
     public toggleState(new_value:boolean) {
         this.value.state = new_value;
         this.checkedChange.emit(this.value);
-        alert(this.value.name + ' ' + this.value.state);
     }
 }
 
