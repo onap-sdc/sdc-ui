@@ -3,7 +3,8 @@
   color: $text;
   border-color: $border;
   background-color: $primary;
-  font-size: 12px;
+  font-size: $body-font-3;
+  font-weight: 600;
 
   &:not([disabled]) {
     &:hover, &:focus {
@@ -92,7 +93,7 @@
 
     // White default button
     &.sdc-button__white {
-
+      font-weight: 600;
       @include outline-button($blue);
       &:hover, &:active {
         border:1px solid #1EB9F3;
