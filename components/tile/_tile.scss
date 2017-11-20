@@ -72,7 +72,6 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
-		margin-bottom: -4px;
 
 		.sdc-tile-content-icon {
 			margin-top: 22px;
@@ -115,20 +114,17 @@
 				}
 
 				&.supertitle {
-					line-height: 1.2;
 					color: $dark-gray;
-					font-size: 12px;
+					font-size: $body-font-3;
+					margin-bottom: 4px;
 				}
 
 				&.title {
-					line-height: 1.8;
 					color: $text-black;
 					@extend .body-1-semibold;
+					margin-bottom: 4px;
 				}
 				&.subtitle {
-					height: 1.6em;
-					font-family: OpenSans;
-					line-height: 1.6;
 					color: $dark-gray;
 				}
 			}
@@ -140,15 +136,13 @@
 		height: $footer-height;
 		@include box-sizing;
 		border-top: 1px solid $light-gray;
-		margin-top: 7px;
-		padding-top: 7px;
 
 		color: $dark-gray;
 		fill: $dark-gray;
 		@extend .text-capitalize;
 
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
