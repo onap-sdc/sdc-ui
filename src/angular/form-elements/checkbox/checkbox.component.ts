@@ -17,8 +17,6 @@ export class CheckboxComponent {
         this.value.state = new_value;
         this.checkedChange.emit(this.value);
         alert(this.value.name + ' ' + this.value.state);
-        console.log(this)
-        return this;
     }
 }
 
