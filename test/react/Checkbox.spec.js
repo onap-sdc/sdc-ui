@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '../src/react/Checkbox.js';
+import Checkbox from '../../src/react/Checkbox.js';
 
 import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';

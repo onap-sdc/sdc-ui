@@ -1,11 +1,11 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 
-import Checkbox from '../src/react/Checkbox';
-import HTMLCheckboxChecked from '../components/checkbox/checkbox-checked.html';
-import HTMLCheckboxUnchecked from '../components/checkbox/checkbox-unchecked.html';
-import HTMLCheckboxDisabled from '../components/checkbox/checkbox-disabled.html';
-import HTMLCheckboxDisabledChecked from '../components/checkbox/checkbox-disabled-checked.html';
+import Checkbox from '../../src/react/Checkbox';
+import HTMLCheckboxChecked from '../../components/checkbox/checkbox-checked.html';
+import HTMLCheckboxUnchecked from '../../components/checkbox/checkbox-unchecked.html';
+import HTMLCheckboxDisabled from '../../components/checkbox/checkbox-disabled.html';
+import HTMLCheckboxDisabledChecked from '../../components/checkbox/checkbox-disabled-checked.html';
 
 let examples = {
 	Checked: {
