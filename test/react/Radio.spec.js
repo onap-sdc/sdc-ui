@@ -1,5 +1,5 @@
 import React from 'react';
-import Radio from '../src/react/Radio.js';
+import Radio from '../../src/react/Radio.js';
 
 import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
