@@ -14,8 +14,8 @@ export class CheckboxComponent {
     @Input() value: any;
     @Output() checkedChange:EventEmitter<any> = new EventEmitter<any>();
 
-    public toggleState(new_value:boolean) {
-        this.value.state = new_value;
+    public toggleState(new_state:boolean) {
+        this.value.state = new_state;
         this.checkedChange.emit(this.value);
     }
 }

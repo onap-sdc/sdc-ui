@@ -15,36 +15,17 @@ describe("Test", ()=>{
             ]
         }).compileComponents();
         const fixture = TestBed.createComponent(CheckboxComponent);
-
-        const test_value2 = {
-            name:'test2',
-            state:false
-        }
         component = fixture.componentInstance;
     }));
+
     it("Component Created", async(()=> {
-        expect(component).toBeTruthy();
+        expect(component).toBeDefined();
     }));
 
-    it("Test Value suppose to be true", async(()=> {
-        const test_value = {
-            name:'test',
-            state:true
-        };
-        component.value = {};
-        component.value.name = 'test';
-        component.toggleState(true);
-        expect(component.value).toEqual(test_value);
-    }));
-
-    it( "Test Value suppose to be equal false", async( ()=> {
-            const test_value = {
-                name: 'test',
-                state: false
-            };
-            component.value = {};
-            component.value.name = 'test';
-            component.toggleState(false);
-            expect(component.value).toEqual(test_value);
+    it( "Test Value suppose to be toggled", async( ()=> {
+            const test_value = false;
+            component.value = { state: true };
+            component.toggleState(!test_value);
+            expect(component.value.state).toEqual(!test_value);
     }));
 });
