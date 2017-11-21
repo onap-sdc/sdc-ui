@@ -1,5 +1,7 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
-
+const onClick = (e): void => {
+    console.log('--CLICK EVENT--');
+};
 export default experimentOn('Button')
     .case('Primary Default', {
         showSource: true,
@@ -140,4 +142,13 @@ export default experimentOn('Button')
         template: `
       <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'negative'" [disabled]="true">Button</sdc-button>
     `
-    })
+    }).case('Prevent double click option', {
+        showSource: true,
+        context: {
+            onClick: onClick
+        },
+        template: `
+            Try to click on this button, open the console in order to see the click event logs:  
+            <sdc-button (click)="onClick($event)" [preventDoubleClick]="true">Button</sdc-button>
+            `
+    });
