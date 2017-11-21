@@ -6,7 +6,7 @@ import {IOptionItem} from "./radio-group-buttons.component";
     templateUrl: './radio-button.component.html'
 })
 
-export class RadioButtonsComponent {
+export class RadioButtonComponent {
     @Input() option: IOptionItem;
     @Output() checkedChange:EventEmitter<any> = new EventEmitter<any>();
     toggleState(newValue:boolean) {

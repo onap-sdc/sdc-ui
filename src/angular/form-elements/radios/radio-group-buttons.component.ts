@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnInit} from "@angular/core";
-import {RadioButtonsComponent} from "./radio-button.component";
+import {RadioButtonComponent} from "./radio-button.component";
 
 export interface IOptionItem {
     checked: boolean;
