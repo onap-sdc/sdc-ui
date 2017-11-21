@@ -1,21 +1,21 @@
 import React from 'react';
 import Examples from '../utils/Examples.js';
 
-import ReactButton from '../../src/react/Button.js';
+import ReactButton from '../../../src/react/Button.js';
 
-import HTMLButtonDefaultPrimary from '../../components/button/button-default-primary.html';
-import HTMLButtonDefaultWhite from '../../components/button/button-default-white.html';
-import HTMLButtonDefaultGray from '../../components/button/button-default-gray.html';
-import HTMLButtonDefaultPositive from '../../components/button/button-default-positive.html';
-import HTMLButtonDefaultNegative from '../../components/button/button-default-negative.html';
-import HTMLButtonDefaultWarning from '../../components/button/button-default-warning.html';
+import HTMLButtonDefaultPrimary from '../../../components/button/button-default-primary.html';
+import HTMLButtonDefaultWhite from '../../../components/button/button-default-white.html';
+import HTMLButtonDefaultGray from '../../../components/button/button-default-gray.html';
+import HTMLButtonDefaultPositive from '../../../components/button/button-default-positive.html';
+import HTMLButtonDefaultNegative from '../../../components/button/button-default-negative.html';
+import HTMLButtonDefaultWarning from '../../../components/button/button-default-warning.html';
 
-import HTMLButtonDefaultPrimaryDisabled from '../../components/button/button-default-primary-disabled.html';
-import HTMLButtonDefaultWhiteDisabled from '../../components/button/button-default-white-disabled.html';
-import HTMLButtonDefaultGrayDisabled from '../../components/button/button-default-gray-disabled.html';
-import HTMLButtonDefaultPositiveDisabled from '../../components/button/button-default-positive-disabled.html';
-import HTMLButtonDefaultNegativeDisabled from '../../components/button/button-default-negative-disabled.html';
-import HTMLButtonDefaultWarningDisabled from '../../components/button/button-default-warning-disabled.html';
+import HTMLButtonDefaultPrimaryDisabled from '../../../components/button/button-default-primary-disabled.html';
+import HTMLButtonDefaultWhiteDisabled from '../../../components/button/button-default-white-disabled.html';
+import HTMLButtonDefaultGrayDisabled from '../../../components/button/button-default-gray-disabled.html';
+import HTMLButtonDefaultPositiveDisabled from '../../../components/button/button-default-positive-disabled.html';
+import HTMLButtonDefaultNegativeDisabled from '../../../components/button/button-default-negative-disabled.html';
+import HTMLButtonDefaultWarningDisabled from '../../../components/button/button-default-warning-disabled.html';
 
 let examples = {
 	'Primary Default': {
