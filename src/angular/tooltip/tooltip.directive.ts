@@ -47,6 +47,7 @@ export class TooltipDirective implements AfterViewInit {
     }
 
     public ngAfterViewInit() {
+
         this.parentElement = this.elementRef.nativeElement.parentElement;
     }
 
