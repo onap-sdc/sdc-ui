@@ -18,8 +18,9 @@
     "rollup-angular:umd": "rollup -c rollup.angular.umd.config.js",
     "rollup-angular:metadata": "find build/* -not -name '*.js' -type f -exec cp --t lib --parents {} ; && cp -rf lib/build/* lib/ && rm -r lib/build",
     "build-angular": "npm run compile-angular && npm run rollup-angular:module && npm run rollup-angular:umd && npm run rollup-angular:metadata",
+    "build-pack": "cp package.lib.json lib/package.json && cp -r css lib/ && cp -r assets lib/",
     "postbuild-clean": "rm -rf build",
-    "build": "npm run prebuild-clean && npm run build-common && npm run build-react && npm run build-angular && npm run postbuild-clean",
+    "build": "npm run prebuild-clean && npm run build-common && npm run build-react && npm run build-angular && npm run build-pack && npm run postbuild-clean",
     "storybook": "npm run build-icons && start-storybook -p 6006",
     "build-storybook": "npm run build-icons && build-storybook -c .storybook -o .out/react && ncp utils/index-for-gh-pages.html .out/index.html",
     "lab": "ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature",
@@ -44,7 +45,8 @@
   "homepage": "https://github.com/onap-sdc/sdc-ui#readme",
   "peerDependencies": {
     "@angular/common": ">=2.4.8",
-    "@angular/core": ">=2.4.8"
+    "@angular/core": ">=2.4.8",
+    "@angular/forms": ">=2.4.8"
   },
   "devDependencies": {
     "@angular/compiler": "~2.4.8",
