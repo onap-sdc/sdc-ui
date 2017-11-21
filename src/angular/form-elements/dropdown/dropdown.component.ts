@@ -1,22 +1,15 @@
 import {Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges} from '@angular/core'
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+//import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {IDropDownGroup, IDropDownItem, IDropDownGroupResult} from "./dropdown-models";
 
 @Component({
     selector: 'sdc-dropdown',
     templateUrl: './dropdown.component.html',
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DropDownComponent),
-            multi: true
-        }
-    ],
     host: {
         '(document:click)': 'onClickOutside($event)',
     }
 })
-export class DropDownComponent implements ControlValueAccessor, OnChanges {
+export class DropDownComponent implements OnChanges {
 
 
     /**
@@ -86,12 +79,6 @@ export class DropDownComponent implements ControlValueAccessor, OnChanges {
      */
     public error = false;
 
-    /**
-     * Placeholder for 'registerOnChange' function. For ControlValueAccessor registerOnChange method
-     */
-    private propagateChange = (_:any)=>{};
-
-
     ngOnChanges(changes: SimpleChanges): void {
         if(changes.value){
             this.setValueIfExist(this.value);
@@ -121,11 +108,6 @@ export class DropDownComponent implements ControlValueAccessor, OnChanges {
     public selectOption(index: number, option:any):void{
         this.selectedIndex = index;
         this.updateSelected(option.label || option, option.value || option);
-
-        /**
-         * Notify the control a change was made, so that ngModel will later update its value.
-         */
-        this.propagateChange(this.value);
     }
 
     /**
@@ -136,11 +118,6 @@ export class DropDownComponent implements ControlValueAccessor, OnChanges {
         const item = event.group.items.find((i) => event.value === i.value);
         this.selectedDropDownGroup = event.group;
         this.updateSelected(item.label, item.value);
-
-        /**
-         * Notify the control a change was made, so that ngModel will later update its value.
-         */
-        this.propagateChange(this.value);
     }
 
     /**
@@ -242,21 +219,6 @@ export class DropDownComponent implements ControlValueAccessor, OnChanges {
             this.options.find(this.setFoundValueCallback.bind(this, false, value));
         }
     }
-
-    /**
-     * ControlValueAccessor interface methods.
-     */
-    writeValue(val: any): void {
-        if(val && typeof val === 'string'){
-            this.setValueIfExist(val);
-        }
-    }
-
-    registerOnChange(fn: any): void {
-        this.propagateChange = fn;
-    }
-
-    registerOnTouched(fn: any): void {};
 
 
 }
