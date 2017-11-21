@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, Output, forwardRef, OnInit, OnChanges, SimpleChanges} from '@angular/core'
+import {Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges} from '@angular/core'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {IDropDownGroup, IDropDownItem, IDropDownGroupResult} from "./dropdown-models";
-import {DropDownGroup, DropDownItem} from "../../../../lib/angular/form-elements/dropdown/dropdown.component"
 
 @Component({
     selector: 'sdc-dropdown',

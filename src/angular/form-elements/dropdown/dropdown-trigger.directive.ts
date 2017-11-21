@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Renderer, Input, OnInit} from "@angular/core";
-import {DropDownComponent} from "../../../../lib/angular/form-elements/dropdown/dropdown.component";
+import {DropDownComponent} from "./dropdown.component";
 
 /**
  * Very simple directive that enables elements to toggle drop-down component
