@@ -1,7 +1,7 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 import DropdownMenu from './utils/components/DropdownMenu.js';
-import SVGIcon from '../src/react/SVGIcon.js';
+import SVGIcon from '../../src/react/SVGIcon.js';
 
 const iconLabelPositions = [
 	'', 'bottom', 'top', 'left', 'right'
