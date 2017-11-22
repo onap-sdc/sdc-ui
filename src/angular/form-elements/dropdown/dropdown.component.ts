@@ -77,7 +77,7 @@ export class DropDownComponent implements OnChanges {
      * Error flag
      * @type {boolean}
      */
-    public error = false;
+    public error: boolean;
 
     ngOnChanges(changes: SimpleChanges): void {
         if(changes.value){
@@ -86,7 +86,7 @@ export class DropDownComponent implements OnChanges {
     }
 
     public isValid(){
-        return this.error;
+        return !this.error;
     }
 
     /**

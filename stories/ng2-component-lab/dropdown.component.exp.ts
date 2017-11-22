@@ -114,7 +114,7 @@ export default experimentOn('DropDown')
         template: `
       <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown></sdc-dropdown>
       <div style="margin-top: 10px;">
-        <button (click)="dropDown.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ !dropDown.isValid() }}</span>
+        <button (click)="dropDown.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown.isValid() }}</span>
       </div>
       
     `
