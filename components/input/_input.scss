@@ -17,7 +17,7 @@
   .sdc-input__input {
     text-indent: 6px;
     border: solid 1px $light-gray;
-
+    border-radius:2px;
     &.error {
       border: solid 1px $red;
       color: $red;
@@ -26,4 +26,14 @@
     }
   }
 
+  .sdc-label__error{
+    color: $red;
+    margin-top: 8px;
+    font-size: 11px;
+  }
+
+}
+
+.hint::-webkit-input-placeholder {
+  font-style: italic;
 }
