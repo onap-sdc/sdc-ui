@@ -23,9 +23,13 @@ describe("Test", ()=>{
     }));
 
     it( "Test Value suppose to be toggled", async( ()=> {
-            const test_value = false;
-            component.value = { state: true };
-            component.toggleState(!test_value);
-            expect(component.value.state).toEqual(!test_value);
+        component.toggleState(true)
+        expect(component.checked).toEqual(true);
     }));
+
+    it( "If disabled not toggled"), async(()=>{
+        component.disabled = true;
+        component.toggleState(true);
+        expect(component.checked).toEqual(false);
+    });
 });

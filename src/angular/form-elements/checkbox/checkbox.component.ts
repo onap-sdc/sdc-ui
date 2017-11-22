@@ -11,12 +11,13 @@ export class CheckboxComponent {
     @Input() label:string;
     @Input() checked:boolean;
     @Input() disabled:boolean;
-    @Input() value: any;
     @Output() checkedChange:EventEmitter<any> = new EventEmitter<any>();
 
     public toggleState(new_state:boolean) {
-        this.value.state = new_state;
-        this.checkedChange.emit(this.value);
-    }
+        if(!this.disabled){
+                this.checked = new_state;
+                this.checkedChange.emit(new_state);
+            }
+        }
 }
 
