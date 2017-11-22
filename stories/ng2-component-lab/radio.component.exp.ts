@@ -39,10 +39,12 @@ export default experimentOn('Radios')
         template: `<sdc-radio-group [direction] = "vertical" [options] = "{
             disabled: true,
             items: [{
+                value: 'val1',
                 checked: true,
                 name: 'exp5',
                 label: 'Label of Radio1'
             }, {
+                value: 'val2',
                 checked: false,
                 name: 'exp5',
                 label: 'Label of Radio2'

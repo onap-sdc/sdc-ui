@@ -10,7 +10,6 @@ export interface IOptionItem {
 };
 
 export interface IOptionGroup {
-    disabled: boolean;
     items: IOptionItem[];
 };
 
@@ -25,9 +24,11 @@ export class RadioGroupComponent implements OnInit{
     @Input() public disabled: boolean;
     @Output() public selectedValue;
 
-    onSelectionChange(value) {
-        this.selectedValue = value;
-    }
+    public onSelectionChange(value) {
+        if(this.checkExists(value) && this.disabled != true) {
+            this.selectedValue = value;
+        }
+     }
 
     ngOnInit(): void {
         this.options.items = this.options.items.map((item) => {
@@ -36,5 +37,13 @@ export class RadioGroupComponent implements OnInit{
         });
     }
 
+    protected checkExists(value){
+        let check: boolean;
+        let item_exist = this.options.items.filter((item) => {
+            return  item.value == value;
+        });
+        item_exist.length > 0 ? check = true : check = false;
+        return check;
+    }
 
 }
