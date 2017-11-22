@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output} from '@angular/core';
-import {IOptionItem} from "./radio-group-buttons.component";
+import {IOptionItem} from "./radio-button.model";
 
 @Component({
     selector: "sdc-radio",

@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { RadioGroupComponent } from "./radio-group-buttons.component";
 import { FormsModule } from "@angular/forms";
 import { RadioButtonComponent } from "./radio-button.component"
+import { IOptionItem } from "./radio-button.model"
 
 
 describe("Test", ()=>{
@@ -16,16 +17,17 @@ describe("Test", ()=>{
                 FormsModule
             ]
         }).compileComponents();
+
         const fixture = TestBed.createComponent(RadioGroupComponent);
         component = fixture.componentInstance;
-        component.disabled = false;
+        component.disabled = false;//TODO constructor
         component.options = {
             items: []
         };
     }));
 
     it('Component Created', async(()=> {
-                expect(component).toBeDefined();
+        expect(component).toBeDefined();
     }));
 
     it('Not possible to choose value which not exists', async(() =>{
@@ -35,12 +37,12 @@ describe("Test", ()=>{
 
     it('Not possible to choose when component disabled', async(() =>{
         component.disabled = true;
-        component.options.items = [{
+        component.options.items = [ <IOptionItem> {
             value: 'val1',
             checked: false,
             name: 'exp6',
             label: 'Label of Radio1'
-        }, {
+        }, <IOptionItem> {
             value: 'val2',
             checked: false,
             name: 'exp6',
@@ -51,12 +53,12 @@ describe("Test", ()=>{
     }));
 
     it('Normal flow', async(() =>{
-        component.options.items = [{
+        component.options.items = [ <IOptionItem> {
             value: 'val1',
             checked: false,
             name: 'exp6',
             label: 'Label of Radio1'
-        }, {
+        }, <IOptionItem> {
             value: 'val2',
             checked: false,
             name: 'exp6',

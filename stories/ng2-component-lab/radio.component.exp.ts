@@ -36,7 +36,7 @@ export default experimentOn('Radios')
            }"></sdc-radio>`
     }).case('Radio Buttons Group', {
         showSource: true,
-        template: `<sdc-radio-group [direction] = "vertical" [options] = "{
+        template: `<sdc-radio-group [options] = "{
             disabled: true,
             items: [{
                 value: 'val1',
@@ -52,7 +52,7 @@ export default experimentOn('Radios')
         }" [disabled] = "false"></sdc-radio-group>`
     }).case('Radio Buttons Group Disabled', {
         showSource: true,
-        template: `<sdc-radio-group [direction] = "vertical" [options] = "{
+        template: `<sdc-radio-group [options] = "{
                 items: [{
                     value: 'val1',
                     checked: true,

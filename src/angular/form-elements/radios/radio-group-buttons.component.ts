@@ -1,43 +1,30 @@
-import {Component, Input, Output, EventEmitter, OnInit} from "@angular/core";
-import {RadioButtonComponent} from "./radio-button.component";
-
-export interface IOptionItem {
-    checked: boolean;
-    label: string;
-    disabled: boolean;
-    name: string;
-    value: string;
-};
-
-export interface IOptionGroup {
-    items: IOptionItem[];
-};
+import {Component, Input, Output, OnChanges} from "@angular/core";
+import {Directions, IOptionGroup} from "./radio-button.model"
 
 @Component({
     selector: 'sdc-radio-group',
     templateUrl: './radio-group-buttons.component.html',
 })
-
-export class RadioGroupComponent implements OnInit{
+export class RadioGroupComponent implements OnChanges{
     @Input() public options: IOptionGroup;
-    @Input() public direction: string;
+    @Input() public direction: Directions;
     @Input() public disabled: boolean;
     @Output() public selectedValue;
 
     public onSelectionChange(value) {
-        if(this.checkExists(value) && this.disabled != true) {
+        if(this.isOptionExists(value) && this.disabled !== true) {
             this.selectedValue = value;
         }
-     }
+    }
 
-    ngOnInit(): void {
+    ngOnChanges(): void {
         this.options.items = this.options.items.map((item) => {
             item.disabled = this.disabled;
             return item;
         });
     }
 
-    protected checkExists(value){
+    private isOptionExists(value){
         let check: boolean;
         let item_exist = this.options.items.filter((item) => {
             return  item.value == value;
