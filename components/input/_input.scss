@@ -21,7 +21,10 @@
     border: solid 1px $light-gray;
     border-radius:2px;
     color: $dark-gray;
-
+    &.disabled{
+      color:$gray;
+      background-color: $background-gray;
+    }
     &.error, &.error:focus, &.error:disabled  {
       border: solid 1px $red;
       color: $red;
