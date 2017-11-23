@@ -86,7 +86,7 @@ export class DropDownComponent implements OnChanges {
     }
 
     public isValid(){
-        return this.error;
+        return !this.error;
     }
 
     /**
