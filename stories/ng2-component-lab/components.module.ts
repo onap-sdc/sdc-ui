@@ -11,6 +11,7 @@ import {InnerContent} from "./components/inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
+import {TableModule} from "../../src/angular/table/table.module";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-s
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        TableModule
     ],
     entryComponents: [InnerContent],
     exports: [
@@ -43,7 +45,8 @@ import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-s
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        TableModule
     ],
     providers: [KeysPipe]
 })
