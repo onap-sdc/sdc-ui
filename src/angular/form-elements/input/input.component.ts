@@ -18,10 +18,10 @@ export interface IPattern{
 
 export class InputComponent implements OnInit{
     protected control: FormControl;
-    protected check: ICheck;
+    public check: ICheck;
     @Output('valueChange') baseEmitter: EventEmitter<any> = new EventEmitter<any>();
     @Input() public label: string;
-    @Input() public value: any;
+    @Input() public value: string;
     @Input() public disabled: boolean;
     @Input() public placeHolder: string;
     @Input() public required: boolean;
@@ -29,7 +29,6 @@ export class InputComponent implements OnInit{
     @Input() public maxLength: number;
     @Input() public hint: boolean;
     @Input() public patterns: IPattern[];
-
 
     constructor() {
         this.control = new FormControl('', []);
@@ -44,7 +43,7 @@ export class InputComponent implements OnInit{
         }
     }
 
-    onValueChange() {
+    public onValueChange() {
         if (!this.patterns) return;
         this.check = (this.patterns).reduce((res, pattern) => {
             let regex = new RegExp(pattern.regex);
@@ -52,13 +51,28 @@ export class InputComponent implements OnInit{
             if(match) {
                 res.result = true;
             } else {
-                res.error += ' ' + pattern.error_message;
+                res.error.length == 0 ? res.error = pattern.error_message : res.error += ', ' + pattern.error_message;
             }
             return res;
         }, {
             result: false,
             error: ''
         });
+        this.baseEmitter.emit(this.check);
+    }
+
+    public validateInput(error_message): void{
+        console.log('here')
+        this.check = {
+            result: false,
+            error: ''
+        };
+        if(!this.disabled && this.required && (!this.value || this.value === '')){
+            this.check.result = false;
+            if(error_message) this.check.error = error_message;
+            return;
+        }
+        this.check.result = true;
         this.baseEmitter.emit(this.check);
     }
 }

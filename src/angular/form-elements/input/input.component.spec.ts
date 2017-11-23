@@ -25,7 +25,19 @@ describe("Test", ()=> {
         expect(component).toBeDefined();
     }));
 
-    it('Component Created', async(()=> {
-        expect(component).toBeDefined();
+    it('if patterns exists', async(()=> {
+        component.patterns = [{regex:'test', error_message:'test'}];
+        component.value = '344'
+        const test_check = { result: false, error: 'test' };
+        component.onValueChange();
+        expect(component.check).toEqual(test_check);
     }));
+
+    it( 'Input validation', async(()=>{
+        component.required = true;
+        component.value = '';
+        component.validateInput('test');
+        const test_check = { result: false, error: 'test' };
+        expect(component.check).toEqual(test_check);
+    }))
 })

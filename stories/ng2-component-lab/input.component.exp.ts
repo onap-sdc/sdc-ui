@@ -32,4 +32,12 @@ export default experimentOn('Input')
         template: `
       <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" [hint]="true"></sdc-input>
     `
+    }).case('Regular input with Hint and Required', {
+        showSource: true,
+        template: `
+      <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" [required]="true" [hint]="true" #input></sdc-input>
+      <div>
+         <button (click)="input.validateInput('test')">Validate!</button> 
+      </div>
+    `
     });

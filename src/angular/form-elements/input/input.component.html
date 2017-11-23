@@ -1,8 +1,8 @@
 <div class="sdc-input">
-    <label class="sdc-input__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
+    <label class="sdc-input__label" *ngIf="label" [ngClass]="{ 'required':required }">{{label}}</label>
     <input
         class="sdc-input__input"
-        [ngClass]="{'error': check &&!check.result && check.error.length, 'disabled':disabled, 'hint':hint }"
+        [ngClass]="{'error': check &&!check.result && (check.error.length || required), 'disabled':disabled, 'hint':hint }"
         type="text"
         [name]="name"
         [(ngModel)]="value"
