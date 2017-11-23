@@ -4,6 +4,8 @@ import {InputComponent} from "./input/input.component";
 import {DropDownComponent} from "./dropdown/dropdown.component";
 import {CommonModule} from "@angular/common";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
+import {DropDownGroupComponent} from "./dropdown/dropdown-group.component";
+import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
 
 @NgModule({
     imports: [
@@ -15,10 +17,13 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
     declarations: [
         DropDownComponent,
         InputComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        DropDownGroupComponent,
+        DropDownTriggerDirective
     ],
     exports: [
         DropDownComponent,
+        DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent
 
