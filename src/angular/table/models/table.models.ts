@@ -5,6 +5,7 @@ export class TableModel {
     constructor(public columns: IAppTableColumnsModel, public rows: IAppTableRowModel) {}
 }
 export interface ITableConfig {
+    metaData?: {[col_key:string] : ITableMetadata}
     columns: {[col_key:string] : IColumnConfigModel}
     rows: {[row_key:string] : any}
 }
@@ -12,6 +13,13 @@ interface IAppTableRowModel {
     // Functionality
     clickable?: boolean;
 }
+
+export interface ITableMetadata {
+    fixedHeader?: boolean;
+    maxHeight?: number;
+    maxRowsToDisplay?: number;
+}
+
 export interface IColumnConfigModel {
     key?: string;
 

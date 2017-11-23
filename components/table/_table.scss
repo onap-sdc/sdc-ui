@@ -1,5 +1,11 @@
+.sdc-table_tr__container {
+  overflow: scroll;
+}
 .sdc-table {
+  width:100%;
   border:1px solid $black;
+
+
   .sdc-table_tr {
 
   }
@@ -10,6 +16,6 @@
 
   }
   .sdc-table_tr_td {
-
+    text-align: center;
   }
 }

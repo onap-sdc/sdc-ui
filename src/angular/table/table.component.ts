@@ -1,49 +1,84 @@
 /**
  * Created by M.S.BIT on 21/11/2017.
  */
-
 import {Component, OnInit, Input} from "@angular/core";
-import {CompaniesTableConfig} from "./table.contants";
-import {IAppTableColumnsModel, IColumnConfigModel} from "./table.models";
-import {tableData} from "./table-fake-data";
+import {CompaniesTableConfig} from "./config/table.contants";
+import {IColumnConfigModel} from "./models/table.models";
+import {TableService} from "./services/table.service";
+
+
 @Component({
     selector: 'sdc-table',
-    templateUrl: './table.components.html',
+    templateUrl: './table.component.html',
     styles: []
 })
 
 export class TableComponent implements OnInit{
-    public metaData = CompaniesTableConfig;
+    /**
+     * The static configuration of the table
+     */
+    public tableConfig = CompaniesTableConfig;
+
+    /**
+     * An array of table header objects (IColumnConfigModel)
+     */
     public headerCols: IColumnConfigModel[] = [];
+
+    /**
+     * The field which the table should be sorted by
+     */
     @Input() sortByField: string;
-    sortDescending = true;
-    tableFieldsData = tableData;
+
+    /**
+     * Ascending/Descending order flag. Default is Descending
+     */
+    @Input() sortDescending = true;
+
+    /**
+     * The actual table rows data
+     */
+    @Input() rowsData: any[];
+
+    /**
+     * Fixed header flag
+     */
+    @Input() fixedHeader = false;
+
+    /**
+     * Max height in pixels
+     */
+    @Input() maxHeight: number = 500;
+
+
+    @Input() maxRowsToDisplay: number;
+
+    constructor(private tableService: TableService){}
 
     ngOnInit() {
-        if (this.metaData && this.metaData.columns) {
-            this.headerCols = this.prepMetaDataCols(this.metaData.columns);
+        if (this.tableConfig && this.tableConfig.columns) {
+            this.headerCols = this.tableService.prepareColumnHeadersArray(this.tableConfig.columns);
+        }
+        if(this.tableConfig.metaData){
+            this.fixedHeader = <boolean>this.tableConfig.metaData.fixedHeader || this.fixedHeader;
+            this.maxHeight = <number>this.tableConfig.metaData.maxHeight || this.maxHeight;
+            this.maxRowsToDisplay = <number>this.tableConfig.metaData.maxRowsToDisplay || this.maxRowsToDisplay;
         }
     }
 
-    /**
-     * Sort and construct metadata columns
-     * @param {IAppTableColumnsModel} metaDataCols
-     * @returns {({} & ColumnConfigModel & {key: string})[]}
-     */
-    prepMetaDataCols(metaDataCols: IAppTableColumnsModel) {
-        return Object.keys(metaDataCols)
-            .sort(this.sortColByOrder.bind(this))
-            .map(colName => Object.assign({}, metaDataCols[colName], { key: colName }));
+    onColumnHeaderClick(col: IColumnConfigModel) {
+        if (!col.sortable) {
+            return;
+        }
+
+        // Reverse column sort direction
+        if (this.sortByField === col.key) {
+            this.sortDescending = !this.sortDescending;
+        }
+        else {
+            this.sortByField    = col.key;
+            this.sortDescending = true;
+        }
+
+        this.tableService.sortColumn(this.rowsData, col, this.sortDescending);
     }
-
-    /**
-     * Sort method by the @order param of the MetaData.columns object
-     * @param colNameA
-     * @param colNameB
-     * @returns {number}
-     */
-    private sortColByOrder = function (colNameA: string, colNameB: string): number {
-        return this.metaData.columns[colNameA].order - this.metaData.columns[colNameB].order;
-    };
-
 }

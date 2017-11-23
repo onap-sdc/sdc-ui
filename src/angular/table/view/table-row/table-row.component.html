@@ -1,0 +1,10 @@
+<table class="sdc-table">
+    <tbody>
+        <tr class="sdc-table_tr">
+            <td class="sdc-table_tr_td"
+                *ngFor="let col of cols"
+                [style.width]="col.width"
+                [ngClass]="{ 'sortable': col.sortable }">{{row[col.key]}}</td>
+        </tr>
+    </tbody>
+</table>

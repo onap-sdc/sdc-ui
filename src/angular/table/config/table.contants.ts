@@ -1,12 +1,15 @@
-import {ColumnDataTypes, TableModel, ITableConfig} from "./table.models";
+import {ColumnDataTypes, TableModel, ITableConfig} from "../models/table.models";
 /**
  * Created by M.S.BIT on 21/11/2017.
  */
 export const CompaniesTableConfig: ITableConfig = {
+    metaData:{
+        fixedHeader: true
+    },
     columns: {
         name                   : {
             title    : 'Company Name',
-            order    : 0,
+            order    : 2,
             dataType : ColumnDataTypes.Text,
             clickable: true,
             sortable : true,
@@ -14,6 +17,7 @@ export const CompaniesTableConfig: ITableConfig = {
         },
         lastConnectionResult   : {
             order    : 1,
+            title    : 'test',
             dataType : ColumnDataTypes.Icon,
             iconClass: 'icon-unlink',
             // width    : '3em',
@@ -21,7 +25,7 @@ export const CompaniesTableConfig: ITableConfig = {
         },
         companyId              : {
             title   : 'ID',
-            order   : 2,
+            order   : 0,
             dataType: ColumnDataTypes.Text,
             sortable: true,
             width: '6%'
