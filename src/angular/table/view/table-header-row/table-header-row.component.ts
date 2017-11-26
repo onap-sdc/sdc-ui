@@ -13,7 +13,7 @@ import {IColumnConfigModel} from "../../models/table.models";
 
 export class TableHeaderRow {
     @Output('onColClick') colClickEventEmitter: EventEmitter<IColumnConfigModel> = new EventEmitter();
-    @Input() headerCols:any;
+    @Input() headerCols: any;
     @Input() sortByField: string;
     @Input() sortDescending = true;
 

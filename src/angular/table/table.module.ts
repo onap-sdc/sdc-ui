@@ -4,17 +4,22 @@ import {CommonModule} from "@angular/common";
 import {TableService} from "./services/table.service";
 import {TableRowComponent} from "./view/table-row/table-row.component";
 import {TableHeaderRow} from "./view/table-header-row/table-header-row.component";
+import {TableBody} from "./view/table-body/table-body.component";
 @NgModule({
     declarations: [
         TableComponent,
         TableRowComponent,
-        TableHeaderRow
+        TableHeaderRow,
+        TableBody
     ],
     imports: [CommonModule],
     entryComponents: [],
     providers:[TableService],
     exports: [
-        TableComponent
+        TableComponent,
+        TableRowComponent,
+        TableHeaderRow,
+        TableBody
     ]
 })
 

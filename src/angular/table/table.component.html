@@ -1,12 +1,1 @@
-<div *ngIf="fixedHeader">
-    <sdc-table-header-row [headerCols]="headerCols" (onColClick)="onColumnHeaderClick($event)" [sortByField]="sortByField"></sdc-table-header-row>
-    <div class="sdc-table_tr__container" [style.height.px]="maxHeight">
-        <sdc-table-row *ngFor="let row of rowsData" [row]="row" [cols]="headerCols" ></sdc-table-row>
-    </div>
-</div>
-<ng-container *ngIf="!fixedHeader">
-    <div class="sdc-table_tr__container" [style.height.px]="maxHeight">
-        <sdc-table-header-row [headerCols]="headerCols" (onColClick)="onColumnHeaderClick($event)" [sortByField]="sortByField"></sdc-table-header-row>
-        <sdc-table-row *ngFor="let row of rowsData" [row]="row" [cols]="headerCols" ></sdc-table-row>
-    </div>
-</ng-container>
+<ng-content></ng-content>
