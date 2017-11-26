@@ -47,5 +47,6 @@ export enum ColumnDataTypes {
     Text,
     Array,
     Icon,
-    Html
+    Html,
+    Number
 }
