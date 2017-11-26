@@ -19,6 +19,7 @@ export interface IPattern{
 export class InputComponent implements OnInit{
     protected control: FormControl;
     public check: ICheck;
+
     @Output('valueChange') baseEmitter: EventEmitter<any> = new EventEmitter<any>();
     @Input() public label: string;
     @Input() public value: string;
