@@ -26,7 +26,7 @@ export const CompaniesTableConfig: ITableConfig = {
         companyId              : {
             title   : 'ID',
             order   : 0,
-            dataType: ColumnDataTypes.Text,
+            dataType: ColumnDataTypes.Number,
             sortable: true,
             width: '6%'
         },
@@ -54,7 +54,7 @@ export const CompaniesTableConfig: ITableConfig = {
         formattedCreationDate  : {
             title      : 'Created On',
             order      : 6,
-            dataType   : ColumnDataTypes.Html,
+            dataType   : ColumnDataTypes.Date,
             sortable   : true,
             sortByField: 'creationDate',
             width: '13%'
@@ -62,7 +62,7 @@ export const CompaniesTableConfig: ITableConfig = {
         formattedLastUpdateDate: {
             title      : 'Last Modified',
             order      : 7,
-            dataType   : ColumnDataTypes.Html,
+            dataType   : ColumnDataTypes.Date,
             sortable   : true,
             sortByField: 'lastUpdateDate',
             width: '13%'
