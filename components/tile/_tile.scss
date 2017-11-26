@@ -4,9 +4,10 @@
 .sdc-tile {
 	$tile-full-width: 180px;
 	$tile-full-height: 180px;
-	$tile-padding: 9px;
+	$tile-padding: 12px;
+	$border-width: 1px;
 
-	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
+	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2) - ($border-width * 2);
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
 
 	$footer-height: 23px;
@@ -16,7 +17,7 @@
 	height: $tile-full-height;
 
 	padding: $tile-padding;
-	border: 1px solid $tlv-light-gray;
+	border: $border-width solid $tlv-light-gray;
 	@include border-radius(2px);
 	@include box-sizing;
 
