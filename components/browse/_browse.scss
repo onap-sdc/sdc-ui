@@ -1,0 +1,54 @@
+input[type="file"] {
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.sdc-browse {
+  position: relative;
+  &:not(.disabled){
+    .sdc-input__input{
+      background-color: $white;
+      color: $dark-gray;
+    }
+    .browse-button{
+      div{
+        cursor: pointer;
+      }
+      &:hover{
+        background-color: $tlv-hover;
+      }
+    }
+  }
+  .delete-icon {
+    position: absolute;
+    top: 27px;
+    right: 47px;
+    cursor: pointer;
+    svg {
+      height: 9px;
+      width: 9px;
+      fill: $dark-gray;
+    }
+  }
+  .browse-button {
+    border: solid 1px $light-gray;
+    margin-bottom: 20px;
+    background-color: $background-gray;
+    height: 36px;
+    width: 36px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    div{
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      top: 0;
+    }
+  }
+  input[type="file"] {
+    height: 36px;
+    width: 36px;
+  }
+}
+

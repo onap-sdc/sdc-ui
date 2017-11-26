@@ -4,6 +4,8 @@ import {InputComponent} from "./input/input.component";
 import {DropDownComponent} from "./dropdown/dropdown.component";
 import {CommonModule} from "@angular/common";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
+import {FileOpenerComponent} from "./browse/file-opener/file-opener.component";
+import {BrowseComponent} from "./browse/browse.component";
 
 @NgModule({
     imports: [
@@ -15,13 +17,15 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
     declarations: [
         DropDownComponent,
         InputComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        FileOpenerComponent,
+        BrowseComponent
     ],
     exports: [
         DropDownComponent,
         InputComponent,
-        CheckboxComponent
-
+        CheckboxComponent,
+        BrowseComponent
     ]
 })
 export class FormElementsModule {

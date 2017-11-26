@@ -17,7 +17,13 @@
   .sdc-input__input {
     text-indent: 6px;
     border: solid 1px $light-gray;
-
+    height: 38px;
+    background-color: $white;
+    color: $dark-gray;
+    &.disabled{
+      color:$gray;
+      background-color: $background-gray;
+    }
     &.error {
       border: solid 1px $red;
       color: $red;

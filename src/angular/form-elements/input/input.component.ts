@@ -18,6 +18,7 @@ export class InputComponent {
     @Input() required:boolean;
     @Input() minLength:number;
     @Input() maxLength:number;
+    @Input() name: string;
 
     constructor() {
         this.control = new FormControl('', []);
