@@ -38,6 +38,7 @@ export interface IColumnConfigModel {
     dataType: ColumnDataTypes;
     objectKey?: string;
     iconClass?: string;
+    visible?: boolean;
 }
 export interface IAppTableColumnsModel {
     [colName: string]: IColumnConfigModel;
@@ -48,5 +49,6 @@ export enum ColumnDataTypes {
     Array,
     Icon,
     Html,
-    Number
+    Number,
+    Date
 }
