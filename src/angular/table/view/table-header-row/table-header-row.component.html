@@ -5,7 +5,7 @@
             [ngClass]="{ 'sortable': col.sortable }"
             (click)="onColumnHeaderClick(col)"
             *ngFor="let col of headerCols">
-            <div class="th-content" [ngStyle]="{'text-align': textPositionHeader}">
+            <div class="th-content">
                 <span class="value" >{{ col.title }}</span>
                 <i *ngIf="col.sortable"
                    [ngClass]="

@@ -4,8 +4,10 @@ import {ColumnDataTypes, TableModel, ITableConfig} from "../models/table.models"
  */
 export const CompaniesTableConfig: ITableConfig = {
     metaData:{
-        fixedHeader: true
+        fixedHeader: false,
+        textAlignment:  'left'
     },
+
     columns: {
         name                   : {
             title    : 'Company Name',

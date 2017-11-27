@@ -4,7 +4,7 @@
             <div class="sdc-table_tr_td"
                 *ngFor="let col of cols"
                 [style.width]="col.width"
-                [ngClass]="{ 'sortable': col.sortable }"  [ngStyle]="{'text-align': textPositionRow}">{{row[col.key]}}
+                [ngClass]="{ 'sortable': col.sortable }" >{{row[col.key]}}
 
             </div>
         </div>

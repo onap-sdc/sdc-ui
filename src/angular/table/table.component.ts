@@ -52,8 +52,7 @@ export class TableComponent implements OnInit{
 
     @Input() maxRowsToDisplay: number;
 
-    @Input() textPositionHeader: string;
-    @Input() textPositionRow: string;
+    @Input() textAlignment: string;
 
     constructor(private tableService: TableService){}
 
@@ -62,10 +61,14 @@ export class TableComponent implements OnInit{
             this.headerCols = this.tableService.prepareColumnHeadersArray(this.tableConfig.columns);
         }
         if(this.tableConfig.metaData){
+            console.log(this.tableConfig)
             this.fixedHeader = <boolean>this.tableConfig.metaData.fixedHeader || this.fixedHeader;
             this.maxHeight = <number>this.tableConfig.metaData.maxHeight || this.maxHeight;
             this.maxRowsToDisplay = <number>this.tableConfig.metaData.maxRowsToDisplay || this.maxRowsToDisplay;
+            this.textAlignment = <string>this.tableConfig.metaData.textAlignment || 'center';
+            console.log(this.textAlignment);
         }
+
     }
 
     onColumnHeaderClick(col: IColumnConfigModel) {
