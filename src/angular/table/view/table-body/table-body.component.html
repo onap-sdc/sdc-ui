@@ -4,14 +4,14 @@
 
 
 <ng-container *ngIf="!fixedHeader">
-    <div class="sdc-table_tr__container" [style.height.px]="maxHeight">
+    <div (infiniteScroll)="onScrollHitBottom()" class="sdc-table_tr__container" [style.height.px]="maxHeight">
         <ng-container #headerRowsContainer></ng-container>
         <ng-container #tableRowsContainer></ng-container>
     </div>
 </ng-container>
 <div *ngIf="fixedHeader">
     <ng-container #headerRowsContainer></ng-container>
-    <div class="sdc-table_tr__container" [style.height.px]="maxHeight">
+    <div (infiniteScroll)="onScrollHitBottom()" class="sdc-table_tr__container" [style.height.px]="maxHeight">
         <ng-container #tableRowsContainer></ng-container>
     </div>
 </div>

@@ -5,14 +5,15 @@ import {TableService} from "./services/table.service";
 import {TableRowComponent} from "./view/table-row/table-row.component";
 import {TableHeaderRow} from "./view/table-header-row/table-header-row.component";
 import {TableBody} from "./view/table-body/table-body.component";
+import {InfiniteScrollModule} from "../infinite-scroll/infinite-scroll.module";
 @NgModule({
     declarations: [
         TableComponent,
         TableRowComponent,
         TableHeaderRow,
-        TableBody
+        TableBody,
     ],
-    imports: [CommonModule],
+    imports: [CommonModule, InfiniteScrollModule],
     entryComponents: [],
     providers:[TableService],
     exports: [

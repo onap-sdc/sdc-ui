@@ -18,6 +18,7 @@ export interface ITableMetadata {
     fixedHeader?: boolean;
     maxHeight?: number;
     maxRowsToDisplay?: number;
+    infinityScrolling?: boolean;
 }
 
 export interface IColumnConfigModel {

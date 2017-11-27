@@ -47,10 +47,15 @@ export class TableComponent implements OnInit{
     /**
      * Max height in pixels
      */
-    @Input() maxHeight: number = 500;
+    @Input() maxHeight: number;
 
+    public modifiedData: any[];
 
+    /**
+     * Filtered content: The content which will be displayed
+     */
     @Input() maxRowsToDisplay: number;
+
 
     constructor(private tableService: TableService){}
 
@@ -63,9 +68,13 @@ export class TableComponent implements OnInit{
             this.maxHeight = <number>this.tableConfig.metaData.maxHeight || this.maxHeight;
             this.maxRowsToDisplay = <number>this.tableConfig.metaData.maxRowsToDisplay || this.maxRowsToDisplay;
         }
+        /**
+         * Filtered content
+         */
+        this.modifiedData = this.rowsData;
     }
 
-    onColumnHeaderClick(col: IColumnConfigModel) {
+    public onColumnHeaderClick(col: IColumnConfigModel) {
         if (!col.sortable) {
             return;
         }
@@ -79,6 +88,12 @@ export class TableComponent implements OnInit{
             this.sortDescending = true;
         }
 
-        this.tableService.sortColumn(this.rowsData, col, this.sortDescending);
+        this.tableService.sortColumn(this.modifiedData, col, this.sortDescending);
+    }
+
+    public onScrollHitBottom(){
+        if(this.tableConfig.metaData && this.tableConfig.metaData.infinityScrolling){
+            //Load additional content
+        }
     }
 }

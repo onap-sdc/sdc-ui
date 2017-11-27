@@ -4,7 +4,9 @@ import {ColumnDataTypes, TableModel, ITableConfig} from "../models/table.models"
  */
 export const CompaniesTableConfig: ITableConfig = {
     metaData:{
-        fixedHeader: true
+        fixedHeader: true,
+        infinityScrolling: true,
+        maxHeight: 500
     },
     columns: {
         name                   : {
