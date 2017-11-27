@@ -52,6 +52,9 @@ export class TableComponent implements OnInit{
 
     @Input() maxRowsToDisplay: number;
 
+    @Input() textPositionHeader: string;
+    @Input() textPositionRow: string;
+
     constructor(private tableService: TableService){}
 
     ngOnInit() {

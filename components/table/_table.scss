@@ -3,14 +3,20 @@
 }
 .sdc-table {
   width:100%;
+  box-sizing: border-box;
   border:1px solid $black;
+  display:flex;
+  flex-direction: column;
 
 
   .sdc-table_tr {
-
+    display: flex;
+    flex-direction: row;
   }
   .sdc-table_tr--head {
     background-color: $light-gray;
+    display:flex;
+    flex-direction: row;
   }
   .sdc-table_tr_th {
 

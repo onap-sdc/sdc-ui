@@ -1,20 +1,18 @@
-<table class="sdc-table">
-    <thead>
-    <tr class="sdc-table_tr--head">
-        <th class="sdc-table_tr_th"
+<div class="sdc-table">
+    <div class="sdc-table_tr--head">
+        <div class="sdc-table_tr_th"
             [style.width]="col.width"
             [ngClass]="{ 'sortable': col.sortable }"
             (click)="onColumnHeaderClick(col)"
             *ngFor="let col of headerCols">
-            <div class="th-content">
-                <span class="value">{{ col.title }}</span>
+            <div class="th-content" [ngStyle]="{'text-align': textPositionHeader}">
+                <span class="value" >{{ col.title }}</span>
                 <i *ngIf="col.sortable"
                    [ngClass]="
                         (sortByField !== col.key) ? 'icon-unsorted' :
                         (sortDescending) ? 'icon-sort-desc' : 'icon-sort-asc'">
                 </i>
             </div>
-        </th>
-    </tr>
-    </thead>
-</table>
+        </div>
+    </div>
+</div>

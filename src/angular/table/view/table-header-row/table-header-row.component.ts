@@ -16,7 +16,7 @@ export class TableHeaderRow {
     @Input() headerCols: any;
     @Input() sortByField: string;
     @Input() sortDescending = true;
-
+    @Input() textPositionRow: string;
     onColumnHeaderClick(col: IColumnConfigModel){
         this.colClickEventEmitter.next(col);
     }

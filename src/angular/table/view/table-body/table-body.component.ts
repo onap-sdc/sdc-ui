@@ -38,6 +38,8 @@ export class TableBody implements AfterViewInit {
     /**
      * Inject content template to containers when the view is ready
      */
+    @Input() textPositionHeader: string;
+    @Input() textPositionRow: string;
     ngAfterViewInit(): void {
         if(this.headerRowsContainer){
             this.headerRowsContainer.createEmbeddedView(this.headerRows);

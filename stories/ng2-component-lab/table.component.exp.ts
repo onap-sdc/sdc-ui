@@ -12,9 +12,10 @@ export default experimentOn('Table')
         showSource: true,
         template: `
       <sdc-table [rowsData]="data" #table>
-        <sdc-table-body [maxHeight]="table.maxHeight" [fixedHeader]="table.fixedHeader">
+        <sdc-table-body [maxHeight]="table.maxHeight" [fixedHeader]="table.fixedHeader" >
             <sdc-table-header-row [headerCols]="table.headerCols" (onColClick)="table.onColumnHeaderClick($event)" [sortByField]="table.sortByField" table-header-row></sdc-table-header-row>
-            <sdc-table-row *ngFor="let row of table.rowsData" [row]="row" [cols]="table.headerCols" table-row></sdc-table-row>
+            <sdc-table-row *ngFor="let row of table.rowsData" [row]="row" [cols]="table.headerCols" [textPositionRow]="left"  table-row></sdc-table-row>
+            <sdc-table-row *ngFor="let row of table.rowsData" [row]="row" [cols]="table.headerCols" [textPositionRow]="left" table-row></sdc-table-row>
         </sdc-table-body>
       </sdc-table>
     `
