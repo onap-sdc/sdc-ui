@@ -97,12 +97,12 @@
 		}
 
 		.sdc-tile-content-info {
-			display: flex;
+			display: inline-block;
 			flex-direction: column;
 
 			.sdc-tile-info-line {
 				@extend .text-capitalize;
-				@include ellipsis($display: flex);
+				@include ellipsis($display: inline-block);
 				align-items: center;
 
 				button {
