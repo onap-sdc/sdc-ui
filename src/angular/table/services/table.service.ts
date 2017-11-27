@@ -23,9 +23,53 @@ export class TableService implements ITableDataServies{
         return  this.sortObjectsByField(rowsData, colKey, col.dataType, isDescending);
     }
 
-    // public filterData(rowsData: any): any {
-    //
-    // }
+    public filterData(rowsData: any, col: IColumnConfigModel, filterItem: FilterItem): any {
+        return rowsData.filter((item) => {
+            const valueA: string = item[filterItem.Field].toString();
+            const valueB: string = filterItem.Value;
+
+            switch(col.dataType) {
+                case ColumnDataTypes.Number:
+                    return this.filterNumbers(valueA, valueB, filterItem.Operator);
+
+                // case ColumnDataTypes.Date:
+            }
+
+            return this.filterStrings(valueA, valueB, filterItem.Operator);
+        });
+    }
+
+    private filterStrings(valueA: string, valueB: string, operator: FilterOperator): boolean {
+        switch(operator) {
+            case FilterOperator.Equal:
+                return valueA == valueB;
+
+            case FilterOperator.NotEqual:
+                return valueA != valueB;
+        }
+    }
+
+    private filterNumbers(valueA: string, valueB: string, operator: FilterOperator): boolean {
+        switch(operator) {
+            case FilterOperator.Equal:
+                return +valueA == +valueB;
+
+            case FilterOperator.NotEqual:
+                return +valueA != +valueB;
+
+            case FilterOperator.Less:
+                return +valueA < +valueB;
+
+            case FilterOperator.LessEqual:
+                return +valueA <= +valueB;
+
+            case FilterOperator.Greater:
+                return +valueA > +valueB;
+
+            case FilterOperator.GreaterEqual:
+                return +valueA >= +valueB;
+        }
+    }
 
     /**
      * Sort algorithm for sorting the column array by order (Set by the table config)
@@ -62,8 +106,8 @@ export class TableService implements ITableDataServies{
     };
 
     private sortTwoNumbers(isDescending: boolean, valueA: any, valueB: any): number {
-        const value1: number = isNaN(valueA) ? 0 : valueA as number;
-        const value2: number = isNaN(valueB) ? 0 : valueB as number;
+        const value1: number = isNaN(valueA) ? 0 : +valueA;
+        const value2: number = isNaN(valueB) ? 0 : +valueB;
 
         return isDescending ? value2 - value1 : value1 - value2;
     }
@@ -86,3 +130,29 @@ export class TableService implements ITableDataServies{
                (date.getDate().toString() as any).padStart(2, '0');
     }
 }
+
+export interface FilterItem {
+    Field: string;
+    Operator: FilterOperator;
+    Value: string;
+}
+
+export enum FilterOperator {
+    Equal,
+    NotEqual,
+    Less,
+    LessEqual,
+    Greater,
+    GreaterEqual
+}
+
+/*
+        const filterItem: FilterItem = {
+            Field: "companyId",
+            Operator: FilterOperator.LessEqual,
+            Value: "10"
+        };
+
+        this.tableService.filterData(this.rowsData, col, filterItem);
+*/
+git
