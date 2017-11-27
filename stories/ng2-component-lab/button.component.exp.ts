@@ -23,6 +23,7 @@ export default experimentOn('Button')
             alert:alert1
         },
         template: `
+
             <sdc-button  [text]="'primary'" [type]="'white'" [disabled]="false" [size]="'large'" ></sdc-button>
             <sdc-button  [text]="'primary'" [type]="'white'" [disabled]="false" [size]="'medium'"></sdc-button>
             <sdc-button  [text]="'primary'" [type]="'white'" [disabled]="false" size="'small'"></sdc-button>
