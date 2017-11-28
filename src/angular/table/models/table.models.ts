@@ -1,6 +1,11 @@
 /**
  * Created by M.S.BIT on 21/11/2017.
  */
+
+/**********************************
+ * Table configuration models
+ **********************************/
+
 export class TableModel {
     constructor(public columns: IAppTableColumnsModel, public rows: IAppTableRowModel) {}
 }
@@ -52,4 +57,26 @@ export enum ColumnDataTypes {
     Html,
     Number,
     Date
+}
+
+/**********************************
+ * Table service models
+ **********************************/
+
+/**
+ * Filter models
+ */
+export interface FilterItem {
+    Field: string;
+    Operator: FilterOperator;
+    Value: string;
+}
+
+export enum FilterOperator {
+    Equal,
+    NotEqual,
+    LessThan,
+    LessThanOrEqual,
+    GreaterThan,
+    GreaterThanOrEqual
 }

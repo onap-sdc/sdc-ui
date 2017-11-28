@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
-import {IAppTableColumnsModel, IColumnConfigModel, ColumnDataTypes} from "../models/table.models";
+import {
+    IAppTableColumnsModel, IColumnConfigModel, ColumnDataTypes, FilterOperator,
+    FilterItem
+} from "../models/table.models";
 import {ITableDataServies} from "./table-data-service.interface";
-import {isUndefined} from 'util';
 /**
  * Created by M.S.BIT on 22/11/2017.
  */
@@ -80,16 +82,16 @@ export class TableService implements ITableDataServies{
             case FilterOperator.NotEqual:
                 return +valueA != +valueB;
 
-            case FilterOperator.Less:
+            case FilterOperator.LessThan:
                 return +valueA < +valueB;
 
-            case FilterOperator.LessEqual:
+            case FilterOperator.LessThanOrEqual:
                 return +valueA <= +valueB;
 
-            case FilterOperator.Greater:
+            case FilterOperator.GreaterThan:
                 return +valueA > +valueB;
 
-            case FilterOperator.GreaterEqual:
+            case FilterOperator.GreaterThanOrEqual:
                 return +valueA >= +valueB;
         }
     }
@@ -112,16 +114,16 @@ export class TableService implements ITableDataServies{
             case FilterOperator.NotEqual:
                 return this.getDateAsYearMonthDay(dateA) != this.getDateAsYearMonthDay(dateB);
 
-            case FilterOperator.Less:
+            case FilterOperator.LessThan:
                 return this.getDateAsYearMonthDay(dateA) < this.getDateAsYearMonthDay(dateB);
 
-            case FilterOperator.LessEqual:
+            case FilterOperator.LessThanOrEqual:
                 return this.getDateAsYearMonthDay(dateA) <= this.getDateAsYearMonthDay(dateB);
 
-            case FilterOperator.Greater:
+            case FilterOperator.GreaterThan:
                 return this.getDateAsYearMonthDay(dateA) > this.getDateAsYearMonthDay(dateB);
 
-            case FilterOperator.GreaterEqual:
+            case FilterOperator.GreaterThanOrEqual:
                 return this.getDateAsYearMonthDay(dateA) >= this.getDateAsYearMonthDay(dateB);
         }
     }
@@ -186,20 +188,6 @@ export class TableService implements ITableDataServies{
     }
 }
 
-export interface FilterItem {
-    Field: string;
-    Operator: FilterOperator;
-    Value: string;
-}
-
-export enum FilterOperator {
-    Equal,
-    NotEqual,
-    Less,
-    LessEqual,
-    Greater,
-    GreaterEqual
-}
 
 /*
 import {TableService, FilterItem, FilterOperator} from "./services/table.service";
@@ -208,12 +196,12 @@ import {TableService, FilterItem, FilterOperator} from "./services/table.service
 const filterItems: FilterItem[] =
     [{
         Field: "formattedCreationDate", // "usersCount", // "companyId",
-        Operator: FilterOperator.LessEqual,
+        Operator: FilterOperator.LessThanOrEqual,
         Value: "12/20/2016"
     },
         {
             Field: "companyId", // "usersCount", // "companyId",
-            Operator: FilterOperator.LessEqual,
+            Operator: FilterOperator.LessThanOrEqual,
             Value: "40"
         }];
 this.rowsData = this.tableService.filterData(this.rowsData, this.headerCols, filterItems);
