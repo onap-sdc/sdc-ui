@@ -4,30 +4,40 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 
 export default experimentOn('Input')
-    .case('Normal input', {
+    .case('Input with Patterns', {
         showSource: true,
         template: `
-      <sdc-input label="Please Enter value"></sdc-input>
+      <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" [patterns]="[
+            {
+                regex: '[A-Z]',
+                error_message: 'Pattern 1 error'
+            },
+            {
+                regex: '\\\\d',
+                error_message: 'Pattern 2 error'
+            }
+        ]" ></sdc-input>
     `
-    }).case('Disabled input', {
+    }).case('Regular input', {
         showSource: true,
         template: `
-      <sdc-input [disabled]="true"></sdc-input>
+      <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" ></sdc-input>
     `
-    })
-    .case('Input required', {
+    }).case('Regular disabled input', {
         showSource: true,
         template: `
-      <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      <sdc-input label="Please Enter value"  [disabled]="true"></sdc-input>
+    `}).case('Regular input with Hint', {
+        showSource: true,
+        template: `
+      <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" [hint]="true"></sdc-input>
     `
-    }).case('Input with max length', {
+    }).case('Regular input with Hint and Required', {
         showSource: true,
         template: `
-      <sdc-input [maxLength]="5"></sdc-input>
-    `
-    }).case('Integer input with validation error', {
-        showSource: true,
-        template: `
-      <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
+      <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" [required]="true" [hint]="true" #input></sdc-input>
+      <div>
+         <button (click)="input.validateInput('test')">Validate!</button> 
+      </div>
     `
     });

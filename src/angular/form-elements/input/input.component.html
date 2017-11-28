@@ -1,16 +1,16 @@
 <div class="sdc-input">
-    <label class="sdc-input__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
+    <label class="sdc-input__label" *ngIf="label" [ngClass]="{ 'required':required }">{{label}}</label>
     <input
         class="sdc-input__input"
-        [ngClass]="{'error': control.invalid, 'disabled':disabled}"
+        [ngClass]="{'error': check &&!check.result && (check.error.length || required), 'disabled':disabled, 'hint':hint }"
         type="text"
         [name]="name"
         [(ngModel)]="value"
         (change)="onValueChange()"
         [maxlength]="maxLength"
+        [placeholder]= "placeHolder ? placeHolder : ''"
         [minlength]="minLength"
-        [pattern]="pattern"
-        [formControl]="control"
-        [disabled]=disabled
+        [attr.disabled]="disabled"
     />
+    <label class="sdc-input__label sdc-label__error" *ngIf="check &&!check.result && check.error.length" >&#9888; {{check.error}}</label>
 </div>
