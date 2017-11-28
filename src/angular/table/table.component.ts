@@ -49,7 +49,11 @@ export class TableComponent implements OnInit{
      */
     @Input() maxHeight: number = 500;
 
+    public modifiedData: any[];
 
+    /**
+     * Filtered content: The content which will be displayed
+     */
     @Input() maxRowsToDisplay: number;
 
     @Input() textAlignment: string;
@@ -68,10 +72,13 @@ export class TableComponent implements OnInit{
             this.textAlignment = <string>this.tableConfig.metaData.textAlignment || 'center';
             console.log(this.textAlignment);
         }
-
+        /**
+         * Filtered content
+         */
+        this.modifiedData = this.rowsData;
     }
 
-    onColumnHeaderClick(col: IColumnConfigModel) {
+    public onColumnHeaderClick(col: IColumnConfigModel) {
         if (!col.sortable) {
             return;
         }
@@ -85,6 +92,12 @@ export class TableComponent implements OnInit{
             this.sortDescending = true;
         }
 
-        this.tableService.sortColumn(this.rowsData, col, this.sortDescending);
+        this.tableService.sortColumn(this.modifiedData, col, this.sortDescending);
+    }
+
+    public onScrollHitBottom(){
+        if(this.tableConfig.metaData && this.tableConfig.metaData.infinityScrolling){
+            //Load additional content
+        }
     }
 }

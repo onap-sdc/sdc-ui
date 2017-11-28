@@ -1,4 +1,7 @@
-import {Component, Input, ViewChild, TemplateRef, ViewContainerRef, OnInit, AfterViewInit} from "@angular/core";
+import {
+    Component, Input, ViewChild, TemplateRef, ViewContainerRef, OnInit, AfterViewInit, Output,
+    EventEmitter
+} from "@angular/core";
 /**
  * Created by M.S.BIT on 26/11/2017.
  */
@@ -9,22 +12,32 @@ import {Component, Input, ViewChild, TemplateRef, ViewContainerRef, OnInit, Afte
 })
 
 export class TableBody implements AfterViewInit {
+
     /**
      * Table row headers content template (to be injected to correct container)
      */
     @ViewChild('headerRows') headerRows: TemplateRef<any>;
+
     /**
      * Table rows content template (to be injected to correct container)
      */
     @ViewChild('tableRows') tableRows: TemplateRef<any>;
+
     /**
      * Table row headers container - will contain table row headers content template
      */
     @ViewChild('headerRowsContainer', {read: ViewContainerRef}) headerRowsContainer: ViewContainerRef;
+
     /**
      * Table rows container - will contain table rows content template
      */
     @ViewChild('tableRowsContainer', {read: ViewContainerRef}) tableRowsContainer: ViewContainerRef;
+
+    /**
+     * Bubble up scroll hit bottom event
+     */
+    @Output('scrollHitBottom') scrollHitBottom: EventEmitter<boolean> = new EventEmitter();
+
     /**
      * Fixed header flag
      */
@@ -47,5 +60,7 @@ export class TableBody implements AfterViewInit {
             this.tableRowsContainer.createEmbeddedView(this.tableRows);
         }
     }
-
+    onScrollHitBottom(){
+        this.scrollHitBottom.next(true);
+    }
 }

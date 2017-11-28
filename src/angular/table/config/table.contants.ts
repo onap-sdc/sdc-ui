@@ -4,10 +4,11 @@ import {ColumnDataTypes, TableModel, ITableConfig} from "../models/table.models"
  */
 export const CompaniesTableConfig: ITableConfig = {
     metaData:{
-        fixedHeader: false,
-        textAlignment:  'left'
+        fixedHeader: true,
+        textAlignment:  'left',
+        infinityScrolling: true,
+        maxHeight: 500
     },
-
     columns: {
         name                   : {
             title    : 'Company Name',
@@ -15,43 +16,42 @@ export const CompaniesTableConfig: ITableConfig = {
             dataType : ColumnDataTypes.Text,
             clickable: true,
             sortable : true,
-            width: '25%'
+
         },
         lastConnectionResult   : {
             order    : 1,
             title    : 'test',
             dataType : ColumnDataTypes.Icon,
             iconClass: 'icon-unlink',
-            // width    : '3em',
-            width: '4%'
+            width: '100px'
         },
         companyId              : {
             title   : 'ID',
             order   : 0,
             dataType: ColumnDataTypes.Number,
             sortable: true,
-            width: '6%'
+
         },
         banDataList            : {
             title   : 'BAN/s',
             order   : 3,
             dataType: ColumnDataTypes.Array,
             sortable: true,
-            width: '18%'
+            width: '200px'
         },
         usersCount             : {
             title   : 'Users',
             order   : 4,
             dataType: ColumnDataTypes.Text,
             sortable: true,
-            width: '8%'
+
         },
         serviceType            : {
             title   : 'Service',
             order   : 5,
             dataType: ColumnDataTypes.Text,
             sortable: true,
-            width: '9%'
+
         },
         formattedCreationDate  : {
             title      : 'Created On',
@@ -59,7 +59,7 @@ export const CompaniesTableConfig: ITableConfig = {
             dataType   : ColumnDataTypes.Date,
             sortable   : true,
             sortByField: 'creationDate',
-            width: '13%'
+
         },
         formattedLastUpdateDate: {
             title      : 'Last Modified',
@@ -67,7 +67,6 @@ export const CompaniesTableConfig: ITableConfig = {
             dataType   : ColumnDataTypes.Date,
             sortable   : true,
             sortByField: 'lastUpdateDate',
-            width: '13%'
         },
         actions                : {
             order    : 8,
@@ -75,7 +74,7 @@ export const CompaniesTableConfig: ITableConfig = {
             iconClass: 'icon-dots-three-vertical',
             clickable: true,
             // width    : '3em'
-            width: '4%'
+
         },
     },
     rows   : {}
