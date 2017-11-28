@@ -1,1 +1,27 @@
+<div class="sdc-table-filter-bar">
+    <form (submit)="submitFilter($event)" #form>
+        <div>
+            <label for="columnName">Column</label>
+            <select name="columnName" id="columnName">
+                <ng-container *ngFor="let col of headerCols">
+                    <option [value]="col.key" *ngIf="col.title">{{col.title}}</option>
+                </ng-container>
+
+            </select>
+        </div>
+        <div>
+            <label for="operator">Condition</label>
+            <select name="operator" id="operator">
+                <option [value]="i" *ngFor="let op of ['==','!=','<','<=','>','>=']; let i = index;">{{op}}</option>
+            </select>
+        </div>
+        <div>
+            <label for="comparisonValue">Value</label>
+            <input type="text" name="comparisonValue" id="comparisonValue">
+        </div>
+        <button type="reset" (click)="clearFilters()">Clear</button>
+        <button type="button" (click)="submitFilter(form)">Submit</button>
+    </form>
+
+</div>
 <ng-content></ng-content>

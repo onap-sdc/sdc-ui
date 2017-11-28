@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, Input} from "@angular/core";
 import {CompaniesTableConfig} from "./config/table.contants";
-import {IColumnConfigModel} from "./models/table.models";
+import {IColumnConfigModel, FilterItem, FilterOperator} from "./models/table.models";
 import {TableService} from "./services/table.service";
 
 
@@ -95,5 +95,33 @@ export class TableComponent implements OnInit{
         if(this.tableConfig.metaData && this.tableConfig.metaData.infinityScrolling){
             //Load additional content
         }
+    }
+
+    filterItems: FilterItem[] = [];
+
+    clearFilters(){
+        this.modifiedData = this.rowsData;
+        this.filterItems = [];
+    }
+
+    submitFilter(form: any){
+        const colName = form.elements[0].value;
+        const operator = form.elements[1].value;
+        const value = form.elements[2].value;
+
+
+        const item: FilterItem = this.filterItems.find((item) => { return item.Field == colName; });
+        if (item) {
+           item.Operator = +operator as FilterOperator;
+           item.Value = value;
+        } else {
+            this.filterItems.push({
+                Field: colName,
+                Operator: +operator as FilterOperator,
+                Value: value
+            });
+        }
+
+        this.modifiedData = this.tableService.filterData(this.rowsData, this.headerCols, this.filterItems);
     }
 }
