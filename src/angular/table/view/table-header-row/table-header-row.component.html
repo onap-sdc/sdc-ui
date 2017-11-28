@@ -1,7 +1,7 @@
     <div class="sdc-table-header">
         <div class="sdc-table-cell"
             [style.width]="col.width"
-            [ngClass]="{ 'sortable': col.sortable }"
+            [ngClass]="{ 'sortable': col.sortable, 'sdc-table_cell_fixed': col.width, 'sdc-table_fixed_grow':!col.width }"
             (click)="onColumnHeaderClick(col)"
             *ngFor="let col of headerCols">
             <div class="th-content">

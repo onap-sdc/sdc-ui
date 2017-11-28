@@ -12,10 +12,11 @@ export const CompaniesTableConfig: ITableConfig = {
     columns: {
         name                   : {
             title    : 'Company Name',
-            order    : 2,
+            order    : 0,
             dataType : ColumnDataTypes.Text,
             clickable: true,
             sortable : true,
+            width: '400px'
 
         },
         lastConnectionResult   : {
@@ -23,11 +24,10 @@ export const CompaniesTableConfig: ITableConfig = {
             title    : 'test',
             dataType : ColumnDataTypes.Icon,
             iconClass: 'icon-unlink',
-            width: '100px'
         },
         companyId              : {
             title   : 'ID',
-            order   : 0,
+            order   : 2,
             dataType: ColumnDataTypes.Number,
             sortable: true,
 
@@ -37,7 +37,7 @@ export const CompaniesTableConfig: ITableConfig = {
             order   : 3,
             dataType: ColumnDataTypes.Array,
             sortable: true,
-            width: '200px'
+
         },
         usersCount             : {
             title   : 'Users',
