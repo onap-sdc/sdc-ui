@@ -23,32 +23,55 @@ export class TableService implements ITableDataServies{
         return  this.sortObjectsByField(rowsData, colKey, col.dataType, isDescending);
     }
 
-    public filterData(rowsData: any, col: IColumnConfigModel, filterItem: FilterItem): any {
-        return rowsData.filter((item) => {
-            const valueA: string = item[filterItem.Field].toString();
-            const valueB: string = filterItem.Value;
+    public filterData(rowsData: any, cols: IColumnConfigModel[], filterItems: FilterItem[]): any {
 
-            switch(col.dataType) {
-                case ColumnDataTypes.Number:
-                    return this.filterNumbers(valueA, valueB, filterItem.Operator);
+        filterItems.map((filterItem) => {
+            rowsData = rowsData.filter((item) => {
+                const valueA: string = item[filterItem.Field].toString();
+                const valueB: string = filterItem.Value;
+                const col: IColumnConfigModel = cols.find((item) => { return item.key == filterItem.Field });
 
-                // case ColumnDataTypes.Date:
-            }
+                switch (col.dataType) {
+                    case ColumnDataTypes.Number:
+                        return this.filterNumbers(valueA, valueB, filterItem.Operator);
 
-            return this.filterStrings(valueA, valueB, filterItem.Operator);
+                    case ColumnDataTypes.Date:
+                        return this.filterDates(valueA, valueB, filterItem.Operator);
+                }
+
+                return this.filterStrings(valueA, valueB, filterItem.Operator);
+            })
         });
+
+        return rowsData;
     }
 
+    /**
+     * Compares two strings
+     * @param {string} valueA
+     * @param {string} valueB
+     * @param {FilterOperator} operator
+     * @returns {boolean}
+     */
     private filterStrings(valueA: string, valueB: string, operator: FilterOperator): boolean {
+        const length = valueA.length < valueB.length ? valueA.length : valueB.length;
+
         switch(operator) {
             case FilterOperator.Equal:
-                return valueA == valueB;
+                return valueA.substr(0, length).toLowerCase() == valueB.substr(0, length).toLowerCase();
 
             case FilterOperator.NotEqual:
-                return valueA != valueB;
+                return valueA.substr(0, length).toLowerCase() != valueB.substr(0, length).toLowerCase();
         }
     }
 
+    /**
+     * Compares two numbers
+     * @param {string} valueA
+     * @param {string} valueB
+     * @param {FilterOperator} operator
+     * @returns {boolean}
+     */
     private filterNumbers(valueA: string, valueB: string, operator: FilterOperator): boolean {
         switch(operator) {
             case FilterOperator.Equal:
@@ -68,6 +91,38 @@ export class TableService implements ITableDataServies{
 
             case FilterOperator.GreaterEqual:
                 return +valueA >= +valueB;
+        }
+    }
+
+    /**
+     * Compares two dates
+     * @param {string} valueA
+     * @param {string} valueB
+     * @param {FilterOperator} operator
+     * @returns {boolean}
+     */
+    private filterDates(valueA: string, valueB: string, operator: FilterOperator): boolean {
+        const dateA: Date = new Date(valueA);
+        const dateB: Date = new Date(valueB);
+
+        switch(operator) {
+            case FilterOperator.Equal:
+                return this.getDateAsYearMonthDay(dateA) == this.getDateAsYearMonthDay(dateB);
+
+            case FilterOperator.NotEqual:
+                return this.getDateAsYearMonthDay(dateA) != this.getDateAsYearMonthDay(dateB);
+
+            case FilterOperator.Less:
+                return this.getDateAsYearMonthDay(dateA) < this.getDateAsYearMonthDay(dateB);
+
+            case FilterOperator.LessEqual:
+                return this.getDateAsYearMonthDay(dateA) <= this.getDateAsYearMonthDay(dateB);
+
+            case FilterOperator.Greater:
+                return this.getDateAsYearMonthDay(dateA) > this.getDateAsYearMonthDay(dateB);
+
+            case FilterOperator.GreaterEqual:
+                return this.getDateAsYearMonthDay(dateA) >= this.getDateAsYearMonthDay(dateB);
         }
     }
 
@@ -147,12 +202,22 @@ export enum FilterOperator {
 }
 
 /*
-        const filterItem: FilterItem = {
-            Field: "companyId",
-            Operator: FilterOperator.LessEqual,
-            Value: "10"
-        };
+import {TableService, FilterItem, FilterOperator} from "./services/table.service";
 
-        this.tableService.filterData(this.rowsData, col, filterItem);
+// for testing only
+const filterItems: FilterItem[] =
+    [{
+        Field: "formattedCreationDate", // "usersCount", // "companyId",
+        Operator: FilterOperator.LessEqual,
+        Value: "12/20/2016"
+    },
+        {
+            Field: "companyId", // "usersCount", // "companyId",
+            Operator: FilterOperator.LessEqual,
+            Value: "40"
+        }];
+this.rowsData = this.tableService.filterData(this.rowsData, this.headerCols, filterItems);
+// for testing only
 */
-git
+
+
