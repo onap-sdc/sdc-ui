@@ -1,7 +1,5 @@
 import {Injectable} from "@angular/core";
-import {
-    IAppTableColumnsModel, IColumnConfigModel, ColumnDataTypes, FilterOperator,
-    FilterItem
+import { IAppTableColumnsModel, IColumnConfigModel, ColumnDataTypes, FilterOperator, IFilterItem, IFilterGroup
 } from "../models/table.models";
 import {ITableDataServies} from "./table-data-service.interface";
 /**
@@ -19,33 +17,78 @@ export class TableService implements ITableDataServies{
     }
 
     public sortColumn(rowsData: any, col: IColumnConfigModel, isDescending: boolean):any {
-        //const colKey = col.sortByField ? col.sortByField : col.key;
+        // const colKey = col.sortByField ? col.sortByField : col.key;
         const colKey = col.key;
 
         return  this.sortObjectsByField(rowsData, colKey, col.dataType, isDescending);
     }
 
-    public filterData(rowsData: any, cols: IColumnConfigModel[], filterItems: FilterItem[]): any {
+    /**
+     * Uses IFilterGroup interface (each IFilterGroup item includes IFilterItem array)
+     * @param rowsData
+     * @param {IColumnConfigModel[]} cols
+     * @param {IFilterGroup[]} groups
+     * @returns {any}
+     */
+    public groupFilter(rowsData: any, cols: IColumnConfigModel[], groups: IFilterGroup[]): any {
 
-        filterItems.map((filterItem) => {
-            rowsData = rowsData.filter((item) => {
-                const valueA: string = item[filterItem.Field].toString();
-                const valueB: string = filterItem.Value;
-                const col: IColumnConfigModel = cols.find((item) => { return item.key == filterItem.Field });
+        groups.map((group) => {
+            rowsData = rowsData.filter((row) => {
+                const filterItems: IFilterItem[] = group.filters.filter((filter) => {
+                        const col: IColumnConfigModel = this.findColumnConfigModel(cols, filter.field);
+                        return this.isRowInFilter(row, col, filter);
+                    });
 
-                switch (col.dataType) {
-                    case ColumnDataTypes.Number:
-                        return this.filterNumbers(valueA, valueB, filterItem.Operator);
+                return filterItems && filterItems.length > 0;
+            });
+        });
 
-                    case ColumnDataTypes.Date:
-                        return this.filterDates(valueA, valueB, filterItem.Operator);
-                }
+        return rowsData;
+    }
 
-                return this.filterStrings(valueA, valueB, filterItem.Operator);
+    /**
+     * Uses IFilterItem interface
+     * @param rowsData
+     * @param {IColumnConfigModel[]} cols
+     * @param {IFilterItem[]} filters
+     * @returns {any}
+     */
+    public itemFilter(rowsData: any, cols: IColumnConfigModel[], filters: IFilterItem[]): any {
+
+        filters.map((filter) => {
+            rowsData = rowsData.filter((row) => {
+                const col: IColumnConfigModel = this.findColumnConfigModel(cols, filter.field);
+                return this.isRowInFilter(row, col, filter);
             })
         });
 
         return rowsData;
+    }
+
+    /**
+     * Iteration (checks each row by filter criteries)
+     * @param row
+     * @param {IColumnConfigModel} col
+     * @param {IFilterItem} filter
+     * @returns {any}
+     */
+    private isRowInFilter(row: any, col: IColumnConfigModel, filter: IFilterItem): any {
+        const valueA: string = row[filter.field].toString();
+        const valueB: string = filter.value;
+
+        switch (col.dataType) {
+            case ColumnDataTypes.Number:
+                return this.filterNumbers(valueA, valueB, filter.operator);
+
+            case ColumnDataTypes.Date:
+                return this.filterDates(valueA, valueB, filter.operator);
+        }
+
+        return this.filterStrings(valueA, valueB, filter.operator);
+    }
+
+    private findColumnConfigModel(cols: IColumnConfigModel[], field: string) {
+        return cols.find((item) => { return item.key == field });
     }
 
     /**
@@ -64,6 +107,18 @@ export class TableService implements ITableDataServies{
 
             case FilterOperator.NotEqual:
                 return valueA.substr(0, length).toLowerCase() != valueB.substr(0, length).toLowerCase();
+
+            case FilterOperator.LessThan:
+                return valueA.substr(0, length).toLowerCase() < valueB.substr(0, length).toLowerCase();
+
+            case FilterOperator.LessThanOrEqual:
+                return valueA.substr(0, length).toLowerCase() <= valueB.substr(0, length).toLowerCase();
+
+            case FilterOperator.GreaterThan:
+                return valueA.substr(0, length).toLowerCase() > valueB.substr(0, length).toLowerCase();
+
+            case FilterOperator.GreaterThanOrEqual:
+                return valueA.substr(0, length).toLowerCase() >= valueB.substr(0, length).toLowerCase();
         }
     }
 
@@ -188,24 +243,69 @@ export class TableService implements ITableDataServies{
     }
 }
 
-
 /*
-import {TableService, FilterItem, FilterOperator} from "./services/table.service";
+import {IColumnConfigModel, IFilterGroup, IFilterItem, FilterOperator} from "./models/table.models";
 
-// for testing only
-const filterItems: FilterItem[] =
-    [{
-        Field: "formattedCreationDate", // "usersCount", // "companyId",
-        Operator: FilterOperator.LessThanOrEqual,
-        Value: "12/20/2016"
-    },
-        {
-            Field: "companyId", // "usersCount", // "companyId",
-            Operator: FilterOperator.LessThanOrEqual,
-            Value: "40"
-        }];
-this.rowsData = this.tableService.filterData(this.rowsData, this.headerCols, filterItems);
-// for testing only
+filterItems: IFilterItem[] = [];
+filterGroups: IFilterGroup[] = [];
+
+clearFilters(){
+    this.modifiedData = this.rowsData;
+    this.filterItems = [];
+    this.filterGroups = [];
+}
+
+submitFilter(form: any) {
+    //this.itemFilter(form);
+    this.groupFilter(form);
+}
+
+itemFilter(form: any) {
+    const colName = form.elements[0].value;
+    const operator = form.elements[1].value;
+    const value = form.elements[2].value;
+
+    const item: IFilterItem = this.filterItems.find((item) => { return item.field == colName; });
+    if (item) {
+        item.operator = +operator as FilterOperator;
+        item.value = value;
+    } else {
+        this.filterItems.push({
+            field: colName,
+            operator: +operator as FilterOperator,
+            value: value
+        });
+    }
+
+    this.modifiedData = this.tableService.itemFilter(this.rowsData, this.headerCols, this.filterItems);
+}
+
+groupFilter(form: any) {
+    const colName = form.elements[0].value;
+    const operator = form.elements[1].value;
+    const value = form.elements[2].value;
+
+    let group: IFilterGroup;
+
+    if (this.filterGroups.length > 0) {
+        group = this.filterGroups.find((group) => {
+            return group.filters.find((item) => { return item.field == colName; }) ? true : false;
+        });
+    }
+
+    if (!group) {
+        this.filterGroups.push({ filters: [] });
+        group = this.filterGroups[this.filterGroups.length - 1];
+    }
+
+    group.filters.push({
+        field: colName,
+        operator: +operator as FilterOperator,
+        value: value
+    });
+
+    this.modifiedData = this.tableService.groupFilter(this.rowsData, this.headerCols, this.filterGroups);
+}
 */
 
 
