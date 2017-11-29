@@ -27,10 +27,4 @@ export class TabsComponent implements AfterContentInit {
         selectedTab.active = true;
         this.tabChanged.emit(selectedTab);
     }
-
-    private triggerTabChange(tabTitle) {
-        this.tabs.toArray().forEach((tab: TabComponent) => {
-            tab.active = (tab.title === tabTitle) ? true : false;
-        });
-    }
 }
