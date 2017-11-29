@@ -6,12 +6,14 @@ import {TableRowComponent} from "./view/table-row/table-row.component";
 import {TableHeaderRow} from "./view/table-header-row/table-header-row.component";
 import {TableBody} from "./view/table-body/table-body.component";
 import {InfiniteScrollModule} from "../infinite-scroll/infinite-scroll.module";
+import {TableFilterBarComponent} from "./table-filter-bar/table-filter-bar.component";
 @NgModule({
     declarations: [
         TableComponent,
         TableRowComponent,
         TableHeaderRow,
         TableBody,
+        TableFilterBarComponent
     ],
     imports: [CommonModule, InfiniteScrollModule],
     entryComponents: [],

@@ -66,10 +66,14 @@ export enum ColumnDataTypes {
 /**
  * Filter models
  */
-export interface FilterItem {
-    Field: string;
-    Operator: FilterOperator;
-    Value: string;
+export interface IFilterItem {
+    field: string;
+    operator: FilterOperator;
+    value: string;
+}
+
+export interface IFilterGroup {
+    filters: IFilterItem[];
 }
 
 export enum FilterOperator {

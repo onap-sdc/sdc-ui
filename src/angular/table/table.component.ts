@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, Input} from "@angular/core";
 import {CompaniesTableConfig} from "./config/table.contants";
-import {IColumnConfigModel, FilterItem, FilterOperator} from "./models/table.models";
+import {IColumnConfigModel, IFilterItem, FilterOperator} from "./models/table.models";
 import {TableService} from "./services/table.service";
 
 
@@ -97,7 +97,7 @@ export class TableComponent implements OnInit{
         }
     }
 
-    filterItems: FilterItem[] = [];
+    filterItems: IFilterItem[] = [];
 
     clearFilters(){
         this.modifiedData = this.rowsData;
@@ -110,15 +110,15 @@ export class TableComponent implements OnInit{
         const value = form.elements[2].value;
 
 
-        const item: FilterItem = this.filterItems.find((item) => { return item.Field == colName; });
+        const item: IFilterItem = this.filterItems.find((item) => { return item.field == colName; });
         if (item) {
-           item.Operator = +operator as FilterOperator;
-           item.Value = value;
+           item.operator = +operator as FilterOperator;
+           item.value = value;
         } else {
             this.filterItems.push({
-                Field: colName,
-                Operator: +operator as FilterOperator,
-                Value: value
+                field: colName,
+                operator: +operator as FilterOperator,
+                value: value
             });
         }
 
