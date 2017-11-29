@@ -12,20 +12,20 @@ export class TabsComponent implements AfterContentInit {
 
     public ngAfterContentInit() {
         // after contentChildren are set, determine active tab. If no active tab set, activate the first one
-        const activeTabs = this.tabs.filter((tab) => tab.active);
+        const activeTabs = this.tabs.filter((tab: TabComponent) => tab.active);
 
         if (activeTabs.length === 0) {
             this.selectTab(this.tabs.first);
         }
     }
 
-    private selectTab(tab: TabComponent) {
+    private selectTab(selectedTab: TabComponent) {
         // activate the tab the user clicked.
-        this.tabs.toArray().forEach((tab) => {
+        this.tabs.toArray().forEach((tab: TabComponent) => {
             tab.active = false;
         });
-        tab.active = true;
-        this.tabChanged.emit(tab);
+        selectedTab.active = true;
+        this.tabChanged.emit(selectedTab);
     }
 
     private triggerTabChange(tabTitle) {
