@@ -84,3 +84,11 @@ export enum FilterOperator {
     GreaterThan,
     GreaterThanOrEqual
 }
+
+/**
+ * Pagination models
+ */
+export interface IPageCursor {
+    pageNumber: number;
+    rowsInPage: number;
+}
