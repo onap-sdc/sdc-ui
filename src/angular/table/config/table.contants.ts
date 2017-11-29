@@ -5,7 +5,6 @@ import {ColumnDataTypes, TableModel, ITableConfig} from "../models/table.models"
 export const CompaniesTableConfig: ITableConfig = {
     metaData:{
         fixedHeader: true,
-        textAlignment:  'left',
         infinityScrolling: true,
         maxHeight: 500
     },
@@ -16,8 +15,9 @@ export const CompaniesTableConfig: ITableConfig = {
             dataType : ColumnDataTypes.Text,
             clickable: true,
             sortable : true,
-            width: '400px'
-
+            width: '400px',
+            alignmentRow: 'right',
+            alignmentHeader: 'right'
         },
         lastConnectionResult   : {
             order    : 1,

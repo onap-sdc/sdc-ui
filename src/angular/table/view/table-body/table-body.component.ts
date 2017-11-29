@@ -51,7 +51,6 @@ export class TableBody implements AfterViewInit {
     /**
      * Inject content template to containers when the view is ready
      */
-
     ngAfterViewInit(): void {
         if(this.headerRowsContainer){
             this.headerRowsContainer.createEmbeddedView(this.headerRows);

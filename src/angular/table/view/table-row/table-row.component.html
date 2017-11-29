@@ -3,7 +3,7 @@
         *ngFor="let col of cols"
         [style.flex-basis]="col.width"
         [style.width]="col.width"
-
+        [style.text-align] = "col.alignmentRow"
         [ngClass]="{ 'sortable': col.sortable ,'sdc-table_cell_fixed':col.width, 'sdc-table_fixed_grow':!col.width}" >{{row[col.key]}}
     </div>
 </div>

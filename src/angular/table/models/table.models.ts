@@ -15,7 +15,6 @@ interface IAppTableRowModel {
 }
 
 export interface ITableMetadata {
-    textAlignment?: string;
     fixedHeader?: boolean;
     maxHeight?: number;
     maxRowsToDisplay?: number;
@@ -41,8 +40,10 @@ export interface IColumnConfigModel {
     objectKey?: string;
     iconClass?: string;
     visible?: boolean;
-
+    alignmentRow?:string;
+    alignmentHeader?:string;
 }
+
 export interface IAppTableColumnsModel {
     [colName: string]: IColumnConfigModel;
 }
@@ -55,3 +56,4 @@ export enum ColumnDataTypes {
     Number,
     Date
 }
+

@@ -12,5 +12,4 @@ import {Component, Input} from "@angular/core";
 export class TableRowComponent {
     @Input() row:any;
     @Input() cols: any[];
-    @Input() textPositionRow: string;
 }

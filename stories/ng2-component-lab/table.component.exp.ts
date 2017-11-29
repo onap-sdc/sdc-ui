@@ -13,7 +13,7 @@ export default experimentOn('Table')
         template: `
       <sdc-table [rowsData]="data" #table>
         <sdc-table-body (scrollHitBottom)="table.onScrollHitBottom()" [maxHeight]="table.maxHeight" [fixedHeader]="table.fixedHeader">
-            <sdc-table-header-row [headerCols]="table.headerCols" (onColClick)="table.onColumnHeaderClick($event)" [sortByField]="table.sortByField" table-header-row></sdc-table-header-row>
+            <sdc-table-header-row [headerCols]="table.headerCols" (onColClick)="table.onColumnHeaderClick($event)" [sortByField]="table.sortByField" [sortDescending]="table.sortDescending" table-header-row></sdc-table-header-row>
             <sdc-table-row *ngFor="let row of table.modifiedData" [row]="row" [cols]="table.headerCols" table-row></sdc-table-row>
         </sdc-table-body>
       </sdc-table>
