@@ -6,10 +6,10 @@ import {Component, Input} from "@angular/core";
 })
 export class ButtonComponent {
     @Input() public text: string;
-    @Input() public disabled: boolean;
+    @Input() public disabled: boolean = false;
     @Input() public type: string;
     @Input() public size: string;
-    @Input() public preventDoubleClick: boolean = false;
+    @Input() public preventDoubleClick: boolean;
     private lastClick: Date;
 
     constructor() {
