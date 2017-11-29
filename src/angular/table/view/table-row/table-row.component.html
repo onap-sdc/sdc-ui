@@ -1,10 +1,9 @@
-<table class="sdc-table">
-    <tbody>
-        <tr class="sdc-table_tr">
-            <td class="sdc-table_tr_td"
-                *ngFor="let col of cols"
-                [style.width]="col.width"
-                [ngClass]="{ 'sortable': col.sortable }">{{row[col.key]}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="sdc-table-row">
+    <div class="sdc-table-cell"
+        *ngFor="let col of cols"
+        [style.flex-basis]="col.width"
+        [style.width]="col.width"
+        [style.text-align] = "col.alignmentRow"
+        [ngClass]="{ 'sortable': col.sortable ,'sdc-table_cell_fixed':col.width, 'sdc-table_fixed_grow':!col.width}" >{{row[col.key]}}
+    </div>
+</div>

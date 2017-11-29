@@ -45,7 +45,10 @@ export interface IColumnConfigModel {
     objectKey?: string;
     iconClass?: string;
     visible?: boolean;
+    alignmentRow?:string;
+    alignmentHeader?:string;
 }
+
 export interface IAppTableColumnsModel {
     [colName: string]: IColumnConfigModel;
 }

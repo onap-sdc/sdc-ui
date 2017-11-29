@@ -47,7 +47,7 @@ export class TableComponent implements OnInit{
     /**
      * Max height in pixels
      */
-    @Input() maxHeight: number;
+    @Input() maxHeight: number = 500;
 
     public modifiedData: any[];
 
@@ -56,6 +56,9 @@ export class TableComponent implements OnInit{
      */
     @Input() maxRowsToDisplay: number;
 
+    @Input() alignmentRow: string;
+
+    @Input() alignmentHeader: string;
 
     constructor(private tableService: TableService){}
 
@@ -67,6 +70,8 @@ export class TableComponent implements OnInit{
             this.fixedHeader = <boolean>this.tableConfig.metaData.fixedHeader || this.fixedHeader;
             this.maxHeight = <number>this.tableConfig.metaData.maxHeight || this.maxHeight;
             this.maxRowsToDisplay = <number>this.tableConfig.metaData.maxRowsToDisplay || this.maxRowsToDisplay;
+            this.alignmentRow = <string>this.tableConfig.metaData.aligmentRow || 'center';
+            this.alignmentHeader = <string>this.tableConfig.metaData.alignmentHeader|| 'center';
         }
         /**
          * Filtered content
@@ -75,11 +80,11 @@ export class TableComponent implements OnInit{
     }
 
     public onColumnHeaderClick(col: IColumnConfigModel) {
+
         if (!col.sortable) {
             return;
         }
 
-        // Reverse column sort direction
         if (this.sortByField === col.key) {
             this.sortDescending = !this.sortDescending;
         }
@@ -87,7 +92,7 @@ export class TableComponent implements OnInit{
             this.sortByField    = col.key;
             this.sortDescending = true;
         }
-
+        console.log(this.sortDescending)
         this.tableService.sortColumn(this.modifiedData, col, this.sortDescending);
     }
 
