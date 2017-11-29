@@ -197,23 +197,3 @@
 }
 
 
-
-.button-tile{
-  margin: 0px auto;
-  .sdc-button {
-      height: 1.67em;
-      width: initial;
-      margin-bottom: 5px;
-      padding: 0 8px;
-      font-size: inherit;
-      background-color: transparent;
-      color: #5a5a5a;
-      border-color: #5a5a5a;
-  }
-  :hover, :focus {
-    background-color: rgba(90, 90, 90, 0.1);
-  }
-  button {
-    margin: auto;
-  }
-}

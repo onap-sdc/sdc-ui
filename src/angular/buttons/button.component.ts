@@ -9,7 +9,7 @@ export class ButtonComponent {
     @Input() public disabled: boolean;
     @Input() public type: string;
     @Input() public size: string;
-    @Input() public preventDoubleClick: boolean;
+    @Input() public preventDoubleClick: boolean = false;
     private lastClick: Date;
 
     constructor() {
