@@ -1,19 +1,19 @@
 import React from 'react';
 import Examples from '../utils/Examples.js';
 
-import ReactButton from '../../src/react/Button.js';
+import ReactButton from '../../../src/react/Button.js';
 
-import HTMLButtonOutlineRoundedPrimary from '../../components/button/button-outline-rounded-primary.html';
-import HTMLButtonOutlineRoundedGray from '../../components/button/button-outline-rounded-gray.html';
-import HTMLButtonOutlineRoundedPositive from '../../components/button/button-outline-rounded-positive.html';
-import HTMLButtonOutlineRoundedNegative from '../../components/button/button-outline-rounded-negative.html';
-import HTMLButtonOutlineRoundedWarning from '../../components/button/button-outline-rounded-warning.html';
+import HTMLButtonOutlineRoundedPrimary from '../../../components/button/button-outline-rounded-primary.html';
+import HTMLButtonOutlineRoundedGray from '../../../components/button/button-outline-rounded-gray.html';
+import HTMLButtonOutlineRoundedPositive from '../../../components/button/button-outline-rounded-positive.html';
+import HTMLButtonOutlineRoundedNegative from '../../../components/button/button-outline-rounded-negative.html';
+import HTMLButtonOutlineRoundedWarning from '../../../components/button/button-outline-rounded-warning.html';
 
-import HTMLButtonOutlineRoundedPrimaryDisabled from '../../components/button/button-outline-rounded-primary-disabled.html';
-import HTMLButtonOutlineRoundedGrayDisabled from '../../components/button/button-outline-rounded-gray-disabled.html';
-import HTMLButtonOutlineRoundedPositiveDisabled from '../../components/button/button-outline-rounded-positive-disabled.html';
-import HTMLButtonOutlineRoundedNegativeDisabled from '../../components/button/button-outline-rounded-negative-disabled.html';
-import HTMLButtonOutlineRoundedWarningDisabled from '../../components/button/button-outline-rounded-warning-disabled.html';
+import HTMLButtonOutlineRoundedPrimaryDisabled from '../../../components/button/button-outline-rounded-primary-disabled.html';
+import HTMLButtonOutlineRoundedGrayDisabled from '../../../components/button/button-outline-rounded-gray-disabled.html';
+import HTMLButtonOutlineRoundedPositiveDisabled from '../../../components/button/button-outline-rounded-positive-disabled.html';
+import HTMLButtonOutlineRoundedNegativeDisabled from '../../../components/button/button-outline-rounded-negative-disabled.html';
+import HTMLButtonOutlineRoundedWarningDisabled from '../../../components/button/button-outline-rounded-warning-disabled.html';
 
 let examples = {
 	'Primary Outline Rounded': {
