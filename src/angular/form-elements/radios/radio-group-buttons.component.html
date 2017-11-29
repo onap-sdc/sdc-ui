@@ -1,6 +1,0 @@
-<div class='sdc-radio-group'>
-    <label class='sdc-radio-group__legend'><ng-content></ng-content></label>
-    <div class='sdc-radio-group__radios' [ngClass]="direction">
-        <sdc-radio *ngFor = "let option of options.items" [option]="option" (checkedChange)="onSelectionChange($event)"></sdc-radio>
-    </div>
-</div>

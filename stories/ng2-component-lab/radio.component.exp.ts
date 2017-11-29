@@ -1,83 +1,154 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 
 export default experimentOn('Radios')
-    .case('Checked', {
+    .case('Radio Buttons Group (two ways binding)', {
         showSource: true,
-        template: `<sdc-radio [option] = "{
-                    disabled:false,
-                    checked:true,
-                    name:'exp1',
-                    label:'Label of Radio'
-           }"></sdc-radio>`
-    }).case('Unchecked', {
-        showSource: true,
-        template: `<sdc-radio [option] = "{
-                    disabled:false,
-                    checked:false,
-                    name:'exp2',
-                    label:'Label of Radio'
-           }"></sdc-radio>`
+        context: {
+            selectedValue: "val2"
+        },
+        template: `
+        <sdc-radio-group
+            [legend]="'Radio Buttons Group legend'"
+            [(value)]="selectedValue"
+            [options] = "{
+                items: [
+                    {
+                        value: 'val1',
+                        name: 'radio5',
+                        label: 'Label of Radio 1'
+                    },
+                    {
+                        value: 'val2',
+                        name: 'radio5',
+                        label: 'Label of Radio 2'
+                    }
+                ]}"
+            ></sdc-radio-group>
+        <br><div>Selected Radio: {{selectedValue}}</div>
+        `
     })
-    .case('Disabled', {
+    .case('Radio Buttons Group Disabled', {
         showSource: true,
-        template: `<sdc-radio [option] = "{
-                    disabled:true,
-                    checked:false,
-                    name:'exp3',
-                    label:'Label for Radio'
-           }"></sdc-radio>`
-    }).case('Disabled and Checked', {
-        showSource: true,
-        template: `<sdc-radio [option] = "{
-                    disabled:true,
-                    checked:true,
-                    name:'exp4',
-                    label:'Label for Radio'
-           }"></sdc-radio>`
-    }).case('Radio Buttons Group', {
-        showSource: true,
-        template: `<sdc-radio-group [options] = "{
-            disabled: true,
+        context: {
+            selectedValue: "val1"
+        },
+        template: `
+        <sdc-radio-group
+            [legend]="'Radio Buttons Group Disabled legend'"
+            [disabled]="true"
+            [value]="selectedValue"
+            [options] = "{
             items: [{
                 value: 'val1',
-                checked: true,
-                name: 'exp5',
-                label: 'Label of Radio1'
+                name: 'radio6',
+                label: 'Label of Radio 1'
             }, {
                 value: 'val2',
-                checked: false,
-                name: 'exp5',
-                label: 'Label of Radio2'
+                name: 'radio6',
+                label: 'Label of Radio 2'
             }]
-        }" [disabled] = "false"></sdc-radio-group>`
-    }).case('Radio Buttons Group Disabled', {
+        }"></sdc-radio-group>
+        <br><div>Selected Radio: {{selectedValue}}</div>
+        `
+    }).case('Radio Buttons Group partialy disabled', {
         showSource: true,
-        template: `<sdc-radio-group [options] = "{
-                items: [{
-                    value: 'val1',
-                    checked: true,
-                    name: 'exp6',
-                    label: 'Label of Radio1'
-                }, {
-                    value: 'val2',
-                    checked: false,
-                    name: 'exp6',
-                    label: 'Label of Radio2'
-                }]
-            }" [disabled] = "true"></sdc-radio-group>`
+        context: {
+            selectedValue: "val1"
+        },
+        template: `
+        <sdc-radio-group
+            [legend]="'Radio Buttons Group Disabled legend'"
+            [(value)]="selectedValue"
+            [options] = "{
+            items: [{
+                value: 'val1',
+                name: 'radio7',
+                label: 'Label of Radio 1'
+            }, {
+                value: 'val2',
+                disabled: 'true',
+                name: 'radio7',
+                label: 'Label of Radio 2'
+            }, {
+                value: 'val3',
+                name: 'radio7',
+                label: 'Label of Radio 3'
+            }]
+        }"></sdc-radio-group>
+        <br><div>Selected Radio: {{selectedValue}}</div>
+        `
     }).case('Radio Buttons Group Vertical', {
         showSource: true,
-        template: `<sdc-radio-group [direction] = "'vertical'" [options] = "{
-                                items: [{
-                                    value:'val1',
-                                    checked: true,
-                                    name: 'exp6',
-                                    label: 'Label of Radio1'
-                                }, {
-                                    value:'val2',
-                                    checked: false,
-                                    name: 'exp6',
-                                    label: 'Label of Radio2'
-                                }]
-        }" [disabled] = "false"></sdc-radio-group>`
-});
+        context: {
+            selectedValue: "val1"
+        },
+        template: `
+        <sdc-radio-group
+            [legend]="'Radio Buttons Group Vertical legend'"
+            [(value)]="selectedValue"
+            [direction]="'horizontal'"
+            [options]="{
+            items: [{
+                value:'val1',
+                name: 'radio8',
+                label: 'Label of Radio1'
+            }, {
+                value:'val2',
+                name: 'radio8',
+                label: 'Label of Radio2'
+            }]
+        }"></sdc-radio-group>
+        <br><div>Selected Radio: {{selectedValue}}</div>
+        `
+    }).case('Radio Buttons Group get value', {
+        showSource: true,
+        context: {
+            selectedValue: "val1",
+            getSelectedValue: (val)=>{
+                alert(val);
+            }
+        },
+        template: `
+        <sdc-radio-group
+            #myRadioGroup
+            [legend]="'Radio Buttons Group Vertical legend'"
+            [(value)]="selectedValue"
+            [options]="{
+            items: [{
+                value:'val1',
+                name: 'radio8',
+                label: 'Label of Radio1'
+            }, {
+                value:'val2',
+                name: 'radio8',
+                label: 'Label of Radio2'
+            }]
+        }"></sdc-radio-group>
+        <br><div>Selected Radio: {{selectedValue}}</div>
+        <br><button (click)="getSelectedValue(myRadioGroup.value)">Get selected value</button>
+        `
+    }).case('Radio Buttons Group select value', {
+        showSource: true,
+        context: {
+            selectedValue: "val1"
+        },
+        template: `
+        <sdc-radio-group
+            #myRadioGroup
+            [legend]="'Radio Buttons Group Vertical legend'"
+            [(value)]="selectedValue"
+            [options]="{
+            items: [{
+                value:'val1',
+                name: 'radio8',
+                label: 'Label of Radio1'
+            }, {
+                value:'val2',
+                name: 'radio8',
+                label: 'Label of Radio2'
+            }]
+        }"></sdc-radio-group>
+        <br><div>Selected Radio: {{selectedValue}}</div>
+        <br><button (click)="myRadioGroup.value='val2'">Set value to val2</button>
+        `
+    });
