@@ -1,5 +1,4 @@
-export interface IOptionItem {
-    checked: boolean;
+export interface IRadioButtonModel {
     label: string;
     disabled: boolean;
     name: string;
@@ -7,10 +6,10 @@ export interface IOptionItem {
 };
 
 export interface IOptionGroup {
-    items: IOptionItem[];
+    items: IRadioButtonModel[];
 };
 
-export enum Directions {
+export enum Direction {
     vertical,
     horizontal
 }
