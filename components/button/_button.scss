@@ -12,8 +12,9 @@
       background-color: $hover;
     }
     &:focus{
-      border-color: $active-border;
+      border: 0.5px solid $white;
       background-color: $hover;
+      box-shadow: inset 0px 0px 0px 0.5px $active-border, 0px 0px 0px 1px $active-border;
     }
   }
 }
@@ -31,8 +32,8 @@
       border-color: ($color, 0.75);
     }
     &:focus {
-      color: rgba(0,159,219,1);
-      border-color: rgba(5,104,174,1);
+      border: 0.5px solid $white;
+      box-shadow: inset 0px 0px 0px 0.5px $active-border, 0px 0px 0px 1px $active-border;
     }
   }
 }
