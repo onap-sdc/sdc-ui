@@ -19,6 +19,7 @@ export class DropDownTriggerDirective implements OnInit{
 
     ngOnInit(): void {
         if(this.dropDown){
+            this.dropDown.headless = true;
             this.el.nativeElement.addEventListener('click', ()=>{
                 this.dropDown.toggleDropdown();
             })

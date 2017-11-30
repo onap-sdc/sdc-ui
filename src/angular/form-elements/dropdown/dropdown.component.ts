@@ -1,6 +1,9 @@
-import {Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges} from '@angular/core'
-//import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {IDropDownGroup, IDropDownItem, IDropDownGroupResult} from "./dropdown-models";
+import {Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit} from '@angular/core'
+
+import {
+     IDropDownOption,
+    DropDownOptionType
+} from "./dropdown-models";
 
 @Component({
     selector: 'sdc-dropdown',
@@ -9,8 +12,7 @@ import {IDropDownGroup, IDropDownItem, IDropDownGroupResult} from "./dropdown-mo
         '(document:click)': 'onClickOutside($event)',
     }
 })
-export class DropDownComponent implements OnChanges {
-
+export class DropDownComponent implements OnChanges, OnInit {
 
     /**
      * Drop-down value changed event emitter
@@ -25,7 +27,9 @@ export class DropDownComponent implements OnChanges {
     /**
      * Option can be add by a list of IDropDownGroup, IDropDownItem objects, or a list of strings
      */
-    @Input() options: (IDropDownGroup|IDropDownItem|string)[];
+    //@Input() options: (IDropDownGroup|IDropDownItem|string)[];
+
+    @Input() options: IDropDownOption[];
 
     /**
      * Initial value the drop-down should have
@@ -63,11 +67,6 @@ export class DropDownComponent implements OnChanges {
     public selectedLabel:string;
 
     /**
-     * The selected drop-down group
-     */
-    public selectedDropDownGroup: IDropDownGroup;
-
-    /**
      * Drop-down show/hide flag. default is false (closed)
      * @type {boolean}
      */
@@ -78,6 +77,26 @@ export class DropDownComponent implements OnChanges {
      * @type {boolean}
      */
     public error: boolean;
+
+    /**
+     * Export DropDownOptionType enum so we can use it on the template
+     */
+    public cIDropDownOptionType = DropDownOptionType;
+
+    /**
+     * Configure unselectable option types
+     */
+    private unselectableOptions = [DropDownOptionType.Disable, DropDownOptionType.Header, DropDownOptionType.HorizontalLine];
+
+    public isGroupDesign = false;
+
+    ngOnInit(): void {
+        if(this.options){
+            if(this.options.find(option => option.type === DropDownOptionType.Header)){
+                this.isGroupDesign = true;
+            }
+        }
+    }
 
     ngOnChanges(changes: SimpleChanges): void {
         if(changes.value){
@@ -106,18 +125,12 @@ export class DropDownComponent implements OnChanges {
      * @param option - IDropDownItem or string
      */
     public selectOption(index: number, option:any):void{
+        const unselectable = this.unselectableOptions.find(optionType => option.type === optionType);
+        if(unselectable){
+            return;
+        }
         this.selectedIndex = index;
         this.updateSelected(option.label || option, option.value || option);
-    }
-
-    /**
-     * Set drop-down group item as selected. Save the selected group as well as the value
-     * @param event
-     */
-    public selectGroupOption(event: IDropDownGroupResult){
-        const item = event.group.items.find((i) => event.value === i.value);
-        this.selectedDropDownGroup = event.group;
-        this.updateSelected(item.label, item.value);
     }
 
     /**
@@ -131,32 +144,6 @@ export class DropDownComponent implements OnChanges {
         this.baseEmitter.next(this.value);
         this.selectedIndex = index || this.selectedIndex;
         this.validateDropDown();
-    }
-
-    /**
-     * Get the value of selected drop-down group item
-     * @param dropdownGroup
-     * @returns {string}
-     */
-    public getDropDownGroupSelectedValue(dropdownGroup: IDropDownGroup):string{
-        if(this.selectedDropDownGroup && this.selectedDropDownGroup.title === dropdownGroup.title){
-            return this.value;
-        }
-        return null;
-    }
-
-    /**
-     * Check if our options are IDropDownGroup items
-     */
-    public isDropDownGroupList(): boolean{
-        return this.options && this.options.length && this.options[0].hasOwnProperty('title') || false;
-    }
-
-    /**
-     * Check if our options are IDropDownItem items
-     */
-    private isDropDownItemList(): boolean{
-        return this.options && this.options.length && this.options[0].hasOwnProperty('label') || false
     }
 
     /**
@@ -184,41 +171,16 @@ export class DropDownComponent implements OnChanges {
         }
     }
 
-    private setValueIfExistOnGroupList(value: string): void{
-        const selectedDropDownGroup = this.options.find((dropDownGroup,index)=>{
-            const checkDropDownGroup = <IDropDownGroup>dropDownGroup;
-            const callback = this.setFoundValueCallback.bind(this, true, value);
-            return !!checkDropDownGroup.items.find(callback);
-        });
-        if(selectedDropDownGroup){
-            this.selectedDropDownGroup = <IDropDownGroup>selectedDropDownGroup;
-        }
-    }
-
-   private setFoundValueCallback(isItem: boolean, value: string, option: any, index:number){
-        const optionValue = isItem?(<IDropDownItem>option).value:option;
-        if(optionValue === value){
-            const optionLabel = isItem?(<IDropDownItem>option).label:option;
-            this.updateSelected(optionLabel, optionValue, index);
-            return true;
-        }
-        return false;
-   }
-
     /**
      * Test if the specified value exist on the option list, if it is,
      * add it as the enw value
      * @param value
      */
     private setValueIfExist(value:string): void{
-        if(this.isDropDownGroupList()){
-            this.setValueIfExistOnGroupList(value);
-        }else if(this.isDropDownItemList()){
-            this.options.find(this.setFoundValueCallback.bind(this, true, value));
-        }else{
-            this.options.find(this.setFoundValueCallback.bind(this, false, value));
+        const index = this.options.findIndex(option => option.value === value || option.label === value);
+        const unselectableOption = index && !!this.unselectableOptions.find(optionType => optionType === this.options[index].type);
+        if(!unselectableOption){
+            this.updateSelected(this.options[index].label, value, index);
         }
     }
-
-
 }

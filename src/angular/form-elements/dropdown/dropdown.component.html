@@ -1,7 +1,10 @@
 <div class="sdc-dropdown" [ngClass]="{'error': error}">
     <label class="sdc-dropdown__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <!--[DROP-DOWN HEADER START]-->
-    <button *ngIf="!headless" class="sdc-dropdown__header js-sdc-dropdown--toggle-hook" (click)="toggleDropdown()" (blur)="validateDropDown()" [ngClass]="{'disabled': disabled}">{{ getSelectedLabel() || placeHolder}}</button>
+    <button *ngIf="!headless"
+            class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"
+            (click)="toggleDropdown()" (blur)="validateDropDown()"
+            [ngClass]="{'disabled': disabled, 'placeholder':!getSelectedLabel()}">{{ getSelectedLabel() || placeHolder}}</button>
     <!--[DROP-DOWN HEADER END]-->
 
     <!--[DROP-DOWN OPTIONS START]-->
@@ -9,14 +12,20 @@
         <ng-container  *ngFor="let option of options; let i = index">
 
             <!--[Drop Down Group list start]-->
-            <sdc-dropdown-group *ngIf="isDropDownGroupList()" [optionGroup]="option" [value]="getDropDownGroupSelectedValue(option)" (valueChange)="selectGroupOption($event)"></sdc-dropdown-group>
+            <!--<sdc-dropdown-group *ngIf="isDropDownGroupList()" [optionGroup]="option" [value]="getDropDownGroupSelectedValue(option)" (valueChange)="selectGroupOption($event)"></sdc-dropdown-group>-->
             <!--[Drop Down Group list end]-->
 
 
             <!--[Drop down item list or string list start]-->
-            <li *ngIf="option && !isDropDownGroupList()" class="sdc-dropdown__option"
-                [ngClass]="{'selected': i == selectedIndex}"
-                (click)="selectOption(i, option)">{{option.label||option}}</li>
+            <li *ngIf="option" class="sdc-dropdown__option"
+                [ngClass]="{
+                    'selected': i == selectedIndex,
+                    'sdc-dropdown__option--group':isGroupDesign,
+                    'sdc-dropdown__option--header': option.type && option.type === cIDropDownOptionType.Header,
+                    'sdc-dropdown__option--disabled': option.type && option.type === cIDropDownOptionType.Disable,
+                    'sdc-dropdown__option--hr': option.type && option.type === cIDropDownOptionType.HorizontalLine
+                   }"
+                (click)="selectOption(i, option)">{{option.label}}</li>
             <!--[Drop down item list or string list end]-->
 
         </ng-container>
