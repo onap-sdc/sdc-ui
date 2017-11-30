@@ -1,4 +1,4 @@
-import {OnInit, Component, Input, ViewChildren, QueryList, ElementRef} from "@angular/core";
+import {OnInit, Component, Input, ViewChildren, QueryList, ElementRef, EventEmitter, Output} from "@angular/core";
 import {FilterOperator, IFilterItem, IFilterGroup} from "../models/table.models";
 /**
  * Created by M.S.BIT on 28/11/2017.
@@ -13,21 +13,58 @@ export interface FilterControl {
 @Component({
     selector: 'sdc-table-filter-bar',
     templateUrl: './table-filter-bar.component.html',
-    styles: []
+    styles: [`
+        .sdc-table-filter-bar {
+  border: 1px solid #666;
+  background-color: #f3f3f3;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+  .sdc-table-filter-bar__form-control {
+     max-width: 150px;
+  }
+  .sdc-table-filter-bar__form-group {
+    display: inline-block;
+    width: 240px;
+  }
+  .sdc-table-filter-bar__add-button {
+    padding: 6px 20px;
+    margin-bottom: 5px;
+  }
+  .sdc-table-filter-bar__button {
+    padding: 6px 20px;
+  }
+  .sdc-table-filter-bar__group {
+    border: 1px solid #666;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #ff7979;
+  }
+.sdc-table-filter-bar__form {
+ display: flex;
+}
+.sdc-table-filter-bar__group__title {
+  font-size: 11px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-right: 10px;
+  font-weight: 900;
+}
+    `]
 })
 
 export class TableFilterBarComponent implements OnInit{
 
     @ViewChildren('form') forms: QueryList<ElementRef>;
 
+    @Output('changed') changed: EventEmitter<IFilterGroup[]> = new EventEmitter();
+
     public filterControls: FilterControl[] = [{id:0}];
 
     static groupNum = 1;
 
-    private groups = {};
-
-    private filterItems = [];
-
+    private filterItems:IFilterGroup[] = [];
 
     @Input() headerCols: any;
 
@@ -36,12 +73,29 @@ export class TableFilterBarComponent implements OnInit{
     }
 
     clearFilters(){
-        this.filterItems = [];
+        this.filterControls = [{id:0}];
     }
 
-    createFilterGroup(index){
+    private getFilterFromFormData(form:ElementRef):IFilterItem {
+        if(form && form.nativeElement){
+            return {
+                field: form.nativeElement.elements[0].value,
+                operator: <number> +form.nativeElement.elements[1].value,
+                value: form.nativeElement.elements[2].value
+            };
+        }
+        return null;
+    }
+
+    createFilterGroup(form: any, index:number){
+        let data = form.elements[2].value;
         this.filterControls[index].group = ++TableFilterBarComponent.groupNum;
-        console.log("filterControls", this.filterControls[index].group, this.filterControls)
+        setTimeout(()=>{
+            const formElementRef:ElementRef = this.forms.find((element, idx) => idx === index);
+            formElementRef.nativeElement.elements[2].value = data;
+            console.log("filterControls", this.filterControls[index].group, this.filterControls, form)
+        });
+
     }
 
     addToFilterToGroup(index: number){
@@ -65,30 +119,27 @@ export class TableFilterBarComponent implements OnInit{
     submitFilter(){
         let newFilters = [];
         let currentGroupIndex;
-
+        let groups = {};
         this.forms.forEach((item, index)=>{
-            if(item.nativeElement['elements'] && item.nativeElement['elements'][2] && item.nativeElement['elements'][2].value){
-                const filterItem: IFilterItem = {
-                    field:item.nativeElement['elements'][0].value,
-                    operator:item.nativeElement['elements'][1].value,
-                    value:item.nativeElement['elements'][2].value,
-                };
-                currentGroupIndex = this.groups[index] && index|| null;
-                if(currentGroupIndex && this.groups[currentGroupIndex].indexOf(index)){
-                    currentGroupIndex = currentGroupIndex || index;
-                    newFilters[currentGroupIndex] = newFilters[currentGroupIndex] || [];
-                    newFilters[currentGroupIndex].push(filterItem);
+            if(item.nativeElement['elements'][2].value){
+                const filterItem: IFilterItem = this.getFilterFromFormData(item);
+                if(this.filterControls[index].group){
+                    const groupIndex = this.filterControls[index].group;
+                    groups[groupIndex] = groups[groupIndex] || [];
+                    groups[groupIndex].push(filterItem);
                 }else {
                     currentGroupIndex = null;
-                    newFilters.push([filterItem]);
+                    newFilters.push({filters:[filterItem]});
                 }
             }
         });
-        this.filterItems = newFilters;
-        console.log("Filters", this.filterItems);
+        let groupArray = Object.keys(groups).map(key => {
+            return {filters: groups[key]}
+        });
+
+        this.filterItems = newFilters.concat(groupArray);
+        this.changed.next(this.filterItems);
     }
-
-
 
     removeFilter(index){
         this.filterControls.splice(index,1);

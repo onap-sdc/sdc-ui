@@ -50,7 +50,7 @@
                 <input class="sdc-table-filter-bar__form-control" type="text" name="{{'comparisonValue' + i}}" id="{{'comparisonValue' + i}}">
             </div>
             <button *ngIf="i > 0" class="sdc-table-filter-bar__button" type="button" (click)="removeFilter(i)">Remove</button>
-            <button class="sdc-table-filter-bar__button" type="button" (click)="createFilterGroup(i)">Create Group</button>
+            <button class="sdc-table-filter-bar__button" type="button" (click)="createFilterGroup(form, i)">Create Group</button>
         </form>
     </div>
 </ng-container>

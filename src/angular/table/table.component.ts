@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, Input} from "@angular/core";
 import {CompaniesTableConfig} from "./config/table.contants";
-import {IColumnConfigModel, IFilterItem, FilterOperator} from "./models/table.models";
+import {IColumnConfigModel, IFilterItem, FilterOperator, IFilterGroup} from "./models/table.models";
 import {TableService} from "./services/table.service";
 
 
@@ -127,6 +127,10 @@ export class TableComponent implements OnInit{
             });
         }
 
-        this.modifiedData = this.tableService.filterData(this.rowsData, this.headerCols, this.filterItems);
+        this.modifiedData = this.tableService.itemFilter(this.rowsData, this.headerCols, this.filterItems);
+    }
+
+    handleFilter(filters: IFilterGroup[]){
+        this.modifiedData = this.tableService.groupFilter(this.rowsData, this.headerCols, filters);
     }
 }

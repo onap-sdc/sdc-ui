@@ -77,40 +77,4 @@
     padding: 5px 0 5px 25px;
   }
 }
-.sdc-table-filter-bar {
-  border: 1px solid #666;
-  background-color: #f3f3f3;
-  padding: 10px;
-  margin-bottom: 5px;
-}
-  .sdc-table-filter-bar__form-control {
-     max-width: 150px;
-  }
-  .sdc-table-filter-bar__form-group {
-    display: inline-block;
-    width: 240px;
-  }
-  .sdc-table-filter-bar__add-button {
-    padding: 6px 20px;
-    margin-bottom: 5px;
-  }
-  .sdc-table-filter-bar__button {
-    padding: 6px 20px;
-  }
-  .sdc-table-filter-bar__group {
-    border: 1px solid #666;
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #ff7979;
-  }
-.sdc-table-filter-bar__form {
- display: flex;
-}
-.sdc-table-filter-bar__group__title {
-  font-size: 11px;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  margin-right: 10px;
-  font-weight: 900;
-}
+
