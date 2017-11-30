@@ -2,9 +2,9 @@
 
 
 .sdc-tile {
-	$tile-full-width: 180px;
-	$tile-full-height: 180px;
-	$tile-padding: 12px;
+	$tile-full-width: 204px;
+	$tile-full-height: 204px;
+	$tile-padding: 10px;
 	$border-width: 1px;
 
 	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2) - ($border-width * 2);
@@ -96,8 +96,10 @@
 			}
 		}
 
+
+
 		.sdc-tile-content-info {
-			display: inline-block;
+			display: flex;
 			flex-direction: column;
 
 			.sdc-tile-info-line {
@@ -117,6 +119,9 @@
 					color: $dark-gray;
 					font-size: $body-font-3;
 					margin-bottom: 6px;
+					&.zero-margin{
+						margin-bottom: 0px;
+					}
 				}
 
 				&.title {
@@ -129,6 +134,8 @@
 				&.subtitle {
 					color: $dark-gray;
 				}
+
+
 			}
 		}
 	}

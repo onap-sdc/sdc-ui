@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ElementRef, OnInit} from "@angular/core";
 
 
 @Component({
@@ -7,12 +7,18 @@ import {Component, Input} from "@angular/core";
     host:{ class: 'sdc-tile-content'}
 })
 
-export class TileInfoComponent {
+export class TileInfoComponent  implements OnInit {
+    private footerExists: boolean = false;
     @Input() public text: string;
     @Input() public color: string;
     @Input() public icon: string;
     @Input() public pre_title: string;
 
-    constructor() {}
+    constructor(private elRef: ElementRef){}
+
+    ngOnInit() {
+        let tile = this.elRef.nativeElement.parentElement;
+        this.footerExists = tile.getElementsByClassName('sdc-tile-footer').length;
+    }
 }
 

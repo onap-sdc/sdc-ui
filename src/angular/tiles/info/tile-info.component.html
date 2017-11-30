@@ -18,6 +18,6 @@
 </div>
     <div class="sdc-tile-content-info">
         <span class="sdc-tile-info-line title">{{ text }}</span>
-        <div class="sdc-tile-info-line supertitle">{{ pre_title }}</div>
+        <div class="sdc-tile-info-line supertitle" [ngClass] = "{'zero-margin':!footerExists}" >{{ pre_title }}</div>
     </div>
 
