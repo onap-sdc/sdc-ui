@@ -7,13 +7,13 @@
   font-weight: 600;
 
   &:not([disabled]) {
-    &:hover, &:focus {
+    &:hover{
       border-color: $hover-border;
       background-color: $hover;
     }
-    &:active {
+    &:focus{
       border-color: $active-border;
-      background-color: $active;
+      background-color: $hover;
     }
   }
 }
@@ -22,8 +22,11 @@
   background-color: transparent;
   color: $color;
   border-color: $color;
+  font-size: $body-font-3;
+  font-weight: 600;
+
   &:not([disabled]) {
-    &:hover, &:active {
+    &:hover {
       color: rgba($color, 0.75);
       border-color: ($color, 0.75);
     }
@@ -93,7 +96,6 @@
 
     // White default button
     &.sdc-button__white {
-      font-weight: 600;
       @include outline-button($blue);
       &:hover, &:active {
         border:1px solid #1EB9F3;
@@ -184,15 +186,13 @@
 
   // Link type
   &.sdc-button__link {
+    @include outline-button($blue);
     border: none;
     background-color: transparent;
-    color: $blue;
     &:hover{
       color:$hover-blue;
     }
     @extend .body-1;
-
-
   } // End of link type
 }
 

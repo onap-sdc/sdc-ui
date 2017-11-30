@@ -3,7 +3,7 @@ function showButtonProps(btnType, btnSize) {
     window.alert(`Clicked!\ntype="${btnType}" size="${btnSize}"`);
 };
 
-const buttonTypes = ['primary', 'white', 'gray', 'positive', 'negative', 'warning', 'secondary'];
+const buttonTypes = ['primary', 'white', 'link', 'positive', 'negative', 'warning', 'secondary'];
 const buttonSizes = ['large', 'medium', 'small'];
 const experiment = experimentOn('Button');
 buttonTypes.forEach((buttonType) => {
