@@ -11,7 +11,6 @@ import {InnerContent} from "./components/inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
-import {RadioButtonsModule} from "../../src/angular/form-elements/radios/radio-button.module";
 
 @NgModule({
     declarations: [
@@ -29,8 +28,7 @@ import {RadioButtonsModule} from "../../src/angular/form-elements/radios/radio-b
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
-        InfiniteScrollModule,
-        RadioButtonsModule
+        InfiniteScrollModule
     ],
     entryComponents: [InnerContent],
     exports: [
@@ -45,8 +43,7 @@ import {RadioButtonsModule} from "../../src/angular/form-elements/radios/radio-b
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
-        InfiniteScrollModule,
-        RadioButtonsModule
+        InfiniteScrollModule
     ],
     providers: [KeysPipe]
 })

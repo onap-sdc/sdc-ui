@@ -1,8 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
-import { RadioGroupComponent } from "./radio-group-buttons.component";
+import { RadioGroupComponent } from "./radio-buttons-group.component";
 import { FormsModule } from "@angular/forms";
-import { RadioButtonComponent } from "./radio-button.component"
-import { IOptionItem } from "./radio-button.model"
+import { IRadioButtonModel } from "./radio-button.model"
 
 
 describe("Test", ()=>{
@@ -10,8 +9,7 @@ describe("Test", ()=>{
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                RadioGroupComponent,
-                RadioButtonComponent
+                RadioGroupComponent
             ],
             imports:[
                 FormsModule
@@ -31,40 +29,37 @@ describe("Test", ()=>{
     }));
 
     it('Not possible to choose value which not exists', async(() =>{
-        component.onSelectionChange('test');
-        expect(component.selectedValue).not.toEqual('test');
+        component.value = 'test';
+        expect(component.value).not.toEqual('test');
     }));
 
     it('Not possible to choose when component disabled', async(() =>{
         component.disabled = true;
-        component.options.items = [ <IOptionItem> {
+        component.options.items = [ <IRadioButtonModel> {
             value: 'val1',
-            checked: false,
             name: 'exp6',
             label: 'Label of Radio1'
-        }, <IOptionItem> {
+        }, <IRadioButtonModel> {
             value: 'val2',
-            checked: false,
             name: 'exp6',
             label: 'Label of Radio2'
         }];
-        component.onSelectionChange(component.options.items[0].value);
-        expect(component.selectedValue).not.toEqual(component.options.items[0].value);
+        component.value = component.options.items[0].value;
+        expect(component.value).not.toEqual(component.options.items[0].value);
     }));
 
     it('Normal flow', async(() =>{
-        component.options.items = [ <IOptionItem> {
+        component.options.items = [ <IRadioButtonModel> {
             value: 'val1',
-            checked: false,
             name: 'exp6',
             label: 'Label of Radio1'
-        }, <IOptionItem> {
+        }, <IRadioButtonModel> {
             value: 'val2',
-            checked: false,
             name: 'exp6',
             label: 'Label of Radio2'
         }];
-        component.onSelectionChange(component.options.items[0].value);
-        expect(component.selectedValue).toEqual(component.options.items[0].value);
+        component.value = component.options.items[0].value;
+        expect(component.value).toEqual(component.options.items[0].value);
     }));
+
 });
