@@ -63,7 +63,6 @@ export class InputComponent implements OnInit{
     }
 
     public validateInput(error_message): void{
-        console.log('here')
         this.check = {
             result: false,
             error: ''
@@ -77,4 +76,3 @@ export class InputComponent implements OnInit{
         this.baseEmitter.emit(this.check);
     }
 }
-
