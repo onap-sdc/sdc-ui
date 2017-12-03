@@ -1,4 +1,7 @@
-import {Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit} from '@angular/core'
+import {
+    Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit,
+    ElementRef, ViewChild
+} from '@angular/core'
 
 import {
      IDropDownOption,
@@ -56,6 +59,8 @@ export class DropDownComponent implements OnChanges, OnInit {
 
     @Input() headless = false;
 
+    @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
+
     /**
      * Selected option index
      */
@@ -89,6 +94,8 @@ export class DropDownComponent implements OnChanges, OnInit {
     private unselectableOptions = [DropDownOptionType.Disable, DropDownOptionType.Header, DropDownOptionType.HorizontalLine];
 
     public isGroupDesign = false;
+
+    constructor(private view:ElementRef){}
 
     ngOnInit(): void {
         if(this.options){
@@ -151,6 +158,13 @@ export class DropDownComponent implements OnChanges, OnInit {
      */
     public getSelectedLabel(): string{
        return this.selectedLabel || null;
+    }
+
+    public isBottomVisible(){
+        const windowPos = window.innerHeight + window.pageYOffset;
+        const dropDownPos = this.dropDownWrapper.nativeElement.offsetTop + this.dropDownWrapper.nativeElement.offsetHeight + 244;
+        console.log("dropDownWrapper", this.dropDownWrapper.nativeElement.offsetHeight);
+        return windowPos > dropDownPos;
     }
 
     /**

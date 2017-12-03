@@ -1,4 +1,4 @@
-<div class="sdc-dropdown" [ngClass]="{'error': error}">
+<div class="sdc-dropdown" [ngClass]="{'error': error}" #dropDownWrapper>
     <label class="sdc-dropdown__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <!--[DROP-DOWN HEADER START]-->
     <button *ngIf="!headless"
@@ -8,13 +8,11 @@
     <!--[DROP-DOWN HEADER END]-->
 
     <!--[DROP-DOWN OPTIONS START]-->
-    <ul *ngIf="show" class="sdc-dropdown__options-wrapper" [ngClass]="{'sdc-dropdown__options-wrapper--headless': headless}">
+    <ul *ngIf="show" class="sdc-dropdown__options-wrapper" [ngClass]="{
+    'sdc-dropdown__options-wrapper--headless': headless,
+    'sdc-dropdown__options-wrapper--top':!isBottomVisible()
+    }">
         <ng-container  *ngFor="let option of options; let i = index">
-
-            <!--[Drop Down Group list start]-->
-            <!--<sdc-dropdown-group *ngIf="isDropDownGroupList()" [optionGroup]="option" [value]="getDropDownGroupSelectedValue(option)" (valueChange)="selectGroupOption($event)"></sdc-dropdown-group>-->
-            <!--[Drop Down Group list end]-->
-
 
             <!--[Drop down item list or string list start]-->
             <li *ngIf="option" class="sdc-dropdown__option"

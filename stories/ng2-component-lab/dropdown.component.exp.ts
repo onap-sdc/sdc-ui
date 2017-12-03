@@ -30,7 +30,7 @@ const options2:IDropDownOption[] = [
         value:'firstOption'
     },
     {
-        label:'First Option',
+        label:'Disabled Option',
         type: DropDownOptionType.Disable
     },
     {
@@ -44,6 +44,14 @@ const options2:IDropDownOption[] = [
     {
         label:'Third Option',
         value:'thirdOption'
+    },
+    {
+        label:'Forth Option',
+        value:'forthOption'
+    },
+    {
+        label:'Fifth Option',
+        value:'fifthOption'
     }
 ];
 
@@ -82,50 +90,42 @@ export default experimentOn('DropDown')
         showSource: true,
         template: `
         <div style="margin-bottom: 10px;">
-            <button dropdown-trigger [dropDown]="dropDown">Click to toggle!</button><span> Selected value: {{ dropDown.value }}</span>
+            <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.value }}</span>
         </div>
-        <sdc-dropdown placeHolder="Please choose option" [options]="options" #dropDown></sdc-dropdown>
+        <sdc-dropdown [options]="options" #dropDown1></sdc-dropdown>
+        `
+    })
+    .case('Disabled DropDown', {
+        context: {
+            options: options2,
+        },
+        showSource: true,
+        template: `
+      <sdc-dropdown label="Disabled dropDown example" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>
     `
     })
-    // .case('Group items pre-selected value DropDown', {
-    //     context: {
-    //         options: optionGroups,
-    //     },
-    //     showSource: true,
-    //     template: `
-    //   <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" [value]="'value1'"></sdc-dropdown>
-    // `
-    // }).case('Disabled DropDown', {
-    //     context: {
-    //         options: options,
-    //     },
-    //     showSource: true,
-    //     template: `
-    //   <sdc-dropdown label="Disabled dropDown example" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>
-    // `
-    // }).case('Headless and labeless DropDown', {
-    //     context: {
-    //         options: options,
-    //     },
-    //     showSource: true,
-    //     template: `
-    //     <div style="margin-bottom: 10px;">
-    //         <button dropdown-trigger [dropDown]="dropDown">Click to toggle!</button><span> Selected value: {{ dropDown.value }}</span>
-    //     </div>
-    //     <sdc-dropdown placeHolder="Please choose option" [headless]="true" [options]="options" #dropDown></sdc-dropdown>
-    // `
-    // }).case('Requiered DropDown', {
-    //     context: {
-    //         options: options,
-    //         validateState: false
-    //     },
-    //     showSource: true,
-    //     template: `
-    //   <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown></sdc-dropdown>
-    //   <div style="margin-top: 10px;">
-    //     <button (click)="dropDown.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown.isValid() }}</span>
-    //   </div>
-    //
-    // `
-    // });
+    .case('Requiered DropDown', {
+        context: {
+            options: options2,
+            validateState: false
+        },
+        showSource: true,
+        template: `
+      <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
+      <div style="margin-top: 10px;">
+        <button (click)="dropDown2.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown2.isValid() }}</span>
+      </div>`
+    })
+    .case('Requiered DropDown', {
+        context: {
+            options: options2,
+            validateState: false
+        },
+        showSource: true,
+        template: `
+      <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown></sdc-dropdown>
+      <div style="margin-top: 10px;">
+        <button (click)="dropDown.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown.isValid() }}</span>
+      </div>`
+    });;
 
