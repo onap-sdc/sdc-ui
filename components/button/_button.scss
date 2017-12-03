@@ -190,6 +190,7 @@
     @include outline-button($blue);
     border: none;
     background-color: transparent;
+    text-align: left;
     &:hover{
       color:$hover-blue;
     }
