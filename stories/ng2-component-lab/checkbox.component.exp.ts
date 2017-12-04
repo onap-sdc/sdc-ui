@@ -1,14 +1,19 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 
 export default experimentOn('Checkbox')
-    .case('Normal Checkbox', {
+    .group("Checkbox",[
+      {
+        id: 'checkbox',
         showSource: true,
-        template: `
-     <sdc-checkbox label="Checked"></sdc-checkbox>
-    `
-    }).case('Disabled Checkbox', {
+        title: 'Checkbox',
+        description: 'Simple checkbox',
+        template: `<sdc-checkbox label="Checked"></sdc-checkbox>`,
+      },
+      {
+        id: 'disabledCheckbox',
         showSource: true,
-        template: `
-     <sdc-checkbox label="Disabled"[disabled]="true"></sdc-checkbox>
-    `
-    });
+        title: 'Disabled checkbox',
+        description: 'Simple disabled checkbox',
+        template: `<sdc-checkbox label="Disabled"[disabled]="true"></sdc-checkbox>`,
+      }
+    ]);
