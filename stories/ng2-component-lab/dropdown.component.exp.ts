@@ -56,16 +56,20 @@ const options2:IDropDownOption[] = [
 ];
 
 export default experimentOn('DropDown')
-    .case('Normal DropDown', {
+    .group("DropDown",[
+      {
+        id: 'normalDropDown',
+        showSource: true,
         context: {
             options: options1,
         },
-        showSource: true,
+        title: 'Normal dropDown',
+        description: 'Normal dropDown',
         template: `
       <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
     `
-    })
-    .case('Group items DropDown', {
+    },
+        {
         context: {
             options: options2,
         },
