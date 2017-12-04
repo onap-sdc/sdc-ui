@@ -1,12 +1,17 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 
 export default experimentOn('Radios')
-    .case('Radio Buttons Group (two ways binding)', {
+    .group("Radios",[
+      {
+        id: 'radioButtonsGroupTwoWaysBinding',
         showSource: true,
         context: {
             selectedValue: "val2"
         },
-        template: `
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
+        template: 
+        `
         <sdc-radio-group
             [legend]="'Radio Buttons Group legend'"
             [(value)]="selectedValue"
@@ -26,8 +31,11 @@ export default experimentOn('Radios')
             ></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    })
-    .case('Radio Buttons Group Disabled', {
+    }, 
+    {
+        id: 'radioButtonsGroupDisabled',
+        title: 'Radio buttons group disabled',
+        description: 'Radio buttons group disabled',
         showSource: true,
         context: {
             selectedValue: "val1"
@@ -50,7 +58,11 @@ export default experimentOn('Radios')
         }"></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }).case('Radio Buttons Group partialy disabled', {
+    }, 
+    {
+        id: 'radioButtonsGroupPartialyDisabled',
+        title: 'Radio buttons group partialy disabled',
+        description: 'Radio buttons group partialy disabled',
         showSource: true,
         context: {
             selectedValue: "val1"
@@ -77,7 +89,11 @@ export default experimentOn('Radios')
         }"></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }).case('Radio Buttons Group Vertical', {
+    }, 
+    {
+        id: 'radioButtonsGroupVertical',
+        title: 'Radio buttons group vertical',
+        description: 'Radio buttons group vertical',
         showSource: true,
         context: {
             selectedValue: "val1"
@@ -100,7 +116,11 @@ export default experimentOn('Radios')
         }"></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }).case('Radio Buttons Group get value', {
+    }, 
+    {
+        id: 'radioButtonsGroupGetValue',
+        title: 'Radio buttons group get value',
+        description: 'Radio buttons group get value',
         showSource: true,
         context: {
             selectedValue: "val1",
@@ -127,7 +147,11 @@ export default experimentOn('Radios')
         <br><div>Selected Radio: {{selectedValue}}</div>
         <br><button (click)="getSelectedValue(myRadioGroup.value)">Get selected value</button>
         `
-    }).case('Radio Buttons Group select value', {
+    }, 
+    {
+        id: 'radioButtonsGroupSelectValue',
+        title: 'Radio buttons group select value',
+        description: 'Radio buttons group select value',
         showSource: true,
         context: {
             selectedValue: "val1"
@@ -151,4 +175,5 @@ export default experimentOn('Radios')
         <br><div>Selected Radio: {{selectedValue}}</div>
         <br><button (click)="myRadioGroup.value='val2'">Set value to val2</button>
         `
-    });
+    }
+    ]);
