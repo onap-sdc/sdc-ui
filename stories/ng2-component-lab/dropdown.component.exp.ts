@@ -8,128 +8,129 @@ import {
     DropDownOptionType
 } from "../../src/angular/form-elements/dropdown/dropdown-models";
 
-const options1:IDropDownOption[] = [
+const options1: IDropDownOption[] = [
     {
-        label:'First Option'
+        label: 'First Option'
     },
     {
-        label:'Second Option'
+        label: 'Second Option'
     },
     {
-        label:'Third Option'
+        label: 'Third Option'
     }
 ];
 
-const options2:IDropDownOption[] = [
+const options2: IDropDownOption[] = [
     {
-        label:'Header',
+        label: 'Header',
         type: DropDownOptionType.Header
     },
     {
-        label:'First Option',
-        value:'firstOption'
+        label: 'First Option',
+        value: 'firstOption'
     },
     {
-        label:'Disabled Option',
+        label: 'Disabled Option',
         type: DropDownOptionType.Disable
     },
     {
-        label:'Second Option',
+        label: 'Second Option',
         value: 'secondOption'
     },
     {
-        label:'Ruler',
+        label: 'Ruler',
         type: DropDownOptionType.HorizontalLine
     },
     {
-        label:'Third Option',
-        value:'thirdOption'
+        label: 'Third Option',
+        value: 'thirdOption'
     },
     {
-        label:'Forth Option',
-        value:'forthOption'
+        label: 'Forth Option',
+        value: 'forthOption'
     },
     {
-        label:'Fifth Option',
-        value:'fifthOption'
+        label: 'Fifth Option',
+        value: 'fifthOption'
     }
 ];
 
 export default experimentOn('DropDown')
-    .group("DropDown",[
-      {
-        id: 'normalDropDown',
-        showSource: true,
-        context: {
-            options: options1,
-        },
-        title: 'Normal dropDown',
-        description: 'Normal dropDown',
-        template: `
-      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
-    `
-    },
+    .group("DropDown", [
         {
-        context: {
-            options: options2,
-        },
-        showSource: true,
-        template: `
+            id: 'normalDropDown',
+            showSource: true,
+            context: {
+                options: options1,
+            },
+            title: 'Normal dropDown',
+            description: 'Normal dropDown',
+            template: `
       <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
     `
-    })
-    .case('Group items pre-selected value DropDown', {
-        context: {
-            options: options2,
+        }, {
+            id: 'groupDropDown',
+            showSource: true,
+            context: {
+                options: options2,
+            },
+            title: 'DropDown with groups',
+            description: 'DropDown with groups',
+            template: `
+      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
+    `
         },
-        showSource: true,
-        template: `
+        {
+            id: 'groupDropDownPreSelect',
+            showSource: true,
+            context: {
+                options: options2,
+            },
+            title: 'DropDown with groups and pre-selected value',
+            description: 'DropDown with groups and pre-selected value',
+            template: `
       <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" [value]="'firstOption'"></sdc-dropdown>
     `
-    })
-    .case('Headless and labeless DropDown', {
-        context: {
-            options: options2,
         },
-        showSource: true,
-        template: `
-        <div style="margin-bottom: 10px;">
-            <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.value }}</span>
-        </div>
-        <sdc-dropdown [options]="options" #dropDown1></sdc-dropdown>
-        `
-    })
-    .case('Disabled DropDown', {
-        context: {
-            options: options2,
+        {
+            id: 'headlesspDropDown',
+            showSource: true,
+            context: {
+                options: options2,
+            },
+            title: 'Headless and labeless DropDown',
+            description: 'Headless and labeless DropDown',
+            template: `
+            <div style="margin-bottom: 10px;">
+                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.value }}</span>
+            </div>
+            <sdc-dropdown [options]="options" #dropDown1></sdc-dropdown>`
         },
-        showSource: true,
-        template: `
-      <sdc-dropdown label="Disabled dropDown example" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>
-    `
-    })
-    .case('Requiered DropDown', {
-        context: {
-            options: options2,
-            validateState: false
+        {
+            id: 'disabledDropDown',
+            showSource: true,
+            context: {
+                options: options2,
+            },
+            title: 'Disabled DropDown',
+            description: 'Disabled DropDown',
+            template: `
+            <sdc-dropdown label="Disabled dropDown example" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>`
         },
-        showSource: true,
-        template: `
-      <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
-      <div style="margin-top: 10px;">
-        <button (click)="dropDown2.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown2.isValid() }}</span>
-      </div>`
-    })
-    .case('Requiered DropDown', {
-        context: {
-            options: options2,
-            validateState: false
+        {
+            id: 'requieredDropDown',
+            showSource: true,
+            context: {
+                options: options2,
+            },
+            title: 'Requiered DropDown',
+            description: 'Requiered DropDown',
+            template: `
+            <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
+            <div style="margin-top: 10px;">
+                <button (click)="dropDown2.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown2.isValid() }}</span>
+             </div>`
         },
-        showSource: true,
-        template: `
-      <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown></sdc-dropdown>
-      <div style="margin-top: 10px;">
-        <button (click)="dropDown.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown.isValid() }}</span>
-      </div>`
-    });;
+    ]);
+
 
