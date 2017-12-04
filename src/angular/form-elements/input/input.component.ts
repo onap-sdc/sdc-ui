@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
+import {CheckModel, IOption, OptionTypes} from "./validation.model";
 
 export interface ICheck {
     result: boolean;
@@ -29,51 +30,91 @@ export class InputComponent implements OnInit{
     @Input() public minLength: number;
     @Input() public maxLength: number;
     @Input() public hint: boolean;
-    @Input() public patterns: IPattern[];
+    @Input() public options: IOption[];
 
     constructor() {
+        console.log(this.options)
         this.control = new FormControl('', []);
-    }
+   }
 
     ngOnInit(){
-        if (this.patterns) {
-            this.check = {
-                result: false,
-                error: ''
-            };
-        }
+       // this.buildCheckObj();
     }
 
-    public onValueChange() {
-        if (!this.patterns) return;
-        this.check = (this.patterns).reduce((res, pattern) => {
-            let regex = new RegExp(pattern.regex);
-            let match = this.value.match(regex);
-            if(match) {
-                res.result = true;
-            } else {
-                res.error.length == 0 ? res.error = pattern.error_message : res.error += ', ' + pattern.error_message;
-            }
-            return res;
-        }, {
-            result: false,
-            error: ''
-        });
-        this.baseEmitter.emit(this.check);
+    onValueChange(value):void{
+       this.validateValue();
     }
 
-    public validateInput(error_message): void{
-        this.check = {
-            result: false,
-            error: ''
-        };
-        if(!this.disabled && this.required && (!this.value || this.value === '')){
-            this.check.result = false;
-            if(error_message) this.check.error = error_message;
-            return;
-        }
-        this.check.result = true;
-        this.baseEmitter.emit(this.check);
+
+
+    public validateValue (){
+      if(!this.options) return;
+      this.check = new CheckModel(true, '');
+      this.check = this.options.reduce((check, option)=> {
+          switch(option.type){
+              case (OptionTypes.REQUIRED):{
+                  this.value ? check.result = true : check.result = false;
+              } break;
+              case (OptionTypes.PATTERN):{
+                  check.result = this.comparePatterns(this.value, option.patterns);
+              } break;
+              case (OptionTypes.CUSTOM):{
+                  // console.log('ererer')
+                  // option.callback('test');
+              } break;
+          }
+          if(!check.result) check.error = option.message;
+          return check;
+      }, { result: true, error:'' });
+      console.log(this.check);
     }
+
+
+    comparePatterns(value, patterns){
+       if(!patterns || !value) return false;
+       let check_regex = (patterns).reduce((res, pattern) => {
+                        let regex = new RegExp(pattern);
+                        let match = value.match(regex);
+                        match ? res = true : res = false;
+                        return res;
+                    }, false );
+       return check_regex;
+    }
+
+    // validateOptions(value){
+    //     if(this.validateRequires(value)){
+    //
+    //     }
+    //     if(this.validatePattern(value)){
+    //
+    //     }
+    //     if(this.validateCustom(value)){
+    //
+    //     }
+    //
+    //     return  {result:'' , error:''};
+    // }
+    //
+    // validateRequires(value):boolean{
+    //     return true;
+    // }
+    //
+    // validatePattern(value):boolean{
+    //     return true;
+    // }
+    //
+    // validateCustom(value):boolean{
+    //     const customValidation = /* this.customCb(value) || */ true;
+    //     if(!customValidation || typeof customValidation !== 'boolean'){
+    //         / trow errro???
+    //         console.error('Not supported custom validation result');
+    //         return true;
+    //     }
+    //     return customValidation;
+    // }
+    //
+    // buildCheckObj(options){
+    //     return options.map(option => new CheckModel(option.type,option.error_message));
+    // }
 }
 

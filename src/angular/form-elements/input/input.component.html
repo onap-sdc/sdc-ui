@@ -11,6 +11,7 @@
         [placeholder]= "placeHolder ? placeHolder : ''"
         [minlength]="minLength"
         [attr.disabled]="disabled"
+
     />
     <label class="sdc-input__label sdc-label__error" *ngIf="check &&!check.result && check.error.length" >&#9888; {{check.error}}</label>
 </div>
