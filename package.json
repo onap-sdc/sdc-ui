@@ -16,7 +16,7 @@
     "compile-angular": "ngc -p tsconfig.angular.build-es5.json",
     "rollup-angular:module": "rollup -c rollup.angular.module.config.js",
     "rollup-angular:umd": "rollup -c rollup.angular.umd.config.js",
-    "rollup-angular:metadata": "find build/* -not -name '*.js' -type f -exec cp --t lib --parents {} \\; && cp -rf lib/build/* lib/ && rm -r lib/build",
+    "rollup-angular:metadata": "find build/* -type f -not -name '*.js' -not -name '*.js.*' -exec cp --parents {} lib ; && cp -rf lib/build/* lib/ && rm -r lib/build",
     "build-angular": "npm run compile-angular && npm run rollup-angular:module && npm run rollup-angular:umd && npm run rollup-angular:metadata",
     "build-pack": "cp package.lib.json lib/package.json && cp -r css lib/ && cp -r assets lib/",
     "postbuild-clean": "rm -rf build",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@angular/compiler": "~2.4.8",
     "@angular/compiler-cli": "~2.4.8",
-    "@islavi/ng2-component-lab": "^1.0.19",
+    "@islavi/ng2-component-lab": "^1.0.25",
     "@types/node": "^7.0.27",
     "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.2",

@@ -7,13 +7,15 @@ import template from "./checkbox.component.html";
     encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent {
-
     @Input() label:string;
     @Input() checked:boolean;
     @Input() disabled:boolean;
     @Output() checkedChange:EventEmitter<any> = new EventEmitter<any>();
 
-    toggleState(newValue:boolean) {
-        this.checkedChange.emit(newValue);
+    public toggleState(newState:boolean) {
+        if (!this.disabled) {
+            this.checked = newState;
+            this.checkedChange.emit(newState);
+        }
     }
 }
