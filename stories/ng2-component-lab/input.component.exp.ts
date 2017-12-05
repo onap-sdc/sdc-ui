@@ -53,12 +53,25 @@ export default experimentOn('Input')
         template: `
         <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
     `
-    }).case('Input with placeholder', {
+    },
+    {
+        id: 'input-placeholder',
+        title: 'Input with placeholder',
+        description: 'Input with placeholder',
         showSource: true,
         template: `
       <sdc-input placeHolder="TEXT"></sdc-input>
     `
-    }).case('Input with debounce time', {
+    },
+    {
+        id: 'debounce-input',
+        title: 'Input with debounce time',
+        description: `<pre>On value change event code:
+        const valueChange = (value: any): void => {
+            alert(value);
+        };
+        This event will happen 5 sec after the change
+        </pre>`,
         showSource: true,
         context: {
             changeEvent: valueChange
