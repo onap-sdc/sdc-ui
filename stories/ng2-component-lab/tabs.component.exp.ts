@@ -3,8 +3,10 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
-export default experimentOn('tabs')
-    .case('Menu tabs', {
+export default experimentOn('tabs').group('Tabs', [
+    {
+        id: 'menu-tabs',
+        title: 'Menu tabs',
         showSource: true,
         template: `
         <sdc-tabs [type]="'menu'">
@@ -16,7 +18,10 @@ export default experimentOn('tabs')
             </sdc-tab>
         </sdc-tabs>
     `
-    }).case('Header tabs', {
+    },
+    {
+        id: 'header-tabs',
+        title: 'Header tabs',
         showSource: true,
         template: `
         <sdc-tabs [type]="'header'">
@@ -28,7 +33,10 @@ export default experimentOn('tabs')
             </sdc-tab>
         </sdc-tabs>
     `
-    }).case('Disabled tabs', {
+    },
+    {
+        id: 'disabled-tabs',
+        title: 'Disabled tabs',
         showSource: true,
         template: `
         <sdc-tabs [type]="'menu'">
@@ -40,4 +48,5 @@ export default experimentOn('tabs')
             </sdc-tab>
         </sdc-tabs>
     `
-    });
+    }
+]);
