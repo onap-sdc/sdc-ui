@@ -13,7 +13,7 @@ export default experimentOn('Input')
                 optionTypes:OptionTypes
             },
             template: `
-              <sdc-input label="Please Enter value" sdc-validation [valueToCheck]="input.value"  (onInputBlur)="sdcValidation.validateValue()" [placeHolder]="'Please enter something'" [options] = "[{type:optionTypes.REQUIRED, message:'not empty'}, {type:optionTypes.PATTERN, patterns : ['test'],message:'not match pattern'}]" #input #sdcValidation="sdc-validation"></sdc-input>
+              <sdc-input label="Please Enter value" sdc-validation [valueToCheck]="input.value"  (onInputBlur)="sdcValidation.validateValue()" [placeHolder]="'Please enter something'" [options] = "[{type:optionTypes.REQUIRED, message:'couldn\\'t be empty'}, {type:optionTypes.PATTERN, patterns : ['test'],message:'not matches with patterns'}]" #input #sdcValidation="sdc-validation"></sdc-input>
                <div>
                   <button (click)="sdcValidation.validateValue()">Validate!</button> 
                </div>
