@@ -4,7 +4,14 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 
 export default experimentOn('Modals')
-    .case('Error Modal', {
-        template: `<button-modal-example></button-modal-example>`,
-    })
-
+    .group("Modals",[
+      {
+        id: 'errorModal',
+        showSource: true,
+        title: 'Error modal',
+        description: 'Error modal',
+        template: `
+        <button-modal-example></button-modal-example>
+        `
+      }
+    ]);
