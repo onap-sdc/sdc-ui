@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-dropdown">
     <label class="sdc-dropdown__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <select class="sdc-dropdown__select" name='{{label}}' [(ngModel)]="value" (change)="onSave()" [disabled]="disabled" [ngClass]="{'disabled':disabled}">
@@ -7,3 +8,4 @@
         </option>
     </select>
 </div>
+`;
