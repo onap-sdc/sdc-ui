@@ -4,11 +4,13 @@ import {CommonModule} from "@angular/common";
 import {ColorsTable} from "./components/colors-table.component";
 import {FormElementsModule} from "../../src/angular/form-elements/form-elements.module";
 import {ButtonsModule} from "../../src/angular/buttons/buttons.module";
+import {TileModule} from "../../src/angular/tiles/tile.module";
 import {ButtonModalExample} from "./components/button-modal-example.component";
 import {ModalModule} from "../../src/angular/modals/modal.module";
 import {InnerContent} from "./components/inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 import {SearchBarModule} from "../../src/angular/searchbox/search-bar.module";
+import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 import {SearchFilterPipe} from "./utils/pipes/search.pipe";
 import {SearchBarExample} from "./components/search-bar-example.component";
@@ -30,6 +32,9 @@ import {SearchWithAutocompleteExample} from "./components/search-with-autocomple
         CommonModule,
         FormElementsModule,
         ButtonsModule,
+        TileModule,
+        ButtonsModule,
+        ChecklistModule,
         PopupMenuModule,
         SearchBarModule,
         InfiniteScrollModule,
@@ -46,6 +51,9 @@ import {SearchWithAutocompleteExample} from "./components/search-with-autocomple
         SearchWithAutocompleteExample,
         FormElementsModule,
         ButtonsModule,
+        TileModule,
+        ButtonsModule,
+        ChecklistModule,
         PopupMenuModule,
         SearchBarModule,
         InfiniteScrollModule,

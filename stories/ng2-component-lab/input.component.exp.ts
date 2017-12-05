@@ -8,31 +8,50 @@ const valueChange = (value: any): void => {
 };
 
 export default experimentOn('Input')
-    .case('Normal input', {
+  .group("Input",[
+      {
+        id: 'normalInput',
+        showSource: true,
+        title: 'Normal input',
+        description: 'Normal input',
+        template: `
+        <sdc-input label="Please Enter value"></sdc-input>
+        `
+      },
+      {
+        id: 'disabledInput',
+        showSource: true,
+        title: 'Disabled input',
+        description: 'Disabled input',
+        template: `
+        <sdc-input [disabled]="true"></sdc-input>
+        `
+      },
+      {
+        id: 'Input required',
+        title: 'Input required',
+        description: 'Input required',
         showSource: true,
         template: `
-      <sdc-input label="Please Enter value"></sdc-input>
-    `
-    }).case('Disabled input', {
+        <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      `
+      },
+      {
+        id: 'inputWithMaxLength',
+        title: 'Input with max length',
+        description: 'Input with max length',
         showSource: true,
         template: `
-      <sdc-input [disabled]="true"></sdc-input>
-    `
-    })
-    .case('Input required', {
+        <sdc-input [maxLength]="5"></sdc-input>
+        `
+    },
+    {
+        id: 'integerInputWithValidationError',
+        title: 'Integer input with validation error',
+        description: 'Integer input with validation error',
         showSource: true,
         template: `
-      <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-    `
-    }).case('Input with max length', {
-        showSource: true,
-        template: `
-      <sdc-input [maxLength]="5"></sdc-input>
-    `
-    }).case('Integer input with validation error', {
-        showSource: true,
-        template: `
-      <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
+        <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
     `
     }).case('Input with placeholder', {
         showSource: true,
@@ -46,5 +65,6 @@ export default experimentOn('Input')
         },
         template: `
       <sdc-input [debounceTime]="5000" (valueChange)="changeEvent($event)"></sdc-input>
-    `
-    });
+      `
+    }
+    ]);
