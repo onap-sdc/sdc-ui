@@ -20,7 +20,7 @@ import {BrowseComponent} from "./browse/browse.component";
         InputComponent,
         CheckboxComponent,
         FileOpenerComponent,
-        RadioGroupComponent
+        RadioGroupComponent,
         BrowseComponent
     ],
     exports: [
