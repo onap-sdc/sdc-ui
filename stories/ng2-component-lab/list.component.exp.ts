@@ -7,6 +7,7 @@ export default experimentOn('List').group('List', [
     {
         id: 'list',
         title: 'Simple list',
+        description: 'Simple list',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -19,6 +20,7 @@ export default experimentOn('List').group('List', [
     {
         id: 'unique-list',
         title: 'List with unique validation',
+        description: 'List with unique validation',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -33,6 +35,7 @@ export default experimentOn('List').group('List', [
     {
         id: 'disabled-list',
         title: 'Disabled list',
+        description: 'When the parameter isViewOnly = true, the list control is disabled',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -46,6 +49,7 @@ export default experimentOn('List').group('List', [
     {
         id: 'list-with-disabled-items',
         title: 'List with some readonly items',
+        description: 'The parameter isViewOnly can get an array of indexes of list items.',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
