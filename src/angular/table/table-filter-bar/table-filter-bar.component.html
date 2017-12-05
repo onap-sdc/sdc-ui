@@ -1,7 +1,6 @@
 <ng-container *ngFor="let filter of filterControls;let i = index;">
-
     <ng-container *ngIf="filterControls[i].group">
-        <div class="sdc-table-filter-bar__group">
+        <div class="sdc-table-filter-bar__group" [hidden]="hidePanel">
             <form #form class="sdc-table-filter-bar__form">
                 <div class="sdc-table-filter-bar__group__title"> Group: {{filterControls[i]?.group}} </div>
                 <div class="sdc-table-filter-bar__form-group">
@@ -28,7 +27,7 @@
             </form>
         </div>
     </ng-container>
-    <div class="sdc-table-filter-bar" *ngIf="!filterControls[i].group">
+    <div class="sdc-table-filter-bar" *ngIf="!filterControls[i].group" [hidden]="hidePanel">
         <form #form class="sdc-table-filter-bar__form">
             <div class="sdc-table-filter-bar__form-group">
                 <label for="{{'columnName' + i}}">Column</label>
@@ -54,6 +53,15 @@
         </form>
     </div>
 </ng-container>
-<button class="sdc-table-filter-bar__add-button" type="button" (click)="addAnotherFilter()">Add another</button>
-<button class="sdc-table-filter-bar__button" type="reset" (click)="clearFilters()">Clear</button>
-<button class="sdc-table-filter-bar__button" type="button" (click)="submitFilter(form, i)">Submit</button>
+<div [hidden]="hidePanel">
+    <button class="sdc-table-filter-bar__add-button" type="button" (click)="addAnotherFilter()">Add another</button>
+    <button class="sdc-table-filter-bar__button" type="reset" (click)="clearFilters()">Clear</button>
+    <button class="sdc-table-filter-bar__button" type="button" (click)="submitFilter(form, i)">Submit</button>
+</div>
+
+<div class="sdc-table-filter-bar" [hidden]="!hidePanel">
+    <form #form2>
+        <input type="text" style="width:300px;" />
+        <button type="button" class="sdc-table-filter-bar__button" (click)="searchFilter(form2)">Search</button>
+    </form>
+</div>

@@ -1,5 +1,6 @@
 import {OnInit, Component, Input, ViewChildren, QueryList, ElementRef, EventEmitter, Output} from "@angular/core";
-import {FilterOperator, IFilterItem, IFilterGroup} from "../models/table.models";
+import {IFilterItem, IFilterGroup} from "../models/table.models";
+
 /**
  * Created by M.S.BIT on 28/11/2017.
  */
@@ -8,7 +9,6 @@ export interface FilterControl {
     id: number,
     group?: number;
 }
-
 
 @Component({
     selector: 'sdc-table-filter-bar',
@@ -59,6 +59,7 @@ export class TableFilterBarComponent implements OnInit{
     @ViewChildren('form') forms: QueryList<ElementRef>;
 
     @Output('changed') changed: EventEmitter<IFilterGroup[]> = new EventEmitter();
+    @Input() hidePanel: boolean = false;
 
     public filterControls: FilterControl[] = [{id:0}];
 
@@ -141,8 +142,12 @@ export class TableFilterBarComponent implements OnInit{
         this.changed.next(this.filterItems);
     }
 
-    removeFilter(index){
+    removeFilter(index) {
         this.filterControls.splice(index,1);
     }
 
+    searchFilter(form: HTMLFormElement) {
+        const text = form.elements[0]['value']
+        //alert(text);
+    }
 }

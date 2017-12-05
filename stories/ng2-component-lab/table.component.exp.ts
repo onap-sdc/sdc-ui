@@ -7,14 +7,90 @@ import {tableData} from './../../src/angular/table/table-fake-data';
 export default experimentOn('Table')
     .case('Normal Table', {
         context: {
-            data: tableData
+            data: [].concat(tableData)
         },
         showSource: true,
         template: `
-      <sdc-table [rowsData]="data" #table>
-        <sdc-table-body (scrollHitBottom)="table.onScrollHitBottom()" [maxHeight]="table.maxHeight" [fixedHeader]="table.fixedHeader">
-            <sdc-table-header-row [headerCols]="table.headerCols" (onColClick)="table.onColumnHeaderClick($event)" [sortByField]="table.sortByField" [sortDescending]="table.sortDescending" table-header-row></sdc-table-header-row>
-            <sdc-table-row *ngFor="let row of table.modifiedData" [row]="row" [cols]="table.headerCols" table-row></sdc-table-row>
+      <sdc-table [rowsData]="data" #table1>
+        
+        <sdc-table-body (scrollHitBottom)="table1.onScrollHitBottom()" [maxHeight]="table1.maxHeight" [fixedHeader]="false">
+            <sdc-table-header-row [headerCols]="table1.headerCols" (onColClick)="table1.onColumnHeaderClick($event)" [sortByField]="table1.sortByField" [sortDescending]="table1.sortDescending" table-header-row></sdc-table-header-row>
+            <sdc-table-row *ngFor="let row of table1.modifiedData" [row]="row" [cols]="table1.headerCols" table-row></sdc-table-row>
+        </sdc-table-body>
+      </sdc-table>
+    `
+    })
+    .case('Normal Table with fixed header', {
+        context: {
+            data: [].concat(tableData)
+        },
+        showSource: true,
+        template: `
+      <sdc-table [rowsData]="data" #table2>
+        
+        <sdc-table-body (scrollHitBottom)="table2.onScrollHitBottom()" [maxHeight]="table2.maxHeight" [fixedHeader]="true">
+            <sdc-table-header-row [headerCols]="table2.headerCols" (onColClick)="table2.onColumnHeaderClick($event)" [sortByField]="table2.sortByField" [sortDescending]="table2.sortDescending" table-header-row></sdc-table-header-row>
+            <sdc-table-row *ngFor="let row of table2.modifiedData" [row]="row" [cols]="table2.headerCols" table-row></sdc-table-row>
+        </sdc-table-body>
+      </sdc-table>
+    `
+    })
+    .case('Filtered Table', {
+        context: {
+            data: [].concat(tableData)
+        },
+        showSource: true,
+        template: `
+      <sdc-table [rowsData]="data" #table3>
+        <sdc-table-filter-bar [headerCols]="table3.headerCols" (changed)="table3.handleFilter($event)"></sdc-table-filter-bar>
+        <sdc-table-body (scrollHitBottom)="table3.onScrollHitBottom()" [maxHeight]="table3.maxHeight" [fixedHeader]="table3.fixedHeader">
+            <sdc-table-header-row [headerCols]="table3.headerCols" (onColClick)="table3.onColumnHeaderClick($event)" [sortByField]="table3.sortByField" [sortDescending]="table3.sortDescending" table-header-row></sdc-table-header-row>
+            <sdc-table-row *ngFor="let row of table3.modifiedData" [row]="row" [cols]="table3.headerCols" table-row></sdc-table-row>
+        </sdc-table-body>
+      </sdc-table>
+    `
+    })
+    .case('Table with Searching', {
+        context: {
+            data: [].concat(tableData)
+        },
+        showSource: true,
+        template: `
+      <sdc-table [rowsData]="data" #table4>
+        <sdc-table-filter-bar [hidePanel]="true" [headerCols]="table4.headerCols" (changed)="table4.handleFilter($event)"></sdc-table-filter-bar>
+        <sdc-table-body (scrollHitBottom)="table4.onScrollHitBottom()" [maxHeight]="table4.maxHeight" [fixedHeader]="table4.fixedHeader">
+            <sdc-table-header-row [headerCols]="table4.headerCols" (onColClick)="table4.onColumnHeaderClick($event)" [sortByField]="table4.sortByField" [sortDescending]="table4.sortDescending" table-header-row></sdc-table-header-row>
+            <sdc-table-row *ngFor="let row of table4.modifiedData" [row]="row" [cols]="table4.headerCols" table-row></sdc-table-row>
+        </sdc-table-body>
+      </sdc-table>
+    `
+    })
+    .case('Table with Pagination', {
+        context: {
+            data: [].concat(tableData)
+        },
+        showSource: true,
+        template: `
+      <sdc-table [rowsData]="data" #table5>
+        <sdc-table-pagination-bar [rowsData]="table5.modifiedData" #paginationBar></sdc-table-pagination-bar>
+        <sdc-table-body [maxHeight]="table5.maxHeight" [fixedHeader]="table5.fixedHeader">
+            <sdc-table-header-row [headerCols]="table5.headerCols" (onColClick)="table5.onColumnHeaderClick($event)" [sortByField]="table5.sortByField" [sortDescending]="table5.sortDescending" table-header-row></sdc-table-header-row>
+            <sdc-table-row *ngFor="let row of paginationBar.pageData" [row]="row" [cols]="table5.headerCols" table-row></sdc-table-row>
+        </sdc-table-body>
+      </sdc-table>
+    `
+    })
+    .case('Table with Infinity Scrolling', {
+        context: {
+            data: [].concat(tableData)
+        },
+        showSource: true,
+        template: `
+      <sdc-table [rowsData]="data" #table6>
+        <sdc-table-pagination-bar [hidePanel]="true" [rowsData]="table6.modifiedData" #paginationBar></sdc-table-pagination-bar>
+        <sdc-table-body (scrollHitBottom)="paginationBar.onScrollHitBottom()" [maxHeight]="table6.maxHeight" [fixedHeader]="table6.fixedHeader">
+            <sdc-table-header-row [headerCols]="table6.headerCols" (onColClick)="table6.onColumnHeaderClick($event)" [sortByField]="table6.sortByField" [sortDescending]="table6.sortDescending" table-header-row></sdc-table-header-row>
+            <sdc-table-row *ngFor="let row of paginationBar.pageData" [row]="row" [cols]="table6.headerCols" table-row></sdc-table-row>
         </sdc-table-body>
       </sdc-table>
     `

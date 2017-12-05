@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import { IAppTableColumnsModel, IColumnConfigModel, ColumnDataTypes, FilterOperator, IFilterItem, IFilterGroup
-} from "../models/table.models";
+import {IAppTableColumnsModel, IColumnConfigModel, ColumnDataTypes,
+        FilterOperator, IFilterItem, IFilterGroup, IPageCursor} from "../models/table.models";
 import {ITableDataServies} from "./table-data-service.interface";
+
 /**
  * Created by M.S.BIT on 22/11/2017.
  */
@@ -16,6 +17,10 @@ export class TableService implements ITableDataServies{
             .map(colName => Object.assign({}, metaDataCols[colName], { key: colName }));
     }
 
+    /**
+     * Sorting
+     */
+
     public sortColumn(rowsData: any, col: IColumnConfigModel, isDescending: boolean):any {
         // const colKey = col.sortByField ? col.sortByField : col.key;
         const colKey = col.key;
@@ -24,7 +29,11 @@ export class TableService implements ITableDataServies{
     }
 
     /**
-     * Uses IFilterGroup interface (each IFilterGroup item includes IFilterItem array)
+     * Filter
+     */
+
+    /**
+     * Filter Group  (uses IFilterGroup interface) - each group includes array of the filters
      * @param rowsData
      * @param {IColumnConfigModel[]} cols
      * @param {IFilterGroup[]} groups
@@ -35,9 +44,9 @@ export class TableService implements ITableDataServies{
         groups.map((group) => {
             rowsData = rowsData.filter((row) => {
                 const filterItems: IFilterItem[] = group.filters.filter((filter) => {
-                        const col: IColumnConfigModel = this.findColumnConfigModel(cols, filter.field);
-                        return this.isRowInFilter(row, col, filter);
-                    });
+                    const col: IColumnConfigModel = this.findColumnConfigModel(cols, filter.field);
+                    return this.isRowInFilter(row, col, filter);
+                });
 
                 return filterItems && filterItems.length > 0;
             });
@@ -47,7 +56,7 @@ export class TableService implements ITableDataServies{
     }
 
     /**
-     * Uses IFilterItem interface
+     * Filter (uses IFilterItem interface) - part of the filter group
      * @param rowsData
      * @param {IColumnConfigModel[]} cols
      * @param {IFilterItem[]} filters
@@ -64,6 +73,143 @@ export class TableService implements ITableDataServies{
 
         return rowsData;
     }
+
+    /**
+     * Pagination
+     */
+
+    /**
+     * Go to first page
+     * @param rowsData
+     * @param {IPageCursor} cursor
+     * @returns {any}
+     */
+    public firstPage(rowsData: any, cursor: IPageCursor): any {
+        cursor.pageNumber = this.getFirstPageNumber();
+        return this.getPage(rowsData, cursor);
+    }
+
+    /**
+     * Go to last page
+     * @param rowsData
+     * @param {IPageCursor} cursor
+     * @returns {any}
+     */
+    public lastPage(rowsData: any, cursor: IPageCursor): any {
+        const totalRows = rowsData.length;
+        cursor.pageNumber = this.getLastPageNumber(totalRows, cursor.rowsInPage);
+
+        return this.getPage(rowsData, cursor);
+    }
+
+    /**
+     * Go to next page
+     * @param rowsData
+     * @param {IPageCursor} cursor
+     * @returns {any}
+     */
+    public nextPage(rowsData: any, cursor: IPageCursor): any {
+        const totalRows = rowsData.length;
+
+        if(cursor.pageNumber < this.getLastPageNumber(totalRows, cursor.rowsInPage)) {
+            cursor.pageNumber++;
+            return this.getPage(rowsData, cursor);
+        }
+
+        return null;
+    }
+
+    /**
+     * Go to previous page
+     * @param rowsData
+     * @param {IPageCursor} cursor
+     * @returns {any}
+     */
+    public previousPage(rowsData: any, cursor: IPageCursor): any {
+        if(cursor.pageNumber > this.getFirstPageNumber()) {
+            cursor.pageNumber--;
+            return this.getPage(rowsData, cursor);
+        }
+
+        return null;
+    }
+
+    /**
+     * Go to page by page number
+     * @param {number} pageNumber
+     * @param rowsData
+     * @param {IPageCursor} cursor
+     * @returns {any}
+     */
+    public gotoPage(pageNumber: number, rowsData: any, cursor: IPageCursor): any {
+        const totalRows = rowsData.length;
+
+        if (pageNumber >= this.getFirstPageNumber() &&
+            pageNumber <= this.getLastPageNumber(totalRows, cursor.rowsInPage)) {
+            cursor.pageNumber = pageNumber;
+            return this.getPage(rowsData, cursor);
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns page by page number
+     * @param rowsData
+     * @param {IPageCursor} cursor
+     * @returns {any}
+     */
+    private getPage(rowsData: any, cursor: IPageCursor): any {
+        const firstRow =  this.getFirstRowInPage(cursor.pageNumber, cursor.rowsInPage);
+        const lastRow = this.getLastRowInPage(cursor.pageNumber, cursor.rowsInPage);
+
+        return rowsData.filter((row, index) => {
+            return index >= firstRow && index <= lastRow;
+        });
+    }
+
+    /**
+     * Returns first row number in the page
+     * @param {number} pageNumber
+     * @param {number} rowsInPage
+     * @returns {number}
+     */
+    private getFirstRowInPage(pageNumber: number, rowsInPage: number): number {
+        return rowsInPage * (pageNumber - 1);
+    }
+
+    /**
+     * Returns last row number in the page
+     * @param {number} pageNumber
+     * @param {number} rowsInPage
+     * @returns {number}
+     */
+    private getLastRowInPage(pageNumber: number, rowsInPage: number): number {
+        return rowsInPage * pageNumber - 1;
+    }
+
+    /**
+     * Returns first page number
+     * @returns {number}
+     */
+    public getFirstPageNumber(): number {
+        return 1;
+    }
+
+    /**
+     * Returns last page number
+     * @param {number} totalRows
+     * @param {number} rowsInPage
+     * @returns {number}
+     */
+    public getLastPageNumber(totalRows: number, rowsInPage: number): number {
+        const pageNo: number = Math.floor(totalRows / rowsInPage) + (totalRows % rowsInPage > 0 ? 1 : 0);
+        return pageNo;
+    }
+
+    /**
+     *  Filter
+     */
 
     /**
      * Iteration (checks each row by filter criteries)
@@ -184,6 +330,10 @@ export class TableService implements ITableDataServies{
     }
 
     /**
+     * Sorting
+     */
+
+    /**
      * Sort algorithm for sorting the column array by order (Set by the table config)
      * @param colNameA
      * @param colNameB
@@ -217,6 +367,13 @@ export class TableService implements ITableDataServies{
         });
     };
 
+    /**
+     * Checks two numbers sorting
+     * @param {boolean} isDescending
+     * @param valueA
+     * @param valueB
+     * @returns {number}
+     */
     private sortTwoNumbers(isDescending: boolean, valueA: any, valueB: any): number {
         const value1: number = isNaN(valueA) ? 0 : +valueA;
         const value2: number = isNaN(valueB) ? 0 : +valueB;
@@ -224,6 +381,13 @@ export class TableService implements ITableDataServies{
         return isDescending ? value2 - value1 : value1 - value2;
     }
 
+    /**
+     * Checks two dates sorting
+     * @param {boolean} isDescending
+     * @param valueA
+     * @param valueB
+     * @returns {number}
+     */
     private sortTwoDates(isDescending: boolean, valueA: any, valueB: any): number {
         valueA = this.getDateAsYearMonthDay(new Date(valueA));
         valueB = this.getDateAsYearMonthDay(new Date(valueB));
@@ -238,74 +402,7 @@ export class TableService implements ITableDataServies{
      */
     private getDateAsYearMonthDay(date: Date): string {
         return (date.getFullYear().toString() as any) + '-' +
-               ((date.getMonth() + 1).toString() as any).padStart(2, '0') + '-' +
-               (date.getDate().toString() as any).padStart(2, '0');
+            ((date.getMonth() + 1).toString() as any).padStart(2, '0') + '-' +
+            (date.getDate().toString() as any).padStart(2, '0');
     }
 }
-
-/*
-import {IColumnConfigModel, IFilterGroup, IFilterItem, FilterOperator} from "./models/table.models";
-
-filterItems: IFilterItem[] = [];
-filterGroups: IFilterGroup[] = [];
-
-clearFilters(){
-    this.modifiedData = this.rowsData;
-    this.filterItems = [];
-    this.filterGroups = [];
-}
-
-submitFilter(form: any) {
-    //this.itemFilter(form);
-    this.groupFilter(form);
-}
-
-itemFilter(form: any) {
-    const colName = form.elements[0].value;
-    const operator = form.elements[1].value;
-    const value = form.elements[2].value;
-
-    const item: IFilterItem = this.filterItems.find((item) => { return item.field == colName; });
-    if (item) {
-        item.operator = +operator as FilterOperator;
-        item.value = value;
-    } else {
-        this.filterItems.push({
-            field: colName,
-            operator: +operator as FilterOperator,
-            value: value
-        });
-    }
-
-    this.modifiedData = this.tableService.itemFilter(this.rowsData, this.headerCols, this.filterItems);
-}
-
-groupFilter(form: any) {
-    const colName = form.elements[0].value;
-    const operator = form.elements[1].value;
-    const value = form.elements[2].value;
-
-    let group: IFilterGroup;
-
-    if (this.filterGroups.length > 0) {
-        group = this.filterGroups.find((group) => {
-            return group.filters.find((item) => { return item.field == colName; }) ? true : false;
-        });
-    }
-
-    if (!group) {
-        this.filterGroups.push({ filters: [] });
-        group = this.filterGroups[this.filterGroups.length - 1];
-    }
-
-    group.filters.push({
-        field: colName,
-        operator: +operator as FilterOperator,
-        value: value
-    });
-
-    this.modifiedData = this.tableService.groupFilter(this.rowsData, this.headerCols, this.filterGroups);
-}
-*/
-
-

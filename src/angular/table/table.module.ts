@@ -7,13 +7,15 @@ import {TableHeaderRow} from "./view/table-header-row/table-header-row.component
 import {TableBody} from "./view/table-body/table-body.component";
 import {InfiniteScrollModule} from "../infinite-scroll/infinite-scroll.module";
 import {TableFilterBarComponent} from "./table-filter-bar/table-filter-bar.component";
+import {TablePaginationBarComponent} from "./table-pagination-bar/table-pagination-bar.component";
 @NgModule({
     declarations: [
         TableComponent,
         TableRowComponent,
         TableHeaderRow,
         TableBody,
-        TableFilterBarComponent
+        TableFilterBarComponent,
+        TablePaginationBarComponent
     ],
     imports: [CommonModule, InfiniteScrollModule],
     entryComponents: [],
@@ -22,7 +24,9 @@ import {TableFilterBarComponent} from "./table-filter-bar/table-filter-bar.compo
         TableComponent,
         TableRowComponent,
         TableHeaderRow,
-        TableBody
+        TableBody,
+        TableFilterBarComponent,
+        TablePaginationBarComponent
     ]
 })
 

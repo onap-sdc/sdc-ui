@@ -92,7 +92,6 @@ export class TableComponent implements OnInit{
             this.sortByField    = col.key;
             this.sortDescending = true;
         }
-        console.log(this.sortDescending)
         this.tableService.sortColumn(this.modifiedData, col, this.sortDescending);
     }
 
