@@ -1,7 +1,10 @@
+@import "../button/button";
+
+
 .sdc-tile {
-	$tile-full-width: 204px;
-	$tile-full-height: 200px;
-	$tile-padding: 11px;
+	$tile-full-width: 180px;
+	$tile-full-height: 180px;
+	$tile-padding: 9px;
 
 	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
@@ -29,12 +32,13 @@
 	background: $white;
 	color: $text-black;
 	fill: $dark-gray;
+	transition: box-shadow 0.3s ease-in-out;
 	@extend .body-3;
-	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
+	@include box-shadow(0 1px 1px 1px rgba($text-black, 0.06));
 
 	&:hover {
 		border-color: $light-gray;
-		@include box-shadow(0.3px 5px 12.8px 2.3px rgba($text-black, 0.25));
+		@include box-shadow( 0 10px 30px 0 rgba(0, 0, 0, 0.29));
 	}
 
 	.blue {
@@ -57,10 +61,8 @@
 	}
 
 	.sdc-tile-header {
-		height: $body-font-1;
-		line-height: $header-height;
+		height: $heading-font-5 + 2px;
 		@include ellipsis($display: block);
-
 		font-size: $body-font-1;
 		@extend .text-uppercase;
 	}
@@ -70,10 +72,9 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
-		margin-bottom: -4px;
 
 		.sdc-tile-content-icon {
-			margin-top: 27px;
+			margin-top: 22px;
 			text-align: center;
 
 			svg {
@@ -81,8 +82,8 @@
 				height: 50px;
 
 				&.__vsp {
-					width: 60px;
-					height: 40px;
+					width: 50px;
+					height: 56px;
 				}
 				&.__vlm {
 					width: 45px;
@@ -111,20 +112,20 @@
 					padding: 0 8px;
 					font-size: inherit;
 				}
+
 				&.supertitle {
-					height: 1.2em;
-					line-height: 1.2;
-					color: $gray;
+					color: $dark-gray;
+					font-size: $body-font-3;
+					margin-bottom: 6px;
 				}
+
 				&.title {
-					height: 1.8em;
-					line-height: 1.8;
 					color: $text-black;
+					font-weight: 600;
 					@extend .body-1-semibold;
+					margin-bottom: 4px;
 				}
 				&.subtitle {
-					height: 1.6em;
-					line-height: 1.6;
 					color: $dark-gray;
 				}
 			}
@@ -135,23 +136,18 @@
 		width: $tile-width-less-padding;
 		height: $footer-height;
 		@include box-sizing;
-
-		border-top: 1px solid $tlv-light-gray;
-		margin-top: 7px;
-		padding-top: 9px;
+		border-top: 1px solid $light-gray;
 
 		color: $dark-gray;
 		fill: $dark-gray;
 		@extend .text-capitalize;
 
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		justify-content: space-between;
 
 		.sdc-tile-footer-cell {
-			&:first-child {
-				@include ellipsis;
-			}
+
 			svg{
 				width: 20px;
 				height: 12px;
