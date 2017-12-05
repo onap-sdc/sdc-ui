@@ -4,8 +4,7 @@ import {InputComponent} from "./input/input.component";
 import {DropDownComponent} from "./dropdown/dropdown.component";
 import {CommonModule} from "@angular/common";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
-import {DropDownGroupComponent} from "./dropdown/dropdown-group.component";
-import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
+import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 
 @NgModule({
     imports: [
@@ -18,15 +17,13 @@ import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
         DropDownComponent,
         InputComponent,
         CheckboxComponent,
-        DropDownGroupComponent,
-        DropDownTriggerDirective
+        RadioGroupComponent
     ],
     exports: [
         DropDownComponent,
-        DropDownTriggerDirective,
         InputComponent,
-        CheckboxComponent
-
+        CheckboxComponent,
+        RadioGroupComponent
     ]
 })
 export class FormElementsModule {
