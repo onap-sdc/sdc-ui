@@ -4,6 +4,7 @@ import {InputComponent} from "./input/input.component";
 import {DropDownComponent} from "./dropdown/dropdown.component";
 import {CommonModule} from "@angular/common";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
+import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {ValidationDirective} from "./input/validation.directive";
 
 @NgModule({
@@ -17,13 +18,17 @@ import {ValidationDirective} from "./input/validation.directive";
         DropDownComponent,
         InputComponent,
         CheckboxComponent,
-        ValidationDirective
+        ValidationDirective,
+        CheckboxComponent,
+        RadioGroupComponent
     ],
     exports: [
         DropDownComponent,
         InputComponent,
         CheckboxComponent,
-        ValidationDirective
+        ValidationDirective,
+        CheckboxComponent,
+        RadioGroupComponent
     ]
 })
 export class FormElementsModule {

@@ -1,5 +1,5 @@
 .sdc-input {
-  padding-bottom: 10px;
+  marigin:5px;
 
 
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -43,12 +43,15 @@
     }
   }
 
-  .sdc-label__error{
-    color: $red;
-    margin-top: 8px;
-    font-size: 11px;
-  }
 
+
+}
+
+.sdc-label__error{
+  color: $red;
+  margin-top: 8px;
+  font-size: 11px;
+  margin-bottom: 10px;
 }
 
 .hint::-webkit-input-placeholder {

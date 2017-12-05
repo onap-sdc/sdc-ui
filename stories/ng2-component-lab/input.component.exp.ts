@@ -5,15 +5,18 @@ import {experimentOn} from '@islavi/ng2-component-lab';
 import {OptionTypes} from "../../src/angular/form-elements/input/validation.model";
 
 export default experimentOn('Input')
-    .case('Input with Patterns', {
-        showSource: true,
-        context:{
-            optionTypes:OptionTypes
-        },
-        template: `
-      <sdc-input label="Please Enter value"  [placeHolder]="'Please enter something'" [options] = "[{type:optionTypes.REQUIRED, message:'HIHI'}, {type:optionTypes.PATTERN, patterns : ['test'],message:'pattern test'}]" #input></sdc-input>
-       <div>
-          <button (click)="input.validateValue()">Validate!</button> 
-       </div>
-    `
-    });
+    .group('Input with Patterns', [
+        {
+            id: 'InputwithPatterns',
+            showSource: true,
+            context:{
+                optionTypes:OptionTypes
+            },
+            template: `
+              <sdc-input label="Please Enter value" sdc-validation [valueToCheck]="input.value"  (onInputBlur)="sdcValidation.validateValue()" [placeHolder]="'Please enter something'" [options] = "[{type:optionTypes.REQUIRED, message:'not empty'}, {type:optionTypes.PATTERN, patterns : ['test'],message:'not match pattern'}]" #input #sdcValidation="sdc-validation"></sdc-input>
+               <div>
+                  <button (click)="sdcValidation.validateValue()">Validate!</button> 
+               </div>
+           `
+        }
+]);
