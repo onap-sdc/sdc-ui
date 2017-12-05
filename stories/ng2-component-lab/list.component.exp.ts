@@ -3,8 +3,10 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
-export default experimentOn('List')
-    .case('Simple list', {
+export default experimentOn('List').group('List', [
+    {
+        id: 'list',
+        title: 'Simple list',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -13,7 +15,10 @@ export default experimentOn('List')
       
         </sdc-list>
     `
-    }).case('List with unique validation', {
+    },
+    {
+        id: 'unique-list',
+        title: 'List with unique validation',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -24,7 +29,10 @@ export default experimentOn('List')
       
         </sdc-list>
     `
-    }).case('Disabled list', {
+    },
+    {
+        id: 'disabled-list',
+        title: 'Disabled list',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -34,7 +42,10 @@ export default experimentOn('List')
       
         </sdc-list>
     `
-    }).case('List with some readonly items', {
+    },
+    {
+        id: 'list-with-disabled-items',
+        title: 'List with some readonly items',
         showSource: true,
         template: `
         <sdc-list label="Please Enter value" 
@@ -44,4 +55,6 @@ export default experimentOn('List')
       
         </sdc-list>
     `
-    });
+    }
+]);
+
