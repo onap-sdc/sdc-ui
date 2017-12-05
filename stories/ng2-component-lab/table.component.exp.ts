@@ -3,13 +3,15 @@ import {tableData} from './../../src/angular/table/table-fake-data';
 /**
  * Created by M.S.BIT on 21/11/2017.
  */
-
 export default experimentOn('Table')
-    .case('Normal Table', {
+    .group('Normal Table', [{
+        id: 'normalTable',
         context: {
             data: [].concat(tableData)
         },
         showSource: true,
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
         template: `
       <sdc-table [rowsData]="data" #table1>
         
@@ -19,12 +21,14 @@ export default experimentOn('Table')
         </sdc-table-body>
       </sdc-table>
     `
-    })
-    .case('Normal Table with fixed header', {
+    }, {
+        id: 'normalTableFixedHeader',
         context: {
             data: [].concat(tableData)
         },
         showSource: true,
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
         template: `
       <sdc-table [rowsData]="data" #table2>
         
@@ -34,12 +38,14 @@ export default experimentOn('Table')
         </sdc-table-body>
       </sdc-table>
     `
-    })
-    .case('Filtered Table', {
+    },{
+        id: 'normalTableWithFilters',
         context: {
             data: [].concat(tableData)
         },
         showSource: true,
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
         template: `
       <sdc-table [rowsData]="data" #table3>
         <sdc-table-filter-bar [headerCols]="table3.headerCols" (changed)="table3.handleFilter($event)"></sdc-table-filter-bar>
@@ -49,12 +55,14 @@ export default experimentOn('Table')
         </sdc-table-body>
       </sdc-table>
     `
-    })
-    .case('Table with Searching', {
+    }, {
+        id: 'normalTablePages',
         context: {
             data: [].concat(tableData)
         },
         showSource: true,
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
         template: `
       <sdc-table [rowsData]="data" #table4>
         <sdc-table-filter-bar [hidePanel]="true" [headerCols]="table4.headerCols" (changed)="table4.handleFilter($event)"></sdc-table-filter-bar>
@@ -64,12 +72,14 @@ export default experimentOn('Table')
         </sdc-table-body>
       </sdc-table>
     `
-    })
-    .case('Table with Pagination', {
+    }, {
+        id: 'normalTablePagination',
         context: {
             data: [].concat(tableData)
         },
         showSource: true,
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
         template: `
       <sdc-table [rowsData]="data" #table5>
         <sdc-table-pagination-bar [rowsData]="table5.modifiedData" #paginationBar></sdc-table-pagination-bar>
@@ -79,12 +89,14 @@ export default experimentOn('Table')
         </sdc-table-body>
       </sdc-table>
     `
-    })
-    .case('Table with Infinity Scrolling', {
+    }, {
+        id: 'normalTableInfinityScroll',
         context: {
             data: [].concat(tableData)
         },
         showSource: true,
+        title: 'Radio buttons group (two ways binding)',
+        description: 'Radio buttons group (two ways binding)',
         template: `
       <sdc-table [rowsData]="data" #table6>
         <sdc-table-pagination-bar [hidePanel]="true" [rowsData]="table6.modifiedData" #paginationBar></sdc-table-pagination-bar>
@@ -94,4 +106,4 @@ export default experimentOn('Table')
         </sdc-table-body>
       </sdc-table>
     `
-    })
+    }])
