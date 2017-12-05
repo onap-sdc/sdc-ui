@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core'
+import template from "./dropdown.component.html";
 
 export class DropdownValue {
     value:any;
@@ -12,7 +13,7 @@ export class DropdownValue {
 
 @Component({
     selector: 'sdc-dropdown',
-    templateUrl: './dropdown.component.html',
+    template: template,
 })
 export class DropDownComponent {
 
