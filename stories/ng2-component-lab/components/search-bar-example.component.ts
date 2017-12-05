@@ -1,7 +1,7 @@
 /**
  * Created by rc2122 on 11/15/2017.
  */
-import {Component, Input} from "@angular/core";
+import {Component} from "@angular/core";
 
 @Component({
     selector: "search-bar-example",
