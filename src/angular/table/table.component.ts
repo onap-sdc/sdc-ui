@@ -1,7 +1,7 @@
 /**
  * Created by M.S.BIT on 21/11/2017.
  */
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter} from "@angular/core";
 import {CompaniesTableConfig} from "./config/table.contants";
 import {IColumnConfigModel, IFilterItem, FilterOperator, IFilterGroup} from "./models/table.models";
 import {TableService} from "./services/table.service";
@@ -14,6 +14,7 @@ import {TableService} from "./services/table.service";
 })
 
 export class TableComponent implements OnInit{
+
     /**
      * The static configuration of the table
      */
@@ -60,6 +61,11 @@ export class TableComponent implements OnInit{
 
     @Input() alignmentHeader: string;
 
+    /**
+     * Modified data changed EventEmitter
+     */
+    @Output('changed') dataChanged: EventEmitter<any[]> = new EventEmitter();
+
     constructor(private tableService: TableService){}
 
     ngOnInit() {
@@ -92,7 +98,12 @@ export class TableComponent implements OnInit{
             this.sortByField    = col.key;
             this.sortDescending = true;
         }
-        this.tableService.sortColumn(this.modifiedData, col, this.sortDescending);
+        this.setModifiedData(this.tableService.sortColumn(this.modifiedData, col, this.sortDescending));
+    }
+
+    public setModifiedData(modifiedData: any[]):void {
+        this.modifiedData = modifiedData;
+        this.dataChanged.next(this.modifiedData);
     }
 
     public onScrollHitBottom(){

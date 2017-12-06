@@ -81,7 +81,7 @@ export default experimentOn('Table')
         title: 'Radio buttons group (two ways binding)',
         description: 'Radio buttons group (two ways binding)',
         template: `
-      <sdc-table [rowsData]="data" #table5>
+      <sdc-table [rowsData]="data" (changed)="paginationBar.updateRows($event)" #table5>
         <sdc-table-pagination-bar [rowsData]="table5.modifiedData" #paginationBar></sdc-table-pagination-bar>
         <sdc-table-body [maxHeight]="table5.maxHeight" [fixedHeader]="table5.fixedHeader">
             <sdc-table-header-row [headerCols]="table5.headerCols" (onColClick)="table5.onColumnHeaderClick($event)" [sortByField]="table5.sortByField" [sortDescending]="table5.sortDescending" table-header-row></sdc-table-header-row>

@@ -18,7 +18,7 @@ import {CompaniesTableConfig} from "../config/table.contants";
     //changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class TablePaginationBarComponent implements OnInit, OnChanges{
+export class TablePaginationBarComponent implements OnInit {
 
     @Input() hidePanel: boolean = false;
     @Input() rowsData: any;
@@ -47,10 +47,9 @@ export class TablePaginationBarComponent implements OnInit, OnChanges{
         this.firstPage();
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['rowsData']) {
-            console.log("changed");
-        }
+    updateRows(pageData){
+        this.pageData = pageData;
+        this.goPage(this.pageCursor.pageNumber);
     }
 
     /**

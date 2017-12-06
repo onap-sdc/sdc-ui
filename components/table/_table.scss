@@ -5,15 +5,24 @@
   padding: 3px;
 
   .sdc-table-cell {
-    padding: 3px;
+    padding: 12px;
     min-width: 50px;
+    border-right: 1px solid $light-gray;
+    line-height: 1;
+    border-right: 1px solid #d2d2d2;
+    height: 42px;
+    box-sizing: border-box;
   }
 
 
   .sdc-table-header {
-    background-color: $light-gray;
+    background-color: $background-gray;
+    height:42px;
     display:flex;
     flex-direction: row;
+    border: 1px solid $light-gray;
+    box-sizing: border-box;
+    font-weight: 900;
   }
   .sdc-table-body{
     width:100%;
@@ -21,6 +30,9 @@
     display:flex;
     flex-direction: column;
     overflow: scroll;
+    height:42px;
+    line-height: 35px;
+    box-sizing: border-box;
   }
 
   .sdc-table-row {
@@ -28,6 +40,10 @@
     justify-content: space-around;
     align-items: stretch;
     border-bottom: 1px solid $light-gray;
+
+    &:hover {
+      background-color: $background-gray;
+    }
 
     .sdc-table-cell {
       text-align: center;
