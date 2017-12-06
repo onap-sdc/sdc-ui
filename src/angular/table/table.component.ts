@@ -1,7 +1,7 @@
 /**
  * Created by M.S.BIT on 21/11/2017.
  */
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, AfterViewInit, Input} from "@angular/core";
 import {CompaniesTableConfig} from "./config/table.contants";
 import {IColumnConfigModel, IFilterItem, FilterOperator, IFilterGroup} from "./models/table.models";
 import {TableService} from "./services/table.service";
@@ -13,7 +13,7 @@ import {TableService} from "./services/table.service";
     styles: []
 })
 
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit, AfterViewInit {
     /**
      * The static configuration of the table
      */
@@ -62,6 +62,14 @@ export class TableComponent implements OnInit{
 
     constructor(private tableService: TableService){}
 
+    public get totalRows() {
+        return this.tableService.getTotalRows(this.rowsData);
+    }
+
+    public get modifiedRows() {
+        return this.tableService.getTotalRows(this.modifiedData);
+    }
+
     ngOnInit() {
         if (this.tableConfig && this.tableConfig.columns) {
             this.headerCols = this.tableService.prepareColumnHeadersArray(this.tableConfig.columns);
@@ -77,6 +85,29 @@ export class TableComponent implements OnInit{
          * Filtered content
          */
         this.modifiedData = this.rowsData;
+    }
+
+    public ngAfterViewInit() {
+        this.setDefaultSort();
+    }
+
+    private setDefaultSort() {
+        const cols: IColumnConfigModel[] = this.headerCols.filter((item) => {
+            return item.sortable && item.defaultSort;
+        });
+
+        debugger;
+
+        if (cols && cols.length > 0) {
+            const col: IColumnConfigModel = cols[0];
+
+            if (!this.sortByField) {
+                this.sortByField = col.key
+                this.sortDescending = col.ascending;
+            }
+
+            this.onColumnHeaderClick(col);
+        }
     }
 
     public onColumnHeaderClick(col: IColumnConfigModel) {

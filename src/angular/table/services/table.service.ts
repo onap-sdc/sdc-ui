@@ -11,6 +11,22 @@ import {ITableDataServies} from "./table-data-service.interface";
 @Injectable()
 export class TableService implements ITableDataServies{
 
+    /**
+     * Counters
+     */
+    public getTotalRows(rowsData: any): number {
+        return rowsData.length;
+    }
+
+    public getTotalPages(rowsData: any, cursor: IPageCursor): number {
+        return this.getLastPageNumber(rowsData.length, cursor.rowsInPage);
+    }
+
+    /**
+     * Init column headers
+     * @param {IAppTableColumnsModel} metaDataCols
+     * @returns {IColumnConfigModel[]}
+     */
     public prepareColumnHeadersArray(metaDataCols: IAppTableColumnsModel):IColumnConfigModel[] {
         return Object.keys(metaDataCols)
             .sort(this.sortColumnHeadersOrder.bind(this, metaDataCols))
@@ -41,7 +57,7 @@ export class TableService implements ITableDataServies{
      */
     public groupFilter(rowsData: any, cols: IColumnConfigModel[], groups: IFilterGroup[]): any {
 
-        groups.map((group) => {
+        groups.forEach((group) => {
             rowsData = rowsData.filter((row) => {
                 const filterItems: IFilterItem[] = group.filters.filter((filter) => {
                     const col: IColumnConfigModel = this.findColumnConfigModel(cols, filter.field);
@@ -64,7 +80,7 @@ export class TableService implements ITableDataServies{
      */
     public itemFilter(rowsData: any, cols: IColumnConfigModel[], filters: IFilterItem[]): any {
 
-        filters.map((filter) => {
+        filters.forEach((filter) => {
             rowsData = rowsData.filter((row) => {
                 const col: IColumnConfigModel = this.findColumnConfigModel(cols, filter.field);
                 return this.isRowInFilter(row, col, filter);
@@ -222,6 +238,10 @@ export class TableService implements ITableDataServies{
         const valueA: string = row[filter.field].toString();
         const valueB: string = filter.value;
 
+        if(col.searchable) {
+            return this.filterStrings(valueA, valueB, filter.operator);
+        }
+
         switch (col.dataType) {
             case ColumnDataTypes.Number:
                 return this.filterNumbers(valueA, valueB, filter.operator);
@@ -245,27 +265,40 @@ export class TableService implements ITableDataServies{
      * @returns {boolean}
      */
     private filterStrings(valueA: string, valueB: string, operator: FilterOperator): boolean {
+        const pos = 0;
         const length = valueA.length < valueB.length ? valueA.length : valueB.length;
 
         switch(operator) {
             case FilterOperator.Equal:
-                return valueA.substr(0, length).toLowerCase() == valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() == valueB.substr(0, length).toLowerCase();
 
             case FilterOperator.NotEqual:
-                return valueA.substr(0, length).toLowerCase() != valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() != valueB.substr(0, length).toLowerCase();
 
             case FilterOperator.LessThan:
-                return valueA.substr(0, length).toLowerCase() < valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() < valueB.substr(0, length).toLowerCase();
 
             case FilterOperator.LessThanOrEqual:
-                return valueA.substr(0, length).toLowerCase() <= valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() <= valueB.substr(0, length).toLowerCase();
 
             case FilterOperator.GreaterThan:
-                return valueA.substr(0, length).toLowerCase() > valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() > valueB.substr(0, length).toLowerCase();
 
             case FilterOperator.GreaterThanOrEqual:
-                return valueA.substr(0, length).toLowerCase() >= valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() >= valueB.substr(0, length).toLowerCase();
         }
+    }
+
+    private getPosition(text: string): number {
+        if(!text) {
+            return 0;
+        }
+
+        if (text.trim().substr(0, 1) == '*') {
+            return 0;
+        }
+
+        return 0;
     }
 
     /**

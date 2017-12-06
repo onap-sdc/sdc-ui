@@ -37,12 +37,12 @@ export class TablePaginationBarComponent implements OnInit, OnChanges{
             rowsInPage: this.hidePanel ? +CompaniesTableConfig.metaData.rowsInPage: 18
         };
 
-        const col: IColumnConfigModel = {
-            order: 0,
-            key: "name",
-            dataType: ColumnDataTypes.Text
-        };
-        this.tableService.sortColumn(this.rowsData, col, false);
+        // const col: IColumnConfigModel = {
+        //     order: 0,
+        //     key: "name",
+        //     dataType: ColumnDataTypes.Text
+        // };
+        // this.tableService.sortColumn(this.rowsData, col, false);
 
         this.firstPage();
     }
@@ -51,6 +51,18 @@ export class TablePaginationBarComponent implements OnInit, OnChanges{
         if (changes['rowsData']) {
             console.log("changed");
         }
+    }
+
+    public get currentPage() {
+        return this.pageCursor.pageNumber;
+    }
+
+    public get totalPages() {
+        return this.tableService.getTotalPages(this.rowsData, this.pageCursor);;
+    }
+
+    public get pageRows() {
+        return this.pageData.length;
     }
 
     /**
@@ -65,7 +77,7 @@ export class TablePaginationBarComponent implements OnInit, OnChanges{
     }
 
     clearInfinityScroll() {
-        this.firstPage();
+        this.pageData = this.pageData.filter((item, index) => { return index < this.pageCursor.rowsInPage; });
     }
 
     /**
