@@ -1,5 +1,5 @@
 import {OnInit, Component, Input, ViewChildren, QueryList, ElementRef, EventEmitter, Output} from "@angular/core";
-import {IFilterItem, IFilterGroup} from "../models/table.models";
+import {IColumnConfigModel, IFilterItem, IFilterGroup, FilterOperator} from "../models/table.models";
 
 /**
  * Created by M.S.BIT on 28/11/2017.
@@ -65,7 +65,7 @@ export class TableFilterBarComponent implements OnInit{
 
     static groupNum = 1;
 
-    private filterItems:IFilterGroup[] = [];
+    private filterGroups: IFilterGroup[] = [];
 
     @Input() headerCols: any;
 
@@ -138,8 +138,8 @@ export class TableFilterBarComponent implements OnInit{
             return {filters: groups[key]}
         });
 
-        this.filterItems = newFilters.concat(groupArray);
-        this.changed.next(this.filterItems);
+        this.filterGroups = newFilters.concat(groupArray);
+        this.changed.next(this.filterGroups);
     }
 
     removeFilter(index) {
@@ -147,7 +147,30 @@ export class TableFilterBarComponent implements OnInit{
     }
 
     searchFilter(form: HTMLFormElement) {
-        const text = form.elements[0]['value']
-        //alert(text);
+        const searchText = form.elements[0]['value'];
+
+        const cols: IColumnConfigModel[] = this.headerCols.filter((item) => {
+            return item.searchable;
+        });
+
+        if(cols && cols.length > 0) {
+            let groups: IFilterGroup[] = [{ filters: [] }];
+
+            cols.forEach((item) => {
+                groups[0].filters.push ({
+                    field: item.key,
+                    operator: FilterOperator.Equal,
+                    value: searchText
+                });
+            });
+
+            this.changed.next(groups);
+        }
+    }
+
+    searchClear(form: HTMLFormElement) {
+        form.elements[0]['value'] = "";
+
+        this.searchFilter(form);
     }
 }

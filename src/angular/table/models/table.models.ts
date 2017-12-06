@@ -36,9 +36,11 @@ export interface IColumnConfigModel {
 
     // Functional
     sortable?: boolean;
+    defaultSort?: boolean
     sortByField?: string;
     ascending?: boolean;
     clickable?: boolean;
+    searchable?: boolean;
 
     // Types
     dataType: ColumnDataTypes;

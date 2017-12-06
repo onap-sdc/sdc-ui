@@ -17,10 +17,13 @@ export const CompaniesTableConfig: ITableConfig = {
             order    : 0,
             dataType : ColumnDataTypes.Text,
             clickable: true,
+            searchable: true,
             sortable : true,
+            defaultSort: true,
+            ascending: true,
             width: '400px',
             alignmentRow: 'left',
-            alignmentHeader: 'center'
+            alignmentHeader: 'center',
         },
         lastConnectionResult   : {
             order    : 1,
@@ -51,6 +54,7 @@ export const CompaniesTableConfig: ITableConfig = {
             order   : 4,
             dataType: ColumnDataTypes.Text,
             sortable: true,
+            searchable: true,
             alignmentRow: 'left',
             alignmentHeader: 'center'
         },
@@ -59,6 +63,7 @@ export const CompaniesTableConfig: ITableConfig = {
             order   : 5,
             dataType: ColumnDataTypes.Text,
             sortable: true,
+            searchable: true,
             alignmentRow: 'left',
             alignmentHeader: 'center'
         },
