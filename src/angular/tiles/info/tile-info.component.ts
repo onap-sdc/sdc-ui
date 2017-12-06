@@ -12,7 +12,8 @@ export class TileInfoComponent  implements OnInit {
     @Input() public text: string;
     @Input() public color: string;
     @Input() public icon: string;
-    @Input() public pre_title: string;
+    @Input() public supertitle: string;
+    @Input() public subtitle: string;
 
     constructor(private elRef: ElementRef){}
 

@@ -5,9 +5,8 @@
 	$tile-full-width: 204px;
 	$tile-full-height: 204px;
 	$tile-padding: 10px;
-	$border-width: 1px;
 
-	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2) - ($border-width * 2);
+	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
 
 	$footer-height: 23px;

@@ -12,7 +12,7 @@ export default experimentOn('Tiles')
         template: `
                 <sdc-tile>
                     <sdc-tile-header text="P" color="blue" header></sdc-tile-header>
-                    <sdc-tile-info text="Router" color = "blue" pre_title="test"  icon="test_icon" info ></sdc-tile-info>
+                    <sdc-tile-info text="Router" color = "blue"  supertitle="test" subtitle="subtitle"  icon="test_icon" info ></sdc-tile-info>
                     <sdc-tile-footer text="Footer" icon="test" footer></sdc-tile-footer>
                 </sdc-tile>`
     }).case('Tile Sample purple', {
@@ -24,7 +24,7 @@ export default experimentOn('Tiles')
         template: `
                 <sdc-tile>
                     <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
-                    <sdc-tile-info text="Router" color = "purple" pre_title="test"  icon="test_icon" info ></sdc-tile-info>
+                    <sdc-tile-info text="Router" color = "purple" supertitle="test" subtitle="subtitle"  icon="test_icon" info ></sdc-tile-info>
                     <sdc-tile-footer text="Footer" icon="test" footer></sdc-tile-footer>
                 </sdc-tile>`
     }).case('Tile Sample without footer', {
@@ -36,7 +36,7 @@ export default experimentOn('Tiles')
         template: `
                 <sdc-tile>
                     <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
-                    <sdc-tile-info text="Router" color = "purple" pre_title="test" icon="test_icon" info></sdc-tile-info>
+                    <sdc-tile-info text="Router" color = "purple"  supertitle="test" subtitle="subtitle"  icon="test_icon" info></sdc-tile-info>
                 </sdc-tile>`
     }).case('Tile Sample without header', {
         context: {
@@ -46,7 +46,7 @@ export default experimentOn('Tiles')
         showSource: true,
         template: `
                 <sdc-tile>
-                    <sdc-tile-info text="Router" color = "purple" pre_title="test" icon="test_icon" info></sdc-tile-info>
+                    <sdc-tile-info text="Router" color = "purple"  supertitle="test" subtitle="subtitle" icon="test_icon" info></sdc-tile-info>
                 </sdc-tile>`
     }).case('Tile just with info', {
         context: {
@@ -56,7 +56,7 @@ export default experimentOn('Tiles')
         showSource: true,
         template: `
                 <sdc-tile>
-                    <sdc-tile-info text="Router" color = "purple" pre_title="test" info></sdc-tile-info>
+                    <sdc-tile-info text="Router" color = "purple"  supertitle="test" subtitle="subtitle" info></sdc-tile-info>
                 </sdc-tile>`
     })
 
