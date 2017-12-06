@@ -25,11 +25,11 @@ import {
     Component, Input, ViewContainerRef, ViewChild
 } from '@angular/core';
 import {ModalButtonConfig} from "./models/modal-button-config";
-
+import template from './modal.component.html';
 
 @Component({
     selector: 'sdc-modal',
-    templateUrl: './modal.component.html'
+    template: template
 })
 
 export class ModalComponent {
