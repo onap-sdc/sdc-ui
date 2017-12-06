@@ -7,6 +7,8 @@
         [name]="name"
         [(ngModel)]="value"
         (blur)="onBlur()"
+        (focus)="onFocus()"
+        (keyup)="onKeyup()"
         [maxlength]="maxLength"
         [placeholder]= "placeHolder ? placeHolder : ''"
         [minlength]="minLength"

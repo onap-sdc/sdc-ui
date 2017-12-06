@@ -1,6 +1,4 @@
-export interface Ipattern{
-    regex: string;
-};
+
 
 export enum OptionTypes {
     CUSTOM,
@@ -11,24 +9,10 @@ export enum OptionTypes {
 export interface IOption{
     type: OptionTypes;
     message: string;
-    patterns?: Ipattern[];
+    patterns?: string[];
     callback?: (value:string) => boolean;
 };
 
-export interface IOptionCustom extends IOption{
-    type: OptionTypes.CUSTOM;
-    callback: (value:string) => boolean;
-};
-
-export interface IOptionPattern extends IOption{
-    type: OptionTypes.PATTERN;
-    patterns?: Ipattern[];
-};
-
-export interface IOptionRequired extends IOption{
-    type: OptionTypes.REQUIRED;
-
-};
 
 export interface ICheck{
     result:boolean;
@@ -36,18 +20,5 @@ export interface ICheck{
 };
 
 export class CheckModel implements ICheck {
-    constructor(private _result: boolean, private _error: string){};
-    public get result():boolean{
-        return this._result;
-    }
-    public set result(value:boolean) {
-        this._result = value;
-    }
-    public get error() :string{
-        return this._error;
-    }
-    public set error(message:string){
-        this._error = message;
-    }
-
+    constructor(public result: boolean, public error: string){};
 };

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
 import {CheckModel, IOption, OptionTypes} from "./validation.model";
 
@@ -7,17 +7,19 @@ export interface ICheck {
     error: string;
 }
 
-export interface IPattern{
-    regex: string;
-    error_message: string;
-}
-
 @Component({
     selector: 'sdc-input',
     templateUrl: './input.component.html',
 })
 
-export class InputComponent implements OnInit{
+export class InputComponent implements OnInit, OnChanges{
+
+    private validationActions = {
+        [OptionTypes.REQUIRED]: this.requiredValidation,
+        [OptionTypes.CUSTOM]:this.customValidation,
+        [OptionTypes.PATTERN]:this.patternValidation
+    };
+
     protected control: FormControl;
     public check: ICheck;
     @Input() public label: string;
@@ -31,7 +33,14 @@ export class InputComponent implements OnInit{
     @Input() public options: IOption[];
     @Input() public checkValidation: boolean;
 
-    @Output('onInputBlur') blurEmitter: EventEmitter<any> = new EventEmitter();
+    @Output('blur') blurEmitter: EventEmitter<any> = new EventEmitter();
+
+    @Output('change') changeEmitter: EventEmitter<any> = new EventEmitter();
+
+    @Output('focus') focusEmitter: EventEmitter<any> = new EventEmitter();
+
+    @Output('keyup') keyupEmitter: EventEmitter<any> = new EventEmitter();
+
 
     constructor() {
         this.control = new FormControl('', []);
@@ -47,6 +56,10 @@ export class InputComponent implements OnInit{
             this.validateValue();
         }
     }
+
+    /**
+     * Check func that input required
+     */
     public checkRequired():void{
         if(!this.options) return;
         this.required = this.options.reduce((required, option)=> {
@@ -57,43 +70,69 @@ export class InputComponent implements OnInit{
         }, false);
     }
 
+    /**
+     *  Input Events handlers
+     */
+
     public onBlur(){
         this.validateValue();
         this.blurEmitter.emit(this.check);
     }
 
-    private validateValue():void{
-        if(!this.options) return;
-        this.check = new CheckModel(true, '');
-        /*this.check =*/ this.options.reduce((check, option)=> {
-            switch(option.type){
-                case (OptionTypes.REQUIRED):{
-                    this.value ? check.result = true : check.result = false;
-                } break;
-                case (OptionTypes.PATTERN):{
-                    check.result = this.comparePatterns(this.value, option.patterns);
-                } break;
-                case (OptionTypes.CUSTOM):{
-                    check.result = option.callback(this.value);
-                } break;
-            }
-            if(!check.result) {
-                check.error.length ? check.error += ', ' + option.message : check.error = option.message;
-            }
-            return check;
-        }, this.check);
+    public onChange(){
+        this.validateValue();
+        this.changeEmitter.emit(this.check);
     }
 
-    private comparePatterns(value, patterns){
-        if(!patterns || !value) {return false;}
+    public onFocus(){
+        this.focusEmitter.emit(this.check);
+    }
 
-        return (patterns).reduce((res, pattern) => {
+    public onKeyup(){
+        this.keyupEmitter.emit(this.check);
+    }
+
+
+    /**
+     * Input Validation Handlers
+     */
+
+    private requiredValidation(value, option){
+        let result;
+        value ? result = true : result = false;
+        return result;
+    }
+
+    private customValidation(value, option){
+        return option.callback(value);
+    }
+
+    private patternValidation(value, option){
+        if(!option.patterns || !value) {return false;}
+        return (option.patterns).reduce((res, pattern) => {
             let regex = new RegExp(pattern);
             let match = value.match(regex);
             match ? res = true : res = false;
             return res;
         }, false );
     }
+
+    /**
+     * Validation mechanism
+     */
+
+    private validateValue():void{
+        if(!this.options) return;
+        this.check = new CheckModel(true, '');
+        this.options.forEach((option)=> {
+            let result = this.validationActions[option.type](this.value, option);
+            if(!result) {
+                this.check.result = result;
+                this.check.error.length ? this.check.error += ', ' + option.message : this.check.error = option.message;
+            }
+        });
+    }
+
 
 }
 
