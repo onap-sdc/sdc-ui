@@ -72,7 +72,7 @@ export class TableService implements ITableDataServies{
     }
 
     /**
-     * Filter (uses IFilterItem interface) - part of the filter group
+     * Filter (uses IFilterItem interface)
      * @param rowsData
      * @param {IColumnConfigModel[]} cols
      * @param {IFilterItem[]} filters
@@ -270,35 +270,23 @@ export class TableService implements ITableDataServies{
 
         switch(operator) {
             case FilterOperator.Equal:
-                return valueA.substr(pos, length).toLowerCase() == valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() == valueB.substr(pos, length).toLowerCase();
 
             case FilterOperator.NotEqual:
-                return valueA.substr(pos, length).toLowerCase() != valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() != valueB.substr(pos, length).toLowerCase();
 
             case FilterOperator.LessThan:
-                return valueA.substr(pos, length).toLowerCase() < valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() < valueB.substr(pos, length).toLowerCase();
 
             case FilterOperator.LessThanOrEqual:
-                return valueA.substr(pos, length).toLowerCase() <= valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() <= valueB.substr(pos, length).toLowerCase();
 
             case FilterOperator.GreaterThan:
-                return valueA.substr(pos, length).toLowerCase() > valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() > valueB.substr(pos, length).toLowerCase();
 
             case FilterOperator.GreaterThanOrEqual:
-                return valueA.substr(pos, length).toLowerCase() >= valueB.substr(0, length).toLowerCase();
+                return valueA.substr(pos, length).toLowerCase() >= valueB.substr(pos, length).toLowerCase();
         }
-    }
-
-    private getPosition(text: string): number {
-        if(!text) {
-            return 0;
-        }
-
-        if (text.trim().substr(0, 1) == '*') {
-            return 0;
-        }
-
-        return 0;
     }
 
     /**

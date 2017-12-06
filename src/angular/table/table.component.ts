@@ -101,8 +101,6 @@ export class TableComponent implements OnInit, AfterViewInit {
             return item.sortable && item.defaultSort;
         });
 
-        debugger;
-
         if (cols && cols.length > 0) {
             const col: IColumnConfigModel = cols[0];
 

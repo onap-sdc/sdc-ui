@@ -102,7 +102,7 @@ export default experimentOn('Table')
         title: 'Table with Infinity Scroll',
         description: 'Table with infinity scroll',
         template: `
-      <sdc-table [rowsData]="data" #table6>
+      <sdc-table [rowsData]="data" (changed)="paginationBar6.updateRows($event)" #table6>
         <sdc-table-pagination-bar [hidePanel]="true" [rowsData]="table6.modifiedData" #paginationBar6></sdc-table-pagination-bar>
         <span>Rows: {{paginationBar6.pageRows}} / {{table6.totalRows}}</span>
         <sdc-table-body (scrollHitBottom)="paginationBar6.onScrollHitBottom()" [maxHeight]="table6.maxHeight" [fixedHeader]="table6.fixedHeader">

@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges, ChangeDetectionStrategy} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {TableService} from "../services/table.service";
-import {IPageCursor, IColumnConfigModel, ColumnDataTypes} from "../models/table.models";
+import {IPageCursor} from "../models/table.models";
 import {CompaniesTableConfig} from "../config/table.contants";
 
 @Component({
@@ -15,7 +15,6 @@ import {CompaniesTableConfig} from "../config/table.contants";
             padding: 6px 20px;
         }
     `],
-    //changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class TablePaginationBarComponent implements OnInit {
@@ -34,15 +33,8 @@ export class TablePaginationBarComponent implements OnInit {
     ngOnInit(): void {
         this.pageCursor = {
             pageNumber: 1,
-            rowsInPage: this.hidePanel ? +CompaniesTableConfig.metaData.rowsInPage: 18
+            rowsInPage: this.hidePanel ? +CompaniesTableConfig.metaData.rowsInPage: 10
         };
-
-        // const col: IColumnConfigModel = {
-        //     order: 0,
-        //     key: "name",
-        //     dataType: ColumnDataTypes.Text
-        // };
-        // this.tableService.sortColumn(this.rowsData, col, false);
 
         this.firstPage();
     }
@@ -77,6 +69,7 @@ export class TablePaginationBarComponent implements OnInit {
 
     clearInfinityScroll() {
         this.pageData = this.pageData.filter((item, index) => { return index < this.pageCursor.rowsInPage; });
+        this.pageCursor.pageNumber = 1;
     }
 
     /**

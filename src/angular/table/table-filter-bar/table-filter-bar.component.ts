@@ -75,6 +75,10 @@ export class TableFilterBarComponent implements OnInit{
 
     clearFilters(){
         this.filterControls = [{id:0}];
+
+        setTimeout(()=>{
+            this.submitFilter();
+        })
     }
 
     private getFilterFromFormData(form:ElementRef):IFilterItem {
@@ -171,6 +175,8 @@ export class TableFilterBarComponent implements OnInit{
     searchClear(form: HTMLFormElement) {
         form.elements[0]['value'] = "";
 
-        this.searchFilter(form);
+        setTimeout(()=>{
+            this.searchFilter(form);
+        })
     }
 }
