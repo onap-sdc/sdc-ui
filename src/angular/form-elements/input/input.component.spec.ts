@@ -34,7 +34,7 @@
 //     }));
 //
 //     it( 'Input validation', async(()=>{
-//         component.required = true;
+//         // component.required = true;
 //         component.value = '';
 //         component.validateInput('test');
 //         const test_check = { result: false, error: 'test' };

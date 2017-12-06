@@ -30,6 +30,12 @@
     }
   }
 
+  .sdc-label__error{
+    color: $red;
+    margin-top: 8px;
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
   .sdc-input__input {
     text-indent: 6px;
     height: 38px;
@@ -41,18 +47,14 @@
       outline: none;
 
     }
+
   }
 
 
 
 }
 
-.sdc-label__error{
-  color: $red;
-  margin-top: 8px;
-  font-size: 11px;
-  margin-bottom: 10px;
-}
+
 
 .hint::-webkit-input-placeholder {
   font-style: italic;

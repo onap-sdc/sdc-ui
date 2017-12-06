@@ -12,12 +12,12 @@ export interface IOption{
     type: OptionTypes;
     message: string;
     patterns?: Ipattern[];
-    callback?: (payload)=>{};
+    callback?: (value:string) => boolean;
 };
 
 export interface IOptionCustom extends IOption{
     type: OptionTypes.CUSTOM;
-    callback: (payload)=>{};
+    callback: (value:string) => boolean;
 };
 
 export interface IOptionPattern extends IOption{

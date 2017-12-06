@@ -6,10 +6,11 @@
         type="text"
         [name]="name"
         [(ngModel)]="value"
-        (blur)="onBlurInput()"
+        (blur)="onBlur()"
         [maxlength]="maxLength"
         [placeholder]= "placeHolder ? placeHolder : ''"
         [minlength]="minLength"
         [attr.disabled]="disabled"
     />
+    <label class="sdc-input__label sdc-label__error" *ngIf="check &&!check.result && check.error.length" >&#9888; {{check.error}}</label>
 </div>
