@@ -2,16 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
 import {CheckModel, IOption, OptionTypes} from "./validation.model";
 
-export interface ICheck {
-    result: boolean;
-    error: string;
-}
-
-export interface IPattern{
-    regex: string;
-    error_message: string;
-}
-
 @Component({
     selector: 'sdc-input',
     templateUrl: './input.component.html',
@@ -19,9 +9,6 @@ export interface IPattern{
 
 export class InputComponent implements OnInit{
     protected control: FormControl;
-    //public check: ICheck;
-
-    //@Output('valueChange') baseEmitter: EventEmitter<any> = new EventEmitter<any>();
     @Input() public label: string;
     @Input() public value: string;
     @Input() public disabled: boolean;
@@ -35,16 +22,12 @@ export class InputComponent implements OnInit{
     @Output('onInputBlur') blurEmitter: EventEmitter<any> = new EventEmitter();
 
     constructor() {
-        console.log(this.options)
-        this.control = new FormControl('', []);
-   }
-
-    ngOnInit(){
-
+       this.control = new FormControl('', []);
     }
 
+    ngOnInit(){}
+
     onValueChange(value: string){
-        console.log("value", value, this.value);
         this.value = value;
     }
 

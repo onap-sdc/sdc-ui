@@ -26,13 +26,9 @@ export class ValidationDirective implements OnChanges, OnInit, AfterViewInit {
         this.nativeElement = element.nativeElement;
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log("changes", changes);
-    }
+    ngOnChanges(changes: SimpleChanges): void {}
 
-    ngOnInit(){
-
-    }
+    ngOnInit(){}
 
     public checkRequired():void{
         if(!this.options) return;
@@ -57,10 +53,9 @@ export class ValidationDirective implements OnChanges, OnInit, AfterViewInit {
                 case (OptionTypes.PATTERN):{
                     check.result = this.comparePatterns(this.value, option.patterns);
                 } break;
-                // case (OptionTypes.CUSTOM):{
-                //     // console.log('ererer')
-                //     // option.callback('test');
-                // } break;
+                case (OptionTypes.CUSTOM):{
+                   check.result = <boolean>option.callback(this.value);
+                } break;
             }
             if(!check.result) {
                 check.error.length ? check.error += ', ' + option.message : check.error = option.message;
