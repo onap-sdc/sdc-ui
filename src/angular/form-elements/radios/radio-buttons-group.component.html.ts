@@ -1,3 +1,4 @@
+export default `
 <label class='sdc-radio-group__legend'>{{legend}}</label>
 <div class='sdc-radio-group__radios {{direction}}'>
     <template ngFor let-item="$implicit" [ngForOf]="options.items">
@@ -14,3 +15,4 @@
         </div>
     </template>
 </div>
+`;
