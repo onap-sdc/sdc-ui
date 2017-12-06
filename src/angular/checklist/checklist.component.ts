@@ -4,10 +4,11 @@
 import {Component, EventEmitter, Input, Output, ViewChild} from "@angular/core";
 import {ChecklistModel} from "./models/Checklist";
 import {ChecklistItemModel} from "./models/ChecklistItem";
+import template from "./checklist.component.html";
 
 @Component({
     selector: 'sdc-checklist',
-    templateUrl: './checklist.component.html'
+    template: template
 })
 export class ChecklistComponent  {
     @Input() public checklistModel: ChecklistModel;

@@ -1,3 +1,4 @@
+export default `
 <div>
     <span class="sdc-tile-footer-cell"> {{ text }} </span>
     <span class="sdc-tile-footer-cell" *ngIf="footer_icon">
@@ -18,3 +19,4 @@
             <!--</div>-->
         </span>
 </div>
+`;
