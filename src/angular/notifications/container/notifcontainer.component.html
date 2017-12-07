@@ -1,0 +1,7 @@
+<div id="containerid" class="sdc-notification-container ntns">
+
+    <div *ngFor="let notif of notifications">
+        <sdc-notification type={{notif.type}} notifyTitle={{notif.notifyTitle}} notifyText={{notif.notifyText}} position="top-right"></sdc-notification>
+    </div>
+
+</div>
