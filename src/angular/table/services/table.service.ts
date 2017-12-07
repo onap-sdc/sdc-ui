@@ -235,22 +235,22 @@ export class TableService implements ITableDataServies{
      * @returns {any}
      */
     private isRowInFilter(row: any, col: IColumnConfigModel, filter: IFilterItem): any {
-        const valueA: string = row[filter.field].toString();
-        const valueB: string = filter.value;
+        const field: string = row[filter.field].toString();
+        const value: string = filter.value;
 
         if(col.searchable) {
-            return this.filterStrings(valueA, valueB, filter.operator);
+            return this.filterStrings(field, value, filter.operator);
         }
 
         switch (col.dataType) {
             case ColumnDataTypes.Number:
-                return this.filterNumbers(valueA, valueB, filter.operator);
+                return this.filterNumbers(field, value, filter.operator);
 
             case ColumnDataTypes.Date:
-                return this.filterDates(valueA, valueB, filter.operator);
+                return this.filterDates(field, value, filter.operator);
         }
 
-        return this.filterStrings(valueA, valueB, filter.operator);
+        return this.filterStrings(field, value, filter.operator);
     }
 
     private findColumnConfigModel(cols: IColumnConfigModel[], field: string) {
@@ -259,94 +259,94 @@ export class TableService implements ITableDataServies{
 
     /**
      * Compares two strings
-     * @param {string} valueA
-     * @param {string} valueB
+     * @param {string} field
+     * @param {string} value
      * @param {FilterOperator} operator
      * @returns {boolean}
      */
-    private filterStrings(valueA: string, valueB: string, operator: FilterOperator): boolean {
+    private filterStrings(field: string, value: string, operator: FilterOperator): boolean {
         const pos = 0;
-        const length = valueA.length < valueB.length ? valueA.length : valueB.length;
+        const length = field.length < value.length ? field.length : value.length;
 
         switch(operator) {
             case FilterOperator.Equal:
-                return valueA.substr(pos, length).toLowerCase() == valueB.substr(pos, length).toLowerCase();
+                return field.substr(pos, length).toLowerCase() == value.substr(pos, length).toLowerCase();
 
             case FilterOperator.NotEqual:
-                return valueA.substr(pos, length).toLowerCase() != valueB.substr(pos, length).toLowerCase();
+                return field.substr(pos, length).toLowerCase() != value.substr(pos, length).toLowerCase();
 
             case FilterOperator.LessThan:
-                return valueA.substr(pos, length).toLowerCase() < valueB.substr(pos, length).toLowerCase();
+                return field.substr(pos, length).toLowerCase() < value.substr(pos, length).toLowerCase();
 
             case FilterOperator.LessThanOrEqual:
-                return valueA.substr(pos, length).toLowerCase() <= valueB.substr(pos, length).toLowerCase();
+                return field.substr(pos, length).toLowerCase() <= value.substr(pos, length).toLowerCase();
 
             case FilterOperator.GreaterThan:
-                return valueA.substr(pos, length).toLowerCase() > valueB.substr(pos, length).toLowerCase();
+                return field.substr(pos, length).toLowerCase() > value.substr(pos, length).toLowerCase();
 
             case FilterOperator.GreaterThanOrEqual:
-                return valueA.substr(pos, length).toLowerCase() >= valueB.substr(pos, length).toLowerCase();
+                return field.substr(pos, length).toLowerCase() >= value.substr(pos, length).toLowerCase();
         }
     }
 
     /**
      * Compares two numbers
-     * @param {string} valueA
-     * @param {string} valueB
+     * @param {string} field
+     * @param {string} value
      * @param {FilterOperator} operator
      * @returns {boolean}
      */
-    private filterNumbers(valueA: string, valueB: string, operator: FilterOperator): boolean {
+    private filterNumbers(field: string, value: string, operator: FilterOperator): boolean {
         switch(operator) {
             case FilterOperator.Equal:
-                return +valueA == +valueB;
+                return +field == +value;
 
             case FilterOperator.NotEqual:
-                return +valueA != +valueB;
+                return +field != +value;
 
             case FilterOperator.LessThan:
-                return +valueA < +valueB;
+                return +field < +value;
 
             case FilterOperator.LessThanOrEqual:
-                return +valueA <= +valueB;
+                return +field <= +value;
 
             case FilterOperator.GreaterThan:
-                return +valueA > +valueB;
+                return +field > +value;
 
             case FilterOperator.GreaterThanOrEqual:
-                return +valueA >= +valueB;
+                return +field >= +value;
         }
     }
 
     /**
      * Compares two dates
-     * @param {string} valueA
-     * @param {string} valueB
+     * @param {string} field
+     * @param {string} value
      * @param {FilterOperator} operator
      * @returns {boolean}
      */
-    private filterDates(valueA: string, valueB: string, operator: FilterOperator): boolean {
-        const dateA: Date = new Date(valueA);
-        const dateB: Date = new Date(valueB);
+    private filterDates(field: string, value: string, operator: FilterOperator): boolean {
+        const fieldDate: Date = new Date(field);
+        const valueDate: Date = new Date(value);
 
         switch(operator) {
             case FilterOperator.Equal:
-                return this.getDateAsYearMonthDay(dateA) == this.getDateAsYearMonthDay(dateB);
+                return this.getDateAsYearMonthDay(fieldDate) == this.getDateAsYearMonthDay(valueDate);
 
             case FilterOperator.NotEqual:
-                return this.getDateAsYearMonthDay(dateA) != this.getDateAsYearMonthDay(dateB);
+                return this.getDateAsYearMonthDay(fieldDate) != this.getDateAsYearMonthDay(valueDate);
 
             case FilterOperator.LessThan:
-                return this.getDateAsYearMonthDay(dateA) < this.getDateAsYearMonthDay(dateB);
+                return this.getDateAsYearMonthDay(fieldDate) < this.getDateAsYearMonthDay(valueDate);
 
             case FilterOperator.LessThanOrEqual:
-                return this.getDateAsYearMonthDay(dateA) <= this.getDateAsYearMonthDay(dateB);
+                return this.getDateAsYearMonthDay(fieldDate) <= this.getDateAsYearMonthDay(valueDate);
 
             case FilterOperator.GreaterThan:
-                return this.getDateAsYearMonthDay(dateA) > this.getDateAsYearMonthDay(dateB);
+                return this.getDateAsYearMonthDay(fieldDate) > this.getDateAsYearMonthDay(valueDate);
 
             case FilterOperator.GreaterThanOrEqual:
-                return this.getDateAsYearMonthDay(dateA) >= this.getDateAsYearMonthDay(dateB);
+                return this.getDateAsYearMonthDay(fieldDate) >= this.getDateAsYearMonthDay(valueDate);
         }
     }
 

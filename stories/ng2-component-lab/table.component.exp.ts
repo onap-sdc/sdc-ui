@@ -5,7 +5,7 @@ import {tableData} from './../../src/angular/table/table-fake-data';
  */
 
 export default experimentOn('Table')
-    .group('Normal Table', [{
+    .group('Table', [{
         id: 'normalTable',
         context: {
             data: [].concat(tableData)
