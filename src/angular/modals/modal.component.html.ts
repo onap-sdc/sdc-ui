@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-modal {{size}}">
     <div class="sdc-modal__content ">
         <div class="sdc-modal__header sdc-modal-type-{{type}}">
@@ -14,3 +15,4 @@
     </div>
 </div>
 <div class="modal-background"></div>
+`;
