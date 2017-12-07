@@ -14,13 +14,17 @@ export default experimentOn('Tiles')
         title: 'Tile sample blue',
         description: 'Tile sample blue',
         template: `
-            <sdc-tile>
-                <sdc-tile-header text="P" color="blue" header></sdc-tile-header>
-                <sdc-tile-info text="Router" color = "blue" pre_title="test"  icon="test_icon" info ></sdc-tile-info>
-                <sdc-tile-footer text="Footer" icon="test" footer></sdc-tile-footer>
+            <sdc-tile [headerText]="'P'" [headerColor]="'blue'" [iconColor]="'blue'" [iconName]="'test_icon'">
+                <sdc-tile-info>
+                    <sdc-tile-info-line [type]="'title'">Router</sdc-tile-info-line>
+                    <sdc-tile-info-line [type]="'subtitle'">Test</sdc-tile-info-line>
+                </sdc-tile-info>
+                <sdc-tile-footer>
+                    <sdc-tile-footer-cell>Footer</sdc-tile-footer-cell>
+                </sdc-tile-footer>
             </sdc-tile>
             `
-    }, 
+    },
     {
         id: 'tileSamplePurple',
         title: 'Tile sample purple',
@@ -31,13 +35,15 @@ export default experimentOn('Tiles')
         },
         showSource: true,
         template: `
-            <sdc-tile>
-                <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
-                <sdc-tile-info text="Router" color = "purple" pre_title="test"  icon="test_icon" info ></sdc-tile-info>
-                <sdc-tile-footer text="Footer" icon="test" footer></sdc-tile-footer>
+            <sdc-tile [headerText]="'P'" [headerColor]="'purple'" [iconName]="'test_icon'" [iconColor]="'purple'">
+                <sdc-tile-info>
+                    <sdc-tile-info-line [type]="'title'">Router</sdc-tile-info-line>
+                    <sdc-tile-info-line [type]="'subtitle'">Test</sdc-tile-info-line>
+                </sdc-tile-info>
+                <sdc-tile-footer>Footer</sdc-tile-footer>
             </sdc-tile>
         `
-    }, 
+    },
     {
         id: 'tileSampleWithoutFooter',
         title: 'Tile sample without footer',
@@ -48,12 +54,14 @@ export default experimentOn('Tiles')
         },
         showSource: true,
         template: `
-            <sdc-tile>
-                <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
-                <sdc-tile-info text="Router" color = "purple" pre_title="test" icon="test_icon" info></sdc-tile-info>
+            <sdc-tile [headerColor]="'purple'" [headerText]="'P'" [iconColor]="'purple'" [iconName]="'test_icon'">
+                <sdc-tile-info>
+                    <sdc-tile-info-line [type]="'title'">Router</sdc-tile-info-line>
+                    <sdc-tile-info-line [type]="'subtitle'">Test</sdc-tile-info-line>
+                </sdc-tile-info>
             </sdc-tile>
         `
-    }, 
+    },
     {
         id: 'tileSampleWithoutHeader',
         title: 'Tile sample without header',
@@ -64,11 +72,14 @@ export default experimentOn('Tiles')
         },
         showSource: true,
         template: `
-            <sdc-tile>
-                <sdc-tile-info text="Router" color = "purple" pre_title="test" icon="test_icon" info></sdc-tile-info>
+            <sdc-tile [iconName]="'test_icon'" [iconColor]="'purple'">
+                <sdc-tile-info>
+                    <sdc-tile-info-line [type]="'title'">Router</sdc-tile-info-line>
+                    <sdc-tile-info-line [type]="'subtitle'">Test</sdc-tile-info-line>
+                </sdc-tile-info>
             </sdc-tile>
         `
-    }, 
+    },
     {
         id: 'tileJustWithInfo',
         title: 'Tile just with info',
@@ -80,8 +91,10 @@ export default experimentOn('Tiles')
         showSource: true,
         template: `
                 <sdc-tile>
-                    <sdc-tile-info text="Router" color = "purple" pre_title="test" info></sdc-tile-info>
+                    <sdc-tile-info>
+                        <sdc-tile-info-line [type]="'title'">Router</sdc-tile-info-line>
+                        <sdc-tile-info-line [type]="'subtitle'">Test</sdc-tile-info-line>
+                    </sdc-tile-info>
                 </sdc-tile>`
     }
     ]);
-    

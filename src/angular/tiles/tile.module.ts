@@ -1,24 +1,27 @@
 import {NgModule} from "@angular/core";
 import {TileComponent} from "./tile.component";
 import {CommonModule} from "@angular/common";
-import {TileHeaderComponent} from "./header/tile-header.component";
 import {TileInfoComponent} from "./info/tile-info.component";
 import {TileFooterComponent} from "./footer/tile-footer.component";
+import {TileInfoLineComponent} from "./info/info-line/tile-info-line.component";
+import {TileFooterCellComponent} from "./footer/tile-footer-cell/tile-footer-cell.component";
 
 @NgModule({
     declarations: [
         TileComponent,
-        TileHeaderComponent,
+        TileInfoLineComponent,
         TileInfoComponent,
-        TileFooterComponent
+        TileFooterComponent,
+        TileFooterCellComponent
     ],
     imports: [CommonModule],
     entryComponents: [TileComponent],
     exports: [
         TileComponent,
-        TileHeaderComponent,
+        TileInfoLineComponent,
         TileInfoComponent,
-        TileFooterComponent
+        TileFooterComponent,
+        TileFooterCellComponent
     ]
 })
 
