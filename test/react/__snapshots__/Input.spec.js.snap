@@ -95,7 +95,7 @@ exports[`Input Input - file 1`] = `
     value={undefined}
   />
   <div
-    className="sdc-input-file"
+    className="sdc-input-file-browse"
   >
     <input
       className="sdc-input__input filename"
