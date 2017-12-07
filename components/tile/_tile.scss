@@ -1,7 +1,7 @@
 .sdc-tile {
 	$tile-full-width: 204px;
-	$tile-full-height: 200px;
-	$tile-padding: 11px;
+	$tile-full-height: 204px;
+	$tile-padding: 10px;
 
 	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
@@ -113,18 +113,19 @@
 					font-size: inherit;
 				}
 				&.supertitle {
-					height: 1.2em;
+					height: 1.1em;
 					line-height: 1.2;
 					color: $gray;
 				}
 				&.title {
-					height: 1.8em;
+					height: 1.6em;
 					line-height: 1.8;
 					color: $text-black;
+					font-weight: 600;
 					@extend .body-1-semibold;
 				}
 				&.subtitle {
-					height: 1.6em;
+					height: 1.5em;
 					line-height: 1.6;
 					color: $dark-gray;
 				}
@@ -160,7 +161,7 @@
 			button {
 				width: initial;
 				height: initial;
-				font-size: $body-font-3;
+				font-size: $body-font-2;
 
 				.svg-icon-wrapper {
 					.svg-icon-label {
