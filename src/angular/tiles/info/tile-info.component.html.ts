@@ -1,6 +1,6 @@
-
-    <div class="sdc-tile-content-icon" [ngClass] = "color">
-    <div class="svg-icon-wrapper"  *ngIf="icon">
+export default `
+<div class="sdc-tile-content-icon" [ngClass]="color">
+    <div class="svg-icon-wrapper" *ngIf="icon">
         <svg class="svg-icon __vsp" viewBox="0 0 59.5 40" id="vsp_icon">
             <title>
                 vsp_new_icon
@@ -16,9 +16,9 @@
         </svg>
     </div>
 </div>
-    <div class="sdc-tile-content-info">
-        <div class="sdc-tile-info-line supertitle" [ngClass] = "{'zero-margin':!footerExists}" >{{ pre_title }}</div>
-        <span class="sdc-tile-info-line title">{{ text }}</span>
-        <div class="sdc-tile-info-line subtitle" [ngClass] = "{'zero-margin':!footerExists}" >{{ pre_title }}</div>
-    </div>
-
+<div class="sdc-tile-content-info">
+        <div class="sdc-tile-info-line supertitle">{{ supertitle }}</div>
+        <div class="sdc-tile-info-line title">{{ title }}</div>
+        <div class="sdc-tile-info-line subtitle">{{ subtitle }}</div>
+</div>
+`;

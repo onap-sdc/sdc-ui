@@ -1,3 +1,4 @@
+export default `
 <div *ngFor="let checkbox of checklistModel.checkboxes">
     <div class="checkbox-item">
         <sdc-checkbox [label]="checkbox.label"
@@ -10,3 +11,4 @@
                    (checkedChange)="childCheckboxChange($event, checkbox)"></sdc-checklist>
     </div>
 </div>
+`;
