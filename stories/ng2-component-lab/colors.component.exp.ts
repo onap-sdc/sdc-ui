@@ -30,19 +30,27 @@ const secondaryColors = {
     'tlv-hover': '#e6f6fb',
 };
 
-export default experimentOn('Colors')
-    .case('Colors Palette', {
+export default experimentOn('Colors',1)
+    .group("Colors palette",[
+      {
+        id: 'primaryColorsPalette',
+        showSource: true,
         context: {
             colorsMap: primaryColors,
         },
-        template: `
-            <colors-table [tableTitle]="'Primary Colors'" [tableMapColors]="colorsMap"></colors-table>
-    `
-    }).case('', {
+        title: 'Primary colors palette',
+        description: 'Supported primary colors',
+        template: `<colors-table [tableTitle]="'Primary Colors'" [tableMapColors]="colorsMap"></colors-table>`,
+      },
+      {
+        id: 'secondaryColorsPalette',
+        showSource: true,
         context: {
             colorsMap: secondaryColors,
         },
-        template: `
-            <colors-table [tableTitle]="'Secondary Colors'" [tableMapColors]="colorsMap"></colors-table>
-    `
-    });
+        title: 'Secondary colors palette',
+        description: 'Supported secondary colors',
+        template: `<colors-table [tableTitle]="'Secondary Colors'" [tableMapColors]="colorsMap"></colors-table>`,
+      }
+    ]
+    );
