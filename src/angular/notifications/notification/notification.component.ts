@@ -24,7 +24,7 @@ export class NotificationComponent {
 
     public dismiss(): void {
         console.log("clicked dismiss");
-
+        this.destroyMe();
     }
 
     public ngOnInit(){

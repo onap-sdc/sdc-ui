@@ -24,16 +24,16 @@ export class NotificationsService  {
 
 
     private test0(){
-        this.push(new NotificationSettings('top-right', 5000, "warn", '', false, 'notif warn message test#0', 'Notif Title Warn'));
+        this.push(new NotificationSettings('top-right', 10000, "warn", '', false, 'notif warn message test#0', 'Notif Title Warn'));
     }
 
 
     private test1(){
-        this.push(new NotificationSettings('top-right', 5000, "warn", '', false, 'notif warn message test#1', 'Notif Title Warn'));
+        this.push(new NotificationSettings('top-right', 10000, "warn", '', false, 'notif warn message test#1', 'Notif Title Warn'));
     }
 
     private test2(){
-        this.push(new NotificationSettings('top-right', 5000, "error", '', false, 'notif error message comes here of test#2', 'Notif Title Error 2'));
+        this.push(new NotificationSettings('top-right', 10000, "error", '', false, 'notif error message comes here of test#2', 'Notif Title Error 2'));
     }
 
 

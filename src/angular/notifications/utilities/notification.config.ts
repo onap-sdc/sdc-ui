@@ -3,8 +3,6 @@ export type NotificationType =
     "info" | "warn" | "error";
 
 export class NotificationSettings {
-
-
     public position: string;
     public duration: number;
     public type: NotificationType;
