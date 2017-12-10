@@ -1,5 +1,5 @@
-import {Component, Input} from "@angular/core";
 import template from "./tile-info.component.html";
+import {Component, Input, ElementRef, OnInit} from "@angular/core";
 
 
 @Component({
@@ -9,11 +9,15 @@ import template from "./tile-info.component.html";
 })
 
 export class TileInfoComponent {
-    @Input() public text: string;
     @Input() public color: string;
     @Input() public icon: string;
-    @Input() public pre_title: string;
+    @Input() public supertitle : string;
+    @Input() public title: string;
+    @Input() public subtitle: string;
 
-    constructor() {}
+
+    constructor(){
+    }
+
 }
 

@@ -17,7 +17,8 @@ export default `
     </div>
 </div>
 <div class="sdc-tile-content-info">
-    <span class="sdc-tile-info-line title">{{ text }}</span>
-    <div class="sdc-tile-info-line supertitle">{{ pre_title }}</div>
+        <div class="sdc-tile-info-line supertitle">{{ supertitle }}</div>
+        <div class="sdc-tile-info-line title">{{ title }}</div>
+        <div class="sdc-tile-info-line subtitle">{{ subtitle }}</div>
 </div>
 `;
