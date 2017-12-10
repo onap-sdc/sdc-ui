@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core'
+import template from "./tile-footer.component.html";
 
 
 @Component({
     selector:'sdc-tile-footer',
-    templateUrl:'./tile-footer.component.html',
+    template: template,
     host: {'class':'sdc-tile-footer'}
 })
 
