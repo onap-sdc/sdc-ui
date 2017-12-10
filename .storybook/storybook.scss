@@ -115,9 +115,10 @@ a {
 }
 .sdc-input {
 	.source-toggle & {
-		min-width: 430px;
+		padding-right: 30px;
 	}
 }
+
 .source-toggle-wrapper {
 	.source-toggle-title {
 		@extend .heading-2;

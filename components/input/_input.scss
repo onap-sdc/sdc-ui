@@ -1,22 +1,3 @@
-@mixin readonly($default, $focus) {
-  &:read-only{
-    border: solid 1px $default;
-    outline: none;
-  }
-  &:-moz-read-only { /* For Firefox */
-    border: solid 1px $default;
-    outline: none;
-  }
-
-  &:read-only:focus{
-    border-color: $focus;
-  }
-  &:-moz-read-only:focus { /* For Firefox */
-    border-color: $focus;
-  }
-}
-
-
 .sdc-input {
   padding-bottom: 10px;
 
@@ -35,9 +16,10 @@
   .sdc-input__input {
     text-indent: 6px;
     height: 38px;
-    width: 415px;
+    width: 100%;//415px;
     border: solid 1px $light-gray;
     border-radius:2px;
+    color: $dark-gray;
 
     &.error, &.error:focus, &.error:disabled  {
       border: solid 1px $red;
@@ -45,11 +27,28 @@
       outline: none;
     }
 
-    @include readonly($white, $white);
+    &:read-only{
+      border: solid 1px $white;
+      outline: none;
+      color: $text-black
+    }
+    &:-moz-read-only { /* For Firefox */
+      border: solid 1px $white;
+      outline: none;
+      color: $text-black
+    }
 
+    &:read-only:focus{
+      border-color: $white;
+    }
+    &:-moz-read-only:focus { /* For Firefox */
+      border-color: $white;
+      color: $text-black
+    }
     &:focus {
       border-color: $blue;
       outline: 0 none;
+      color: $text-black;
     }
     &[type="file"] {
       display: none;
@@ -57,23 +56,24 @@
 
     &:disabled {
       background: $background-gray;
+      color: $gray;
     }
 
     &::-webkit-input-placeholder /* Chrome/Opera/Safari */  {
-      color: $dark-gray;
+      color: $gray;
       font-style: italic;
     }
     &::-moz-placeholder  /* Firefox 19+ */  {
-      color: $dark-gray;
+      color: $gray;
       font-style: italic;
     }
     &:-moz-placeholder  /* Firefox 18- */  {
-      color: $dark-gray;
+      color: $gray;
       font-style: italic;
     }
     &:-ms-input-placeholder  /* IE 10+ */
     {
-      color: $dark-gray;
+      color: $gray;
       font-style: italic;
     }
   }
@@ -83,23 +83,4 @@
     @extend .body-3;
   }
 
-  .sdc-input-file-browse {
-    display: flex;
-    .filename {
-      width: 376px;
-      &:focus + label {
-        border-color: $blue;
-      }
-      @include readonly($light-gray, $blue);
-    }
-    .load {
-      display: flex;
-      width: 36px;
-      height: 36px;
-      justify-content: center;
-      align-items: center;
-      background-color: $background-gray;
-      border: solid 1px $light-gray;
-    }
-  }
 }

@@ -44,13 +44,6 @@ describe('Input', () => {
 		expect(input).toMatchSnapshot();
 	});
 
-
-	test('Input - file', () => {
-		const input = renderer.create(<Input  label='label for input' name='clickme' type='file'/>).toJSON();
-		expect(input).toMatchSnapshot();
-	});
-
-
 	test('Input - readonly', () => {
 		const input = renderer.create(<Input  label='label for input' name='clickme' type='text' readOnly/>).toJSON();
 		expect(input).toMatchSnapshot();

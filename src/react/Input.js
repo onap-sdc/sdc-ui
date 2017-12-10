@@ -26,13 +26,6 @@ class Input extends React.Component {
 				       onBlur={(e) => this.onBlur(e)}
 				       onKeyDown={(e) => this.onKeyDown(e)}
 				       onChange={(e) => this.onChange(e)}/>
-				{type === 'file' &&
-					<div className='sdc-input-file-browse'>
-						<input value={value} readOnly type='text' className='sdc-input__input filename'/>
-						<label className='sdc-button load' htmlFor={name}>...</label>
-					</div>
-				}
-
 				{ errorMessage && <div className="sdc-label__error">
 					<SVGIcon
 						label={errorMessage}
@@ -77,7 +70,7 @@ class Input extends React.Component {
 Input.propTypes = {
 	name: PropTypes.string,
 	value: PropTypes.string,
-	type: PropTypes.oneOf(['text', 'number', 'file']),
+	type: PropTypes.oneOf(['text', 'number']),
 	placeholder : PropTypes.string,
 	onChange: PropTypes.func,
 	onBlur: PropTypes.func,

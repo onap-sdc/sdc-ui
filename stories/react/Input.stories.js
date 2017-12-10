@@ -7,7 +7,6 @@ import ReactInput from '../../src/react/Input.js';
 import InputDefaultHtml from '../../components/input/input.html';
 import InputRequiredHtml from '../../components/input/input-required.html';
 import InputNumberHtml from '../../components/input/input-number.html';
-import InputFileHtml from '../../components/input/input-file.html';
 import InputViewOnlyHtml from '../../components/input/input-view-only.html';
 import InputDisabledHtml from '../../components/input/input-disabled.html';
 import InputPlaceholderHtml from '../../components/input/input-placeholder.html';
@@ -25,10 +24,6 @@ let examples = {
 	'Input Number': {
 		jsx: <ReactInput name='input3' value='3' label='I am a label'  type="number" onChange={ action('input-change')}/>,
 		html: InputNumberHtml
-	},
-	'Input File': {
-		jsx: <ReactInput name='input4' value='Default' label='I am a label'  type="file" onChange={ action('input-change')}/>,
-		html: InputFileHtml
 	},
 	'Input View Only': {
 		jsx: <ReactInput value='Default' readOnly label='I am a label' onChange={ action('input-change')}/>,

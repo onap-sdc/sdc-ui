@@ -70,49 +70,6 @@ exports[`Input Input - error 1`] = `
 </div>
 `;
 
-exports[`Input Input - file 1`] = `
-<div
-  className="sdc-input "
->
-  <label
-    className="sdc-input__label  "
-    htmlFor="clickme"
-  >
-    label for input
-  </label>
-  <input
-    className="sdc-input__input  "
-    data-test-id={undefined}
-    disabled={false}
-    id="clickme"
-    name="clickme"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    placeholder={undefined}
-    readOnly={false}
-    type="file"
-    value={undefined}
-  />
-  <div
-    className="sdc-input-file-browse"
-  >
-    <input
-      className="sdc-input__input filename"
-      readOnly={true}
-      type="text"
-      value={undefined}
-    />
-    <label
-      className="sdc-button load"
-      htmlFor="clickme"
-    >
-      ...
-    </label>
-  </div>
-</div>
-`;
-
 exports[`Input Input - number 1`] = `
 <div
   className="sdc-input "
