@@ -40,9 +40,12 @@
 @mixin link-button($primary-color, $secondary-color) {
   color: $primary-color;
   fill: $primary-color;
-  &:not([disabled]):hover, &:active, &:focus {
+  &:not([disabled]) &:active {
     color: $secondary-color;
     fill: $secondary-color;
+  }
+  &:hover{
+    color:$hover-blue;
   }
   &:focus {
     color:$hover-blue;
