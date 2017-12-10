@@ -10,21 +10,21 @@ import {ModalButtonConfig} from "../../../src/angular/modals/models/modal-button
 @Component({
     selector: "button-modal-example",
     template: `
-        <div>
+        <div class="example">
            <span>Error Modal</span>
-           <sdc-button (click)="openErrorModal()">Click Me!</sdc-button>
+            <sdc-button (click)="openErrorModal()" [text]="'Click Me!'" [type]="'primary'" [disabled]="false" [size]="'medium'"></sdc-button>
        </div>
-       <div>
+       <div class="example">
            <span>Alert Modal</span>
-           <sdc-button (click)="openAlertModal()">Click Me!</sdc-button>
+           <sdc-button (click)="openAlertModal()" [text]="'Click Me!'" [type]="'primary'" [disabled]="false" [size]="'medium'"></sdc-button>
        </div>
-       <div>
+       <div class="example">
            <span>Alert Modal</span>
-           <sdc-button (click)="openActionModal()">Click Me!</sdc-button>
+           <sdc-button (click)="openActionModal()" [text]="'Click Me!'" [type]="'primary'" [disabled]="false" [size]="'medium'"></sdc-button>
        </div>
-        <div>
+        <div class="example">
            <span>Custom Modal</span>
-           <sdc-button (click)="openCustomModal()">Click Me!</sdc-button>
+           <sdc-button (click)="openCustomModal()" [text]="'Click Me!'" [type]="'primary'" [disabled]="false" [size]="'medium'"></sdc-button>
        </div>
 `
 })
