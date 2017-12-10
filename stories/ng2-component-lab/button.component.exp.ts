@@ -4,7 +4,7 @@ function showButtonProps(btnType, btnSize) {
 };
 
 const buttonTypes = ['primary', 'white', 'link'];
-const buttonSizes = ['large', 'medium', 'small'];
+const buttonSizes = ['large', 'medium', 'small', 'default'];
 const experiment = experimentOn('Button');
 buttonTypes.forEach((buttonType) => {
     [false, true].forEach((buttonDisabled) => {
