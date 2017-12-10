@@ -6,17 +6,16 @@
   font-size: $body-font-3;
   font-weight: 600;
   @include base-font-regular;
-
   &:not([disabled]) {
     &:hover{
       border-color: $hover-border;
-      background-color: $hover;
+      background-color: $hover-blue;
       @include base-font-semibold;
     }
     &:focus{
       border: 0.5px solid $white;
-      background-color: $hover;
-      box-shadow: 0px 0px 0px 1px $active-border;
+      background-color: $hover-blue;
+      box-shadow: 0px 0px 0px 1px $hover-blue;
       @include base-font-semibold;
     }
   }
@@ -26,13 +25,16 @@
   background-color: transparent;
   color: $color;
   border-color: $color;
-  font-size: $body-font-3;
+  font-size: $body-font-1;
   font-weight: 600;
-
+  &:disabled{
+    color:$blue-disabled;
+    border-color: $blue-disabled;
+  }
   &:not([disabled]) {
     &:hover {
-      color: rgba($color, 0.75);
-      border-color: ($color, 0.75);
+      color:$hover-blue;
+      border-color: $hover-blue;
     }
     &:focus {
       box-shadow: inset 0px 0px 0px 0px $active-border, 0px 0px 0px 1px $blue;
@@ -43,16 +45,20 @@
 @mixin link-button($primary-color, $secondary-color) {
   color: $primary-color;
   fill: $primary-color;
-  &:not([disabled]) &:active {
-    color: $secondary-color;
-    fill: $secondary-color;
+  border:none;
+  &:not([disabled]) {
+    &:hover{
+      @include base-font-semibold;
+      color: $hover-blue;
+    }
+    &:focus {
+      @include base-font-semibold;
+      border: 1px solid $active-border;
+      color: $hover-blue;
+    }
   }
-  &:hover{
-    color:$hover-blue;
-  }
-  &:focus {
-    color:$hover-blue;
-    border: 1px solid $active-border;
+  &:disabled{
+    color:$blue-disabled;
   }
 }
 
@@ -105,19 +111,14 @@
       &:focus{
         border: 1px solid #0568AE;
       }
+      &:disabled{
+        background: $blue-disabled;
+      }
     }
 
     // White default button
     &.sdc-button__white {
       @include outline-button($blue);
-      &:hover, &:active {
-        border:1px solid #1EB9F3;
-        background-color: #ffffff;
-      }
-      &:focus{
-        border: 1px solid #0568AE;
-        color: $hover-blue;
-      }
     }
 
     // Gray default button
@@ -204,7 +205,6 @@
   // Link type
   &.sdc-button__link {
     @include link-button($blue, $blue-disabled);
-    border: none;
     background-color: transparent;
     text-align: left;
     @extend .body-1;
