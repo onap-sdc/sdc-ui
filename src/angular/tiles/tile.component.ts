@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: "sdc-tile",
@@ -6,8 +6,4 @@ import {Component, Input} from '@angular/core';
 })
 
 export class TileComponent {
-    @Input() public headerText: string;
-    @Input() public headerColor: 'blue' | 'purple';
-    @Input() public iconName: string;
-    @Input() public iconColor: 'blue' | 'purple';
 }
