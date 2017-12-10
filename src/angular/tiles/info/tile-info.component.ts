@@ -1,9 +1,9 @@
 import {Component} from "@angular/core";
-
+import template from "./tile-info.component.html";
 
 @Component({
     selector:'sdc-tile-info',
-    templateUrl:'./tile-info.component.html',
+    template: template
 })
 
 export class TileInfoComponent {

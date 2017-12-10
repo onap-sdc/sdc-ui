@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-tile">
     <ng-content select="sdc-tile-header"></ng-content>
     <div class="sdc-tile-content">
@@ -5,3 +6,4 @@
     </div>
     <ng-content select="sdc-tile-footer"></ng-content>
 </div>
+`;
