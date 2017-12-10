@@ -10,48 +10,60 @@ import {
 
 const options1: IDropDownOption[] = [
     {
-        label: 'First Option'
+        label: 'First Option',
+        value: 'First Option',
     },
     {
-        label: 'Second Option'
+        label: 'Second Option',
+        value: 'Second Option',
     },
     {
-        label: 'Third Option'
+        label: 'Third Option',
+        value: 'Third Option',
+        type: DropDownOptionType.Simple
     }
 ];
 
 const options2: IDropDownOption[] = [
     {
         label: 'Header',
+        value: 'header',
         type: DropDownOptionType.Header
     },
     {
         label: 'First Option',
-        value: 'firstOption'
+        value: 'firstOption',
+        type: DropDownOptionType.Simple
     },
     {
         label: 'Disabled Option',
+        value: 'header',
         type: DropDownOptionType.Disable
     },
     {
         label: 'Second Option',
-        value: 'secondOption'
+        value: 'secondOption',
+        type: DropDownOptionType.Simple
     },
     {
         label: 'Ruler',
+        value: 'ruler',
         type: DropDownOptionType.HorizontalLine
     },
     {
         label: 'Third Option',
-        value: 'thirdOption'
+        value: 'thirdOption',
+        type: DropDownOptionType.Simple
     },
     {
         label: 'Forth Option',
-        value: 'forthOption'
+        value: 'forthOption',
+        type: DropDownOptionType.Simple
     },
     {
         label: 'Fifth Option',
-        value: 'fifthOption'
+        value: 'fifthOption',
+        type: DropDownOptionType.Simple
     }
 ];
 
@@ -89,7 +101,7 @@ export default experimentOn('DropDown')
             title: 'DropDown with groups and pre-selected value',
             description: 'DropDown with groups and pre-selected value',
             template: `
-      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" [value]="'firstOption'"></sdc-dropdown>
+      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" [selectedOption]="options[1]"></sdc-dropdown>
     `
         },
         {

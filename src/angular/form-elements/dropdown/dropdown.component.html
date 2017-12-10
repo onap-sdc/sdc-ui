@@ -8,7 +8,7 @@
     <!--[DROP-DOWN HEADER END]-->
 
     <!--[DROP-DOWN OPTIONS START]-->
-    <ul *ngIf="show" class="sdc-dropdown__options-wrapper" [ngClass]="{
+    <ul #optionsContainerElement *ngIf="show" class="sdc-dropdown__options-wrapper" [ngClass]="{
     'sdc-dropdown__options-wrapper--headless': headless,
     'sdc-dropdown__options-wrapper--top':!isBottomVisible()
     }">
@@ -23,7 +23,7 @@
                     'sdc-dropdown__option--disabled': option.type && option.type === cIDropDownOptionType.Disable,
                     'sdc-dropdown__option--hr': option.type && option.type === cIDropDownOptionType.HorizontalLine
                    }"
-                (click)="selectOption(i, option)">{{option.label}}</li>
+                (click)="selectOption(i, option)">{{getOptionLabel(option)}}</li>
             <!--[Drop down item list or string list end]-->
 
         </ng-container>

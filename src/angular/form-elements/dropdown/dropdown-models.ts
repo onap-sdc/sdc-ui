@@ -11,7 +11,7 @@ export enum DropDownOptionType {
 }
 
 export interface IDropDownOption {
-    value?:any;
-    label:string;
-    type?:number;
+    value: any;
+    label: string;
+    type?: DropDownOptionType;
 }

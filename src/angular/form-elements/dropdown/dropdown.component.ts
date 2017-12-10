@@ -28,16 +28,9 @@ export class DropDownComponent implements OnChanges, OnInit {
     @Input() label: string;
 
     /**
-     * Option can be add by a list of IDropDownGroup, IDropDownItem objects, or a list of strings
+     * Option can be add by a list of IDropDownOption objects
      */
-    //@Input() options: (IDropDownGroup|IDropDownItem|string)[];
-
     @Input() options: IDropDownOption[];
-
-    /**
-     * Initial value the drop-down should have
-     */
-    @Input() value: any;
 
     /**
      * Drop-down disabled flag
@@ -54,22 +47,21 @@ export class DropDownComponent implements OnChanges, OnInit {
      */
     @Input() required:boolean;
 
-
     @Input() validate:boolean;
 
+    /**
+     * Show or hie drop-down header flag
+     * @type {boolean}
+     */
     @Input() headless = false;
+
+    @Input() maxHeight:number = 244;
 
     @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
 
-    /**
-     * Selected option index
-     */
-    public selectedIndex: number;
+    @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
 
-    /**
-     * Selected option label
-     */
-    public selectedLabel:string;
+    @Input() selectedOption: IDropDownOption;
 
     /**
      * Drop-down show/hide flag. default is false (closed)
@@ -91,11 +83,18 @@ export class DropDownComponent implements OnChanges, OnInit {
     /**
      * Configure unselectable option types
      */
-    private unselectableOptions = [DropDownOptionType.Disable, DropDownOptionType.Header, DropDownOptionType.HorizontalLine];
+    private unselectableOptions = [
+        DropDownOptionType.Disable,
+        DropDownOptionType.Header,
+        DropDownOptionType.HorizontalLine
+    ];
 
+    /**
+     * Set or unset Group style on drop-down
+     * @type {boolean}
+     */
     public isGroupDesign = false;
 
-    constructor(private view:ElementRef){}
 
     ngOnInit(): void {
         if(this.options){
@@ -106,8 +105,8 @@ export class DropDownComponent implements OnChanges, OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(changes.value){
-            this.setValueIfExist(this.value);
+        if(changes.selectedOption && this.options.indexOf(this.selectedOption) > -1){
+            this.selectedOption = this.isSelectable(this.selectedOption) && this.selectedOption || null;
         }
     }
 
@@ -115,11 +114,15 @@ export class DropDownComponent implements OnChanges, OnInit {
         return !this.error;
     }
 
+    private isSelectable(option: IDropDownOption){
+        return !(!!this.unselectableOptions.find(optionType => optionType == option.type))
+    }
+
     /**
      * Validate when required is enabled
      */
     public validateDropDown(): void{
-        if(!this.disabled && this.required && (!this.value || this.value === '')){
+        if(!this.disabled && this.required && (!this.selectedOption || this.selectedOption.value === '')){
             this.error = true;
             return;
         }
@@ -132,38 +135,42 @@ export class DropDownComponent implements OnChanges, OnInit {
      * @param option - IDropDownItem or string
      */
     public selectOption(index: number, option:any):void{
-        const unselectable = this.unselectableOptions.find(optionType => option.type === optionType);
-        if(unselectable){
+        if(!this.isSelectable(option)){
             return;
         }
-        this.selectedIndex = index;
-        this.updateSelected(option.label || option, option.value || option);
+        this.updateSelected(index);
     }
 
     /**
-     * Update the value and label of the drop down with new ones
-     * @param label
-     * @param value
+     * Update the value, label and index of the drop down with new ones
      */
-    private updateSelected(label: string, value: string, index?: number){
-        this.selectedLabel = label;
-        this.value = value;
-        this.baseEmitter.next(this.value);
-        this.selectedIndex = index || this.selectedIndex;
-        this.validateDropDown();
+    private updateSelected(index: number):void{
+        const option = this.options[index];
+        if(option){
+            this.selectedOption = option;
+            this.show = false;
+            this.validateDropDown();
+        }
     }
 
     /**
      * Get the label of the selected option
      */
     public getSelectedLabel(): string{
-       return this.selectedLabel || null;
+       return this.selectedOption && this.getOptionLabel(this.selectedOption) || null;
+
+    }
+
+    public getOptionLabel(option: IDropDownOption){
+        return option.label || String(option.value);
     }
 
     public isBottomVisible(){
         const windowPos = window.innerHeight + window.pageYOffset;
-        const dropDownPos = this.dropDownWrapper.nativeElement.offsetTop + this.dropDownWrapper.nativeElement.offsetHeight + 244;
-        console.log("dropDownWrapper", this.dropDownWrapper.nativeElement.offsetHeight);
+        const dropDownPos = this.dropDownWrapper.nativeElement.offsetTop
+            + this.dropDownWrapper.nativeElement.offsetHeight
+            + this.maxHeight;
+
         return windowPos > dropDownPos;
     }
 
@@ -180,21 +187,10 @@ export class DropDownComponent implements OnChanges, OnInit {
      * When users clicks outside the drop-down it will be closed
      */
     public onClickOutside(event){
-        if(!event.target.classList.contains('js-sdc-dropdown--toggle-hook')){
+        if(this.optionsContainerElement && !this.optionsContainerElement.nativeElement.contains(event.target)
+            && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')){
             this.show = false;
         }
     }
 
-    /**
-     * Test if the specified value exist on the option list, if it is,
-     * add it as the enw value
-     * @param value
-     */
-    private setValueIfExist(value:string): void{
-        const index = this.options.findIndex(option => option.value === value || option.label === value);
-        const unselectableOption = index && !!this.unselectableOptions.find(optionType => optionType === this.options[index].type);
-        if(!unselectableOption){
-            this.updateSelected(this.options[index].label, value, index);
-        }
-    }
 }
