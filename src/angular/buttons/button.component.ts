@@ -7,13 +7,11 @@ import {Component, Input} from "@angular/core";
 export class ButtonComponent {
     @Input() public text: string;
     @Input() public disabled: boolean = false;
-    @Input() public type: string;
-    @Input() public size: string;
+    @Input() public type: string = "primary";
+    @Input() public size: string = "default";
     @Input() public preventDoubleClick: boolean;
     private lastClick: Date;
 
-    constructor() {
-    }
     public onClick = (e): void => {
         const now: Date = new Date();
         if ( this.preventDoubleClick && this.lastClick && (now.getTime() - this.lastClick.getTime()) <= 500 ) {
