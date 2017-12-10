@@ -16,17 +16,15 @@ export class NotificationsService  {
         this.test0();
         setInterval(function(){
             self.test1(); },
-            9000);
+            13000);
         setInterval(function(){
                 self.test2(); },
-            18000);
+            25000);
     }
 
 
     private test0(){
         this.push(new NotificationSettings('top-right', 5000, "warn", '', false, 'notif warn message test#0', 'Notif Title Warn'));
-        this.push(new NotificationSettings('top-right', 5000, "error", '', false, 'notif error message comes here of test#0', 'Notif Title Error'));
-        this.push(new NotificationSettings('top-right', 5000, "info", '', false, 'notif info message comes here of test#0', 'Notif Title Info'));
     }
 
 

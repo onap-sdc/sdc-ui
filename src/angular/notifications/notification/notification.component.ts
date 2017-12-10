@@ -11,11 +11,11 @@ import {NotificationType} from "../utilities/notification.config";
 export class NotificationComponent {
 
     @Input() position: string = 'top';
-    @Input() duration: number;
+    @Input() duration: number = 10000;
     @Input() type: string;
     @Input() notifyTitle: string;
     @Input() notifyText: string;
-    @Input() fade: string;
+    @Input() fade: boolean;
     @Input() sticky: boolean;
     @Input() location: string;
     @Output() destroyComponent = new EventEmitter<boolean>();
@@ -24,7 +24,32 @@ export class NotificationComponent {
 
     public dismiss(): void {
         console.log("clicked dismiss");
-        this.destroy = true;
-        this.destroyComponent.emit(true);
+
     }
+
+    public ngOnInit(){
+
+        console.log("NotificationComponent:ngOnInit start");
+
+        let self = this;
+        setTimeout( function(){
+            self.destroyMe();
+            }, self.duration);
+
+    }
+
+    private fadeOut(){
+        this.fade = true;
+    }
+
+    private destroyMe(){
+        this.fadeOut();
+        let self = this;
+        setTimeout(function(){
+            self.destroy = true;
+            self.destroyComponent.emit(true);
+        }, 800);
+    }
+
+
 }

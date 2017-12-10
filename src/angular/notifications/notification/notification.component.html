@@ -1,5 +1,5 @@
 <div *ngIf="!destroy" class="sdc-notification">
-    <div class="ngn {{'ngn-' + type}}" [ngClass]="{'ngn-top-right': position=='top-right','ngn-top': position=='top','ngn-bottom':position=='bottom','ngn-fixed':location=='body','ngn-sticky':sticky==true}">
+    <div class="ngn {{'ngn-' + type}}" [ngClass]="{'ngn-top-right': position=='top-right','ngn-top': position=='top','ngn-bottom':position=='bottom','ngn-fixed':location=='body','ngn-sticky':sticky==true, 'ngn-fade':fade==true}">
         <div class="ngn-close" (click)="dismiss()">
         </div>
         <div class="ttl">
