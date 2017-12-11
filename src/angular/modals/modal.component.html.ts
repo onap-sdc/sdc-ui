@@ -3,7 +3,7 @@ export default `
     <div class="sdc-modal__content ">
         <div class="sdc-modal__header sdc-modal-type-{{type}}">
             <span class="title">{{ title }}</span>
-            <button class="close-button" [button-modal-click]="{closeModal: true}"></button>
+            <span class="close-button" [button-modal-click]="{closeModal: true}">x</span>
         </div>
         <div class="sdc-modal__body sdc-modal-type-{{type}}" >
             <div *ngIf="message">{{message}}</div>
