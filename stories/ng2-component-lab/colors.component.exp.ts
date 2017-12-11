@@ -30,7 +30,7 @@ const secondaryColors = {
     'tlv-hover': '#e6f6fb',
 };
 
-export default experimentOn('Colors',1)
+export default experimentOn('Colors')
     .group("Colors palette",[
       {
         id: 'primaryColorsPalette',
