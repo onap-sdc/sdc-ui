@@ -49,6 +49,7 @@ export default experimentOn('Table')
         description: 'Table with filters',
         template: `
       <sdc-table [rowsData]="data" #table3>
+        <sdc-table-filter [headerCols]="table3.headerCols"></sdc-table-filter>
         <sdc-table-filter-bar [headerCols]="table3.headerCols" (changed)="table3.handleFilter($event)"></sdc-table-filter-bar>
         <span>Rows: {{table3.modifiedRows}} / {{table3.totalRows}}</span>
         <sdc-table-body (scrollHitBottom)="table3.onScrollHitBottom()" [maxHeight]="table3.maxHeight" [fixedHeader]="table3.fixedHeader">
