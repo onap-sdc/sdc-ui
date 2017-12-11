@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-input">
     <label class="sdc-input__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <input
@@ -15,3 +16,4 @@
         [attr.disabled]="disabled ? 'disabled' : null"
     />
 </div>
+`;
