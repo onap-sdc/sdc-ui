@@ -1,6 +1,7 @@
 /**
  * Created by rc2122 on 5/10/2017.
  */
+
 export interface IModalButtonConfig {
     text:string;
     sdcButtonStyle:string;
