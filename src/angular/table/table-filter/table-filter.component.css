@@ -1,0 +1,47 @@
+.sdc-table-filter {
+    border: 1px solid #666;
+    background-color: #f3f3f3;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.sdc-table-filter-group {
+    border: 1px solid #666;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.sdc-table-filter-form {
+    display: flex;
+}
+
+.sdc-table-filter-form-group {
+    display: inline-block;
+    width: 240px;
+}
+
+.sdc-table-filter-button {
+    padding: 6px 20px;
+}
+
+/*
+
+.sdc-table-filter__add-button {
+    padding: 6px 20px;
+    margin-bottom: 5px;
+}
+
+.sdc-table-filter__form {
+    display: flex;
+}
+
+.sdc-table-filter__group__title {
+    font-size: 11px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-right: 10px;
+    font-weight: 900;
+}
+*/

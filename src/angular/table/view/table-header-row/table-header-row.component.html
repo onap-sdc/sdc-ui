@@ -1,0 +1,17 @@
+    <div class="sdc-table-header">
+        <div class="sdc-table-cell"
+            [style.width]="col.width"
+            [style.text-align] = "col.alignmentHeader"
+            [ngClass]="{ 'sortable': col.sortable, 'sdc-table_cell_fixed': col.width, 'sdc-table_fixed_grow':!col.width }"
+            (click)="onColumnHeaderClick(col)"
+            *ngFor="let col of headerCols">
+            <div class="th-content">
+                <span class="value">{{ col.title }}</span>
+                <i class ="icon"
+                        *ngIf="col.sortable"
+                        [ngClass]="(sortByField !== col.key) ? 'icon-unsorted' : (sortDescending) ? 'icon-sort-desc' : 'icon-sort-asc'">
+                </i>
+            </div>
+        </div>
+    </div>
+

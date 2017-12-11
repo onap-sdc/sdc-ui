@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 61.0.3163 (Windows 10 0.0.0)" package="" timestamp="2017-10-30T10:32:36" id="0" hostname="msbit" tests="2" errors="0" failures="0" time="0.001">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"/>
+  </properties>
+  <testcase name="Should test my example true is true" time="0.001" classname="Chrome_61_0_3163_(Windows_10_0_0_0).Should test my example"/>
+  <testcase name="Should fail1 true is true" time="0" classname="Chrome_61_0_3163_(Windows_10_0_0_0).Should fail1"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

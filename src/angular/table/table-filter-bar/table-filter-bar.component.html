@@ -1,0 +1,68 @@
+<ng-container *ngFor="let filter of filterControls;let i = index;">
+    <ng-container *ngIf="filterControls[i].group">
+        <div class="sdc-table-filter-bar__group" [hidden]="hidePanel">
+            <form #form class="sdc-table-filter-bar__form">
+                <div class="sdc-table-filter-bar__group__title"> Group: {{filterControls[i]?.group}} </div>
+                <div class="sdc-table-filter-bar__form-group">
+                    <label for="{{'columnName' + i}}">Column</label>
+                    <select class="sdc-table-filter-bar__form-control" name="{{'columnName' + i}}" id="{{'columnName' + i}}">
+                        <ng-container *ngFor="let col of headerCols">
+                            <option [value]="col.key" *ngIf="col.title">{{col.title}}</option>
+                        </ng-container>
+
+                    </select>
+                </div>
+                <div class="sdc-table-filter-bar__form-group">
+                    <label for="{{'operator' + i}}">Condition</label>
+                    <select class="sdc-table-filter-bar__form-control" name="{{'operator' + i}}" id="{{'operator' + i}}">
+                        <option [value]="i" *ngFor="let op of ['==','!=','<','<=','>','>=']; let i = index;">{{op}}</option>
+                    </select>
+                </div>
+                <div class="sdc-table-filter-bar__form-group">
+                    <label for="{{'comparisonValue' + i}}">Value</label>
+                    <input class="sdc-table-filter-bar__form-control" type="text" name="{{'comparisonValue' + i}}" id="{{'comparisonValue' + i}}">
+                </div>
+                <button *ngIf="i > 0" class="sdc-table-filter-bar__button" type="button" (click)="removeFilter(i)">Remove</button>
+                <button class="sdc-table-filter-bar__button" type="button" (click)="addToFilterToGroup(i)">Add Item</button>
+            </form>
+        </div>
+    </ng-container>
+    <div class="sdc-table-filter-bar" *ngIf="!filterControls[i].group" [hidden]="hidePanel">
+        <form #form class="sdc-table-filter-bar__form">
+            <div class="sdc-table-filter-bar__form-group">
+                <label for="{{'columnName' + i}}">Column</label>
+                <select class="sdc-table-filter-bar__form-control" name="{{'columnName' + i}}" id="{{'columnName' + i}}">
+                    <ng-container *ngFor="let col of headerCols">
+                        <option [value]="col.key" *ngIf="col.title">{{col.title}}</option>
+                    </ng-container>
+
+                </select>
+            </div>
+            <div class="sdc-table-filter-bar__form-group">
+                <label for="{{'operator' + i}}">Condition</label>
+                <select class="sdc-table-filter-bar__form-control" name="{{'operator' + i}}" id="{{'operator' + i}}">
+                    <option [value]="i" *ngFor="let op of ['==','!=','<','<=','>','>=']; let i = index;">{{op}}</option>
+                </select>
+            </div>
+            <div class="sdc-table-filter-bar__form-group">
+                <label for="{{'comparisonValue' + i}}">Value</label>
+                <input class="sdc-table-filter-bar__form-control" type="text" name="{{'comparisonValue' + i}}" id="{{'comparisonValue' + i}}">
+            </div>
+            <button *ngIf="i > 0" class="sdc-table-filter-bar__button" type="button" (click)="removeFilter(i)">Remove</button>
+            <button class="sdc-table-filter-bar__button" type="button" (click)="createFilterGroup(form, i)">Create Group</button>
+        </form>
+    </div>
+</ng-container>
+<div [hidden]="hidePanel">
+    <button class="sdc-table-filter-bar__add-button" type="button" (click)="addAnotherFilter()">Add another</button>
+    <button class="sdc-table-filter-bar__button" type="reset" (click)="clearFilters()">Clear</button>
+    <button class="sdc-table-filter-bar__button" type="button" (click)="submitFilter(form, i)">Submit</button>
+</div>
+
+<div class="sdc-table-filter-bar" [hidden]="!hidePanel">
+    <form #form2>
+        <input type="text" style="width:300px;" />
+        <button type="button" class="sdc-table-filter-bar__button" (click)="searchFilter(form2)">Search</button>
+        <button type="button" class="sdc-table-filter-bar__button" (click)="searchClear(form2)">Clear</button>
+    </form>
+</div>

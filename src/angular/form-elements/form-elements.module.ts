@@ -5,6 +5,7 @@ import {DropDownComponent} from "./dropdown/dropdown.component";
 import {CommonModule} from "@angular/common";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
+import {DropDownGroupComponent} from "./dropdown/dropdown-group.component";
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
         DropDownComponent,
         InputComponent,
         CheckboxComponent,
-        RadioGroupComponent
+        RadioGroupComponent,
+        DropDownGroupComponent
     ],
     exports: [
         DropDownComponent,

@@ -1,0 +1,13 @@
+<div class="sdc-table-pagination-bar__div" [hidden]="!hidePanel">
+    <button type="button" class="sdc-table-pagination-bar__button" (click)="clearInfinityScroll()">Clear</button>
+</div>
+<div class="sdc-table-pagination-bar__div" [hidden]="hidePanel">
+    <form #form>
+        <button type="button" class="sdc-table-pagination-bar__button" (click)="firstPage()" [disabled]="prevDisabled">First</button>
+        <button type="button" class="sdc-table-pagination-bar__button" (click)="nextPage()" [disabled]="nextDisabled">Next</button>
+        <button type="button" class="sdc-table-pagination-bar__button" (click)="prevPage()" [disabled]="prevDisabled">Previous</button>
+        <button type="button" class="sdc-table-pagination-bar__button" (click)="lastPage()" [disabled]="nextDisabled">Last</button>
+        <input type="text" style="width:50px;" />
+        <button type="button" class="sdc-table-pagination-bar__button" (click)="goPage(form.elements[4].value)">Go</button>
+    </form>
+</div>
