@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
+import template from "./input.component.html";
 
 @Component({
     selector: 'sdc-input',
-    templateUrl: './input.component.html',
+    template: template,
 })
 export class InputComponent {
 
