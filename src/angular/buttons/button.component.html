@@ -1,0 +1,9 @@
+<button class="sdc-button sdc-button-default sdc-button__{{ type }} btn-{{ size }}"
+        [ngClass]="{'btn-with-icon':icon}"
+        [disabled] = "disabled">
+        <span>
+        <i class = "sdc-icon sdc-icon-left sdc-icon-{{ icon.name }} {{icon.color}}" *ngIf="icon && icon.side == 'left'"></i>
+        </span>
+                {{ text }}
+        <i class = "sdc-icon sdc-icon-right sdc-icon-{{ icon.name }} {{icon.color}}" *ngIf="icon && icon.side == 'right'"></i>
+</button>

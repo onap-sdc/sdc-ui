@@ -1,26 +1,25 @@
 import {Component, Input} from "@angular/core";
 
+export interface Iicon{
+    name: string;
+    side: string;
+    color: string;
+}
+
 @Component({
     selector: "sdc-button",
-    template: `
-  <button class="sdc-button sdc-button__{{color}} sdc-button-{{sdcButtonStyle}}"
-          (click)="onClick($event)"
-          [disabled] = "disabled">
-        <ng-content></ng-content>
-        <i class = "sdc-icon sdc-icon-arrow-left"></i>
-  </button>`
+    templateUrl: "./button.component.html"
 })
-export class ButtonComponent {
 
-    @Input() public color: string;
-    @Input() public sdcButtonStyle: string;
-    @Input() public disabled: boolean;
+export class ButtonComponent {
+    @Input() public text: string;
+    @Input() public disabled: boolean = false;
+    @Input() public type: string = "primary";
+    @Input() public size: string = "default";
     @Input() public preventDoubleClick: boolean;
+    @Input() public icon: Iicon;
     private lastClick: Date;
-    constructor() {
-        this.color = 'primary';
-        this.sdcButtonStyle = 'default';
-    }
+
     public onClick = (e): void => {
         const now: Date = new Date();
         if ( this.preventDoubleClick && this.lastClick && (now.getTime() - this.lastClick.getTime()) <= 500 ) {
