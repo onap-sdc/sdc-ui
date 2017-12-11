@@ -16,11 +16,11 @@ export default experimentOn('Tiles')
         template: `
             <sdc-tile>
                 <sdc-tile-header text="P" color="blue" header></sdc-tile-header>
-                <sdc-tile-info text="Router" color = "blue" pre_title="test"  icon="test_icon" info ></sdc-tile-info>
+                <sdc-tile-info title="Router" color = "blue" subtitle="test"  icon="test_icon" info ></sdc-tile-info>
                 <sdc-tile-footer text="Footer" icon="test" footer></sdc-tile-footer>
             </sdc-tile>
             `
-    }, 
+    },
     {
         id: 'tileSamplePurple',
         title: 'Tile sample purple',
@@ -33,11 +33,11 @@ export default experimentOn('Tiles')
         template: `
             <sdc-tile>
                 <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
-                <sdc-tile-info text="Router" color = "purple" pre_title="test"  icon="test_icon" info ></sdc-tile-info>
+                <sdc-tile-info title="Router" color = "purple" subtitle="test" supertitle="superTitle" icon="test_icon" info ></sdc-tile-info>
                 <sdc-tile-footer text="Footer" icon="test" footer></sdc-tile-footer>
             </sdc-tile>
         `
-    }, 
+    },
     {
         id: 'tileSampleWithoutFooter',
         title: 'Tile sample without footer',
@@ -50,10 +50,10 @@ export default experimentOn('Tiles')
         template: `
             <sdc-tile>
                 <sdc-tile-header text="P" color="purple" header></sdc-tile-header>
-                <sdc-tile-info text="Router" color = "purple" pre_title="test" icon="test_icon" info></sdc-tile-info>
+                <sdc-tile-info title="Routesdfsasdfsfsdsdfsdsdfsfsdfsfsdfsdfsdfsdfsdsdffr" color = "purplesdfsdfsdfsssddfsdf" subtitle="sdf" supertitle="superTisdfsdfsdftlsdfsdfsdfsdfsdfsdfsdfsdfsdfasdfa" icon="test_icon" info></sdc-tile-info>
             </sdc-tile>
         `
-    }, 
+    },
     {
         id: 'tileSampleWithoutHeader',
         title: 'Tile sample without header',
@@ -65,10 +65,10 @@ export default experimentOn('Tiles')
         showSource: true,
         template: `
             <sdc-tile>
-                <sdc-tile-info text="Router" color = "purple" pre_title="test" icon="test_icon" info></sdc-tile-info>
+                <sdc-tile-info title="Router" color = "purple" subtitle="test" supertitle="superTitle" icon="test_icon" info></sdc-tile-info>
             </sdc-tile>
         `
-    }, 
+    },
     {
         id: 'tileJustWithInfo',
         title: 'Tile just with info',
@@ -80,8 +80,7 @@ export default experimentOn('Tiles')
         showSource: true,
         template: `
                 <sdc-tile>
-                    <sdc-tile-info text="Router" color = "purple" pre_title="test" info></sdc-tile-info>
+                    <sdc-tile-info title="Router" color = "purple"  supertitle="superTitle" subtitle="test" info></sdc-tile-info>
                 </sdc-tile>`
     }
     ]);
-    

@@ -33,6 +33,7 @@ a {
 		.color-circle {
 			height: $circle-size;
 			width: $circle-size;
+			border-radius: $circle-size;
 			padding: 10px;
 			text-align: center;
 		}
@@ -40,23 +41,20 @@ a {
 }
 
 .icons-screen {
-  	.missing-icon-section {
-	  border-top: 1px solid $light-gray;
-	  padding-top: 10px;
+	width: 1190px;
+	.missing-icon-section {
+		border-top: 1px solid $light-gray;
+		padding-top: 10px;
 	}
 	.icons-option-selector {
 		margin-top: 20px;
 		margin-bottom: 20px;
-		width: 100%;
 		display: flex;
-		justify-content: flex-start;
 		.option-container {
 			display: flex;
 			flex-direction: column;
+			flex-basis: 100%;
 			margin-right: 20px;
-			input {
-				height: 1px;
-			}
 		}
 	}
 
@@ -66,15 +64,16 @@ a {
 		display: flex;
 		flex-wrap: wrap;
 		border-top: 1px solid $light-gray;
-		justify-content: space-between;
+		justify-content: flex-start;
 		.icon-section {
 			display: flex;
 			flex-direction: column;
-			margin: 10px 0;
+			margin: 10px;
 			min-width: 150px;
 			.svg-icon-wrapper {
 				cursor: pointer;
 				width: 20px;
+				height: 42px;
 				margin-left: auto;
 				margin-right: auto;
 				.svg-icon-label {
@@ -106,10 +105,10 @@ a {
 	.typo-table {
 		.typo-section {
 			div {
-			display: inline-block;
-			//border: 1px solid black;
-			width: 30%;
-			margin: 4px 0;
+				display: inline-block;
+				//border: 1px solid black;
+				width: 30%;
+				margin: 4px 0;
 			}
 		}
 	}
@@ -117,7 +116,7 @@ a {
 
 .source-toggle-wrapper {
 	.source-toggle-title {
-	@extend .heading-2;
+		@extend .heading-2;
 	}
 	.source-toggle {
 		display: flex;

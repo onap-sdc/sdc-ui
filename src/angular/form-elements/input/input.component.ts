@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
 import 'rxjs/add/operator/debounceTime';
+import template from "./input.component.html";
 
 @Component({
     selector: 'sdc-input',
-    templateUrl: './input.component.html',
+    template: template,
 })
 export class InputComponent implements OnInit {
 

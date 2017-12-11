@@ -1,9 +1,10 @@
 import { Component, Input, Output, ViewEncapsulation, EventEmitter } from "@angular/core";
 import { Direction, IOptionGroup, IRadioButtonModel } from "./radio-button.model"
+import template from './radio-buttons-group.component.html';
 
 @Component({
     selector: 'sdc-radio-group',
-    templateUrl: './radio-buttons-group.component.html',
+    template: template,
     host: {'class': 'sdc-radio-group'},
     encapsulation: ViewEncapsulation.None
 })
