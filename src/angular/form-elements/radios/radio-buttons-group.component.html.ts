@@ -3,7 +3,7 @@ export default `
 <div class='sdc-radio-group__radios {{direction}}'>
     <template ngFor let-item="$implicit" [ngForOf]="options.items">
         <div class="sdc-radio">
-            <input
+            <input class = "sdc-radio__input"
                 type="radio"
                 name="{{item.name}}"
                 value="{{item.value}}"
