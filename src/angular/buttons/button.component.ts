@@ -7,6 +7,7 @@ import {Component, Input} from "@angular/core";
           (click)="onClick($event)"
           [disabled] = "disabled">
         <ng-content></ng-content>
+        <i class = "sdc-icon sdc-icon-arrow-left"></i>
   </button>`
 })
 export class ButtonComponent {
