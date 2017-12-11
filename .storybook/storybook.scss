@@ -113,11 +113,6 @@ a {
 		}
 	}
 }
-.sdc-input {
-	.source-toggle & {
-		padding-right: 30px;
-	}
-}
 
 .source-toggle-wrapper {
 	.source-toggle-title {
@@ -137,6 +132,7 @@ a {
 		.source-toggle-code {
 			background-color: $background-gray;
 			padding: 5px;
+			margin-left: 30px;
 			pre {
 				margin-top: 0;
 				user-select: text;

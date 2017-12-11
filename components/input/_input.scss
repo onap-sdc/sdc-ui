@@ -1,5 +1,5 @@
 .sdc-input {
-  padding-bottom: 10px;
+  margin-bottom: 10px;
 
   .sdc-input__label {
     margin-bottom: 5px;
@@ -14,7 +14,8 @@
   }
 
   .sdc-input__input {
-    text-indent: 6px;
+    @include box-sizing;
+    padding: 0 10px;
     height: 38px;
     width: 100%;//415px;
     border: solid 1px $light-gray;
@@ -28,30 +29,20 @@
     }
 
     &:read-only{
-      border: solid 1px $white;
+      border: none;
       outline: none;
       color: $text-black
     }
     &:-moz-read-only { /* For Firefox */
-      border: solid 1px $white;
+      border: none;
       outline: none;
       color: $text-black
     }
 
-    &:read-only:focus{
-      border-color: $white;
-    }
-    &:-moz-read-only:focus { /* For Firefox */
-      border-color: $white;
-      color: $text-black
-    }
     &:focus {
       border-color: $blue;
       outline: 0 none;
       color: $text-black;
-    }
-    &[type="file"] {
-      display: none;
     }
 
     &:disabled {
@@ -79,7 +70,8 @@
   }
 
   .sdc-label__error{
-    margin-top: 8px;
+    margin-top: 2px;
+    margin-left: 2px;
     @extend .body-3;
   }
 

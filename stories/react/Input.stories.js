@@ -18,7 +18,7 @@ let examples = {
 		html: InputDefaultHtml
 	},
 	'Input Required': {
-		jsx: <ReactInput name='input2' value='Default' label='I am a label' isRequired onChange={ action('input-change')}/>,
+		jsx: <ReactInput name='input2' value='Default' label='I am a label'  onChange={ action('input-change')} isRequired/>,
 		html: InputRequiredHtml
 	},
 	'Input Number': {
@@ -26,11 +26,11 @@ let examples = {
 		html: InputNumberHtml
 	},
 	'Input View Only': {
-		jsx: <ReactInput value='Default' readOnly label='I am a label' onChange={ action('input-change')}/>,
+		jsx: <ReactInput value='Read Only Text'  label='I am a label' onChange={ action('input-change')} readOnly/>,
 		html: InputViewOnlyHtml
 	},
 	'Input Disabled': {
-		jsx: <ReactInput value='Default' disabled label='I am a label' onChange={ action('input-change')}/>,
+		jsx: <ReactInput value='Default'  label='I am a label' onChange={ action('input-change')} disabled/>,
 		html: InputDisabledHtml
 	},
 	'Input Placeholder': {

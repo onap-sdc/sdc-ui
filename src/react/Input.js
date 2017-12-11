@@ -38,26 +38,22 @@ class Input extends React.Component {
 	}
 
 	onChange(e) {
-		if (this.props.readOnly || this.props.disabled) {
-			e.stopPropagation();
-			return;
-		}
-		let {onChange} = this.props;
-		if (onChange) {
+		let {onChange, readOnly, disabled} = this.props;
+		if (onChange && !readOnly && !disabled) {
 			onChange(e.target.value);
 		}
 	}
 
 	onBlur(e) {
-		let {onBlur} = this.props;
-		if (onBlur) {
+		let {onBlur, readOnly} = this.props;
+		if (!readOnly && onBlur) {
 			onBlur(e);
 		}
 	}
 
 	onKeyDown(e) {
-		let {onKeyDown} = this.props;
-		if (onKeyDown) {
+		let {onKeyDown, readOnly} = this.props;
+		if (!readOnly && onKeyDown) {
 			onKeyDown(e);
 		}
 	}
