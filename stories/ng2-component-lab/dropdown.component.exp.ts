@@ -74,11 +74,12 @@ export default experimentOn('DropDown')
             showSource: true,
             context: {
                 options: options1,
+                onChange: function(option){console.log("Something was changed!", option.value)}
             },
             title: 'Normal dropDown',
             description: 'Normal dropDown',
             template: `
-      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
+      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
     `
         }, {
             id: 'groupDropDown',

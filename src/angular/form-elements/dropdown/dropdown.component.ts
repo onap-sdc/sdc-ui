@@ -20,7 +20,7 @@ export class DropDownComponent implements OnChanges, OnInit {
     /**
      * Drop-down value changed event emitter
      */
-    @Output('valueChange') baseEmitter:EventEmitter<any> = new EventEmitter<any>();
+    @Output('changed') changeEmitter:EventEmitter<IDropDownOption> = new EventEmitter<IDropDownOption>();
 
     /**
      * The label that will show up above the drop-down
@@ -107,6 +107,7 @@ export class DropDownComponent implements OnChanges, OnInit {
     ngOnChanges(changes: SimpleChanges): void {
         if(changes.selectedOption && this.options.indexOf(this.selectedOption) > -1){
             this.selectedOption = this.isSelectable(this.selectedOption) && this.selectedOption || null;
+            this.changeEmitter.next(this.selectedOption);
         }
     }
 
@@ -150,6 +151,7 @@ export class DropDownComponent implements OnChanges, OnInit {
             this.selectedOption = option;
             this.show = false;
             this.validateDropDown();
+            this.changeEmitter.next(option);
         }
     }
 
