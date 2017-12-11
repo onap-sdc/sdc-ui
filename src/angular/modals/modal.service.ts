@@ -10,7 +10,6 @@ import {ModalButtonConfig} from "./models/modal-button-config";
 export class ModalService {
 
     private currentModal:ComponentRef<any>;
-    private innerModalContent:ComponentRef<any>;
 
     constructor(private createDynamicComponentService:CreateDynamicComponentService) {
     }
@@ -31,8 +30,8 @@ export class ModalService {
     }
 
     public openActionModal = (title:string, message:string, actionButtonCallback:Function, actionButtonText?:string):ComponentRef<ModalComponent> => {
-        let actionButton:ModalButtonConfig = new ModalButtonConfig(actionButtonText || 'Done');
-        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', 'outline');
+        let actionButton:ModalButtonConfig = new ModalButtonConfig(actionButtonText || 'Done', 'default', true, actionButtonCallback);
+        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', 'outline', true);
         let modalConfig:IModalConfig = <IModalConfig> {
             size: 'sm',
             title: title,
@@ -61,7 +60,7 @@ export class ModalService {
 
     public openCustomModal = (modalConfig:IModalConfig, dynamicComponentType:Type<any>, dynamicComponentInput?:any) => {
         let modalInstance:ComponentRef<ModalComponent> = this.createDynamicComponentService.createComponentDynamically(ModalComponent, modalConfig);
-        this.innerModalContent = this.createDynamicComponentService.createComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer.element.nativeElement);
+        modalInstance.instance.innerModalContent = this.createDynamicComponentService.createComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer.element.nativeElement);
         this.currentModal = modalInstance;
         return modalInstance;
     }
@@ -73,7 +72,7 @@ export class ModalService {
     }
 
     public getInnerContentInstance = ()=> {
-        return this.innerModalContent.instance;
+        return this.currentModal.instance;
     }
 
     public closeModal = ()=> {
