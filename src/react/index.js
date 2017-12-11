@@ -1,5 +1,6 @@
 import Button from './Button.js';
 import Checkbox from './Checkbox.js';
+import Input from './Input.js';
 import Radio from './Radio.js';
 import RadioGroup from './RadioGroup.js';
 import SVGIcon from './SVGIcon.js';
@@ -13,6 +14,7 @@ import TileFooterCell from './TileFooterCell.js';
 
 export {Button};
 export {Checkbox};
+export {Input};
 export {Radio};
 export {RadioGroup};
 export {SVGIcon};
@@ -27,6 +29,7 @@ export {TileFooterCell};
 export default {
 	Button,
 	Checkbox,
+	Input,
 	Radio,
 	RadioGroup,
 	SVGIcon,
