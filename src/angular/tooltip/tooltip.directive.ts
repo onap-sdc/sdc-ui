@@ -1,12 +1,10 @@
-import {
-    Directive, ElementRef, HostListener, Input, Renderer, AfterViewInit, TemplateRef,
-    ViewContainerRef, ComponentFactoryResolver, ViewChild
-} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, Renderer, TemplateRef} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/debounceTime";
 import {TooltipTemplateComponent} from './tooltip-template.component';
+import {CreateDynamicComponentService} from '../utils/create-dynamic-component.service';
 
 const pixel = 'px';
 const leftStyle = 'left';
@@ -16,16 +14,14 @@ const showSuffix = 'show';
 @Directive({
     selector: '[sdc-tooltip]'
 })
-export class TooltipDirective implements AfterViewInit {
+export class TooltipDirective {
 
     @Input('tooltip-text') public text = 'tooltip';
     @Input('tooltip-placement') public placement: TooltipPlacement = TooltipPlacement.Top;
-    @Input('tooltip-disabled') public disabled = false;
     @Input('tooltip-css-class') public customCssClass: string;
     @Input('tooltip-template') public template: TemplateRef<any>;
 
     private cssClass: string = 'sdc-tooltip'; // default css class
-    private parentElement: any;
     private tooltip: any; // tooltip html element
     private elemPosition: any;
     private tooltipOffset: number = 8;
@@ -33,36 +29,18 @@ export class TooltipDirective implements AfterViewInit {
 
     constructor(
         private elementRef: ElementRef,
-        private renderer: Renderer,
-        /**
-         * ViewContainerRef: Represents a container where one or more Views can be attached to.
-         * When created on constructor, refers to the element we are working on.
-         */
-        private viewContainer: ViewContainerRef,
-        /**
-         * ComponentFactoryResolver: A service which allow us to dynamically create component factories and
-         * add them to our view (using ViewContainerRef - createComponent method)
-         */
-        private componentFactory: ComponentFactoryResolver) {
-    }
-
-    public ngAfterViewInit() {
-
-        this.parentElement = this.elementRef.nativeElement.parentElement;
+        private service: CreateDynamicComponentService,
+        private renderer: Renderer) {
     }
 
     @HostListener('mouseenter')
     public onMouseEnter() {
-        if (this.disabled === false) {
-            this.show();
-        }
+        this.show();
     }
 
     @HostListener('mouseleave')
     public onMouseLeave() {
-        if (this.disabled === false) {
-            this.hide();
-        }
+        this.hide();
     }
 
     private get ScreenWidth() {
@@ -74,26 +52,22 @@ export class TooltipDirective implements AfterViewInit {
     }
 
     private create() {
-            /**
-             * Creating a factory for our component so we can attach it to our view
-             */
-            const factory = this.componentFactory.resolveComponentFactory(TooltipTemplateComponent);
-            /**
-             * Creating and attaching a component to our view, using component factory
-             */
-            this.tooltipTemplateContainer = this.viewContainer.createComponent(factory);
+            this.tooltipTemplateContainer = this.service.createComponentDynamically(TooltipTemplateComponent);
+
             /**
              * Creating a view (injecting our template) from template in our component.
              */
             this.tooltip = this.tooltipTemplateContainer.location.nativeElement.querySelector(
                 '.sdc-tooltip-template-container');
+
             if (this.template) {
                 this.tooltipTemplateContainer.instance.container.createEmbeddedView(this.template);
             }else {
-                // this.tooltipTemplateContainer.instance.addText(this.text ? this.text : 'tooltip');
                 this.tooltip.textContent = this.text ? this.text : 'tooltip';
             }
+
             this.renderer.setElementClass(this.tooltip, this.cssClass, true);
+
             if (this.customCssClass) {
                 this.renderer.setElementClass(this.tooltip, this.customCssClass, true);
             }
