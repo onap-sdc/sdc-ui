@@ -9,12 +9,8 @@ export default `
             <div *ngIf="message">{{message}}</div>
             <div #dynamicContentContainer></div>
         </div>
-
         <div class="sdc-modal__footer">
-            <sdc-button *ngFor="let button of buttons"
-                    [sdcButtonStyle]="button.sdcButtonStyle"
-                    [disabled] = "button.disabled"
-                    [button-modal-click]="button">{{button.text}}</sdc-button>
+            <sdc-button text="Close" [type]="'primary'" [disabled]="false" [size]="medium"></sdc-button>
         </div>
     </div>
 </div>
