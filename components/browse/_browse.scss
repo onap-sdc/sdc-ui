@@ -21,7 +21,7 @@ input[type="file"] {
   }
   .delete-icon {
     position: absolute;
-    top: 27px;
+    top: 30px;
     right: 47px;
     cursor: pointer;
     svg {
@@ -32,7 +32,6 @@ input[type="file"] {
   }
   .browse-button {
     border: solid 1px $light-gray;
-    margin-bottom: 20px;
     background-color: $background-gray;
     height: 36px;
     width: 36px;

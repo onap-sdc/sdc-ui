@@ -6,4 +6,5 @@ import template from "./tile.component.html";
     template: template,
 })
 
-export class TileComponent {}
+export class TileComponent {
+}
