@@ -14,7 +14,7 @@ import {Component, Input} from "@angular/core";
         </div>
 `
 })
-export class InnerContent {
+export class ModalInnerContent {
 
     @Input() name:string;
 }
