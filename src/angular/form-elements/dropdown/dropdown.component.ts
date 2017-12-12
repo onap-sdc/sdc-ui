@@ -134,7 +134,7 @@ export class DropDownComponent implements OnChanges, OnInit {
      * @param index - number
      * @param option - IDropDownItem or string
      */
-    public selectOption(index: number, option:any):void{
+    public selectOption(index: number, option:IDropDownOption):void{
         if(!this.isSelectable(option)){
             return;
         }
