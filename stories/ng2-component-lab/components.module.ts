@@ -10,6 +10,9 @@ import {ModalInnerContent} from "./components/modal-inner-content-example.compon
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
+import {TooltipDirective} from '../../src/angular/tooltip/tooltip.directive';
+import {TooltipTemplateComponent} from '../../src/angular/tooltip/tooltip-template.component';
+import {TooltipModule} from '../../src/angular/tooltip/tooltip.module';
 import {ModalConsumer} from "./components/modal-consumer.component";
 
 @NgModule({
@@ -28,6 +31,8 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
+        TooltipModule,
+        PopupMenuModule,
         InfiniteScrollModule
     ],
     entryComponents: [ModalInnerContent],
@@ -41,6 +46,8 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         TileModule,
         ButtonsModule,
         ChecklistModule,
+        PopupMenuModule,
+        TooltipDirective,
         PopupMenuModule,
         InfiniteScrollModule,
         ModalConsumer
