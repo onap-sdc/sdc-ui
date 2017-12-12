@@ -5,12 +5,12 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
 import {ModalService} from "../../../src/angular/modals/modal.service";
 import {IModalConfig} from "../../../src/angular/modals/models/modal-config";
 import {ModalButtonConfig} from "../../../src/angular/modals/models/modal-button-config";
-import {InnerContent} from "./inner-content-example.component";
+import {ModalInnerContent} from "./modal-inner-content-example.component";
 
 
 @Component({
     selector: 'modal-consumer',
-    template: `<sdc-button [sdcButtonStyle]="'outline'" (click)="openModal()">View Modal</sdc-button>`
+    template: `<sdc-button [text]="'View Modal'" (click)="openModal()"></sdc-button>`
 })
 export class ModalConsumer {
     @Input() action:string; 
@@ -19,7 +19,7 @@ export class ModalConsumer {
     }
 
     private openModal = ():void => {
-        if (this[this.action]) {
+        if (this[this.action]) { 
             this[this.action](); 
         }
     }
@@ -41,16 +41,16 @@ export class ModalConsumer {
     };
 
     private openCustomModal = ():void => {
-        let actionButton:ModalButtonConfig = new ModalButtonConfig('Done', 'default', true, this.customModalOnDone);
-        let saveButton:ModalButtonConfig = new ModalButtonConfig('Save', 'default', false, this.customModalOnSave);
-        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', 'outline', true);
+        let actionButton:ModalButtonConfig = new ModalButtonConfig('Done', '', true, this.customModalOnDone);
+        let saveButton:ModalButtonConfig = new ModalButtonConfig('Save', '', false, this.customModalOnSave);
+        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', '', true);
         let modalConfig:IModalConfig = <IModalConfig> {
             size: 'sm',
             title: 'Test',
             type: 'custom',
             buttons: [actionButton, saveButton, cancelButton]
         };
-        this.modalService.openCustomModal(modalConfig, InnerContent, {name: "Sample Content"});
+        this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }
 
     private customModalOnDone = (result?:any):void => {

@@ -75,9 +75,9 @@ export default experimentOn('Modals')
         <div class="example-source">Source Code:
         <pre>
             <span class="comment">//create buttons</span>
-            let actionButton:ModalButtonConfig = new ModalButtonConfig('Done', 'default', true, this.customModalOnDone);
-            let saveButton:ModalButtonConfig = new ModalButtonConfig('Save', 'default', false, this.customModalOnSave);
-            let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', 'outline', true);
+            let actionButton:ModalButtonConfig = new ModalButtonConfig('Done', '', true, this.customModalOnDone);
+            let saveButton:ModalButtonConfig = new ModalButtonConfig('Save', '', false, this.customModalOnSave);
+            let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', '', true);
 
             <span class="comment">//create modal config object </span>
             let modalConfig:IModalConfig = {{ '{' }}
@@ -87,8 +87,8 @@ export default experimentOn('Modals')
                 buttons: [actionButton, saveButton, cancelButton]
               {{ '}' }};
 
-            <span class="comment">//open modal with dynamically created 'innerContent' component. Send data object with input 'name'. </span>
-            this.modalService.openCustomModal(modalConfig, InnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
+            <span class="comment">//open modal with dynamically created 'modalInnerContent' example component. Send data object with input 'name'. </span>
+            this.modalService.openCustomModal(modalConfig, ModalInnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
 
 
             private customModalOnDone = (result?:any):void => {{ '{' }}

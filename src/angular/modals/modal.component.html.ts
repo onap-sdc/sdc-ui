@@ -10,7 +10,7 @@ export default `
             <div #dynamicContentContainer></div>
         </div>
         <div class="sdc-modal__footer">
-            <sdc-button text="Close" [type]="'primary'" [disabled]="false" [size]="medium"></sdc-button>
+            <sdc-button *ngFor="let button of buttons" [text]="button.text" [type]="button.type" [disabled]="button.disabled" [size]="'medium'" [button-modal-click]="button"></sdc-button>
         </div>
     </div>
 </div>

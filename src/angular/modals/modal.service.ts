@@ -30,8 +30,8 @@ export class ModalService {
     }
 
     public openActionModal = (title:string, message:string, actionButtonCallback:Function, actionButtonText?:string):ComponentRef<ModalComponent> => {
-        let actionButton:ModalButtonConfig = new ModalButtonConfig(actionButtonText || 'Done', 'default', true, actionButtonCallback);
-        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', 'outline', true);
+        let actionButton:ModalButtonConfig = new ModalButtonConfig(actionButtonText || 'Done', '', true, actionButtonCallback);
+        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', '', true);
         let modalConfig:IModalConfig = <IModalConfig> {
             size: 'sm',
             title: title,
