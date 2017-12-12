@@ -19,8 +19,15 @@ sdc-dropdown {
       }
       &:focus {
         border: solid 1px $red;
-        &::after{
-          color: $red;
+        .sdc-dropdown-handle{
+          use {
+            fill: $red;
+          }
+        }
+      }
+      .sdc-dropdown-handle{
+        use {
+          fill: $red;
         }
       }
 
@@ -41,6 +48,12 @@ sdc-dropdown {
         bottom:58px;
         border-top:1px solid $red;
       }
+    }
+
+    .svg-icon.__exclamationTriangleFull {
+      width: 12px;
+      height: 10px;
+      margin-right: 6px;
     }
   }
 
@@ -65,29 +78,37 @@ sdc-dropdown {
       background-color: $background-gray;
       color: $gray;
       cursor: default;
-      &::after {
-        color: $gray;
-      }
       &:focus {
         border: solid 1px $light-gray;
         outline: none;
-        &::after{
-          color: $gray;;
+        .sdc-dropdown-handle{
+          use {
+            fill: $light-gray;
+          }
+        }
+      }
+      .sdc-dropdown-handle{
+        use {
+          fill: $light-gray;
         }
       }
     }
-    &::after {
-      content: ' \25BC';
-      position: absolute;
-      top: auto;
-      right: 10px;
-      color: $dark-gray
-    }
+
     &:focus {
       border: solid 1px $light-blue;
       outline: none;
-      &::after{
-        color: $light-blue;;
+      .sdc-dropdown-handle{
+        use {
+          fill: $light-blue;
+        }
+      }
+    }
+
+    .sdc-dropdown-handle {
+      float: right;
+
+      use {
+        fill: $dark-gray;
       }
     }
   }
