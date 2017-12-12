@@ -22,10 +22,10 @@
     "postbuild-clean": "rm -rf build",
     "build": "npm run prebuild-clean && npm run build-common && npm run build-react && npm run build-angular && npm run build-pack && npm run postbuild-clean",
     "storybook": "npm run build-icons && start-storybook -p 6006",
-    "build-storybook": "npm run build-icons && build-storybook -c .storybook -o .out/react && ncp utils/index-for-gh-pages.html .out/index.html",
+    "build-storybook": "npm run build-icons && build-storybook -c .storybook -o .out/react && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html",
     "lab": "ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature",
     "build-lab": "set NODE_ENV=build&& ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js --build -- feature",
-    "build-gh-pages": "npm run build-storybook && npm run build-lab && npm run && ncp utils/index-for-gh-pages.html .out/index.html"
+    "build-gh-pages": "npm run build-storybook && npm run build-lab && npm run && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html"
   },
   "repository": {
     "type": "git",

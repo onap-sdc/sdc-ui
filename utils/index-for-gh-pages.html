@@ -9,20 +9,42 @@
   <style>
     body, html {
       width: 100%;
-      height: 100%;
       padding: 0;
       margin: 0;
     }
+    .header {
+      display: flex;
+    }
+    .logo {
+      padding: 20px 40px;
+    }
+    img {
+      width: 160px;
+      height: 35px;
+    }
     .showcase-header {
       height: 40px;
-      background-color: #DDDDDD;
+      display: flex;
+      margin: 20px 30px;
+    }
+    .case-tab-name {
+      font-family: OpenSans-Light, 'Open Sans', Arial, sans-serif;
+      font-size: 20px;
+      margin: 0 10px;
+      border-bottom: solid 2px #009fdb;
+      cursor: pointer;
+    }
+    .case-tab-name[active=true] {
+      color: #009fdb;
     }
     .showcase-wrapper {
       height: calc(100% - 40px);
       display: flex;
+      flex-direction: column;
       background-color: #FFFFFF;
+      padding: 40px;
     }
-    .showcase {
+    .showcase-iframe {
       flex: 1;
       border-top: solid 1px #aaaaaa;
     }
@@ -35,20 +57,36 @@
     };
     function show(type){
       document.getElementById('showcase').src = shows[type];
+      setActiveTab(type);
+    }
+    function setActiveTab(type) {
+      var allTabs = document.getElementsByClassName('case-tab-name');
+      for(let i = 0; i < allTabs.length; i++ ) {
+        if(allTabs[i].getAttribute('id') === type+'-tab') {
+          allTabs[i].setAttribute('active', true);
+        }
+        else {
+          allTabs[i].setAttribute('active', false);
+        }
+      }
     }
   </script>
 
 </head>
 
 <body>
-  <div class="showcase-header">
-      <button onClick="show('react')">React</button>
-      <button onClick="show('angular')">Angular</button>
+  <div class="header">
+    <div class="logo"><img src="assets/images/logo_onap.png"/></div>
+    <div class="showcase-header">
+      <div class="case-tab-name" id="react-tab" onClick="show('react')">React</div>
+      <div class="case-tab-name" id="angular-tab" onClick="show('angular')">Angular</div>
+    </div>
   </div>
+
   <div class="showcase-wrapper">
-    <iframe id="showcase" src="" class="showcase"></iframe>
+    <iframe id="showcase" src="main-page.html" class="showcase-iframe">
+    </iframe>
   </div>
-  <script>show('angular');</script>
 </body>
 
 </html>
