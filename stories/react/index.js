@@ -5,10 +5,11 @@ import Welcome from './Welcome.stories.js';
 import Colors from './Colors.stories.js';
 import Typography from './Typography.stories.js';
 import Checkboxes from './Checkbox.stories.js';
+import Input from './Input.stories.js';
 import Icons from './SVGIcon.stories.js';
 import Tiles from './Tiles.stories.js';
 import Tabs from './Tabs.stories.js';
-
+import Form from './Form.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
 
@@ -35,6 +36,10 @@ storiesOf('Buttons', module)
 storiesOf('Checkboxes', module)
 	.add('Checkboxes', () => <Checkboxes />);
 
+storiesOf('Input Fields', module)
+	.add('Input Text', () => <Input />);
+
+
 storiesOf('Icons', module)
 	.add('SVG Icons', () => <Icons />);
 
@@ -47,3 +52,6 @@ storiesOf('Tabs', module)
 
 storiesOf('Tiles', module)
 	.add('Tiles', () => <Tiles />);
+
+storiesOf('Form Example', module)
+	.add('Form Example', () => <Form/>);
