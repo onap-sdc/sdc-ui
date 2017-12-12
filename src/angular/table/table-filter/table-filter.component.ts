@@ -1,10 +1,11 @@
-import {Component, OnInit, Input, Output} from "@angular/core";
-import {IFilterGroup} from '../models/table.models';
+import {Component, OnInit, AfterViewInit, Input, Output, ViewChildren, QueryList, EventEmitter} from "@angular/core";
+import {IComponentFilterGroup, IFilterGroup} from '../models/table.models';
+import {TableSimpleFilterComponent} from './table-simple-filter.component';
 
 @Component({
     selector: 'sdc-table-filter',
     templateUrl: './table-filter.component.html',
-    /* styleUrls: ['./table-filter.component.css'] */
+//    styleUrls: ['./table-filter.component.css']
     styles: [`.sdc-table-filter {
     border: 1px solid #666;
     background-color: white;
@@ -24,23 +25,38 @@ import {IFilterGroup} from '../models/table.models';
 }
 
 .sdc-table-filter-form-group {
-    display: block;
+    display: inline-block;
     width: 240px;
     padding-top: 20px;
 }
-
 .sdc-table-filter-button {
-    padding: 6px 20px;
-}`]
-
+        padding: 5px 5px;
+}
+`]
 })
-export class TableFilterComponent implements OnInit {
+export class TableFilterComponent implements OnInit, AfterViewInit {
 
     @Input() headerCols: any;
+    @Output('changed') changed: EventEmitter<IFilterGroup[]> = new EventEmitter();
 
-    private filterGroups: IFilterGroup[] = [];
+    @ViewChildren(TableSimpleFilterComponent) filterComponents: QueryList<Component>;
 
     ngOnInit(): void {
+    }
 
+    ngAfterViewInit() {
+    }
+
+    public runFilter() {
+        let groups: IFilterGroup[] = [];
+
+        this.filterComponents.forEach((child)=> {
+            let group: IFilterGroup = (child as IComponentFilterGroup).FilterGroup;
+            if (group.filters.length > 0) {
+                groups.push(group);
+            }
+        })
+
+        this.changed.next(groups);
     }
 }

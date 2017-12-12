@@ -81,6 +81,10 @@ export interface IFilterGroup {
     filters: IFilterItem[];
 }
 
+export interface IComponentFilterGroup {
+    FilterGroup: IFilterGroup;
+}
+
 export enum FilterOperator {
     Equal,
     NotEqual,

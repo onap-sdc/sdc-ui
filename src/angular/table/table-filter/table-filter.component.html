@@ -1,7 +1,4 @@
-<div>
-    <form #form>
-        <div class="sdc-table-filter-form-group" *ngFor="let col of headerCols">
-            <label>{{col.title}}</label>
-        </div>
-    </form>
-</div>
+<sdc-table-simple-filter [headerCols]=headerCols field="name"></sdc-table-simple-filter>
+<sdc-table-simple-filter [headerCols]=headerCols field="usersCount"></sdc-table-simple-filter>
+<sdc-table-simple-filter [headerCols]=headerCols field="serviceType"></sdc-table-simple-filter>
+<button type="button" class="sdc-table-filter-button" (click)="runFilter()">Run</button>
