@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Input, Renderer, TemplateRef} from '@angular/core';
+import {Directive, ElementRef, HostListener, OnInit, Input, Renderer, TemplateRef} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import "rxjs/add/operator/map";
@@ -14,7 +14,7 @@ const showSuffix = 'show';
 @Directive({
     selector: '[sdc-tooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnInit {
 
     @Input('tooltip-text') public text = 'tooltip';
     @Input('tooltip-placement') public placement: TooltipPlacement = TooltipPlacement.Top;
@@ -27,6 +27,8 @@ export class TooltipDirective {
     private tooltipOffset: number = 8;
     private tooltipTemplateContainer: any;
 
+    private scrollEventHandler = function(){};
+
     constructor(
         private elementRef: ElementRef,
         private service: CreateDynamicComponentService,
@@ -36,11 +38,17 @@ export class TooltipDirective {
     @HostListener('mouseenter')
     public onMouseEnter() {
         this.show();
+        this.activateScrollEvent();
     }
 
     @HostListener('mouseleave')
     public onMouseLeave() {
         this.hide();
+        this.deactivateScrollEvent();
+    }
+
+    ngOnInit(): void {
+        this.initScrollEvent();
     }
 
     private get ScreenWidth() {
@@ -246,6 +254,43 @@ export class TooltipDirective {
         }
 
         return true;
+    }
+
+    /**
+     * Scrolling
+     */
+
+    private debounce(func:Function, wait:number, immediate?:boolean){
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    private initScrollEvent() {
+        this.scrollEventHandler = this.debounce(()=>{
+            try {
+                this.setPosition();
+            } catch(e) {
+
+            }
+        },10);
+    }
+
+    private activateScrollEvent() {
+        window.addEventListener('scroll',this.scrollEventHandler , true);
+    }
+
+    private deactivateScrollEvent() {
+        window.removeEventListener('scroll',this.scrollEventHandler , true);
     }
 }
 
