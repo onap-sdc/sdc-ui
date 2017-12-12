@@ -12,17 +12,17 @@ export default experimentOn('Search Bar').group('SearchBar', [
             @Component({
                 selector: "search-bar-example",
                 template: '
-                    <sdc-search-bar placeholder="search text"
+                    &lt;sdc-search-bar placeholder="search text"
                     label="search box example:"
                         [debounceTime]="1000"
                         [searchQuery]="searchText"
-                    (searchChanged)="onSearchTextChange($event)">
-                    </sdc-search-bar>
-                    <ul>
-                        <li *ngFor="let item of list |searchFilter:searchText">
+                    (searchChanged)="onSearchTextChange($event)"&gt
+                    &lt;/sdc-search-bar&gt
+                    &lt;ul&gt
+                        &lt;li *ngFor="let item of list |searchFilter:searchText"&gt
                             {{item}}
-                        </li>
-                    </ul>
+                        &lt;/li&gt
+                    &lt;/ul&gt
                     '
             })
             export class SearchBarExample {

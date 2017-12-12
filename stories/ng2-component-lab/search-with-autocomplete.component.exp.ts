@@ -14,30 +14,30 @@ export default experimentOn('Search With Autocomplete').group('SearchWithAutocom
             @Component({
                 selector: "search-with-autocomplete-example",
                 template: '
-                    <search-with-autocomplete placeholder="search text"
+                    &lt;search-with-autocomplete placeholder="search text"
                     label="search by color:"
                         [debounceTime]="1000"
                         [searchQuery]="searchText"
                         [autoCompleteValues]="autoCompleteValues"
                     (searchChanged)="onSearchTextChange($event)"
-                    (searchButtonClicked)="onSelectedValueToSearch($event)">
-                        </search-with-autocomplete>
-                <table>
-                    <thead>
-                        <td>
+                    (searchButtonClicked)="onSelectedValueToSearch($event)"&gt
+                        &lt;/search-with-autocomplete&gt
+                &lt;table&gt
+                    &lt;thead&gt
+                        &lt;td&gt
                             name
-                </td>
-                <td>
+                &lt;/td&gt
+                &lt;td&gt
                     color
-                </td>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let fruit of searchResults">
-                    <td>{{fruit.name}}</td>
-            <td>{{fruit.color}}</td>
-            </tr>
-            </tbody>
-            </table>
+                &lt;/td&gt
+                &lt;/thead&gt
+                &lt;tbody&gt
+                    &lt;tr *ngFor="let fruit of searchResults"&gt
+                    &lt;td>{{fruit.name}}&lt;/td&gt
+            &lt;td&gt{{fruit.color}}&lt;/td&gt
+            &lt;/tr&gt
+            &lt;/tbody&gt
+            &lt;/table&gt
             ',
                 styles: ['td{ padding: 5px; border: solid 1px black;} thead{background-color: green;}']
             })
