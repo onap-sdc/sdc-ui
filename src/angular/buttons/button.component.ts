@@ -10,6 +10,8 @@ export class ButtonComponent {
     @Input() public type: string = "primary";
     @Input() public size: string = "default";
     @Input() public preventDoubleClick: boolean;
+    @Input() public icon_name: string;
+    @Input() public direction: string;
     private lastClick: Date;
 
     public onClick = (e): void => {
