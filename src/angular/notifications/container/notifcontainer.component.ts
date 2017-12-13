@@ -28,11 +28,7 @@ export class NotificationContainerComponent {
     }
 
     public ngOnInit(){
-
         console.log("NotificationContainerComponent:ngOnInit start");
-
-        //let h = document.getElementById("containerid").offsetHeight;
-        //document.getElementById("menuID").style.height = h + "px";
 
         this.notify.subscribe( (notif : NotificationSettings) => {
             console.log("NotificationContainerComponent:ngOnInit notif="+JSON.stringify(notif));
@@ -48,13 +44,6 @@ export class NotificationContainerComponent {
     onDestroyed(event : any){
         console.log("NotificationContainerComponent:onDestroyed event: " + event);
         this.childdestroyed = 'true';
-        // let notifs  = document.getElementsByTagName("sdc-notification");
-        // let notif ;
-        // if (notifs){
-        //     for( notif in notifs ){
-        //         // notif.className += "ngn-change-pos";
-        //     };
-        // }
 
         console.log("this.notifications - begin: " + this.notifications.length);
 
@@ -64,16 +53,7 @@ export class NotificationContainerComponent {
 
 
         }
-
         console.log("this.notifications - after: " + this.notifications.length);
-
-
-        // this.notifications.forEach(x => {
-        //     if (x.destroy) {
-        //         notification.delete()
-        //     }
-        // });
-
     }
 
 

@@ -1,6 +1,6 @@
 
 export type NotificationType =
-    "info" | "warn" | "error";
+    "info" | "warn" | "error" | "success";
 
 export class NotificationSettings {
     public position: string;

@@ -12,12 +12,14 @@ import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 import {NotificationModule} from "../../src/angular/notifications/notification.module";
+import {NotificationsExample} from "./components/notifications-example.component";
 
 @NgModule({
     declarations: [
         ColorsTable,
         InnerContent,
         ButtonModalExample,
+        NotificationsExample,
         KeysPipe
     ],
     imports: [
@@ -39,6 +41,7 @@ import {NotificationModule} from "../../src/angular/notifications/notification.m
         ModalModule,
         ColorsTable,
         ButtonModalExample,
+        NotificationsExample,
         FormElementsModule,
         ButtonsModule,
         TileModule,

@@ -10,33 +10,7 @@ export class NotificationsService  {
 
     notifQueue : Subject<any> = new Subject<any>();
 
-    constructor() {
-
-        let self = this;
-        this.test0();
-        setInterval(function(){
-            self.test1(); },
-            13000);
-        setInterval(function(){
-                self.test2(); },
-            25000);
-    }
-
-
-    private test0(){
-        this.push(new NotificationSettings('top-right', 10000, "warn", '', false, 'notif warn message test#0', 'Notif Title Warn'));
-    }
-
-
-    private test1(){
-        this.push(new NotificationSettings('top-right', 10000, "warn", '', false, 'notif warn message test#1', 'Notif Title Warn'));
-    }
-
-    private test2(){
-        this.push(new NotificationSettings('top-right', 10000, "error", '', false, 'notif error message comes here of test#2', 'Notif Title Error 2'));
-    }
-
-
+    constructor() {}
 
     public push(notif : NotificationSettings){
         if( this.notifQueue.observers.length > 0 ) {

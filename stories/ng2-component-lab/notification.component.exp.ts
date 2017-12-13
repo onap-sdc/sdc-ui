@@ -7,5 +7,5 @@ export default experimentOn('Notification')
             showSource: true,
             title: 'Notification Container',
             description: 'container example ...',
-            template: `<sdc-notification-container></sdc-notification-container>`,
+            template: `<notifications-example></notifications-example>`,
         }]);
