@@ -7,6 +7,7 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {FileOpenerComponent} from "./browse/file-opener/file-opener.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {BrowseComponent} from "./browse/browse.component";
+import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
 
 @NgModule({
     imports: [
@@ -21,10 +22,12 @@ import {BrowseComponent} from "./browse/browse.component";
         CheckboxComponent,
         FileOpenerComponent,
         RadioGroupComponent,
-        BrowseComponent
+        BrowseComponent,
+        DropDownTriggerDirective
     ],
     exports: [
         DropDownComponent,
+        DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent,
         BrowseComponent,
