@@ -1,8 +1,4 @@
 import {Directive, ElementRef, HostListener, OnInit, Input, Renderer, TemplateRef} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/debounceTime";
 import {TooltipTemplateComponent} from './tooltip-template.component';
 import {CreateDynamicComponentService} from '../utils/create-dynamic-component.service';
 
@@ -60,7 +56,7 @@ export class TooltipDirective implements OnInit {
     }
 
     private create() {
-            this.tooltipTemplateContainer = this.service.createComponentDynamically(TooltipTemplateComponent);
+            this.tooltipTemplateContainer = this.service.createComponentDynamically(TooltipTemplateComponent, document.body);
 
             /**
              * Creating a view (injecting our template) from template in our component.
