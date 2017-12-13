@@ -1,5 +1,5 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
-
+import {Positions} from  '../../src/angular/buttons/button.component';
 const buttonTypes = ['primary', 'white', 'link'];
 const buttonSizes = ['large', 'medium', 'small', 'default'];
 const experiment = experimentOn('Button');
@@ -79,27 +79,31 @@ experiment.group("Buttons with icons", [
             <sdc-button
                 text="Default button long text"
                 (click)="buttonClicked()"
-                icon_name="arrow_left">
+                icon_name="arrow_left"
+               >
             </sdc-button>
             
             <sdc-button
                 text="Sample button"
                 (click)="buttonClicked()"
-                icon_name="arrow_right">
+                icon_name="arrow_right"
+                >
             </sdc-button>
             
             <sdc-button
                 text="Sample button"
                  type="white"
                 (click)="buttonClicked()"
-                icon_name="arrow_line_left">
+                icon_name="arrow_line_left"
+                >
             </sdc-button>
             
             <sdc-button
                 text="Sample button"
                 type="white"
                 (click)="buttonClicked()"
-                icon_name="arrow_line_right">
+                icon_name="arrow_line_right"
+              >
             </sdc-button>
             
            `

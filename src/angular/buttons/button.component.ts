@@ -1,9 +1,15 @@
 import {Component, Input} from "@angular/core";
 
+export enum Positions{
+    right,
+    left
+}
+
 @Component({
     selector: "sdc-button",
     templateUrl: "./button.component.html"
 })
+
 export class ButtonComponent {
     @Input() public text: string;
     @Input() public disabled: boolean = false;
@@ -11,7 +17,7 @@ export class ButtonComponent {
     @Input() public size: string = "default";
     @Input() public preventDoubleClick: boolean;
     @Input() public icon_name: string;
-    @Input() public direction: string;
+    @Input() public icon_positon: Positions;
     private lastClick: Date;
 
     public onClick = (e): void => {
