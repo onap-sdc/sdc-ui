@@ -1,7 +1,7 @@
 .sdc-tile {
 	$tile-full-width: 204px;
-	$tile-full-height: 200px;
-	$tile-padding: 11px;
+	$tile-full-height: 204px;
+	$tile-padding: 10px;
 
 	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
 	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
@@ -29,12 +29,13 @@
 	background: $white;
 	color: $text-black;
 	fill: $dark-gray;
+	transition: box-shadow 0.3s ease-in-out;
 	@extend .body-3;
 	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
 
 	&:hover {
 		border-color: $light-gray;
-		@include box-shadow(0.3px 5px 12.8px 2.3px rgba($text-black, 0.25));
+		@include box-shadow( 0 10px 30px 0 rgba($text-black, 0.25));
 	}
 
 	.blue {
@@ -112,18 +113,19 @@
 					font-size: inherit;
 				}
 				&.supertitle {
-					height: 1.2em;
+					height: 1.1em;
 					line-height: 1.2;
 					color: $gray;
 				}
 				&.title {
-					height: 1.8em;
+					height: 1.6em;
 					line-height: 1.8;
 					color: $text-black;
+					font-weight: 600;
 					@extend .body-1-semibold;
 				}
 				&.subtitle {
-					height: 1.6em;
+					height: 1.5em;
 					line-height: 1.6;
 					color: $dark-gray;
 				}
@@ -159,7 +161,7 @@
 			button {
 				width: initial;
 				height: initial;
-				font-size: $body-font-3;
+				font-size: $body-font-2;
 
 				.svg-icon-wrapper {
 					.svg-icon-label {

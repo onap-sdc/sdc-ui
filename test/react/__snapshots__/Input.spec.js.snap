@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Input - default 1`] = `
+<div
+  className="sdc-input "
+>
+  <label
+    className="sdc-input__label  "
+    htmlFor="clickme"
+  >
+    label for input
+  </label>
+  <input
+    className="sdc-input__input  "
+    data-test-id={undefined}
+    disabled={false}
+    id="clickme"
+    name="clickme"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder={undefined}
+    readOnly={false}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`Input Input - error 1`] = `
+<div
+  className="sdc-input "
+>
+  <label
+    className="sdc-input__label  "
+    htmlFor="clickme"
+  >
+    label for input
+  </label>
+  <input
+    className="sdc-input__input error "
+    data-test-id={undefined}
+    disabled={false}
+    id="clickme"
+    name="clickme"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder={undefined}
+    readOnly={false}
+    type="text"
+    value={undefined}
+  />
+  <div
+    className="sdc-label__error"
+  >
+    <div
+      className="svg-icon-wrapper   __negative  right"
+      disabled={undefined}
+      onClick={undefined}
+    >
+      <svg />
+      <span
+        className="svg-icon-label "
+      >
+        this is an error
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Input Input - number 1`] = `
+<div
+  className="sdc-input "
+>
+  <label
+    className="sdc-input__label  "
+    htmlFor="clickme"
+  >
+    label for input
+  </label>
+  <input
+    className="sdc-input__input  "
+    data-test-id={undefined}
+    disabled={false}
+    id="clickme"
+    name="clickme"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder={undefined}
+    readOnly={false}
+    type="number"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`Input Input - placeholder 1`] = `
+<div
+  className="sdc-input "
+>
+  <label
+    className="sdc-input__label  "
+    htmlFor="clickme"
+  >
+    label for input
+  </label>
+  <input
+    className="sdc-input__input  "
+    data-test-id={undefined}
+    disabled={false}
+    id="clickme"
+    name="clickme"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder="hint"
+    readOnly={false}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`Input Input - readonly 1`] = `
+<div
+  className="sdc-input "
+>
+  <label
+    className="sdc-input__label view-only "
+    htmlFor="clickme"
+  >
+    label for input
+  </label>
+  <input
+    className="sdc-input__input  view-only"
+    data-test-id={undefined}
+    disabled={false}
+    id="clickme"
+    name="clickme"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder={undefined}
+    readOnly={true}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`Input Input - required 1`] = `
+<div
+  className="sdc-input "
+>
+  <label
+    className="sdc-input__label  "
+    htmlFor="clickme"
+  >
+    label for input
+  </label>
+  <input
+    className="sdc-input__input  "
+    data-test-id={undefined}
+    disabled={false}
+    id="clickme"
+    name="clickme"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder={undefined}
+    readOnly={false}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
