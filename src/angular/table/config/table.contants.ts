@@ -95,5 +95,4 @@ export const CompaniesTableConfig: ITableConfig = {
             alignmentHeader: 'center'
         },
     },
-    rows   : {}
 };

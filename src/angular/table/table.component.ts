@@ -83,7 +83,7 @@ export class TableComponent implements OnInit, AfterViewInit {
             this.fixedHeader = <boolean>this.tableConfig.metaData.fixedHeader || this.fixedHeader;
             this.maxHeight = <number>this.tableConfig.metaData.maxHeight || this.maxHeight;
             this.maxRowsToDisplay = <number>this.tableConfig.metaData.maxRowsToDisplay || this.maxRowsToDisplay;
-            this.alignmentRow = <string>this.tableConfig.metaData.aligmentRow || 'center';
+            this.alignmentRow = <string>this.tableConfig.metaData.alignmentRow || 'center';
             this.alignmentHeader = <string>this.tableConfig.metaData.alignmentHeader|| 'center';
         }
         /**

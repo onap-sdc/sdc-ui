@@ -10,9 +10,8 @@ export class TableModel {
     constructor(public columns: IAppTableColumnsModel, public rows: IAppTableRowModel) {}
 }
 export interface ITableConfig {
-    metaData?: {[col_key:string] : ITableMetadata}
+    metaData?:ITableMetadata;
     columns: {[col_key:string] : IColumnConfigModel}
-    rows: {[row_key:string] : any}
 }
 interface IAppTableRowModel {
     // Functionality
@@ -24,6 +23,9 @@ export interface ITableMetadata {
     maxHeight?: number;
     maxRowsToDisplay?: number;
     infinityScrolling?: boolean;
+    rowsInPage?: number;
+    alignmentRow?: string;
+    alignmentHeader?: string;
 }
 
 export interface IColumnConfigModel {
