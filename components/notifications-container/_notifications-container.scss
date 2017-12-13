@@ -10,13 +10,14 @@
 	margin-right: 10px;
 	height: 600px;
 
-	//background-color: black;
 
-	//display: flex;
-	//flex-direction: column;
-	//justify-content: flex-end;
+	.ngn-change-pos {
+		transition: all 2s;
+	}
 
 	.ntns {
 		//background-color: black;
+		//transition-duration: 2s;
+
 	}
 }

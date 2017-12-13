@@ -18,9 +18,10 @@ export class NotificationComponent {
     @Input() fade: boolean;
     @Input() sticky: boolean;
     @Input() location: string;
-    @Output() destroyComponent = new EventEmitter<boolean>();
+    @Output() destroyComponent = new EventEmitter<any>();
 
     public destroy : boolean = false;
+    public transheight : boolean = false;
 
     public dismiss(): void {
         console.log("clicked dismiss");
@@ -46,8 +47,19 @@ export class NotificationComponent {
         this.fadeOut();
         let self = this;
         setTimeout(function(){
+            self.transheight = true;
+
+            let event = {
+                destroy: true,
+                item: self
+            }
+
             self.destroy = true;
-            self.destroyComponent.emit(true);
+
+            setTimeout(function (){
+                self.destroyComponent.emit(event);
+            }, 2000);
+
         }, 800);
     }
 

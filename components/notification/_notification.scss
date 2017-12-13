@@ -12,6 +12,11 @@
 		to     {opacity: 0;}
 	}
 
+	//@keyframes collapse {
+	//	from   {max-height: auto;}
+	//	to     {max-height: 0;}
+	//}
+
 	.ngn {
 		//color: #FFF;
 		cursor: default;
@@ -35,10 +40,34 @@
 		animation-duration: 1s;
 	}
 
+
+	.ngn-change-pos1 {
+		transition: all 2s;
+	}
+
+	.ngn-fade1 {
+		max-height: 0px;
+		transition: height 2s ease-out;
+	}
+
 	.ngn-fade {
 		animation-name: fade;
 		animation-duration: 0.8s;
 	}
+
+	.ngn-transHeight {
+		opacity: 0;
+		max-height: 0px;
+		transition: height 2s linear;
+	}
+
+	.ngn-transHeight {
+		position: absolute;
+		opacity: 0;
+		transform: scaleY(0);
+		transition: transform 2s;
+	}
+
 
 	.ngn-component {
 		position: absolute; }
