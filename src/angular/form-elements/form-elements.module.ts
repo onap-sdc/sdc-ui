@@ -7,6 +7,7 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {ListItemComponent} from "./list/list-item/list-item.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {ListComponent} from "./list/list.component";
+import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
 
 @NgModule({
     imports: [
@@ -21,10 +22,12 @@ import {ListComponent} from "./list/list.component";
         CheckboxComponent,
         ListItemComponent,
         RadioGroupComponent,
-        ListComponent
+        ListComponent,
+        DropDownTriggerDirective
     ],
     exports: [
         DropDownComponent,
+        DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent,
         ListComponent,
