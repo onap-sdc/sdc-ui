@@ -11,6 +11,7 @@ import {ButtonComponent} from "./button.component";
     ],
     exports: [
         ButtonComponent
+
     ],
 })
 export class ButtonsModule {

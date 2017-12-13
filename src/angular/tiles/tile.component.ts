@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
+import template from "./tile.component.html";
 
 @Component({
     selector: "sdc-tile",
-    templateUrl: './tile.component.html',
+    template: template,
 })
 
-export class TileComponent {}
+export class TileComponent {
+}

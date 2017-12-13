@@ -1,11 +1,10 @@
 .sdc-input {
-
-  padding-bottom: 20px;
+  margin-bottom: 10px;
 
   .sdc-input__label {
     margin-bottom: 5px;
     display: block;
-    @extend .body-3;
+    @extend .body-3-semibold;
 
     &.required::before {
       content: '*';
@@ -15,15 +14,65 @@
   }
 
   .sdc-input__input {
-    text-indent: 6px;
+    @include box-sizing;
+    padding: 0 10px;
+    height: 38px;
+    width: 100%;//415px;
     border: solid 1px $light-gray;
+    border-radius:2px;
+    color: $dark-gray;
 
-    &.error {
+    &.error, &.error:focus, &.error:disabled  {
       border: solid 1px $red;
       color: $red;
       outline: none;
-
     }
+
+    &:read-only{
+      border: none;
+      outline: none;
+      color: $text-black
+    }
+    &:-moz-read-only { /* For Firefox */
+      border: none;
+      outline: none;
+      color: $text-black
+    }
+
+    &:focus {
+      border-color: $blue;
+      outline: 0 none;
+      color: $text-black;
+    }
+
+    &:disabled {
+      background: $background-gray;
+      color: $gray;
+    }
+
+    &::-webkit-input-placeholder /* Chrome/Opera/Safari */  {
+      color: $gray;
+      font-style: italic;
+    }
+    &::-moz-placeholder  /* Firefox 19+ */  {
+      color: $gray;
+      font-style: italic;
+    }
+    &:-moz-placeholder  /* Firefox 18- */  {
+      color: $gray;
+      font-style: italic;
+    }
+    &:-ms-input-placeholder  /* IE 10+ */
+    {
+      color: $gray;
+      font-style: italic;
+    }
+  }
+
+  .sdc-label__error{
+    margin-top: 2px;
+    margin-left: 2px;
+    @extend .body-3;
   }
 
 }
