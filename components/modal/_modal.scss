@@ -44,6 +44,7 @@
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
+      position:relative;
 
       .title {
         @extend .heading-2;
@@ -53,35 +54,32 @@
       }
 
       .close-button {
-        width: 10px;
+        position:absolute;
+        top:14px;
+        right:14px;
+        width: 14px;
         height: 10px;
         cursor: pointer;
       }
 
       &.sdc-modal-type-info {
-        border-top: solid 3px $blue;
+        border-top: solid 6px $blue;
       }
 
       &.sdc-modal-type-error {
-        border-top: solid 3px $red;
+        border-top: solid 6px $red;
       }
 
       &.sdc-modal-type-alert {
-        border-top: solid 3px $yellow;
+        border-top: solid 6px $yellow;
       }
 
-      &.sdc-modal-type-custom {
-        padding: 0px 20px;
-        color: $white;
-        background-color: $blue;
-        height: 50px;
-      }
     }
 
     .sdc-modal__footer {
       background-color: $white;
       border-top: solid 1px $tlv-light-gray;
-      padding: 10px 20px 10px 25px;
+      padding: 8px 20px 8px 25px;
       clear: both;
       -webkit-box-flex: 1;
       -ms-flex-positive: 1;
