@@ -1,5 +1,5 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
-import {Positions} from  '../../src/angular/buttons/button.component';
+import {IconPosition} from  '../../src/angular/buttons/button.component';
 const buttonTypes = ['primary', 'white', 'link'];
 const buttonSizes = ['large', 'medium', 'small', 'default'];
 const experiment = experimentOn('Button');
