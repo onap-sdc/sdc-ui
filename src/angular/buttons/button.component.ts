@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 
-export enum Positions{
+export enum IconPosition{
     right,
     left
 }
@@ -17,7 +17,7 @@ export class ButtonComponent {
     @Input() public size: string = "default";
     @Input() public preventDoubleClick: boolean;
     @Input() public icon_name: string;
-    @Input() public icon_positon: Positions;
+    @Input() public icon_positon: IconPosition;
     private lastClick: Date;
 
     public onClick = (e): void => {
