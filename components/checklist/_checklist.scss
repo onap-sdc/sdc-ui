@@ -5,6 +5,9 @@ $padding-for-sub-level: 20px;
  .sdc-checkbox__label{
     @extend .body-2-semibold;
   }
+  .semi-checked{
+    //missing icon from Reut/Lis
+  }
 }
 .checkbox-sublist{
   padding-left: $padding-for-sub-level;
