@@ -1,29 +1,33 @@
-.active{
+.search-bar-container{
   .sdc-input .sdc-input__input{
-    border-color: $blue;
+    padding-right: 30px;
   }
-}
+  .active{
+    .sdc-input .sdc-input__input{
+      border-color: $blue;
+    }
+  }
 
-.action-button{
+  .action-button{
     cursor:pointer;
     cursor: pointer;
     position: relative;
     float: right;
     right: 11px;
-}
+  }
 
-.search-bar-button {
+  .search-bar-button {
     bottom: 38px;
-      svg{
-        height: 17px;
-        width: 17px;
-        path{
-          fill: $gray;
-        }
+    svg{
+      height: 17px;
+      width: 17px;
+      path{
+        fill: $gray;
       }
-}
+    }
+  }
 
-.clear-search-x {
+  .clear-search-x {
     bottom: 36px;
     svg{
       height: 10px;
@@ -32,4 +36,6 @@
         fill: $gray;
       }
     }
+  }
 }
+
