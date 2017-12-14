@@ -18,7 +18,7 @@ const sourceStyles:string =`
     }
     .example-source pre .comment{
       color:#666;
-      opacity:0;
+      opacity:0.4;
       font-style:italic;
       transition: opacity 400ms ease-in;
     }
@@ -38,7 +38,8 @@ export default experimentOn('Modals')
         <modal-consumer [action]="'openActionModal'"></modal-consumer> 
         <div class="example-source">Source Code:
         <pre>
-          this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', this.onConfirmAction);
+
+          this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', "Yes", this.onConfirmAction);
           
           private onConfirmAction = ():void => {{ '{' }}
             alert("Action has been confirmed");
@@ -53,7 +54,11 @@ export default experimentOn('Modals')
         description: 'Opens a standard alert modal with a custom title and message.',
         template: `
         <modal-consumer [action]="'openAlertModal'"></modal-consumer> 
-        <div class="example-source">Source Code:<pre>this.modalService.openAlertModal("Alert Title", "An alert message.")</pre></div>`,
+        <div class="example-source">Source Code:
+        <pre>
+
+          this.modalService.openAlertModal("Alert Title", "An alert message.");
+        </pre></div>`,
         styles: [sourceStyles]
       },      
       {
@@ -62,7 +67,11 @@ export default experimentOn('Modals')
         title: 'Error modal',
         description: `Opens a standard error modal with a custom message.`,
         template: `<modal-consumer [action]="'openErrorModal'"></modal-consumer>
-        <div class="example-source">Source Code:<pre>this.modalService.openErrorModal("An error has occurred!")</pre></div>`,
+        <div class="example-source">Source Code:
+        <pre>
+
+          this.modalService.openErrorModal("An error has occurred!");
+        </pre></div>`,
         styles: [sourceStyles]
       },
       {        
@@ -74,30 +83,30 @@ export default experimentOn('Modals')
         <modal-consumer [action]="'openCustomModal'"></modal-consumer> 
         <div class="example-source">Source Code:
         <pre>
-            <span class="comment">//create buttons</span>
-            let actionButton:ModalButtonConfig = new ModalButtonConfig('Done', '', true, this.customModalOnDone);
-            let saveButton:ModalButtonConfig = new ModalButtonConfig('Save', '', false, this.customModalOnSave);
-            let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', '', true);
 
-            <span class="comment">//create modal config object </span>
-            let modalConfig:IModalConfig = {{ '{' }}
-                size: 'sm',
-                title: 'Test',
-                type: 'custom',
-                buttons: [actionButton, saveButton, cancelButton]
-              {{ '}' }};
+          <span class="comment">//create modal config object </span>
+          let modalConfig:IModalConfig = {{ '{' }}
+          size: ModalSize.small,
+          title: 'Test',
+          type: ModalType.standard,
+          buttons: [
+                    {{ '{' }}text:"Save &amp; Close", callback:this.customModalOnDone, closeModal:true{{ '}' }}, 
+                    {{ '{' }}text:"Save", callback:this.customModalOnSave, closeModal:false{{ '}' }}, 
+                    {{ '{' }}text:"Cancel", closeModal:true{{ '}' }}]
+            {{ '}' }};
 
-            <span class="comment">//open modal with dynamically created 'modalInnerContent' example component. Send data object with input 'name'. </span>
-            this.modalService.openCustomModal(modalConfig, ModalInnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
+          <span class="comment">//open modal with dynamically created 'modalInnerContent' example component. Send data object with input 'name'. </span>
+          this.modalService.openCustomModal(modalConfig, ModalInnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
 
-
-            private customModalOnDone = (result?:any):void => {{ '{' }}
-                alert("Done with result: " + result.innerModalContent.instance.name);
-            {{ '}' }}
-        
-            private customModalOnSave = (result?:any):void => {{ '{' }}
-                alert("Save with result: " + result.innerModalContent.instance.name);
-            {{ '}' }}
+          private customModalOnDone = ():void => {{ '{' }}
+              let currentInstance:any = this.modalService.getCurrentInstance();
+              alert("Save with result: " + currentInstance.innerModalContent.instance.name);
+          {{ '}' }};
+      
+          private customModalOnSave = ():void => {{ '{' }}
+              let currentInstance:any = this.modalService.getCurrentInstance();
+              alert("Save with result: " + currentInstance.innerModalContent.instance.name);
+          {{ '}' }};
         </pre></div>`,
         styles: [sourceStyles]
       }
