@@ -1,6 +1,6 @@
 <div class="search-with-autocomplete-container">
-    <sdc-search-bar [placeholder]="placeholder" [label]="label" [searchQuery]="searchQuery" (searchButtonClicked)="updateSearch($event)" (searchChanged)="searchChange($event)"></sdc-search-bar>
+    <sdc-search-bar [placeholder]="placeholder" [label]="label" [searchQuery]="searchQuery" (searchChanged)="searchTextChange($event)"></sdc-search-bar>
     <div class="autocomplete-results" [@displayResultsAnimation]="(autoCompleteValues && autoCompleteValues.length)?'true':'false'">
-        <div *ngFor="let item of autoCompleteValues" class="autocomplete-result-item" (click)="updateSearch(item)">{{item}}</div>
+        <div *ngFor="let item of autoCompleteValues" class="autocomplete-result-item" (click)="onSelectTextToSearch(item)">{{item}}</div>
     </div>
 </div>

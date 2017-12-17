@@ -13,7 +13,7 @@ import {SearchFilterPipe} from "../utils/pipes/search.pipe";
                                   [searchQuery]="searchText"
                                   [autoCompleteValues]="autoCompleteValues"
                                   (searchChanged)="onSearchTextChange($event)"
-                                  (searchButtonClicked)="onSelectedValueToSearch($event)">
+                                  (executeSearch)="onSelectedValueToSearch($event)">
         </search-with-autocomplete>
         <table>
             <thead>

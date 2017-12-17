@@ -8,24 +8,23 @@ import {TileModule} from "../../src/angular/tiles/tile.module";
 import {ModalModule} from "../../src/angular/modals/modal.module";
 import {ModalInnerContent} from "./components/modal-inner-content-example.component";
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
-import {SearchBarModule} from "../../src/angular/searchbox/search-bar.module";
 import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 import {SearchFilterPipe} from "./utils/pipes/search.pipe";
-import {SearchBarExample} from "./components/search-bar-example.component";
 import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autocomplete/search-with-autocomplete.module";
 import {SearchWithAutocompleteExample} from "./components/search-with-autocomplete-example.component";
 import {TooltipDirective} from '../../src/angular/tooltip/tooltip.directive';
 import {TooltipTemplateComponent} from '../../src/angular/tooltip/tooltip-template.component';
 import {TooltipModule} from '../../src/angular/tooltip/tooltip.module';
 import {ModalConsumer} from "./components/modal-consumer.component";
+import {FilterBarModule} from "../../src/angular/filterbar/filter-bar.module";
+import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
 
 @NgModule({
     declarations: [
         ColorsTable,
         KeysPipe,
         ModalInnerContent,
-        SearchBarExample,
         ModalConsumer,
         SearchWithAutocompleteExample,
         KeysPipe,
@@ -40,6 +39,7 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
+        FilterBarModule,
         SearchBarModule,
         InfiniteScrollModule,
         TooltipModule,
@@ -51,7 +51,6 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         ModalInnerContent,
         ModalModule,
         ColorsTable,
-        SearchBarExample,
         SearchWithAutocompleteExample,
         FormElementsModule,
         ButtonsModule,
@@ -59,6 +58,7 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
+        FilterBarModule,
         SearchBarModule,
         InfiniteScrollModule,
         SearchWithAutoCompleteModule,

@@ -1,5 +1,5 @@
-import {animate, Component, Input, state, style, transition, trigger} from '@angular/core';
-import {SearchBarComponent} from "../searchbox/search-bar.component";
+import {animate, Component, EventEmitter, Input, Output, state, style, transition, trigger} from '@angular/core';
+import {FilterBarComponent} from "../filterbar/filter-bar.component";
 
 @Component({
     selector: 'search-with-autocomplete',
@@ -17,18 +17,20 @@ import {SearchBarComponent} from "../searchbox/search-bar.component";
         ]),
     ]
 })
-export class SearchWithAutoCompleteComponent  extends SearchBarComponent {
+export class SearchWithAutoCompleteComponent  extends FilterBarComponent {
     @Input() public autoCompleteValues: string[];
-    public searchChange = (searchTerm: string) => {
+    @Output() public executeSearch: EventEmitter<any> = new EventEmitter<any>();
+
+    public searchTextChange = (searchTerm: string) => {
         if (this.searchQuery !== searchTerm) {
             this.searchQuery = searchTerm;
             this.searchChanged.emit(searchTerm);
         }
     }
 
-    public updateSearch = (searchTerm: string) => {
+    public onSelectTextToSearch = (searchTerm: string) => {
         this.searchQuery = searchTerm;
-        this.searchButtonClicked.emit(searchTerm);
+        this.executeSearch.emit(searchTerm);
         this.autoCompleteValues = [];
     }
 }
