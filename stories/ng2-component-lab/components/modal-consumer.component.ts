@@ -45,7 +45,7 @@ export class ModalConsumer {
         let modalConfig:IModalConfig = <IModalConfig> {
             size: ModalSize.small,
             title: 'Test',
-            type: ModalType.standard,
+            type: ModalType.custom,
             buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true}, 
                       {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
                       {text:"Cancel", closeModal:true}]

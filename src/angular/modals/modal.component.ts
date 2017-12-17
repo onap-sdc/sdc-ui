@@ -12,13 +12,13 @@ import { ModalButtonComponent } from './modal-button.component';
     template: template
 })
 
-export class ModalComponent {
+export class ModalComponent{
 
     @Input() size:string; 'xl|l|md|sm|xsm';
     @Input() title:string;
     @Input() message:string;
     @Input() buttons:Array<ModalButtonComponent>;
-    @Input() type:string; 'info|error|alert';
+    @Input() type:string; 'info|error|alert|custom';
 
     //Allows for custom component as body instead of simple message. See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer:ViewContainerRef;
