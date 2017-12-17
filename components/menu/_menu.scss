@@ -16,18 +16,24 @@
         font-size: 14px;
         line-height: 29px;
         color: $dark-gray;
+        g, path{
+            fill: $dark-gray;
+        }
         padding: 0 12px;
 
         &:hover {
             cursor: pointer;
             background-color: $tlv-hover;
             color: $hover-blue;
+            g, path{
+                fill: $hover-blue;
+            }
         }
 
         &.disabled {
             cursor: default;
             color: $gray;
-            path{
+            g, path{
                 fill: $light-gray;
             }
 
@@ -40,7 +46,7 @@
         &.selected {
             background-color: $background-gray;
             color: $text-black;
-            path{
+            g, path{
                 fill: $text-black;
             }
         }
