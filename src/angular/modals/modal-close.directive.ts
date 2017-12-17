@@ -1,31 +1,19 @@
-import {Directive, Input, OnChanges, SimpleChanges} from "@angular/core";
+import {Directive} from "@angular/core";
 import {ModalService} from "./modal.service";
-import {IModalButtonConfig} from "./models/modal-button-config";
 
 @Directive({
-    selector: `[button-modal-click]`,
+    selector: `[modal-close-button]`,
     host: {
-        '(click)': 'onButtonModalClicked(_closeModal)'
+        '(click)': 'onButtonModalClicked()'
     }
 })
 export class ModalCloseDirective {
 
-    @Input('button-modal-click') _button:IModalButtonConfig;
-
     constructor(private modalService:ModalService) {
-
     }
 
-    public onButtonModalClicked = ()=> {
-        if (this._button) {
-            if (this._button.callback) {
-                this._button.callback(this.modalService.getInnerContentInstance());
-            }
-
-            if (this._button.closeModal) {
-                this.modalService.closeModal();
-            }
-        }
+    public onButtonModalClicked = ():void => {
+        this.modalService.closeModal();
     }
 
 }
