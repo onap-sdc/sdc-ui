@@ -74,16 +74,19 @@
         padding-left: 10px;
         float: right;
         svg{
-          height: 9px;
-          width: 9px;
-          fill: $dark-gray;
+          height: 12px;
+          width: 12px;
+          margin-top: 8px;
+          g{
+            fill: $dark-gray;
+          }
         }
       }
       &:hover:not(.view-only){
         background-color: $tlv-hover;
         border-color: $tlv-hover;
         .delete-item{
-          svg{
+          svg g{
             fill: $blue;
           }
         }
