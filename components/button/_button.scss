@@ -2,8 +2,8 @@
   color: $text;
   border-color: $border;
   background-color: $primary;
-  font-size: $body-font-3;
-  font-weight: 600;
+  font-size: $body-font-1;
+  display: inline-block;
   @include base-font-regular;
   &:not([disabled]) {
     &:hover{
@@ -26,6 +26,7 @@
   border-color: $color;
   font-size: $body-font-1;
   font-weight: 600;
+  display: inline-block;
   &:disabled{
     color:$blue-disabled;
     border-color: $blue-disabled;
@@ -106,6 +107,10 @@
       $hover:         $dodger-blue;
       $active:        $pacific-blue;
       $active-border: $hover-blue;
+      svg{
+        display: inline-block;
+        vertical-align: middle;
+      }
       @include default-button($primary, $hover, $active, $active-border);
       &:focus{
         border: 1px solid #0568AE;
@@ -118,6 +123,10 @@
     // White default button
     &.sdc-button__white {
       @include outline-button($blue);
+      svg{
+        display: inline-block;
+        vertical-align: middle;
+      }
     }
 
     // Gray default button
@@ -208,6 +217,15 @@
     text-align: left;
     @extend .body-1;
   } // End of link type
+
+  .sdc-icon-right{
+    margin-left: 15px;
+  }
+
+  .sdc-icon-left{
+    margin-right: 15px;
+  }
+
 }
 
 
