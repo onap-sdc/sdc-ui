@@ -1,7 +1,6 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Welcome from './Welcome.stories.js';
 import Colors from './Colors.stories.js';
 import Typography from './Typography.stories.js';
 import Checkboxes from './Checkbox.stories.js';
@@ -18,8 +17,6 @@ import OutlineButtons from './buttons/OutlineButtons.stories.js';
 import OutlineRoundedButtons from './buttons/OutlineRoundedButtons.stories.js';
 import LinkButtons from './buttons/LinkButtons.stories.js';
 
-storiesOf('Welcome', module)
-	.add('SDC-UI Style-Guide', () => <Welcome />);
 
 storiesOf('Colors', module)
 	.add('Color Palette', () => <Colors />);
