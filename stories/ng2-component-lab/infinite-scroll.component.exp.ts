@@ -39,7 +39,7 @@ const basicStyle = `
         background-color: yellow;
         font-size: 20px !important;
     }
-    
+
     .example-source {
         background: #eeeeee;
         padding: 10px;
@@ -62,9 +62,13 @@ const makeBasicStyleDistance = (distance: number) => `
 `;
 
 export default experimentOn('Infinite-Scroll')
-    .case('Infinite Scroll usage', {
+    .group("Infinite Scroll",[
+      {
+        id: 'infiniteScrollUsage',
         showSource: true,
         context: Object.assign({}, basicContext),
+        title: 'Infinite scroll usage',
+        description: 'Infinite scroll usage',
         styles: [basicStyle],
         template: `
         <div (infiniteScroll)="onScrollHitBottom()" class="scroll-container">
@@ -77,12 +81,15 @@ export default experimentOn('Infinite-Scroll')
             <b>onScrollHitBottom declaration:</b>
             <pre>{{onScrollHitBottom}}</pre>
         </div>
-        `,
-    })
-    .case('Infinite Scroll usage with distance', {
+        `
+      },
+      {
+        id: 'infiniteScrollUsageWithDistance',
         showSource: true,
+        title: 'Infinite scroll usage with distance',
         context: Object.assign({}, basicContext),
         styles: [basicStyle, makeBasicStyleDistance(50)],
+        description: '',
         template: `
         <div (infiniteScroll)="onScrollHitBottom()" [infiniteScrollDistance]="50" class="scroll-container">
             <div *ngFor="let _i of numLines; let i=index">
@@ -94,9 +101,11 @@ export default experimentOn('Infinite-Scroll')
             <b>onScrollHitBottom declaration:</b>
             <pre>{{onScrollHitBottom}}</pre>
         </div>
-        `,
-    })
-    .case('Infinite Scroll usage with expanding content', {
+        `
+    },
+    {
+        id: 'infiniteScrollUsageWithExpandingContent',
+        title: 'Infinite scroll usage with expanding content',
         showSource: true,
         context: Object.assign({}, basicContext, {
             scrollContainerId: 'scrollContainer1',
@@ -119,9 +128,11 @@ export default experimentOn('Infinite-Scroll')
             <b>onScrollHitBottom declaration:</b>
             <pre>{{onScrollHitBottom}}</pre>
         </div>
-        `,
-    })
-    .case('Infinite Scroll usage with expanding content asynchronous', {
+        `
+    },
+    {
+        id: 'infiniteScrollUsageWithExpandingContentAsynchronous',
+        title: 'Infinite scroll usage with expanding content asynchronous',
         showSource: true,
         context: Object.assign({}, basicContext, {
             scrollContainerId: 'scrollContainer2',
@@ -149,5 +160,6 @@ export default experimentOn('Infinite-Scroll')
             <b>onScrollHitBottom declaration:</b>
             <pre>{{onScrollHitBottom}}</pre>
         </div>
-        `,
-    });
+        `
+    }
+    ]);

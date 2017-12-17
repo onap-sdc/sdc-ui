@@ -1,154 +1,113 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
-const onClick = (e): void => {
-    console.log('--CLICK EVENT--');
-};
-export default experimentOn('Button')
-    .case('Primary Default', {
+import {IconPosition} from  '../../src/angular/buttons/button.component';
+const buttonTypes = ['primary', 'white', 'link'];
+const buttonSizes = ['large', 'medium', 'small', 'default'];
+const experiment = experimentOn('Button');
+
+experiment.group("Default button", [
+    {
+        id: "defaultButton",
         showSource: true,
-        template: `<sdc-button>Button</sdc-button>`,
-    })
-    .case('Primary Default Disabled', {
-        showSource: true,
-        template: `<sdc-button [disabled]="true">Button</sdc-button>`,
-    })
-    .case('White Button', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'white'">Button</sdc-button>
-    `
-    }).case('White Button Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'white'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Gray Button', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'gray'">Button</sdc-button>
-    `
-    }).case('Gray Button Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'gray'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Positive Button', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'positive'">Button</sdc-button>
-    `
-    }).case('Positive Button Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'positive'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Negative Button', {
-        showSource: true,
-        template: `
-      <sdc-button  [color]="'negative'" >Button</sdc-button>
-    `
-    }).case('Negative Button Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button  [color]="'negative'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Warning Button', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'warning'">Button</sdc-button>
-    `
-    }).case('Warning Button Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [color]="'warning'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Primary Outline', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'">Button</sdc-button>
-    `
-    }).case('Primary Outline Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Gray Outline', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [color]="'gray'">Button</sdc-button>
-    `
-    }).case('Gray Outline Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [color]="'gray'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Positive Outline', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [color]="'positive'">Button</sdc-button>
-    `
-    }).case('Positive Outline Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [color]="'positive'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Negative Outline', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [color]="'negative'">Button</sdc-button>
-    `
-    }).case('Negative Outline Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline'" [color]="'negative'" [disabled]="true">Button</sdc-button>
-    `
-    })
-    .case('Primary Outline Rounded', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'">Button</sdc-button>
-    `
-    }).case('Primary Outline Rounded Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Gray Outline Rounded', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'grey'">Button</sdc-button>
-    `
-    }).case('Gray Outline Rounded Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'grey'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Positive Outline Rounded', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'positive'">Button</sdc-button>
-    `
-    }).case('Positive Outline Rounded Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'positive'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Negative Outline Rounded', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'negative'">Button</sdc-button>
-    `
-    }).case('Negative Outline Rounded Disabled', {
-        showSource: true,
-        template: `
-      <sdc-button [sdcButtonStyle]="'outline-rounded'" [color]="'negative'" [disabled]="true">Button</sdc-button>
-    `
-    }).case('Prevent double click option', {
-        showSource: true,
+        description: `Default button, does not need to supply type or size.
+        <br>The size of the button set to 'default' so it will shrink or expand according to the content.
+        `,
         context: {
-            onClick: onClick
+            buttonClicked: ():void => {
+                window.alert("OK");
+            }
         },
+        title: "Default button",
         template: `
-            Try to click on this button, open the console in order to see the click event logs:  
-            <sdc-button (click)="onClick($event)" [preventDoubleClick]="true">Button</sdc-button>
+            <sdc-button
+                text="Default button long text"
+                (click)="buttonClicked()">
+            </sdc-button>
+            <sdc-button
+                text="Sample button"
+                (click)="buttonClicked()"
+               >
+            </sdc-button>
+
+          
             `
+    }
+]);
+
+buttonTypes.forEach((buttonType) => {
+    [false, true].forEach((buttonDisabled) => {
+        experiment.group(`Button ${buttonType} ${buttonDisabled ? ' disabled' : ''}`, [   {
+            id: `Button ${buttonType}${buttonDisabled ? ' disabled' : ''}`,
+            showSource: true,
+            context: {
+                buttonClicked: ():void => {
+                    window.alert("OK");
+                }
+            },
+            title: `Button ${buttonType}${buttonDisabled ? ' disabled' : ''}`,
+            template: buttonSizes.map((buttonSize) =>
+                `
+                <span style="display: inline-block;">
+                <div>${buttonSize}</div><br>
+                <sdc-button
+                    text="Sample button"
+                    type="${buttonType}"
+                    size="${buttonSize}"
+                    (click)="buttonClicked()"
+                    ${buttonDisabled ? ' [disabled]="true"' : ''}>
+                </sdc-button>
+                </span>
+                `).join('\n')
+        }
+        ]);
     });
+});
+
+experiment.group("Buttons with icons", [
+    {
+        id: "buttonsWithIcons",
+        showSource: true,
+        description: `Buttons with icons forward`,
+        context: {
+            buttonClicked: ():void => {
+                window.alert("OK");
+            }
+        },
+        title: "Default button",
+        template: `
+       
+
+            <sdc-button
+                text="Default button long text"
+                (click)="buttonClicked()"
+                icon_name="arrow_left"
+               >
+            </sdc-button>
+            
+            <sdc-button
+                text="Sample button"
+                (click)="buttonClicked()"
+                icon_name="arrow_right"
+                >
+            </sdc-button>
+            
+            <sdc-button
+                text="Sample button"
+                 type="white"
+                (click)="buttonClicked()"
+                icon_name="arrow_line_left"
+                >
+            </sdc-button>
+            
+            <sdc-button
+                text="Sample button"
+                type="white"
+                (click)="buttonClicked()"
+                icon_name="arrow_line_right"
+              >
+            </sdc-button>
+            
+           `
+    }
+]);
+
+export default experiment;
