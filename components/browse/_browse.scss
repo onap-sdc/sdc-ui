@@ -16,6 +16,9 @@ input[type="file"] {
       }
       &:hover{
         background-color: $tlv-hover;
+        g{
+          fill: $hover-blue;
+        }
       }
     }
   }
@@ -25,9 +28,11 @@ input[type="file"] {
     right: 47px;
     cursor: pointer;
     svg {
-      height: 9px;
-      width: 9px;
-      fill: $dark-gray;
+      height: 14px;
+      width: 14px;
+      g{
+        fill: $dark-gray;
+      }
     }
   }
   .browse-button {
@@ -43,6 +48,14 @@ input[type="file"] {
       width: 36px;
       position: absolute;
       top: 0;
+      svg{
+        top: 6px;
+        left: 6px;
+        position: relative;
+        g{
+          fill: $dark-gray;
+        }
+      }
     }
   }
   input[type="file"] {
