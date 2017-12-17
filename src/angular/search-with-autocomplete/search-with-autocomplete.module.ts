@@ -3,14 +3,14 @@
  */
 import {NgModule} from "@angular/core";
 import {SearchWithAutoCompleteComponent} from "./search-with-autocomplete.component";
-import {SearchBarModule} from "../searchbar/search-bar.module";
 import {CommonModule} from "@angular/common";
+import {FilterBarModule} from "../filterbar/filter-bar.module";
 
 @NgModule({
     declarations: [
         SearchWithAutoCompleteComponent
     ],
-    imports: [SearchBarModule,
+    imports: [FilterBarModule,
         CommonModule],
     exports: [
         SearchWithAutoCompleteComponent

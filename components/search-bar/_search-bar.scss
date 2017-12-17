@@ -17,10 +17,10 @@
   }
 
   .search-bar-button {
-    bottom: 38px;
+    bottom: 39px;
     svg{
-      height: 17px;
-      width: 17px;
+      height: 20px;
+      width: 20px;
       path{
         fill: $gray;
       }
@@ -30,9 +30,9 @@
   .clear-search-x {
     bottom: 36px;
     svg{
-      height: 10px;
-      width: 10px;
-      g{
+      height: 14px;
+      width: 14px;
+      path{
         fill: $gray;
       }
     }
