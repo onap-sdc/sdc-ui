@@ -10,9 +10,6 @@ import {ModalInnerContent} from "./components/modal-inner-content-example.compon
 import {PopupMenuModule} from "../../src/angular/popup-menu/popup-menu.module";
 import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
-import {SearchFilterPipe} from "./utils/pipes/search.pipe";
-import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autocomplete/search-with-autocomplete.module";
-import {SearchWithAutocompleteExample} from "./components/search-with-autocomplete-example.component";
 import {TooltipDirective} from '../../src/angular/tooltip/tooltip.directive';
 import {TooltipTemplateComponent} from '../../src/angular/tooltip/tooltip-template.component';
 import {TooltipModule} from '../../src/angular/tooltip/tooltip.module';
@@ -26,9 +23,7 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         KeysPipe,
         ModalInnerContent,
         ModalConsumer,
-        SearchWithAutocompleteExample,
-        KeysPipe,
-        SearchFilterPipe
+        KeysPipe
     ],
     imports: [
         ModalModule,
@@ -43,7 +38,6 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         SearchBarModule,
         InfiniteScrollModule,
         TooltipModule,
-        SearchWithAutoCompleteModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
@@ -51,7 +45,6 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         ModalInnerContent,
         ModalModule,
         ColorsTable,
-        SearchWithAutocompleteExample,
         FormElementsModule,
         ButtonsModule,
         TileModule,
@@ -61,12 +54,11 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         FilterBarModule,
         SearchBarModule,
         InfiniteScrollModule,
-        SearchWithAutoCompleteModule,
         TooltipDirective,
         PopupMenuModule,
         ModalConsumer
     ],
-    providers: [KeysPipe, SearchFilterPipe]
+    providers: [KeysPipe]
 })
 export class ComponentsModule {
 }
