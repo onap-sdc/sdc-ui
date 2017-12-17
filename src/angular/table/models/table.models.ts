@@ -77,6 +77,7 @@ export interface IFilterItem {
     field: string;
     operator: FilterOperator;
     value: string;
+    value2?: string;
 }
 
 export interface IFilterGroup {
@@ -84,7 +85,8 @@ export interface IFilterGroup {
 }
 
 export interface IComponentFilterGroup {
-    FilterGroup: IFilterGroup;
+    filterGroup: IFilterGroup;
+    clearFilterGroup(): void;
 }
 
 export enum FilterOperator {
@@ -93,7 +95,8 @@ export enum FilterOperator {
     LessThan,
     LessThanOrEqual,
     GreaterThan,
-    GreaterThanOrEqual
+    GreaterThanOrEqual,
+    Range
 }
 
 /**

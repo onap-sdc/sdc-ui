@@ -38,9 +38,7 @@ export class TableService implements ITableDataServies{
      */
 
     public sortColumn(rowsData: any, col: IColumnConfigModel, isDescending: boolean):any {
-        // const colKey = col.sortByField ? col.sortByField : col.key;
         const colKey = col.key;
-
         return  this.sortObjectsByField(rowsData, colKey, col.dataType, isDescending);
     }
 
@@ -237,20 +235,21 @@ export class TableService implements ITableDataServies{
     private isRowInFilter(row: any, col: IColumnConfigModel, filter: IFilterItem): any {
         const field: string = row[filter.field].toString();
         const value: string = filter.value;
+        const value2: string = filter['value2'] ? filter.value2 : '';
 
         if(col.searchable) {
-            return this.filterStrings(field, value, filter.operator);
+            return this.filterStrings(field, value, filter.operator, value2);
         }
 
         switch (col.dataType) {
             case ColumnDataTypes.Number:
-                return this.filterNumbers(field, value, filter.operator);
+                return this.filterNumbers(field, value, filter.operator, value2);
 
             case ColumnDataTypes.Date:
-                return this.filterDates(field, value, filter.operator);
+                return this.filterDates(field, value, filter.operator, value2);
         }
 
-        return this.filterStrings(field, value, filter.operator);
+        return this.filterStrings(field, value, filter.operator, value2);
     }
 
     private findColumnConfigModel(cols: IColumnConfigModel[], field: string) {
@@ -264,7 +263,7 @@ export class TableService implements ITableDataServies{
      * @param {FilterOperator} operator
      * @returns {boolean}
      */
-    private filterStrings(field: string, value: string, operator: FilterOperator): boolean {
+    private filterStrings(field: string, value: string, operator: FilterOperator, value2: string): boolean {
         const pos = 0;
         const length = field.length < value.length ? field.length : value.length;
 
@@ -286,6 +285,10 @@ export class TableService implements ITableDataServies{
 
             case FilterOperator.GreaterThanOrEqual:
                 return field.substr(pos, length).toLowerCase() >= value.substr(pos, length).toLowerCase();
+
+            case FilterOperator.Range:
+                return  field.substr(pos, length).toLowerCase() >= value.substr(pos, length).toLowerCase() &&
+                        field.substr(pos, length).toLowerCase() <= value2.substr(pos, length).toLowerCase();
         }
     }
 
@@ -296,7 +299,7 @@ export class TableService implements ITableDataServies{
      * @param {FilterOperator} operator
      * @returns {boolean}
      */
-    private filterNumbers(field: string, value: string, operator: FilterOperator): boolean {
+    private filterNumbers(field: string, value: string, operator: FilterOperator, value2: string): boolean {
         switch(operator) {
             case FilterOperator.Equal:
                 return +field == +value;
@@ -315,6 +318,9 @@ export class TableService implements ITableDataServies{
 
             case FilterOperator.GreaterThanOrEqual:
                 return +field >= +value;
+
+            case FilterOperator.Range:
+                return +field >= +value && +field <= +value2;
         }
     }
 
@@ -325,9 +331,10 @@ export class TableService implements ITableDataServies{
      * @param {FilterOperator} operator
      * @returns {boolean}
      */
-    private filterDates(field: string, value: string, operator: FilterOperator): boolean {
+    private filterDates(field: string, value: string, operator: FilterOperator, value2: string): boolean {
         const fieldDate: Date = new Date(field);
         const valueDate: Date = new Date(value);
+        const valueDate2: Date = new Date(value2);
 
         switch(operator) {
             case FilterOperator.Equal:
@@ -347,6 +354,10 @@ export class TableService implements ITableDataServies{
 
             case FilterOperator.GreaterThanOrEqual:
                 return this.getDateAsYearMonthDay(fieldDate) >= this.getDateAsYearMonthDay(valueDate);
+
+            case FilterOperator.Range:
+                return this.getDateAsYearMonthDay(fieldDate) >= this.getDateAsYearMonthDay(valueDate) &&
+                       this.getDateAsYearMonthDay(fieldDate) <= this.getDateAsYearMonthDay(valueDate2);
         }
     }
 

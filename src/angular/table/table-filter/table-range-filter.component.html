@@ -3,8 +3,10 @@
         <ng-container *ngFor="let input of showInput; let i = index">
             <div *ngIf="input" class="sdc-table-filter-form-group">
                 <label class="sdc-table-filter-label">{{colTitle}}</label>
-                <span class="sdc-table-filter-span">equal</span>
-                <input class="sdc-table-filter-input" type="text" [(ngModel)]="values[i]" [ngModelOptions]="{standalone: true}" />
+                <span class="sdc-table-filter-span">from</span>
+                <input class="sdc-table-filter-input" type="text" [(ngModel)]="valuesFrom[i]" [ngModelOptions]="{standalone: true}" />
+                <span class="sdc-table-filter-span sdc-table-filter-separator">to</span>
+                <input class="sdc-table-filter-input" type="text" [(ngModel)]="valuesTo[i]" [ngModelOptions]="{standalone: true}" />
             </div>
         </ng-container>
         <button type="button" class="sdc-table-filter-button" (click)="addItem()"

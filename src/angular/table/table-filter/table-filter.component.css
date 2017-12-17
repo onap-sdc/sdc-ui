@@ -1,8 +1,9 @@
 .sdc-table-filter {
     border: 1px solid #666;
-    background-color: #f3f3f3;
+    background-color: white;
     padding: 10px;
     margin-bottom: 5px;
+    width: 60%;
 }
 
 .sdc-table-filter-group {
@@ -13,35 +14,26 @@
 }
 
 .sdc-table-filter-form {
-    display: flex;
+    display: block;
 }
 
 .sdc-table-filter-form-group {
-    display: inline-block;
+    display: flex;
     width: 240px;
+    margin: 10px;
+    /*padding-top: 20px;*/
 }
-
+.sdc-table-filter-label, .sdc-table-filter-input  {
+    width: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.sdc-table-filter-span {
+    padding-right: 5px;
+}
+.sdc-table-filter-separator {
+    padding-left: 15px;
+}
 .sdc-table-filter-button {
-    padding: 6px 20px;
+    padding: 5px 5px;
 }
-
-/*
-
-.sdc-table-filter__add-button {
-    padding: 6px 20px;
-    margin-bottom: 5px;
-}
-
-.sdc-table-filter__form {
-    display: flex;
-}
-
-.sdc-table-filter__group__title {
-    font-size: 11px;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    margin-right: 10px;
-    font-weight: 900;
-}
-*/

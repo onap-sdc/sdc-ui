@@ -40,8 +40,10 @@ export class TablePaginationBarComponent implements OnInit {
     }
 
     updateRows(pageData){
-        this.pageData = pageData;
-        this.goPage(this.pageCursor.pageNumber);
+        if(this.pageCursor && this.pageCursor.pageNumber){
+            this.pageData = pageData;
+            this.goPage(this.pageCursor.pageNumber);
+        }
     }
 
     public get currentPage() {

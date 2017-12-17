@@ -11,6 +11,7 @@ import {TableFilterBarComponent} from "./table-filter-bar/table-filter-bar.compo
 import {TablePaginationBarComponent} from "./table-pagination-bar/table-pagination-bar.component";
 import {TableFilterComponent} from './table-filter/table-filter.component';
 import {TableSimpleFilterComponent} from './table-filter/table-simple-filter.component';
+import {TableRangeFilterComponent} from './table-filter/table-range-filter.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import {TableSimpleFilterComponent} from './table-filter/table-simple-filter.com
         TableBody,
         TableFilterComponent,
         TableSimpleFilterComponent,
+        TableRangeFilterComponent,
         TableFilterBarComponent,
         TablePaginationBarComponent
     ],
@@ -33,6 +35,7 @@ import {TableSimpleFilterComponent} from './table-filter/table-simple-filter.com
         TableBody,
         TableFilterComponent,
         TableSimpleFilterComponent,
+        TableRangeFilterComponent,
         TableFilterBarComponent,
         TablePaginationBarComponent
     ]

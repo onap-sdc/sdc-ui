@@ -90,10 +90,17 @@ export class TableComponent implements OnInit, AfterViewInit {
          * Filtered content
          */
         this.modifiedData = this.rowsData;
+
+        /**
+         *  Default sorting
+         */
+        if(this.headerCols && this.modifiedData){
+            this.setDefaultSort();
+        }
     }
 
     public ngAfterViewInit() {
-        this.setDefaultSort();
+        //this.setDefaultSort();
     }
 
     private setDefaultSort() {
@@ -108,7 +115,6 @@ export class TableComponent implements OnInit, AfterViewInit {
                 this.sortByField = col.key
                 this.sortDescending = col.ascending;
             }
-
             this.onColumnHeaderClick(col);
         }
     }
@@ -131,7 +137,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
     public setModifiedData(modifiedData: any[]):void {
         this.modifiedData = modifiedData;
-        this.dataChanged.next(this.modifiedData);
+        this.dataChanged.next(modifiedData);
     }
 
     public onScrollHitBottom(){

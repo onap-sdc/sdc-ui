@@ -3,15 +3,15 @@ import {ColumnDataTypes, FilterOperator, IColumnConfigModel, IComponentFilterGro
 } from '../models/table.models';
 
 @Component({
-    selector: 'sdc-table-simple-filter',
-    templateUrl: './table-simple-filter.component.html',
+    selector: 'sdc-table-range-filter',
+    templateUrl: './table-range-filter.component.html',
 //    styleUrls: ['./table-filter.component.css']
     styles: [`.sdc-table-filter {
     border: 1px solid #666;
     background-color: white;
     padding: 10px;
     margin-bottom: 5px;
-    width: 60%;        
+    width: 60%;
 }
 
 .sdc-table-filter-group {
@@ -47,7 +47,7 @@ import {ColumnDataTypes, FilterOperator, IColumnConfigModel, IComponentFilterGro
 }
 `]
 })
-export class TableSimpleFilterComponent implements IComponentFilterGroup, OnInit {
+export class TableRangeFilterComponent implements IComponentFilterGroup, OnInit {
 
     @Input() headerCols: any;
     @Input() field: string = '';
@@ -56,7 +56,8 @@ export class TableSimpleFilterComponent implements IComponentFilterGroup, OnInit
     private colDataType: ColumnDataTypes;
 
     public showInput: boolean[] = [true, false, false, false, false];
-    public values: string[] = ['', '', '', '', ''];
+    public valuesFrom: string[] = ['', '', '', '', ''];
+    public valuesTo: string[] = ['', '', '', '', ''];
 
     public addDisabled: boolean = false;
     public deleteDisabled: boolean = true;
@@ -80,7 +81,11 @@ export class TableSimpleFilterComponent implements IComponentFilterGroup, OnInit
             return value;
         });
 
-        this.values = this.values.map((value, index) => {
+        this.valuesFrom = this.valuesFrom.map((value, index) => {
+            return '';
+        }) ;
+
+        this.valuesTo = this.valuesTo.map((value, index) => {
             return '';
         }) ;
     }
@@ -92,16 +97,39 @@ export class TableSimpleFilterComponent implements IComponentFilterGroup, OnInit
     private getFilterGroup(): IFilterGroup {
         let group: IFilterGroup = { filters: [] };
 
-        const resultValues = this.values.filter((value) => {
-            return value;
-        });
-
-        resultValues.forEach((value) => {
+        this.valuesFrom.forEach((value) => {
             group.filters.push({
                 field: this.field,
-                operator: FilterOperator.Equal,
+                operator: FilterOperator.Range,
                 value: value
             });
+        });
+
+        this.valuesTo.forEach((value, index) => {
+            group.filters[index].value2 = value;
+        });
+
+        return this.prepareFilterGroup(group);
+    }
+
+    private prepareFilterGroup(group: IFilterGroup): IFilterGroup {
+        group.filters = group.filters.filter((item) => {
+            if (item.value && item.value2) {
+                return true;
+            }
+
+            if (item.value && !item.value2) {
+                item.operator = FilterOperator.GreaterThanOrEqual;
+                return true;
+            }
+
+            if (!item.value && item.value2) {
+                item.operator = FilterOperator.LessThanOrEqual;
+                item.value = item.value2;
+                return true;
+            }
+
+            return false;
         });
 
         return group;
@@ -122,7 +150,8 @@ export class TableSimpleFilterComponent implements IComponentFilterGroup, OnInit
 
         if(index > 0) {
             this.showInput[index] = false;
-            this.values[index] = '';
+            this.valuesFrom[index] = '';
+            this.valuesTo[index] = '';
         }
 
         this.setDisabled();
