@@ -1,15 +1,11 @@
-import {Component, Input} from '@angular/core'
-
+import {Component} from '@angular/core';
+import template from "./tile-footer.component.html";
 
 @Component({
     selector:'sdc-tile-footer',
-    templateUrl:'./tile-footer.component.html',
-    host: {'class':'sdc-tile-footer'}
+    template: template
 })
 
 export class TileFooterComponent {
-    @Input() public text: string;
-    @Input() public icon: string;
-
     constructor() {}
 }
