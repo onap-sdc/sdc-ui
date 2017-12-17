@@ -10,12 +10,13 @@ export default experimentOn('Menu')
         template: `
         <popup-menu-list [open]="true" className="static">
             <popup-menu-item>First</popup-menu-item>
+            <popup-menu-item type="selected">Selected</popup-menu-item>
             <popup-menu-item type="disabled">Disabled</popup-menu-item>
             <popup-menu-item type="line">Line (not displayed)</popup-menu-item>
             <popup-menu-item>Second</popup-menu-item>
         </popup-menu-list>
         `
-    }, 
+    },
     {
         id: 'basicMenuRelative',
         title: 'Basic menu (relative)',
@@ -40,7 +41,7 @@ export default experimentOn('Menu')
                 height: 100%;
             }
         `],
-        template: 
+        template:
         `
         <div style="position: relative; width: 400px; height: 200px; background: blue;">
             <span class="message">Click in the box...<br/>
