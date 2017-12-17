@@ -8,7 +8,9 @@ sdc-dropdown {
   .sdc-dropdown__error{
     display: none;
   }
-
+  /*************************************
+  SDC Error styles
+   *************************************/
   &.error {
 
     .sdc-dropdown__header {
@@ -59,7 +61,7 @@ sdc-dropdown {
 
   .sdc-dropdown__header {
     padding: 12px 10px;
-    background: transparent;
+    background: $white;
     text-align: left;
     position: relative;
     color: $dark-gray;
@@ -67,6 +69,7 @@ sdc-dropdown {
     text-indent: 6px;
     border: solid 1px $light-gray;
     width: 100%;
+    z-index: 9999999;
 
     &.placeholder {
       font-style: italic;
@@ -115,7 +118,9 @@ sdc-dropdown {
 
   .sdc-dropdown__options-wrapper {
     position: absolute;
-    width:100%;
+    top: 100%;
+    left: 0;
+    width: 100%;
     max-height: 244px;
     overflow-y: auto;
     box-sizing: border-box;
@@ -123,8 +128,7 @@ sdc-dropdown {
     border-top:none;
     background-color: white;
     padding-top: 10px;
-    padding-top: 10px;
-    z-index: 99999;
+    z-index: 9;
 
     &.sdc-dropdown__options-wrapper--top {
       bottom:40px;
@@ -222,3 +226,26 @@ sdc-dropdown {
 .sdc-dropdown__error--icon {
   fill:$red;
 }
+
+/********************************************************/
+/* Animation */
+/********************************************************/
+
+.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open {
+  @include dropdown_expend(244px);
+}
+
+.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--top{
+  @include dropdown_fold(0px);
+  bottom: 40px;
+  top:auto;
+  &.sdc-dropdown__options-wrapper--open{
+    @include dropdown_expend(244px);
+  }
+}
+
+.sdc-dropdown .sdc-dropdown__options-wrapper {
+  @include dropdown_fold(-40px);
+}
+
+

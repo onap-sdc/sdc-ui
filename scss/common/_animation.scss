@@ -1,0 +1,14 @@
+@mixin dropdown_expend($maxHeight){
+  opacity: 1;
+  max-height: $maxHeight;
+  transform: translateY(0%);
+  transition: transform 1s, opacity .3s, max-height 1s;
+}
+
+@mixin dropdown_fold($offsetY) {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY($offsetY);
+  transition: transform 1s, opacity .5s, max-height 1s;
+  transition-delay: 0s, .2s, 0s;
+}
