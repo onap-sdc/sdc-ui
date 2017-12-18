@@ -34,6 +34,8 @@ export class TooltipDirective implements OnInit {
         private elementRef: ElementRef,
         private service: CreateDynamicComponentService,
         private renderer: Renderer) {
+
+        this.elementRef.nativeElement.title = "";
     }
 
     @HostListener('mouseenter')
