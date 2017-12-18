@@ -1,5 +1,5 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
-
+import {IconPosition} from  '../../src/angular/buttons/button.component';
 const buttonTypes = ['primary', 'white', 'link'];
 const buttonSizes = ['large', 'medium', 'small', 'default'];
 const experiment = experimentOn('Button');
@@ -19,14 +19,16 @@ experiment.group("Default button", [
         title: "Default button",
         template: `
             <sdc-button
-                text="Sample button"
-                (click)="buttonClicked()">
-            </sdc-button>
-
-            <sdc-button
                 text="Default button long text"
                 (click)="buttonClicked()">
             </sdc-button>
+            <sdc-button
+                text="Sample button"
+                (click)="buttonClicked()"
+               >
+            </sdc-button>
+
+          
             `
     }
 ]);
@@ -59,5 +61,53 @@ buttonTypes.forEach((buttonType) => {
         ]);
     });
 });
+
+experiment.group("Buttons with icons", [
+    {
+        id: "buttonsWithIcons",
+        showSource: true,
+        description: `Buttons with icons forward`,
+        context: {
+            buttonClicked: ():void => {
+                window.alert("OK");
+            }
+        },
+        title: "Default button",
+        template: `
+       
+
+            <sdc-button
+                text="Default button long text"
+                (click)="buttonClicked()"
+                icon_name="arrow_left"
+               >
+            </sdc-button>
+            
+            <sdc-button
+                text="Sample button"
+                (click)="buttonClicked()"
+                icon_name="arrow_right"
+                >
+            </sdc-button>
+            
+            <sdc-button
+                text="Sample button"
+                 type="white"
+                (click)="buttonClicked()"
+                icon_name="arrow_line_left"
+                >
+            </sdc-button>
+            
+            <sdc-button
+                text="Sample button"
+                type="white"
+                (click)="buttonClicked()"
+                icon_name="arrow_line_right"
+              >
+            </sdc-button>
+            
+           `
+    }
+]);
 
 export default experiment;
