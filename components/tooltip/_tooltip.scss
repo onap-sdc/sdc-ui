@@ -1,4 +1,5 @@
 /* Tooltop styles */
+
 .sdc-tooltip {
     max-width: 200px;
     background-color: black;
@@ -13,7 +14,8 @@
     /*    -webkit-transition: opacity 300ms;
         -moz-transition: opacity 300ms;
         -o-transition: opacity 300ms;*/
-    transition: opacity 300ms;
+    //transition: opacity 300ms;
+    animation: animation-fade-in-from-bottom 1s ease-out;
 }
 
 .sdc-tooltip-show {

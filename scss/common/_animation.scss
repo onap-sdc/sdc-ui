@@ -33,4 +33,16 @@ Enable to expend a folded block element
 }
 
 
-
+/********************************************************************************
+  SIMPLE FADE-IN ANIMATION (Used in tooltip for example)
+*********************************************************************************/
+@keyframes animation-fade-in-from-bottom {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
