@@ -12,10 +12,12 @@ $dark-purple: #702f8a;
 $purple: #9063cd;
 $light-purple: #caa2dd;
 $black: #000000;
+$rich-black: #323943;
 $dark-gray: #5a5a5a;
 $gray: #959595;
 $light-gray: #d2d2d2;
 $white: #ffffff;
+$blue-disabled: #9dd9ef;
 
 // Secondary Colors
 $red: #cf2a2a;
@@ -29,6 +31,7 @@ $tlv-hover: #e6f6fb;
 $content-background-color: $white;
 $scroll-bar-color: $text-black;//$light-gray;
 $vc-status-text-color: #42b72a;
+$active-border: #0568AE;
 
 // Button colors
 $pacific-blue: darken($blue,4%);
@@ -48,3 +51,4 @@ $pirate-gold: darken($yellow, 17%);
 $btn-small: 110px;
 $btn-medium: 140px;
 $btn-large: 180px;
+$btn-default: auto;

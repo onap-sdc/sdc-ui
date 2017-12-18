@@ -22,10 +22,10 @@
     "postbuild-clean": "rm -rf build",
     "build": "npm run prebuild-clean && npm run build-common && npm run build-react && npm run build-angular && npm run build-pack && npm run postbuild-clean",
     "storybook": "npm run build-icons && start-storybook -p 6006",
-    "build-storybook": "npm run build-icons && build-storybook -c .storybook -o .out/react && ncp utils/index-for-gh-pages.html .out/index.html",
+    "build-storybook": "npm run build-icons && build-storybook -c .storybook -o .out/react && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html && ncp assets .out/assets",
     "lab": "ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature",
     "build-lab": "set NODE_ENV=build&& ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js --build -- feature",
-    "build-gh-pages": "npm run build-storybook && npm run build-lab && npm run && ncp utils/index-for-gh-pages.html .out/index.html"
+    "build-gh-pages": "npm run build-storybook && npm run build-lab && npm run && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html && ncp assets .out/assets"
   },
   "repository": {
     "type": "git",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@angular/compiler": "~2.4.8",
     "@angular/compiler-cli": "~2.4.8",
-    "@islavi/ng2-component-lab": "^1.0.25",
+    "@islavi/ng2-component-lab": "^1.0.26",
     "@types/node": "^7.0.27",
     "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.2",
@@ -92,7 +92,7 @@
     "source-map-loader": "0.2.1",
     "style-loader": "^0.16.1",
     "tslint": "5.4.3",
-    "typescript": "^2.3.4",
+    "typescript": "^2.6.1",
     "uglify-js": "2.8.29",
     "url-parse": "^1.1.9"
   },
@@ -117,7 +117,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "5.4.2",
     "svg-react-loader": "^0.4.4",
     "zone.js": "^0.8.18"
   }
