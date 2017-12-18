@@ -20,7 +20,7 @@ export class ModalService {
             size: ModalSize.small,
             title: title,
             message: message,
-            buttons: [{text:'Cancel', closeModal:true}],
+            buttons: [{text:'Cancel', closeModal:true, size: 'small'}],
             type: ModalType.alert
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -34,8 +34,8 @@ export class ModalService {
             title: title,
             message: message,
             type: ModalType.standard,
-            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true}, 
-                      {text: 'Cancel', closeModal:true}]
+            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true, size:'small'}, 
+                      {text: 'Cancel', closeModal:true, size:'small'}]
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
         this.currentModal = modalInstance;
@@ -47,7 +47,7 @@ export class ModalService {
             size: ModalSize.small,
             title: 'Error',
             message: errorMessage,
-            buttons: [{text: "Cancel", closeModal:true}],
+            buttons: [{text: "Cancel", closeModal:true, size: 'small'}],
             type: ModalType.error
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);

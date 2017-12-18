@@ -43,7 +43,7 @@ export class ModalConsumer {
     private openCustomModal = ():void => {
 
         let modalConfig:IModalConfig = <IModalConfig> {
-            size: ModalSize.small,
+            size: ModalSize.medium,
             title: 'Test',
             type: ModalType.custom,
             buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true}, 
