@@ -4,8 +4,8 @@
 import {
     Component, Input, ViewContainerRef, ViewChild, ComponentRef
 } from '@angular/core';
-import {ModalButtonConfig} from "./models/modal-button-config";
 import template from './modal.component.html';
+import { ModalButtonComponent } from './modal-button.component';
 
 @Component({
     selector: 'sdc-modal',
@@ -17,7 +17,7 @@ export class ModalComponent {
     @Input() size:string; 'xl|l|md|sm|xsm';
     @Input() title:string;
     @Input() message:string;
-    @Input() buttons:Array<ModalButtonConfig>;
+    @Input() buttons:Array<ModalButtonComponent>;
     @Input() type:string; 'info|error|alert';
 
     //Allows for custom component as body instead of simple message. See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
