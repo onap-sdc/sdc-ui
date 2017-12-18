@@ -20,7 +20,7 @@ storiesOf('Typography', module)
 	.add('Typography', () => <Typography />);
 
 storiesOf('Buttons', module)
-	.add('All', () => <Buttons />);
+	.add('Default Size', () => <Buttons />);
 
 storiesOf('Checkboxes', module)
 	.add('Checkboxes', () => <Checkboxes />);
