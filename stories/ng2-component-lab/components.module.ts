@@ -14,6 +14,7 @@ import {TooltipDirective} from '../../src/angular/tooltip/tooltip.directive';
 import {TooltipTemplateComponent} from '../../src/angular/tooltip/tooltip-template.component';
 import {TooltipModule} from '../../src/angular/tooltip/tooltip.module';
 import {ModalConsumer} from "./components/modal-consumer.component";
+import {IconsModule} from "../../src/angular/icons/icons.module";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         PopupMenuModule,
         TooltipModule,
         PopupMenuModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        IconsModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
@@ -50,7 +52,8 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         TooltipDirective,
         PopupMenuModule,
         InfiniteScrollModule,
-        ModalConsumer
+        ModalConsumer,
+        IconsModule
     ],
     providers: [KeysPipe]
 })

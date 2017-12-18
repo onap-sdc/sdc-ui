@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const svgFolder = './assets/icons/';
-const iconMapFile = './src/react/utils/iconMap.js';
+const svgFolder = './assets/sdc-icons/';
+const iconMapFile = './src/angular/utils/iconsMap.ts';
 
 let dataToWrite = '';
 let iconNames = [];
@@ -21,5 +21,6 @@ fs.readdirSync(svgFolder).forEach(file => {
 });
 
 dataToWrite += '\n' + `export default {\n\t${iconNames.join(',\n\t')}\n};`;
+
 
 fs.writeFileSync(iconMapFile, dataToWrite);
