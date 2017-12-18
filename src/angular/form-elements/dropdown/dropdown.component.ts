@@ -168,10 +168,10 @@ export class DropDownComponent implements OnChanges, OnInit {
 
     public isBottomVisible(){
         const windowPos = window.innerHeight + window.pageYOffset;
-        const dropDownPos = this.dropDownWrapper.nativeElement.offsetTop
-            + this.dropDownWrapper.nativeElement.offsetHeight
+        const boundingRect = this.dropDownWrapper.nativeElement.getBoundingClientRect();
+        const dropDownPos = boundingRect.top
+            + boundingRect.height
             + this.maxHeight;
-
         return windowPos > dropDownPos;
     }
 
