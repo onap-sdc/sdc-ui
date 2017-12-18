@@ -10,7 +10,7 @@ import {PopupMenuListComponent} from "./popup-menu-list.component";
 })
 export class PopupMenuItemComponent implements OnChanges {
     @Input() public className: string;
-    @Input() public type: undefined|'disabled'|'line';
+    @Input() public type: undefined|'disabled'|'selected'|'line';
     @Output() public action: EventEmitter<any> = new EventEmitter<any>();
 
     public parentMenu: PopupMenuListComponent;
