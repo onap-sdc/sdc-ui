@@ -129,6 +129,7 @@ sdc-dropdown {
     background-color: white;
     padding-top: 10px;
     z-index: 9;
+    box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
 
     &.sdc-dropdown__options-wrapper--top {
       bottom:40px;
@@ -157,6 +158,7 @@ sdc-dropdown {
       }
       &:hover {
         background-color: $tlv-gray;
+        @include base-font-bold;
       }
       &.selected {
         background-color: $tlv-hover;
@@ -231,20 +233,33 @@ sdc-dropdown {
 /* Animation */
 /********************************************************/
 
+/**
+Expend animation from top to bottom
+ */
 .sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open {
+  box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
   @include dropdown_expend(244px);
 }
 
+/**
+Fold animation from bottom to top
+ */
 .sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--top{
   @include dropdown_fold(0px);
   bottom: 40px;
   top:auto;
+  /**
+  Expend animation from bottom to top
+   */
   &.sdc-dropdown__options-wrapper--open{
     @include dropdown_expend(244px);
   }
 }
-
+/**
+Fold animation from top to bottom
+ */
 .sdc-dropdown .sdc-dropdown__options-wrapper {
+  box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
   @include dropdown_fold(-40px);
 }
 
