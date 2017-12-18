@@ -16,7 +16,7 @@ Enable to fold an expended block element
   opacity: 0;
   max-height: 0;
   transform: translateY($offsetY);
-  transition: all 1s, opacity .5s, max-height 1s;
+  transition: transform 1s, opacity .5s, max-height 1s;
   transition-delay: 0s, .2s, 0s;
 }
 
@@ -29,7 +29,7 @@ Enable to expend a folded block element
   opacity: 1;
   max-height: $maxHeight;
   transform: translateY(0%);
-  transition: all 1s, opacity .3s, max-height 1s;
+  transition: transform 1s, opacity .3s, max-height 1s;
 }
 
 
