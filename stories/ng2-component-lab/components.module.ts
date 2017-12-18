@@ -16,6 +16,7 @@ import {TooltipModule} from '../../src/angular/tooltip/tooltip.module';
 import {ModalConsumer} from "./components/modal-consumer.component";
 import {FilterBarModule} from "../../src/angular/filterbar/filter-bar.module";
 import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
+import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         KeysPipe,
         ModalInnerContent,
         ModalConsumer,
-        KeysPipe
+        KeysPipe,
+        SearchFilterPipe
     ],
     imports: [
         ModalModule,
@@ -37,7 +39,7 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         FilterBarModule,
         SearchBarModule,
         InfiniteScrollModule,
-        TooltipModule,
+        TooltipModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
@@ -56,7 +58,8 @@ import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
         InfiniteScrollModule,
         TooltipDirective,
         PopupMenuModule,
-        ModalConsumer
+        ModalConsumer,
+        SearchFilterPipe
     ],
     providers: [KeysPipe]
 })

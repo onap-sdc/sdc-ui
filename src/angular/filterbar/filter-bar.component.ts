@@ -24,4 +24,3 @@ export class FilterBarComponent {
         this.searchChanged.emit(this.searchQuery);
     }
 }
-

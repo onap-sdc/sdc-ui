@@ -2,60 +2,48 @@
  * Created by rc2122 on 11/15/2017.
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
+import { SearchFilterPipe } from './pipes/search-filter-pipe';
 
 export default experimentOn('Filter Bar').group('FilterBar', [
     {
-        id: 'filter-bar',
-        title: 'Filter Bar',
-        description: `<pre>
-            The search text is updated on the field text change (after the debounce time).
-            <h5>filter bar field - using example:</h5>
-            <h4>Component Code:</h4>
-            @Component({
-                selector: "filter-bar-example",
-                template: '
-                    &lt;sdc-filter-bar placeholder="search text"
-                    label="search box example:"
-                        [debounceTime]="1000"
-                        [searchQuery]="searchText"
-                    (searchChanged)="onSearchTextChange($event)"&gt
-                    &lt;/sdc-filter-bar&gt
-                    &lt;ul&gt
-                        &lt;li *ngFor="let item of list |searchFilter:searchText"&gt
-                            {{item}}
-                        &lt;/li&gt
-                    &lt;/ul&gt
-                    '
-            })
-            export class SearchBarExample {
-                private list: string[] = ['apple', 'banana', 'orange', 'peach'];
-                private searchText: string = '';
-                private onSearchTextChange = (value: string): void => {
-                    this.searchText = value;
-                };
-            }
-            <h4>Pipe Code:</h4>
-            @Pipe({
-                name: 'searchFilter',
-            })
-            export class SearchFilterPipe implements PipeTransform {
-                public transform(value, text: string) {
-                    if (!text || !text.length) return value;
-                    return value.filter((item) => {
-                        return item.toLowerCase().indexOf(text.toLowerCase()) > -1;
-                    });
-                }
-            }
-        </pre>`,
+        id: 'filterBar',
+        title: 'Filter bar',
+        description: `
+            The filter bar component text is updated (after debounce time,
+            default 200 miliseconds) while user write something.
+        `,
         showSource: true,
         template: `
-        The text to search: {{searchText}}
-        <sdc-filter-bar placeholder="filter text" 
-                        label="filter example:" 
-                        [debounceTime]="1000" 
-                        [searchQuery]="searchText" 
-                        (searchChanged)="searchText = $event">
-        </sdc-filter-bar>
+            <sdc-filter-bar placeholder="filter text"
+                            label="filter example:"
+                            [searchQuery]="searchText"
+                            (searchChanged)="searchText = $event">
+            </sdc-filter-bar>
+            <br>
+            Text to search: {{searchText}}
+    `
+    },
+    {
+        id: 'filterBarWithData',
+        title: 'Filter bar with data',
+        description: `
+            Example of filter bar component with debounce 100 miliseconds,
+            and with example pipe for filterring.
+        `,
+        context: {
+            data: ['apple', 'banana', 'orange', 'peach']
+        },
+        showSource: true,
+        template: `
+            <sdc-filter-bar placeholder="filter text"
+                            label="filter example:"
+                            [debounceTime]="100"
+                            [searchQuery]="searchText"
+                            (searchChanged)="searchText = $event">
+            </sdc-filter-bar>
+            <ul style="height: 100px; background-color: #eeeeee;">
+                <li *ngFor="let item of data | PipeSearchFilter:searchText">{{item}}</li>
+            </ul>
     `
     }
 ]);

@@ -1,10 +1,10 @@
 .search-bar-container{
   .sdc-input .sdc-input__input{
     padding-right: 40px;
-  }
-  .active{
-    .sdc-input .sdc-input__input{
+
+    &:focus {
       border-color: $blue;
+      outline: 0 none;
     }
   }
 
