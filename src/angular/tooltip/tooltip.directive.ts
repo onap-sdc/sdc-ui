@@ -6,6 +6,8 @@ const pixel = 'px';
 const leftStyle = 'left';
 const topStyle = 'top';
 const showSuffix = 'show';
+const rightBottomSuffix = 'right__bottom';
+const centerMiddleSuffix = 'center__middle';
 
 @Directive({
     selector: '[sdc-tooltip]'
@@ -16,6 +18,9 @@ export class TooltipDirective implements OnInit {
     @Input('tooltip-placement') public placement: TooltipPlacement = TooltipPlacement.Top;
     @Input('tooltip-css-class') public customCssClass: string;
     @Input('tooltip-template') public template: TemplateRef<any>;
+    @Input('tooltip-arrow-offset') public arrowOffset: number = 10;
+    @Input('tooltip-arrow-placement') public arrowPlacement: ArrowPlacement = ArrowPlacement.LeftTop;
+
 
     private cssClass: string = 'sdc-tooltip'; // default css class
     private tooltip: any; // tooltip html element
@@ -110,8 +115,20 @@ export class TooltipDirective implements OnInit {
         const placementSuffix: string = TooltipPlacement[tooltipPos.placement].toLowerCase();
         this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix, true);
 
+        this.setAdditionalCssClass(placementSuffix);
+
         this.renderer.setElementStyle(this.tooltip, topStyle, tooltipPos.top + pixel);
         this.renderer.setElementStyle(this.tooltip, leftStyle, tooltipPos.left + pixel);
+    }
+
+    private setAdditionalCssClass(placementSuffix: string) {
+        if (this.arrowPlacement == ArrowPlacement.RightBottom) {
+            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix + '-' +
+                rightBottomSuffix, true);
+        } else if (this.arrowPlacement == ArrowPlacement.CenterMiddle) {
+            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix + '-' +
+                centerMiddleSuffix, true);
+        }
     }
 
     /**
@@ -189,9 +206,11 @@ export class TooltipDirective implements OnInit {
             pageYOffset: window.pageYOffset,
             tooltipHeight: this.tooltip.offsetHeight, // .clientHeight,
             tooltipOffset: this.tooltipOffset,
-            tooltipWidth: this.tooltip.offsetWidth
+            tooltipWidth: this.tooltip.offsetWidth,
+            arrowOffset: this.arrowOffset
         };
     }
+
 
     /**
      * Returns tooltip position data
@@ -199,6 +218,23 @@ export class TooltipDirective implements OnInit {
      * @returns {IPlacementData}
      */
     private getPosition(placement: TooltipPlacement): IPlacementData {
+        switch(this.arrowPlacement) {
+            case ArrowPlacement.LeftTop:
+                return this.getLeftTopPosition(placement);
+
+            case ArrowPlacement.RightBottom:
+                return this.getRightBottomPosition(placement);
+        }
+
+        return this.getCenterMiddlePosition(placement);
+    }
+
+    /**
+     * Returns tooltip position data (center / middle arrow)
+     * @param {TooltipPlacement} placement (left, top, right, bottom)
+     * @returns {IPlacementData}
+     */
+    private getCenterMiddlePosition(placement: TooltipPlacement): IPlacementData {
         let left: number = 0;
         let top: number = 0;
 
@@ -232,7 +268,88 @@ export class TooltipDirective implements OnInit {
             top,
             width: inputPos.tooltipWidth
         };
+    }
 
+    /**
+     * Returns tooltip position data (left / top arrow)
+     * @param {TooltipPlacement} placement (left, top, right, bottom)
+     * @returns {IPlacementData}
+     */
+    private getLeftTopPosition(placement: TooltipPlacement): IPlacementData {
+        let left: number = 0;
+        let top: number = 0;
+
+        const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
+        switch (placement) {
+            case TooltipPlacement.Left:
+                left = inputPos.elemLeft - inputPos.tooltipWidth - inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Right:
+                left = inputPos.elemLeft + inputPos.elemWidth + inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Top:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset - inputPos.tooltipHeight - inputPos.tooltipOffset;
+                break;
+
+            case TooltipPlacement.Bottom:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight + inputPos.tooltipOffset;
+                break;
+        }
+
+        return <IPlacementData> {
+            height: inputPos.tooltipHeight,
+            left,
+            placement,
+            top,
+            width: inputPos.tooltipWidth
+        };
+    }
+
+    /**
+     * Returns tooltip position data (right / bottom arrow)
+     * @param {TooltipPlacement} placement (left, top, right, bottom)
+     * @returns {IPlacementData}
+     */
+    private getRightBottomPosition(placement: TooltipPlacement): IPlacementData {
+        let left: number = 0;
+        let top: number = 0;
+
+        const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
+        switch (placement) {
+            case TooltipPlacement.Left:
+                left = inputPos.elemLeft - inputPos.tooltipWidth - inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.tooltipHeight + inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Right:
+                left = inputPos.elemLeft + inputPos.elemWidth + inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.tooltipHeight + inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Top:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.tooltipWidth + inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset - inputPos.tooltipHeight - inputPos.tooltipOffset;
+                break;
+
+            case TooltipPlacement.Bottom:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.tooltipWidth + inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight + inputPos.tooltipOffset;
+                break;
+        }
+
+        return <IPlacementData> {
+            height: inputPos.tooltipHeight,
+            left,
+            placement,
+            top,
+            width: inputPos.tooltipWidth
+        };
     }
 
     /**
@@ -297,6 +414,12 @@ export enum TooltipPlacement {
     Bottom
 }
 
+export enum ArrowPlacement {
+    CenterMiddle,
+    LeftTop,
+    RightBottom
+}
+
 interface ITooltipPositionParams {
     elemLeft: number;
     elemTop: number;
@@ -306,6 +429,7 @@ interface ITooltipPositionParams {
     tooltipHeight: number;
     tooltipOffset: number;
     pageYOffset: number;
+    arrowOffset: number;
 }
 
 interface IPlacementData {
