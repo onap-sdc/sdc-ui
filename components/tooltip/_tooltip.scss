@@ -1,21 +1,31 @@
+/* Tooltip animation */
+@keyframes animation-fade-in-from-bottom {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 /* Tooltop styles */
 
 .sdc-tooltip {
     max-width: 200px;
-    background-color: black;
-    color: #fff;
+    background-color: whitesmoke; /* black; */
+    color: #880021; /*#fff;*/
     text-align: center;
-    border-radius: 6px;
+    border-radius: 2px;
     padding: 5px 8px;
     position: absolute;
     z-index: 1000;
     display: block;
     opacity: 0;
-    /*    -webkit-transition: opacity 300ms;
-        -moz-transition: opacity 300ms;
-        -o-transition: opacity 300ms;*/
-    //transition: opacity 300ms;
-    animation: animation-fade-in-from-bottom 1s ease-out;
+    transition: opacity 300ms;
+    border: solid 1px #880021;
+    animation: animation-fade-in-from-bottom 1s ease-out; /* tooltip animation */
 }
 
 .sdc-tooltip-show {
@@ -30,32 +40,61 @@
 
 .sdc-tooltip-top::after {
     top: 100%;
-    left: 50%;
+    left: 8px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: black transparent transparent transparent;
+    border-color: #880021 transparent transparent transparent;
+}
+.sdc-tooltip-top-right__bottom::after {
+    right: 8px;
+    left:auto;
+}
+.sdc-tooltip-top-center__middle::after {
+    left: 50%;
 }
 
 .sdc-tooltip-bottom::after {
     bottom: 100%;
-    left: 50%;
+    left: 8px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: transparent transparent black transparent;
+    border-color: transparent transparent #880021 transparent;
+}
+.sdc-tooltip-bottom-right__bottom::after {
+    right: 8px;
+    left:auto;
+}
+.sdc-tooltip-bottom-center__middle::after {
+    left: 50%;
 }
 
 .sdc-tooltip-left::after {
-    top: 50%;
+    top: 8px; /*50%;*/
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent transparent transparent black;
+    border-color: transparent transparent transparent #880021;
+}
+.sdc-tooltip-left-right__bottom::after {
+    bottom: 8px;
+    top: auto;
+}
+.sdc-tooltip-left-center__middle::after {
+    top: 50%
 }
 
 .sdc-tooltip-right::after {
-    top: 50%;
+    top: 8px; /*50%;*/
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent black transparent transparent;
+    border-color: transparent #880021 transparent transparent;
 }
+.sdc-tooltip-right-right__bottom::after {
+    bottom: 8px;
+    top: auto;
+}
+.sdc-tooltip-right-center__middle::after {
+    top: 50%
+}
+
