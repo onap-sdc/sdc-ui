@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
+import 'rxjs/add/operator/debounceTime';
 import template from "./input.component.html";
 import 'rxjs/add/operator/debounceTime';
 

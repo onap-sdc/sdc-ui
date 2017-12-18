@@ -66,7 +66,12 @@ export default experimentOn('Input')
     {
         id: 'inputWithDebounce',
         title: 'Input with debounce time',
-        description: 'The change event happens after the debounce time.',
+        description: `<pre>On value change event code:
+        const valueChange = (value: any): void => {
+            alert(value);
+        };
+        This event will happen 5 sec after the change
+        </pre>`,
         showSource: true,
         context: {
             changeEvent: valueChange

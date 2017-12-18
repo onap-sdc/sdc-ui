@@ -1,0 +1,41 @@
+.search-bar-container{
+  .sdc-input .sdc-input__input{
+    padding-right: 40px;
+  }
+  .active{
+    .sdc-input .sdc-input__input{
+      border-color: $blue;
+    }
+  }
+
+  .action-button{
+    cursor:pointer;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    right: 11px;
+  }
+
+  .search-bar-button {
+    bottom: 39px;
+    svg{
+      height: 20px;
+      width: 20px;
+      path{
+        fill: $gray;
+      }
+    }
+  }
+
+  .clear-search-x {
+    bottom: 36px;
+    svg{
+      height: 14px;
+      width: 14px;
+      path{
+        fill: $gray;
+      }
+    }
+  }
+}
+

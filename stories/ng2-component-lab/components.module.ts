@@ -14,13 +14,16 @@ import {TooltipDirective} from '../../src/angular/tooltip/tooltip.directive';
 import {TooltipTemplateComponent} from '../../src/angular/tooltip/tooltip-template.component';
 import {TooltipModule} from '../../src/angular/tooltip/tooltip.module';
 import {ModalConsumer} from "./components/modal-consumer.component";
+import {FilterBarModule} from "../../src/angular/filterbar/filter-bar.module";
+import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
 
 @NgModule({
     declarations: [
         ColorsTable,
         KeysPipe,
         ModalInnerContent,
-        ModalConsumer
+        ModalConsumer,
+        KeysPipe
     ],
     imports: [
         ModalModule,
@@ -31,9 +34,10 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
+        FilterBarModule,
+        SearchBarModule,
+        InfiniteScrollModule,
         TooltipModule,
-        PopupMenuModule,
-        InfiniteScrollModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
@@ -47,9 +51,11 @@ import {ModalConsumer} from "./components/modal-consumer.component";
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
+        FilterBarModule,
+        SearchBarModule,
+        InfiniteScrollModule,
         TooltipDirective,
         PopupMenuModule,
-        InfiniteScrollModule,
         ModalConsumer
     ],
     providers: [KeysPipe]
