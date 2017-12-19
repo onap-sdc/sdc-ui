@@ -5,10 +5,12 @@ import {CommonModule} from "@angular/common";
 import {ButtonsModule} from "../buttons/buttons.module";
 import {CreateDynamicComponentService} from "../utils/create-dynamic-component.service";
 import {ModalCloseDirective} from "./modal-close.directive";
+import {ModalButtonComponent} from "./modal-button.component";
 
 @NgModule({
     declarations: [
         ModalComponent,
+        ModalButtonComponent,
         ModalCloseDirective
     ],
     imports: [
@@ -18,7 +20,7 @@ import {ModalCloseDirective} from "./modal-close.directive";
     entryComponents: [
         ModalComponent
     ],
-    exports: [ModalCloseDirective],
+    exports: [ModalCloseDirective, ModalButtonComponent],
     providers: [CreateDynamicComponentService, ModalService]
 })
 export class ModalModule {

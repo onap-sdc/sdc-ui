@@ -1,31 +1,35 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core'
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
+import 'rxjs/add/operator/debounceTime';
 import template from "./input.component.html";
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
     selector: 'sdc-input',
     template: template,
 })
-export class InputComponent {
-
-    protected control:FormControl;
-
-    @Output('valueChange') baseEmitter:EventEmitter<any> = new EventEmitter<any>();
-    @Input() label:string;
-    @Input() value:any;
-    @Input() pattern:any;
-    @Input() disabled:boolean;
-    @Input() placeHolder:string;
-    @Input() required:boolean;
-    @Input() minLength:number;
-    @Input() maxLength:number;
-    @Input() name: string;
-
+export class InputComponent implements OnInit {
+    @Output('valueChange') public baseEmitter: EventEmitter<any> = new EventEmitter<any>();
+    @Input() public label: string;
+    @Input() public value: any;
+    @Input() public pattern: any;
+    @Input() public disabled: boolean;
+    @Input() public placeHolder: string = '';
+    @Input() public required: boolean;
+    @Input() public minLength: number;
+    @Input() public maxLength: number;
+    @Input() public debounceTime: number = 0;
+    @Input() public name: string;
+    protected control: FormControl;
     constructor() {
         this.control = new FormControl('', []);
     }
 
-    onValueChange() {
-        this.baseEmitter.emit(this.value);
+    ngOnInit() {
+        this.control.valueChanges.
+        debounceTime(this.debounceTime)
+            .subscribe((newValue: any) => {
+                this.baseEmitter.emit(this.value);
+            });
     }
 }

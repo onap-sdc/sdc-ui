@@ -3,9 +3,9 @@
  */
 import {Component, Input, Output, EventEmitter} from "@angular/core";
 import {ModalService} from "../../../src/angular/modals/modal.service";
-import {IModalConfig} from "../../../src/angular/modals/models/modal-config";
-import {ModalButtonConfig} from "../../../src/angular/modals/models/modal-button-config";
+import {IModalConfig, ModalType, ModalSize} from "../../../src/angular/modals/models/modal-config";
 import {ModalInnerContent} from "./modal-inner-content-example.component";
+import { ButtonComponent } from "../../../src/angular/buttons/button.component";
 
 
 @Component({
@@ -28,12 +28,12 @@ export class ModalConsumer {
         this.modalService.openErrorModal("An error has occurred!");       
     };
 
-    private openAlertModal = ():void => {
+    private openAlertModal = ():void => { 
         this.modalService.openAlertModal("Alert Title", "An alert message.");
     };
 
     private openActionModal = ():void => {
-        this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', this.onConfirmAction, "Yes");
+        this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', "Yes", this.onConfirmAction);
     };
 
     private onConfirmAction = ():void => {
@@ -41,23 +41,26 @@ export class ModalConsumer {
     };
 
     private openCustomModal = ():void => {
-        let actionButton:ModalButtonConfig = new ModalButtonConfig('Done', '', true, this.customModalOnDone);
-        let saveButton:ModalButtonConfig = new ModalButtonConfig('Save', '', false, this.customModalOnSave);
-        let cancelButton:ModalButtonConfig = new ModalButtonConfig('Cancel', '', true);
+
         let modalConfig:IModalConfig = <IModalConfig> {
-            size: 'sm',
+            size: ModalSize.small,
             title: 'Test',
-            type: 'custom',
-            buttons: [actionButton, saveButton, cancelButton]
+            type: ModalType.standard,
+            buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true}, 
+                      {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
+                      {text:"Cancel", closeModal:true}]
         };
         this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }
 
-    private customModalOnDone = (result?:any):void => {
-        alert("Done with result: " + result.innerModalContent.instance.name);
+    private customModalOnDone = ():void => {
+        let currentInstance:any = this.modalService.getCurrentInstance();
+        alert("Done with result: " + currentInstance.innerModalContent.instance.name);
     };
 
-    private customModalOnSave = (result?:any):void => {
-        alert("Save with result: " + result.innerModalContent.instance.name);
+    private customModalOnSave = ():void => {
+        let currentInstance:any = this.modalService.getCurrentInstance();
+        alert("Save with result: " + currentInstance.innerModalContent.instance.name);
+        
     };
 }
