@@ -1,6 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
+import Buttons from './Buttons.stories.js';
 import Colors from './Colors.stories.js';
 import Typography from './Typography.stories.js';
 import Checkboxes from './Checkbox.stories.js';
@@ -12,12 +13,6 @@ import Form from './Form.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
 
-import DefaultButtons from './buttons/DefaultButtons.stories.js';
-import OutlineButtons from './buttons/OutlineButtons.stories.js';
-import OutlineRoundedButtons from './buttons/OutlineRoundedButtons.stories.js';
-import LinkButtons from './buttons/LinkButtons.stories.js';
-
-
 storiesOf('Colors', module)
 	.add('Color Palette', () => <Colors />);
 
@@ -25,17 +20,13 @@ storiesOf('Typography', module)
 	.add('Typography', () => <Typography />);
 
 storiesOf('Buttons', module)
-	.add('Default', () => <DefaultButtons />)
-	.add('Outline', () => <OutlineButtons />)
-	.add('Rounded Outline', () => <OutlineRoundedButtons />)
-	.add('Link', () => <LinkButtons />);
+	.add('Default Size', () => <Buttons />);
 
 storiesOf('Checkboxes', module)
 	.add('Checkboxes', () => <Checkboxes />);
 
 storiesOf('Input Fields', module)
 	.add('Input Text', () => <Input />);
-
 
 storiesOf('Icons', module)
 	.add('SVG Icons', () => <Icons />);
