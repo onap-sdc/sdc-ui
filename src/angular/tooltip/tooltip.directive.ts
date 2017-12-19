@@ -77,11 +77,7 @@ export class TooltipDirective implements OnInit {
                 this.tooltip.textContent = this.text ? this.text : 'tooltip';
             }
 
-            this.renderer.setElementClass(this.tooltip, this.cssClass, true);
-
-            if (this.customCssClass) {
-                this.renderer.setElementClass(this.tooltip, this.customCssClass, true);
-            }
+            this.setCssClass(true);
     }
 
     private destroy() {
@@ -104,7 +100,7 @@ export class TooltipDirective implements OnInit {
 
     private toggleShowCssClass(isAdd: boolean) {
         if (this.tooltip) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + showSuffix, isAdd);
+            this.setCssClass(isAdd, '-' + showSuffix);
         }
     }
 
@@ -115,7 +111,8 @@ export class TooltipDirective implements OnInit {
         const tooltipPos: IPlacementData = this.getPlacementData();
 
         const placementSuffix: string = TooltipPlacement[tooltipPos.placement].toLowerCase();
-        this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix, true);
+
+        this.setCssClass(true, '-' + placementSuffix);
 
         this.setAdditionalCssClass(placementSuffix);
 
@@ -125,11 +122,17 @@ export class TooltipDirective implements OnInit {
 
     private setAdditionalCssClass(placementSuffix: string) {
         if (this.arrowPlacement == ArrowPlacement.RightBottom) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix + '-' +
-                rightBottomSuffix, true);
+            this.setCssClass(true, '-' + placementSuffix + '-' + rightBottomSuffix);
         } else if (this.arrowPlacement == ArrowPlacement.CenterMiddle) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix + '-' +
-                centerMiddleSuffix, true);
+            this.setCssClass(true, '-' + placementSuffix + '-' + centerMiddleSuffix);
+        }
+    }
+
+    private setCssClass(isAdd: boolean, suffix: string = '') {
+        this.renderer.setElementClass(this.tooltip, this.cssClass + suffix, isAdd);
+
+        if (this.customCssClass) {
+            this.renderer.setElementClass(this.tooltip, this.customCssClass + suffix, isAdd);
         }
     }
 

@@ -12,10 +12,12 @@
 
 /* Tooltop styles */
 .sdc-tooltip {
+    font-family: AppleSystemUIFont;
+    font-size: 14px;
     max-width: 200px;
-    background-color: whitesmoke; /* black; */
-    color: #880021; /*#fff;*/
-    text-align: center;
+    background-color: #323943; /* rich-black */
+    color: #d2d2d2; /* tlv-light-gray */
+    text-align: left;
     border-radius: 2px;
     padding: 5px 8px;
     position: absolute;
@@ -23,8 +25,8 @@
     display: block;
     opacity: 0;
     transition: opacity 300ms;
-    border: solid 1px #880021;
-    animation: animation-fade-in-from-bottom 1s ease-out; /* tooltip animation */
+    border: solid 1px #323943; /* rich-black */
+    animation: animation-fade-in-from-bottom .75s ease-in-out; /* tooltip animation */
 }
 
 .sdc-tooltip-show {
@@ -42,7 +44,7 @@
     left: 8px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: #880021 transparent transparent transparent;
+    border-color: #323943 transparent transparent transparent;
 }
 .sdc-tooltip-top-right__bottom::after {
     right: 8px;
@@ -57,7 +59,7 @@
     left: 8px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: transparent transparent #880021 transparent;
+    border-color: transparent transparent #323943 transparent;
 }
 .sdc-tooltip-bottom-right__bottom::after {
     right: 8px;
@@ -72,7 +74,7 @@
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent transparent transparent #880021;
+    border-color: transparent transparent transparent #323943;
 }
 .sdc-tooltip-left-right__bottom::after {
     bottom: 8px;
@@ -87,7 +89,7 @@
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent #880021 transparent transparent;
+    border-color: transparent #323943 transparent transparent;
 }
 .sdc-tooltip-right-right__bottom::after {
     bottom: 8px;
@@ -97,3 +99,21 @@
     top: 50%
 }
 
+/* Tooltip template */
+.sdc-tooltip-template-title {
+    font-family: AppleSystemUIFont;
+    font-size: 14px;
+    background-color: #323943; /* rich-black */
+    color: #d2d2d2; /* tlv-light-gray */
+    font-weight: bold;
+}
+
+.sdc-tooltip-template-content {
+    font-family: AppleSystemUIFont;
+    font-size: 14px;
+    background-color: #323943; /* rich-black */
+    color: #d2d2d2; /* tlv-light-gray */
+    font-weight: bold;
+}
+
+@import 'custom_tooltip';
