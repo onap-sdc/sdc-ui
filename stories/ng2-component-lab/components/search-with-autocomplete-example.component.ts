@@ -10,9 +10,9 @@ import {SearchFilterPipe} from "../utils/pipes/search.pipe";
         <search-with-autocomplete placeholder="search text"
                                   label="search by color:"
                                   [debounceTime]="1000"
-                                  [searchQuery]="searchText"
+                                  [(searchQuery)]="searchText"
                                   [autoCompleteValues]="autoCompleteValues"
-                                  (searchChanged)="onSearchTextChange($event)"
+                                  (searchQueryChange)="onSearchTextChange($event)"
                                   (executeSearch)="onSelectedValueToSearch($event)">
         </search-with-autocomplete>
         <table>

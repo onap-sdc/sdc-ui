@@ -17,10 +17,10 @@ export default experimentOn('Search With Autocomplete').group('SearchWithAutocom
                     &lt;search-with-autocomplete placeholder="search text"
                     label="search by color:"
                         [debounceTime]="1000"
-                        [searchQuery]="searchText"
+                        [(searchQuery)]="searchText"
                         [autoCompleteValues]="autoCompleteValues"
-                    (searchChanged)="onSearchTextChange($event)"
-                    (searchButtonClicked)="onSelectedValueToSearch($event)"&gt
+                        (searchQueryChange)="onSearchTextChange($event)"
+                        (executeSearch)="onSelectedValueToSearch($event)&gt
                         &lt;/search-with-autocomplete&gt
                 &lt;table&gt
                     &lt;thead&gt

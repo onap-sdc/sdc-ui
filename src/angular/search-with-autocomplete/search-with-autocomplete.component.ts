@@ -21,10 +21,14 @@ export class SearchWithAutoCompleteComponent  extends FilterBarComponent {
     @Input() public autoCompleteValues: string[];
     @Output() public executeSearch: EventEmitter<any> = new EventEmitter<any>();
 
-    public searchTextChange = (searchTerm: string) => {
+    public onSearchTextChange = (searchTerm: string) => {
         if (this.searchQuery !== searchTerm) {
-            this.searchQuery = searchTerm;
-            this.searchChanged.emit(searchTerm);
+            if (!searchTerm) {
+                this.onSelectTextToSearch(searchTerm);
+            }else {
+                this.searchQuery = searchTerm;
+                this.searchQueryChange.emit(searchTerm);
+            }
         }
     }
 

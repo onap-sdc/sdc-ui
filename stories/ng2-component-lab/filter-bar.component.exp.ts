@@ -2,7 +2,7 @@
  * Created by rc2122 on 11/15/2017.
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
-
+const onSearchChanged = () => {alert('The search text was changed'); };
 export default experimentOn('Filter Bar').group('FilterBar', [
     {
         id: 'filter-bar',
@@ -18,7 +18,7 @@ export default experimentOn('Filter Bar').group('FilterBar', [
                     label="search box example:"
                         [debounceTime]="1000"
                         [searchQuery]="searchText"
-                    (searchChanged)="onSearchTextChange($event)"&gt
+                        (searchQueryChange)="onSearchTextChange($event)"&gt
                     &lt;/sdc-filter-bar&gt
                     &lt;ul&gt
                         &lt;li *ngFor="let item of list |searchFilter:searchText"&gt
@@ -48,13 +48,16 @@ export default experimentOn('Filter Bar').group('FilterBar', [
             }
         </pre>`,
         showSource: true,
+        context: {
+            onSearchChanged: onSearchChanged
+        },
         template: `
         The text to search: {{searchText}}
         <sdc-filter-bar placeholder="filter text" 
                         label="filter example:" 
                         [debounceTime]="1000" 
-                        [searchQuery]="searchText" 
-                        (searchChanged)="searchText = $event">
+                        [(searchQuery)]="searchText" 
+                        (searchQueryChange)="onSearchChanged()">
         </sdc-filter-bar>
     `
     }
