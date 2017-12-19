@@ -7,7 +7,8 @@ import {FilterBarComponent} from "../filterbar/filter-bar.component";
     animations: [
         trigger('displayResultsAnimation', [
             state('true', style({
-                height: '*'
+                height: '*',
+                opacity: 1
             })),
             state('false', style({
                 height: 0,
