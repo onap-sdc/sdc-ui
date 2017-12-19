@@ -1,11 +1,15 @@
 .sdc-button {
   @include box-sizing;
   display: inline-block;
+
   outline: none;
   border-radius: 2px;
   padding: 0 12px;
+
   height: 36px;
   width: 120px;
+  min-width: 120px;
+
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
@@ -67,7 +71,6 @@
   // Link button
   &.sdc-button__link {
     background-color: transparent;
-    text-align: left;
     color: $blue;
     fill: $blue;
     border: none;
