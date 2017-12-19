@@ -26,5 +26,5 @@ export default `
         </div>
     </div>
 </div>
-<div class="modal-background" @toggleBackground ></div>
+<div class="modal-background" [@toggleBackground]="modalVisible" ></div>
 `;
