@@ -17,8 +17,6 @@ import {ModalConsumer} from "./components/modal-consumer.component";
 import {FilterBarModule} from "../../src/angular/filterbar/filter-bar.module";
 import {SearchBarModule} from "../../src/angular/searchbar/search-bar.module";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
-import {SearchWithAutocompleteExample} from "./components/search-with-autocomplete-example.component";
-import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autocomplete/search-with-autocomplete.module";
 
 @NgModule({
     declarations: [
@@ -26,7 +24,6 @@ import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autoco
         KeysPipe,
         ModalInnerContent,
         ModalConsumer,
-        SearchWithAutocompleteExample,
         KeysPipe,
         SearchFilterPipe
     ],
@@ -42,8 +39,7 @@ import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autoco
         FilterBarModule,
         SearchBarModule,
         InfiniteScrollModule,
-        TooltipModule,
-        SearchWithAutoCompleteModule
+        TooltipModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
@@ -51,7 +47,6 @@ import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autoco
         ModalInnerContent,
         ModalModule,
         ColorsTable,
-        SearchWithAutocompleteExample,
         FormElementsModule,
         ButtonsModule,
         TileModule,
@@ -61,7 +56,6 @@ import {SearchWithAutoCompleteModule} from "../../src/angular/search-with-autoco
         FilterBarModule,
         SearchBarModule,
         InfiniteScrollModule,
-        SearchWithAutoCompleteModule,
         TooltipDirective,
         PopupMenuModule,
         ModalConsumer,
