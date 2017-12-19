@@ -147,7 +147,7 @@ export default experimentOn('Checklist')
         `
     },
     {
-        id: 'multiLevelsChecklist',
+        id: '2LevelsChecklist',
         title: 'Multi-levels checklist',
         showSource: true,
         context: {
@@ -162,13 +162,11 @@ export default experimentOn('Checklist')
             const checklistValues = [];
             const innerChecklistValues = [];
             const checklistModel: ChecklistModel =  new ChecklistModel(checklistValues,
-                [new ChecklistItemModel('apple', false, false,new ChecklistModel(innerChecklistValues,
-                    [new ChecklistItemModel('red'),
-                    new ChecklistItemModel('green'),
-                    new ChecklistItemModel('yellow')])),
-                 new ChecklistItemModel('banana'),
-                 new ChecklistItemModel('orange')]);
-            </pre>
+                        [new ChecklistItemModel('apple', false, false,new ChecklistModel(innerChecklistValues,[new ChecklistItemModel('red'), 
+                                                                                                                        new ChecklistItemModel('green'), 
+                                                                                                                        new ChecklistItemModel('yellow')])),
+                        new ChecklistItemModel('banana'),
+                        new ChecklistItemModel('orange')]);</pre>
         `,
         template: `
             <div>Selected values: {{checklistValues.toString()}}</div>

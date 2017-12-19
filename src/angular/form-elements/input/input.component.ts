@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {FormControl} from "@angular/forms";
+import 'rxjs/add/operator/debounceTime';
 import template from "./input.component.html";
 import 'rxjs/add/operator/debounceTime';
 
@@ -8,7 +9,6 @@ import 'rxjs/add/operator/debounceTime';
     template: template,
 })
 export class InputComponent implements OnInit {
-
     @Output('valueChange') public baseEmitter: EventEmitter<any> = new EventEmitter<any>();
     @Input() public label: string;
     @Input() public value: any;
@@ -19,7 +19,7 @@ export class InputComponent implements OnInit {
     @Input() public minLength: number;
     @Input() public maxLength: number;
     @Input() public debounceTime: number = 0;
-
+    protected control: FormControl;
     protected control: FormControl;
     constructor() {
         this.control = new FormControl('', []);
