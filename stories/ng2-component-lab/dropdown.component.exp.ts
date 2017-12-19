@@ -64,6 +64,26 @@ const options2: IDropDownOption[] = [
         label: 'Fifth Option',
         value: 'fifthOption',
         type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Ruler',
+        value: 'ruler',
+        type: DropDownOptionType.HorizontalLine
+    },
+    {
+        label: 'Third Option',
+        value: 'thirdOption',
+        type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Forth Option',
+        value: 'forthOption',
+        type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Fifth Option',
+        value: 'fifthOption',
+        type: DropDownOptionType.Simple
     }
 ];
 

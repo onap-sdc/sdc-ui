@@ -238,29 +238,32 @@ Expend animation from top to bottom
  */
 .sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open {
   box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
-  @include dropdown_expend(244px);
+  @include mixin-transition-vertical-expand(244px);
 }
 
 /**
 Fold animation from bottom to top
  */
 .sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--top{
-  @include dropdown_fold(0px);
+  @include mixin-transition-vertical-collapse(0px);
   bottom: 40px;
   top:auto;
   /**
   Expend animation from bottom to top
    */
   &.sdc-dropdown__options-wrapper--open{
-    @include dropdown_expend(244px);
+    @include mixin-transition-vertical-expand(244px);
   }
 }
 /**
 Fold animation from top to bottom
  */
 .sdc-dropdown .sdc-dropdown__options-wrapper {
+  overflow: hidden;
   box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
-  @include dropdown_fold(-40px);
+  @include mixin-transition-vertical-collapse(-40px);
 }
 
-
+.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open.sdc-dropdown__options-wrapper--scrollbar{
+  overflow: auto;
+}
