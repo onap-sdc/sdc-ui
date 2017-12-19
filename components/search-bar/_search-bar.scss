@@ -1,16 +1,16 @@
 $inputHeight: 38px;
-.search-bar-container{
+.search-bar-container {
   .sdc-input {
      margin: 0;
     .sdc-input__input {
       padding-right: 30px;
+      &:focus {
+        border-color: $blue;
+        outline: 0 none;
+      }
     }
   }
-  .active{
-    .sdc-input .sdc-input__input{
-      border-color: $blue;
-    }
-  }
+
 
   .action-button{
     cursor:pointer;

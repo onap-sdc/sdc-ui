@@ -3,7 +3,6 @@
                [label]="label"
                [placeHolder]="placeholder"
                [debounceTime]="debounceTime"
-               [ngClass]="{'active': searchQuery}"
                [(value)]="searchQuery"
                (valueChange)="searchTextChange($event)"></sdc-input>
     <span class="clear-search-x action-button" *ngIf="searchQuery" (click)="clearSearchQuery()">

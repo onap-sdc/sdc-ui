@@ -2,7 +2,7 @@
  * Created by rc2122 on 11/16/2017.
  */
 import {Component} from "@angular/core";
-import {SearchFilterPipe} from "../utils/pipes/search.pipe";
+import {SearchFilterPipe} from "../pipes/search-filter-pipe";
 
 @Component({
     selector: "search-with-autocomplete-example",
@@ -32,7 +32,8 @@ import {SearchFilterPipe} from "../utils/pipes/search.pipe";
             </tbody>
         </table>
     `,
-    styles: ['td{ padding: 5px; border: solid 1px black;} thead{background-color: green;}']
+    styles: ['td{ padding: 5px; border: solid 1px black;} thead{background-color: green;}'],
+    providers: [SearchFilterPipe]
 })
 export class SearchWithAutocompleteExample {
     private list = [{name: 'apple', color: 'red' },

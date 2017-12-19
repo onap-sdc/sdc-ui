@@ -23,4 +23,3 @@ export class FilterBarComponent {
         this.searchQuery = "";
     }
 }
-

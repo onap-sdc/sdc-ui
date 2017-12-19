@@ -55,7 +55,7 @@ export default experimentOn('Input')
     `
     },
     {
-        id: 'input-placeholder',
+        id: 'inputWithPlaceholder',
         title: 'Input with placeholder',
         description: 'Input with placeholder',
         showSource: true,
@@ -64,7 +64,7 @@ export default experimentOn('Input')
     `
     },
     {
-        id: 'debounce-input',
+        id: 'inputWithDebounce',
         title: 'Input with debounce time',
         description: `<pre>On value change event code:
         const valueChange = (value: any): void => {
@@ -79,5 +79,4 @@ export default experimentOn('Input')
         template: `
       <sdc-input [debounceTime]="5000" (valueChange)="changeEvent($event)"></sdc-input>
       `
-    }
-    ]);
+    }]);
