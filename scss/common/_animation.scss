@@ -1,8 +1,8 @@
 /***********************************************************************************
- DROP-DOWN ANIMATION PAIR.
+ FOLD-EXPEND ANIMATION PAIR.
 
- We use the 'dropdown_fold' for the folded/idle block element,
- and the 'dropdown_expend' to expend that element.
+ We use the 'animation_fold' for the folded/idle block element,
+ and the 'animation_expend' to expend that element.
 
  -important: The element that will be used for the animation should be
  a block element, adn  have a content or width and height settings for it to work.
@@ -12,11 +12,11 @@
 Enable to fold an expended block element
 @param $offsetY - The top position from which the drop down should fold
  */
-@mixin dropdown_fold($offsetY) {
+@mixin animation_fold($offsetY) {
   opacity: 0;
   max-height: 0;
   transform: translateY($offsetY);
-  transition: transform 1s, opacity .5s, max-height 1s;
+  transition: all 1s, opacity .5s, max-height 1s;
   transition-delay: 0s, .2s, 0s;
 }
 
@@ -25,11 +25,11 @@ Enable to expend a folded block element
 @param $maxHeight - most of the animation is done over the max-height property
                     so we have to set the maximum height the expended element can expend to.
  */
-@mixin dropdown_expend($maxHeight){
+@mixin animation_expend($maxHeight){
   opacity: 1;
   max-height: $maxHeight;
   transform: translateY(0%);
-  transition: transform 1s, opacity .3s, max-height 1s;
+  transition: all 1s, opacity .3s, max-height 1s;
 }
 
 
