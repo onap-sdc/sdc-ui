@@ -1,6 +1,6 @@
 export default `
-<div class="sdc-modal {{size}}" >
-    <div class="sdc-modal__wrapper sdc-modal-type-{{type}}" @toggleModal> 
+<div class="sdc-modal {{size}}">
+    <div class="sdc-modal__wrapper sdc-modal-type-{{type}}" [@toggleModal]="modalVisible" (@toggleModal.done)="modalToggled($event)"> 
 
         <div class="sdc-modal__body">
             <div class="sdc-modal__close-button" modal-close-button>
@@ -26,5 +26,5 @@ export default `
         </div>
     </div>
 </div>
-<div class="modal-background" @toggleBackground></div>
+<div class="modal-background" @toggleBackground ></div>
 `;
