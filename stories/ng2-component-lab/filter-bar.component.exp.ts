@@ -3,7 +3,7 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 import { SearchFilterPipe } from './pipes/search-filter-pipe';
-
+const onSearchChanged = () => {alert('The search text was changed'); };
 export default experimentOn('Filter Bar').group('FilterBar', [
     {
         id: 'filterBar',
@@ -13,11 +13,14 @@ export default experimentOn('Filter Bar').group('FilterBar', [
             default 200 miliseconds) while user write something.
         `,
         showSource: true,
+        context: {
+            onSearchChanged: onSearchChanged
+        },
         template: `
             <sdc-filter-bar placeholder="filter text"
                             label="filter example:"
-                            [searchQuery]="searchText"
-                            (searchChanged)="searchText = $event">
+                            [(searchQuery)]="searchText"
+                            (searchQueryChange)="onSearchChanged()">
             </sdc-filter-bar>
             <br>
             Text to search: {{searchText}}
@@ -38,8 +41,7 @@ export default experimentOn('Filter Bar').group('FilterBar', [
             <sdc-filter-bar placeholder="filter text"
                             label="filter example:"
                             [debounceTime]="100"
-                            [searchQuery]="searchText"
-                            (searchChanged)="searchText = $event">
+                            [(searchQuery)]="searchText">
             </sdc-filter-bar>
             <ul style="height: 100px; background-color: #eeeeee;">
                 <li *ngFor="let item of data | PipeSearchFilter:searchText">{{item}}</li>
