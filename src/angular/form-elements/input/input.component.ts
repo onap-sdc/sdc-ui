@@ -20,7 +20,6 @@ export class InputComponent implements OnInit {
     @Input() public maxLength: number;
     @Input() public debounceTime: number = 0;
     protected control: FormControl;
-    protected control: FormControl;
     constructor() {
         this.control = new FormControl('', []);
     }
