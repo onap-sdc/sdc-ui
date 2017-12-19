@@ -8,7 +8,6 @@ export default `
         [name]="name"
         [placeholder]="placeHolder"
         [(ngModel)]="value"
-        (change)="onValueChange()"
         [maxlength]="maxLength"
         [minlength]="minLength"
         [pattern]="pattern"

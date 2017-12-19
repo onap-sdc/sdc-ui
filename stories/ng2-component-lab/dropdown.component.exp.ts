@@ -74,12 +74,17 @@ export default experimentOn('DropDown')
             showSource: true,
             context: {
                 options: options1,
-                onChange: function(option){console.log("Something was changed!", option.value)}
+                selectedOption:null,
+                onChange: function(option){
+                    console.log("Something was changed!", option.value);
+                    this.selectedOption = option.value;
+                }
             },
             title: 'Normal dropDown',
             description: 'Normal dropDown',
             template: `
       <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
+      <div style="margin: 10px 0 30px 0px; font-size:18px">Selected option:<strong style="font-weight: 900"> {{selectedOption}}</strong></div>
     `
         }, {
             id: 'groupDropDown',
