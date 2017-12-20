@@ -13,14 +13,13 @@ export class FilterBarComponent {
     @Input() public label: string;
     @Input() public searchQuery: string;
     @Input() public debounceTime: number = 200;
-    @Output() public searchChanged: EventEmitter<any> = new EventEmitter<any>();
+    @Output() public searchQueryChange: EventEmitter<any> = new EventEmitter<any>();
 
-    private searchQueryChange = ($event): void => {
-        this.searchChanged.emit($event);
+    private searchTextChange = ($event): void => {
+        this.searchQueryChange.emit($event);
     }
 
     private clearSearchQuery = (): void => {
         this.searchQuery = "";
-        this.searchChanged.emit(this.searchQuery);
     }
 }
