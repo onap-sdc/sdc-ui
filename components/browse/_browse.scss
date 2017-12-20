@@ -5,6 +5,11 @@ input[type="file"] {
 }
 .sdc-browse {
   position: relative;
+  &.disabled{
+    .browse-button div svg g{
+      fill: $gray;
+    }
+  }
   &:not(.disabled){
     .sdc-input__input{
       background-color: $white;
