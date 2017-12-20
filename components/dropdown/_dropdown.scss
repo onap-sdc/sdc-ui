@@ -115,9 +115,13 @@ sdc-dropdown {
       }
     }
   }
-
-  .sdc-dropdown__options-wrapper {
+  .sdc-dropdown__options-wrapper--frame {
+    overflow: hidden;
     position: absolute;
+    width: 100%;
+  }
+  .sdc-dropdown__options-wrapper {
+    position: relative;
     top: 100%;
     left: 0;
     width: 100%;
@@ -238,32 +242,39 @@ Expend animation from top to bottom
  */
 .sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open {
   box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
-  @include mixin-transition-vertical-expand(244px);
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 1s, opacity .3s;
+  //@include mixin-transition-vertical-expand(244px);
+}
+
+/**
+Fold animation from top to bottom
+ */
+.sdc-dropdown .sdc-dropdown__options-wrapper {
+  box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 1s, opacity 1s;
+  //@include mixin-transition-vertical-collapse(-40px);
 }
 
 /**
 Fold animation from bottom to top
  */
 .sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--top{
-  @include mixin-transition-vertical-collapse(0px);
+  //@include mixin-transition-vertical-collapse(0px);
   bottom: 40px;
   top:auto;
   /**
   Expend animation from bottom to top
    */
   &.sdc-dropdown__options-wrapper--open{
-    @include mixin-transition-vertical-expand(244px);
+    //@include mixin-transition-vertical-expand(244px);
   }
 }
-/**
-Fold animation from top to bottom
- */
-.sdc-dropdown .sdc-dropdown__options-wrapper {
-  overflow: hidden;
-  box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
-  @include mixin-transition-vertical-collapse(-40px);
-}
 
-.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open.sdc-dropdown__options-wrapper--scrollbar{
-  overflow: auto;
-}
+
+//.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open.sdc-dropdown__options-wrapper--scrollbar{
+//  overflow: auto;
+//}

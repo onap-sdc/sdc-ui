@@ -7,7 +7,7 @@ import {
      IDropDownOption,
     DropDownOptionType
 } from "./dropdown-models";
-import {whichTransitionEvent} from "../../utils/css-animation-events";
+
 
 @Component({
     selector: 'sdc-dropdown',
@@ -16,7 +16,7 @@ import {whichTransitionEvent} from "../../utils/css-animation-events";
         '(document:click)': 'onClickOutside($event)',
     }
 })
-export class DropDownComponent implements OnChanges, OnInit, AfterViewInit{
+export class DropDownComponent implements OnChanges, OnInit{
 
     /**
      * Drop-down value changed event emitter
@@ -109,27 +109,6 @@ export class DropDownComponent implements OnChanges, OnInit, AfterViewInit{
         if(changes.selectedOption && this.options.indexOf(this.selectedOption) > -1){
             this.selectedOption = this.isSelectable(this.selectedOption) && this.selectedOption || null;
         }
-    }
-
-
-    ngAfterViewInit(){
-        /**
-         * Get the correct transition end name depend on browser
-         */
-        const transitionEventName = whichTransitionEvent();
-
-        /**
-         * Add/remove scroll-bar after animation end
-         */
-        this.optionsContainerElement.nativeElement.addEventListener(transitionEventName, (elem)=>{
-            if(elem['propertyName'] && elem['propertyName'] === 'max-height'){
-                if(elem.target.classList.contains('sdc-dropdown__options-wrapper--open')){
-                    elem.target.classList.add('sdc-dropdown__options-wrapper--scrollbar')
-                }else {
-                    elem.target.classList.remove('sdc-dropdown__options-wrapper--scrollbar')
-                }
-            }
-        });
     }
 
     public isValid(){
