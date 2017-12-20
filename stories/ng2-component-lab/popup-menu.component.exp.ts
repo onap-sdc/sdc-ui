@@ -9,13 +9,54 @@ export default experimentOn('Menu')
         description: 'Basic popup menu (static)',
         template: `
         <popup-menu-list [open]="true" className="static">
-            <popup-menu-item>First</popup-menu-item>
-            <popup-menu-item type="disabled">Disabled</popup-menu-item>
+            <popup-menu-item>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 24 24">
+                  <defs>
+                    <path id="add-copy-a1" d="M11,0 C4.9,0 0,4.9 0,11 C0,17.1 4.9,22 11,22 C17.1,22 22,17.1 22,11 C22,4.9 17.1,0 11,0 M15,10 L12,10 L12,7 C12,6.4 11.6,6 11,6 C10.4,6 10,6.4 10,7 L10,10 L7,10 C6.4,10 6,10.4 6,11 C6,11.6 6.4,12 7,12 L10,12 L10,15 C10,15.6 10.4,16 11,16 C11.6,16 12,15.6 12,15 L12,12 L15,12 C15.6,12 16,11.6 16,11 C16,10.4 15.6,10 15,10"/>
+                  </defs>
+                  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <use xlink:href="#add-copy-a1"/>
+                  </g>
+                </svg>
+                First
+            </popup-menu-item>
+            <popup-menu-item type="selected">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 24 24">
+                  <defs>
+                    <path id="add-copy-a2" d="M11,0 C4.9,0 0,4.9 0,11 C0,17.1 4.9,22 11,22 C17.1,22 22,17.1 22,11 C22,4.9 17.1,0 11,0 M15,10 L12,10 L12,7 C12,6.4 11.6,6 11,6 C10.4,6 10,6.4 10,7 L10,10 L7,10 C6.4,10 6,10.4 6,11 C6,11.6 6.4,12 7,12 L10,12 L10,15 C10,15.6 10.4,16 11,16 C11.6,16 12,15.6 12,15 L12,12 L15,12 C15.6,12 16,11.6 16,11 C16,10.4 15.6,10 15,10"/>
+                  </defs>
+                  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <use xlink:href="#add-copy-a2"/>
+                  </g>
+                </svg>
+                Selected
+            </popup-menu-item>
+            <popup-menu-item type="disabled">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 24 24">
+                  <defs>
+                    <path id="add-copy-a3" d="M11,0 C4.9,0 0,4.9 0,11 C0,17.1 4.9,22 11,22 C17.1,22 22,17.1 22,11 C22,4.9 17.1,0 11,0 M15,10 L12,10 L12,7 C12,6.4 11.6,6 11,6 C10.4,6 10,6.4 10,7 L10,10 L7,10 C6.4,10 6,10.4 6,11 C6,11.6 6.4,12 7,12 L10,12 L10,15 C10,15.6 10.4,16 11,16 C11.6,16 12,15.6 12,15 L12,12 L15,12 C15.6,12 16,11.6 16,11 C16,10.4 15.6,10 15,10"/>
+                  </defs>
+                  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <use xlink:href="#add-copy-a3"/>
+                  </g>
+                </svg>
+                Disabled
+            </popup-menu-item>
             <popup-menu-item type="line">Line (not displayed)</popup-menu-item>
-            <popup-menu-item>Second</popup-menu-item>
+            <popup-menu-item>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 24 24">
+                  <defs>
+                    <path id="add-copy-a4" d="M11,0 C4.9,0 0,4.9 0,11 C0,17.1 4.9,22 11,22 C17.1,22 22,17.1 22,11 C22,4.9 17.1,0 11,0 M15,10 L12,10 L12,7 C12,6.4 11.6,6 11,6 C10.4,6 10,6.4 10,7 L10,10 L7,10 C6.4,10 6,10.4 6,11 C6,11.6 6.4,12 7,12 L10,12 L10,15 C10,15.6 10.4,16 11,16 C11.6,16 12,15.6 12,15 L12,12 L15,12 C15.6,12 16,11.6 16,11 C16,10.4 15.6,10 15,10"/>
+                  </defs>
+                  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <use xlink:href="#add-copy-a4"/>
+                  </g>
+                </svg>
+                Second
+            </popup-menu-item>
         </popup-menu-list>
         `
-    }, 
+    },
     {
         id: 'basicMenuRelative',
         title: 'Basic menu (relative)',
@@ -40,7 +81,7 @@ export default experimentOn('Menu')
                 height: 100%;
             }
         `],
-        template: 
+        template:
         `
         <div style="position: relative; width: 400px; height: 200px; background: blue;">
             <span class="message">Click in the box...<br/>
