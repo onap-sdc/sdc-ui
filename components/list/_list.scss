@@ -1,0 +1,96 @@
+.sdc-list-new-item-field{
+  position: relative;
+  .sdc-input{
+    margin-bottom: 0;
+  }
+  .not-empty{
+    .sdc-input__input {
+      border-color: $blue;
+    }
+  }
+  .error{
+    .sdc-input__input {
+      border: solid 1px $red;
+      color: $red;
+      outline: none;
+    }
+  }
+  .add-button{
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: $tlv-hover;
+    border: solid 1px $blue;
+    &.disabled{
+      cursor: default;
+      background-color: $background-gray;
+      border-color: $light-gray;
+      .plus-icon svg g{
+        fill: $dark-gray;
+      }
+    }
+    .plus-icon{
+      line-height: 46px;
+      svg{
+        height: 20px;
+        width: 20px;
+        g{
+          fill: $blue;
+        }
+      }
+    }
+  }
+}
+.sdc-list-container{
+  height: 120px;
+  overflow-y: auto;
+  border: solid 1px $light-gray;
+  border-top: none;
+  border-radius: 2px;
+  background-color: $white;
+  padding: 10px 10px 0 0;
+  sdc-list-item{
+    padding: 0 0 10px 10px;
+    display: inline-block;
+    .list-item{
+      min-width: 100px;
+      background-color: $white;
+      border: solid 1px $light-gray;
+      border-radius: 20px;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 10px;
+      color: $text-black;
+      @extend .body-3;
+      &.view-only{
+        border-color: $tlv-light-gray;
+      }
+      .delete-item{
+        cursor: pointer;
+        padding-left: 10px;
+        float: right;
+        svg{
+          height: 12px;
+          width: 12px;
+          margin-top: 8px;
+          g{
+            fill: $dark-gray;
+          }
+        }
+      }
+      &:hover:not(.view-only){
+        background-color: $tlv-hover;
+        border-color: $tlv-hover;
+        .delete-item{
+          svg g{
+            fill: $blue;
+          }
+        }
+      }
+    }
+  }
+}

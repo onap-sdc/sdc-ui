@@ -8,6 +8,8 @@ import {FileOpenerComponent} from "./browse/file-opener/file-opener.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {BrowseComponent} from "./browse/browse.component";
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
+import {ListItemComponent} from "./list/list-item/list-item.component";
+import {ListComponent} from "./list/list.component";
 
 @NgModule({
     imports: [
@@ -23,6 +25,8 @@ import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
         FileOpenerComponent,
         RadioGroupComponent,
         BrowseComponent,
+        ListItemComponent,
+        ListComponent,
         DropDownTriggerDirective
     ],
     exports: [
@@ -31,7 +35,8 @@ import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
         InputComponent,
         CheckboxComponent,
         BrowseComponent,
-        RadioGroupComponent
+        RadioGroupComponent,
+        ListComponent
     ]
 })
 export class FormElementsModule {
