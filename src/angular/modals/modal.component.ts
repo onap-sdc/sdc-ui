@@ -14,12 +14,12 @@ import { EventEmitter } from '@angular/forms/src/facade/async';
     template: template, 
     animations: [
         trigger('toggleBackground', [
-            transition(':enter', [style({opacity:0}), animate('.45s cubic-bezier(0.23, 1, 0.32, 1)')]),
-            transition(':leave', [animate('.45s cubic-bezier(0.23, 1, 0.32, 1)', style({opacity:0}))])
+            transition('* => 1', [style({opacity:0}), animate('.45s cubic-bezier(0.23, 1, 0.32, 1)')]),
+            transition('1 => *', [animate('.35s cubic-bezier(0.23, 1, 0.32, 1)', style({opacity:0}))])
         ]),
         trigger('toggleModal', [
             transition('* => 1', [style({opacity:0, transform: 'translateY(-80px)'}),  animate('.45s cubic-bezier(0.23, 1, 0.32, 1)')]),
-            transition('1 => *', [style({opacity:1, transform: 'translateY(0px)'}), animate('.45s ease-in-out', style({opacity:0, transform: 'translateY(-80px)'}))])
+            transition('1 => *', [style({opacity:1, transform: 'translateY(0px)'}), animate('.35s ease-in-out', style({opacity:0, transform: 'translateY(-80px)'}))])
         ])
     ]
 })
