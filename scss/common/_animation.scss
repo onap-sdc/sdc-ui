@@ -1,8 +1,8 @@
 /***********************************************************************************
- DROP-DOWN ANIMATION PAIR.
+ VERTICAL COLLAPSE-EXPEND TRANSITION ANIMATION PAIR.
 
- We use the 'dropdown_fold' for the folded/idle block element,
- and the 'dropdown_expend' to expend that element.
+ We use the 'transition-vertical-collapse' for the collapse/idle block element,
+ and the 'transition-vertical-expand' to expend that element.
 
  -important: The element that will be used for the animation should be
  a block element, adn  have a content or width and height settings for it to work.
@@ -12,11 +12,11 @@
 Enable to fold an expended block element
 @param $offsetY - The top position from which the drop down should fold
  */
-@mixin dropdown_fold($offsetY) {
+@mixin mixin-transition-vertical-collapse($offsetY) {
   opacity: 0;
   max-height: 0;
   transform: translateY($offsetY);
-  transition: transform 1s, opacity .5s, max-height 1s;
+  transition: all 1s, opacity .5s, max-height 1s;
   transition-delay: 0s, .2s, 0s;
 }
 
@@ -25,24 +25,34 @@ Enable to expend a folded block element
 @param $maxHeight - most of the animation is done over the max-height property
                     so we have to set the maximum height the expended element can expend to.
  */
-@mixin dropdown_expend($maxHeight){
+@mixin mixin-transition-vertical-expand($maxHeight){
   opacity: 1;
   max-height: $maxHeight;
   transform: translateY(0%);
-  transition: transform 1s, opacity .3s, max-height 1s;
+  transition: all 1s, opacity .3s, max-height 1s;
 }
 
 
 /********************************************************************************
-  SIMPLE FADE-IN ANIMATION (Used in tooltip for example)
+  SIMPLE FADE-IN KEYFRAMES ANIMATION (Used in tooltip for example)
+
+  we use 'mixin-keyframes-fade-in-from-bottom' to create css @keyframes rule that
+  we later can use with animation property inside our prefered css rules:
+      .our_class {
+        ...
+          animation: keyframes-fade-in-from-bottom 1s ease-out;
+        ...
+      }
 *********************************************************************************/
-@keyframes animation-fade-in-from-bottom {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
+@mixin mixin-keyframes-fade-in-from-bottom($fromRelativeHeight, $keyframesName:keyframes-fade-in-from-bottom){
+  @keyframes #{$keyframesName} {
+    from {
+      transform: translateY($fromRelativeHeight);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      opacity: 1;
+    }
   }
 }
