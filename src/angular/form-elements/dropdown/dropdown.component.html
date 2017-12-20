@@ -17,12 +17,11 @@
     <!--[DROP-DOWN HEADER END]-->
 
     <!--[DROP-DOWN OPTIONS START]-->
-    <div class="sdc-dropdown__options-wrapper--frame">
+    <div class="sdc-dropdown__options-wrapper--frame" [ngClass]="{'sdc-dropdown__options-wrapper--top':!isBottomVisible()}">
         <ul #optionsContainerElement *ngIf="true" class="sdc-dropdown__options-wrapper" [ngClass]="{
         'sdc-dropdown__options-wrapper--headless': headless,
         'sdc-dropdown__options-wrapper--open':show,
-        'sdc-dropdown__options-wrapper--close':!show,
-        'sdc-dropdown__options-wrapper--top':!isBottomVisible()
+        'sdc-dropdown__options-wrapper--close':!show
         }">
             <ng-container  *ngFor="let option of options; let i = index">
 
