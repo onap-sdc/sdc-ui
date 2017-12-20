@@ -4,8 +4,6 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 import { SearchFilterPipe } from './pipes/search-filter-pipe';
 
-const onSearchChanged = () => { alert('The search text was changed'); };
-
 export default experimentOn('Filter Bar').group('FilterBar', [
     {
         id: 'filterBar',
