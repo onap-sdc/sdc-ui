@@ -16,9 +16,9 @@ export interface IValidationEvent {
     errorsDict: IValidationErrorsDict;
 }
 
-interface IValidationValidatorRepresentation {
+interface IValidatorCompInfo {
     validatorComp: ValidatorComponent;
-    validatorIndex: number;
+    validatorName: string;
     validatorChangeSubscription: AnonymousSubscription;
 }
 
@@ -38,17 +38,16 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
     @Input() public disabled: boolean;
     @Output() public validChange: EventEmitter<IValidationEvent> = new EventEmitter<IValidationEvent>();
 
-    private validatorsRepresentations: IValidationValidatorRepresentation[];
+    private validatorsCompInfo: IValidatorCompInfo[];
 
     constructor() {
         this.validation = new ControlValidation();
         this.disabled = false;
 
-        this.validatorsRepresentations = [];
+        this.validatorsCompInfo = [];
 
         // bind methods references:
-        this.initValidators = this.initValidators.bind(this);
-        this.syncValidatorsDict = this.syncValidatorsDict.bind(this);
+        this.syncValidators = this.syncValidators.bind(this);
         this.validateControlValue = this.validateControlValue.bind(this);
     }
 
@@ -80,63 +79,69 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
     }
 
     public ngAfterContentInit() {
-        this.initValidators();
-        this.validators.changes.subscribe(this.initValidators);
+        this.syncValidators();
+        this.validators.changes.subscribe(this.syncValidators);
     }
 
-    private initValidators() {
+    private syncValidators() {
         // make new validators array
-        const newValidatorsArray: IValidationValidatorRepresentation[] = [];
+        const newValidatorsCompInfoArray: IValidatorCompInfo[] = [];
+        const newValidatorsArray: IValidator[] = [];
         this.validators.forEach((validatorComp, idx) => {
             // make validator subscription and push to validators array
-            const validatorCompSubIdx = this.validatorsRepresentations.findIndex(
-                (vc) => vc.validatorComp === validatorComp);
-            let validatorRepresentation: IValidationValidatorRepresentation;
+            const validatorCompSubIdx = this.validatorsCompInfo.findIndex(
+                (vci) => vci.validatorComp === validatorComp);
+            let validatorCompInfo: IValidatorCompInfo;
             if (validatorCompSubIdx !== -1) {
                 // remove the validator subscription from the array, so validators array ends with removed validators
-                validatorRepresentation = this.validatorsRepresentations.splice(validatorCompSubIdx, 1)[0];
+                validatorCompInfo = this.validatorsCompInfo.splice(validatorCompSubIdx, 1)[0];
             } else {
-                validatorRepresentation = {
+                validatorCompInfo = {
                     validatorComp,
-                    validatorIndex: null,
+                    validatorName: null,
                     validatorChangeSubscription: null
                 };
             }
 
-            // set validator representation index
-            validatorRepresentation.validatorIndex = idx;
+            // set validator component info name
+            validatorCompInfo.validatorName = validatorComp.name ? validatorComp.name : String(idx);
 
             // check validator name duplication if name is externally set
             if (validatorComp.name) {
-                if (newValidatorsArray.find((vc) => vc.validatorComp.name === validatorComp.name)) {
+                if (newValidatorsCompInfoArray.find((vc) => vc.validatorComp.name === validatorComp.name)) {
                     console.warn(`ValidationComponent: duplicate validator key "${validatorComp.name}".`);
                 }
             }
 
             // subscribe to validator change
-            if (!validatorRepresentation.validatorChangeSubscription) {
-                validatorRepresentation.validatorChangeSubscription =
-                    validatorComp.validatorChange.subscribe(this.syncValidatorsDict);
+            if (!validatorCompInfo.validatorChangeSubscription) {
+                validatorCompInfo.validatorChangeSubscription =
+                    validatorComp.validatorChange.subscribe((validator) => {
+                        this.syncSingleValidator(idx, validator);
+                    });
             }
 
-            newValidatorsArray.push(validatorRepresentation);
+            newValidatorsArray.push(validatorComp.getValidator());
+            newValidatorsCompInfoArray.push(validatorCompInfo);
         });
 
         // unsubscribe to the removed validators
-        this.validatorsRepresentations.forEach((vc) => {
-            vc.validatorChangeSubscription.unsubscribe();
+        this.validatorsCompInfo.forEach((vci) => {
+            vci.validatorChangeSubscription.unsubscribe();
         });
 
-        this.validatorsRepresentations = newValidatorsArray;
+        this.validatorsCompInfo = newValidatorsCompInfoArray;
+
+        // set validation validators array
+        this.validation.setValidators(newValidatorsArray);
 
         setTimeout(() => {
-            this.syncValidatorsDict();
+            this.validateControlValue(this.value);
         });
     }
 
-    private syncValidatorsDict() {
-        const validatorsArray: IValidator[] = this.validators.map((validatorComp) => validatorComp.getValidator());
-        this.validation.setValidators(validatorsArray);
+    private syncSingleValidator(index: number, validator: IValidator) {
+        this.validation.addValidator(validator, index, true);
         this.validateControlValue(this.value);
     }
 
@@ -146,13 +151,13 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         }
 
         // set each validator component isValid and errors
-        this.validators.forEach((validatorComp) => {
-            if (this.validation.errorsDict[validatorComp.name]) {
-                validatorComp.isValid = false;
-                validatorComp.errors = this.validation.errorsDict[validatorComp.name];
+        this.validatorsCompInfo.forEach((validatorCompInfo) => {
+            if (this.validation.errorsDict[validatorCompInfo.validatorName]) {
+                validatorCompInfo.validatorComp.isValid = false;
+                validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName];
             } else {
-                validatorComp.isValid = true;
-                validatorComp.errors = null;
+                validatorCompInfo.validatorComp.isValid = true;
+                validatorCompInfo.validatorComp.errors = null;
             }
         });
     }

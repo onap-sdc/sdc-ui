@@ -37,16 +37,23 @@ export class ControlValidation {
         this.setValidators(validators ? validators : []);
     }
 
-    // adds a validator object to validators dict
-    public addValidator(validatorKey: string, validator: IValidator): void {
-        this.validators[validatorKey] = validator;
+    // adds (or replaces) a validator object in validators list
+    public addValidator(validator: IValidator, index: number = null, replace: boolean = false): void {
+        this.validators.splice(
+            index !== null ? index : this.validators.length,
+            replace ? 1 : 0,
+            validator
+        );
     }
 
     // removes a validator from validators dict
-    public removeValidator(validatorKey: string): void {
-        if (this.validators.hasOwnProperty(validatorKey)) {
-            delete this.validators[validatorKey];
-        }
+    public removeValidator(index: number): void {
+        this.validators.splice(index, 1);
+    }
+
+    // find validator index in the validators list
+    public findValidatorIndex(name: string) {
+        return this.validators.findIndex((v) => v.name === name);
     }
 
     // sets all the validators
