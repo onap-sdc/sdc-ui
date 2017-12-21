@@ -1,0 +1,49 @@
+$inputHeight: 38px;
+.search-bar-container {
+  .sdc-input {
+     margin: 0;
+    .sdc-input__input {
+      padding-right: 40px;
+      &:focus {
+        border-color: $blue;
+        outline: 0 none;
+      }
+    }
+  }
+
+
+  .action-button{
+    cursor:pointer;
+    position: relative;
+    float: right;
+    right: 11px;
+    height: $inputHeight;
+    bottom: $inputHeight;
+    svg{
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .search-bar-button {
+    svg{
+      height: 20px;
+      width: 20px;
+      path{
+        fill: $gray;
+      }
+    }
+  }
+
+  .clear-search-x {
+    svg{
+      height: 14px;
+      width: 14px;
+      path{
+        fill: $gray;
+      }
+    }
+  }
+}
+

@@ -3,6 +3,10 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
+const valueChange = (value: any): void => {
+    alert(value);
+};
+
 export default experimentOn('Input')
   .group("Input",[
       {
@@ -48,6 +52,31 @@ export default experimentOn('Input')
         showSource: true,
         template: `
         <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
+    `
+    },
+    {
+        id: 'inputWithPlaceholder',
+        title: 'Input with placeholder',
+        description: 'Input with placeholder',
+        showSource: true,
+        template: `
+      <sdc-input placeHolder="TEXT"></sdc-input>
+    `
+    },
+    {
+        id: 'inputWithDebounce',
+        title: 'Input with debounce time',
+        description: `<pre>On value change event code:
+        const valueChange = (value: any): void => {
+            alert(value);
+        };
+        This event will happen 5 sec after the change
+        </pre>`,
+        showSource: true,
+        context: {
+            changeEvent: valueChange
+        },
+        template: `
+      <sdc-input [debounceTime]="5000" (valueChange)="changeEvent($event)"></sdc-input>
       `
-    }
-    ]);
+    }]);
