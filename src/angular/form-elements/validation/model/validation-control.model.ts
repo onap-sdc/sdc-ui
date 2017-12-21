@@ -1,33 +1,7 @@
 import {isEqual} from "lodash";
+import {IValidation, IValidator, IValidationErrorsDict, ValidatorTypes} from "./validation.type";
 
-export enum ValidatorTypes {
-    CUSTOM = "custom",
-    REQUIRED = "required",
-    REGEX = "regex",
-    MANUAL = "manual"
-}
-
-export interface IValidator {
-    type: ValidatorTypes;
-    name?: string;
-    message?: string;
-    stop?: boolean;
-
-    // regex validator
-    patterns?: RegExp[];
-
-    // custom validator
-    callback?: (value: any) => string|string[]|null;
-
-    // manual validator
-    isError?: boolean;
-}
-
-export interface IValidationErrorsDict {
-    [key: string]: string[];
-}
-
-export class ValidationControl {
+export class ValidationControl implements IValidation {
     public validators: IValidator[];
     public isValid: boolean;
     public errorsDict: IValidationErrorsDict;
@@ -69,12 +43,6 @@ export class ValidationControl {
         ) !== -1;
     }
 
-    public reset() {
-        this.isValid = true;
-        this.errorsDict = null;
-        this.errors = null;
-    }
-
     // validates a single validator and returns [isValid, errors]
     public validateSingle(validator: IValidator, value: any): [boolean, string[]|null] {
         let isValid: boolean = true;
@@ -110,6 +78,13 @@ export class ValidationControl {
                 break;
         }
         return [isValid, errors];
+    }
+
+    // reset validation
+    public reset() {
+        this.isValid = true;
+        this.errorsDict = null;
+        this.errors = null;
     }
 
     // validates the input value and sets errors and isValid (returns isValid)

@@ -4,7 +4,7 @@ import {
 } from "@angular/core";
 import {Subscribable} from "rxjs/Observable";
 import {AnonymousSubscription} from "rxjs/Subscription";
-import {ValidationControl, IValidationErrorsDict, IValidator} from "./validation-control.model";
+import {ValidationControl, IValidationErrorsDict, IValidator} from "./model";
 import {ValidatorComponent} from "./validator.component";
 import template from "./validation.component.html";
 
