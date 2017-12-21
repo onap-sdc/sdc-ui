@@ -11,8 +11,9 @@ export class FilterBarComponent {
 
     @Input() public placeholder: string;
     @Input() public label: string;
-    @Input() public searchQuery: string;
     @Input() public debounceTime: number = 200;
+
+    @Input() public searchQuery: string;
     @Output() public searchQueryChange: EventEmitter<any> = new EventEmitter<any>();
 
     private searchTextChange = ($event): void => {
