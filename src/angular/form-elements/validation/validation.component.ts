@@ -140,7 +140,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
     }
 
     private syncSingleValidator(index: number, validator: IValidator) {
-        this.validation.addValidator(validator, index, true);
+        this.validation.setSingleValidator(validator, index, true);
         this.validate(this.value);
     }
 
@@ -153,7 +153,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         this.validatorsCompInfo.forEach((validatorCompInfo) => {
             if (this.validation.errorsDict && this.validation.errorsDict[validatorCompInfo.validatorName]) {
                 validatorCompInfo.validatorComp.isValid = false;
-                validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName];
+                validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName] as string[];
             } else {
                 validatorCompInfo.validatorComp.isValid = true;
                 validatorCompInfo.validatorComp.errors = null;

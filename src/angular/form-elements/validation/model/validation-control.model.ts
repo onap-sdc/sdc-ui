@@ -1,18 +1,35 @@
 import {isEqual} from "lodash";
-import {IValidation, IValidator, IValidationErrorsDict, ValidatorTypes} from "./validation.type";
+import {
+    IValidationControl, IValidator, IValidationChildrenDict, IValidationErrorsDict, ValidatorTypes
+} from "./validation.type";
 
-export class ValidationControl implements IValidation {
+export class ValidationControl implements IValidationControl {
+    public static CHILDREN_KEY = '_children';
     public validators: IValidator[];
+    public children: IValidationChildrenDict;
     public isValid: boolean;
     public errorsDict: IValidationErrorsDict;
     public errors: string[];
 
-    constructor(validators?: IValidator[]) {
+    constructor(validators?: IValidator[], children?: IValidationChildrenDict) {
         this.setValidators(validators ? validators : []);
+        this.setChildren(children ? children : {});
     }
 
-    // adds (or replaces) a validator object in validators list
-    public addValidator(validator: IValidator, index: number = null, replace: boolean = false): void {
+    // sets all the validators
+    public setValidators(validators: IValidator[]): void {
+        this.validators = validators ? validators : [];
+        this.reset();
+    }
+
+    // sets all the children validations
+    public setChildren(children: IValidationChildrenDict) {
+        this.children = children;
+        this.reset();
+    }
+
+    // sets (adds or replaces) a validator object in validators list
+    public setSingleValidator(validator: IValidator, index: number = null, replace: boolean = false): void {
         this.validators.splice(
             index !== null ? index : this.validators.length,
             replace ? 1 : 0,
@@ -25,15 +42,30 @@ export class ValidationControl implements IValidation {
         this.validators.splice(index, 1);
     }
 
+    // find validator in the validators list
+    public findValidator(name: string) {
+        const validatorIndex = this.findValidatorIndex(name);
+        return validatorIndex === -1 ? null : this.validators[validatorIndex];
+    }
+
     // find validator index in the validators list
     public findValidatorIndex(name: string) {
         return this.validators.findIndex((v) => v.name === name);
     }
 
-    // sets all the validators
-    public setValidators(validators: IValidator[]): void {
-        this.validators = validators ? validators : [];
-        this.reset();
+    // add a child validation
+    public setSingleChild(key: string, child: ValidationControl) {
+        this.children[key] = child;
+    }
+
+    // remove a child validation
+    public removeChild(key: string) {
+        delete this.children[key];
+    }
+
+    // get a child validation
+    public getChild(key: string) {
+        return this.children[key];
     }
 
     // returns true whether the validation has validator of given type
@@ -93,6 +125,7 @@ export class ValidationControl implements IValidation {
         let errorsDict = {};
         let errors = [];
 
+        // validate validators
         this.validators.every((validator, idx) => {
             const validSingle = this.validateSingle(validator, value);
             if (!validSingle[0]) {
@@ -106,6 +139,24 @@ export class ValidationControl implements IValidation {
             }
             return true;
         });
+
+        // validate children
+        let childIsValid = true;
+        const childrenErrorsDict = {};
+        Object.keys(this.children).forEach((childKey) => {
+            const child = this.children[childKey];
+            child.validate(value[childKey]);
+
+            if (!child.isValid) {
+                childIsValid = false;
+                childrenErrorsDict[childKey] = child.errorsDict;
+            }
+        });
+        // if children are not valid, add children errorsDict to errorsDict
+        if (!childIsValid) {
+            isValid = false;
+            errorsDict[ValidationControl.CHILDREN_KEY] = childrenErrorsDict;
+        }
 
         // if valid, set errorsDict and errors to null
         if (isValid) {

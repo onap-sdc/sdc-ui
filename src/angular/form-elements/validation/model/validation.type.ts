@@ -1,7 +1,10 @@
 import {ValidationControl} from "./validation-control.model";
-import {ValidationGroup} from "./validation-group.model";
 
-export interface IValidation {
+export interface IValidationControl {
+    isValid: boolean;
+    errorsDict: IValidationErrorsDict;
+    errors: string[];
+
     // reset validation
     reset(): void;
 
@@ -33,5 +36,9 @@ export interface IValidator {
 }
 
 export interface IValidationErrorsDict {
-    [key: string]: string[];
+    [key: string]: string[] | IValidationErrorsDict;
+}
+
+export interface IValidationChildrenDict {
+    [key: string]: ValidationControl;
 }
