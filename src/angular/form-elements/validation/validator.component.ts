@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "@angular/core";
 import {isEqual} from "lodash";
-import {ValidatorTypes, IValidator} from "./validation.model";
+import {ValidatorTypes, IValidator} from "./validation-control.model";
 import template from "./validator.component.html";
 
 @Component({

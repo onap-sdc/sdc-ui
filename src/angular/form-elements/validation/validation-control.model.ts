@@ -24,10 +24,10 @@ export interface IValidator {
 }
 
 export interface IValidationErrorsDict {
-    [index: string]: string[];
+    [key: string]: string[];
 }
 
-export class ControlValidation {
+export class ValidationControl {
     public validators: IValidator[];
     public isValid: boolean;
     public errorsDict: IValidationErrorsDict;
@@ -71,8 +71,8 @@ export class ControlValidation {
 
     public reset() {
         this.isValid = true;
-        this.errorsDict = {};
-        this.errors = [];
+        this.errorsDict = null;
+        this.errors = null;
     }
 
     // validates a single validator and returns [isValid, errors]
@@ -115,8 +115,8 @@ export class ControlValidation {
     // validates the input value and sets errors and isValid (returns isValid)
     public validate(value: any): boolean {
         let isValid = true;
-        const errorsDict = {};
-        const errors = [];
+        let errorsDict = {};
+        let errors = [];
 
         this.validators.every((validator, idx) => {
             const validSingle = this.validateSingle(validator, value);
@@ -131,6 +131,12 @@ export class ControlValidation {
             }
             return true;
         });
+
+        // if valid, set errorsDict and errors to null
+        if (isValid) {
+            errorsDict = null;
+            errors = null;
+        }
 
         // if valid or errorsDict is changed, then update model properties
         if (isValid !== this.isValid || !isEqual(errorsDict, this.errorsDict)) {

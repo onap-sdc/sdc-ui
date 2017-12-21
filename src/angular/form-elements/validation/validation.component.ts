@@ -4,7 +4,7 @@ import {
 } from "@angular/core";
 import {Subscribable} from "rxjs/Observable";
 import {AnonymousSubscription} from "rxjs/Subscription";
-import {ControlValidation, IValidationErrorsDict, IValidator} from "./validation.model";
+import {ValidationControl, IValidationErrorsDict, IValidator} from "./validation-control.model";
 import {ValidatorComponent} from "./validator.component";
 import template from "./validation.component.html";
 
@@ -27,7 +27,7 @@ interface IValidatorCompInfo {
     template
 })
 export class ValidationComponent implements OnChanges, AfterContentInit {
-    public validation: ControlValidation;  // validation instance for the control
+    public validation: ValidationControl;  // validation instance for the control
 
     @ContentChildren(ValidatorComponent) public validators: QueryList<ValidatorComponent>;
 
@@ -36,19 +36,18 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
     private valueSubscription: AnonymousSubscription;
 
     @Input() public disabled: boolean;
+    @Input() public show: boolean;
     @Output() public validChange: EventEmitter<IValidationEvent> = new EventEmitter<IValidationEvent>();
 
     private validatorsCompInfo: IValidatorCompInfo[];
 
     constructor() {
-        this.validation = new ControlValidation();
+        this.validation = new ValidationControl();
+
         this.disabled = false;
+        this.show = true;
 
         this.validatorsCompInfo = [];
-
-        // bind methods references:
-        this.syncValidators = this.syncValidators.bind(this);
-        this.validateControlValue = this.validateControlValue.bind(this);
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
@@ -61,7 +60,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
                 this.valueSubscription = this.valueEmitter.subscribe((value) => {
                     setTimeout(() => {
                         this.value = value;
-                        this.validateControlValue(this.value);
+                        this.validate(this.value);
                     });
                 });
             }
@@ -69,18 +68,18 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
 
         // new value is assigned
         if (changes.value) {
-            this.validateControlValue(this.value);
+            this.validate(this.value);
         }
 
         // enable/disable
         if (changes.disabled) {
-            (this.disabled) ? this.resetValidation() : this.validateControlValue(this.value);
+            (this.disabled) ? this.reset() : this.validate(this.value);
         }
     }
 
     public ngAfterContentInit() {
         this.syncValidators();
-        this.validators.changes.subscribe(this.syncValidators);
+        this.validators.changes.subscribe(() => this.syncValidators());
     }
 
     private syncValidators() {
@@ -136,13 +135,13 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         this.validation.setValidators(newValidatorsArray);
 
         setTimeout(() => {
-            this.validateControlValue(this.value);
+            this.validate(this.value);
         });
     }
 
     private syncSingleValidator(index: number, validator: IValidator) {
         this.validation.addValidator(validator, index, true);
-        this.validateControlValue(this.value);
+        this.validate(this.value);
     }
 
     private syncValidatorComponentsAttributes() {
@@ -152,7 +151,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
 
         // set each validator component isValid and errors
         this.validatorsCompInfo.forEach((validatorCompInfo) => {
-            if (this.validation.errorsDict[validatorCompInfo.validatorName]) {
+            if (this.validation.errorsDict && this.validation.errorsDict[validatorCompInfo.validatorName]) {
                 validatorCompInfo.validatorComp.isValid = false;
                 validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName];
             } else {
@@ -162,12 +161,12 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         });
     }
 
-    public resetValidation() {
+    public reset() {
         this.validation.reset();
         this.syncValidatorComponentsAttributes();
     }
 
-    public validateControlValue(value: any) {
+    public validate(value: any) {
         if (this.disabled) {
             return;
         }
