@@ -35,6 +35,11 @@
       .sdc-modal__svg-use {
         fill: $blue;
       }
+
+      &.popup {
+        padding-left: 70px;
+        padding-right: 68px;
+      }
     }
 
     &.sdc-modal-type-alert {
