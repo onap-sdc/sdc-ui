@@ -30,7 +30,7 @@
 	color: $text-black;
 	fill: $dark-gray;
 	transition: box-shadow 0.3s ease-in-out;
-	@extend .body-3;
+	@include body-3;
 	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
 
 	&:hover {
@@ -63,7 +63,7 @@
 		@include ellipsis($display: block);
 
 		font-size: $body-font-1;
-		@extend .text-uppercase;
+		text-transform: uppercase;
 	}
 
 	.sdc-tile-content {
@@ -101,7 +101,7 @@
 			flex-direction: column;
 
 			.sdc-tile-info-line {
-				@extend .text-capitalize;
+				text-transform: capitalize;
 				@include ellipsis($display: flex);
 				align-items: center;
 
@@ -122,7 +122,8 @@
 					line-height: 1.8;
 					color: $text-black;
 					font-weight: 600;
-					@extend .body-1-semibold;
+					@include body-1;
+					@include base-font-semibold;
 				}
 				&.subtitle {
 					height: 1.5em;
@@ -144,7 +145,7 @@
 
 		color: $dark-gray;
 		fill: $dark-gray;
-		@extend .text-capitalize;
+		text-transform: capitalize;
 
 		display: flex;
 		align-items: center;
@@ -161,7 +162,7 @@
 			button {
 				width: initial;
 				height: initial;
-				font-size: $body-font-2;
+				font-size: $body-font-2; //ILANA CHANGE
 
 				.svg-icon-wrapper {
 					.svg-icon-label {
