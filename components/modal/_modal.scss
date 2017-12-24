@@ -21,7 +21,7 @@
 
   .sdc-modal__wrapper {
 
-    @extend .body-1;
+    @include body-1;
     background: $white;
     width: 100%;
     box-shadow:  0 0 4px 0 rgba(0,0,0,0.50);
@@ -68,7 +68,7 @@
         order:1;
         padding: 10px 12px;
       }
-  
+
       .sdc-modal__close-button {
         order:3;
         width: 14px;
@@ -88,7 +88,7 @@
           padding: 0 0 12px;
           line-height:30px;
         }
-      } 
+      }
     }
 
     .sdc-modal__footer {

@@ -2,7 +2,7 @@ sdc-dropdown {
   display: block;
 }
 .sdc-dropdown {
-  font-size: 14px;
+  @include body-1;
   position: relative;
 
   .sdc-dropdown__error{
@@ -15,9 +15,9 @@ sdc-dropdown {
 
     .sdc-dropdown__header {
       border: solid 1px $red;
-      color: $red;
+      @include font-error;
       &::after {
-        color: $red;
+        @include font-error;
       }
       &:focus {
         border: solid 1px $red;
@@ -37,9 +37,9 @@ sdc-dropdown {
 
     .sdc-dropdown__error{
       display: block;
-      color: $red;
+      @include font-error;
       margin: 4px 0;
-      font-size: 11px;
+      @include body-3;
     }
 
     .sdc-dropdown__options-wrapper {
@@ -72,7 +72,7 @@ sdc-dropdown {
     z-index: 9999999;
 
     &.placeholder {
-      font-style: italic;
+      @include base-font-italic;
       color: $gray;
     }
 
@@ -158,15 +158,15 @@ sdc-dropdown {
       }
       &:hover {
         background-color: $tlv-gray;
-        @include base-font-bold;
+        @include base-font-semibold;
       }
       &.selected {
         background-color: $tlv-hover;
         color: $blue;
-        @include base-font-bold;
+        @include base-font-semibold;
       }
       &.sdc-dropdown__option--header {
-        @include base-font-bold;
+        @include base-font-semibold;
         color: $text-black;
         cursor: default;
         font-weight: 900;
@@ -215,7 +215,7 @@ sdc-dropdown {
   .sdc-dropdown__label {
     margin-bottom: 5px;
     display: block;
-    @extend .body-3;
+    @include body-3;
 
     &.required::before {
       content: '*';
