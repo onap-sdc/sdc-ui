@@ -1,0 +1,6 @@
+<div class="search-with-autocomplete-container">
+    <sdc-filter-bar [placeholder]="placeholder" [label]="label" [searchQuery]="searchQuery" (searchQueryChange)="onSearchTextChange($event)"></sdc-filter-bar>
+    <div class="autocomplete-results" [@displayResultsAnimation]="(autoCompleteValues && autoCompleteValues.length)?'true':'false'">
+        <div *ngFor="let item of autoCompleteValues" class="autocomplete-result-item" (click)="onSelectTextToSearch(item)">{{item}}</div>
+    </div>
+</div>
