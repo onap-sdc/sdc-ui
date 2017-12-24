@@ -1,7 +1,10 @@
 .sdc-list-new-item-field{
-  position: relative;
-  .sdc-input{
-    margin-bottom: 0;
+  display: flex;
+  sdc-input{
+    flex-grow: 1;
+    .sdc-input{
+      margin-bottom: 0;
+    }
   }
   .not-empty{
     .sdc-input__input {
@@ -20,11 +23,10 @@
     height: 36px;
     width: 36px;
     text-align: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
     background-color: $tlv-hover;
     border: solid 1px $blue;
+    border-left: none;
+    margin-top: 17px;
     &.disabled{
       cursor: default;
       background-color: $background-gray;
