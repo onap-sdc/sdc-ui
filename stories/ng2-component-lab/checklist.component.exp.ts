@@ -147,7 +147,7 @@ export default experimentOn('Checklist')
         `
     },
     {
-        id: '2LevelsChecklist',
+        id: 'twoLevelsChecklist',
         title: 'Multi-levels checklist',
         showSource: true,
         context: {
