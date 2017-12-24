@@ -3,6 +3,7 @@ import {isEqual} from "lodash";
 import {ValidatorTypes, IValidator} from "./model";
 import template from "./validator.component.html";
 import {IValidationErrorsDict} from "./model/validation.type";
+import {ValidationControl} from "./model/validation-control.model";
 
 @Component({
     selector: 'sdc-validator',
@@ -12,10 +13,13 @@ export class ValidatorComponent implements OnChanges {
     @Input() public name: string;
     @Input() public type: ValidatorTypes;
     @Input() public message: string;
+    @Input() public disabled: boolean;
     @Input() public stop: boolean = false;
+    @Input() public validation: ValidationControl;
     @Input() public patterns: Array<RegExp|string|string[]>;
     @Input() public callback: (value: any) => string|string[]|null;
     @Input() public isError: boolean;
+    @Input() public show: boolean;
     @Output() public validatorChange: EventEmitter<IValidator> = new EventEmitter<IValidator>();
     public isValid: boolean;
     public errorsDict: IValidationErrorsDict;
@@ -23,6 +27,9 @@ export class ValidatorComponent implements OnChanges {
     private validator: IValidator;
 
     constructor() {
+        this.disabled = false;
+        this.show = true;
+
         this.isValid = true;
         this.errors = null;
     }
@@ -37,10 +44,16 @@ export class ValidatorComponent implements OnChanges {
                 type: this.type,
                 name: this.name,
                 message: this.message || `[${this.name}] Validation error`,
+                disabled: this.disabled,
                 stop: this.stop
             };
 
             switch (validator.type) {
+                case ValidatorTypes.SIBLING:
+                case ValidatorTypes.CHILD:
+                    validator.validation = this.validation;
+                    break;
+
                 case ValidatorTypes.REGEX:
                     validator.patterns = this.patterns.map<RegExp>((pattern) => {
                         if (pattern instanceof RegExp) {

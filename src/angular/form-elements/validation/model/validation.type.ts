@@ -13,17 +13,23 @@ export interface IValidationControl {
 }
 
 export enum ValidatorTypes {
-    CUSTOM = "custom",
-    REQUIRED = "required",
-    REGEX = "regex",
-    MANUAL = "manual"
+    CHILD = 'child',
+    SIBLING = 'sibling',
+    CUSTOM = 'custom',
+    REQUIRED = 'required',
+    REGEX = 'regex',
+    MANUAL = 'manual'
 }
 
 export interface IValidator {
     type: ValidatorTypes;
     name?: string;
     message?: string;
+    disabled?: boolean;
     stop?: boolean;
+
+    // validation validator
+    validation?: ValidationControl;
 
     // regex validator
     patterns?: RegExp[];
@@ -37,6 +43,12 @@ export interface IValidator {
 
 export interface IValidationErrorsDict {
     [key: string]: string[];
+}
+
+export interface IValidationChange {
+    isValid: boolean;
+    errors: string[];
+    errorsDict: IValidationErrorsDict;
 }
 
 export interface IValidationChildrenDict {

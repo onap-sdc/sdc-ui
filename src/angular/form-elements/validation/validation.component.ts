@@ -1,20 +1,15 @@
 import {
-    AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, Output, QueryList,
+    AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList,
     SimpleChanges
 } from "@angular/core";
 import {Subscribable} from "rxjs/Observable";
 import {AnonymousSubscription} from "rxjs/Subscription";
-import {ValidationControl, IValidationErrorsDict, IValidator} from "./model";
+import {ValidationControl, IValidator} from "./model";
 import {ValidatorComponent} from "./validator.component";
 import template from "./validation.component.html";
+import {IValidationChange} from "./model/validation.type";
 
 export {ValidatorComponent};
-
-export interface IValidationEvent {
-    isValid: boolean;
-    errors: string[];
-    errorsDict: IValidationErrorsDict;
-}
 
 interface IValidatorCompInfo {
     validatorComp: ValidatorComponent;
@@ -26,7 +21,7 @@ interface IValidatorCompInfo {
     selector: 'sdc-validation',
     template
 })
-export class ValidationComponent implements OnChanges, AfterContentInit {
+export class ValidationComponent implements OnChanges, AfterContentInit, OnInit {
     public validation: ValidationControl;  // validation instance for the control
 
     @ContentChildren(ValidatorComponent) public validators: QueryList<ValidatorComponent>;
@@ -37,7 +32,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
 
     @Input() public disabled: boolean;
     @Input() public show: boolean;
-    @Output() public validChange: EventEmitter<IValidationEvent> = new EventEmitter<IValidationEvent>();
+    @Output() public validChange: EventEmitter<IValidationChange> = new EventEmitter<IValidationChange>();
 
     private validatorsCompInfo: IValidatorCompInfo[];
 
@@ -73,8 +68,15 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
 
         // enable/disable
         if (changes.disabled) {
-            (this.disabled) ? this.reset() : this.validate(this.value);
+            this.validation.disabled = this.disabled;
         }
+    }
+
+    public ngOnInit() {
+        this.validation.validChanges.subscribe((validChange: IValidationChange) => {
+            this.syncValidatorComponentsAttributes();
+            this.validChange.emit(validChange);
+        });
     }
 
     public ngAfterContentInit() {
@@ -135,7 +137,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         this.validation.setValidators(newValidatorsArray);
 
         setTimeout(() => {
-            this.validate(this.value);
+            this.validate(this.value, {forceEmit: true});
         });
     }
 
@@ -151,14 +153,41 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
 
         // set each validator component isValid and errors
         this.validatorsCompInfo.forEach((validatorCompInfo) => {
-            if (this.validation.errorsDict && this.validation.errorsDict[validatorCompInfo.validatorName]) {
-                validatorCompInfo.validatorComp.isValid = false;
-                validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName];
-            } else {
-                validatorCompInfo.validatorComp.isValid = true;
-                validatorCompInfo.validatorComp.errors = null;
+            if (validatorCompInfo.validatorComp.show) {
+                const validatorErrorsDict = this.validation.errorsDict &&
+                    this.validation.errorsDict[validatorCompInfo.validatorName];
+                if (validatorErrorsDict) {
+                    validatorCompInfo.validatorComp.isValid = false;
+                    if (validatorErrorsDict instanceof Array) {
+                        validatorCompInfo.validatorComp.errorsDict = null;
+                        validatorCompInfo.validatorComp.errors = validatorErrorsDict;
+                    } else {
+                        validatorCompInfo.validatorComp.errorsDict = validatorErrorsDict;
+                        validatorCompInfo.validatorComp.errors = this.errorsDictToArray(validatorErrorsDict, validatorCompInfo.validatorName);
+                    }
+                } else {
+                    validatorCompInfo.validatorComp.isValid = true;
+                    validatorCompInfo.validatorComp.errorsDict = null;
+                    validatorCompInfo.validatorComp.errors = null;
+                }
             }
         });
+    }
+
+    private errorsDictToArray(errorsDict, errorsKey?: string): string[] {
+        let errors: string[];
+        if (!errorsDict) {
+            errors = null;
+        } else if (errorsDict instanceof Array) {
+            errors = (errorsKey) ? errorsDict.map((err) => `${errorsKey}: ${err}`) : errorsDict;
+        } else {
+            errors = Object.keys(errorsDict).reduce((errorsAcc, eKey) => {
+                const newErrorsKey = (errorsDict[eKey] instanceof Array) ? errorsKey : `${errorsKey}.${eKey}`;
+                errorsAcc.push(...this.errorsDictToArray(errorsDict[eKey], newErrorsKey));
+                return errorsAcc;
+            }, []);
+        }
+        return (errors && errors.length) ? errors : null;
     }
 
     public reset() {
@@ -166,26 +195,8 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         this.syncValidatorComponentsAttributes();
     }
 
-    public validate(value: any) {
-        if (this.disabled) {
-            return;
-        }
-
-        const oldIsValid = this.validation.isValid;
-        const oldErrorsDict = this.validation.errorsDict;
-
+    public validate(value: any, opts?) {
         // validate the value
-        this.validation.validate(value);
-
-        this.syncValidatorComponentsAttributes();
-
-        // only if validation is changed, then emit validate change
-        if (this.validation.isValid !== oldIsValid || this.validation.errorsDict !== oldErrorsDict) {
-            this.validChange.emit({
-                isValid: this.validation.isValid,
-                errors: this.validation.errors,
-                errorsDict: this.validation.errorsDict
-            } as IValidationEvent);
-        }
+        this.validation.validate(value, opts);
     }
 }

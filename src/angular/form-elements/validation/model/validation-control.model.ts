@@ -1,21 +1,81 @@
 import {isEqual} from "lodash";
+import {Subject} from "rxjs/Subject";
 import {
-    IValidationControl, IValidator, IValidationErrorsDict, ValidatorTypes
+    IValidationControl, IValidator, IValidationErrorsDict, ValidatorTypes, IValidationChange
 } from "./validation.type";
+import {AnonymousSubscription} from "rxjs/Subscription";
+
+interface ISubValidationInfo {
+    validation: IValidationControl;
+    validChangesSubscription: AnonymousSubscription;
+}
 
 export class ValidationControl implements IValidationControl {
     public validators: IValidator[];
     public isValid: boolean;
     public errorsDict: IValidationErrorsDict;
     public errors: string[];
+    public validChanges: Subject<IValidationChange>;
+    private subValidationsInfos: ISubValidationInfo[];
+    private value: any;
+
+    private _disabled: boolean;
+    get disabled() {
+        return this._disabled;
+    }
+    set disabled(disabled) {
+        if (this._disabled !== disabled) {
+            if (disabled) {
+                this.reset();
+                this._disabled = disabled;
+            } else {
+                this._disabled = disabled;
+                this.validate(this.value);
+            }
+        }
+    }
 
     constructor(validators?: IValidator[]) {
+        this.validChanges = new Subject<IValidationChange>();
+        this.subValidationsInfos = [];
+
         this.setValidators(validators ? validators : []);
     }
 
     // sets all the validators
     public setValidators(validators: IValidator[]): void {
         this.validators = validators ? validators : [];
+
+        // make sub-validation subscriptions
+        const subValidationsInfosArray: ISubValidationInfo[] = [];
+        this.validators.forEach((validator) => {
+            // if validator is sub-validation (type sibling/child), then subscribe to sub validations changes
+            if (this.isSubValidation(validator)) {
+                const subValidationInfoIdx = this.subValidationsInfos.findIndex(
+                    (svi) => svi.validation === validator.validation);
+                let subValidationInfo: ISubValidationInfo;
+                if (subValidationInfoIdx !== -1) {
+                    // remove the sub-validation subscription from the array,
+                    // so sub-validations array ends with removed validators
+                    subValidationInfo = this.subValidationsInfos.splice(subValidationInfoIdx, 1)[0];
+                } else {
+                    subValidationInfo = {
+                        validation: validator.validation,
+                        validChangesSubscription: validator.validation.validChanges.subscribe(() => {
+                            this.validate(this.value);
+                        })
+                    };
+                }
+                subValidationsInfosArray.push(subValidationInfo);
+            }
+        });
+        // unsubscribe to the removed sub-validations
+        this.subValidationsInfos.forEach((svi) => {
+            svi.validChangesSubscription.unsubscribe();
+        });
+        // set new sub-validations subscriptions
+        this.subValidationsInfos = subValidationsInfosArray;
+
         this.reset();
     }
 
@@ -52,63 +112,104 @@ export class ValidationControl implements IValidationControl {
     }
 
     // validates a single validator and returns [isValid, errors]
-    public validateSingle(validator: IValidator, value: any): [boolean, string[]|null] {
+    public validateSingle(validator: IValidator, value: any): [boolean, IValidationErrorsDict, string[]|null] {
         let isValid: boolean = true;
+        let errorsDict: IValidationErrorsDict = null;
         let errors: string[]|null = null;
-        switch (validator.type) {
-            case ValidatorTypes.REQUIRED:
-                if (!Boolean(value)) {
-                    isValid = false;
-                    errors = [validator.message];
-                }
-                break;
+        if (!validator.disabled) {
+            switch (validator.type) {
+                case ValidatorTypes.CHILD:
+                    if (!validator.validation.isValid) {
+                        isValid = false;
+                        errorsDict = validator.validation.errorsDict;
+                    }
+                    break;
 
-            case ValidatorTypes.REGEX:
-                if (!validator.patterns.every((pattern) => new RegExp(pattern).test(value))) {
-                    isValid = false;
-                    errors = [validator.message];
-                }
-                break;
+                case ValidatorTypes.SIBLING:
+                    if (!validator.validation.isValid) {
+                        isValid = false;
+                        errorsDict = validator.validation.errorsDict;
+                        errors = validator.validation.errors;
+                    }
+                    break;
 
-            case ValidatorTypes.CUSTOM:
-                const err = validator.callback(value);
-                if (err !== null) {
-                    isValid = false;
-                    errors = (err instanceof Array) ? err : [err];
-                }
-                break;
+                case ValidatorTypes.REQUIRED:
+                    if (!Boolean(value)) {
+                        isValid = false;
+                        errors = [validator.message];
+                    }
+                    break;
 
-            case ValidatorTypes.MANUAL:
-                if (validator.isError) {
-                    isValid = false;
-                    errors = [validator.message];
-                }
-                break;
+                case ValidatorTypes.REGEX:
+                    if (!validator.patterns.every((pattern) => new RegExp(pattern).test(value))) {
+                        isValid = false;
+                        errors = [validator.message];
+                    }
+                    break;
+
+                case ValidatorTypes.CUSTOM:
+                    const err = validator.callback(value);
+                    if (err !== null) {
+                        isValid = false;
+                        errors = (err instanceof Array) ? err : [err];
+                    }
+                    break;
+
+                case ValidatorTypes.MANUAL:
+                    if (validator.isError) {
+                        isValid = false;
+                        errors = [validator.message];
+                    }
+                    break;
+            }
         }
-        return [isValid, errors];
+        return [isValid, errorsDict, errors];
+    }
+
+    private isSubValidation(validator: IValidator) {
+        return (validator.type === ValidatorTypes.CHILD || validator.type === ValidatorTypes.SIBLING);
+    }
+
+    private emitValidChange() {
+        this.validChanges.next({
+            isValid: this.isValid,
+            errors: this.errors,
+            errorsDict: this.errorsDict
+        } as IValidationChange);
     }
 
     // reset validation
     public reset() {
+        if (this._disabled) {
+            return;
+        }
+
         this.isValid = true;
         this.errorsDict = null;
         this.errors = null;
+        this.emitValidChange();
     }
 
     // validates the input value and sets errors and isValid (returns isValid)
-    public validate(value: any): boolean {
+    public validate(value: any, opts: {forceEmit?: boolean} = {}): boolean {
+        this.value = value;
+
+        if (this._disabled) {
+            return this.isValid;
+        }
+
         let isValid = true;
         let errorsDict = {};
         let errors = [];
 
         // validate validators
         this.validators.every((validator, idx) => {
-            const validSingle = this.validateSingle(validator, value);
+            const validSingle = this.validateSingle(validator, this.value);
             if (!validSingle[0]) {
                 const validatorName = validator.name || String(idx);
                 isValid = false;
-                errorsDict[validatorName] = validSingle[1];
-                errors.push(...errorsDict[validatorName]);
+                errorsDict[validatorName] = validSingle[1] || validSingle[2];  // use either errorsDict or errors
+                errors.push(...validSingle[2]);  // only append errors
                 if (validator.stop) {
                     return false;
                 }
@@ -127,6 +228,9 @@ export class ValidationControl implements IValidationControl {
             this.isValid = isValid;
             this.errorsDict = errorsDict;
             this.errors = errors;
+            this.emitValidChange();
+        } else if (opts.forceEmit) {
+            this.emitValidChange();
         }
 
         return this.isValid;
