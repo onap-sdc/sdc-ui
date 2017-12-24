@@ -153,7 +153,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit {
         this.validatorsCompInfo.forEach((validatorCompInfo) => {
             if (this.validation.errorsDict && this.validation.errorsDict[validatorCompInfo.validatorName]) {
                 validatorCompInfo.validatorComp.isValid = false;
-                validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName] as string[];
+                validatorCompInfo.validatorComp.errors = this.validation.errorsDict[validatorCompInfo.validatorName];
             } else {
                 validatorCompInfo.validatorComp.isValid = true;
                 validatorCompInfo.validatorComp.errors = null;

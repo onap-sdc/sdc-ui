@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from "
 import {isEqual} from "lodash";
 import {ValidatorTypes, IValidator} from "./model";
 import template from "./validator.component.html";
+import {IValidationErrorsDict} from "./model/validation.type";
 
 @Component({
     selector: 'sdc-validator',
@@ -17,6 +18,7 @@ export class ValidatorComponent implements OnChanges {
     @Input() public isError: boolean;
     @Output() public validatorChange: EventEmitter<IValidator> = new EventEmitter<IValidator>();
     public isValid: boolean;
+    public errorsDict: IValidationErrorsDict;
     public errors: string[]|null;
     private validator: IValidator;
 

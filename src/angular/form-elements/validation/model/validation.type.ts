@@ -36,7 +36,7 @@ export interface IValidator {
 }
 
 export interface IValidationErrorsDict {
-    [key: string]: string[] | IValidationErrorsDict;
+    [key: string]: string[];
 }
 
 export interface IValidationChildrenDict {

@@ -1,30 +1,21 @@
 import {isEqual} from "lodash";
 import {
-    IValidationControl, IValidator, IValidationChildrenDict, IValidationErrorsDict, ValidatorTypes
+    IValidationControl, IValidator, IValidationErrorsDict, ValidatorTypes
 } from "./validation.type";
 
 export class ValidationControl implements IValidationControl {
-    public static CHILDREN_KEY = '_children';
     public validators: IValidator[];
-    public children: IValidationChildrenDict;
     public isValid: boolean;
     public errorsDict: IValidationErrorsDict;
     public errors: string[];
 
-    constructor(validators?: IValidator[], children?: IValidationChildrenDict) {
+    constructor(validators?: IValidator[]) {
         this.setValidators(validators ? validators : []);
-        this.setChildren(children ? children : {});
     }
 
     // sets all the validators
     public setValidators(validators: IValidator[]): void {
         this.validators = validators ? validators : [];
-        this.reset();
-    }
-
-    // sets all the children validations
-    public setChildren(children: IValidationChildrenDict) {
-        this.children = children;
         this.reset();
     }
 
@@ -51,21 +42,6 @@ export class ValidationControl implements IValidationControl {
     // find validator index in the validators list
     public findValidatorIndex(name: string) {
         return this.validators.findIndex((v) => v.name === name);
-    }
-
-    // add a child validation
-    public setSingleChild(key: string, child: ValidationControl) {
-        this.children[key] = child;
-    }
-
-    // remove a child validation
-    public removeChild(key: string) {
-        delete this.children[key];
-    }
-
-    // get a child validation
-    public getChild(key: string) {
-        return this.children[key];
     }
 
     // returns true whether the validation has validator of given type
@@ -139,24 +115,6 @@ export class ValidationControl implements IValidationControl {
             }
             return true;
         });
-
-        // validate children
-        let childIsValid = true;
-        const childrenErrorsDict = {};
-        Object.keys(this.children).forEach((childKey) => {
-            const child = this.children[childKey];
-            child.validate(value[childKey]);
-
-            if (!child.isValid) {
-                childIsValid = false;
-                childrenErrorsDict[childKey] = child.errorsDict;
-            }
-        });
-        // if children are not valid, add children errorsDict to errorsDict
-        if (!childIsValid) {
-            isValid = false;
-            errorsDict[ValidationControl.CHILDREN_KEY] = childrenErrorsDict;
-        }
 
         // if valid, set errorsDict and errors to null
         if (isValid) {
