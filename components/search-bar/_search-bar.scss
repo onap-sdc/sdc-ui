@@ -1,49 +1,35 @@
 $inputHeight: 38px;
-.search-bar-container {
-  .sdc-input {
-     margin: 0;
-    .sdc-input__input {
-      padding-right: 40px;
-      &:focus {
+sdc-search-bar{
+  .search-bar-container{
+    display: flex;
+    sdc-input{
+      flex-grow: 1;
+    }
+    &.not-empty{
+      .sdc-input__input {
         border-color: $blue;
-        outline: 0 none;
       }
-    }
-  }
-
-
-  .action-button{
-    cursor:pointer;
-    position: relative;
-    float: right;
-    right: 11px;
-    height: $inputHeight;
-    bottom: $inputHeight;
-    svg{
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
-  .search-bar-button {
-    svg{
-      height: 20px;
-      width: 20px;
-      path{
-        fill: $gray;
-      }
-    }
-  }
-
-  .clear-search-x {
-    svg{
-      height: 14px;
-      width: 14px;
-      path{
-        fill: $gray;
+      .search-button{
+        background-color: $tlv-hover;
+        border-color: $blue;
+        svg path{
+          fill: $hover-blue;
+        }
       }
     }
   }
 }
-
+.search-button{
+  width: $inputHeight;
+  height: $inputHeight - 2;
+  border: solid 1px $light-gray;
+  border-left: none;
+  background-color: $background-gray;
+  margin-top: 17px;
+  svg{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50% );
+  }
+}
