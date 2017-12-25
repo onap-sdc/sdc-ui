@@ -2,6 +2,10 @@ import Button from './Button.js';
 import Checkbox from './Checkbox.js';
 import Input from './Input.js';
 import Modal from './Modal.js';
+import ModalBody from './ModalBody.js';
+import ModalFooter from './ModalFooter.js';
+import ModalHeader from './ModalHeader.js';
+import ModalTitle from './ModalTitle.js';
 import Portal from './Portal.js';
 import Radio from './Radio.js';
 import RadioGroup from './RadioGroup.js';
@@ -18,6 +22,10 @@ export {Button};
 export {Checkbox};
 export {Input};
 export {Modal};
+export {ModalBody};
+export {ModalFooter};
+export {ModalHeader};
+export {ModalTitle};
 export {Portal};
 export {Radio};
 export {RadioGroup};
@@ -35,6 +43,10 @@ export default {
 	Checkbox,
 	Input,
 	Modal,
+	ModalBody,
+	ModalFooter,
+	ModalHeader,
+	ModalTitle,
 	Portal,
 	Radio,
 	RadioGroup,

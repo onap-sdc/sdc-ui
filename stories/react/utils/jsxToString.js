@@ -50,7 +50,7 @@ function jsxToString({jsx, indentCount=0, exclude}) {
 	}
 	
 	let name = typeof jsx.type === 'string' ? jsx.type : jsx.type.name;	
-	let result = name === exclude ? `${INDENT.repeat(indentCount)}${parseProps(jsx, indentCount + 1)}`
+	let result = name === exclude ? ''
 		: `${INDENT.repeat(indentCount)}<${name}${parseProps(jsx, indentCount + 1)}`;
 
 	if (jsx.props.hasOwnProperty('children')) {
@@ -60,9 +60,10 @@ function jsxToString({jsx, indentCount=0, exclude}) {
 		if (typeof children === 'string') {
 			result += `${INDENT.repeat(indentCount + 1)}${children}\n`;
 		} else {
-			childrenArr.forEach(child => result += `${jsxToString({jsx: child, indentCount: indentCount + 1})}\n`);
+			let newIndentCount = name === exclude ? indentCount : indentCount + 1;
+			childrenArr.forEach(child => result += `${jsxToString({jsx: child, indentCount: newIndentCount})}\n`);
 		}
-		const closingTag = name === exclude ? `${INDENT.repeat(indentCount)}` 
+		const closingTag = name === exclude ? '' 
 			: `${INDENT.repeat(indentCount)}</${name}>`;
 		return result + closingTag;
 	}
