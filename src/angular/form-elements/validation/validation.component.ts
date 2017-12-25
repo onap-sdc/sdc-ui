@@ -1,19 +1,18 @@
 import {
-    AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList,
+    AfterContentInit, Component, ContentChildren, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, QueryList,
     SimpleChanges
 } from "@angular/core";
+import {AbstractControl, FormControl} from "@angular/forms";
 import {Subscribable} from "rxjs/Observable";
 import {AnonymousSubscription} from "rxjs/Subscription";
-import {ValidationControl, IValidator} from "./model";
 import {ValidatorComponent} from "./validator.component";
 import template from "./validation.component.html";
-import {IValidationChange} from "./model/validation.type";
 
+export * from "./validation.type";
 export {ValidatorComponent};
 
 interface IValidatorCompInfo {
     validatorComp: ValidatorComponent;
-    validatorName: string;
     validatorChangeSubscription: AnonymousSubscription;
 }
 
@@ -21,28 +20,55 @@ interface IValidatorCompInfo {
     selector: 'sdc-validation',
     template
 })
-export class ValidationComponent implements OnChanges, AfterContentInit, OnInit {
-    public validation: ValidationControl;  // validation instance for the control
-
-    @ContentChildren(ValidatorComponent) public validators: QueryList<ValidatorComponent>;
-
+export class ValidationComponent implements OnInit, OnDestroy, OnChanges, AfterContentInit {
     @Input() public value: any;
     @Input() public valueEmitter: Subscribable<any>;
-    private valueSubscription: AnonymousSubscription;
 
+    @Input() public manage: boolean;
     @Input() public disabled: boolean;
     @Input() public show: boolean;
-    @Output() public validChange: EventEmitter<IValidationChange> = new EventEmitter<IValidationChange>();
 
-    private validatorsCompInfo: IValidatorCompInfo[];
+    @Output() public controlStatusChange: EventEmitter<ValidationComponent> = new EventEmitter<ValidationComponent>();
+
+    @ContentChildren(ValidatorComponent) public validatorsComps: QueryList<ValidatorComponent>;
+
+    public validationMetaKey = ValidationComponent.VALIDATION_META_KEY;
+
+    protected stopIndex: number;
+    private valueSubscription: AnonymousSubscription;
+    private validationValueSubscription: AnonymousSubscription;
+    private validatorCompInfoArray: IValidatorCompInfo[];
+    private syncValidateTimeout: number;
+    private formControl: FormControl;
 
     constructor() {
-        this.validation = new ValidationControl();
-
+        this.manage = true;
         this.disabled = false;
         this.show = true;
+        this.validatorCompInfoArray = [];
+        this.formControl = new FormControl();
+    }
 
-        this.validatorsCompInfo = [];
+    public get control(): FormControl {
+        return this.formControl;
+    }
+
+    public static get VALIDATION_META_KEY() {
+        return '_validationMeta';
+    }
+
+    public ngOnInit() {
+        this.validationValueSubscription =
+            this.formControl.valueChanges.subscribe(() => {
+                this.controlStatusChange.emit(this);
+            });
+    }
+
+    public ngOnDestroy() {
+        if (this.validationValueSubscription) {
+            this.validationValueSubscription.unsubscribe();
+            delete this.validationValueSubscription;
+        }
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
@@ -55,7 +81,7 @@ export class ValidationComponent implements OnChanges, AfterContentInit, OnInit 
                 this.valueSubscription = this.valueEmitter.subscribe((value) => {
                     setTimeout(() => {
                         this.value = value;
-                        this.validate(this.value);
+                        this.validate();
                     });
                 });
             }
@@ -63,140 +89,127 @@ export class ValidationComponent implements OnChanges, AfterContentInit, OnInit 
 
         // new value is assigned
         if (changes.value) {
-            this.validate(this.value);
+            this.validate();
         }
 
         // enable/disable
         if (changes.disabled) {
-            this.validation.disabled = this.disabled;
+            (this.disabled) ? this.formControl.disable() : this.formControl.enable();
         }
     }
 
-    public ngOnInit() {
-        this.validation.validChanges.subscribe((validChange: IValidationChange) => {
-            this.syncValidatorComponentsAttributes();
-            this.validChange.emit(validChange);
-        });
-    }
-
     public ngAfterContentInit() {
+        this.formControl.setValidators(this.runValidation.bind(this));
+
         this.syncValidators();
-        this.validators.changes.subscribe(() => this.syncValidators());
+        this.validatorsComps.changes.subscribe(() => this.syncValidators());
     }
 
-    private syncValidators() {
-        // make new validators array
-        const newValidatorsCompInfoArray: IValidatorCompInfo[] = [];
-        const newValidatorsArray: IValidator[] = [];
-        this.validators.forEach((validatorComp, idx) => {
-            // make validator subscription and push to validators array
-            const validatorCompSubIdx = this.validatorsCompInfo.findIndex(
-                (vci) => vci.validatorComp === validatorComp);
-            let validatorCompInfo: IValidatorCompInfo;
-            if (validatorCompSubIdx !== -1) {
-                // remove the validator subscription from the array, so validators array ends with removed validators
-                validatorCompInfo = this.validatorsCompInfo.splice(validatorCompSubIdx, 1)[0];
-            } else {
-                validatorCompInfo = {
-                    validatorComp,
-                    validatorName: null,
-                    validatorChangeSubscription: null
-                };
-            }
+    protected runValidation(control: AbstractControl) {
+        const value = control.value;
+        this.stopIndex = null;
+        const errors = {};
+        let isValid: boolean = true;
+        const validationMeta = {
+            order: [],
+            children: []
+        };
 
-            // set validator component info name
-            validatorCompInfo.validatorName = validatorComp.name ? validatorComp.name : String(idx);
+        // run validators:
+        this.validatorsComps.toArray().every((validatorComp, idx) => {
+            const validatorName = validatorComp.name || String(idx);
+            const validatorFunc = validatorComp.getValidatorFunc();
+            const validatorErrors = validatorFunc(value);  // run validator
+            if (validatorErrors) {
+                isValid = false;
+                errors[validatorName] = validatorErrors;
 
-            // check validator name duplication if name is externally set
-            if (validatorComp.name) {
-                if (newValidatorsCompInfoArray.find((vc) => vc.validatorComp.name === validatorComp.name)) {
-                    console.warn(`ValidationComponent: duplicate validator key "${validatorComp.name}".`);
+                // add validation meta data
+                validationMeta.order.push(validatorName);
+                if (validatorComp.isChild) {
+                    validationMeta.children.push(validatorName);
+                }
+
+                // stop the validators loop
+                if (validatorComp.stop) {
+                    this.stopIndex = idx;
+                    return false;
                 }
             }
+            return true;
+        });
 
-            // subscribe to validator change
-            if (!validatorCompInfo.validatorChangeSubscription) {
-                validatorCompInfo.validatorChangeSubscription =
-                    validatorComp.validatorChange.subscribe((validator) => {
-                        this.syncSingleValidator(idx, validator);
-                    });
+        if (!isValid) {
+            // add reflect property to errors to get validation meta
+            Reflect.defineProperty(errors, this.validationMetaKey, {get: () => validationMeta});
+
+            return errors;
+        }
+        return null;
+    }
+
+    protected syncValidators() {
+        // make new validators array
+        const newValidatorsCompInfoArray: IValidatorCompInfo[] = [];
+        this.validatorsComps.forEach((validatorComp) => {
+            // make validator subscription and push to validators array
+            const validatorCompInfoIdx = this.validatorCompInfoArray.findIndex(
+                (vci) => vci.validatorComp === validatorComp);
+            let validatorCompInfo: IValidatorCompInfo;
+            if (validatorCompInfoIdx !== -1) {
+                // remove the validator comp info from the array, so validators comp info array ends with removed info
+                validatorCompInfo = this.validatorCompInfoArray.splice(validatorCompInfoIdx, 1)[0];
+            } else {
+                // make a new validator comp info
+                validatorCompInfo = {
+                    validatorComp,
+                    validatorChangeSubscription:
+                        validatorComp.validatorChange.subscribe(() => this.syncSingleValidator(validatorComp))
+                };
             }
-
-            newValidatorsArray.push(validatorComp.getValidator());
             newValidatorsCompInfoArray.push(validatorCompInfo);
         });
 
         // unsubscribe to the removed validators
-        this.validatorsCompInfo.forEach((vci) => {
+        this.validatorCompInfoArray.forEach((vci) => {
             vci.validatorChangeSubscription.unsubscribe();
         });
 
-        this.validatorsCompInfo = newValidatorsCompInfoArray;
+        // keep new validators info array
+        this.validatorCompInfoArray = newValidatorsCompInfoArray;
 
-        // set validation validators array
-        this.validation.setValidators(newValidatorsArray);
-
-        setTimeout(() => {
-            this.validate(this.value, {forceEmit: true});
-        });
+        this.syncValidate();
     }
 
-    private syncSingleValidator(index: number, validator: IValidator) {
-        this.validation.setSingleValidator(validator, index, true);
-        this.validate(this.value);
-    }
-
-    private syncValidatorComponentsAttributes() {
-        if (!this.validators) {
-            return;
-        }
-
-        // set each validator component isValid and errors
-        this.validatorsCompInfo.forEach((validatorCompInfo) => {
-            if (validatorCompInfo.validatorComp.show) {
-                const validatorErrorsDict = this.validation.errorsDict &&
-                    this.validation.errorsDict[validatorCompInfo.validatorName];
-                if (validatorErrorsDict) {
-                    validatorCompInfo.validatorComp.isValid = false;
-                    if (validatorErrorsDict instanceof Array) {
-                        validatorCompInfo.validatorComp.errorsDict = null;
-                        validatorCompInfo.validatorComp.errors = validatorErrorsDict;
-                    } else {
-                        validatorCompInfo.validatorComp.errorsDict = validatorErrorsDict;
-                        validatorCompInfo.validatorComp.errors = this.errorsDictToArray(validatorErrorsDict, validatorCompInfo.validatorName);
-                    }
-                } else {
-                    validatorCompInfo.validatorComp.isValid = true;
-                    validatorCompInfo.validatorComp.errorsDict = null;
-                    validatorCompInfo.validatorComp.errors = null;
-                }
+    protected syncSingleValidator(validatorComp: ValidatorComponent) {
+        // if stopped at some index, and the validator comp is above that index, then do nothing
+        if (this.stopIndex !== null) {
+            const validatorCompInfoIdx = this.validatorCompInfoArray.findIndex(
+                (vci) => vci.validatorComp === validatorComp);
+            if (validatorCompInfoIdx === -1 || validatorCompInfoIdx > this.stopIndex) {
+                return;
             }
-        });
-    }
-
-    private errorsDictToArray(errorsDict, errorsKey?: string): string[] {
-        let errors: string[];
-        if (!errorsDict) {
-            errors = null;
-        } else if (errorsDict instanceof Array) {
-            errors = (errorsKey) ? errorsDict.map((err) => `${errorsKey}: ${err}`) : errorsDict;
-        } else {
-            errors = Object.keys(errorsDict).reduce((errorsAcc, eKey) => {
-                const newErrorsKey = (errorsDict[eKey] instanceof Array) ? errorsKey : `${errorsKey}.${eKey}`;
-                errorsAcc.push(...this.errorsDictToArray(errorsDict[eKey], newErrorsKey));
-                return errorsAcc;
-            }, []);
         }
-        return (errors && errors.length) ? errors : null;
+        this.syncValidate();
     }
 
-    public reset() {
-        this.validation.reset();
-        this.syncValidatorComponentsAttributes();
+    public syncValidate() {
+        // sync validate can be triggered from many children, so delay validate with timeout
+        if (!this.syncValidateTimeout) {
+            this.syncValidateTimeout = setTimeout(() => this.validate());
+        }
     }
 
-    public validate(value: any, opts?) {
-        // validate the value
-        this.validation.validate(value, opts);
+    public validate() {
+        // once validate, clear sync validate timeout
+        if (this.syncValidateTimeout) {
+            clearTimeout(this.syncValidateTimeout);
+            delete this.syncValidateTimeout;
+        }
+
+        // validate the current value only if manage
+        if (this.manage) {
+            this.formControl.setValue(this.value);
+        }
     }
 }
