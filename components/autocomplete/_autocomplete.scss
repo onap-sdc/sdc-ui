@@ -23,7 +23,7 @@
         text-indent: 10px;
         line-height: 30px;
         cursor:pointer;
-        @extend .body-1;
+        @include body-1;
 
         &:hover {
           background-color: $tlv-hover;
