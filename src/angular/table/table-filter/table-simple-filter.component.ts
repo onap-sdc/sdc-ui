@@ -45,6 +45,12 @@ import {ColumnDataTypes, FilterOperator, IColumnConfigModel, IComponentFilterGro
 .sdc-table-filter-button {
         padding: 5px 5px;
 }
+.sdc-table-filter-checkbox  {
+    margin-left: 30px;
+    margin-right: 5px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
 `]
 })
 export class TableSimpleFilterComponent implements IComponentFilterGroup, OnInit {

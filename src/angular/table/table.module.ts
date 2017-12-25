@@ -7,11 +7,11 @@ import {TableRowComponent} from "./view/table-row/table-row.component";
 import {TableHeaderRow} from "./view/table-header-row/table-header-row.component";
 import {TableBody} from "./view/table-body/table-body.component";
 import {InfiniteScrollModule} from "../infinite-scroll/infinite-scroll.module";
-import {TableFilterBarComponent} from "./table-filter-bar/table-filter-bar.component";
 import {TablePaginationBarComponent} from "./table-pagination-bar/table-pagination-bar.component";
 import {TableFilterComponent} from './table-filter/table-filter.component';
 import {TableSimpleFilterComponent} from './table-filter/table-simple-filter.component';
 import {TableRangeFilterComponent} from './table-filter/table-range-filter.component';
+import {TableSearchFilterComponent} from './table-filter/table-search-filter.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +22,7 @@ import {TableRangeFilterComponent} from './table-filter/table-range-filter.compo
         TableFilterComponent,
         TableSimpleFilterComponent,
         TableRangeFilterComponent,
-        TableFilterBarComponent,
+        TableSearchFilterComponent,
         TablePaginationBarComponent
     ],
     imports: [CommonModule, InfiniteScrollModule, FormsModule],
@@ -36,7 +36,7 @@ import {TableRangeFilterComponent} from './table-filter/table-range-filter.compo
         TableFilterComponent,
         TableSimpleFilterComponent,
         TableRangeFilterComponent,
-        TableFilterBarComponent,
+        TableSearchFilterComponent,
         TablePaginationBarComponent
     ]
 })

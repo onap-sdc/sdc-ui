@@ -4,7 +4,10 @@
             <div *ngIf="input" class="sdc-table-filter-form-group">
                 <label class="sdc-table-filter-label">{{colTitle}}</label>
                 <span class="sdc-table-filter-span">equal</span>
-                <input class="sdc-table-filter-input" type="text" [(ngModel)]="values[i]" [ngModelOptions]="{standalone: true}" />
+                <input  type="text" class="sdc-table-filter-input" [(ngModel)]="values[i]" [ngModelOptions]="{standalone: true}" />
+                <!--<input type="checkbox" class="sdc-table-filter-checkbox" />-->
+                <!--<span class="sdc-table-filter-span">not</span>-->
+                <!--<span class="sdc-table-filter-span">equal</span>-->
             </div>
         </ng-container>
         <button type="button" class="sdc-table-filter-button" (click)="addItem()"

@@ -1,0 +1,7 @@
+<div class="sdc-table-filter">
+    <form class="sdc-table-filter-form">
+        <input class="sdc-table-filter-input" type="text" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" />
+        <button type="button" class="sdc-table-filter-button" (click)="search()">Search</button>
+        <button type="button" class="sdc-table-filter-button" (click)="clear()">Clear</button>
+    </form>
+</div>

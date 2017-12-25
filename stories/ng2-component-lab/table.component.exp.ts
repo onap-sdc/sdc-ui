@@ -6,7 +6,7 @@ import {tableData} from './../../src/angular/table/table-fake-data';
 
 export default experimentOn('Table')
     .group('Table', [
-        /*{
+        {
             id: 'normalTableWithFilters',
             context: {
                 data: [].concat(tableData)
@@ -17,7 +17,6 @@ export default experimentOn('Table')
             template: `
           <sdc-table [rowsData]="data" #table3>
           <sdc-table-filter [headerCols]="table0.headerCols" (changed)="table0.handleFilter($event)"></sdc-table-filter>
-          <!--<sdc-table-filter-bar [headerCols]="table0.headerCols" (changed)="table0.handleFilter($event)"></sdc-table-filter-bar>-->
             <span>Rows: {{table0.modifiedRows}} / {{table0.totalRows}}</span>
             <sdc-table-body (scrollHitBottom)="table0.onScrollHitBottom()" [maxHeight]="table0.maxHeight" [fixedHeader]="table0.fixedHeader">
                 <sdc-table-header-row [headerCols]="table0.headerCols" (onColClick)="table0.onColumnHeaderClick($event)" [sortByField]="table0.sortByField" [sortDescending]="table0.sortDescending" table-header-row></sdc-table-header-row>
@@ -25,7 +24,7 @@ export default experimentOn('Table')
             </sdc-table-body>
           </sdc-table>
         `
-        },*/{
+        },{
         id: 'normalTable',
         context: {
             data: [].concat(tableData)
@@ -70,7 +69,6 @@ export default experimentOn('Table')
         template: `
           <sdc-table [rowsData]="data" #table3>
           <sdc-table-filter [headerCols]="table3.headerCols" (changed)="table3.handleFilter($event)"></sdc-table-filter>
-          <!--<sdc-table-filter-bar [headerCols]="table3.headerCols" (changed)="table3.handleFilter($event)"></sdc-table-filter-bar>-->
             <span>Rows: {{table3.modifiedRows}} / {{table3.totalRows}}</span>
             <sdc-table-body (scrollHitBottom)="table3.onScrollHitBottom()" [maxHeight]="table3.maxHeight" [fixedHeader]="table3.fixedHeader">
                 <sdc-table-header-row [headerCols]="table3.headerCols" (onColClick)="table3.onColumnHeaderClick($event)" [sortByField]="table3.sortByField" [sortDescending]="table3.sortDescending" table-header-row></sdc-table-header-row>
@@ -88,7 +86,7 @@ export default experimentOn('Table')
         showSource: true,
         template: `
           <sdc-table [rowsData]="data" #table4>
-            <sdc-table-filter-bar [hidePanel]="true" [headerCols]="table4.headerCols" (changed)="table4.handleFilter($event)"></sdc-table-filter-bar>
+            <sdc-table-search-filter [headerCols]="table4.headerCols" (changed)="table4.handleFilter($event)"></sdc-table-search-filter>
             <span>Rows: {{table4.modifiedRows}} / {{table4.totalRows}}</span>
             <sdc-table-body (scrollHitBottom)="table4.onScrollHitBottom()" [maxHeight]="table4.maxHeight" [fixedHeader]="table4.fixedHeader">
                 <sdc-table-header-row [headerCols]="table4.headerCols" (onColClick)="table4.onColumnHeaderClick($event)" [sortByField]="table4.sortByField" [sortDescending]="table4.sortDescending" table-header-row></sdc-table-header-row>
