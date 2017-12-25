@@ -20,12 +20,12 @@ export class TooltipDirective implements OnInit {
     @Input('tooltip-template') public template: TemplateRef<any>;
     @Input('tooltip-arrow-offset') public arrowOffset: number = 10;
     @Input('tooltip-arrow-placement') public arrowPlacement: ArrowPlacement = ArrowPlacement.LeftTop;
+    @Input('tooltip-offset') public tooltipOffset: number = 3;
 
 
     private cssClass: string = 'sdc-tooltip'; // default css class
     private tooltip: any; // tooltip html element
     private elemPosition: any;
-    private tooltipOffset: number = 8;
     private tooltipTemplateContainer: any;
 
     private scrollEventHandler = function(){};
