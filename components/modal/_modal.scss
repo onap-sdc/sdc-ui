@@ -81,7 +81,7 @@
         flex: 1;
         padding: 10px 2px;
         .title {
-          @extend .heading-2;
+          @include heading-2;
           -webkit-box-flex: 999;
           -ms-flex-positive: 999;
           flex-grow: 999;
