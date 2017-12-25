@@ -14,10 +14,10 @@ $inputHeight: 38px;
 
   .action-button{
     cursor:pointer;
-    position: relative;
-    float: right;
-    bottom: $inputHeight;
     &.filter-button{
+      position: relative;
+      float: right;
+      bottom: $inputHeight;
       height: $inputHeight;
       right: 11px;
       svg{

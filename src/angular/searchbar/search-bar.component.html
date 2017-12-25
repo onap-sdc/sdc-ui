@@ -1,4 +1,4 @@
-<div class="search-bar-container">
+<div class="search-bar-container" [ngClass]="{'not-empty': searchQuery}">
     <sdc-input class="search-bar-input"
                [label]="label"
                [placeHolder]="placeholder"
