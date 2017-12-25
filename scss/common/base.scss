@@ -72,8 +72,7 @@ fieldset {
 
 .error-message{
   color: $red;
-  @include base-font-regular;
-  font-size: $icon-font-size;
+  @include body-3;
   margin-top: 3px;
   &:before{
     content: "";

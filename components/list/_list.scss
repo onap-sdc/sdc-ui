@@ -65,7 +65,7 @@
       line-height: 28px;
       padding: 0 10px;
       color: $text-black;
-      @extend .body-3;
+      @include body-3;
       &.view-only{
         border-color: $tlv-light-gray;
       }
