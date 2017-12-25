@@ -1,11 +1,31 @@
 .sdc-icon {
-    display: inline-block;
+    display: flex;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    width: 16px;
-    height: 16px;
+    //width: 16px;
+    width:100%;
+    height: 100%;
+    fill:red;
+
+    &.sdc-icon-label__left{
+        flex-direction: row;
     }
+
+    &.sdc-icon-label__right{
+        direction: rtl;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &.sdc-icon-label__top{
+        flex-direction: column;
+    }
+
+    &.sdc-icon-label__bottom{
+        flex-direction: column-reverse;
+    };
+}
 
 .sdc-icon-locked {background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='15' viewBox='0 0 11 15' id='locked_icon'>  <metadata><?xpacket begin='﻿' id='W5M0MpCehiHzreSzNTczkc9d'?><x:xmpmeta xmlns:x='adobe:ns:meta/' x:xmptk='Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        '>   <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>      <rdf:Description rdf:about=''/>   </rdf:RDF></x:xmpmeta><?xpacket end='w'?></metadata><defs>    <style>      .cls-1 {        fill: #959595;        fill-rule: evenodd;      }    </style>  </defs>  <path id='Shape_77_copy_10' data-name='Shape 77 copy 10' class='cls-1' d='M445,359a16.71,16.71,0,0,0-2.1-.009c-1.945.045-3.195,0.049-3.9,0.009v-5a1.743,1.743,0,0,1,2-2h1a1.743,1.743,0,0,1,2,2v5c0.474,0.063.343-.073,1,0,0.266,0.029,0,.279,0,0v-5a2.726,2.726,0,0,0-3-3h-1.142c-1.72-.125-2.715,1.562-2.858,3,0.088,0.009,0,7.338,0,5h0a1.891,1.891,0,0,0-2,1.689v3.461A1.823,1.823,0,0,0,437.775,366h7.448A1.823,1.823,0,0,0,447,364.15v-3.461A2.018,2.018,0,0,0,445,359Z' transform='translate(-436 -351)'/></svg>"); background-repeat: no-repeat;}
 .sdc-icon-plus {background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='utf-8'?><!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version='1.1' id='plus_icon' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 19 19' style='enable-background:new 0 0 19 19;' xml:space='preserve'><g><rect y='8' width='19' height='3'/><path id='Rectangle_2139_copy' d='M8,19V0h3v19H8z'/></g></svg>"); background-repeat: no-repeat;}

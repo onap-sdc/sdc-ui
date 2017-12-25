@@ -1,4 +1,3 @@
-// import
 import {Component, Input, PipeTransform, Pipe} from "@angular/core";
 import { DomSanitizer } from '@angular/platform-browser';
 import { Icons } from '../utils/iconsMap';
@@ -22,14 +21,15 @@ export class SafeHtmlPipe implements PipeTransform  {
 
 @Component({
     selector:'sdc-icon',
-    template:'<label>{{ label }}</label><div  [innerHtml]="getFontIconCode(this.iconName) | safeHtml"></div>'
+    templateUrl:'./icons.component.html'
 })
 
 
 export class IconsComponent{
     @Input() iconName: string;
-    @Input() label:string;
-    @Input() labelPosition: Positions;
+    @Input() label : string;
+    @Input() labelPosition : string;
+    @Input() color:string;
 
     public  getFontIconCode(name):string  {
         const testhtml =  Icons[this.iconName];

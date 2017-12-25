@@ -1,0 +1,33 @@
+<div class = "row-settings">
+    <div class = "item-settings">
+        <label>Icon Name: </label>
+        <select [(ngModel)]="selectedIcon">
+            <option *ngFor="let iconName of iconNames">{{iconName}}</option>
+        </select>
+    </div>
+    <div class = "item-settings">
+        <label>Icon label: </label>
+        <input [(ngModel)]="label">
+    </div>
+    <div class = "item-settings">
+        <label>Icon Color: </label>
+        <select [(ngModel)]="color">
+            <option value="warning">Warning</option>
+            <option value="primary">Primary</option>
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+        </select>
+    </div>
+    <div class = "item-settings">
+        <label>Label Position: </label>
+        <select [(ngModel)]="position">
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+            <option value="right">Right</option>
+            <option value="left">Left</option>
+        </select>
+    </div>
+</div>
+
+
+<ng-content></ng-content>

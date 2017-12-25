@@ -18,7 +18,8 @@ fs.readdirSync(svgFolder).forEach(file => {
     if (fs.existsSync(filePath)) {
         const iconBody = fs.readFileSync(filePath).toString();
         const stringIcon = iconBody.replace(/\s{2,}/g, '');
-        iconsObject += "'" + fileName + '\' : \'' + stringIcon + '\', \n';
+        const stringIconWithoutColors = stringIcon.replace(/fill="none"|fill="#000"/g, '');
+        iconsObject += "'" + fileName + '\' : \'' + stringIconWithoutColors + '\', \n';
     }
 })
 

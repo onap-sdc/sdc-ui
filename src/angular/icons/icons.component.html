@@ -1,0 +1,13 @@
+<div class = "svg-icon-wrapper" [ngClass]="{
+                                             'bottom': labelPosition == 'bottom',
+                                             'top' : labelPosition == 'top',
+                                             'right': labelPosition == 'right',
+                                             'left': labelPosition == 'left',
+                                             '__warning': color == 'warning',
+                                             '__primary': color == 'primary',
+                                             '__positive': color == 'positive',
+                                             '__negative': color == 'negative'
+                                           }">
+    <div  [innerHtml]="getFontIconCode(this.iconName) | safeHtml"></div>
+    <span class ="svg-icon-label">{{ label }}</span>
+</div>
