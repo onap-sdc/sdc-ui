@@ -252,7 +252,8 @@ $browserPrefixes: webkit moz o ms;
     position: relative;
     left: 9px;
     top: 9px;
-    @extend .circle-icon-text;
+    @include base-font-semibold;
+    font-size: $body-font-1;
   }
 }
 

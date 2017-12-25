@@ -14,19 +14,19 @@
   }
 
   .sdc-modal__wrapper {
-    @extend .body-1;
+    @include body-1;
     background: $white;
     width: 100%;
-    
+
     @include box-shadow(0 0 4px 0 rgba(0,0,0,0.50));
     color: $text-black;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     &.sdc-modal-type-info {
       border-top: solid 6px $blue;
       .sdc-modal__svg-use {
         fill: $blue;
-      }     
+      }
     }
     &.sdc-modal-type-alert {
       border-top: solid 6px $yellow;
@@ -42,25 +42,26 @@
         fill: $red;
       }
     }
+
     &.sdc-modal-type-custom {
       padding: 0px;
-      border-top: none;                           
+      border-top: none;
       .sdc-modal__header {
         @include box-sizing;
-        padding: 20px 20px;        
+        padding: 20px 20px;
         background-color: $blue;
-        color: $white;                
-        height: 60px;         
+        color: $white;
+        height: 60px;
         .title {
           color: $white;
           padding-top: 0px;
         }
-        .sdc-modal__close-button-svg {          
+        .sdc-modal__close-button-svg {
           width: 20px;
           height: 20px;
-          .sdc-modal__svg-use {                        
-              fill: $white;            
-          }        
+          .sdc-modal__svg-use {
+              fill: $white;
+          }
         }
       }
       .sdc-modal__content {
@@ -68,45 +69,45 @@
       }
     }
     .sdc-modal__header {
-      padding: 14px 14px 8px 14px;                        
+      padding: 14px 14px 8px 14px;
       display: flex;
       justify-content: space-between;
       text-align: left;
-      .sdc-modal__icon {        
+      .sdc-modal__icon {
         padding: 10px 12px 0px 12px;
       }
-      
-      .title {
-        @extend .heading-2;  
-        flex: 1 1 auto;      
-        color: $text-black;
-        padding-top: 14px;                
-      }
 
+      .title {
+        @extend .heading-2;
+        flex: 1 1 auto;
+        color: $text-black;
+        padding-top: 14px;
+      }
+  
       .sdc-modal__close-button {
         order:3;
         width: 14px;
-        height: 14px;        
-        cursor: pointer;                
+        height: 14px;
+        cursor: pointer;
         .sdc-modal__svg-use {
-          fill: $black;         
-        }        
-      }                           
+          fill: $black;
+        }
+      }
     }
     .sdc-modal__content {
-      order:2;      
+      order:2;
       padding-left: 70px;
       padding-right: 68px;
-      padding-bottom: 26px;            
-    } 
-    
+      padding-bottom: 26px;
+    }
+
     .sdc-modal__footer {
       order:3;
       background-color: $white;
       border-top: solid 1px $tlv-light-gray;
-      padding: 7px 10px;                       
-      display: flex;            
-      justify-content: flex-end;      
+      padding: 7px 10px;
+      display: flex;
+      justify-content: flex-end;
       button{
         margin-left: 10px;
       }
