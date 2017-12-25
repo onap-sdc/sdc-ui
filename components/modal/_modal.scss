@@ -4,7 +4,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 15007;
+  z-index: 1001;
   overflow: auto;
   margin: auto;
   display: flex;
@@ -17,21 +17,16 @@
     @extend .body-1;
     background: $white;
     width: 100%;
-    box-shadow:  0 0 4px 0 rgba(0,0,0,0.50);
+    
+    @include box-shadow(0 0 4px 0 rgba(0,0,0,0.50));
     color: $text-black;
     display: flex;
     flex-direction: column;    
     &.sdc-modal-type-info {
       border-top: solid 6px $blue;
-
       .sdc-modal__svg-use {
         fill: $blue;
-      }
-
-      &.popup {
-        padding-left: 70px;
-        padding-right: 68px;
-      }
+      }     
     }
     &.sdc-modal-type-alert {
       border-top: solid 6px $yellow;
@@ -96,18 +91,7 @@
         .sdc-modal__svg-use {
           fill: $black;         
         }        
-      }                  
-      &.sdc-modal-type-info {
-        border-top: solid 6px $blue;
-      }
-
-      &.sdc-modal-type-error {
-        border-top: solid 6px $red;
-      }
-
-      &.sdc-modal-type-alert {
-        border-top: solid 6px $yellow;
-      }      
+      }                           
     }
     .sdc-modal__content {
       order:2;      
@@ -120,12 +104,9 @@
       order:3;
       background-color: $white;
       border-top: solid 1px $tlv-light-gray;
-      padding: 7px 10px;
-      clear: both;                   
-      display: flex;      
-      align-items: center;      
-      justify-content: flex-end;
-      border-radius: 4px;
+      padding: 7px 10px;                       
+      display: flex;            
+      justify-content: flex-end;      
       button{
         margin-left: 10px;
       }
@@ -139,9 +120,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: $black;
   opacity: 0.70;
-  z-index: 900;
+  z-index: 1000;
 }
 
 .xl {
