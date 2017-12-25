@@ -96,6 +96,8 @@ export class DropDownComponent implements OnChanges, OnInit{
      */
     public isGroupDesign = false;
 
+    public animation_init = false;
+
 
     ngOnInit(): void {
         if(this.options){
@@ -158,14 +160,16 @@ export class DropDownComponent implements OnChanges, OnInit{
     /**
      * Get the label of the selected option
      */
-    public getSelectedLabel(): string{
-       return this.selectedOption && this.getOptionLabel(this.selectedOption) || null;
-
-    }
-
-    public getOptionLabel(option: IDropDownOption){
-        return option.label || String(option.value);
-    }
+    // public getSelectedLabel(): string{
+    //    return this.selectedOption && this.getOptionLabel(this.selectedOption) || null;
+    //
+    // }
+    //
+    // public getOptionLabel(option: IDropDownOption){
+    //     console.log("getOptionLabel");
+    //     return option.label || String(option.value);
+    // }
+    public bottomVisible = true;
 
     public isBottomVisible(){
         const windowPos = window.innerHeight + window.pageYOffset;
@@ -180,6 +184,8 @@ export class DropDownComponent implements OnChanges, OnInit{
      * Toggle show/hide drop-down list
      */
     public toggleDropdown(){
+        this.animation_init = true;
+        this.bottomVisible = this.isBottomVisible();
         if(!this.disabled){
             this.show = !this.show;
         }

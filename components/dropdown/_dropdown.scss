@@ -118,10 +118,11 @@ sdc-dropdown {
 
   .sdc-dropdown__options-wrapper {
     position: relative;
+    opacity: 0;
     top: 100%;
     left: 0;
     width: 100%;
-    max-height: 244px;
+    max-height: 0;
     overflow-y: auto;
     box-sizing: border-box;
     border:1px solid $light-blue;
@@ -233,23 +234,38 @@ sdc-dropdown {
 /* Animation */
 /********************************************************/
 
+@include keyframes-expand-animation('top-to-bottom-exp', 244px);
+
+@include keyframes-collapse-animation('top-to-bottom', 244px);
+
+@include keyframes-expand-animation('bottom-to-top-exp', 244px);
+
+@include keyframes-collapse-animation('bottom-to-top', 244px);
+
 .sdc-dropdown__options-wrapper--frame {
   overflow: hidden;
   position: absolute;
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 0px 10px;
   left: -10px;
   top: auto;
   width: 100%;
+
   &.sdc-dropdown__options-wrapper--top {
     bottom:40px;
     top:auto;
     padding: 10px 10px 0px 10px;
 
     /* Expend animation from bottom to top */
-    .sdc-dropdown__options-wrapper {
+    .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--animation-init {
+
       border-top:1px solid $light-blue;
       border-bottom: none;
-      @include mixin-transition-vertical-collapse(100%);
+      padding:0;
+      animation: bottom-to-top 1s forwards;
+
+      &.sdc-dropdown__options-wrapper--open {
+        animation: bottom-to-top-exp 1s forwards;
+      }
     }
   }
 }
@@ -257,16 +273,20 @@ sdc-dropdown {
 /**
 Expend animation from top to bottom
  */
-.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--open {
-  box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
-  @include mixin-transition-vertical-expand();
+.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--animation-init.sdc-dropdown__options-wrapper--open {
+  //box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
+  animation: top-to-bottom-exp 1s forwards;
+
 
 }
 
 /**
 Fold animation from top to bottom
  */
-.sdc-dropdown .sdc-dropdown__options-wrapper {
-  box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
-  @include mixin-transition-vertical-collapse(-100%);
+.sdc-dropdown .sdc-dropdown__options-wrapper.sdc-dropdown__options-wrapper--animation-init {
+  //box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
+
+  animation: top-to-bottom 1s forwards;
 }
+
+

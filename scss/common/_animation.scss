@@ -12,20 +12,33 @@
 Enable to fold an expended block element
 @param $offsetY - The top position from which the drop down should fold
  */
-//@mixin mixin-transition-vertical-collapse($offsetY) {
-//  opacity: 0;
-//  max-height: 0;
-//  transform: translateY($offsetY);
-//  transition: all 1s, opacity .5s, max-height 1s;
-//  transition-delay: 0s, .2s, 0s;
-//}
+@mixin keyframes-expand-animation($name, $maxHeight, $boxShadow:0 0 12px 0px rgba(0,0,0,.3), $margin:0){
+  @keyframes #{$name} {
+    0% {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
+      margin:0;
+    }
+    10% {
+      opacity: 1;
+      margin: $margin;
+    }
+    50% {
+      box-shadow: $boxShadow;
+    }
+    99%{
+      max-height:$maxHeight;
 
-
-@mixin mixin-transition-vertical-collapse($offsetY){
-  opacity: 0;
-  transform: translateY($offsetY);
-  transition: all 1s, opacity .3s;
-  transition-delay: 0s, .3s;
+      overflow: hidden;
+    }
+    100%{
+      opacity: 1;
+      max-height:$maxHeight;
+      overflow: auto;
+    }
+  }
 }
 
 /**
@@ -33,21 +46,30 @@ Enable to expend a folded block element
 @param $maxHeight - most of the animation is done over the max-height property
                     so we have to set the maximum height the expended element can expend to.
  */
-//@mixin mixin-transition-vertical-expand($maxHeight){
-//  opacity: 1;
-//  max-height: $maxHeight;
-//  transform: translateY(0%);
-//  transition: all 1s, opacity .3s, max-height 1s;
-//}
-
-
-@mixin mixin-transition-vertical-expand(){
-  opacity: 1;
-  transform: translateY(0%);
-  transition: all .8s, opacity .3s;
+@mixin keyframes-collapse-animation($name, $maxHeight, $boxShadow:0 0 12px 0px rgba(0,0,0,.3)){
+  @keyframes #{$name} {
+    0% {
+      opacity: 1;
+      max-height:$maxHeight;
+      box-shadow: $boxShadow;
+      overflow: hidden;
+    }
+    40%{
+      opacity: 1;
+    }
+    99%{
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
+    }
+    100%{
+      opacity: 0;
+      max-height: 0;
+      overflow: auto;
+    }
+  }
 }
-
-
 
 /********************************************************************************
   SIMPLE FADE-IN KEYFRAMES ANIMATION (Used in tooltip for example)

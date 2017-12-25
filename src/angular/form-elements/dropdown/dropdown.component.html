@@ -4,8 +4,8 @@
     <button *ngIf="!headless"
             class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"
             (click)="toggleDropdown()" (blur)="validateDropDown()"
-            [ngClass]="{'disabled': disabled, 'placeholder':!getSelectedLabel()}">{{ getSelectedLabel() || placeHolder}}
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14" class="sdc-dropdown-handle">
+            [ngClass]="{'disabled': disabled, 'placeholder':!this.selectedOption}">{{ this.selectedOption?.label || this.selectedOption?.value || placeHolder}}
+            <svg (click)="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14" class="sdc-dropdown-handle">
                 <defs>
                     <path id="chevron-a" d="M5.2998,6.7002 C5.4998,6.9002 5.7998,7.0002 5.9998,7.0002 C6.1998,7.0002 6.4998,6.9002 6.6998,6.7002 L11.6998,1.7002 C12.0998,1.3002 12.0998,0.7002 11.6998,0.3002 C11.2998,-0.0998 10.6998,-0.0998 10.2998,0.3002 L5.9998,4.6002 L1.6998,0.3002 C1.2998,-0.0998 0.6998,-0.0998 0.2998,0.3002 C-0.1002,0.7002 -0.1002,1.3002 0.2998,1.7002 L5.2998,6.7002 Z"/>
                 </defs>
@@ -17,11 +17,12 @@
     <!--[DROP-DOWN HEADER END]-->
 
     <!--[DROP-DOWN OPTIONS START]-->
-    <div class="sdc-dropdown__options-wrapper--frame" [ngClass]="{'sdc-dropdown__options-wrapper--top':!isBottomVisible()}">
+    <div class="sdc-dropdown__options-wrapper--frame" [ngClass]="{'sdc-dropdown__options-wrapper--top':!bottomVisible}">
         <ul #optionsContainerElement *ngIf="true" class="sdc-dropdown__options-wrapper" [ngClass]="{
         'sdc-dropdown__options-wrapper--headless': headless,
         'sdc-dropdown__options-wrapper--open':show,
-        'sdc-dropdown__options-wrapper--close':!show
+        'sdc-dropdown__options-wrapper--close':!show,
+        'sdc-dropdown__options-wrapper--animation-init':animation_init
         }">
             <ng-container  *ngFor="let option of options; let i = index">
 
@@ -34,7 +35,7 @@
                         'sdc-dropdown__option--disabled': option.type && option.type === cIDropDownOptionType.Disable,
                         'sdc-dropdown__option--hr': option.type && option.type === cIDropDownOptionType.HorizontalLine
                        }"
-                    (click)="selectOption(i, option)">{{getOptionLabel(option)}}</li>
+                    (click)="selectOption(i, option)">{{option.label || String(option.value)}}</li>
                 <!--[Drop down item list or string list end]-->
 
             </ng-container>
