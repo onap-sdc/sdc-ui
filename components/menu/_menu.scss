@@ -1,3 +1,8 @@
+.sdc-popup-menu {
+    width: 200px;
+    height: 200px;
+    border: 1px solid grey;
+}
 .sdc-menu-list {
     position: fixed;
     z-index: 100;
@@ -12,7 +17,7 @@
     border-radius: 2px;
     @include box-shadow(0px 2px 4px 0px rgba($black, 0.3));
 
-    .sdc-menu-item {
+    .sdc-menu-item:not(.separator) {
         @include body-1;
         line-height: 29px;
         color: $dark-gray;
@@ -50,24 +55,6 @@
                 fill: $text-black;
             }
         }
-
-        &.line {
-            cursor: default;
-
-            &::before {
-                content: '';
-                display: block;
-                height: 1px;
-                width: 100%;
-                border-top: 1px solid $gray;
-                margin-top: 1px;
-            }
-
-            &:hover {
-                cursor: default;
-                background-color: inherit;
-            }
-        }
     }
 
     &.relative {
@@ -76,5 +63,12 @@
 
     &.static {
         position: static;
+    }
+
+    .separator {
+        cursor: default;
+        border-top: 1px solid $gray;
+        margin: 0 12px;
+        height: 0;
     }
 }
