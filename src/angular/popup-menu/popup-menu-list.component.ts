@@ -15,7 +15,7 @@ export interface IPoint {
         `<div
     class="sdc-menu-list"
     *ngIf="open"
-    [ngClass]="className"
+    [ngClass]="[className || '', relative? 'relative': 'static']"
     [ngStyle]="{'left': position.x + 'px', 'top': position.y + 'px'}"
     (click)="$event.stopPropagation()">
     <ng-content></ng-content>
@@ -45,6 +45,7 @@ export class PopupMenuListComponent implements AfterContentInit {
         }
     }
     @Input() public className: any;
+    @Input() public relative: boolean;
     @Output() public openChange: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() public positionChange: EventEmitter<IPoint> = new EventEmitter<IPoint>();
 

@@ -1,58 +1,54 @@
-.sdc-popup-menu {
-    width: 200px;
-    height: 200px;
-    border: 1px solid grey;
-}
 .sdc-menu-list {
     position: fixed;
-    z-index: 100;
 
-    border-style: solid;
-    border-width: 1px;
-    border-color: $light-gray;
+    @include box-sizing;
+    @include box-shadow(0 2px 4px 0 rgba($black, 0.3));
+    border: 1px solid $light-gray;
     border-top: solid 3px $blue;
-    box-sizing: border-box;
-    background-color: $white;
-    width: 150px;
     border-radius: 2px;
-    @include box-shadow(0px 2px 4px 0px rgba($black, 0.3));
+    background: $white;
+    width: 150px;
 
     .sdc-menu-item:not(.separator) {
         @include body-1;
-        line-height: 29px;
+        height: 29px;
         color: $dark-gray;
-        g, path{
-            fill: $dark-gray;
-        }
         padding: 0 12px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 5px;
+            g, path {
+                fill: $dark-gray;
+            }
+        }
 
         &:hover {
-            cursor: pointer;
-            background-color: $tlv-hover;
-            color: $hover-blue;
-            g, path{
-                fill: $hover-blue;
+            &:not(.disabled) {
+                cursor: pointer;
+                &:not(.selected) {
+                    background: $background-gray;
+                    color: $text-black;
+                    g, path {
+                        fill: $text-black;
+                    }
+                }
             }
         }
 
         &.disabled {
-            cursor: default;
             color: $gray;
-            g, path{
+            g, path {
                 fill: $light-gray;
-            }
-
-            &:hover {
-                cursor: default;
-                background-color: inherit;
             }
         }
 
         &.selected {
-            background-color: $background-gray;
-            color: $text-black;
-            g, path{
-                fill: $text-black;
+            background: $tlv-hover;
+            color: $hover-blue;
+            g, path {
+                fill: $hover-blue;
             }
         }
     }
