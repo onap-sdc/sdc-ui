@@ -2,10 +2,11 @@
     <sdc-filter-bar
         [placeholder]="placeholder"
         [label]="label"
-        [(searchQuery)]="searchQuery">
+        [(searchQuery)]="searchQuery"
+        (searchQueryChange)="onSearchQueryChanged($event)">
     </sdc-filter-bar>
-    <ul class="autocomplete-results" [@displayResultsAnimation]="(searchQuery && !selectedQuery) || (searchQuery!==selectedQuery && searchQuery)?'true':'false'">
-        <li *ngFor="let item of complexData | PipeAutocomplete:searchQuery"
+    <ul class="autocomplete-results" [@displayResultsAnimation]="(searchQuery && !selectedItem) || (searchQuery!==selectedItem && searchQuery)?'true':'false'">
+        <li *ngFor="let item of complexData | PipeAutocomplete:(dataUrl ? '' : searchQuery)"
         (click)="onItemSelected(item.key)">{{item.value}}</li>
     </ul>
 </div>

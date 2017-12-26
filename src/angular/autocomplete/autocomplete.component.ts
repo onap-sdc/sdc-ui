@@ -1,6 +1,8 @@
-import { OnInit } from '@angular/core';
-import {animate, Component, EventEmitter, Input, Output, state, style, transition, trigger} from '@angular/core';
+import {OnInit, animate, Component, EventEmitter, Input, Output, state, style, transition, trigger} from '@angular/core';
 import {FilterBarComponent} from "../filterbar/filter-bar.component";
+import {URLSearchParams, Http} from "@angular/http";
+import 'rxjs/add/operator/map';
+import {Observable} from "rxjs/Observable";
 
 export interface IDataSchema {
     key: string;
@@ -33,13 +35,14 @@ export class SearchWithAutoCompleteComponent implements OnInit {
     @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
 
     private searchQuery: string;
-    private selectedQuery: string;
+    private selectedItem: string;
     private complexData: any[] = [];
 
+    public constructor(private http: Http){
+    }
+
     public ngOnInit(): void {
-        if (this.dataUrl) {
-            //TODO: handle data from backend
-        } else {
+        if (this.data) {
             this.handleLocalData();
         }
         this.searchQuery = "";
@@ -56,21 +59,38 @@ export class SearchWithAutoCompleteComponent implements OnInit {
     }
 
     private convertSimpleData = (): void => {
+        this.complexData = [];
         this.data.forEach((item: any) => {
             this.complexData.push({key: item, value: item});
         });
     }
 
     private convertComplexData = (): void => {
+        this.complexData = [];
         this.data.forEach((item: any) => {
             this.complexData.push({key: item[this.dataSchema.key], value: item[this.dataSchema.value]});
         });
     }
 
     private onItemSelected = (searchTerm: string): void => {
-        this.selectedQuery =  searchTerm;
+        this.selectedItem =  searchTerm;
         this.searchQuery = searchTerm;
         this.itemSelected.emit(searchTerm);
+    }
+
+    private onSearchQueryChanged = (searchText: string): void => {
+        if (this.dataUrl) {
+            const params: URLSearchParams = new URLSearchParams();
+            params.set('searchQuery', searchText);
+            this.http.get(this.dataUrl, {search: params})
+                .map((response) => {
+                    this.data = response.json();
+                    if (this.data) {
+                        this.handleLocalData();
+                    }
+                }).subscribe();
+        }
+
     }
 
 }
