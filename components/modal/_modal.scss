@@ -27,19 +27,35 @@
       .sdc-modal__svg-use {
         fill: $blue;
       }
+      .svg-icon {
+        &.__errorCircle {
+          width: 30px;
+          height: 30px;
+        }
+      }
     }
     &.sdc-modal-type-alert {
       border-top: solid 6px $yellow;
-
       .sdc-modal__svg-use {
         fill: $yellow;
+      }
+      .svg-icon {
+        &.__exclamationTriangleLine {
+          width: 30px;
+          height: 30px;
+        }
       }
     }
     &.sdc-modal-type-error {
       border-top: solid 6px $red;
-
       .sdc-modal__svg-use {
         fill: $red;
+      }
+      .svg-icon {
+        &.__error {
+          width: 30px;
+          height: 30px;
+        }
       }
     }
     &.sdc-modal-type-custom {
@@ -59,7 +75,7 @@
           width: 20px;
           height: 20px;
           .sdc-modal__svg-use {
-            fill: $white;
+              fill: $white;
           }
         }
       }
@@ -144,3 +160,4 @@
 .xsm {
   width: 432px;
 }
+

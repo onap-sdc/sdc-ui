@@ -1,37 +1,9 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 import Button from '../../src/react/Button.js';
-import Modal from '../../src/react/Modal.js';
+import {Modal, modalSize}  from '../../src/react/Modal.js';
+
 import Input from '../../src/react/Input.js';
-
-
-class ExampleWrapper extends React.Component {
-	constructor () {
-		super();
-		this.state = {
-			show: false
-		};
-	}	
-	render() {        
-		const {type, size, children, actionButtonText, actionButtonClick} = this.props;
-		return (
-            <div>
-                <Button onClick={()=>{this.setState({show: true});}}>Show Modal</Button>
-                <Modal show={this.state.show} size={size}>
-					{
-						!type ? 	
-						<Modal.Header onClose={()=>{this.setState({show: false});}}><Modal.Title>Title</Modal.Title></Modal.Header>
-						:
-						<Modal.PopupHeader onClose={()=>{this.setState({show: false});}} modalType={type}><Modal.Title className='popup'>Title</Modal.Title></Modal.PopupHeader>
-					}
-					<Modal.Body className={type ? 'popup' : ''}>{children}</Modal.Body>
-					<Modal.Footer actionButtonText={actionButtonText} actionButtonClick={actionButtonClick} onClose={()=>{this.setState({show: false});}} />
-				</Modal>
-            </div> 
-		);
-	}
-}
-
 
 class Example extends React.Component {
 	constructor(props) {
@@ -90,30 +62,57 @@ const ModalBody = () => {
 const BODY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
  'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
 
+const isShown = () => {};
+
 let examples = {
-	Standard: {
-		jsx: <ExampleWrapper actionButtonText='Save' actionButtonClick={()=>{}}><ModalBody/></ExampleWrapper>,
-		html: ''
+	Info: {
+		jsx: <Example>
+				<Modal show={() => isShown()} size='small'>
+					<Modal.Header><Modal.Title>Title</Modal.Title></Modal.Header>
+					<Modal.Body>
+						{BODY_TEXT}	
+					</Modal.Body>
+					<Modal.Footer/>
+				</Modal>
+			</Example>,
+		html: '',
+		exclude: 'Example'
+	},
+	Alert: {
+		jsx: <Example>
+				<Modal show={() => isShown()} type='alert' size='small'>
+					<Modal.Header type='alert'><Modal.Title>Title</Modal.Title></Modal.Header>
+					<Modal.Body>
+						{BODY_TEXT}	
+					</Modal.Body>
+					<Modal.Footer/>
+				</Modal>
+			</Example>,
+		html: '',
+		exclude: 'Example'
 	},
 	Error: {
-		jsx: <ExampleWrapper size='small' type='error'>{BODY_TEXT}</ExampleWrapper>,
-		html: ''
-	},
-	Warning: {
-		jsx: <ExampleWrapper size='small' type='alert'>{BODY_TEXT}</ExampleWrapper>,
-		html: ''
-	},
-	Info: {
-		jsx: <ExampleWrapper size='small' type='info'>{BODY_TEXT}</ExampleWrapper>,
-		html: ''
-	},
-	Test: {
 		jsx: <Example>
-				<Modal show={() => isShown()} size='large'>
-					<Modal.Header><Modal.Title>Title</Modal.Title></Modal.Header>
+				<Modal show={() => isShown()} size='small' type='error'>
+					<Modal.Header type='error'><Modal.Title>Title</Modal.Title></Modal.Header>
+					<Modal.Body>
+						{BODY_TEXT}	
+					</Modal.Body>
+					<Modal.Footer/>
+				</Modal>
+			</Example>,
+		html: '',
+		exclude: 'Example'
+	},
+	
+	Custom: {
+		jsx: <Example>
+				<Modal show={() => isShown()} type='custom'>
+					<Modal.Header type='custom'><Modal.Title>Title</Modal.Title></Modal.Header>
 					<Modal.Body>
 						<ModalBody/>
 					</Modal.Body>
+					<Modal.Footer  actionButtonText='Ok' actionButtonClick={()=>{}}/>
 				</Modal>
 			</Example>,
 		exclude: 'Example'					 

@@ -8,7 +8,7 @@ import PopupHeader from './ModalPopupHeader.js';
 import Footer from './ModalFooter.js';
 import Title from './ModalTitle.js';
 
-const modalSize = {
+export const modalSize = {
 	medium: 'md',
 	large: 'l',
 	extraLarge: 'xl',
@@ -16,16 +16,17 @@ const modalSize = {
 	extraSmall: 'xsm'
 };
 
-class Modal extends React.Component {
+
+export class Modal extends React.Component {
 	render() {       
-		const {show, size, children, onClick} = this.props;
+		const {show, size, type, children} = this.props;
 		return (           
             <Portal>
                 {
                  show ?    
                     <div>
-                        <div className={`sdc-modal ${modalSize[size]}`} onClick={onClick}>
-                            <div className='sdc-modal__wrapper '>
+                        <div className={`sdc-modal ${modalSize[size]}`}>
+                            <div className={`sdc-modal__wrapper sdc-modal-type-${type}`}>
                                 {children}
                             </div>
                         </div>            
@@ -41,13 +42,15 @@ class Modal extends React.Component {
 
 Modal.defaultProps = {
 	show: false,
-	size: 'medium'
+	size: 'medium',
+	type: 'info'
 };
 
 Modal.PropTypes = {
 	show: PropTypes.bool,
 	size: PropTypes.string,
-	children: PropTypes.node
+	children: PropTypes.node,
+	type: PropTypes.string
 };
 
 Modal.Body = Body;
