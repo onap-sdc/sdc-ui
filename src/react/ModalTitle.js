@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Title = ({children, className}) => (
-    <div className={`title ${className}`} >
+    <div className={`title react ${className}`} >
         {children}
     </div>
 );

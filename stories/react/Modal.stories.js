@@ -65,14 +65,14 @@ const BODY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed 
 const isShown = () => {};
 
 let examples = {
-	Info: {
+	Standard: {
 		jsx: <Example>
 				<Modal show={() => isShown()} size='small'>
-					<Modal.Header><Modal.Title>Title</Modal.Title></Modal.Header>
+					<Modal.Header><Modal.Title>Standard Modal</Modal.Title></Modal.Header>
 					<Modal.Body>
-						{BODY_TEXT}	
+						Do you want to continue?
 					</Modal.Body>
-					<Modal.Footer/>
+					<Modal.Footer actionButtonText='Yes' actionButtonClick={()=>{}}/>
 				</Modal>
 			</Example>,
 		html: '',
@@ -94,11 +94,11 @@ let examples = {
 	Error: {
 		jsx: <Example>
 				<Modal show={() => isShown()} size='small' type='error'>
-					<Modal.Header type='error'><Modal.Title>Title</Modal.Title></Modal.Header>
+					<Modal.Header onClose={()=>isShown(false)} type='error'><Modal.Title>Title</Modal.Title></Modal.Header>
 					<Modal.Body>
 						{BODY_TEXT}	
 					</Modal.Body>
-					<Modal.Footer/>
+					<Modal.Footer onClose={()=>isShown(false)}/>
 				</Modal>
 			</Example>,
 		html: '',

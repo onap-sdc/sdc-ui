@@ -77,10 +77,15 @@
           .sdc-modal__svg-use {
               fill: $white;
           }
+          .svg-icon {
+            height: 14px;
+            width: 14px;
+            fill: $white;
+          }
         }
       }
       .sdc-modal__content {
-        padding: 20px 40px;
+        padding: 50px 50px;
       }
     }
     .sdc-modal__header {

@@ -16,7 +16,7 @@ const Header = ({children, onClose, type}) => (
                  
         } 
         {children}
-        <SVGIcon className='sdc-modal__close-button' onClick={onClose} name='close'/>        
+        <SVGIcon iconClassName ='sdc-modal__close-button-svg' className='sdc-modal__close-button' onClick={onClose} name='close'/>        
     </div>
 );
 
