@@ -8,14 +8,14 @@ script:
 - npm run build-gh-pages
 deploy:
   - provider: npm
-    email: onap.sdc@gmail.com
+    email: ng689e@intl.att.com
     api_key: $NPM_TOKEN
     skip_cleanup: true
     on:
       tags: true
-      repo: onap-sdc/sdc-ui
+      repo: engordon/sdc-ui
   - provider: pages
-    repo: onap-sdc/sdc-ui
+    repo: engordon/sdc-ui
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
     local_dir: .out
