@@ -16,13 +16,13 @@ const typos = [
 	{className: 'body-4', size: 10, text: 'Even Much Smaller Text'}
 ];
 
-const fontWeights = ['OpenSans', 'OpenSans-Italic', 'OpenSans-Semibold'];
+const fontWeights = ['OpenSans Regular 400', 'OpenSans Semibold 600'];
 
 function TextRow({className, size, text}) {
 	return (
 		<div className={`typo-section ${className}`}>
 			<div>{className}</div>
-			<div>{size}</div>
+			<div>{size}px</div>
 			<div className='sample-text'>{text}</div>
 		</div>
 	);
