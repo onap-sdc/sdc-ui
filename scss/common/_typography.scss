@@ -1,17 +1,6 @@
 /* Fonts */
 /* Currently loaded */
 // OpenSans-Regular
-// OpenSans-Italic
-// OpenSans-Semibold
-
-/* Currently not loaded but part of the font */
-// OpenSans-ExtraBoldItalic
-// OpenSans-Light
-// OpenSans-Bold
-// OpenSans-SemiboldItalic
-// OpenSans-BoldItlaic
-// OpenSans-ExtraBold
-// OpenSans-LightItalic
 
 $heading-font-1: 28px;
 $heading-font-2: 24px;
@@ -25,16 +14,20 @@ $body-font-3: 12px;
 $body-font-4: 10px;
 
 @mixin base-font-regular() {
-  font-family: OpenSans, OpenSans-Regular, 'Open Sans', Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 400;
 }
 
 @mixin base-font-italic(){
-  font-family: OpenSans-Italic, 'Open Sans', Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
   font-style: italic;
+  font-weight: 400;
 }
 
 @mixin base-font-semibold() {
-  font-family: OpenSans-Semibold, 'Open Sans', Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
 }
 
 @mixin font-hover() {
