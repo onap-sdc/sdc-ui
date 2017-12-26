@@ -1,5 +1,6 @@
-<div class="sdc-dropdown" [ngClass]="{'error': error}" #dropDownWrapper>
+<div class="sdc-dropdown" [ngClass]="{'sdc-dropdown__error': error}" #dropDownWrapper>
     <label class="sdc-dropdown__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
+    <div class="sdc-dropdown__component-container">
     <!--[DROP-DOWN HEADER START]-->
     <button *ngIf="!headless"
             class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"
@@ -17,12 +18,13 @@
     <!--[DROP-DOWN HEADER END]-->
 
     <!--[DROP-DOWN OPTIONS START]-->
-    <div class="sdc-dropdown__options-wrapper--frame" [ngClass]="{'sdc-dropdown__options-wrapper--top':!bottomVisible}">
-        <ul #optionsContainerElement *ngIf="true" class="sdc-dropdown__options-wrapper" [ngClass]="{
-        'sdc-dropdown__options-wrapper--headless': headless,
-        'sdc-dropdown__options-wrapper--open':show,
-        'sdc-dropdown__options-wrapper--close':!show,
-        'sdc-dropdown__options-wrapper--animation-init':animation_init
+    <div class="sdc-dropdown__options-wrapper--frame" [ngClass]="{
+    'sdc-dropdown__options-wrapper--top':!bottomVisible,
+     'sdc-dropdown__options-wrapper--uncollapsed':show
+    }">
+        <ul #optionsContainerElement *ngIf="true" class="sdc-dropdown__options-list" [ngClass]="{
+        'sdc-dropdown__options-list--headless': headless,
+        'sdc-dropdown__options-list--animation-init':animation_init
         }">
             <ng-container  *ngFor="let option of options; let i = index">
 
@@ -42,9 +44,9 @@
         </ul>
     </div>
     <!--[DROP-DOWN OPTIONS END]-->
-
+    </div>
     <!--[DROP-DOWN ERROR MESSAGE START]-->
-    <div class="sdc-dropdown__error">
+    <div class="sdc-dropdown__error--block">
         <svg class="svg-icon __exclamationTriangleFull" version="1.1" id="exclamation-triangle-full_icon" x="0px" y="0px" viewBox="0 0 19.9 18" xml:space="preserve"><path class="sdc-dropdown__error--icon"  d="M19.6,14.3L12,1.3c-0.3-0.6-0.8-1-1.4-1.2C10-0.1,9.3,0,8.7,0.3c-0.4,0.3-0.6,0.6-0.9,1l-7.6,13c-0.3,0.5-0.4,1.2-0.2,1.8
 	c0.2,0.6,0.6,1.1,1.1,1.4C1.6,17.8,1.9,18,2.4,18h15.1c1.3,0,2.4-1.1,2.4-2.4C19.9,15.1,19.8,14.7,19.6,14.3z M10.5,14.2
 	c0,0.3-0.2,0.5-0.5,0.5s-0.5-0.2-0.5-0.5l0-1c0-0.3,0.2-0.5,0.5-0.5s0.5,0.2,0.5,0.5L10.5,14.2z M10.5,9.9c0,0.3-0.2,0.5-0.5,0.5

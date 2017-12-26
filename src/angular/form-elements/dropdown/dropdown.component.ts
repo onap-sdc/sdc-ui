@@ -160,15 +160,6 @@ export class DropDownComponent implements OnChanges, OnInit{
     /**
      * Get the label of the selected option
      */
-    // public getSelectedLabel(): string{
-    //    return this.selectedOption && this.getOptionLabel(this.selectedOption) || null;
-    //
-    // }
-    //
-    // public getOptionLabel(option: IDropDownOption){
-    //     console.log("getOptionLabel");
-    //     return option.label || String(option.value);
-    // }
     public bottomVisible = true;
 
     public isBottomVisible(){
@@ -184,6 +175,9 @@ export class DropDownComponent implements OnChanges, OnInit{
      * Toggle show/hide drop-down list
      */
     public toggleDropdown(){
+        if(this.disabled){
+            return;
+        }
         this.animation_init = true;
         this.bottomVisible = this.isBottomVisible();
         if(!this.disabled){
