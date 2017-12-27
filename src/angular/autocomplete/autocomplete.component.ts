@@ -2,7 +2,7 @@ import {OnInit, animate, Component, EventEmitter, Input, Output, state, style, t
 import {FilterBarComponent} from "../filterbar/filter-bar.component";
 import {URLSearchParams, Http} from "@angular/http";
 import 'rxjs/add/operator/map';
-import {Observable} from "rxjs/Observable";
+import {AutocompletePipe} from "./autocomplete.pipe";
 
 export interface IDataSchema {
     key: string;
@@ -24,7 +24,8 @@ export interface IDataSchema {
             })),
             transition('* => *', animate('200ms'))
         ]),
-    ]
+    ],
+    providers: [AutocompletePipe]
 })
 export class SearchWithAutoCompleteComponent implements OnInit {
     @Input() public data: any[] = [];
@@ -35,10 +36,11 @@ export class SearchWithAutoCompleteComponent implements OnInit {
     @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
 
     private searchQuery: string;
-    private selectedItem: string;
     private complexData: any[] = [];
+    private autoCompleteResults: any[] = [];
+    private isItemSelected: boolean = false;
 
-    public constructor(private http: Http){
+    public constructor(private http: Http, private autocompletePipe: AutocompletePipe) {
     }
 
     public ngOnInit(): void {
@@ -72,25 +74,40 @@ export class SearchWithAutoCompleteComponent implements OnInit {
         });
     }
 
-    private onItemSelected = (searchTerm: string): void => {
-        this.selectedItem =  searchTerm;
-        this.searchQuery = searchTerm;
-        this.itemSelected.emit(searchTerm);
+    private onItemSelected = (selectedItem: IDataSchema): void => {
+        this.searchQuery = selectedItem.value;
+        this.isItemSelected = true;
+        this.autoCompleteResults = [];
+        this.itemSelected.emit(selectedItem.key);
     }
 
     private onSearchQueryChanged = (searchText: string): void => {
-        if (this.dataUrl) {
-            const params: URLSearchParams = new URLSearchParams();
-            params.set('searchQuery', searchText);
-            this.http.get(this.dataUrl, {search: params})
-                .map((response) => {
-                    this.data = response.json();
-                    if (this.data) {
-                        this.handleLocalData();
-                    }
-                }).subscribe();
+        if (searchText !== this.searchQuery) {
+            this.searchQuery = searchText;
+            if (!this.searchQuery) {
+                this.onClearSearch();
+            } else {
+                if (this.dataUrl) {
+                    const params: URLSearchParams = new URLSearchParams();
+                    params.set('searchQuery', this.searchQuery);
+                    this.http.get(this.dataUrl, {search: params})
+                        .map((response) => {
+                            this.data = response.json();
+                            this.handleLocalData();
+                            this.autoCompleteResults = this.complexData;
+                        }).subscribe();
+                } else {
+                    this.autoCompleteResults = this.autocompletePipe.transform(this.complexData, this.searchQuery);
+                }
+            }
+            this.isItemSelected = false;
         }
-
     }
 
+    private onClearSearch = (): void => {
+        this.autoCompleteResults = [];
+        if (this.isItemSelected) {
+            this.itemSelected.emit();
+        }
+    }
 }
