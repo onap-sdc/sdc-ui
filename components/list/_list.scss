@@ -33,10 +33,10 @@
     margin-top: 17px;
     &.disabled{
       cursor: default;
-      background-color: $background-gray;
+      background-color: $disabled-background-gray;
       border-color: $light-gray;
       .plus-icon svg g{
-        fill: $dark-gray;
+        fill: $light-gray;
       }
     }
     .plus-icon{
