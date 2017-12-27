@@ -15,6 +15,7 @@ $body-font-4: 10px;
 
 @mixin base-font-regular() {
   font-family: 'Open Sans', Arial, sans-serif;
+  font-style: normal;
   font-weight: 400;
 }
 
