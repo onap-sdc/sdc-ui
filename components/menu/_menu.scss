@@ -13,7 +13,7 @@
     @include box-shadow(0px 2px 4px 0px rgba($black, 0.3));
 
     .sdc-menu-item {
-        font-size: 14px;
+        @include body-1;
         line-height: 29px;
         color: $dark-gray;
         g, path{
