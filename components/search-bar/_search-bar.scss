@@ -4,6 +4,24 @@ sdc-search-bar{
     display: flex;
     sdc-input{
       flex-grow: 1;
+      .sdc-input__input{
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+    .search-button{
+      width: $inputHeight;
+      height: $inputHeight - 2;
+      border: solid 1px $light-gray;
+      border-left: none;
+      background-color: $background-gray;
+      margin-top: 17px;
+      svg{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50% );
+      }
     }
     &.not-empty{
       .sdc-input__input {
@@ -17,19 +35,5 @@ sdc-search-bar{
         }
       }
     }
-  }
-}
-.search-button{
-  width: $inputHeight;
-  height: $inputHeight - 2;
-  border: solid 1px $light-gray;
-  border-left: none;
-  background-color: $background-gray;
-  margin-top: 17px;
-  svg{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50% );
   }
 }
