@@ -7,9 +7,9 @@ input[type="file"] {
   position: relative;
   &.disabled{
     .browse-button {
-      background-color: $disabled-background-gray;
+      background-color: $background-gray;
       div svg g{
-        fill: $light-gray;
+        fill: $gray;
       }
     }
   }
