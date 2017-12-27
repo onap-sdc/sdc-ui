@@ -32,7 +32,7 @@ export class ValidationComponent implements OnInit, OnDestroy, OnChanges, AfterC
 
     @ContentChildren(ValidatorComponent) public validatorsComps: QueryList<ValidatorComponent>;
 
-    public validationMetaKey = ValidationComponent.VALIDATION_META_KEY;
+    public validationMetaProp = ValidationComponent.VALIDATION_META_PROP;
 
     protected stopIndex: number;
     private valueSubscription: AnonymousSubscription;
@@ -53,7 +53,7 @@ export class ValidationComponent implements OnInit, OnDestroy, OnChanges, AfterC
         return this.formControl;
     }
 
-    public static get VALIDATION_META_KEY() {
+    public static get VALIDATION_META_PROP() {
         return '_validationMeta';
     }
 
@@ -141,7 +141,7 @@ export class ValidationComponent implements OnInit, OnDestroy, OnChanges, AfterC
 
         if (!isValid) {
             // add reflect property to errors to get validation meta
-            Reflect.defineProperty(errors, this.validationMetaKey, {get: () => validationMeta});
+            Reflect.defineProperty(errors, this.validationMetaProp, {get: () => validationMeta});
 
             return errors;
         }
