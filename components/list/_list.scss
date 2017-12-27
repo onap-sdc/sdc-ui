@@ -4,6 +4,10 @@
     flex-grow: 1;
     .sdc-input{
       margin-bottom: 0;
+      .sdc-input__input{
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
   }
   .not-empty{
@@ -32,7 +36,7 @@
       background-color: $background-gray;
       border-color: $light-gray;
       .plus-icon svg g{
-        fill: $dark-gray;
+        fill: $gray;
       }
     }
     .plus-icon{
@@ -67,7 +71,7 @@
       line-height: 28px;
       padding: 0 10px;
       color: $text-black;
-      @extend .body-3;
+      @include body-3;
       &.view-only{
         border-color: $tlv-light-gray;
       }
