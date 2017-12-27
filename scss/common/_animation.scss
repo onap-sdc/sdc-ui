@@ -64,6 +64,9 @@ Enable to expend a folded block element
   }
 }
 
+.sdc-ripple-click__animated {
+  position:relative;
+}
 .sdc-ripple-click__animated::before{
   display: inline-block;
   position:absolute;
