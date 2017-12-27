@@ -17,7 +17,7 @@ sdc-search-bar{
       height: $inputHeight - 2;
       border: solid 1px $light-gray;
       border-left: none;
-      background-color: $disabled-background-gray;
+      background-color: $background-gray;
       margin-top: 17px;
       cursor: auto;
       svg{
@@ -28,7 +28,7 @@ sdc-search-bar{
         left: 50%;
         transform: translate(-50%,-50% );
         path{
-          fill: $light-gray;
+          fill: $gray;
         }
       }
     }
