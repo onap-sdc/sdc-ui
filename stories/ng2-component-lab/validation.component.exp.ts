@@ -75,7 +75,7 @@ export default experimentOn('Validation')
                 <sdc-validation name="AAA" [value]="parentValue" (validChange)="log('Parent validation:', $event)" #validationComp>
                     <sdc-validator name="v_required" type="required" message="This field is REQUIRED!" [stop]="true"></sdc-validator>
                     <sdc-validator name="second_char" type="regex" message="Second character must NOT be capital!" forPath="1" [patterns]="['[^A-Z]']"></sdc-validator>
-                    <sdc-validator name="child" type="ref" [isChild]="true" [validationRef]="childValidationComp"></sdc-validator>
+                    <sdc-validator name="child" type="ref" [validationRef]="childValidationComp" [isChild]="true" [isManaged]="true"></sdc-validator>
                     <sdc-validator name="ext-control" type="control" [control]="child2ValidationComp.control" [isManaged]="false"></sdc-validator>
                 </sdc-validation>
                 <div>Child: <input placeholder="Please Enter value" (input)="childValue=$event.target.value"></div>

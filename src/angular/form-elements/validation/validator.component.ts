@@ -65,11 +65,7 @@ export class ValidatorComponent implements OnChanges, OnDestroy {
             });
         }
 
-        if (changes.control || changes.subValidationComp || changes.validationRef) {
-            this.cleanValidatorSubscriptions();
-        }
-
-        if (changes.type || changes.disabled) {
+        if (changes.type || changes.disabled || changes.control || changes.subValidationComp || changes.validationRef) {
             this.getValidatorFunc(true);
         } else if (Object.keys(changes).some((c) => this.validatorFuncDeps.has(c))) {
             this.emitValidatorChange();
@@ -151,8 +147,13 @@ export class ValidatorComponent implements OnChanges, OnDestroy {
 
                     case ValidatorTypes.VALIDATION:
                         this.validatorFunc = (value) => {
-                            this.subValidationComp.value = value;
-                            this.subValidationComp.validate();
+                            if (!this.subValidationComp) {
+                                return null;
+                            }
+                            if (!this.isManaged) {
+                                this.subValidationComp.value = value;
+                                this.subValidationComp.validate();
+                            }
                             return this.subValidationComp.control.errors;
                         };
                         if (this.validationRef) {
@@ -160,21 +161,26 @@ export class ValidatorComponent implements OnChanges, OnDestroy {
                                 this.subValidationComp.controlStatusChange.subscribe(
                                     () => this.emitValidatorChange());
                         }
-                        this.setValidatorFuncDeps(['subValidationComp']);
+                        this.setValidatorFuncDeps(['subValidationComp', 'isManaged']);
                         break;
 
                     case ValidatorTypes.REF:
-                        this.validatorFunc = () => {
-                            return this.validationRef
-                                ? this.validationRef.control.errors
-                                : null;
+                        this.validatorFunc = (value) => {
+                            if (!this.validationRef) {
+                                return null;
+                            }
+                            if (!this.isManaged) {
+                                this.validationRef.value = value;
+                                this.validationRef.validate();
+                            }
+                            return this.validationRef.control.errors;
                         };
                         if (this.validationRef) {
                             this.refValidationChangeSubscription =
                                 this.validationRef.controlStatusChange.subscribe(
                                     () => this.emitValidatorChange());
                         }
-                        this.setValidatorFuncDeps(['validationRef']);
+                        this.setValidatorFuncDeps(['validationRef', 'isManaged']);
                         break;
                 }
                 if (this.validatorFunc !== initialValidatorFunc) {
