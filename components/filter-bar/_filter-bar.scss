@@ -50,6 +50,11 @@ sdc-filter-bar {
       path{
         fill: $gray;
       }
+      &:hover{
+        path{
+          fill: $hover-blue;
+        }
+      }
     }
   }
 }
