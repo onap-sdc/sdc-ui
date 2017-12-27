@@ -25,7 +25,7 @@ input[type="file"] {
       &:hover{
         background-color: $tlv-hover;
         g{
-          fill: $hover-blue;
+          fill: $blue;
         }
       }
     }
@@ -40,6 +40,11 @@ input[type="file"] {
       width: 14px;
       g{
         fill: $dark-gray;
+      }
+    }
+    &:hover{
+      g{
+        fill: $blue;
       }
     }
   }
