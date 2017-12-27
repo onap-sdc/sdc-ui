@@ -12,6 +12,7 @@ import Tabs from './Tabs.stories.js';
 import Form from './Form.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
+import Modals from './Modal.stories.js';
 
 storiesOf('Colors', module)
 	.add('Color Palette', () => <Colors />);
@@ -43,3 +44,6 @@ storiesOf('Tiles', module)
 
 storiesOf('Form Example', module)
 	.add('Form Example', () => <Form/>);
+
+storiesOf('Modals', module)
+	.add('Modal examples', () => <Modals/>);
