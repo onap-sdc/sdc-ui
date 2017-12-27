@@ -1,30 +1,23 @@
 $inputHeight: 38px;
-.search-bar-container {
+
+sdc-filter-bar {
   .sdc-input {
-     margin: 0;
-    .sdc-input__input {
+    margin: 0;
+    .sdc-input__input{
       padding-right: 40px;
-      &:focus {
-        border-color: $blue;
-        outline: 0 none;
-      }
     }
   }
 
-
-  .action-button{
-    cursor:pointer;
-    &.filter-button{
+  .filter-button{
+    position: relative;
+    float: right;
+    bottom: $inputHeight;
+    height: $inputHeight;
+    right: 11px;
+    svg{
       position: relative;
-      float: right;
-      bottom: $inputHeight;
-      height: $inputHeight;
-      right: 11px;
-      svg{
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
@@ -33,19 +26,26 @@ $inputHeight: 38px;
       height: 20px;
       width: 20px;
       path{
-        fill: $gray;
+        fill: $dark-gray;
       }
     }
   }
 
   .clear-search-x {
+    cursor: pointer;
     svg{
       height: 14px;
       width: 14px;
       path{
-        fill: $gray;
+        fill: $dark-gray;
+      }
+      &:hover{
+        path{
+          fill: $blue;
+        }
       }
     }
   }
 }
+
 
