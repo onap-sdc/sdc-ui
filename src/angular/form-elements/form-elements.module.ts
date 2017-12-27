@@ -7,6 +7,7 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {FileOpenerComponent} from "./browse/file-opener/file-opener.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {BrowseComponent} from "./browse/browse.component";
+import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
 import {ListItemComponent} from "./list/list-item/list-item.component";
 import {ListComponent} from "./list/list.component";
@@ -15,7 +16,8 @@ import {ListComponent} from "./list/list.component";
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AnimationDirectivesModule
     ],
 
     declarations: [
