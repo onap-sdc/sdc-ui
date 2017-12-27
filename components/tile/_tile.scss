@@ -162,7 +162,7 @@
 			button {
 				width: initial;
 				height: initial;
-				font-size: $body-font-2; //ILANA CHANGE
+				@include body-2;
 
 				.svg-icon-wrapper {
 					.svg-icon-label {

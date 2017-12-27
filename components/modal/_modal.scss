@@ -77,7 +77,7 @@
       }
 
       .title {
-        @extend .heading-2;
+        @include heading-2;
         flex: 1 1 auto;
         color: $text-black;
         padding-top: 14px;
