@@ -3,9 +3,10 @@
  */
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {FileDataModel} from "../models/FileData";
+import template from "./file-opener.component.html";
 @Component({
     selector: 'file-opener',
-    templateUrl: './file-opener.component.html'
+    template: template
 })
 export class FileOpenerComponent {
     @Output() public onFileUpload: EventEmitter<FileDataModel> = new EventEmitter<FileDataModel>();

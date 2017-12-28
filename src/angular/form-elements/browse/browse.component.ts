@@ -3,9 +3,10 @@
  */
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {FileDataModel} from "./models/FileData";
+import template from "./browse.component.html";
 @Component({
     selector: 'sdc-browse',
-    templateUrl: './browse.component.html'
+    template: template
 })
 export class BrowseComponent {
     @Input() public label: string;

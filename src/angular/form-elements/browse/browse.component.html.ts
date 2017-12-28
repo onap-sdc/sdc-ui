@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-browse" [ngClass]="{'disabled': disabled}">
     <div class="selected-file-field">
         <sdc-input [label]="label" [placeHolder]="placeholder" [required]="isRequired" [name]="name" [disabled]="true" [(value)]="selectedFile.filename"></sdc-input>
@@ -26,5 +27,6 @@
         </div>
     </label>
 </div>
+`;
 
 
