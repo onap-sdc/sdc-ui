@@ -5,7 +5,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'sdc-filter-bar',
-    templateUrl: './filter-bar.component.html'
+    templateUrl: './filter-bar.component.html',
+    host: {'class': 'sdc-filter-bar'}
 })
 export class FilterBarComponent {
 
