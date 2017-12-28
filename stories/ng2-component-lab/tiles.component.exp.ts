@@ -42,7 +42,7 @@ export default experimentOn('Tiles')
                     </div>
                 </sdc-tile-content>
                 <sdc-tile-footer>
-                    <span class="sdc-tile-footer-cell"> Footer </span>
+                    <span class="sdc-tile-footer-cell">Footer</span>
                 </sdc-tile-footer>
             </sdc-tile>
             `
@@ -77,7 +77,7 @@ export default experimentOn('Tiles')
                     </div>
                     <div class="sdc-tile-content-info">
                         <span class="sdc-tile-info-line title">Router</span>
-                        <div class="sdc-tile-info-line supertitle">test</div>
+                        <div class="sdc-tile-info-line subtitle">test</div>
                     </div>
                 </sdc-tile-content>
                 <sdc-tile-footer>

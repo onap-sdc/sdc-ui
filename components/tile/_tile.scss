@@ -3,7 +3,7 @@
 	$tile-full-height: 204px;
 	$tile-padding: 10px;
 
-	$header-height: 10px;
+	$header-height: $body-font-1;
 	$footer-height: 23px;
 	$content-height: 100%;
 
@@ -55,8 +55,8 @@
 	}
 
 	.sdc-tile-header {
-		height: $body-font-1;
-		line-height: $header-height;
+		height: 1.1em;
+		line-height: 1em;
 		@include ellipsis($display: block);
 
 		font-size: $body-font-1;
