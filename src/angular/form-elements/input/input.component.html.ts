@@ -12,7 +12,7 @@ export default `
         [minlength]="minLength"
         [pattern]="pattern"
         [formControl]="control"
-        [disabled]=disabled
+        [attr.disabled]="disabled ? 'disabled' : null"
     />
 </div>
 `;
