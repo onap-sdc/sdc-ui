@@ -73,7 +73,7 @@ Enable to expend a folded block element
   top:0;
   content: '';
   animation: ripple-animation .3s ease-out; 
-  background-color: #009fdb;
+  background-color: $blue;
   width:14px;
   height:14px;
   border-radius: 50%;
