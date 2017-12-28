@@ -40,6 +40,6 @@ export class ModalComponent {
     @Input() buttons:Array<ModalButtonConfig>;
     @Input() type:string; 'info|error|alert';
 
-    //Allows for custom component as body instead of simple message. See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
+    //Allows for custom component as body instead of simple message. See ContentService.createActionModal for implementation details, and HttpService's catchError() for example.
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer:ViewContainerRef;
 }

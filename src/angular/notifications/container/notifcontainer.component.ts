@@ -32,7 +32,7 @@ export class NotificationContainerComponent {
 
         this.notify.subscribe( (notif : NotificationSettings) => {
             console.log("NotificationContainerComponent:ngOnInit notif="+JSON.stringify(notif));
-           this.notifications.push(notif);
+            this.notifications.push(notif);
         });
 
     }

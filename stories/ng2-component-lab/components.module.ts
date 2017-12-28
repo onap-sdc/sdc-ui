@@ -13,11 +13,15 @@ import {ChecklistModule} from "../../src/angular/checklist/checklist.module";
 import {InfiniteScrollModule} from "../../src/angular/infinite-scroll/infinite-scroll.module";
 import {NotificationModule} from "../../src/angular/notifications/notification.module";
 import {NotificationsExample} from "./components/notifications-example.component";
+import {NotificationComponent} from "../../src/angular/notifications/notification/notification.component";
+import {InnerNotifContent} from "./components/notification-inner-content-example.component";
+import {NotificationContainerComponent} from "../../src/angular/notifications/container/notifcontainer.component";
 
 @NgModule({
     declarations: [
         ColorsTable,
         InnerContent,
+        InnerNotifContent,
         ButtonModalExample,
         NotificationsExample,
         KeysPipe
@@ -34,10 +38,13 @@ import {NotificationsExample} from "./components/notifications-example.component
         InfiniteScrollModule,
         NotificationModule
     ],
-    entryComponents: [InnerContent],
+    entryComponents: [InnerContent, InnerNotifContent],
     exports: [
         CommonModule,
         InnerContent,
+        InnerNotifContent,
+        NotificationComponent,
+        NotificationContainerComponent,
         ModalModule,
         ColorsTable,
         ButtonModalExample,
