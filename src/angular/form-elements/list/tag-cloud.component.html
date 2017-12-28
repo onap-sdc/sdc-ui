@@ -1,11 +1,11 @@
-<div class="sdc-list-new-item-field">
+<div class="sdc-tag-cloud-new-item-field">
     <sdc-input [label]="label"
                [disabled]="(isViewOnly===true)"
                [placeHolder]="placeholder"
-               [(value)]="newListItem"
+               [(value)]="newTagItem"
                (keyup)="onKeyup($event)"
-               [ngClass]="{'error': uniqueError, 'not-empty': newListItem}"></sdc-input>
-    <div class="add-button" (click)="newListItem && insertItemToList()" [ngClass]="{'disabled': !newListItem || uniqueError}">
+               [ngClass]="{'error': uniqueError, 'not-empty': newTagItem}"></sdc-input>
+    <div class="add-button" (click)="newTagItem && insertItemToList()" [ngClass]="{'disabled': !newTagItem || uniqueError}">
         <span class="plus-icon">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
               <defs>
@@ -19,10 +19,10 @@
     </div>
 </div>
 <div class="sdc-list-container">
-    <sdc-list-item *ngFor="let item of list; let i = index;"
+    <sdc-tag-item *ngFor="let item of list; let i = index;"
                    [text]="item"
                    [index]="i"
                    [isViewOnly]="isViewOnly && (isViewOnly === true || isViewOnly.indexOf(i) > -1)"
-                   (clickOnDelete)="deleteItemFromList($event)"></sdc-list-item>
+                   (clickOnDelete)="deleteItemFromList($event)"></sdc-tag-item>
 </div>
 <div class="error-message" *ngIf="uniqueError">{{uniqueErrorMessage}}</div>
