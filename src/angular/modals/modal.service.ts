@@ -20,7 +20,7 @@ export class ModalService {
             size: ModalSize.small,
             title: title,
             message: message,
-            buttons: [{text:'Cancel', closeModal:true}],
+            buttons: [{text:'Cancel', closeModal:true, size: 'small'}],
             type: ModalType.alert
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -34,8 +34,8 @@ export class ModalService {
             title: title,
             message: message,
             type: ModalType.standard,
-            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true}, 
-                      {text: 'Cancel', closeModal:true}]
+            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true, size:'small'}, 
+                      {text: 'Cancel', closeModal:true, size:'small'}]
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
         this.currentModal = modalInstance;
@@ -47,7 +47,7 @@ export class ModalService {
             size: ModalSize.small,
             title: 'Error',
             message: errorMessage,
-            buttons: [{text: "Cancel", closeModal:true}],
+            buttons: [{text: "Cancel", closeModal:true, size: 'small'}],
             type: ModalType.error
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -56,14 +56,17 @@ export class ModalService {
     }
 
     public openCustomModal = (modalConfig:IModalConfig, dynamicComponentType:Type<any>, dynamicComponentInput?:any) => {
-        let modalInstance:ComponentRef<ModalComponent> = this.createDynamicComponentService.createComponentDynamically(ModalComponent, modalConfig);
-        modalInstance.instance.innerModalContent = this.createDynamicComponentService.createComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer.element.nativeElement);
-        this.currentModal = modalInstance;
+        let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
+        modalInstance.instance.innerModalContent = this.createDynamicComponentService.createComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer.element.nativeElement);            
         return modalInstance;
     }
 
     public openModal = (customModalData:IModalConfig):ComponentRef<ModalComponent> => {
+
         let modalInstance:ComponentRef<ModalComponent> = this.createDynamicComponentService.createComponentDynamically(ModalComponent, customModalData);
+        modalInstance.instance.closeAnimationComplete.subscribe(() => {
+            this.destroyModal();
+        });
         this.currentModal = modalInstance;
         return modalInstance;
     }
@@ -72,9 +75,13 @@ export class ModalService {
         return this.currentModal.instance;
     }
 
-    public closeModal = ()=> {
+    public closeModal = ():void => { //triggers closeModal animation, which then triggers toggleModal.done and the subscription to destroyModal
+        this.currentModal.instance.modalVisible = false;
+    };
+
+    private destroyModal = ():void => {
         this.currentModal.destroy();
-    }
+    };
 
 }
 
