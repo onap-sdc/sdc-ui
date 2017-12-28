@@ -8,6 +8,10 @@
 		position: relative;
 		outline: none;
 		margin: 0;
+		width: 14px;
+		height: 14px;
+		-moz-appearance: none;
+		-webkit-appearance: none;
 
 		&:before {
 			content: "";
@@ -48,7 +52,7 @@
 	}
 
 	.sdc-checkbox__label {
-		padding-left: 5px;
-		@extend .body-1;
+		padding-left: 14px;
+        	@include body-1;
 	}
 }

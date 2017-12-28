@@ -5,19 +5,17 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'sdc-search-bar',
-    templateUrl: './search-bar.component.html'
+    templateUrl: './search-bar.component.html',
+    host: {'class': 'sdc-search-bar'}
 })
 export class SearchBarComponent {
 
     @Input() public placeholder: string;
     @Input() public label: string;
     @Input() public searchQuery: string;
-    @Output() public searchButtonClicked: EventEmitter<string> = new EventEmitter<string>();
+    @Output() public searchQueryClick: EventEmitter<string> = new EventEmitter<string>();
 
     private searchButtonClick = (): void => {
-        if (this.searchQuery) { // do not allow empty search
-            this.searchButtonClicked.emit(this.searchQuery);
-        }
+      this.searchQueryClick.emit(this.searchQuery);
     }
 }
-

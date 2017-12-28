@@ -1,0 +1,51 @@
+$inputHeight: 38px;
+
+.sdc-filter-bar {
+  .sdc-input {
+    margin: 0;
+    .sdc-input__input{
+      padding-right: 40px;
+    }
+  }
+
+  .filter-button{
+    position: relative;
+    float: right;
+    bottom: $inputHeight;
+    height: $inputHeight;
+    right: 11px;
+    svg{
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .magnify-button {
+    svg{
+      height: 20px;
+      width: 20px;
+      path{
+        fill: $dark-gray;
+      }
+    }
+  }
+
+  .clear-search-x {
+    cursor: pointer;
+    svg{
+      height: 14px;
+      width: 14px;
+      path{
+        fill: $dark-gray;
+      }
+      &:hover{
+        path{
+          fill: $blue;
+        }
+      }
+    }
+  }
+}
+
+
