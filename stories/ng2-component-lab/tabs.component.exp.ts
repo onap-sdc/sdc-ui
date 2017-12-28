@@ -3,7 +3,7 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
-export default experimentOn('tabs').group('Tabs', [
+export default experimentOn('Tabs').group('Tabs', [
     {
         id: 'menu-tabs',
         title: 'Menu tabs',

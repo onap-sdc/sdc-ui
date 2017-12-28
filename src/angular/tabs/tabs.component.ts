@@ -1,9 +1,9 @@
 import { Component, ContentChildren, QueryList, AfterContentInit, Input, Output, EventEmitter } from '@angular/core';
 import { TabComponent } from './tab/tab.component';
-
+import template from "./tabs.component.html";
 @Component({
     selector: 'sdc-tabs',
-    templateUrl: './tabs.component.html',
+    template: template,
 })
 export class TabsComponent implements AfterContentInit {
     @Input() public type: string = 'menu'; // gets 'menu' | 'header'
