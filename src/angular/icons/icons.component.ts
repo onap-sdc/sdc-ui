@@ -1,6 +1,6 @@
 import {Component, Input, PipeTransform, Pipe} from "@angular/core";
 import { DomSanitizer } from '@angular/platform-browser';
-import { Icons } from '../utils/iconsMap';
+import { Icons } from '../../iconsMap';
 
 export enum Positions{
     left,

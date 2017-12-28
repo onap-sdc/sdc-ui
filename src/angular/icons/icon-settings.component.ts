@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import { Icons } from '../utils/iconsMap';
+import { Icons } from '../../iconsMap';
 
 
 @Component({
