@@ -1,4 +1,4 @@
-.sdc-list-new-item-field{
+.sdc-tag-cloud-new-item-field{
   display: flex;
   sdc-input{
     flex-grow: 1;
@@ -59,10 +59,10 @@
   border-radius: 2px;
   background-color: $white;
   padding: 10px 10px 0 0;
-  sdc-list-item{
+  .sdc-tag-item{
     padding: 0 0 10px 10px;
     display: inline-block;
-    .list-item{
+    .tag-item{
       min-width: 100px;
       background-color: $white;
       border: solid 1px $light-gray;

@@ -1,4 +1,4 @@
-<div class="list-item" [ngClass]="{'view-only':isViewOnly}">
+<div class="tag-item" [ngClass]="{'view-only':isViewOnly}">
     <span>{{text}}</span>
     <span class="delete-item" *ngIf="!isViewOnly" (click)="clickOnDelete.emit(index)">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
