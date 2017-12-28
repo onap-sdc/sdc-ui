@@ -2,9 +2,10 @@
  * Created by rc2122 on 11/21/2017.
  */
 import {Component, EventEmitter, Input, Output} from "@angular/core";
+import template from "./tag-cloud.component.html";
 @Component({
     selector: 'sdc-tag-cloud',
-    templateUrl: './tag-cloud.component.html',
+    template: template,
 })
 export class TagCloudComponent {
     @Input() public list: string[];
