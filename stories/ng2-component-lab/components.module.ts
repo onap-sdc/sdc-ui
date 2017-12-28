@@ -1,6 +1,7 @@
-import { NgModule, Injector } from "@angular/core";
-import { KeysPipe } from "./utils/pipes/keys.pipe";
+import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { KeysPipe } from "./utils/pipes/keys.pipe";
 import { ColorsTable } from "./components/colors-table.component";
 import { FormElementsModule } from "../../src/angular/form-elements/form-elements.module";
 import { ButtonsModule } from "../../src/angular/buttons/buttons.module";
@@ -11,7 +12,6 @@ import { PopupMenuModule } from "../../src/angular/popup-menu/popup-menu.module"
 import { ChecklistModule } from "../../src/angular/checklist/checklist.module";
 import { InfiniteScrollModule } from "../../src/angular/infinite-scroll/infinite-scroll.module";
 import { TooltipDirective } from '../../src/angular/tooltip/tooltip.directive';
-import { TooltipTemplateComponent } from '../../src/angular/tooltip/tooltip-template.component';
 import { TooltipModule } from '../../src/angular/tooltip/tooltip.module';
 import { ModalConsumer } from "./components/modal-consumer.component";
 import { FilterBarModule } from "../../src/angular/filterbar/filter-bar.module";
@@ -31,6 +31,7 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
     imports: [
         ModalModule,
         CommonModule,
+        FormsModule,
         FormElementsModule,
         ButtonsModule,
         TileModule,
@@ -46,6 +47,7 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
     entryComponents: [ModalInnerContent],
     exports: [
         CommonModule,
+        FormsModule,
         ModalInnerContent,
         ModalModule,
         ColorsTable,

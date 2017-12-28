@@ -9,6 +9,7 @@ import { AnimationDirectivesModule } from '../animations/animation-directives.mo
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
 import {ListItemComponent} from "./list/list-item/list-item.component";
 import {ListComponent} from "./list/list.component";
+import {ValidationComponent, ValidatorComponent} from "./validation/validation.component";
 
 @NgModule({
     imports: [
@@ -23,9 +24,11 @@ import {ListComponent} from "./list/list.component";
         InputComponent,
         CheckboxComponent,
         RadioGroupComponent,
+        DropDownTriggerDirective,
         ListItemComponent,
         ListComponent,
-        DropDownTriggerDirective
+        ValidationComponent,
+        ValidatorComponent
     ],
     exports: [
         DropDownComponent,
@@ -33,7 +36,10 @@ import {ListComponent} from "./list/list.component";
         InputComponent,
         CheckboxComponent,
         RadioGroupComponent,
-        ListComponent
+        ListComponent,
+        ListItemComponent,
+        ValidationComponent,
+        ValidatorComponent
     ]
 })
 export class FormElementsModule {
