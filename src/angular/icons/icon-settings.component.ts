@@ -16,6 +16,7 @@ import { Icons } from '../utils/iconsMap';
     '}']
 })
 
+
 export class IconSettingsComponent{
     @Input() label : string;
     @Input() color : string;
