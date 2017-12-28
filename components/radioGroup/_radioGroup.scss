@@ -3,12 +3,12 @@
 	display: flex;
   }
   .sdc-radio-group__legend {
-	@extend .body-2-semibold;
+	@include body-2-emphasis;
 	display: inline-block;
 	margin-bottom: 5px;
   }
   .sdc-radio__label {
-	@extend .body-1;
+	@include body-1;
 	margin-right: 20px;
   }
   .vertical{

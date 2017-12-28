@@ -36,6 +36,6 @@
   }
   .sdc-radio__label {
 	margin-left: 5px;
-	@extend .body-1;
+	@include body-1;
   }
 }
