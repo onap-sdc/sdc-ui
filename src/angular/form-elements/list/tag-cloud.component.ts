@@ -3,10 +3,10 @@
  */
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 @Component({
-    selector: 'sdc-list',
-    templateUrl: './list.component.html',
+    selector: 'sdc-tag-cloud',
+    templateUrl: './tag-cloud.component.html',
 })
-export class ListComponent {
+export class TagCloudComponent {
     @Input() public list: string[];
     @Input() public isViewOnly: boolean|number[]; // get a boolean parameter or array of specific items indexes.
     @Input() public isUniqueList: boolean;
@@ -14,7 +14,7 @@ export class ListComponent {
     @Input() public label: string;
     @Input() public placeholder: string;
     @Output() public listChanged: EventEmitter<string[]> = new EventEmitter<string[]>();
-    private newListItem: string;
+    private newTagItem: string;
     private uniqueError: boolean;
     private onKeyup = (e): void => {
         this.setUniqueError();
@@ -24,8 +24,8 @@ export class ListComponent {
     }
     private insertItemToList = (): void => {
         if (!this.uniqueError) {
-            this.list.push(this.newListItem);
-            this.newListItem = "";
+            this.list.push(this.newTagItem);
+            this.newTagItem = "";
             this.listChanged.emit(this.list);
         }
     }
@@ -39,6 +39,6 @@ export class ListComponent {
         this.setUniqueError();
     }
     private setUniqueError = (): void => {
-        this.uniqueError = this.isUniqueList && this.list.indexOf(this.newListItem) > -1;
+        this.uniqueError = this.isUniqueList && this.list.indexOf(this.newTagItem) > -1;
     }
 }
