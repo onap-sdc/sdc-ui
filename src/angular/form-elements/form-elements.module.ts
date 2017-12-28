@@ -9,8 +9,8 @@ import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {BrowseComponent} from "./browse/browse.component";
 import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
-import {ListItemComponent} from "./list/list-item/list-item.component";
-import {ListComponent} from "./list/list.component";
+import {TagItemComponent} from "./list/tag-item/tag-item.component";
+import {TagCloudComponent} from "./list/tag-cloud.component";
 
 @NgModule({
     imports: [
@@ -27,8 +27,8 @@ import {ListComponent} from "./list/list.component";
         FileOpenerComponent,
         RadioGroupComponent,
         BrowseComponent,
-        ListItemComponent,
-        ListComponent,
+        TagItemComponent,
+        TagCloudComponent,
         DropDownTriggerDirective
     ],
     exports: [
@@ -38,7 +38,7 @@ import {ListComponent} from "./list/list.component";
         CheckboxComponent,
         BrowseComponent,
         RadioGroupComponent,
-        ListComponent
+        TagCloudComponent
     ]
 })
 export class FormElementsModule {

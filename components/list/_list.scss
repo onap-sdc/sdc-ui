@@ -1,9 +1,13 @@
-.sdc-list-new-item-field{
+.sdc-tag-cloud-new-item-field{
   display: flex;
   sdc-input{
     flex-grow: 1;
     .sdc-input{
       margin-bottom: 0;
+      .sdc-input__input{
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
   }
   .not-empty{
@@ -32,7 +36,7 @@
       background-color: $background-gray;
       border-color: $light-gray;
       .plus-icon svg g{
-        fill: $dark-gray;
+        fill: $gray;
       }
     }
     .plus-icon{
@@ -55,10 +59,10 @@
   border-radius: 2px;
   background-color: $white;
   padding: 10px 10px 0 0;
-  sdc-list-item{
+  .sdc-tag-item{
     padding: 0 0 10px 10px;
     display: inline-block;
-    .list-item{
+    .tag-item{
       min-width: 100px;
       background-color: $white;
       border: solid 1px $light-gray;
@@ -67,7 +71,7 @@
       line-height: 28px;
       padding: 0 10px;
       color: $text-black;
-      @extend .body-3;
+      @include body-3;
       &.view-only{
         border-color: $tlv-light-gray;
       }
