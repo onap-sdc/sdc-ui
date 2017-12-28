@@ -53,6 +53,6 @@
 
 	.sdc-checkbox__label {
 		padding-left: 14px;
-		@extend .body-1;
+        	@include body-1;
 	}
 }
