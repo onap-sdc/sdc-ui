@@ -193,6 +193,7 @@ export class DropDownComponent implements OnChanges, OnInit{
             && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')){
             this.show = false;
         }
+        console.log("Target", event.target, event.target.classList.contains('js-sdc-dropdown--toggle-hook'));
     }
 
 }

@@ -140,7 +140,7 @@ export default experimentOn('DropDown')
             description: 'Headless and labeless DropDown',
             template: `
             <div style="margin-bottom: 10px;">
-                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.value }}</span>
+                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.selectedOption?.value }}</span>
             </div>
             <sdc-dropdown [options]="options" #dropDown1></sdc-dropdown>`
         },

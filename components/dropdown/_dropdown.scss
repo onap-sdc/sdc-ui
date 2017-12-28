@@ -35,7 +35,7 @@ sdc-dropdown {
 
     }
 
-    .sdc-dropdown__error{
+    .sdc-dropdown__error--block{
       display: block;
       color: $red;
       margin: 4px 0;
@@ -90,13 +90,13 @@ sdc-dropdown {
         border: solid 1px $light-gray;
         outline: none;
         .sdc-dropdown-handle{
-          use {
+          path {
             fill: $light-gray;
           }
         }
       }
       .sdc-dropdown-handle{
-        use {
+        path {
           fill: $light-gray;
         }
       }
@@ -106,7 +106,7 @@ sdc-dropdown {
       border: solid 1px $light-blue;
       outline: none;
       .sdc-dropdown-handle{
-        use {
+        path {
           fill: $light-blue;
         }
       }
@@ -115,7 +115,7 @@ sdc-dropdown {
     .sdc-dropdown-handle {
       float: right;
 
-      use {
+      path {
         fill: $dark-gray;
       }
     }
@@ -163,18 +163,17 @@ sdc-dropdown {
       }
       &:hover {
         background-color: $tlv-gray;
-        @include base-font-bold;
+        @include base-font-semibold;
       }
       &.selected {
         background-color: $tlv-hover;
         color: $blue;
-        @include base-font-bold;
+        @include base-font-semibold;
       }
       &.sdc-dropdown__option--header {
-        @include base-font-bold;
+        @include base-font-semibold;
         color: $text-black;
         cursor: default;
-        font-weight: 900;
         &.sdc-dropdown__option--group {
           text-indent: 10px;
         }
@@ -266,13 +265,13 @@ sdc-dropdown {
       &.sdc-dropdown__options-list--animation-init {
         border-bottom: none;
         padding:0;
-        animation: bottom-to-top 1s forwards;
+        animation: bottom-to-top .5s forwards;
       }
     }
 
     &.sdc-dropdown__options-wrapper--uncollapsed {
       .sdc-dropdown__options-list {
-        animation: bottom-to-top-exp 1s forwards;
+        animation: bottom-to-top-exp .5s forwards;
       }
     }
   }
@@ -283,7 +282,7 @@ Fold animation from top to bottom
  */
 .sdc-dropdown {
   .sdc-dropdown__options-list.sdc-dropdown__options-list--animation-init {
-    animation: top-to-bottom 1s forwards;
+    animation: top-to-bottom .5s forwards;
   }
 }
 
@@ -293,7 +292,7 @@ Expend animation from top to bottom
 .sdc-dropdown {
   .sdc-dropdown__options-wrapper--uncollapsed {
     .sdc-dropdown__options-list.sdc-dropdown__options-list--animation-init {
-      animation: top-to-bottom-exp 1s forwards;
+      animation: top-to-bottom-exp .5s forwards;
     }
   }
 }
