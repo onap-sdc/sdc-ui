@@ -5,7 +5,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'sdc-search-bar',
-    templateUrl: './search-bar.component.html'
+    templateUrl: './search-bar.component.html',
+    host: {'class': 'sdc-search-bar'}
 })
 export class SearchBarComponent {
 
