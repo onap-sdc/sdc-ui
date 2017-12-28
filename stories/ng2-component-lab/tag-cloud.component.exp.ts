@@ -6,8 +6,8 @@ import {experimentOn} from '@islavi/ng2-component-lab';
 export default experimentOn('Tag Cloud').group('Tag Cloud', [
     {
         id: 'list',
-        title: 'Simple list',
-        description: 'Simple list',
+        title: 'Simple tag-cloud',
+        description: 'Simple tag-cloud',
         showSource: true,
         template: `
         <sdc-tag-cloud label="Please Enter value" 
@@ -18,7 +18,7 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
     `
     },
     {
-        id: 'unique-list',
+        id: 'unique-tag-cloud',
         title: 'List with unique validation',
         description: 'List with unique validation',
         showSource: true,
@@ -33,9 +33,9 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
     `
     },
     {
-        id: 'disabled-list',
-        title: 'Disabled list',
-        description: 'When the parameter isViewOnly = true, the list control is disabled',
+        id: 'disabled-tag-cloud',
+        title: 'Disabled tag-cloud',
+        description: 'When the parameter isViewOnly = true, the tag-cloud control is disabled',
         showSource: true,
         template: `
         <sdc-tag-cloud label="Please Enter value" 
@@ -47,9 +47,9 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
     `
     },
     {
-        id: 'list-with-disabled-items',
+        id: 'tag-cloud-with-disabled-items',
         title: 'List with some readonly items',
-        description: 'The parameter isViewOnly can get an array of indexes of list items.',
+        description: 'The parameter isViewOnly can get an array of indexes of tag-cloud items.',
         showSource: true,
         template: `
         <sdc-tag-cloud label="Please Enter value" 

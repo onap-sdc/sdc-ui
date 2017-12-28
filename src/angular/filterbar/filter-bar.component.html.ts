@@ -1,3 +1,4 @@
+export default `
 <div class="search-bar-container">
     <sdc-input class="search-bar-input"
                [label]="label"
@@ -26,3 +27,4 @@
         </svg>
     </span>
 </div>
+`;
