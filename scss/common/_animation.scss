@@ -59,21 +59,24 @@ Enable to expend a folded block element
     opacity: 1;
   }
   to {
-    transform: scale(3,3);
+    transform: scale(2,2);
     opacity: 0;
   }
 }
 
+.sdc-ripple-click__animated {
+  position:relative;
+}
 .sdc-ripple-click__animated::before{
   display: inline-block;
   position:absolute;
+  top:0;
   content: '';
   animation: ripple-animation .3s ease-out; 
-  background-color: #009fdb;
+  background-color: $blue;
   width:14px;
   height:14px;
   border-radius: 50%;
-  z-index: 1;
   pointer-events: none;
   opacity:0;
 }

@@ -4,6 +4,10 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 import { SearchFilterPipe } from './pipes/search-filter-pipe';
 
+const action = (e): void => {
+    console.log("The search query was changed to: ", e);
+};
+
 export default experimentOn('Filter Bar').group('FilterBar', [
     {
         id: 'filterBar',
@@ -11,12 +15,20 @@ export default experimentOn('Filter Bar').group('FilterBar', [
         description: `
             The filter bar component text is updated (after debounce time,
             default 200 miliseconds) while user write something.
+            In this example the event on search query changed: 
+            const action = (e): void => {
+                console.log("The search query was changed to: ", e);
+            };
         `,
+        context: {
+            onChange: action
+        },
         showSource: true,
         template: `
             <sdc-filter-bar placeholder="filter text"
                             label="filter example:"
-                            [(searchQuery)]="searchText">
+                            [(searchQuery)]="searchText"
+                            (searchQueryChange)="onChange($event)">
             </sdc-filter-bar>
             <br>
             Text to search: {{searchText}}
