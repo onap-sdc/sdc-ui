@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-autocomplete-container">
     <sdc-filter-bar
         [placeholder]="placeholder"
@@ -10,3 +11,4 @@
         (click)="onItemSelected(item)">{{item.value}}</li>
     </ul>
 </div>
+`;
