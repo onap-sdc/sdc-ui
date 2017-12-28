@@ -5,10 +5,9 @@ import {Component, Input} from '@angular/core';
 
 @Component({
     selector: "sdc-tile-header",
-    template: '<div class=""><ng-content></ng-content></div>',
+    template: '<ng-content></ng-content>',
     host: {'class':'sdc-tile-header'}
 })
 
 export class TileHeaderComponent {
-    constructor() {}
 }
