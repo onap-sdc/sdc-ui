@@ -1,7 +1,7 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 import {IconPosition} from  '../../src/angular/buttons/button.component';
-const buttonTypes = ['primary', 'white', 'link'];
-const buttonSizes = ['large', 'medium', 'small', 'default'];
+const buttonTypes = ['primary', 'secondary', 'link'];
+const buttonSizes = ['large', 'medium', 'small', 'x-small', 'default'];
 const experiment = experimentOn('Button');
 
 experiment.group("Default button", [
@@ -92,7 +92,7 @@ experiment.group("Buttons with icons", [
             
             <sdc-button
                 text="Sample button"
-                 type="white"
+                 type="secondary"
                 (click)="buttonClicked()"
                 icon_name="arrow_line_left"
                 >
@@ -100,7 +100,7 @@ experiment.group("Buttons with icons", [
             
             <sdc-button
                 text="Sample button"
-                type="white"
+                type="secondary"
                 (click)="buttonClicked()"
                 icon_name="arrow_line_right"
               >

@@ -6,13 +6,13 @@ export default `
         [ngClass]="{'error': control.invalid, 'disabled':disabled}"
         type="text"
         [name]="name"
+        [placeholder]="placeHolder"
         [(ngModel)]="value"
-        (change)="onValueChange()"
         [maxlength]="maxLength"
         [minlength]="minLength"
         [pattern]="pattern"
         [formControl]="control"
-        [disabled]=disabled
+        [attr.disabled]="disabled ? 'disabled' : null"
     />
 </div>
 `;

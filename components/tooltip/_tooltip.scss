@@ -1,61 +1,120 @@
+/* Tooltip animation */
+@keyframes animation-fade-in-from-bottom {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 /* Tooltop styles */
 
 .sdc-tooltip {
-    max-width: 200px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 8px;
+    @include base-font-regular;
+    font-size: 12px;
+    max-width: 223px;
+    background-color: $rich-black;
+    color: $white;
+    text-align: left;
+    border-radius: 2px;
+    padding: 5px 11px;
     position: absolute;
     z-index: 1000;
     display: block;
     opacity: 0;
-    /*    -webkit-transition: opacity 300ms;
-        -moz-transition: opacity 300ms;
-        -o-transition: opacity 300ms;*/
-    //transition: opacity 300ms;
-    animation: animation-fade-in-from-bottom 1s ease-out;
+    transition: opacity 300ms;
+    border: solid 1px $rich-black;
+    animation: animation-fade-in-from-bottom .75s ease-in-out; /* tooltip animation */
 }
 
 .sdc-tooltip-show {
-    opacity: 1;
+  opacity: 1;
 }
 
 .sdc-tooltip::after {
-    content: "";
-    position: absolute;
-    border-style: solid;
+  content: "";
+  position: absolute;
+  border-style: solid;
 }
 
 .sdc-tooltip-top::after {
     top: 100%;
-    left: 50%;
+    left: 8px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: black transparent transparent transparent;
+    border-color: $rich-black transparent transparent transparent;
+}
+.sdc-tooltip-top-right__bottom::after {
+  right: 8px;
+  left:auto;
+}
+.sdc-tooltip-top-center__middle::after {
+  left: 50%;
 }
 
 .sdc-tooltip-bottom::after {
     bottom: 100%;
-    left: 50%;
+    left: 8px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: transparent transparent black transparent;
+    border-color: transparent transparent $rich-black transparent;
+}
+.sdc-tooltip-bottom-right__bottom::after {
+  right: 8px;
+  left:auto;
+}
+.sdc-tooltip-bottom-center__middle::after {
+  left: 50%;
 }
 
 .sdc-tooltip-left::after {
-    top: 50%;
+    top: 8px; /*50%;*/
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent transparent transparent black;
+    border-color: transparent transparent transparent $rich-black;
+}
+.sdc-tooltip-left-right__bottom::after {
+  bottom: 8px;
+  top: auto;
+}
+.sdc-tooltip-left-center__middle::after {
+  top: 50%
 }
 
 .sdc-tooltip-right::after {
-    top: 50%;
+    top: 8px; /*50%;*/
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent black transparent transparent;
+    border-color: transparent $rich-black transparent transparent;
 }
+.sdc-tooltip-right-right__bottom::after {
+  bottom: 8px;
+  top: auto;
+}
+.sdc-tooltip-right-center__middle::after {
+  top: 50%
+}
+
+/* Tooltip template */
+.sdc-tooltip-template-title {
+    @include base-font-regular;
+    font-size: 12px;
+    font-weight: normal;
+    background-color: $rich-black; /* rich-black */
+    color: $white; /* tlv-light-gray */
+}
+
+.sdc-tooltip-template-content {
+    @include base-font-regular;
+    font-size: 12px;
+    font-weight: normal;
+    background-color: $rich-black;
+    color: $white;
+}
+
+@import 'custom_tooltip';
