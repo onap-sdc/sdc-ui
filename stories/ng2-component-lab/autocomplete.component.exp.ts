@@ -3,7 +3,7 @@
  */
 import {experimentOn} from '@islavi/ng2-component-lab';
 
-export default experimentOn('Autocomplete').group('Autocomlete',
+export default experimentOn('Autocomplete').group('Autocomplete',
 [
     {
         id: 'simpleAutocomplete',
@@ -59,7 +59,7 @@ export default experimentOn('Autocomplete').group('Autocomlete',
     {
         id: 'complexAutocompleteWithBeData',
         title: 'Complex autocomplete data from server',
-        description: 'Example of auto complete with complex data from server',
+        description: 'Example of auto complete with complex data from server. (In this example the data is not really filtered, because it is from mock data)',
         showSource: true,
         context: {
             showSelectedItem: ((value: string) => {
@@ -70,7 +70,7 @@ export default experimentOn('Autocomplete').group('Autocomlete',
         <sdc-autocomplete
             placeholder="search text"
             label="search by color:"
-            [dataUrl]="httpaaasomeurl"
+            dataUrl="../../../stories/ng2-component-lab/utils/mock.json"
             [dataSchema]="{key: 'id', value: 'color'}"
             (itemSelected)="showSelectedItem($event)"
             >

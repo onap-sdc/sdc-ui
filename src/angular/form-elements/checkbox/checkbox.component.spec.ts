@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { CheckboxComponent } from "./checkbox.component";
+import { AnimationDirectivesModule } from "../../animations/animation-directives.module";
 import { FormsModule } from "@angular/forms";
 
 
@@ -11,7 +12,8 @@ describe("Test", ()=>{
                 CheckboxComponent
             ],
             imports:[
-                FormsModule
+                FormsModule,
+                AnimationDirectivesModule
             ]
         }).compileComponents();
         const fixture = TestBed.createComponent(CheckboxComponent);
