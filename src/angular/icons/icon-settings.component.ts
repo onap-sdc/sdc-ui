@@ -24,4 +24,5 @@ export class IconSettingsComponent{
     @Input() position : string;
     @Input() iconNames : string[] = Object.keys(Icons);
     @Input() selectedIcon : string;
+    @Input() disabled : boolean;
 }

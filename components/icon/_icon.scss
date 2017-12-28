@@ -1,7 +1,9 @@
 @mixin color-icon($primary-color, $secondary-color) {
     color: $primary-color;
     fill: $primary-color;
-
+    span{
+        color: $primary-color;
+    }
     &:not([disabled]):hover, &:active, &:focus {
         &.clickable {
             color: $secondary-color;

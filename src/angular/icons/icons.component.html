@@ -7,7 +7,7 @@
                                              '__primary': color == 'primary',
                                              '__positive': color == 'positive',
                                              '__negative': color == 'negative'
-                                           }">
+                                           }" disabled = disabled >
     <div  [innerHtml]="getFontIconCode(this.iconName) | safeHtml"></div>
     <span class ="svg-icon-label">{{ label }}</span>
 </div>

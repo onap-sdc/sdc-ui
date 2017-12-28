@@ -30,9 +30,11 @@ export class IconsComponent{
     @Input() label : string;
     @Input() labelPosition : string;
     @Input() color:string;
+    @Input() disabled: boolean;
 
     public  getFontIconCode(name):string  {
-        const testhtml =  Icons[this.iconName];
-        return testhtml;
+        let iconhtml;
+        Icons[this.iconName] ? iconhtml =  Icons[this.iconName] : iconhtml ='<span class="svg-icon-missing">Missing Icon</span>';
+        return iconhtml;
     }
 }

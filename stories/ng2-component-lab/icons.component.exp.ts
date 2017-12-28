@@ -21,7 +21,7 @@ experiment.group("icon", [
         },
         template: `
         <sdc-icon-settings [label]="label" [position]="position" [color]="color" [selectedIcon]="icon"  #settings>
-            <sdc-icon [iconName]="settings.selectedIcon" [label]="settings.label" [labelPosition]="settings.position" [color] = "settings.color"></sdc-icon>
+            <sdc-icon [iconName]="settings.selectedIcon" [label]="settings.label" [labelPosition]="settings.position" [color] = "settings.color" [disabled]="settings.disabled" ></sdc-icon>
         </sdc-icon-settings>
         `
     }
