@@ -8,6 +8,10 @@
 		position: relative;
 		outline: none;
 		margin: 0;
+		width: 14px;
+		height: 14px;
+		-moz-appearance: none;
+		-webkit-appearance: none;
 
 		&:before {
 			content: "";
