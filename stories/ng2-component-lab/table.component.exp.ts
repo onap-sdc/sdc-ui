@@ -6,7 +6,7 @@ import {tableData} from './../../src/angular/table/table-fake-data';
 
 export default experimentOn('Table')
     .group('Table', [
-        {
+        /*{
             id: 'normalTableWithFilters',
             context: {
                 data: [].concat(tableData)
@@ -24,7 +24,7 @@ export default experimentOn('Table')
             </sdc-table-body>
           </sdc-table>
         `
-        },{
+        },*/{
         id: 'normalTable',
         context: {
             data: [].concat(tableData)
