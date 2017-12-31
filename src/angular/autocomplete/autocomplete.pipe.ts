@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { IDataSchema } from './autocomplete.component';
 
 @Pipe ({
-    name: 'PipeAutocomplete',
+    name: 'AutocompletePipe',
 })
 export class AutocompletePipe implements PipeTransform {
     public transform(data: IDataSchema[], text: string) {

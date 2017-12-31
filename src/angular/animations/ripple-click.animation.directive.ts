@@ -1,7 +1,7 @@
 /**
  * Created by ng689e on 12/21/2017.
  */
-import {Directive} from "@angular/core";
+import {Directive, Input} from "@angular/core";
 
 @Directive({
     selector: `[ripple-click-animation]`,
@@ -13,10 +13,13 @@ import {Directive} from "@angular/core";
 })
 export class RippleClickAnimationDirective {
 
+    @Input() rippleClickDisabled:boolean = false;
     private animated:boolean = false;
 
     private onClickEvent = ():void => {
-        this.animated = true;
+        if(!this.rippleClickDisabled) {
+            this.animated = true;
+        }
     }
     private onAnimationComplete = (): void => {
         this.animated = false;

@@ -3,7 +3,7 @@ $padding-for-sub-level: 28px;
 .checkbox-item{
   margin: $space-lines 0;
  .sdc-checkbox__label{
-    @extend .body-2-semibold;
+    @include body-2-emphasis;
   }
   .semi-checked{
     .sdc-checkbox__input:before{
@@ -15,7 +15,7 @@ $padding-for-sub-level: 28px;
   padding-left: $padding-for-sub-level;
   .checkbox-item{
     .sdc-checkbox__label{
-      @extend .body-2;
+      @include body-2;
     }
   }
 }
