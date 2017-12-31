@@ -19,7 +19,7 @@ let examples = {
 	},
 	'Basic popup menu (relative)': {
 		jsx: <div className='sdc-popup-menu'>
-				<PopupMenu onMenuItemClick={()=> {}} position={{offsetX:10, offsetY:10}} relative>
+				<PopupMenu onMenuItemClick={()=> {}} position={{x: 10, y: 10}} relative>
 					<PopupMenuItem itemId='1' value='item 1 (selected)' selected/>
 					<PopupMenuItem itemId='2' value='item 2' disabled/>
 					<PopupMenu.Separator />

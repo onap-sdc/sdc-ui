@@ -1,13 +1,16 @@
 .sdc-menu-list {
-    position: fixed;
+    position: static;
 
     @include box-sizing;
     @include box-shadow(0 2px 4px 0 rgba($black, 0.3));
+    @include border-radius(2px);
     border: 1px solid $light-gray;
     border-top: solid 3px $blue;
-    border-radius: 2px;
     background: $white;
-    width: 150px;
+    min-width: 150px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
 
     .sdc-menu-item:not(.separator) {
         @include body-1;
@@ -55,10 +58,6 @@
 
     &.relative {
         position: relative;
-    }
-
-    &.static {
-        position: static;
     }
 
     .separator {

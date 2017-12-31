@@ -4,9 +4,9 @@ import {PopupMenuListComponent} from "./popup-menu-list.component";
 @Component({
     selector: 'popup-menu-item',
     template:
-        `<div [ngClass]="[className || '', type || '', type == 'separator'? '': 'sdc-menu-item']" (click)="performAction($event)">
+        `<li [ngClass]="[className || '', type || '', type == 'separator'? '': 'sdc-menu-item']" (click)="performAction($event)">
     <ng-content *ngIf="type != 'separator'"></ng-content>
-</div>`
+</li>`
 })
 export class PopupMenuItemComponent {
     @Input() public className: string;
