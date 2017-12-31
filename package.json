@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "1.6.13",
+  "version": "1.6.15",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "scripts": {
     "test": "npm run build-icons && jest && npm run karma-travis",
