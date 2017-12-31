@@ -6,6 +6,7 @@ import {SearchWithAutoCompleteComponent} from "./autocomplete.component";
 import {CommonModule} from "@angular/common";
 import {FilterBarModule} from "../filterbar/filter-bar.module";
 import {AutocompletePipe} from "./autocomplete.pipe";
+import {HttpModule} from '@angular/http';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import {AutocompletePipe} from "./autocomplete.pipe";
     ],
     imports: [
         FilterBarModule,
-        CommonModule
+        CommonModule,
+        HttpModule
     ],
     exports: [
         SearchWithAutoCompleteComponent
