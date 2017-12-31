@@ -13,6 +13,7 @@ import Form from './Form.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
 import Modals from './Modal.stories.js';
+import PopupMenu from './PopupMenu.stories.js';
 
 storiesOf('Colors', module)
 	.add('Color Palette', () => <Colors />);
@@ -31,6 +32,9 @@ storiesOf('Input Fields', module)
 
 storiesOf('Icons', module)
 	.add('SVG Icons', () => <Icons />);
+
+storiesOf('Menu', module)
+	.add('Popup Menu', () => <PopupMenu />);
 
 storiesOf('Radios', module)
 	.add('Radio Buttons', () => <Radios />)
