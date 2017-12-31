@@ -45,7 +45,7 @@ import {IconsModule} from "../../src/angular/icons/icons.module";
         TooltipModule,
         PopupMenuModule,
         InfiniteScrollModule,
-        IconsModule
+        IconsModule,
         AutoCompleteModule
     ],
     entryComponents: [ModalInnerContent],
@@ -68,7 +68,7 @@ import {IconsModule} from "../../src/angular/icons/icons.module";
         PopupMenuModule,
         InfiniteScrollModule,
         ModalConsumer,
-        IconsModule
+        IconsModule,
         SearchFilterPipe
     ],
     providers: [KeysPipe]

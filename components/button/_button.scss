@@ -1,33 +1,7 @@
-@mixin default-button($primary, $hover, $active, $active-border, $border: $active, $hover-border: $border, $text: $white) {
-  color: $text;
-  border-color: $border;
-  background-color: $primary;
-  font-size: $body-font-1;
-  display: inline-block;
-  box-sizing: border-box;
-  @include base-font-regular;
-  &:not([disabled]) {
-    &:hover{
-      border-color: $hover-border;
-      background-color: $hover-blue;
-    }
-    &:focus{
-      background-color: $hover-blue;
-      box-shadow: inset 0 0 1px 1px #ffffff;
-      border: 1px solid #1eb9f3;
-      border-radius: 2px;
-    }
-  }
-}
-
-@mixin outline-button($color) {
-  background-color: transparent;
-  color: $color;
-  border-color: $color;
-  font-size: $body-font-1;
 .sdc-button {
   @include box-sizing;
   display: inline-block;
+
   outline: none;
   border-radius: 2px;
   padding: 0 12px;
@@ -152,5 +126,4 @@
     vertical-align: middle;
   }
 }
-
 
