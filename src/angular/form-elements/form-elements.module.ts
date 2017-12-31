@@ -5,13 +5,17 @@ import {DropDownComponent} from "./dropdown/dropdown.component";
 import {CommonModule} from "@angular/common";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
+import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
+import {TagItemComponent} from "./tag-cloud/tag-item/tag-item.component";
+import {TagCloudComponent} from "./tag-cloud/tag-cloud.component";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AnimationDirectivesModule
     ],
 
     declarations: [
@@ -19,7 +23,8 @@ import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
         InputComponent,
         CheckboxComponent,
         RadioGroupComponent,
-        CheckboxComponent,
+        TagItemComponent,
+        TagCloudComponent,
         DropDownTriggerDirective
     ],
     exports: [
@@ -27,7 +32,8 @@ import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
         DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent,
-        RadioGroupComponent
+        RadioGroupComponent,
+        TagCloudComponent
     ]
 })
 export class FormElementsModule {

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import template from "./tile-footer.component.html";
 
 @Component({
     selector:'sdc-tile-footer',
-    template: template
+    template: '<ng-content></ng-content>',
+    host: {'class': 'sdc-tile-footer'}
 })
 
 export class TileFooterComponent {

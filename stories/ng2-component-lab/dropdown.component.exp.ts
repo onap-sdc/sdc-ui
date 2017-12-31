@@ -64,6 +64,26 @@ const options2: IDropDownOption[] = [
         label: 'Fifth Option',
         value: 'fifthOption',
         type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Ruler',
+        value: 'ruler',
+        type: DropDownOptionType.HorizontalLine
+    },
+    {
+        label: 'Third Option',
+        value: 'thirdOption',
+        type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Forth Option',
+        value: 'forthOption',
+        type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Fifth Option',
+        value: 'fifthOption',
+        type: DropDownOptionType.Simple
     }
 ];
 
@@ -74,12 +94,17 @@ export default experimentOn('DropDown')
             showSource: true,
             context: {
                 options: options1,
-                onChange: function(option){console.log("Something was changed!", option.value)}
+                selectedOption:null,
+                onChange: function(option){
+                    console.log("Something was changed!", option.value);
+                    this.selectedOption = option.value;
+                }
             },
             title: 'Normal dropDown',
             description: 'Normal dropDown',
             template: `
       <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
+      <div style="margin: 10px 0 30px 0px; font-size:18px">Selected option:<strong style="font-weight: 900"> {{selectedOption}}</strong></div>
     `
         }, {
             id: 'groupDropDown',
@@ -115,7 +140,7 @@ export default experimentOn('DropDown')
             description: 'Headless and labeless DropDown',
             template: `
             <div style="margin-bottom: 10px;">
-                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.value }}</span>
+                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.selectedOption?.value }}</span>
             </div>
             <sdc-dropdown [options]="options" #dropDown1></sdc-dropdown>`
         },

@@ -1,8 +1,4 @@
-import {Directive, ElementRef, HostListener, Input, Renderer, TemplateRef} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/debounceTime";
+import {Directive, ElementRef, HostListener, OnInit, Input, Renderer, TemplateRef} from '@angular/core';
 import {TooltipTemplateComponent} from './tooltip-template.component';
 import {CreateDynamicComponentService} from '../utils/create-dynamic-component.service';
 
@@ -10,37 +6,52 @@ const pixel = 'px';
 const leftStyle = 'left';
 const topStyle = 'top';
 const showSuffix = 'show';
+const rightBottomSuffix = 'right__bottom';
+const centerMiddleSuffix = 'center__middle';
 
 @Directive({
     selector: '[sdc-tooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnInit {
 
     @Input('tooltip-text') public text = 'tooltip';
     @Input('tooltip-placement') public placement: TooltipPlacement = TooltipPlacement.Top;
     @Input('tooltip-css-class') public customCssClass: string;
     @Input('tooltip-template') public template: TemplateRef<any>;
+    @Input('tooltip-arrow-offset') public arrowOffset: number = 10;
+    @Input('tooltip-arrow-placement') public arrowPlacement: ArrowPlacement = ArrowPlacement.LeftTop;
+    @Input('tooltip-offset') public tooltipOffset: number = 3;
+
 
     private cssClass: string = 'sdc-tooltip'; // default css class
     private tooltip: any; // tooltip html element
     private elemPosition: any;
-    private tooltipOffset: number = 8;
     private tooltipTemplateContainer: any;
+
+    private scrollEventHandler = function(){};
 
     constructor(
         private elementRef: ElementRef,
         private service: CreateDynamicComponentService,
         private renderer: Renderer) {
+
+        this.elementRef.nativeElement.title = "";
     }
 
     @HostListener('mouseenter')
     public onMouseEnter() {
         this.show();
+        this.activateScrollEvent();
     }
 
     @HostListener('mouseleave')
     public onMouseLeave() {
         this.hide();
+        this.deactivateScrollEvent();
+    }
+
+    ngOnInit(): void {
+        this.initScrollEvent();
     }
 
     private get ScreenWidth() {
@@ -52,7 +63,7 @@ export class TooltipDirective {
     }
 
     private create() {
-            this.tooltipTemplateContainer = this.service.createComponentDynamically(TooltipTemplateComponent);
+            this.tooltipTemplateContainer = this.service.createComponentDynamically(TooltipTemplateComponent, document.body);
 
             /**
              * Creating a view (injecting our template) from template in our component.
@@ -62,15 +73,11 @@ export class TooltipDirective {
 
             if (this.template) {
                 this.tooltipTemplateContainer.instance.container.createEmbeddedView(this.template);
-            }else {
+            } else {
                 this.tooltip.textContent = this.text ? this.text : 'tooltip';
             }
 
-            this.renderer.setElementClass(this.tooltip, this.cssClass, true);
-
-            if (this.customCssClass) {
-                this.renderer.setElementClass(this.tooltip, this.customCssClass, true);
-            }
+            this.setCssClass(true);
     }
 
     private destroy() {
@@ -80,9 +87,16 @@ export class TooltipDirective {
 
     private show() {
         this.create();
-        this.setPosition();
 
-        this.toggleShowCssClass(true); // add css class
+        /**
+         *  View is ready (AfterViewInit event in template component)
+         */
+        this.tooltipTemplateContainer.instance.viewReady.subscribe((isReady)=>{
+           if(isReady){
+               this.setPosition();
+               this.toggleShowCssClass(true); // add css class
+           }
+        });
     }
 
     private hide() {
@@ -93,7 +107,7 @@ export class TooltipDirective {
 
     private toggleShowCssClass(isAdd: boolean) {
         if (this.tooltip) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + showSuffix, isAdd);
+            this.setCssClass(isAdd, '-' + showSuffix);
         }
     }
 
@@ -104,10 +118,29 @@ export class TooltipDirective {
         const tooltipPos: IPlacementData = this.getPlacementData();
 
         const placementSuffix: string = TooltipPlacement[tooltipPos.placement].toLowerCase();
-        this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix, true);
+
+        this.setCssClass(true, '-' + placementSuffix);
+
+        this.setAdditionalCssClass(placementSuffix);
 
         this.renderer.setElementStyle(this.tooltip, topStyle, tooltipPos.top + pixel);
         this.renderer.setElementStyle(this.tooltip, leftStyle, tooltipPos.left + pixel);
+    }
+
+    private setAdditionalCssClass(placementSuffix: string) {
+        if (this.arrowPlacement == ArrowPlacement.RightBottom) {
+            this.setCssClass(true, '-' + placementSuffix + '-' + rightBottomSuffix);
+        } else if (this.arrowPlacement == ArrowPlacement.CenterMiddle) {
+            this.setCssClass(true, '-' + placementSuffix + '-' + centerMiddleSuffix);
+        }
+    }
+
+    private setCssClass(isAdd: boolean, suffix: string = '') {
+        this.renderer.setElementClass(this.tooltip, this.cssClass + suffix, isAdd);
+
+        if (this.customCssClass) {
+            this.renderer.setElementClass(this.tooltip, this.customCssClass + suffix, isAdd);
+        }
     }
 
     /**
@@ -185,9 +218,11 @@ export class TooltipDirective {
             pageYOffset: window.pageYOffset,
             tooltipHeight: this.tooltip.offsetHeight, // .clientHeight,
             tooltipOffset: this.tooltipOffset,
-            tooltipWidth: this.tooltip.offsetWidth
+            tooltipWidth: this.tooltip.offsetWidth,
+            arrowOffset: this.arrowOffset
         };
     }
+
 
     /**
      * Returns tooltip position data
@@ -195,6 +230,23 @@ export class TooltipDirective {
      * @returns {IPlacementData}
      */
     private getPosition(placement: TooltipPlacement): IPlacementData {
+        switch(this.arrowPlacement) {
+            case ArrowPlacement.LeftTop:
+                return this.getLeftTopPosition(placement);
+
+            case ArrowPlacement.RightBottom:
+                return this.getRightBottomPosition(placement);
+        }
+
+        return this.getCenterMiddlePosition(placement);
+    }
+
+    /**
+     * Returns tooltip position data (center / middle arrow)
+     * @param {TooltipPlacement} placement (left, top, right, bottom)
+     * @returns {IPlacementData}
+     */
+    private getCenterMiddlePosition(placement: TooltipPlacement): IPlacementData {
         let left: number = 0;
         let top: number = 0;
 
@@ -226,9 +278,93 @@ export class TooltipDirective {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
+    }
 
+    /**
+     * Returns tooltip position data (left / top arrow)
+     * @param {TooltipPlacement} placement (left, top, right, bottom)
+     * @returns {IPlacementData}
+     */
+    private getLeftTopPosition(placement: TooltipPlacement): IPlacementData {
+        let left: number = 0;
+        let top: number = 0;
+
+        const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
+        switch (placement) {
+            case TooltipPlacement.Left:
+                left = inputPos.elemLeft - inputPos.tooltipWidth - inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Right:
+                left = inputPos.elemLeft + inputPos.elemWidth + inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Top:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset - inputPos.tooltipHeight - inputPos.tooltipOffset;
+                break;
+
+            case TooltipPlacement.Bottom:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight + inputPos.tooltipOffset;
+                break;
+        }
+
+        return <IPlacementData> {
+            height: inputPos.tooltipHeight,
+            left,
+            placement,
+            top,
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
+        };
+    }
+
+    /**
+     * Returns tooltip position data (right / bottom arrow)
+     * @param {TooltipPlacement} placement (left, top, right, bottom)
+     * @returns {IPlacementData}
+     */
+    private getRightBottomPosition(placement: TooltipPlacement): IPlacementData {
+        let left: number = 0;
+        let top: number = 0;
+
+        const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
+        switch (placement) {
+            case TooltipPlacement.Left:
+                left = inputPos.elemLeft - inputPos.tooltipWidth - inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.tooltipHeight + inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Right:
+                left = inputPos.elemLeft + inputPos.elemWidth + inputPos.tooltipOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight / 2 - inputPos.tooltipHeight + inputPos.arrowOffset;
+                break;
+
+            case TooltipPlacement.Top:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.tooltipWidth + inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset - inputPos.tooltipHeight - inputPos.tooltipOffset;
+                break;
+
+            case TooltipPlacement.Bottom:
+                left = inputPos.elemLeft + inputPos.elemWidth / 2 - inputPos.tooltipWidth + inputPos.arrowOffset;
+                top = inputPos.elemTop + inputPos.pageYOffset + inputPos.elemHeight + inputPos.tooltipOffset;
+                break;
+        }
+
+        return <IPlacementData> {
+            height: inputPos.tooltipHeight,
+            left,
+            placement,
+            top,
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
+        };
     }
 
     /**
@@ -241,11 +377,48 @@ export class TooltipDirective {
             return false;
         }
 
-        if (pos.top < 0 || pos.top + pos.height - 1 > this.ScreenHeight) {
+        if (pos.top - pos.pageYOffset < 0 || pos.top - pos.pageYOffset + pos.height - 1 > this.ScreenHeight) {
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * Scrolling
+     */
+
+    private debounce(func:Function, wait:number, immediate?:boolean){
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    private initScrollEvent() {
+        this.scrollEventHandler = this.debounce(()=>{
+            try {
+                this.setPosition();
+            } catch(e) {
+
+            }
+        },10);
+    }
+
+    private activateScrollEvent() {
+        window.addEventListener('scroll',this.scrollEventHandler , true);
+    }
+
+    private deactivateScrollEvent() {
+        window.removeEventListener('scroll',this.scrollEventHandler , true);
     }
 }
 
@@ -254,6 +427,12 @@ export enum TooltipPlacement {
     Right,
     Top,
     Bottom
+}
+
+export enum ArrowPlacement {
+    CenterMiddle,
+    LeftTop,
+    RightBottom
 }
 
 interface ITooltipPositionParams {
@@ -265,6 +444,7 @@ interface ITooltipPositionParams {
     tooltipHeight: number;
     tooltipOffset: number;
     pageYOffset: number;
+    arrowOffset: number;
 }
 
 interface IPlacementData {
@@ -272,5 +452,6 @@ interface IPlacementData {
     top: number;
     width: number;
     height: number;
+    pageYOffset: number;
     placement?: TooltipPlacement;
 }

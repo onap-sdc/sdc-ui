@@ -5,30 +5,49 @@
     border-style: solid;
     border-width: 1px;
     border-color: $light-gray;
+    border-top: solid 3px $blue;
     box-sizing: border-box;
     background-color: $white;
-    width: 91px;
-    padding: 6px 0;
-    @include box-shadow(0px 2px 2px 0px rgba($text-black, 0.1));
+    width: 150px;
+    border-radius: 2px;
+    @include box-shadow(0px 2px 4px 0px rgba($black, 0.3));
 
     .sdc-menu-item {
-        font-size: 14px;
-        line-height: 14px;
+        @include body-1;
+        line-height: 29px;
         color: $dark-gray;
-        padding: 3px 6px;
+        g, path{
+            fill: $dark-gray;
+        }
+        padding: 0 12px;
 
         &:hover {
             cursor: pointer;
-            background-color: $light-blue;
+            background-color: $tlv-hover;
+            color: $hover-blue;
+            g, path{
+                fill: $hover-blue;
+            }
         }
 
         &.disabled {
             cursor: default;
             color: $gray;
+            g, path{
+                fill: $light-gray;
+            }
 
             &:hover {
                 cursor: default;
                 background-color: inherit;
+            }
+        }
+
+        &.selected {
+            background-color: $background-gray;
+            color: $text-black;
+            g, path{
+                fill: $text-black;
             }
         }
 

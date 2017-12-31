@@ -245,6 +245,6 @@
 }
 
 .svg-icon-missing {
-    @extend .body-2;
-    color: $red;
+    @include body-2;
+    @include font-error;
 }

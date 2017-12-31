@@ -22,7 +22,8 @@ export interface IModalButtonComponent extends IButtonComponent{
 export enum ModalType {
     alert = "alert",
     error ="error",
-    standard = "info"
+    standard = "info",
+    custom = "custom"
 }
 
 export enum ModalSize {

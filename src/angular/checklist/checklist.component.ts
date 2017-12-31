@@ -1,7 +1,7 @@
 /**
  * Created by rc2122 on 11/2/2017.
  */
-import {Component, EventEmitter, Input, Output, ViewChild} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {ChecklistModel} from "./models/Checklist";
 import {ChecklistItemModel} from "./models/ChecklistItem";
 import template from "./checklist.component.html";
@@ -45,5 +45,9 @@ export class ChecklistComponent  {
             this.checkboxCheckedChange(parentCheckbox, this.checklistModel, true);
         }
         this.checkedChange.emit(updatedCheckbox);
+    }
+
+    private hasCheckedChild(currentCheckbox: Element): boolean {
+        return !!currentCheckbox.querySelector(".sdc-checkbox__input:checked");
     }
 }

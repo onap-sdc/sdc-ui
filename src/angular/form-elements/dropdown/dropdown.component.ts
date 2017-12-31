@@ -1,12 +1,13 @@
 import {
     Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit,
-    ElementRef, ViewChild
+    ElementRef, ViewChild, AfterViewInit
 } from '@angular/core'
 
 import {
      IDropDownOption,
     DropDownOptionType
 } from "./dropdown-models";
+
 
 @Component({
     selector: 'sdc-dropdown',
@@ -15,7 +16,7 @@ import {
         '(document:click)': 'onClickOutside($event)',
     }
 })
-export class DropDownComponent implements OnChanges, OnInit {
+export class DropDownComponent implements OnChanges, OnInit{
 
     /**
      * Drop-down value changed event emitter
@@ -95,6 +96,8 @@ export class DropDownComponent implements OnChanges, OnInit {
      */
     public isGroupDesign = false;
 
+    public animation_init = false;
+
 
     ngOnInit(): void {
         if(this.options){
@@ -157,21 +160,14 @@ export class DropDownComponent implements OnChanges, OnInit {
     /**
      * Get the label of the selected option
      */
-    public getSelectedLabel(): string{
-       return this.selectedOption && this.getOptionLabel(this.selectedOption) || null;
-
-    }
-
-    public getOptionLabel(option: IDropDownOption){
-        return option.label || String(option.value);
-    }
+    public bottomVisible = true;
 
     public isBottomVisible(){
         const windowPos = window.innerHeight + window.pageYOffset;
-        const dropDownPos = this.dropDownWrapper.nativeElement.offsetTop
-            + this.dropDownWrapper.nativeElement.offsetHeight
+        const boundingRect = this.dropDownWrapper.nativeElement.getBoundingClientRect();
+        const dropDownPos = boundingRect.top
+            + boundingRect.height
             + this.maxHeight;
-
         return windowPos > dropDownPos;
     }
 
@@ -179,6 +175,11 @@ export class DropDownComponent implements OnChanges, OnInit {
      * Toggle show/hide drop-down list
      */
     public toggleDropdown(){
+        if(this.disabled){
+            return;
+        }
+        this.animation_init = true;
+        this.bottomVisible = this.isBottomVisible();
         if(!this.disabled){
             this.show = !this.show;
         }
@@ -192,6 +193,7 @@ export class DropDownComponent implements OnChanges, OnInit {
             && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')){
             this.show = false;
         }
+        console.log("Target", event.target, event.target.classList.contains('js-sdc-dropdown--toggle-hook'));
     }
 
 }
