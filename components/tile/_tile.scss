@@ -3,10 +3,7 @@
 	$tile-full-height: 204px;
 	$tile-padding: 10px;
 
-	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
-	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
-
-	$header-height: 10px;
+	$header-height: $body-font-1;
 	$footer-height: 23px;
 	$content-height: 100%;
 
@@ -30,7 +27,7 @@
 	color: $text-black;
 	fill: $dark-gray;
 	transition: box-shadow 0.3s ease-in-out;
-	@extend .body-3;
+	@include body-3;
 	@include box-shadow(0 1px 4px 0 rgba($text-black, 0.06));
 
 	&:hover {
@@ -58,12 +55,12 @@
 	}
 
 	.sdc-tile-header {
-		height: $body-font-1;
-		line-height: $header-height;
+		height: 1.1em;
+		line-height: 1em;
 		@include ellipsis($display: block);
 
 		font-size: $body-font-1;
-		@extend .text-uppercase;
+		text-transform: uppercase;
 	}
 
 	.sdc-tile-content {
@@ -71,7 +68,6 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
-		margin-bottom: -4px;
 
 		.sdc-tile-content-icon {
 			margin-top: 27px;
@@ -101,7 +97,7 @@
 			flex-direction: column;
 
 			.sdc-tile-info-line {
-				@extend .text-capitalize;
+				text-transform: capitalize;
 				@include ellipsis($display: flex);
 				align-items: center;
 
@@ -109,6 +105,7 @@
 					height: 1.67em;
 					width: initial;
 					margin-bottom: 5px;
+					margin-top: 1px;
 					padding: 0 8px;
 					font-size: inherit;
 				}
@@ -121,30 +118,30 @@
 					height: 1.6em;
 					line-height: 1.8;
 					color: $text-black;
-					font-weight: 600;
-					@extend .body-1-semibold;
+					@include heading-5;
 				}
 				&.subtitle {
 					height: 1.5em;
 					line-height: 1.6;
 					color: $dark-gray;
 				}
+				&:last-child {
+					margin-bottom: 4px;
+				}
 			}
 		}
 	}
 
 	.sdc-tile-footer {
-		width: $tile-width-less-padding;
 		height: $footer-height;
 		@include box-sizing;
 
 		border-top: 1px solid $tlv-light-gray;
-		margin-top: 7px;
-		padding-top: 9px;
+		padding-top: 8px;
 
 		color: $dark-gray;
 		fill: $dark-gray;
-		@extend .text-capitalize;
+		text-transform: capitalize;
 
 		display: flex;
 		align-items: center;
@@ -161,7 +158,7 @@
 			button {
 				width: initial;
 				height: initial;
-				font-size: $body-font-2;
+				@include body-2;
 
 				.svg-icon-wrapper {
 					.svg-icon-label {

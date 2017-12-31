@@ -2,10 +2,12 @@
  * Created by rc2122 on 11/15/2017.
  */
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import template from "./search-bar.component.html";
 
 @Component({
     selector: 'sdc-search-bar',
-    templateUrl: './search-bar.component.html'
+    template: template,
+    host: {'class': 'sdc-search-bar'}
 })
 export class SearchBarComponent {
 
