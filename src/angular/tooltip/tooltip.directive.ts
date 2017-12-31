@@ -73,7 +73,7 @@ export class TooltipDirective implements OnInit {
 
             if (this.template) {
                 this.tooltipTemplateContainer.instance.container.createEmbeddedView(this.template);
-            }else {
+            } else {
                 this.tooltip.textContent = this.text ? this.text : 'tooltip';
             }
 
@@ -87,9 +87,16 @@ export class TooltipDirective implements OnInit {
 
     private show() {
         this.create();
-        this.setPosition();
 
-        this.toggleShowCssClass(true); // add css class
+        /**
+         *  View is ready (AfterViewInit event in template component)
+         */
+        this.tooltipTemplateContainer.instance.viewReady.subscribe((isReady)=>{
+           if(isReady){
+               this.setPosition();
+               this.toggleShowCssClass(true); // add css class
+           }
+        });
     }
 
     private hide() {
@@ -271,7 +278,8 @@ export class TooltipDirective implements OnInit {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
     }
 
@@ -312,7 +320,8 @@ export class TooltipDirective implements OnInit {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
     }
 
@@ -353,7 +362,8 @@ export class TooltipDirective implements OnInit {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
     }
 
@@ -367,7 +377,7 @@ export class TooltipDirective implements OnInit {
             return false;
         }
 
-        if (pos.top < 0 || pos.top + pos.height - 1 > this.ScreenHeight) {
+        if (pos.top - pos.pageYOffset < 0 || pos.top - pos.pageYOffset + pos.height - 1 > this.ScreenHeight) {
             return false;
         }
 
@@ -442,5 +452,6 @@ interface IPlacementData {
     top: number;
     width: number;
     height: number;
+    pageYOffset: number;
     placement?: TooltipPlacement;
 }
