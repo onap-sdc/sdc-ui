@@ -1,8 +1,7 @@
 import React from 'react';
 import Examples from './utils/Examples.js';
 import Button from '../../src/react/Button.js';
-import {Modal, modalSize}  from '../../src/react/Modal.js';
-
+import Modal  from '../../src/react/Modal.js';
 import Input from '../../src/react/Input.js';
 
 class Example extends React.Component {
@@ -30,13 +29,12 @@ class Example extends React.Component {
 		return (
 			<div>
 				<Button onClick={() => this.setState({show: !show})}>Modal</Button>
-				{show && childrenWithProps}
+				{childrenWithProps}
 			</div>
 		);
 	}
 } 
-
-
+ 
 const ModalBody = () => {
 	return (
 	<div>
@@ -62,7 +60,7 @@ const ModalBody = () => {
 const BODY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
  'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
 
-const isShown = () => {};
+const isShown = false;
 
 let examples = {
 	Standard: {
@@ -70,7 +68,7 @@ let examples = {
 				<Modal show={() => isShown()} size='small'>
 					<Modal.Header><Modal.Title>Standard Modal</Modal.Title></Modal.Header>
 					<Modal.Body>
-						Do you want to continue?
+						{BODY_TEXT}
 					</Modal.Body>
 					<Modal.Footer actionButtonText='Yes' actionButtonClick={()=>{}}/>
 				</Modal>
@@ -85,7 +83,7 @@ let examples = {
 					<Modal.Body>
 						{BODY_TEXT}	
 					</Modal.Body>
-					<Modal.Footer/>
+					<Modal.Footer closeButtonText='Ok'/>
 				</Modal>
 			</Example>,
 		html: '',
@@ -98,7 +96,7 @@ let examples = {
 					<Modal.Body>
 						{BODY_TEXT}	
 					</Modal.Body>
-					<Modal.Footer onClose={()=>isShown(false)}/>
+					<Modal.Footer onClose={()=>isShown(false)} closeButtonText='Ok'/>
 				</Modal>
 			</Example>,
 		html: '',

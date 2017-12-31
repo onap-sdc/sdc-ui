@@ -19,7 +19,7 @@ const Footer = ({onClose, closeButtonText, actionButtonText, actionButtonClick, 
 	);
 };
 
-Footer.PropTypes = {
+Footer.propTypes = {
 	onClose: PropTypes.func,
 	closeButtonText: PropTypes.string,
 	actionButtonText: PropTypes.string,

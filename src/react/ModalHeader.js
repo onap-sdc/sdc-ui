@@ -20,7 +20,7 @@ const Header = ({children, onClose, type}) => (
     </div>
 );
 
-Header.PropTypes = {
+Header.propTypes = {
 	children: PropTypes.node,
 	onClose: PropTypes.func
 };
