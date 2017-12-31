@@ -9,11 +9,11 @@ import HTMLPopupMenuRelative from '../../components/menu/relative-popup-menu.htm
 let examples = {
 	'Basic popup menu (static)': {
 		jsx: <PopupMenu onMenuItemClick={() => {}}>
-				<PopupMenuItem key='1' itemId='1' value='item 1 (selected)' selected/>
-				<PopupMenuItem key='2' itemId='2' value='item 2' disabled/>
+				<PopupMenuItem itemId='1' value='item 1 (selected)' selected/>
+				<PopupMenuItem itemId='2' value='item 2' disabled/>
 				<PopupMenu.Separator />
-				<PopupMenuItem key='3' itemId='3' value='item 3'/>
-				<PopupMenuItem key='4' itemId='4' value='custom action' onClick={function customCallback() {}}/>
+				<PopupMenuItem itemId='3' value='item 3'/>
+				<PopupMenuItem itemId='4' value='custom action' onClick={function customCallback() {}}/>
 			</PopupMenu>,
 		html: HTMLPopupMenu
 	},

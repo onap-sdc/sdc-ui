@@ -19,7 +19,7 @@ class PopupMenuItem extends React.Component {
 }
 
 PopupMenuItem.propTypes = {
-	itemId: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+	itemId: PropTypes.any,
 	value: PropTypes.any,
 	selected: PropTypes.bool,
 	onClick: PropTypes.func,
