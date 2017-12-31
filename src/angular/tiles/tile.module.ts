@@ -1,9 +1,9 @@
 import {NgModule} from "@angular/core";
 import {TileComponent} from "./tile.component";
 import {CommonModule} from "@angular/common";
-import {TileContentComponent} from "./content/tile-content.component";
-import {TileFooterComponent} from "./footer/tile-footer.component";
-import {TileHeaderComponent} from "./header/tile-header.component";
+import {TileContentComponent} from "./childs/tile-content.component";
+import {TileFooterComponent} from "./childs/tile-footer.component";
+import {TileHeaderComponent} from "./childs/tile-header.component";
 
 @NgModule({
     declarations: [
@@ -25,4 +25,3 @@ import {TileHeaderComponent} from "./header/tile-header.component";
 export class TileModule {
 
 }
-
