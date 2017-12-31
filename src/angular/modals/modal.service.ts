@@ -35,7 +35,7 @@ export class ModalService {
             message: message,
             type: ModalType.standard,
             buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true, size:'small'}, 
-                      {text: 'Cancel', closeModal:true, size:'small'}]
+                      {text: 'Cancel', type: 'secondary', closeModal:true, size:'small'}]
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
         this.currentModal = modalInstance;
