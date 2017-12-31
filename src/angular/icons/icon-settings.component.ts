@@ -1,5 +1,6 @@
 import {Component, Input} from "@angular/core";
 import { Icons } from '../../iconsMap';
+import {Colors, Positions} from "./icons.component";
 
 
 @Component({
@@ -21,8 +22,10 @@ export class IconSettingsComponent{
     @Input() label : string;
     @Input() color : string;
     @Input() icon : string;
-    @Input() position : string;
+    @Input() position : Positions;
     @Input() iconNames : string[] = Object.keys(Icons);
     @Input() selectedIcon : string;
     @Input() disabled : boolean;
+    public positions = Positions;
+    public colors = Colors;
 }

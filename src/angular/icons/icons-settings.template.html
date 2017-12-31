@@ -12,27 +12,25 @@
     <div class = "item-settings">
         <label>Icon Color: </label>
         <select [(ngModel)]="color">
-            <option value="warning">Warning</option>
-            <option value="primary">Primary</option>
-            <option value="positive">Positive</option>
-            <option value="negative">Negative</option>
+            <option [value]="colors.Warning">Warning</option>
+            <option [value]="colors.Primary">Primary</option>
+            <option [value]="colors.Positive">Positive</option>
+            <option [value]="colors.Negative">Negative</option>
+            <option [value]="colors.Secondary">Secondary</option>
         </select>
     </div>
     <div class = "item-settings">
         <label>Label Position: </label>
-        <select [(ngModel)]="position">
-            <option value="top">Top</option>
-            <option value="bottom">Bottom</option>
-            <option value="right">Right</option>
-            <option value="left">Left</option>
+        <select [(ngModel)]="position" >
+            <option [value]="positions.Top">Top</option>
+            <option [value]="positions.Bottom">Bottom</option>
+            <option [value]="positions.Right">Right</option>
+            <option [value]="positions.Left">Left</option>
         </select>
     </div>
     <div class = "item-settings">
         <label>Disabled: </label>
-        <select [(ngModel)]="disabled">
-            <option value=true>True</option>
-            <option value=false>False</option>
-        </select>
+        <input type="checkbox" [(ngModel)]="disabled">
     </div>
 
 </div>

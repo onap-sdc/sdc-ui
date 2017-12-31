@@ -3,10 +3,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Icons } from '../../iconsMap';
 
 export enum Positions{
-    left,
-    right,
-    bottom,
-    top
+    Left,
+    Right,
+    Bottom,
+    Top
+}
+
+export enum Colors{
+    Warning,
+    Secondary,
+    Positive,
+    Negative,
+    Primary
 }
 
 @Pipe({ name: 'safeHtml'})
@@ -28,13 +36,17 @@ export class SafeHtmlPipe implements PipeTransform  {
 export class IconsComponent{
     @Input() iconName: string;
     @Input() label : string;
-    @Input() labelPosition : string;
+    @Input() labelPosition : Positions;
     @Input() color:string;
     @Input() disabled: boolean;
+
+    public positions = Positions;
+    public colors = Colors;
 
     public  getFontIconCode(name):string  {
         let iconhtml;
         Icons[this.iconName] ? iconhtml =  Icons[this.iconName] : iconhtml ='<span class="svg-icon-missing">Missing Icon</span>';
         return iconhtml;
     }
+
 }

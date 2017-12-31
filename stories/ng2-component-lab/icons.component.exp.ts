@@ -1,11 +1,10 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 const experiment = experimentOn('Icons');
-// import {Postitions} from '../../src/angular/icons/icons.component';
+import {Positions} from '../../src/angular/icons/icons.component';
+import {Colors} from '../../src/angular/icons/icons.component';
 
-let position1 = 'top';
-let color1 = 'positive';
 let label1 = 'test label'
-let icon1 = 'save-o';
+let icon1 = 'check';
 
 experiment.group("icon", [
     {
@@ -14,10 +13,10 @@ experiment.group("icon", [
         title: 'Icon',
         description: 'Simple Icon',
         context: {
-            position:position1,
-            color: color1,
+            position:Positions.Left,
+            color: Colors.Positive,
             label: label1,
-            icon : icon1
+            icon : icon1,
         },
         template: `
         <sdc-icon-settings [label]="label" [position]="position" [color]="color" [selectedIcon]="icon"  #settings>
