@@ -69,7 +69,7 @@ let examples = {
 					<TileInfo align='center'>
 						<TileInfoLine type='title'>Vendor name</TileInfoLine>
 						<TileInfoLine>
-							<Button btnType='outline-rounded' color='dark-gray' onClick={() => {}}>100 VSPs</Button>
+							<Button btnType='primary' color='dark-gray' onClick={() => {}}>100 VSPs</Button>
 						</TileInfoLine>
 					</TileInfo>
 					<TileFooter align='center'>
