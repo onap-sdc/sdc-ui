@@ -20,12 +20,12 @@ export class TooltipDirective implements OnInit {
     @Input('tooltip-template') public template: TemplateRef<any>;
     @Input('tooltip-arrow-offset') public arrowOffset: number = 10;
     @Input('tooltip-arrow-placement') public arrowPlacement: ArrowPlacement = ArrowPlacement.LeftTop;
+    @Input('tooltip-offset') public tooltipOffset: number = 3;
 
 
     private cssClass: string = 'sdc-tooltip'; // default css class
     private tooltip: any; // tooltip html element
     private elemPosition: any;
-    private tooltipOffset: number = 8;
     private tooltipTemplateContainer: any;
 
     private scrollEventHandler = function(){};
@@ -73,15 +73,11 @@ export class TooltipDirective implements OnInit {
 
             if (this.template) {
                 this.tooltipTemplateContainer.instance.container.createEmbeddedView(this.template);
-            }else {
+            } else {
                 this.tooltip.textContent = this.text ? this.text : 'tooltip';
             }
 
-            this.renderer.setElementClass(this.tooltip, this.cssClass, true);
-
-            if (this.customCssClass) {
-                this.renderer.setElementClass(this.tooltip, this.customCssClass, true);
-            }
+            this.setCssClass(true);
     }
 
     private destroy() {
@@ -91,9 +87,16 @@ export class TooltipDirective implements OnInit {
 
     private show() {
         this.create();
-        this.setPosition();
 
-        this.toggleShowCssClass(true); // add css class
+        /**
+         *  View is ready (AfterViewInit event in template component)
+         */
+        this.tooltipTemplateContainer.instance.viewReady.subscribe((isReady)=>{
+           if(isReady){
+               this.setPosition();
+               this.toggleShowCssClass(true); // add css class
+           }
+        });
     }
 
     private hide() {
@@ -104,7 +107,7 @@ export class TooltipDirective implements OnInit {
 
     private toggleShowCssClass(isAdd: boolean) {
         if (this.tooltip) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + showSuffix, isAdd);
+            this.setCssClass(isAdd, '-' + showSuffix);
         }
     }
 
@@ -115,7 +118,8 @@ export class TooltipDirective implements OnInit {
         const tooltipPos: IPlacementData = this.getPlacementData();
 
         const placementSuffix: string = TooltipPlacement[tooltipPos.placement].toLowerCase();
-        this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix, true);
+
+        this.setCssClass(true, '-' + placementSuffix);
 
         this.setAdditionalCssClass(placementSuffix);
 
@@ -125,11 +129,17 @@ export class TooltipDirective implements OnInit {
 
     private setAdditionalCssClass(placementSuffix: string) {
         if (this.arrowPlacement == ArrowPlacement.RightBottom) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix + '-' +
-                rightBottomSuffix, true);
+            this.setCssClass(true, '-' + placementSuffix + '-' + rightBottomSuffix);
         } else if (this.arrowPlacement == ArrowPlacement.CenterMiddle) {
-            this.renderer.setElementClass(this.tooltip, this.cssClass + '-' + placementSuffix + '-' +
-                centerMiddleSuffix, true);
+            this.setCssClass(true, '-' + placementSuffix + '-' + centerMiddleSuffix);
+        }
+    }
+
+    private setCssClass(isAdd: boolean, suffix: string = '') {
+        this.renderer.setElementClass(this.tooltip, this.cssClass + suffix, isAdd);
+
+        if (this.customCssClass) {
+            this.renderer.setElementClass(this.tooltip, this.customCssClass + suffix, isAdd);
         }
     }
 
@@ -268,7 +278,8 @@ export class TooltipDirective implements OnInit {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
     }
 
@@ -309,7 +320,8 @@ export class TooltipDirective implements OnInit {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
     }
 
@@ -350,7 +362,8 @@ export class TooltipDirective implements OnInit {
             left,
             placement,
             top,
-            width: inputPos.tooltipWidth
+            width: inputPos.tooltipWidth,
+            pageYOffset: inputPos.pageYOffset
         };
     }
 
@@ -364,7 +377,7 @@ export class TooltipDirective implements OnInit {
             return false;
         }
 
-        if (pos.top < 0 || pos.top + pos.height - 1 > this.ScreenHeight) {
+        if (pos.top - pos.pageYOffset < 0 || pos.top - pos.pageYOffset + pos.height - 1 > this.ScreenHeight) {
             return false;
         }
 
@@ -439,5 +452,6 @@ interface IPlacementData {
     top: number;
     width: number;
     height: number;
+    pageYOffset: number;
     placement?: TooltipPlacement;
 }

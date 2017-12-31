@@ -8,13 +8,12 @@
 
   height: 36px;
   width: 120px;
-  min-width: 120px;
+  min-width: 90px;
 
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
-  @extend .body-1;
-
+  @include body-1;
   &:disabled {
     cursor: default;
   }
@@ -28,13 +27,13 @@
     &:not(:disabled) {
       &:hover, &:active {
         background-color: $hover-blue;
-        @extend .body-1-semibold;
+        @include font-hover;
       }
       &:focus:not(:active) {
         border: 0.5px solid $white;
         background-color: $hover-blue;
         box-shadow: 0px 0px 0px 1px $hover-blue;
-        @extend .body-1-semibold;
+        @include font-focus;
       }
     }
 
@@ -53,12 +52,12 @@
       &:hover, &:active {
         color: $hover-blue;
         border-color: $hover-blue;
-        @extend .body-1-semibold;
+        @include font-hover;
       }
       &:focus:not(:active) {
         color: $hover-blue;
         box-shadow: inset 0px 0px 0px 0px $link-blue, 0px 0px 0px 1px $blue;
-        @extend .body-1-semibold;
+        @include font-focus;
       }
     }
 
@@ -78,12 +77,12 @@
     &:not(:disabled) {
       &:hover, &:active {
         color: $hover-blue;
-        @extend .body-1-semibold;
+        @include font-hover;
       }
       &:focus:not(:active) {
         border: 1px solid $link-blue;
         color: $hover-blue;
-        @extend .body-1-semibold;
+        @include font-focus;
       }
     }
 
@@ -103,6 +102,10 @@
 
   &.btn-small{
     width: $btn-small;
+  }
+
+  &.btn-x-small{
+    width: $btn-extra-small;
   }
 
   &.btn-default{

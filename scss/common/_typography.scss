@@ -1,183 +1,108 @@
 /* Fonts */
-
-
 /* Currently loaded */
 // OpenSans-Regular
-// OpenSans-Light
-// OpenSans-Italic
-// OpenSans-Semibold
-// OpenSans-Bold
-
-/* Currently not loaded but part of the font */
-// OpenSans-SemiboldItalic
-// OpenSans-BoldItlaic
-// OpenSans-ExtraBold
-// OpenSans-ExtraBoldItalic
-// OpenSans-LightItalic
-
-@mixin base-font-regular() {
-  font-family: OpenSans, OpenSans-Regular, 'Open Sans', Arial, sans-serif;
-}
-
-@mixin base-font-light() {
-  font-family: OpenSans-Light, 'Open Sans', Arial, sans-serif;
-}
-
-@mixin base-font-italic(){
-  font-family: OpenSans-Italic, 'Open Sans', Arial, sans-serif;
-  font-style: italic;
-}
-
-@mixin base-font-semibold() {
-  font-family: OpenSans-Semibold, 'Open Sans', Arial, sans-serif;
-}
-
-@mixin base-font-bold() {
-  font-family: OpenSans-Bold, 'Open Sans', Arial, sans-serif;
-}
 
 $heading-font-1: 28px;
 $heading-font-2: 24px;
 $heading-font-3: 20px;
-$heading-font-4: 18px;
-$heading-font-5: 16px;
+$heading-font-4: 16px;
+$heading-font-5: 14px;
 
 $body-font-1: 14px;
 $body-font-2: 13px;
 $body-font-3: 12px;
 $body-font-4: 10px;
 
-$icon-font-size: 11px;
-$icon-font-family: Arial;
-$radio-font-family: Arial;
-
-.text-lowercase {
-  text-transform: lowercase;
+@mixin base-font-regular() {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
-.text-uppercase {
-  text-transform: uppercase;
+@mixin base-font-italic(){
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
-.text-capitalize {
-  text-transform: capitalize;
+@mixin base-font-semibold() {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
 }
 
-.heading-1 {
-  @include base-font-light;
+@mixin font-hover() {
+  @include base-font-semibold;
+}
+
+@mixin font-focus() {
+  @include base-font-semibold;
+}
+
+@mixin font-error() {
+  color: $red;
+}
+
+@mixin heading-1() {
+  @include base-font-regular;
   font-size: $heading-font-1;
 }
 
-.heading-2 {
-  @include base-font-light;
+@mixin heading-2() {
+  @include base-font-regular;
   font-size: $heading-font-2;
 }
 
-.heading-3-light {
-  @include base-font-light;
-  font-size: $heading-font-3;
-  @extend .text-uppercase !optional;
-}
-
-.heading-3 {
+@mixin heading-3 {
   @include base-font-regular;
   font-size: $heading-font-3;
-  @extend .text-uppercase !optional;
 }
 
-.heading-3-semibold {
-  @include base-font-semibold;
-  font-size: $heading-font-3;
-  @extend .text-uppercase !optional;
-}
-
-.heading-4 {
+@mixin heading-4 {
   @include base-font-regular;
   font-size: $heading-font-4;
 }
 
-.heading-4-semibold {
+@mixin heading-4-emphasis {
   @include base-font-semibold;
   font-size: $heading-font-4;
 }
 
-.heading-5 {
-  @include base-font-regular;
-  font-size: $heading-font-5;
-}
-
-.heading-5-semibold {
+@mixin heading-5 {
   @include base-font-semibold;
   font-size: $heading-font-5;
 }
 
-.body-1 {
+@mixin body-1 {
   @include base-font-regular;
   font-size: $body-font-1;
 }
 
-.body-1-semibold {
-  @include base-font-semibold;
+@mixin body-1-italic {
+  @include base-font-italic;
   font-size: $body-font-1;
 }
 
-.body-1-light {
-  @include base-font-light;
-  font-size: $body-font-1;
-}
-
-.body-2 {
+@mixin body-2 {
   @include base-font-regular;
   font-size: $body-font-2;
 }
 
-.body-2-semibold {
+@mixin body-2-emphasis {
   @include base-font-semibold;
   font-size: $body-font-2;
 }
 
-.body-3 {
+@mixin body-3 {
   @include base-font-regular;
   font-size: $body-font-3;
 }
-
-.body-3-semibold {
+@mixin body-3-emphasis {
   @include base-font-semibold;
   font-size: $body-font-3;
 }
 
-.body-3-light {
-  @include base-font-light;
-  font-size: $body-font-3;
-}
-
-.body-4 {
+@mixin body-4 {
   @include base-font-regular;
   font-size: $body-font-4;
-}
-
-.body-4-semibold {
-  @include base-font-semibold;
-  font-size: $body-font-4;
-}
-
-.circle-icon-text {
-  @include base-font-semibold;
-  font-size: $body-font-1;
-}
-
-.OpenSans{
-  @include base-font-regular();
-}
-.OpenSans-Light{
-  @include base-font-light();
-}
-.OpenSans-Italic{
-  @include base-font-italic();
-}
-.OpenSans-Semibold{
-  @include base-font-semibold();
-}
-.OpenSans-Bold{
-  @include base-font-bold();
 }

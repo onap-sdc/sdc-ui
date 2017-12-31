@@ -97,7 +97,7 @@ a {
 
 .typography-screen {
 	.typography-section {
-		margin: 30px 0;
+		margin: 20px 0;
 	}
 	ul {
 		font-size: 18px;
@@ -110,13 +110,63 @@ a {
 				width: 30%;
 				margin: 4px 0;
 			}
+			.sample-text {
+				white-space: nowrap;
+
+			}
 		}
+	}
+	.heading-1 {
+		@include heading-1;
+	}
+	.heading-2 {
+		@include heading-2;
+	}
+	.heading-3 {
+		@include heading-3;
+	}
+	.heading-4 {
+		@include heading-4;
+	}
+	.heading-4-emphasis {
+		@include heading-4-emphasis;
+	}
+	.heading-5 {
+		@include heading-5;
+	}
+
+	.body-1 {
+		@include body-1;
+	}
+
+	.body-1-italic {
+		@include body-1-italic;
+	}
+
+	.body-2 {
+		@include body-2;
+	}
+
+	.body-2-emphasis {
+		@include body-2-emphasis;
+	}
+
+	.body-3 {
+		@include body-3;
+	}
+
+	.body-3-emphasis {
+		@include body-3-emphasis;
+	}
+
+	.body-4 {
+		@include body-4;
 	}
 }
 
 .source-toggle-wrapper {
 	.source-toggle-title {
-		@extend .heading-2;
+		@include heading-2;
 	}
 	.source-toggle {
 		display: flex;
@@ -156,7 +206,8 @@ a {
 				display: flex;
 				margin-bottom: 10px;
 				.source-toggle-tab {
-					@extend .body-1-semibold;
+					@include body-1;
+					@include base-font-semibold;
 					margin-right: 20px;
 					cursor: pointer;
 					&.selected {

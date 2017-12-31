@@ -1,6 +1,9 @@
-import { OnInit } from '@angular/core';
-import {animate, Component, EventEmitter, Input, Output, state, style, transition, trigger} from '@angular/core';
+import {OnInit, animate, Component, EventEmitter, Input, Output, state, style, transition, trigger} from '@angular/core';
 import {FilterBarComponent} from "../filterbar/filter-bar.component";
+import {URLSearchParams, Http} from "@angular/http";
+import 'rxjs/add/operator/map';
+import {AutocompletePipe} from "./autocomplete.pipe";
+import template from "./autocomplete.component.html";
 
 export interface IDataSchema {
     key: string;
@@ -9,7 +12,7 @@ export interface IDataSchema {
 
 @Component({
     selector: 'sdc-autocomplete',
-    templateUrl: './autocomplete.component.html',
+    template: template,
     animations: [
         trigger('displayResultsAnimation', [
             state('true', style({
@@ -22,7 +25,8 @@ export interface IDataSchema {
             })),
             transition('* => *', animate('200ms'))
         ]),
-    ]
+    ],
+    providers: [AutocompletePipe]
 })
 export class SearchWithAutoCompleteComponent implements OnInit {
     @Input() public data: any[] = [];
@@ -33,13 +37,15 @@ export class SearchWithAutoCompleteComponent implements OnInit {
     @Output() public itemSelected: EventEmitter<any> = new EventEmitter<any>();
 
     private searchQuery: string;
-    private selectedQuery: string;
     private complexData: any[] = [];
+    private autoCompleteResults: any[] = [];
+    private isItemSelected: boolean = false;
+
+    public constructor(private http: Http, private autocompletePipe: AutocompletePipe) {
+    }
 
     public ngOnInit(): void {
-        if (this.dataUrl) {
-            //TODO: handle data from backend
-        } else {
+        if (this.data) {
             this.handleLocalData();
         }
         this.searchQuery = "";
@@ -56,21 +62,53 @@ export class SearchWithAutoCompleteComponent implements OnInit {
     }
 
     private convertSimpleData = (): void => {
+        this.complexData = [];
         this.data.forEach((item: any) => {
             this.complexData.push({key: item, value: item});
         });
     }
 
     private convertComplexData = (): void => {
+        this.complexData = [];
         this.data.forEach((item: any) => {
             this.complexData.push({key: item[this.dataSchema.key], value: item[this.dataSchema.value]});
         });
     }
 
-    private onItemSelected = (searchTerm: string): void => {
-        this.selectedQuery =  searchTerm;
-        this.searchQuery = searchTerm;
-        this.itemSelected.emit(searchTerm);
+    private onItemSelected = (selectedItem: IDataSchema): void => {
+        this.searchQuery = selectedItem.value;
+        this.isItemSelected = true;
+        this.autoCompleteResults = [];
+        this.itemSelected.emit(selectedItem.key);
     }
 
+    private onSearchQueryChanged = (searchText: string): void => {
+        if (searchText !== this.searchQuery) {
+            this.searchQuery = searchText;
+            if (!this.searchQuery) {
+                this.onClearSearch();
+            } else {
+                if (this.dataUrl) {
+                    const params: URLSearchParams = new URLSearchParams();
+                    params.set('searchQuery', this.searchQuery);
+                    this.http.get(this.dataUrl, {search: params})
+                        .map((response) => {
+                            this.data = response.json();
+                            this.handleLocalData();
+                            this.autoCompleteResults = this.complexData;
+                        }).subscribe();
+                } else {
+                    this.autoCompleteResults = this.autocompletePipe.transform(this.complexData, this.searchQuery);
+                }
+            }
+            this.isItemSelected = false;
+        }
+    }
+
+    private onClearSearch = (): void => {
+        this.autoCompleteResults = [];
+        if (this.isItemSelected) {
+            this.itemSelected.emit();
+        }
+    }
 }
