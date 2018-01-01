@@ -49,7 +49,7 @@ buttonTypes.forEach((buttonType) => {
                 <span style="display: inline-block;">
                 <div>${buttonSize}</div><br>
                 <sdc-button
-                    text="Sample button"
+                    text="Sample"
                     type="${buttonType}"
                     size="${buttonSize}"
                     (click)="buttonClicked()"

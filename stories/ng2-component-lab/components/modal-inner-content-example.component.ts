@@ -11,6 +11,8 @@ import {Component, Input} from "@angular/core";
     template: `
         <div>
             <sdc-input [label]="'Enter value'" [(value)]="name"> </sdc-input>
+            <sdc-input [label]="'Enter value'" [(value)]="name"> </sdc-input>
+            <sdc-input [label]="'Enter value'" [(value)]="name"> </sdc-input>
         </div>
 `
 })
