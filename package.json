@@ -51,7 +51,7 @@
   "devDependencies": {
     "@angular/compiler": "~2.4.8",
     "@angular/compiler-cli": "~2.4.8",
-    "@islavi/ng2-component-lab": "^1.0.26",
+    "@islavi/ng2-component-lab": "^1.0.27",
     "@types/node": "^7.0.27",
     "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.2",
