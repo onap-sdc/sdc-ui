@@ -7,6 +7,9 @@ import {IModalConfig, ModalType, ModalSize} from "../../../src/angular/modals/mo
 import {ModalInnerContent} from "./modal-inner-content-example.component";
 import { ButtonComponent } from "../../../src/angular/buttons/button.component";
 
+const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
+'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
+
 
 @Component({
     selector: 'modal-consumer',
@@ -25,15 +28,15 @@ export class ModalConsumer {
     }
 
     private openErrorModal = ():void => {
-        this.modalService.openErrorModal("An error has occurred!");       
+        this.modalService.openErrorModal(MODAL_CONTENT);       
     };
 
     private openAlertModal = ():void => { 
-        this.modalService.openAlertModal("Alert Title", "An alert message.");
+        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT);
     };
 
     private openActionModal = ():void => {
-        this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', "Yes", this.onConfirmAction);
+        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "Yes", this.onConfirmAction);
     };
 
     private onConfirmAction = ():void => {
@@ -44,11 +47,11 @@ export class ModalConsumer {
 
         let modalConfig:IModalConfig = <IModalConfig> {
             size: ModalSize.medium,
-            title: 'Test',
+            title: 'Title',
             type: ModalType.custom,
             buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true}, 
                       {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
-                      {text:"Cancel", closeModal:true}]
+                      {text:"Cancel", type: 'secondary', closeModal:true}]
         };
         this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }

@@ -64,6 +64,26 @@ const options2: IDropDownOption[] = [
         label: 'Fifth Option',
         value: 'fifthOption',
         type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Ruler',
+        value: 'ruler',
+        type: DropDownOptionType.HorizontalLine
+    },
+    {
+        label: 'Third Option',
+        value: 'thirdOption',
+        type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Forth Option',
+        value: 'forthOption',
+        type: DropDownOptionType.Simple
+    },
+    {
+        label: 'Fifth Option',
+        value: 'fifthOption',
+        type: DropDownOptionType.Simple
     }
 ];
 
@@ -120,7 +140,7 @@ export default experimentOn('DropDown')
             description: 'Headless and labeless DropDown',
             template: `
             <div style="margin-bottom: 10px;">
-                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.value }}</span>
+                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.selectedOption?.value }}</span>
             </div>
             <sdc-dropdown [options]="options" #dropDown1></sdc-dropdown>`
         },

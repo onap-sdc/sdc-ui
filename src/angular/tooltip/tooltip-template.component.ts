@@ -1,4 +1,5 @@
-import {Component, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ViewChild, ViewContainerRef, AfterViewInit} from '@angular/core';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
     selector: 'tooltip-template',
@@ -8,10 +9,12 @@ import {Component, ViewChild, ViewContainerRef} from '@angular/core';
     </div>`
 })
 
-export class TooltipTemplateComponent {
+export class TooltipTemplateComponent implements AfterViewInit {
     @ViewChild('templateContainer', {read: ViewContainerRef}) public container: ViewContainerRef;
 
-    public addText(text: string){
-        this.container.element.nativeElement.textContent = text;
+    public viewReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+    ngAfterViewInit() : void {
+        this.viewReady.next(true);
     }
 }

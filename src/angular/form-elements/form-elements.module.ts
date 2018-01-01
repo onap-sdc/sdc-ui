@@ -9,8 +9,8 @@ import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import {BrowseComponent} from "./browse/browse.component";
 import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
-import {TagItemComponent} from "./list/tag-item/tag-item.component";
-import {TagCloudComponent} from "./list/tag-cloud.component";
+import {TagItemComponent} from "./tag-cloud/tag-item/tag-item.component";
+import {TagCloudComponent} from "./tag-cloud/tag-cloud.component";
 
 @NgModule({
     imports: [

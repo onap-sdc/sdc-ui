@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-tag-cloud-new-item-field">
     <sdc-input [label]="label"
                [disabled]="(isViewOnly===true)"
@@ -26,3 +27,4 @@
                    (clickOnDelete)="deleteItemFromList($event)"></sdc-tag-item>
 </div>
 <div class="error-message" *ngIf="uniqueError">{{uniqueErrorMessage}}</div>
+`;

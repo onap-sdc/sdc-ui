@@ -87,7 +87,7 @@ export default experimentOn('Modals')
           <span class="comment">//create modal config object </span>
           let modalConfig:IModalConfig = {{ '{' }}
           size: ModalSize.small,
-          title: 'Test',
+          title: 'Title',
           type: ModalType.standard,
           buttons: [
                     {{ '{' }}text:"Save &amp; Close", callback:this.customModalOnDone, closeModal:true{{ '}' }}, 
