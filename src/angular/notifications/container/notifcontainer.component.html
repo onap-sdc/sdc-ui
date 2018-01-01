@@ -1,8 +1,7 @@
 <div id="containerid" class="sdc-notification-container ntns">
 
     <div class="ntns" *ngFor="let notif of notifications">
-        <sdc-notification id="ngn-in-list" innerContentClass="{{notif.contentComponentType}}" options="{{notif.options}}" hasNgContent={{notif.hasNgContent}} (destroyComponent)="onDestroyed(notif)" type={{notif.type}} notifyTitle={{notif.notifyTitle}} notifyText={{notif.notifyText}} position="top-right" duration={{notif.duration}}>
-
+        <sdc-notification id="ngn-in-list" innerComponentRef="{{notif.componentRef}}" options="{{notif.options}}" hasNgContent={{notif.hasNgContent}} (destroyComponent)="onDestroyed(notif)" type={{notif.type}} notifyTitle={{notif.notifyTitle}} notifyText={{notif.notifyText}} position="top-right" duration={{notif.duration}}>
         </sdc-notification>
     </div>
 

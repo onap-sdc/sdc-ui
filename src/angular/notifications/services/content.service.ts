@@ -13,22 +13,22 @@ export class ContentService {
     constructor(private resolver: ComponentFactoryResolver) {
     }
 
-    public addCustomContent = (currentNotification, contentComponentType:Type<any>, options:any = {}) => {
-        // this.currentNotification = currentNotification;
-        // const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(contentComponentType);
-        // this.innerNotificationContent = this.currentNotification.   createComponent(factory);
-        // this.projectComponentInputs(this.innerNotificationContent, options);
-    }
-
-    private projectComponentInputs(component:ComponentRef<any>, options:any):ComponentRef<any> {
-        if (options) {
-            const props = Object.getOwnPropertyNames(options);
-            for (const prop of props) {
-                component.instance[prop] = options[prop];
-            }
-        }
-        return component;
-    }
+    // public addCustomContent = (contentComponentType:Type<any>, options:any = {}) => {
+    //     // this.currentNotification = currentNotification;
+    //     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(contentComponentType);
+    //     this.innerNotificationContent = this.currentNotification.   createComponent(factory);
+    //     this.projectComponentInputs(this.innerNotificationContent, options);
+    // }
+    //
+    // private projectComponentInputs(component:ComponentRef<any>, options:any):ComponentRef<any> {
+    //     if (options) {
+    //         const props = Object.getOwnPropertyNames(options);
+    //         for (const prop of props) {
+    //             component.instance[prop] = options[prop];
+    //         }
+    //     }
+    //     return component;
+    // }
 
     public getInnerContentInstance = ()=> {
         return this.innerNotificationContent.instance;

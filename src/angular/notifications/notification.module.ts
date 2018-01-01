@@ -6,8 +6,9 @@ import {CommonModule} from "@angular/common";
 import {NotificationComponent} from "./notification/notification.component";
 import {NotificationContainerComponent} from "./container/notifcontainer.component";
 import {NotificationsService} from "./services/notifications.service";
-import {NotificationContentComponent} from "./content/content.component";
+// import {NotificationContentComponent} from "./content/content.component";
 import {InnerNotifContent} from "../../../stories/ng2-component-lab/components/notification-inner-content-example.component";
+import {CreateDynamicComponentService} from "../utils/create-dynamic-component.service";
 
 
 @NgModule({
@@ -17,15 +18,16 @@ import {InnerNotifContent} from "../../../stories/ng2-component-lab/components/n
     ],
     exports: [
         NotificationComponent,
-        NotificationContainerComponent
+        NotificationContainerComponent,
     ],
     entryComponents: [
-        NotificationComponent
+        NotificationComponent,
+        NotificationContainerComponent,
     ],
     imports: [
         CommonModule
     ],
-    providers: [NotificationsService]
+    providers: [NotificationsService, CreateDynamicComponentService]
 })
 export class NotificationModule {
 

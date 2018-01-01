@@ -31,7 +31,7 @@ export class NotificationContainerComponent {
         console.log("NotificationContainerComponent:ngOnInit start");
 
         this.notify.subscribe( (notif : NotificationSettings) => {
-            console.log("NotificationContainerComponent:ngOnInit notif="+JSON.stringify(notif));
+            //console.log("NotificationContainerComponent:ngOnInit notif="+JSON.stringify(notif));
             this.notifications.push(notif);
         });
 
