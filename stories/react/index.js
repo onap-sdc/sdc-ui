@@ -1,7 +1,10 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Buttons from './Buttons.stories.js';
+import PrimaryButtons from './buttons/PrimaryButtons.stories.js';
+import SecondaryButtons from './buttons/SecondaryButtons.stories.js';
+import LinkButtons from './buttons/LinkButtons.stories.js';
+
 import Colors from './Colors.stories.js';
 import Typography from './Typography.stories.js';
 import Checkboxes from './Checkbox.stories.js';
@@ -22,7 +25,9 @@ storiesOf('Typography', module)
 	.add('Typography', () => <Typography />);
 
 storiesOf('Buttons', module)
-	.add('Default Size', () => <Buttons />);
+	.add('Primary', () => <PrimaryButtons />)
+	.add('Secondary', () => <SecondaryButtons />)
+	.add('Link', () => <LinkButtons />);
 
 storiesOf('Checkboxes', module)
 	.add('Checkboxes', () => <Checkboxes />);
