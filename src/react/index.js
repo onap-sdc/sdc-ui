@@ -17,6 +17,7 @@ import TileInfo from './TileInfo.js';
 import TileInfoLine from './TileInfoLine.js';
 import TileFooter from './TileFooter.js';
 import TileFooterCell from './TileFooterCell.js';
+import PopupMenu from './PopupMenu.js';
 
 export {Button};
 export {Checkbox};
@@ -37,6 +38,7 @@ export {TileInfo};
 export {TileInfoLine};
 export {TileFooter};
 export {TileFooterCell};
+export {PopupMenu};
 
 export default {
 	Button,
@@ -53,6 +55,7 @@ export default {
 	SVGIcon,
 	Tab,
 	Tabs,
+	PopupMenu,
 	Tile,
 	TileInfo,
 	TileInfoLine,
