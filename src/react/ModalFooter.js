@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from './Button.js';
 
 const Footer = ({onClose, closeButtonText, actionButtonText, actionButtonClick, withButtons, children}) => {
-	const closeBtnColor = actionButtonClick ? 'white' : 'primary';
+	const closeBtnType = actionButtonClick ? 'secondary' : 'primary';
 	return (
         <div className='sdc-modal__footer'>
             {children}   
@@ -12,14 +12,14 @@ const Footer = ({onClose, closeButtonText, actionButtonText, actionButtonClick, 
                     {actionButtonClick && 
                         <Button onClick={actionButtonClick}>{actionButtonText}</Button>        
                     }    
-                    <Button color={closeBtnColor} onClick={onClose}>{closeButtonText}</Button>        
+                    <Button btnType={closeBtnType}  onClick={onClose}>{closeButtonText}</Button>        
                 </div>
             }
         </div>
 	);
 };
 
-Footer.PropTypes = {
+Footer.propTypes = {
 	onClose: PropTypes.func,
 	closeButtonText: PropTypes.string,
 	actionButtonText: PropTypes.string,
