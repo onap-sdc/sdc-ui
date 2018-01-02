@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
 /**
  * Created by rc2122 on 11/21/2017.
  */
+import {Component, EventEmitter, Input, Output} from "@angular/core";
+import template from "./tag-item.component.html";
 @Component({
     selector: 'sdc-tag-item',
-    templateUrl: './tag-item.component.html',
+    template: template,
     host: {'class': 'sdc-tag-item'}
 })
 export class TagItemComponent {

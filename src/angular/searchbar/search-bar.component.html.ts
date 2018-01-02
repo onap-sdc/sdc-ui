@@ -1,3 +1,4 @@
+export default `
 <div class="search-bar-container" [ngClass]="{'not-empty': searchQuery}">
     <sdc-input class="search-bar-input"
                [label]="label"
@@ -15,3 +16,4 @@
         </svg>
     </span>
 </div>
+`;

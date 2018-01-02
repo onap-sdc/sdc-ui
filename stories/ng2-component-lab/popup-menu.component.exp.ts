@@ -8,7 +8,7 @@ export default experimentOn('Menu')
         title: 'Basic popup menu (static)',
         description: 'Basic popup menu (static)',
         template: `
-        <popup-menu-list [open]="true" className="static">
+        <popup-menu-list [open]="true">
             <popup-menu-item>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 24 24">
                   <defs>
@@ -42,7 +42,7 @@ export default experimentOn('Menu')
                 </svg>
                 Disabled
             </popup-menu-item>
-            <popup-menu-item type="line">Line (not displayed)</popup-menu-item>
+            <popup-menu-item type="separator"></popup-menu-item>
             <popup-menu-item>
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 24 24">
                   <defs>
@@ -90,10 +90,10 @@ export default experimentOn('Menu')
             </span>
             <div class="click-area"
                 (click)="menu.position = {x:$event.offsetX, y:$event.offsetY}; mopen=true;">
-                <popup-menu-list className="relative" [(open)]="mopen" (openChange)="menuStatus=$event" (positionChange)="menuPos=$event" #menu>
+                <popup-menu-list [(open)]="mopen" (openChange)="menuStatus=$event" (positionChange)="menuPos=$event" [relative]="true" #menu>
                     <popup-menu-item (action)="showSelectedItem('First', 'red')">First</popup-menu-item>
                     <popup-menu-item type="disabled">Disabled</popup-menu-item>
-                    <popup-menu-item type="line"></popup-menu-item>
+                    <popup-menu-item type="separator"></popup-menu-item>
                     <popup-menu-item (action)="showSelectedItem('Second', 'green')">Second</popup-menu-item>
                     <popup-menu-item>Third (none)</popup-menu-item>
                 </popup-menu-list>
