@@ -18,6 +18,9 @@ import { FilterBarModule } from "../../src/angular/filterbar/filter-bar.module";
 import { SearchBarModule } from "../../src/angular/searchbar/search-bar.module";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.module";
+import { NotificationModule } from "../../src/angular/notifications/notification.module";
+import { InnerNotifContent} from "./components/notification-inner-content-example.component";
+import { NotificationsExample } from "./components/notifications-example.component";
 
 @NgModule({
     declarations: [
@@ -25,6 +28,8 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         KeysPipe,
         ModalInnerContent,
         ModalConsumer,
+        InnerNotifContent,
+        NotificationsExample,
         KeysPipe,
         SearchFilterPipe
     ],
@@ -41,18 +46,17 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         SearchBarModule,
         InfiniteScrollModule,
         TooltipModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+        NotificationModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
         CommonModule,
         ModalInnerContent,
         InnerNotifContent,
-        //NotificationComponent,
-        //NotificationContainerComponent,
+        NotificationsExample,
         ModalModule,
         ColorsTable,
-        NotificationsExample,
         FormElementsModule,
         ButtonsModule,
         TileModule,
@@ -66,7 +70,8 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         TooltipDirective,
         PopupMenuModule,
         ModalConsumer,
-        SearchFilterPipe
+        SearchFilterPipe,
+        NotificationModule
     ],
     providers: [KeysPipe]
 })

@@ -12,19 +12,19 @@ import {InnerNotifContent} from "./notification-inner-content-example.component"
     template: `
        <div>
            <span>Send Success Notification</span>
-           <sdc-button (click)="sendSuccessNotif()">Click Me!</sdc-button>
+           <sdc-button (click)="sendSuccessNotif()" text="Click Me!"></sdc-button>
        </div>
        <div>
            <span>Send Warning Notification</span>
-           <sdc-button (click)="sendWarnNotif()">Click Me!</sdc-button>
+           <sdc-button (click)="sendWarnNotif()" text="Click Me!"></sdc-button>
        </div>
        <div>
            <span>Send Info Notification</span>
-           <sdc-button (click)="sendInfoNotif()">Click Me!</sdc-button>
+           <sdc-button (click)="sendInfoNotif()" text="Click Me!"></sdc-button>
        </div>
        <div>
            <span>Send Success MultipleLine Notification</span>
-           <sdc-button (click)="sendMultipleLinesSuceessNotif()">Click Me!</sdc-button>
+           <sdc-button (click)="sendMultipleLinesSuceessNotif()" text="Click Me!"></sdc-button>
        </div>
        <!--<div>-->
            <!--<span>Send Success Custom Notification</span>-->
