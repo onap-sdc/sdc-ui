@@ -5,6 +5,9 @@ input[type="file"] {
 }
 .sdc-browse {
   position: relative;
+  .sdc-input__input{
+    padding-right: 67px;
+  }
   &.disabled{
     .browse-button {
       background-color: $background-gray;
