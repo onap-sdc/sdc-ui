@@ -19,7 +19,7 @@ const Button = ({btnType, size, className, iconName, onClick, disabled, children
 
 Button.propTypes = {
 	btnType: PropTypes.string,
-	size: PropTypes.oneOf(['default', 'x-small', 'small', 'medium', 'large']),
+	size: PropTypes.oneOf(['', 'default', 'x-small', 'small', 'medium', 'large']),
 	className: PropTypes.string,
 	iconName: PropTypes.string,
 	onClick: PropTypes.func,
