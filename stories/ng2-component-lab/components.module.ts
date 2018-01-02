@@ -1,7 +1,9 @@
 import { NgModule, Injector } from "@angular/core";
+import { FormsModule } from '@angular/forms';
 import { KeysPipe } from "./utils/pipes/keys.pipe";
 import { CommonModule } from "@angular/common";
 import { ColorsTable } from "./components/colors-table.component";
+import { IconSettingsComponent } from "./components/icon-settings.component";
 import { FormElementsModule } from "../../src/angular/form-elements/form-elements.module";
 import { ButtonsModule } from "../../src/angular/buttons/buttons.module";
 import { TileModule } from "../../src/angular/tiles/tile.module";
@@ -28,7 +30,9 @@ import {IconsModule} from "../../src/angular/icons/icons.module";
         ModalInnerContent,
         ModalConsumer,
         KeysPipe,
-        SearchFilterPipe
+        SearchFilterPipe,
+        IconSettingsComponent,
+
     ],
     imports: [
         ModalModule,
@@ -46,7 +50,8 @@ import {IconsModule} from "../../src/angular/icons/icons.module";
         PopupMenuModule,
         InfiniteScrollModule,
         IconsModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+        FormsModule
     ],
     entryComponents: [ModalInnerContent],
     exports: [
@@ -54,6 +59,7 @@ import {IconsModule} from "../../src/angular/icons/icons.module";
         ModalInnerContent,
         ModalModule,
         ColorsTable,
+        IconSettingsComponent,
         FormElementsModule,
         ButtonsModule,
         TileModule,

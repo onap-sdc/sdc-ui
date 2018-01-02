@@ -1,6 +1,6 @@
 import {Component, Input, PipeTransform, Pipe} from "@angular/core";
 import { DomSanitizer } from '@angular/platform-browser';
-import { Icons } from '../../iconsMap';
+import * as Icons from '../../iconsMap.json';
 
 export enum Positions{
     Left,
@@ -43,7 +43,7 @@ export class IconsComponent{
     public positions = Positions;
     public colors = Colors;
 
-    public  getFontIconCode(name):string  {
+    public  getFontIconCode():string  {
         let iconhtml;
         Icons[this.iconName] ? iconhtml =  Icons[this.iconName] : iconhtml ='<span class="svg-icon-missing">Missing Icon</span>';
         return iconhtml;

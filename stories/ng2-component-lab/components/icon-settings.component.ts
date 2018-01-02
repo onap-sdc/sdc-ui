@@ -1,7 +1,6 @@
 import {Component, Input} from "@angular/core";
-import { Icons } from '../../iconsMap';
-import {Colors, Positions} from "./icons.component";
-
+import * as Icons from '../../../src/iconsMap.json';
+import {Colors, Positions} from "../../../src/angular/icons/icons.component";
 
 @Component({
     selector:'sdc-icon-settings',
@@ -13,7 +12,6 @@ import {Colors, Positions} from "./icons.component";
     'display:flex;' +
     'flex-direction:column;' +
     'margin-right:20px;' +
-
     '}']
 })
 

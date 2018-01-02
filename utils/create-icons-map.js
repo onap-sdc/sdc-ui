@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-
 const svgFolder = '../assets/icons/';
-const iconMapFile = '../src/iconsMap.js';
-
-let iconsObject = '';
+const iconMapFile = '../src/iconsMap.json';
+const svgCleaner = new RegExp('("fill:.*;")|(fill=".*")|(id=\'.*\' )|(width=".*")|height=(".*")', 'g');
+let iconsObject = {};
 
 let iconMapDir = path.dirname(iconMapFile);
 if (!fs.existsSync(iconMapDir)) {
@@ -18,24 +17,23 @@ fs.readdirSync(svgFolder).forEach(file => {
     let filePath = svgFolder + file;
     if (fs.existsSync(filePath)) {
         const iconBody = fs.readFileSync(filePath).toString();
-        const cleanedIcon = preparIcon(iconBody, fileName);
-        iconsObject += "'" + fileName + '\' : \'' + cleanedIcon + '\', \n';
+        let cleanedIcon = preparIcon(iconBody, fileName);
+        iconsObject[fileName] = cleanedIcon;
     }
 })
 
-const dataToWrite = 'export const Icons = {' + iconsObject + '};';
+const dataToWrite = JSON.stringify(iconsObject);
 
 fs.writeFileSync(iconMapFile, dataToWrite);
 
 console.log('Icons Map created!');
 
 
-function preparIcon(icon, iconName){
-    let iconLine = icon.replace(/\s{2,}/g, '');
-    if(iconLine.match(/(fill=".*")|(id='.*' )|(width=".*")|height=(".*")/g)){
-        console.log('Please, check icon: ', iconName);
-        iconLine =  iconLine.replace(/(fill=".*")|(id='.*')|width=(".*")|height=(".*")/g, '');
+function preparIcon(iconLine, iconName){
+    if(iconLine.match(svgCleaner)){
+        console.log('Please, check icon: ', iconName, ', Count of errors: ', iconLine.match(svgCleaner).length);
+        iconLine =  iconLine.replace(svgCleaner, '');
     }
-    iconLine = iconLine.replace('<svg', '<svg class = "svg-icon"')
+    iconLine = iconLine.replace('<svg', '<svg class = "svg-icon"');
     return iconLine;
 }
