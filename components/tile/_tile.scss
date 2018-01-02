@@ -46,11 +46,8 @@
 	}
 
 	.centered {
-		&.sdc-tile-footer {
+		&.sdc-tile-footer, .sdc-tile-info-line {
 			text-align: center;
-		}
-		.sdc-tile-info-line {
-			justify-content: center;
 		}
 	}
 
@@ -98,8 +95,7 @@
 
 			.sdc-tile-info-line {
 				text-transform: capitalize;
-				@include ellipsis($display: flex);
-				align-items: center;
+				@include ellipsis($display: inline-block);
 
 				button {
 					height: 1.67em;
