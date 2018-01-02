@@ -8,7 +8,8 @@ export default experimentOn('Browse').group('Browse', [
         id: 'browse',
         title: 'Browse',
         showSource: true,
-        template: `<sdc-browse [placeholder]="'select file'" [label]="'my file:'" [extensions]="'jpg,svg'"></sdc-browse>`,
+        template: `<sdc-browse [placeholder]="'select file'" [label]="'my file:'" [extensions]="'jpg,svg'" #browse></sdc-browse>
+        <div>This is {{browse.isValid ? '' : 'not'}} valid file</div>`,
     },
     {
         id: 'required-browse',

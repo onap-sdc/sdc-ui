@@ -17,7 +17,14 @@ export class BrowseComponent {
     @Input() public name: string;
     @Input() public isRequired: boolean;
     @Output('selectedFileChange') public selectedFileChange: EventEmitter<FileDataModel> = new EventEmitter<FileDataModel>();
+    public isValid: boolean = true;
     private selectedFileChanged = (selectedFile: FileDataModel): void => {
+        const selectedFileExt = selectedFile.filename.slice(selectedFile.filename.lastIndexOf('.') + 1).toLowerCase();
+        if (this.extensions.toLowerCase().indexOf(selectedFileExt) > -1) {
+            this.isValid = true;
+        } else {
+            this.isValid = false;
+        }
         this.selectedFile = selectedFile;
         this.selectedFileChange.emit(this.selectedFile);
     }
