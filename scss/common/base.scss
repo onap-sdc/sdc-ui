@@ -23,13 +23,19 @@ body {
 ::-webkit-scrollbar-track {
   background-color: $white;
   border: 1px solid $light-gray;
+  border-top:none;
+  border-bottom:none;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 6px;
-  background-color: $light-gray;
+  background-color: $gray;
   border: 2px solid rgba(0,0,0,0);
   background-clip: padding-box;
+  
+  &:hover {
+    border-width:1px 0px 1px 1px;
+  }
 }
 
 /* Mozilla Firefox currently doesn't support scrollbar styling */
