@@ -30,22 +30,8 @@ $tlv-gray: #f8f8f8;
 $tlv-light-gray: #eaeaea;
 $tlv-hover: #e6f6fb;
 $content-background-color: $white;
-$scroll-bar-color: $text-black;//$light-gray;
+$scroll-bar-color: $text-black;
 $vc-status-text-color: #42b72a;
-
-// Button colors
-$pacific-blue: darken($blue,4%);
-$dodger-blue: lighten($blue,12%);
-$orient: darken($blue, 17%);
-$limeade:  darken($green, 2%);
-$lima: lighten($green,6%);
-$japanese-laurel:  darken($green, 14%);
-$tamarillo: darken($red, 11%);
-$torch-red: lighten(saturate($red, 25%), 5%);
-$red-oxide: darken($red, 22%);
-$buttercup: darken($yellow, 7%);
-$gold: adjust_hue($yellow, 7%);
-$pirate-gold: darken($yellow, 17%);
 
 // Button Sizes
 $btn-extra-small: 90px;
