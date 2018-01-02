@@ -16,7 +16,7 @@ $body-font-4: 10px;
 }
 
 @mixin base-font-italic(){
-  font-family: OpenSans-Regular, Arial, sans-serif;
+  font-family: OpenSans-Italic, OpenSans-Regular, Arial, sans-serif;
   font-style: italic;
   font-weight: 400;
 }
