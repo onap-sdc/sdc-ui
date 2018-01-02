@@ -27,14 +27,6 @@ $body-font-4: 10px;
   font-weight: 400;
 }
 
-@mixin font-hover() {
-  @include base-font-semibold;
-}
-
-@mixin font-focus() {
-  @include base-font-semibold;
-}
-
 @mixin font-error() {
   color: $red;
 }
