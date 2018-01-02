@@ -1,0 +1,17 @@
+<div *ngIf="!destroy" class="sdc-notification" (click)="dismiss()">
+    <div class="ngn {{'ngn-' + type}}" [ngClass]="{'ngn-top-right': position=='top-right','ngn-top': position=='top','ngn-bottom':position=='bottom','ngn-fixed':location=='body','ngn-sticky':sticky==true, 'ngn-fade':fade==true, 'ngn-transHeight':transheight==true}">
+        <div *ngIf="!hasDynamicContent()">
+            <div class="ngn-info-icon" >
+            </div>
+            <div class="ngn-msg-part">
+                <div class="ttl">
+                    {{notifyTitle}}
+                </div>
+                <div class="msg" >
+                    {{notifyText}}
+                </div>
+            </div>
+        </div>
+        <div #dynamicContentContainer></div>
+    </div>
+</div>

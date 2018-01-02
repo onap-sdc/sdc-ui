@@ -47,8 +47,12 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
     exports: [
         CommonModule,
         ModalInnerContent,
+        InnerNotifContent,
+        //NotificationComponent,
+        //NotificationContainerComponent,
         ModalModule,
         ColorsTable,
+        NotificationsExample,
         FormElementsModule,
         ButtonsModule,
         TileModule,
