@@ -8,7 +8,7 @@
 
     &.required::before {
       content: '*';
-      color: $red;
+      color: $functional-red;
       margin: 0 4px 0 0;
     }
   }
@@ -23,8 +23,8 @@
     color: $dark-gray;
 
     &.error, &.error:focus, &.error:disabled  {
-      border: solid 1px $red;
-      color: $red;
+      border: solid 1px $functional-red;
+      color: $functional-red;
       outline: none;
     }
 

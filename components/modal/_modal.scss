@@ -51,9 +51,9 @@
       }
     }
     &.sdc-modal-type-error {
-      border-top: solid 6px $red;
+      border-top: solid 6px $functional-red;
       .sdc-modal__svg-use {
-        fill: $red;
+        fill: $functional-red;
       }
       .svg-icon {
         &.__error {
