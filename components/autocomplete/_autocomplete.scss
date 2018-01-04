@@ -1,6 +1,13 @@
 .sdc-autocomplete-container{
     position: relative;
 
+    &.results-shown{
+      .sdc-input__input{
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
     ul.autocomplete-results {
       opacity: 0;
       border: solid 1px $blue;

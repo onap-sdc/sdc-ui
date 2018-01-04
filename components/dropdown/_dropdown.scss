@@ -75,7 +75,7 @@ sdc-dropdown {
     text-indent: 6px;
     border: solid 1px $light-gray;
     width: 100%;
-
+    border-radius: 2px;
     &.placeholder {
       @include base-font-italic;
       color: $gray;
@@ -118,6 +118,19 @@ sdc-dropdown {
       path {
         fill: $dark-gray;
       }
+    }
+  }
+  &.open-bottom {
+    .sdc-dropdown__header {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &.open-top {
+    .sdc-dropdown__header {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 
