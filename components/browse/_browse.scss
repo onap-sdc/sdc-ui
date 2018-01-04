@@ -54,6 +54,8 @@ input[type="file"] {
   .browse-button {
     border: solid 1px $light-gray;
     background-color: $background-gray;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
     height: 36px;
     width: 36px;
     position: absolute;
