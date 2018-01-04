@@ -59,7 +59,7 @@ export class CreateDynamicComponentService {
      *
      * @memberOf InjectionService
      */
-    private projectComponentInputs(component:ComponentRef<any>, options:any):ComponentRef<any> {
+    public projectComponentInputs(component:ComponentRef<any>, options:any):ComponentRef<any> {
         if (options) {
             const props = Object.getOwnPropertyNames(options);
             for (const prop of props) {

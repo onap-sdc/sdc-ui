@@ -49,7 +49,7 @@ import { NotificationsExample } from "./components/notifications-example.compone
         AutoCompleteModule,
         NotificationModule
     ],
-    entryComponents: [ModalInnerContent],
+    entryComponents: [ModalInnerContent, InnerNotifContent],
     exports: [
         CommonModule,
         ModalInnerContent,
