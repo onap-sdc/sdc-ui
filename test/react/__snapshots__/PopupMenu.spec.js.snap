@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopupMenu check relative menu rendered 1`] = `
+<ul
+  className="sdc-menu-list relative"
+  style={
+    Object {
+      "left": 10,
+      "top": 10,
+    }
+  }
+/>
+`;
+
+exports[`PopupMenu check separator rendered 1`] = `
+<li
+  className="separator"
+/>
+`;
+
+exports[`PopupMenu check static menu rendered 1`] = `
+<ul
+  className="sdc-menu-list "
+  style={Object {}}
+/>
+`;
