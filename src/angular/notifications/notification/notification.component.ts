@@ -43,6 +43,7 @@ export class NotificationComponent implements OnInit {
     public ngOnInit() {
         if(this.notificationSetting.hasNgContent){
 
+            //todo: move this to dynamic component service
             let factory = this.componentFactoryResolver.resolveComponentFactory(this.notificationSetting.innerComponentType);
             let dynamicComponent = factory.create(this.contentContainer.parentInjector);
             this.createDynamicComponentService.projectComponentInputs(dynamicComponent, this.notificationSetting.innerComponentOptions);

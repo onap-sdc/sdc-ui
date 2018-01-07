@@ -19,7 +19,7 @@ import { SearchBarModule } from "../../src/angular/searchbar/search-bar.module";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.module";
 import { NotificationModule } from "../../src/angular/notifications/notification.module";
-import { InnerNotifContent} from "./components/notification-inner-content-example.component";
+import { InnerNotifContent} from "../../src/angular/notifications/notification-inner-content-example.component";
 import { NotificationsExample } from "./components/notifications-example.component";
 
 @NgModule({
