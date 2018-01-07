@@ -64,7 +64,7 @@
     }
 
     &.__negative {
-        @include color-icon($functional-red, $functional-red);
+        @include color-icon($red, $red);
     }
 }
 

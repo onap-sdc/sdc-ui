@@ -16,7 +16,7 @@ const colorMap = {
     'tlv-light-gray': '#eaeaea',
     'background-gray': '#f2f2f2',
     'green': '#4ca90c',
-    'functional-red': '#cf2a2a',
+    'red': '#cf2a2a',
     'yellow': '#ffb81c',
     'dark-purple': '#702f8a',
     'purple': '#9063cd',
