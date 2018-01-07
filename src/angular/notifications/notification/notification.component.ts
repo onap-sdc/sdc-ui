@@ -23,9 +23,8 @@ export class NotificationComponent implements OnInit {
 
     @Input() notificationSetting:NotificationSettings;
     @Output() destroyComponent = new EventEmitter<any>();
-    public fade: boolean = false;
-
     @ViewChild("dynamicContentContainer", {read: ViewContainerRef}) contentContainer:ViewContainerRef;
+    private fade: boolean = false;
 
     constructor(private createDynamicComponentService: CreateDynamicComponentService, private componentFactoryResolver: ComponentFactoryResolver) {
     
@@ -38,12 +37,7 @@ export class NotificationComponent implements OnInit {
 
     public ngOnInit() {
         if(this.notificationSetting.hasNgContent){
-
-            //todo: move this to dynamic component service
-            let factory = this.componentFactoryResolver.resolveComponentFactory(this.notificationSetting.innerComponentType);
-            let dynamicComponent = factory.create(this.contentContainer.parentInjector);
-            this.createDynamicComponentService.projectComponentInputs(dynamicComponent, this.notificationSetting.innerComponentOptions);
-            this.contentContainer.insert(dynamicComponent.hostView);
+            this.createDynamicComponentService.insertComponentDynamically(this.notificationSetting.innerComponentType, this.notificationSetting.innerComponentOptions, this.contentContainer);
         }
 
 
@@ -57,7 +51,6 @@ export class NotificationComponent implements OnInit {
     private destroyMe() {
 
         this.fade = true;
-        let self = this;
         setTimeout(() => {
             this.destroyComponent.emit(this.notificationSetting);
         }, 800);

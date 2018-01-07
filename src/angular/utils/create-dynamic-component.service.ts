@@ -5,6 +5,7 @@ import {
     Injectable, Type, ApplicationRef, ComponentFactoryResolver, ComponentRef,
     EmbeddedViewRef, Injector,
 } from '@angular/core';
+import { ViewContainerRef } from '@angular/core/src/linker/view_container_ref';
 
 
 @Injectable()
@@ -59,7 +60,7 @@ export class CreateDynamicComponentService {
      *
      * @memberOf InjectionService
      */
-    public projectComponentInputs(component:ComponentRef<any>, options:any):ComponentRef<any> {
+    private projectComponentInputs(component:ComponentRef<any>, options:any):ComponentRef<any> {
         if (options) {
             const props = Object.getOwnPropertyNames(options);
             for (const prop of props) {
@@ -87,6 +88,21 @@ export class CreateDynamicComponentService {
         location.appendChild(componentRootNode);
 
         return componentRef;
+    }
+
+
+    /**
+     * Inserts a component into an existing viewContainer
+     * @param componentType - type of component to create
+     * @param options - Inputs to project on new component
+     * @param vcRef - viewContainerRef in which to insert the newly created component
+     */
+    public insertComponentDynamically<T>(componentType:Type<T>, options:any = {}, vcRef:ViewContainerRef) : ComponentRef<any> {
+            let factory = this.componentFactoryResolver.resolveComponentFactory(componentType);
+            let dynamicComponent = factory.create(vcRef.parentInjector);
+            this.projectComponentInputs(dynamicComponent, options);
+            vcRef.insert(dynamicComponent.hostView);
+            return dynamicComponent;
     }
 }
 
