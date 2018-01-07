@@ -23,11 +23,7 @@ export class NotificationComponent implements OnInit {
 
     @Input() notificationSetting:NotificationSettings;
     @Output() destroyComponent = new EventEmitter<any>();
-
-    hasContent:boolean = false;
     public fade: boolean = false;
-    public destroy:boolean = false;
-    public transheight:boolean = false;
 
     @ViewChild("dynamicContentContainer", {read: ViewContainerRef}) contentContainer:ViewContainerRef;
 
@@ -58,28 +54,15 @@ export class NotificationComponent implements OnInit {
     }
 
 
-    private fadeOut() {
-        this.fade = true;
-    }
-
     private destroyMe() {
-        this.fadeOut();
+
+        this.fade = true;
         let self = this;
-        setTimeout(function () {
-            self.transheight = true;
-
-            let event = {
-                destroy: true,
-                item: self
-            }
-
-            self.destroy = true;
-
-            setTimeout(function () {
-                self.destroyComponent.emit(event);
-            }, 2000);
-
+        setTimeout(() => {
+            this.destroyComponent.emit(this.notificationSetting);
         }, 800);
+            
+
     }
 
 

@@ -2,14 +2,49 @@
 
 	position:relative;
 
+
+	.sdc-notification__content {
+		display:flex;
+		flex-direction:row;
+
+		.sdc-notification__icon {
+			flex: 0 0 auto;
+			height: 32px;
+			width: 32px;
+			margin: 0 14px 0 7px;
+			background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%2382c355%3B%7D.cls-2%7Bfill%3Anone%3Bstroke%3A%23ebf5e4%3Bstroke-miterlimit%3A10%3B%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Evicon%3C/title%3E%3Cg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%3E%3Ccircle%20class%3D%22cls-1%22%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22/%3E%3C/g%3E%3Cg%20id%3D%22Layer_4%22%20data-name%3D%22Layer%204%22%3E%3Cpolyline%20class%3D%22cls-2%22%20points%3D%227.46%2017.43%2015.36%2021.74%2022.54%208.57%22/%3E%3C/g%3E%3C/svg%3E')
+		}
+	
+		.sdc-notification__message {
+			flex: 1;
+			text-align: left;
+			
+			
+
+			.sdc-notification__title {
+				font-size:13px;
+				color: white;
+			}
+		
+			.sdc-notification__text {
+				font-size: 12px;
+				color: white;
+			}
+		}
+	
+	}
+
+
+
+	
 	@keyframes slideintop {
 		from   {margin-top: -50px;}
 		to     {margin-top: 10px;}
 	}
 
 	@keyframes fade {
-		from   {opacity: 1;}
-		to     {opacity: 0;}
+		from   {opacity: 1; transform: translateY(0)}
+		to     {opacity: 0; transform: translateY(-20px);}
 	}
 
 	//@keyframes collapse {
@@ -20,163 +55,37 @@
 	.ngn {
 		//color: #FFF;
 		cursor: default;
-		font-size: 1.3em;
+		padding: 10px;
+		width: 212px;
 		left: 0;
 		opacity: 1;
 		//padding: 25px 80px;
 		right: 0;
 		display: block;
 		text-align: center;
-		user-select: none;
-		//z-index: 9999;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		margin-top: 10px;
-		//height: 50px;
-		//min-height: 50px;
-
+		@extend %noselect;
+		margin-top:10px;
 		animation-name: slideintop;
 		animation-duration: 1s;
 	}
 
-
-	.ngn-change-pos1 {
-		transition: all 2s;
-	}
-
-	.ngn-fade1 {
-		max-height: 0px;
-		transition: height 2s ease-out;
-	}
 
 	.ngn-fade {
 		animation-name: fade;
 		animation-duration: 0.8s;
 	}
 
-	.ngn-transHeight {
-		opacity: 0;
-		max-height: 0px;
-		transition: height 2s linear;
-	}
-
-	.ngn-transHeight {
-		position: absolute;
-		opacity: 0;
-		transform: scaleY(0);
-		transition: transform 2s;
-	}
-
-
-	.ngn-component {
-		position: absolute; }
-
-	.ngn.rowspan>div>div{
-		position: relative;
-		height: 100%;
-		overflow: hidden;
-	}
-
-	.cell.rowspanned {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: 32px;
-	}
-
-	.cell {
-		display: table-cell;
-	}
-
-
 	.ngn-top {
 		top: 0; }
 
-	.ngn-top-right {
-		display: inline-block;
-		//padding: 10px;
-		padding: 0px 10px 10px 0px;
-		//padding-bottom: 10px;
-		//padding-right: 10px;
-		//padding-left: 0px;
-		//padding-top: 0px;
-
-		vertical-align: top;
-
-		//float: right;
-		//position: absolute;
-		//top: 0;
-		//right: 0;
-		width: 380px;
-		//left: auto;
-	}
-
 	.ngn-bottom {
 		bottom: 0; }
-
-	.ngn-blabla {
-		bottom: 0; }
-
 
 	.ngn-fixed {
 		position: fixed; }
 	.ngn-absolute {
 		position: absolute; }
 
-	.ngn-success {
-		//background-color: #5eb95e;
-		background-color: #4ca90c;
-	}
-
-	.ngn-sticky .ngn-dismiss {
-		display: block; }
-
-	.ngn-dismiss:hover {
-		background-color: #000; }
-
-	.ngn-dismiss:active {
-		background-color: #666; }
-
-	.ngn-dismiss {
-		background-color: #333;
-		border-radius: 15px;
-		box-shadow: inset 2px 2px 7px 2px #000;
-		color: #DDD;
-		cursor: pointer;
-		//display: none;
-		font-size: 1.25em;
-		font-weight: bold;
-		height: 30px;
-		line-height: 30px;
-		opacity: 1;
-		position: absolute;
-		right: 40px;
-		//text-shadow: 1px 1px 5px #000;
-		top: 25px;
-		width: 30px;
-		//background: no-repeat url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnIGlkPSJtZWFuaWNvbnNfeDVGXzI0Ij48cGF0aCBkPSJNMjU2LjMxNywwQzExNC45NTgsMCwwLjM0NCwxMTQuNjgsMC4zNDQsMjU1Ljk3M0MwLjM0NCwzOTcuMzk3LDExNC45NTcsNTEyLDI1Ni4zMTcsNTEyICAgYzE0MS40MzQsMCwyNTYuMDI3LTExNC42MDQsMjU2LjAyNy0yNTYuMDI3QzUxMi4zNDYsMTE0LjY4LDM5Ny43NTEsMCwyNTYuMzE3LDB6IE00MTUuOTk3LDM0MS42NDZsLTc0LjA4Niw3My45OThsLTg1LjU1Ny04NS42MSAgIGwtODUuNiw4NS42MWwtNzQuMDUzLTczLjk5OGw4NS42MjMtODUuNjc0bC04NS42MjMtODUuNTU0bDc0LjA1My03My45ODNsODUuNiw4NS41NTRsODUuNTU3LTg1LjU1NGw3NC4wODYsNzMuOTgzbC04NS41ODgsODUuNTU0ICAgTDQxNS45OTcsMzQxLjY0NnoiLz48L2c+PGcgaWQ9IkxheWVyXzFfMV8iLz48L3N2Zz4=');
-		//background: url(icon/delete16.png);
-		//z-index: 1000;
-	}
-
-	.ttl{
-		//text-overflow: ellipsis;
-		text-align: left;
-		font-size: 13px;
-		color: white;
-	}
-
-	.msg{
-		//text-overflow: ellipsis;
-		//overflow: hidden;
-		//white-space:nowrap;
-		text-align: left;
-		color: white;
-		font-size: 12px;
-	}
 
 	.ngn-close {
 		position: absolute;
@@ -187,53 +96,6 @@
 		left: auto;
         background: url('data:image/svg+xml, %3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%0A%20%3Cg%3E%0A%20%20%3Ctitle%3Ebackground%3C/title%3E%0A%20%20%3Crect%20fill%3D%22none%22%20id%3D%22canvas_background%22%20height%3D%22402%22%20width%3D%22582%22%20y%3D%22-1%22%20x%3D%22-1%22/%3E%0A%20%3C/g%3E%0A%20%3Cg%3E%0A%20%20%3Ctitle%3ELayer%201%3C/title%3E%0A%20%20%3Cpath%20fill%3D%22%23ffffff%22%20id%3D%22svg_2%22%20d%3D%22m12%2C2c-5.5%2C0%20-10%2C4.5%20-10%2C10c0%2C5.5%204.5%2C10%2010%2C10s10%2C-4.5%2010%2C-10c0%2C-5.5%20-4.5%2C-10%20-10%2C-10zm4.9%2C13.5l-1.4%2C1.4l-3.5%2C-3.5l-3.5%2C3.5l-1.4%2C-1.4l3.5%2C-3.5l-3.5%2C-3.5l1.4%2C-1.4l3.5%2C3.5l3.5%2C-3.5l1.4%2C1.4l-3.5%2C3.5l3.5%2C3.5z%22/%3E%0A%20%3C/g%3E%0A%3C/svg%3E')
     }
-
-
-	.ngn-info-icon {
-		height: 32px;
-		width: 32px;
-		//top: 12px;
-		//right: 2px;
-		//left: auto;
-		float: left;
-		vertical-align: middle;
-		margin-top: 12px;
-		margin-right: 14px;
-		margin-left: 7px;
-		background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%2382c355%3B%7D.cls-2%7Bfill%3Anone%3Bstroke%3A%23ebf5e4%3Bstroke-miterlimit%3A10%3B%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Evicon%3C/title%3E%3Cg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%3E%3Ccircle%20class%3D%22cls-1%22%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22/%3E%3C/g%3E%3Cg%20id%3D%22Layer_4%22%20data-name%3D%22Layer%204%22%3E%3Cpolyline%20class%3D%22cls-2%22%20points%3D%227.46%2017.43%2015.36%2021.74%2022.54%208.57%22/%3E%3C/g%3E%3C/svg%3E')
-	}
-
-	.ngn-info-icon::before {
-		content: '';
-		display: inline-block;
-		vertical-align: middle;
-		height: 100%;
-	}
-
-	.ngn-msg-part {
-		float: left;
-		//vertical-align: middle;
-		//text-overflow: ellipsis;
-		width: 40%;
-		margin-right: 5px;
-	}
-
-	.ngn-msg-part::before {
-		content: '';
-		display: inline-block;
-		vertical-align: middle;
-		height: 100%;
-	}
-
-	//.ngn-msg-part::after {
-	//	content: '';
-	//	display: inline-block;
-	//	vertical-align: middle;
-	//	height: 100%;
-	//	width: 5%;
-	//}
-
-
 
 
 	/* Themes - Default - Pure */

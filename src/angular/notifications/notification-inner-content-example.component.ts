@@ -4,10 +4,11 @@ import {Component, Input} from "@angular/core";
     selector: "innernotif-content",
     template: `
         <div>
-            <div style="background-color: #4a0263">
+            <h4>Custom Notification</h4>
+            <div>
                 <span>{{notifyTitle}}</span>
             </div>
-            <div style="background-color: #5e001f">
+            <div>
                 <span>{{notifyText}}</span>
             </div>
         </div>

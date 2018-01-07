@@ -1,13 +1,13 @@
 <div [hidden]="destroy" class="sdc-notification" (click)="dismiss()">
-    <div class="ngn {{'ngn-' + notificationSetting.type}}" [ngClass]="{'ngn-top-right': notificationSetting.position=='top-right','ngn-top': notificationSetting.position=='top','ngn-bottom':notificationSetting.position=='bottom','ngn-fixed':notificationSetting.location=='body','ngn-sticky':notificationSetting.sticky==true, 'ngn-fade':fade==true, 'ngn-transHeight':transheight==true}">
-        <div *ngIf="!notificationSetting.hasNgContent">
-            <div class="ngn-info-icon" >
+    <div class="ngn {{'ngn-' + notificationSetting.type}}" [ngClass]="{'ngn-top': notificationSetting.position=='top','ngn-bottom':notificationSetting.position=='bottom','ngn-fixed':notificationSetting.location=='body','ngn-sticky':notificationSetting.sticky==true, 'ngn-fade':fade==true}">
+        <div *ngIf="!notificationSetting.hasNgContent" class="sdc-notification__content">
+            <div class="sdc-notification__icon" >
             </div>
-            <div class="ngn-msg-part">
-                <div class="ttl">
+            <div class="sdc-notification__message">
+                <div class="sdc-notification__title">
                     {{notificationSetting.notifyTitle}}
                 </div>
-                <div class="msg" >
+                <div class="sdc-notification__text" >
                     {{notificationSetting.notifyText}}
                 </div>
             </div>
