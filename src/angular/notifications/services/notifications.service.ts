@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NotificationSettings}  from '../utilities/notification.config'
 import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Injectable()
@@ -12,7 +13,7 @@ export class NotificationsService  {
 
     constructor() {}
 
-    public push(notif : NotificationSettings){
+    public push(notif : NotificationSettings):void{
 
         if( this.notifQueue.observers.length > 0 ) {
             this.notifQueue.next(notif);
@@ -29,8 +30,8 @@ export class NotificationsService  {
 
 
 
-    public subscribe(observer) {
-        let s = this.notifQueue.subscribe(observer);
+    public subscribe(observer): Subscription {
+        let s:Subscription = this.notifQueue.subscribe(observer);
         this.notifs.forEach(notif => this.notifQueue.next(notif));
         this.notifs = [];
         return s;
