@@ -1,10 +1,9 @@
 /**
  * Created by ob0695 on 10/16/2017.
  */
-import {Component, Input, ViewChild, Injector, ComponentFactoryResolver} from "@angular/core";
+import {Component, Input, ViewChild} from "@angular/core";
 import {NotificationsService} from "../../../src/angular/notifications/services/notifications.service";
 import {NotificationSettings} from "../../../src/angular/notifications/utilities/notification.config";
-import {CreateDynamicComponentService} from "../../../src/angular/utils/create-dynamic-component.service";
 import {InnerNotifContent} from "./notification-inner-content-example.component";
 
 @Component({
@@ -39,7 +38,7 @@ export class NotificationsExample {
     //@ViewChild('mode1') userProfile: UserProfile
 
 
-    constructor(private notifsService : NotificationsService, private injector:Injector, private resolver: ComponentFactoryResolver) {
+    constructor(private notifsService : NotificationsService) {
 
     }
 
