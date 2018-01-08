@@ -4,7 +4,7 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 
 const valueChange = (value: any): void => {
-    alert(value);
+    console.log('The value was changed! >>>>', value);
 };
 
 export default experimentOn('Input')
@@ -68,7 +68,7 @@ export default experimentOn('Input')
         title: 'Input with debounce time',
         description: `<pre>On value change event code:
         const valueChange = (value: any): void => {
-            alert(value);
+            console.log('The value was changed! >>>>', value);
         };
         This event will happen 5 sec after the change
         </pre>`,
