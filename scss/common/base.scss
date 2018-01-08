@@ -5,27 +5,37 @@ html {
 
 body {
   /* scrollbar styling for Internet Explorer */
-  scrollbar-face-color: $scroll-bar-color;
-  scrollbar-track-color: $scroll-bar-color;
+  scrollbar-face-color: $light-gray;
+  scrollbar-track-color: $white;
+  scrollbar-shadow-color:$white;
+  scrollbar-arrow-color: $gray;
+
   height: 100%;
   @extend %noselect;
 }
 
 /* scrollbar styling for Google Chrome | Safari | Opera */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 11px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px;
+  background-color: $white;
+  border: 1px solid $light-gray;
+  border-top:none;
+  border-bottom:none;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: $light-gray;
-  border-right: 2px solid $content-background-color;
+  border-radius: 6px;
+  background-color: $gray;
+  border: 2px solid rgba(0,0,0,0);
+  background-clip: padding-box;
+  
+  &:hover {
+    border-width:1px 0px 1px 1px;
+  }
 }
 
 /* Mozilla Firefox currently doesn't support scrollbar styling */
