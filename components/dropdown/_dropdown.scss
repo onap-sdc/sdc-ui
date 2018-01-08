@@ -162,11 +162,11 @@ sdc-dropdown {
         text-indent: 30px;
       }
       &:hover {
-        background-color: $tlv-gray;
+        background-color: $background-gray;
         @include base-font-semibold;
       }
       &.selected {
-        background-color: $tlv-hover;
+        background-color: $tlv-select;
         color: $blue;
         @include base-font-semibold;
       }
