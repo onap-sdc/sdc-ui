@@ -3,6 +3,7 @@ import {FilterBarComponent} from "../filterbar/filter-bar.component";
 import {URLSearchParams, Http} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {AutocompletePipe} from "./autocomplete.pipe";
+import template from "./autocomplete.component.html";
 
 export interface IDataSchema {
     key: string;
@@ -11,7 +12,7 @@ export interface IDataSchema {
 
 @Component({
     selector: 'sdc-autocomplete',
-    templateUrl: './autocomplete.component.html',
+    template: template,
     animations: [
         trigger('displayResultsAnimation', [
             state('true', style({

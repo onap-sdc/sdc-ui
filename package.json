@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "1.6.13",
+  "version": "1.6.15",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "scripts": {
     "test": "npm run build-icons && jest && npm run karma-travis",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@angular/compiler": "~2.4.8",
     "@angular/compiler-cli": "~2.4.8",
-    "@islavi/ng2-component-lab": "^1.0.26",
+    "@islavi/ng2-component-lab": "^1.0.27",
     "@types/node": "^7.0.27",
     "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.2",

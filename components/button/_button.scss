@@ -8,7 +8,7 @@
 
   height: 36px;
   width: 120px;
-  min-width: 120px;
+  min-width: 90px;
 
   cursor: pointer;
   text-align: center;
@@ -27,13 +27,11 @@
     &:not(:disabled) {
       &:hover, &:active {
         background-color: $hover-blue;
-        @include font-hover;
       }
       &:focus:not(:active) {
         border: 0.5px solid $white;
         background-color: $hover-blue;
         box-shadow: 0px 0px 0px 1px $hover-blue;
-        @include font-focus;
       }
     }
 
@@ -52,12 +50,10 @@
       &:hover, &:active {
         color: $hover-blue;
         border-color: $hover-blue;
-        @include font-hover;
       }
       &:focus:not(:active) {
         color: $hover-blue;
         box-shadow: inset 0px 0px 0px 0px $link-blue, 0px 0px 0px 1px $blue;
-        @include font-focus;
       }
     }
 
@@ -77,12 +73,10 @@
     &:not(:disabled) {
       &:hover, &:active {
         color: $hover-blue;
-        @include font-hover;
       }
       &:focus:not(:active) {
         border: 1px solid $link-blue;
         color: $hover-blue;
-        @include font-focus;
       }
     }
 
@@ -102,6 +96,10 @@
 
   &.btn-small{
     width: $btn-small;
+  }
+
+  &.btn-x-small{
+    width: $btn-extra-small;
   }
 
   &.btn-default{

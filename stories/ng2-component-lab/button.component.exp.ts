@@ -1,7 +1,7 @@
 import {experimentOn} from '@islavi/ng2-component-lab';
 import {IconPosition} from  '../../src/angular/buttons/button.component';
 const buttonTypes = ['primary', 'secondary', 'link'];
-const buttonSizes = ['large', 'medium', 'small', 'default'];
+const buttonSizes = ['large', 'medium', 'small', 'x-small', 'default'];
 const experiment = experimentOn('Button');
 
 experiment.group("Default button", [
@@ -49,7 +49,7 @@ buttonTypes.forEach((buttonType) => {
                 <span style="display: inline-block;">
                 <div>${buttonSize}</div><br>
                 <sdc-button
-                    text="Sample button"
+                    text="Sample"
                     type="${buttonType}"
                     size="${buttonSize}"
                     (click)="buttonClicked()"
