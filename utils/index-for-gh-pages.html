@@ -67,7 +67,7 @@
     }
     function setActiveTab(type) {
       var allTabs = document.getElementsByClassName('case-tab-name');
-      for(let i = 0; i < allTabs.length; i++ ) {
+      for(var i = 0; i < allTabs.length; i++ ) {
         if(allTabs[i].getAttribute('id') === type+'-tab') {
           allTabs[i].setAttribute('active', true);
         }

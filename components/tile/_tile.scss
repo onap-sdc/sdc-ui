@@ -3,10 +3,7 @@
 	$tile-full-height: 204px;
 	$tile-padding: 10px;
 
-	$tile-width-less-padding: $tile-full-width - ($tile-padding * 2);
-	$tile-height-less-padding: $tile-full-height - ($tile-padding * 2);
-
-	$header-height: 10px;
+	$header-height: $body-font-1;
 	$footer-height: 23px;
 	$content-height: 100%;
 
@@ -40,7 +37,7 @@
 
 	.blue {
 		color: $blue;
-		fill: $light-blue;
+		fill: $blue;
 	}
 
 	.purple {
@@ -49,17 +46,14 @@
 	}
 
 	.centered {
-		&.sdc-tile-footer {
+		&.sdc-tile-footer, .sdc-tile-info-line {
 			text-align: center;
-		}
-		.sdc-tile-info-line {
-			justify-content: center;
 		}
 	}
 
 	.sdc-tile-header {
-		height: $body-font-1;
-		line-height: $header-height;
+		height: 1.1em;
+		line-height: 1em;
 		@include ellipsis($display: block);
 
 		font-size: $body-font-1;
@@ -71,7 +65,6 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: $content-height;
-		margin-bottom: -4px;
 
 		.sdc-tile-content-icon {
 			margin-top: 27px;
@@ -102,13 +95,13 @@
 
 			.sdc-tile-info-line {
 				text-transform: capitalize;
-				@include ellipsis($display: flex);
-				align-items: center;
+				@include ellipsis($display: inline-block);
 
 				button {
 					height: 1.67em;
 					width: initial;
 					margin-bottom: 5px;
+					margin-top: 1px;
 					padding: 0 8px;
 					font-size: inherit;
 				}
@@ -121,27 +114,26 @@
 					height: 1.6em;
 					line-height: 1.8;
 					color: $text-black;
-					font-weight: 600;
-					@include body-1;
-					@include base-font-semibold;
+					@include heading-5;
 				}
 				&.subtitle {
 					height: 1.5em;
 					line-height: 1.6;
 					color: $dark-gray;
 				}
+				&:last-child {
+					margin-bottom: 4px;
+				}
 			}
 		}
 	}
 
 	.sdc-tile-footer {
-		width: $tile-width-less-padding;
 		height: $footer-height;
 		@include box-sizing;
 
 		border-top: 1px solid $tlv-light-gray;
-		margin-top: 7px;
-		padding-top: 9px;
+		padding-top: 8px;
 
 		color: $dark-gray;
 		fill: $dark-gray;
