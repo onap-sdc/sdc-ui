@@ -48,10 +48,10 @@
         }
 
         &.selected {
-            background: $tlv-hover;
-            color: $hover-blue;
+            background: $tlv-select;
+            color: $light-blue;
             g, path {
-                fill: $hover-blue;
+                fill: $light-blue;
             }
         }
     }

@@ -27,7 +27,7 @@
     height: 36px;
     width: 36px;
     text-align: center;
-    background-color: $tlv-hover;
+    background-color: $tlv-select;
     border: solid 1px $blue;
     border-left: none;
     margin-top: 17px;
@@ -90,8 +90,8 @@
         }
       }
       &:hover:not(.view-only){
-        background-color: $tlv-hover;
-        border-color: $tlv-hover;
+        background-color: $tlv-select;
+        border-color: $tlv-select;
         .delete-item{
           svg g{
             fill: $blue;
