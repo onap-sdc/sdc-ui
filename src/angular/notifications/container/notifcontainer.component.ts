@@ -15,21 +15,17 @@ export class NotificationContainerComponent implements OnInit{
     }
 
     public ngOnInit(){
-
         this.notify.subscribe( (notif : NotificationSettings) => {
             this.notifications.push(notif);
         });
-
     }
 
 
-    onDestroyed(event : any){
-
+    private onDestroyed = (event : any):void =>{
         let index: number = this.notifications.indexOf(event);
         if (index !== -1) {
             this.notifications.splice(index, 1);
         }
-
     }
 
 }

@@ -1,6 +1,6 @@
-<div [hidden]="destroy" class="sdc-notification" (click)="dismiss()">
-    <div class="ngn {{'ngn-' + notificationSetting.type}}" [ngClass]="{'ngn-top': notificationSetting.position=='top','ngn-bottom':notificationSetting.position=='bottom','ngn-fixed':notificationSetting.location=='body','ngn-sticky':notificationSetting.sticky==true, 'ngn-fade':fade==true}">
-        <div *ngIf="!notificationSetting.hasNgContent" class="sdc-notification__content">
+<div class="sdc-notification" (click)="fadeOut()">
+    <div class="sdc-notification__wrapper {{'type-' + notificationSetting.type}}" [class.fade-out__animated]="fade" (animationend)="destroyMe()">
+        <div *ngIf="!notificationSetting.hasCustomContent" class="sdc-notification__content">
             <div class="sdc-notification__icon" >
             </div>
             <div class="sdc-notification__message">

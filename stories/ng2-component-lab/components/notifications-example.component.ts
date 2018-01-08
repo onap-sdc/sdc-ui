@@ -35,30 +35,26 @@ import {InnerNotifContent} from "../../../src/angular/notifications/notification
 })
 export class NotificationsExample {
 
-    //@ViewChild('mode1') userProfile: UserProfile
-
-
     constructor(private notifsService : NotificationsService) {
-
     }
 
     sendSuccessNotif() {
-        this.notifsService.push(new NotificationSettings('top-right', 10000, "success", '', false, 'notif success message test', 'Notif Title Success', false));
+        this.notifsService.push(new NotificationSettings("success", 'notif success message test', 'Notif Title Success'));
     }
 
     sendMultipleLinesSuceessNotif() {
-        this.notifsService.push(new NotificationSettings('top-right', 10000, "success", '', false, 'notif success message test with a lot of test so we can test multiple line case lets just add blabla bcdesfg hijklmnop qrstuvw xyz abcdesfg hijklmnop qrstuvw xyz', 'Notif Title Success', false));
+        this.notifsService.push(new NotificationSettings("success", 'notif success message test with a lot of test so we can test multiple line case lets just add blabla bcdesfg hijklmnop qrstuvw xyz abcdesfg hijklmnop qrstuvw xyz', 'Notif Title Success'));
     }
 
     sendWarnNotif() {
-        this.notifsService.push(new NotificationSettings('top-right', 10000, "warn", '', false, 'notif warn message test', 'Notif Title Warn', false));
+        this.notifsService.push(new NotificationSettings("warn", 'notif warn message test', 'Notif Title Warn'));
     }
 
     sendInfoNotif() {
-        this.notifsService.push(new NotificationSettings('top-right', 10000, "info", '', false, 'notif info message test', 'Notif Title Info', false));
+        this.notifsService.push(new NotificationSettings("info", 'notif info message test', 'Notif Title Info'));
     }
 
     sendSuccessCustomNotif() {
-        this.notifsService.push(new NotificationSettings('top-right', 10000, "info", '', false, 'notif XYZ', 'Notif Custom XYZ', true, InnerNotifContent, { notifyText : "notif info custom inner message test", notifyTitle : "Notif Custom Inner Title Info"}));
+        this.notifsService.push(new NotificationSettings( "info", 'notif XYZ', 'Notif Custom XYZ', 10000, false, true, InnerNotifContent, { notifyText : "notif info custom inner message test", notifyTitle : "Notif Custom Inner Title Info"}));
     }
 }

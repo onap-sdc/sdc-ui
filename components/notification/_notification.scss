@@ -1,7 +1,31 @@
-.sdc-notification {
+@include mixin-keyframes-fade-in-vertically(-50px, 'keyframes-slide-notif-in');
+@include mixin-keyframes-fade-out-vertically(20px, 'keyframes-slide-notif-out');
 
+.sdc-notification {
 	position:relative;
 
+	.sdc-notification__wrapper {
+		padding: 10px;
+		margin-top:10px;
+		width: 212px;
+		animation: keyframes-slide-notif-in 1s;
+
+		&.fade-out__animated {
+			animation: keyframes-slide-notif-out 0.8s
+		}
+
+		&.type-info {
+			background-color: #0e90d2; }
+	
+		&.type-error {
+			background-color: #dd514c; }
+	
+		&.type-success {
+			background-color: #5eb95e; }
+	
+		&.type-warn {
+			background-color: #f37b1d; }
+	}
 
 	.sdc-notification__content {
 		display:flex;
@@ -18,8 +42,6 @@
 		.sdc-notification__message {
 			flex: 1;
 			text-align: left;
-			
-			
 
 			.sdc-notification__title {
 				font-size:13px;
@@ -33,83 +55,5 @@
 		}
 	
 	}
-
-
-
-	
-	@keyframes slideintop {
-		from   {margin-top: -50px;}
-		to     {margin-top: 10px;}
-	}
-
-	@keyframes fade {
-		from   {opacity: 1; transform: translateY(0)}
-		to     {opacity: 0; transform: translateY(-20px);}
-	}
-
-	//@keyframes collapse {
-	//	from   {max-height: auto;}
-	//	to     {max-height: 0;}
-	//}
-
-	.ngn {
-		//color: #FFF;
-		cursor: default;
-		padding: 10px;
-		width: 212px;
-		left: 0;
-		opacity: 1;
-		//padding: 25px 80px;
-		right: 0;
-		display: block;
-		text-align: center;
-		@extend %noselect;
-		margin-top:10px;
-		animation-name: slideintop;
-		animation-duration: 1s;
-	}
-
-
-	.ngn-fade {
-		animation-name: fade;
-		animation-duration: 0.8s;
-	}
-
-	.ngn-top {
-		top: 0; }
-
-	.ngn-bottom {
-		bottom: 0; }
-
-	.ngn-fixed {
-		position: fixed; }
-	.ngn-absolute {
-		position: absolute; }
-
-
-	.ngn-close {
-		position: absolute;
-		height: 24px;
-		width: 24px;
-		top: 12px;
-		right: 2px;
-		left: auto;
-        background: url('data:image/svg+xml, %3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%0A%20%3Cg%3E%0A%20%20%3Ctitle%3Ebackground%3C/title%3E%0A%20%20%3Crect%20fill%3D%22none%22%20id%3D%22canvas_background%22%20height%3D%22402%22%20width%3D%22582%22%20y%3D%22-1%22%20x%3D%22-1%22/%3E%0A%20%3C/g%3E%0A%20%3Cg%3E%0A%20%20%3Ctitle%3ELayer%201%3C/title%3E%0A%20%20%3Cpath%20fill%3D%22%23ffffff%22%20id%3D%22svg_2%22%20d%3D%22m12%2C2c-5.5%2C0%20-10%2C4.5%20-10%2C10c0%2C5.5%204.5%2C10%2010%2C10s10%2C-4.5%2010%2C-10c0%2C-5.5%20-4.5%2C-10%20-10%2C-10zm4.9%2C13.5l-1.4%2C1.4l-3.5%2C-3.5l-3.5%2C3.5l-1.4%2C-1.4l3.5%2C-3.5l-3.5%2C-3.5l1.4%2C-1.4l3.5%2C3.5l3.5%2C-3.5l1.4%2C1.4l-3.5%2C3.5l3.5%2C3.5z%22/%3E%0A%20%3C/g%3E%0A%3C/svg%3E')
-    }
-
-
-	/* Themes - Default - Pure */
-	.ngn-info {
-		background-color: #0e90d2; }
-
-	.ngn-error {
-		background-color: #dd514c; }
-
-	.ngn-success {
-		background-color: #5eb95e; }
-
-	.ngn-warn {
-		background-color: #f37b1d; }
-
 
 }
