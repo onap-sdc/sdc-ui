@@ -1,23 +1,8 @@
 .sdc-notification-container {
 
 
-	float: right;
-	display: block;
+	position:absolute;
+	top: 10px;
+	right: 10px;
 	width: 232px;
-	margin: 0 auto;
-	//overflow-y: auto;
-	overflow-x: hidden;
-	margin-right: 10px;
-	height: 600px;
-
-
-	.ngn-change-pos {
-		transition: all 2s;
-	}
-
-	.ntns {
-		//background-color: black;
-		//transition-duration: 2s;
-
-	}
 }
