@@ -75,7 +75,7 @@ sdc-dropdown {
     text-indent: 6px;
     border: solid 1px $light-gray;
     width: 100%;
-
+    border-radius: 2px;
     &.placeholder {
       @include base-font-italic;
       color: $gray;
@@ -120,6 +120,19 @@ sdc-dropdown {
       }
     }
   }
+  &.open-bottom {
+    .sdc-dropdown__header {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &.open-top {
+    .sdc-dropdown__header {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
 
   .sdc-dropdown__options-list {
     position: relative;
@@ -134,7 +147,7 @@ sdc-dropdown {
     border-top:none;
     background-color: white;
     padding-top: 10px;
-    box-shadow: 0 0 12px 0px rgba(0,0,0,.3);
+    box-shadow: 0 3px 7px -3px $dark-gray;
 
     &.sdc-dropdown__options-wrapper--top {
       bottom:40px;
@@ -162,11 +175,11 @@ sdc-dropdown {
         text-indent: 30px;
       }
       &:hover {
-        background-color: $tlv-gray;
+        background-color: $background-gray;
         @include base-font-semibold;
       }
       &.selected {
-        background-color: $tlv-hover;
+        background-color: $tlv-select;
         color: $blue;
         @include base-font-semibold;
       }
@@ -249,19 +262,19 @@ sdc-dropdown {
 .sdc-dropdown__options-wrapper--frame {
   overflow: hidden;
   position: absolute;
-  padding: 0 10px 0px 10px;
-  left: -10px;
+  padding-bottom: 10px;
   top: auto;
   width: 100%;
 
   &.sdc-dropdown__options-wrapper--top {
     bottom:40px;
     top:auto;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 0 0 0;
 
     /* Expend animation from bottom to top */
     .sdc-dropdown__options-list {
       border-top:1px solid $light-blue;
+      box-shadow: 0 0 7px -1px $dark-gray;
       &.sdc-dropdown__options-list--animation-init {
         border-bottom: none;
         padding:0;
