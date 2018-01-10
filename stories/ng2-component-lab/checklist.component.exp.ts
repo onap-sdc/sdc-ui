@@ -23,7 +23,7 @@ const checkListExample3: ChecklistModel =  new ChecklistModel(checklistValuesExa
 
 const checklistValuesExample4 = [];
 const checkListExample4: ChecklistModel =  new ChecklistModel(checklistValuesExample4,
-    [new ChecklistItemModel('apple', true),
+    [new ChecklistItemModel('apple', true, true),
         new ChecklistItemModel('banana', true),
         new ChecklistItemModel('orange')]);
 
@@ -136,7 +136,7 @@ export default experimentOn('Checklist')
             <pre><h5>The checklistModel parameter:</h5>
             const checklistValues = [];
             const checklistModel: ChecklistModel =  new ChecklistModel(checklistValues,
-                [new ChecklistItemModel('apple', true),
+                [new ChecklistItemModel('apple', true, true),
                 new ChecklistItemModel('banana', true),
                 new ChecklistItemModel('orange')]);
             </pre>
