@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "1.6.17-snapshot-1",
+  "version": "1.6.17-snapshot.1",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "scripts": {
     "build-common": "npm run build-icons && node-sass --include-path scss scss/style.scss css/style.css",
