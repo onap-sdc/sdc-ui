@@ -10,6 +10,7 @@ import { ModalInnerContent } from "./components/modal-inner-content-example.comp
 import { PopupMenuModule } from "../../src/angular/popup-menu/popup-menu.module";
 import { ChecklistModule } from "../../src/angular/checklist/checklist.module";
 import { InfiniteScrollModule } from "../../src/angular/infinite-scroll/infinite-scroll.module";
+import {TabModule} from "../../src/angular/tabs/tabs.module";
 import { TooltipDirective } from '../../src/angular/tooltip/tooltip.directive';
 import { TooltipTemplateComponent } from '../../src/angular/tooltip/tooltip-template.component';
 import { TooltipModule } from '../../src/angular/tooltip/tooltip.module';
@@ -34,6 +35,7 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         FormElementsModule,
         ButtonsModule,
         TileModule,
+        TabModule,
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
@@ -52,6 +54,7 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         FormElementsModule,
         ButtonsModule,
         TileModule,
+        TabModule,
         ButtonsModule,
         ChecklistModule,
         PopupMenuModule,
