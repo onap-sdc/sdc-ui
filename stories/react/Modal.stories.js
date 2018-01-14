@@ -3,6 +3,10 @@ import Examples from './utils/Examples.js';
 import Button from '../../src/react/Button.js';
 import Modal  from '../../src/react/Modal.js';
 import Input from '../../src/react/Input.js';
+import HTMLStandardModal from '../../components/modal/standard-modal.html';
+import HTMLAlertModal from '../../components/modal/alert-modal.html';
+import HTMLErrorModal from '../../components/modal/error-modal.html';
+import HTMLCustomModal from '../../components/modal/custom-modal.html';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -73,8 +77,9 @@ let examples = {
 					<Modal.Footer actionButtonText='Yes' actionButtonClick={()=>{}}/>
 				</Modal>
 			</Example>,
-		html: '',
-		exclude: 'Example'
+		html: HTMLStandardModal,		
+		exclude: 'Example',
+		renderFromJsx: true
 	},
 	Alert: {
 		jsx: <Example>
@@ -86,8 +91,9 @@ let examples = {
 					<Modal.Footer closeButtonText='Ok'/>
 				</Modal>
 			</Example>,
-		html: '',
-		exclude: 'Example'
+		html: HTMLAlertModal,
+		exclude: 'Example',
+		renderFromJsx: true
 	},
 	Error: {
 		jsx: <Example>
@@ -99,8 +105,9 @@ let examples = {
 					<Modal.Footer onClose={()=>isShown(false)} closeButtonText='Ok'/>
 				</Modal>
 			</Example>,
-		html: '',
-		exclude: 'Example'
+		html: HTMLErrorModal,
+		exclude: 'Example',
+		renderFromJsx: true
 	},
 	
 	Custom: {
@@ -113,7 +120,9 @@ let examples = {
 					<Modal.Footer  actionButtonText='Ok' actionButtonClick={()=>{}}/>
 				</Modal>
 			</Example>,
-		exclude: 'Example'					 
+		html: HTMLCustomModal,	
+		exclude: 'Example',
+		renderFromJsx: true					 
 	}
 };
 
