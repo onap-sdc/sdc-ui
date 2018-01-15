@@ -12,7 +12,6 @@ import Input from './Input.stories.js';
 import Icons from './SVGIcon.stories.js';
 import Tiles from './Tiles.stories.js';
 import Tabs from './Tabs.stories.js';
-import Form from './Form.stories.js';
 import Radios from './Radio.stories.js';
 import RadioGroups from './RadioGroup.stories.js';
 import Modals from './Modal.stories.js';
@@ -41,6 +40,9 @@ storiesOf('Icons', module)
 storiesOf('Menu', module)
 	.add('Popup Menu', () => <PopupMenu />);
 
+storiesOf('Modals', module)
+	.add('Modal examples', () => <Modals/>);
+
 storiesOf('Radios', module)
 	.add('Radio Buttons', () => <Radios />)
 	.add('Radio Button Groups', () => <RadioGroups />);
@@ -50,9 +52,3 @@ storiesOf('Tabs', module)
 
 storiesOf('Tiles', module)
 	.add('Tiles', () => <Tiles />);
-
-storiesOf('Form Example', module)
-	.add('Form Example', () => <Form/>);
-
-storiesOf('Modals', module)
-	.add('Modal examples', () => <Modals/>);

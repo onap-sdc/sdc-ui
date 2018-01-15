@@ -3,6 +3,7 @@ node_js:
 - 6
 install: npm install
 script:
+- npm run build-common
 - npm test
 - npm run build
 - npm run build-gh-pages
