@@ -7,11 +7,11 @@ import {
      IDropDownOption,
     DropDownOptionType
 } from "./dropdown-models";
-
+import template from './dropdown.component.html';
 
 @Component({
     selector: 'sdc-dropdown',
-    templateUrl: './dropdown.component.html',
+    template: template,
     host: {
         '(document:click)': 'onClickOutside($event)',
     }
