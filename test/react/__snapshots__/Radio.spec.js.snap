@@ -4,20 +4,22 @@ exports[`Radio Radio - disabled 1`] = `
 <div
   className="sdc-radio "
 >
-  <input
-    checked={false}
-    className="sdc-radio__input"
-    data-test-id={undefined}
-    disabled={true}
-    name="grp2"
-    onChange={[Function]}
-    type="radio"
-    value="1"
-  />
-  <label
-    className="sdc-radio__label"
-  >
-    This is the radio label
+  <label>
+    <input
+      checked={false}
+      className="sdc-radio__input"
+      data-test-id={undefined}
+      disabled={true}
+      name="grp2"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <span
+      className="sdc-radio__label"
+    >
+      This is the radio label
+    </span>
   </label>
 </div>
 `;
@@ -26,20 +28,22 @@ exports[`Radio Radio - unchecked 1`] = `
 <div
   className="sdc-radio "
 >
-  <input
-    checked={false}
-    className="sdc-radio__input"
-    data-test-id={undefined}
-    disabled={undefined}
-    name="grp4"
-    onChange={[Function]}
-    type="radio"
-    value="1"
-  />
-  <label
-    className="sdc-radio__label"
-  >
-    This is the radio label
+  <label>
+    <input
+      checked={false}
+      className="sdc-radio__input"
+      data-test-id={undefined}
+      disabled={undefined}
+      name="grp4"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <span
+      className="sdc-radio__label"
+    >
+      This is the radio label
+    </span>
   </label>
 </div>
 `;

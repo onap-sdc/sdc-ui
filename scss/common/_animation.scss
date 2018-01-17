@@ -133,15 +133,16 @@ Enable to expend a folded block element
 .sdc-ripple-click__animated::before{
   display: inline-block;
   position:absolute;
-  top:0;
+  top: 0;
+  left: 0;
   content: '';
   animation: ripple-animation .3s ease-out; 
   background-color: $blue;
-  width:14px;
-  height:14px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   pointer-events: none;
-  opacity:0;
+  opacity: 0;
 }
 
 

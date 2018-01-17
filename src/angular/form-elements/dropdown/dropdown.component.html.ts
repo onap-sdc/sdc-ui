@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-dropdown" [ngClass]="{'sdc-dropdown__error': error, 'open-bottom': show && bottomVisible, 'open-top':show && !bottomVisible}" #dropDownWrapper>
     <label class="sdc-dropdown__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <div class="sdc-dropdown__component-container">
@@ -60,6 +61,4 @@
     </div>
     <!--[DROP-DOWN ERROR MESSAGE END]-->
 </div>
-
-
-
+`;
