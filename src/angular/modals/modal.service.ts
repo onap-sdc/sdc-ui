@@ -57,7 +57,7 @@ export class ModalService {
 
     public openCustomModal = (modalConfig:IModalConfig, dynamicComponentType:Type<any>, dynamicComponentInput?:any) => {
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        modalInstance.instance.innerModalContent = this.createDynamicComponentService.createComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer.element.nativeElement);            
+        modalInstance.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer);            
         return modalInstance;
     }
 
