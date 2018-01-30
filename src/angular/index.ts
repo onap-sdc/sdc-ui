@@ -7,6 +7,11 @@ import {AnimationDirectivesModule} from "./animations/animation-directives.modul
 import {InfiniteScrollModule} from "./infinite-scroll/infinite-scroll.module";
 import {TileModule} from "./tiles/tile.module";
 import {ChecklistModule} from "./checklist/checklist.module";
+import {AutoCompleteModule} from "./autocomplete/autocomplete.module";
+import {FilterBarModule} from "./filterbar/filter-bar.module";
+import {IconsModule} from "./icons/icons.module";
+import {SearchBarModule} from "./searchbar/search-bar.module";
+import {TooltipModule} from "./tooltip/tooltip.module";
 
 @NgModule({
     imports: [
@@ -17,17 +22,27 @@ import {ChecklistModule} from "./checklist/checklist.module";
         PopupMenuModule,
         InfiniteScrollModule,
         TileModule,
-        ChecklistModule
+        ChecklistModule,
+        AutoCompleteModule,
+        FilterBarModule,
+        SearchBarModule,
+        TooltipModule,
+        IconsModule
     ],
     exports: [
-        AnimationDirectivesModule,        
+        AnimationDirectivesModule,
         ModalModule,
         FormElementsModule,
         ButtonsModule,
         PopupMenuModule,
         InfiniteScrollModule,
         TileModule,
-        ChecklistModule
+        ChecklistModule,
+        AutoCompleteModule,
+        FilterBarModule,
+        SearchBarModule,
+        TooltipModule,
+        IconsModule
     ]
 })
 export class SdcUiComponentsModule {
