@@ -21,6 +21,7 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
 import { NotificationModule } from "../../src/angular/notifications/notification.module";
 import { InnerNotifContent} from "../../src/angular/notifications/notification-inner-content-example.component";
 import { NotificationsExample } from "./components/notifications-example.component";
+import { TagCloudModule } from './../../src/angular/tag-cloud/tag-cloud.module';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { NotificationsExample } from "./components/notifications-example.compone
         InfiniteScrollModule,
         TooltipModule,
         AutoCompleteModule,
-        NotificationModule
+        NotificationModule,
+        TagCloudModule
     ],
     entryComponents: [ModalInnerContent, InnerNotifContent],
     exports: [
@@ -71,7 +73,8 @@ import { NotificationsExample } from "./components/notifications-example.compone
         PopupMenuModule,
         ModalConsumer,
         SearchFilterPipe,
-        NotificationModule
+        NotificationModule,
+        TagCloudModule
     ],
     providers: [KeysPipe]
 })
