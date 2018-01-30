@@ -1,14 +1,96 @@
-@mixin color-icon($primary-color, $secondary-color) {
+@mixin color-icon($primary-color) {
     color: $primary-color;
     fill: $primary-color;
-    span{
-        color: $primary-color;
-    }
-    &:not([disabled]):hover, &:active, &:focus {
-        &.clickable {
-            color: $secondary-color;
-            fill: $secondary-color;
+}
+
+@mixin color-icon-hover($secondary-color) {
+    &.clickable {
+        &:not([disabled]):hover, &:active, &:focus {
+            @include color-icon($secondary-color);
         }
+    }
+}
+
+@mixin color-icon-label($primary-color) {
+    @include color-icon($primary-color);
+
+    .svg-icon {
+        @include color-icon($primary-color);
+    }
+}
+
+@mixin color-icon-label-hover($secondary-color) {
+    &.clickable {
+        &:not([disabled]):hover, &:active, &:focus {
+            @include color-icon-label($secondary-color);
+        }
+    }
+}
+
+.svg-icon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+
+    & > svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.mode-primary {
+        @include color-icon($blue);
+        @include color-icon-hover($light-blue);
+    }
+
+    &.mode-secondary {
+        @include color-icon($gray);
+        @include color-icon-hover($dark-gray);
+    }
+
+    &.mode-success {
+        @include color-icon($green);
+    }
+
+    &.mode-error {
+        @include color-icon($red);
+    }
+
+    &.mode-warning {
+        @include color-icon($yellow);
+    }
+
+    &.mode-info {
+        @include color-icon($text-black);
+        @include color-icon-hover($rich-black);
+    }
+
+    &.size-x_small {
+        width: 10px;
+        height: 10px;
+    }
+
+    &.size-small {
+        width: 14px;
+        height: 14px;
+    }
+
+    &.size-medium {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.size-large {
+        width: 28px;
+        height: 28px;
+    }
+
+    &.size-x_large {
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -17,234 +99,112 @@
     justify-content: center;
     align-items: center;
 
+    &.svg-icon-label {
+    }
+
+    &.svg-icon {
+    }
+
     &[disabled] {
         opacity: 0.7;
     }
 
-    &.bottom {
+    &.label-placement-bottom {
         flex-direction: column;
         .svg-icon-label {
-            margin-bottom: 5px;
+            margin-top: 0.25em;
         }
     }
 
-    &.right {
-        float: none;
+    &.label-placement-right {
         .svg-icon-label {
-            margin-left: 5px;
+            margin-left: 0.25em;
         }
     }
 
-    &.top {
+    &.label-placement-top {
         flex-direction: column-reverse;
         .svg-icon-label {
-            margin-top: 5px;
+            margin-bottom: 0.25em;
         }
     }
 
-    &.left {
+    &.label-placement-left {
         flex-direction: row-reverse;
         .svg-icon-label {
-            margin-right: 5px;
+            margin-right: 0.25em;
         }
     }
 
-    &.__warning {
-        @include color-icon($yellow, $yellow);
+    &.mode-primary {
+        @include color-icon-label($blue);
+        @include color-icon-label-hover($light-blue);
     }
 
-    &.__primary {
-        @include color-icon($blue, $light-blue);
+    &.mode-secondary {
+        @include color-icon-label($gray);
+        @include color-icon-label-hover($dark-gray);
     }
 
-    &.__secondary {
-        @include color-icon($gray, $dark-gray);
+    &.mode-success {
+        @include color-icon-label($green);
     }
 
-    &.__positive {
-        @include color-icon($green, $green);
+    &.mode-error {
+        @include color-icon-label($red);
     }
 
-    &.__negative {
-        @include color-icon($red, $red);
+    &.mode-warning {
+        @include color-icon-label($yellow);
     }
-}
 
+    &.mode-info {
+        @include color-icon-label($text-black);
+        @include color-icon-label-hover($rich-black);
+    }
 
-.svg-icon {
-    width: 20px;
-    height: 20px;
+    &.size-x_small {
+        font-size: 8px;
+        line-height: 10px;
 
-    &.__angleDoubleLeft {
-        width: 14px;
-        height: 14px;
+        .svg-icon {
+            @extend .svg-icon.size-x_small;
+        }
     }
-    &.__angleDoubleRight {
-        width: 14px;
-        height: 14px;
-    }
-    &.__angleLeft {
-        width: 14px;
-        height: 14px;
-    }
-    &.__angleRight {
-        width: 14px;
-        height: 14px;
-    }
-    &.__artifacts {
-        width: 16px;
-        height: 20px;
-    }
-    &.__back {
-        width: 25px;
-        height: 25px;
-    }
-    &.__base {
-        //
-    }
-    &.__calendar {
-        //
-    }
-    &.__caretDown {
-    }
-    &.__check {
-    }
-    &.__checkCircle {
-        width: 16px;
-        height: 16px;
-    }
-    &.__chevronDown{
-        width: 10px;
-        height: 7px;
-    }
-    &.__chevronUp {
-        width: 11px;
-        height: 7px;
-    }
-    &.__close {
-        width: 10px;
-        height: 10px;
-    }
-    &.__download {
-        width: 15px;
-        height: 11px;
-    }
-    &.__env {
-        width: 15px;
-        height: 14px;
-    }
-    &.__error {
-        width: 14px;
-        height: 14px;
-    }
-    &.__errorCircle {
-        width: 16px;
-        height: 16px;
-    }
-    &.__exclamationTriangleFull {
-        width: 15px;
-        height: 13px;
-    }
-    &.__exclamationTriangleLine {
-        width: 15px;
-        height: 13px;
-    }
-    &.__filter {
-        //
-    }
-    &.__locked {
-        width: 11px;
-    }
-    &.__module {
-        //
-    }
-    &.__nestedHeat {
-        width: 15px;
-        height: 13px;
-    }
-    &.__network {
-        width: 13px;
-        height: 13px;
-    }
-    &.__others {
-        width: 12px;
-        height: 12px;
-    }
-    &.__pencil {
-        width: 15px;
-        height: 15px;
-    }
-    &.__plus {
-        width: 9px;
-        height: 9px;
-    }
-    &.__plusCircle {
-        width: 19px;
-        height: 19px;
-    }
-    &.__plusThin {
-        width: 9px;
-        height: 9px;
-    }
-    &.__proceedToOverview {
-        width: 24px;
-        height: 20px;
-    }
-    &.__search {
-        //
-    }
-    &.__sliders {
-    }
-    &.__trashO {
-        width: 15px;
-        height: 16px;
-    }
-    &.__unlocked {
-        width: 11px;
-    }
-    &.__upload {
-        width: 15px;
-        height: 11px;
-    }
-    &.__vendor {
-        width: 53px;
-        height: 47px;
-    }
-    &.__versionControllerLockClosed {
-        width: 21px;
-        height: 23px;
-    }
-    &.__versionControllerLockOpen {
-        width: 24px;
-        height: 28px;
-    }
-    &.__versionControllerRevert {
-        //
-    }
-    &.__versionControllerSave {
-        //
-    }
-    &.__versionControllerSubmit {
-        //
-    }
-    &.__versionControllerPermissions {
-        //
-    }
-    &.__vlm {
-        width: 53px;
-        height: 47px;
-    }
-    &.__vsp {
-        width: 53px;
-        height: 47px;
-    }
-    &.__zip {
-        width: 29px;
-        height: 23px;
-    }
-}
 
-.svg-icon-missing {
-    @include body-2;
-    @include font-error;
+    &.size-small {
+        font-size: 12px;
+        line-height: 14px;
+
+        .svg-icon {
+            @extend .svg-icon.size-small;
+        }
+    }
+
+    &.size-medium {
+        font-size: 16px;
+        line-height: 20px;
+
+        .svg-icon {
+            @extend .svg-icon.size-medium;
+        }
+    }
+
+    &.size-large {
+        font-size: 24px;
+        line-height: 28px;
+
+        .svg-icon {
+            @extend .svg-icon.size-large;
+        }
+    }
+
+    &.size-x_large {
+        font-size: 34px;
+        line-height: 40px;
+
+        .svg-icon {
+            @extend .svg-icon.size-x_large;
+        }
+    }
 }

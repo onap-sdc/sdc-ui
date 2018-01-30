@@ -7,6 +7,7 @@ import {AnimationDirectivesModule} from "./animations/animation-directives.modul
 import {InfiniteScrollModule} from "./infinite-scroll/infinite-scroll.module";
 import {TileModule} from "./tiles/tile.module";
 import {ChecklistModule} from "./checklist/checklist.module";
+import {SvgIconModule} from "./svg-icon/svg-icon.module";
 import {AutoCompleteModule} from "./autocomplete/autocomplete.module";
 import {FilterBarModule} from "./filterbar/filter-bar.module";
 import {IconsModule} from "./icons/icons.module";
@@ -27,6 +28,7 @@ import {TooltipModule} from "./tooltip/tooltip.module";
         FilterBarModule,
         SearchBarModule,
         TooltipModule,
+        SvgIconModule,
         IconsModule
     ],
     exports: [
@@ -42,6 +44,7 @@ import {TooltipModule} from "./tooltip/tooltip.module";
         FilterBarModule,
         SearchBarModule,
         TooltipModule,
+        SvgIconModule,
         IconsModule
     ]
 })
