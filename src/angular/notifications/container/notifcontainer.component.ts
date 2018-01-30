@@ -2,14 +2,14 @@ import {Component, Input, Output, EventEmitter, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {NotificationSettings} from "../utilities/notification.config";
 import {NotificationsService} from "../services/notifications.service";
-
+import template from "./notifcontainer.component.html";
 
 @Component({
     selector: "sdc-notification-container",
-    templateUrl: './notifcontainer.component.html'
+    template: template
 })
-export class NotificationContainerComponent implements OnInit{
-    notifications : NotificationSettings[] = [];
+export class NotificationContainerComponent implements OnInit {
+    notifications: NotificationSettings[] = [];
 
     constructor(private notify: NotificationsService) {
     }
