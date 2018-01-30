@@ -1,10 +1,11 @@
 import {Component, Input, Output, EventEmitter, OnInit, ViewContainerRef, ViewChild} from "@angular/core";
 import {NotificationSettings} from "../utilities/notification.config";
 import {CreateDynamicComponentService} from "../../utils/create-dynamic-component.service";
+import template from "./notification.component.html";
 
 @Component({
     selector: 'sdc-notification',
-    templateUrl: './notification.component.html'
+    template: template
 })
 
 export class NotificationComponent implements OnInit {
@@ -34,7 +35,7 @@ export class NotificationComponent implements OnInit {
     private destroyMe() {
         /*Only destroy on fade out, not on entry animation */
         if(this.fade){
-            this.destroyComponent.emit(this.notificationSetting); 
+            this.destroyComponent.emit(this.notificationSetting);
         }
     }
 
