@@ -8,6 +8,7 @@ import {AnimationDirectivesModule} from "./animations/animation-directives.modul
 import {InfiniteScrollModule} from "./infinite-scroll/infinite-scroll.module";
 import {TileModule} from "./tiles/tile.module";
 import {ChecklistModule} from "./checklist/checklist.module";
+import { TagCloudModule } from './tag-cloud/tag-cloud.module';
 
 @NgModule({
     imports: [
@@ -19,10 +20,11 @@ import {ChecklistModule} from "./checklist/checklist.module";
         PopupMenuModule,
         InfiniteScrollModule,
         TileModule,
-        ChecklistModule
+        ChecklistModule,
+        TagCloudModule
     ],
     exports: [
-        AnimationDirectivesModule,        
+        AnimationDirectivesModule,
         ModalModule,
         NotificationModule,
         FormElementsModule,
@@ -30,7 +32,8 @@ import {ChecklistModule} from "./checklist/checklist.module";
         PopupMenuModule,
         InfiniteScrollModule,
         TileModule,
-        ChecklistModule
+        ChecklistModule,
+        TagCloudModule
     ]
 })
 export class SdcUiComponentsModule {
