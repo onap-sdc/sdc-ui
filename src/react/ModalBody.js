@@ -6,7 +6,7 @@ class ModalBody extends React.Component {
 	render() {
 		const {children, className} = this.props;
 		return (
-			<div onWheel={(e) => this.onScroll(e)}className={`sdc-modal__content ${className}`} >
+			<div onWheel={(e) => this.onScroll(e)} className={`sdc-modal__content ${className}`} >
 	         	{children}
 		    </div>
 		);
