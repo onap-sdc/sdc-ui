@@ -111,6 +111,7 @@
     "@angular/platform-browser": "~2.4.8",
     "@angular/platform-browser-dynamic": "~2.4.8",
     "@angular/router": "~3.2.1",
+    "@angular/upgrade": "^2.4.8",
     "@storybook/react": "^3.1.5",
     "http-loader": "0.0.1",
     "prop-types": "^15.6.0",

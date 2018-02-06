@@ -41,3 +41,8 @@ import { TabsModule } from "./tabs/tabs.module";
 })
 export class SdcUiComponentsModule {
 }
+
+export {SdcUiComponentsNg1Module} from './ng1.module';
+
+import * as SdcUiComponents from './components';
+export {SdcUiComponents};
