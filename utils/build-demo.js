@@ -2,7 +2,7 @@ const ncp = require('ncp').ncp;
 const fs = require('fs');
 const path = require('path')
 const svgFolder = './assets/icons';
-const svgOutputFile = './scss/common/_icons.scss';
+const svgOutputFile = './src/style/scss/common/_icons.scss';
 
 var copyFiles = function() {
     // Copy generated style.css to demo/gen folder

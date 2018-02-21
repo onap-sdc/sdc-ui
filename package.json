@@ -3,7 +3,7 @@
   "version": "1.6.22",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "scripts": {
-    "build-common": "npm run build-icons && node-sass --include-path scss scss/style.scss css/style.css",
+    "build-common": "npm run build-icons && node-sass --include-path scss src/style/scss/style.scss css/style.css",
     "build-icons": "node utils/create-icon-map.js",
     "test": "jest && npm run karma-travis",
     "test-dev": "jest --watch",
