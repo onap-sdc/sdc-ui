@@ -20,7 +20,8 @@ const colorMap = {
     'yellow': '#ffb81c',
     'dark-purple': '#702f8a',
     'purple': '#9063cd',
-    'light-purple': '#caa2dd'
+    'light-purple': '#caa2dd',
+    'tlv-gray':'#f8f8f8'
 };
 
 export default experimentOn('Colors', 1)

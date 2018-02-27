@@ -2,6 +2,7 @@ $inputHeight: 38px;
 .sdc-search-bar{
   .search-bar-container{
     display: flex;
+    align-items: flex-end;
     sdc-input{
       flex-grow: 1;
       .sdc-input{
@@ -18,7 +19,6 @@ $inputHeight: 38px;
       border: solid 1px $light-gray;
       border-left: none;
       background-color: $background-gray;
-      margin-top: 17px;
       cursor: auto;
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;

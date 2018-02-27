@@ -7,7 +7,14 @@ export default experimentOn('Checkbox')
         showSource: true,
         title: 'Checkbox',
         description: 'Simple checkbox',
-        template: `<sdc-checkbox label="Checked"></sdc-checkbox>`,
+        template: `<sdc-checkbox label="Simple"></sdc-checkbox>`,
+      },
+      {
+        id: 'checkboxChecked',
+        showSource: true,
+        title: 'Checkbox',
+        description: 'Simple checkbox',
+        template: `<sdc-checkbox label="Checked" [checked]="true"></sdc-checkbox>`,
       },
       {
         id: 'disabledCheckbox',
@@ -15,5 +22,12 @@ export default experimentOn('Checkbox')
         title: 'Disabled checkbox',
         description: 'Simple disabled checkbox',
         template: `<sdc-checkbox label="Disabled"[disabled]="true"></sdc-checkbox>`,
+      },
+      {
+        id: 'disabledCheckboxChecked',
+        showSource: true,
+        title: 'Disabled checkbox',
+        description: 'Simple disabled checkbox',
+        template: `<sdc-checkbox label="Disabled" [checked]="true" [disabled]="true"></sdc-checkbox>`,
       }
     ]);

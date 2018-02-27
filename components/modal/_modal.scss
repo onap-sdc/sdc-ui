@@ -96,19 +96,19 @@
       }
     }
     .sdc-modal__header {
-      padding: 14px 14px 8px 14px;
+      padding: 0px 14px 8px 14px;
       display: flex;
       justify-content: space-between;
       text-align: left;
       .sdc-modal__icon {
-        padding: 10px 12px 0px 12px;
+        padding: 20px 12px 0px 6px;
       }
 
       .title {
         @include heading-2;
         flex: 1 1 auto;
         color: $text-black;
-        padding-top: 14px;
+        padding-top: 19px;
       }
 
       .sdc-modal__close-button {
@@ -138,6 +138,10 @@
       button{
         margin-left: 10px;
       }
+    }
+
+    .sdc-input{
+      margin-bottom:20px;
     }
   }
 }
