@@ -65,11 +65,12 @@ export default experimentOn('Radios')
         description: 'Radio buttons group partialy disabled',
         showSource: true,
         context: {
-            selectedValue: "val1"
+            selectedValue: "val2"
         },
         template: `
         <sdc-radio-group
             [legend]="'Radio Buttons Group Disabled legend'"
+            [disabled] = "true"        
             [(value)]="selectedValue"
             [options] = "{
             items: [{
@@ -78,7 +79,6 @@ export default experimentOn('Radios')
                 label: 'Label of Radio 1'
             }, {
                 value: 'val2',
-                disabled: 'true',
                 name: 'radio7',
                 label: 'Label of Radio 2'
             }, {
