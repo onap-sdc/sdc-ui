@@ -1,5 +1,6 @@
 .sdc-tag-cloud-new-item-field{
-  display: flex;
+    display: flex;
+    align-items: flex-end;
   sdc-input{
     flex-grow: 1;
     .sdc-input{
@@ -30,7 +31,6 @@
     background-color: $tlv-select;
     border: solid 1px $blue;
     border-left: none;
-    margin-top: 17px;
     border-top-right-radius: 2px;
     &.disabled{
       cursor: default;

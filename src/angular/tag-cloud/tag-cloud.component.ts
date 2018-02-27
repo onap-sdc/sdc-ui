@@ -17,19 +17,23 @@ export class TagCloudComponent {
     @Output() public listChanged: EventEmitter<string[]> = new EventEmitter<string[]>();
     private newTagItem: string;
     private uniqueError: boolean;
+    
     private onKeyup = (e): void => {
         this.setUniqueError();
         if (e.keyCode === 13) {
             this.insertItemToList();
         }
     }
+
     private insertItemToList = (): void => {
-        if (!this.uniqueError) {
+        this.setUniqueError();
+        if (!this.uniqueError && this.newTagItem.length) {
             this.list.push(this.newTagItem);
             this.newTagItem = "";
             this.listChanged.emit(this.list);
         }
     }
+
     private deleteItemFromList = (index: number): void => {
         this.list.splice(index, 1);
         if (Array.isArray(this.isViewOnly)) {
@@ -39,7 +43,9 @@ export class TagCloudComponent {
         }
         this.setUniqueError();
     }
+
     private setUniqueError = (): void => {
-        this.uniqueError = this.isUniqueList && this.list.indexOf(this.newTagItem) > -1;
+        this.uniqueError = this.list && this.list.indexOf(this.newTagItem) > -1;
+        console.log('ihihihihih ' ,this.uniqueError)
     }
 }
