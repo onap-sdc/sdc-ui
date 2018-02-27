@@ -60,7 +60,7 @@ export default experimentOn('Input')
         description: 'Input with placeholder',
         showSource: true,
         template: `
-      <sdc-input placeHolder="TEXT"></sdc-input>
+      <sdc-input placeHolder="Text..."></sdc-input>
     `
     },
     {

@@ -46,6 +46,5 @@ export class TagCloudComponent {
 
     private setUniqueError = (): void => {
         this.uniqueError = this.list && this.list.indexOf(this.newTagItem) > -1;
-        console.log('ihihihihih ' ,this.uniqueError)
     }
 }
