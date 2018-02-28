@@ -48,8 +48,9 @@
 
     &:not(:disabled) {
       &:hover, &:active {
-        color: $light-blue;
-        border-color: $light-blue;
+        background-color: $light-blue;
+        color:$white;
+        border:none;
       }
       &:focus:not(:active) {
         color: $light-blue;
