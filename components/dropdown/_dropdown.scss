@@ -66,15 +66,18 @@ sdc-dropdown {
     height: 40px;
   }
   .sdc-dropdown__header {
-    padding: 12px 10px;
+    padding: 0px 10px; /* added Michael */
     background: $white;
     text-align: left;
     position: relative;
     color: $dark-gray;
     @include base-font-regular;
+    font-size: 14px; /* added Michael */
     text-indent: 6px;
     border: solid 1px $light-gray;
     width: 100%;
+    height: 40px; /* added Michael */
+    box-sizing: border-box; /* added Michael */
     border-radius: 2px;
     &.placeholder {
       @include base-font-italic;
@@ -160,10 +163,13 @@ sdc-dropdown {
 
     .sdc-dropdown__option {
       @include base-font-regular;
+      font-size: 14px; /* added Michael */
       text-indent: 10px;
-      padding: 7px 10px;
+      padding: 10px; /* added Michael */
       background: transparent;
       cursor: pointer;
+      height: 40px; /* added Michael */
+      box-sizing: border-box; /* added Michael */
       &.sdc-dropdown__option--hr {
         height: 1px;
         overflow: hidden;
@@ -176,12 +182,12 @@ sdc-dropdown {
       }
       &:hover {
         background-color: $background-gray;
-        @include base-font-semibold;
+        /*@include base-font-semibold;*/ /* added Michael */
       }
       &.selected {
         background-color: $tlv-select;
         color: $blue;
-        @include base-font-semibold;
+        /*@include base-font-semibold;*/ /* added Michael */
       }
       &.sdc-dropdown__option--header {
         @include base-font-semibold;
@@ -278,13 +284,13 @@ sdc-dropdown {
       &.sdc-dropdown__options-list--animation-init {
         border-bottom: none;
         padding:0;
-        animation: bottom-to-top .5s forwards;
+        animation: bottom-to-top .0s forwards; /* added Michael (0s instead 5s) */
       }
     }
 
     &.sdc-dropdown__options-wrapper--uncollapsed {
       .sdc-dropdown__options-list {
-        animation: bottom-to-top-exp .5s forwards;
+        animation: bottom-to-top-exp .0s forwards; /* added Michael (0s instead 5s) */
       }
     }
   }
@@ -295,7 +301,7 @@ Fold animation from top to bottom
  */
 .sdc-dropdown {
   .sdc-dropdown__options-list.sdc-dropdown__options-list--animation-init {
-    animation: top-to-bottom .5s forwards;
+    animation: top-to-bottom .0s forwards; /* added Michael (0s instead 5s) */
   }
 }
 
@@ -305,7 +311,7 @@ Expend animation from top to bottom
 .sdc-dropdown {
   .sdc-dropdown__options-wrapper--uncollapsed {
     .sdc-dropdown__options-list.sdc-dropdown__options-list--animation-init {
-      animation: top-to-bottom-exp .5s forwards;
+      animation: top-to-bottom-exp .0s forwards; /* added Michael (0s instead 5s) */
     }
   }
 }
