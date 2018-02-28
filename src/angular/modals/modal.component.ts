@@ -26,7 +26,7 @@ import { EventEmitter } from '@angular/forms/src/facade/async';
 
 export class ModalComponent{
 
-    @Input() size:string; 'xl|l|md|sm|xsm';
+    @Input() size:string;
     @Input() title:string;
     @Input() message:string;
     @Input() buttons:Array<ModalButtonComponent>;
