@@ -15,6 +15,7 @@
     .sdc-input__input {
       border-color: $blue;
     }
+   
   }
   .error{
     .sdc-input__input {
@@ -51,7 +52,19 @@
       }
     }
   }
+
+  &.not-empty{
+    .add-button:hover{
+      background-color: $light-blue;
+      svg{
+        g{
+          fill: $white;
+        }
+      }
+    }
+  }
 }
+
 .sdc-list-container{
   height: 120px;
   overflow-y: auto;
