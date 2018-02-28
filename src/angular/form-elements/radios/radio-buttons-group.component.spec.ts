@@ -33,21 +33,6 @@ describe("Test", ()=>{
         expect(component.value).not.toEqual('test');
     }));
 
-    it('Not possible to choose when component disabled', async(() =>{
-        component.disabled = true;
-        component.options.items = [ <IRadioButtonModel> {
-            value: 'val1',
-            name: 'exp6',
-            label: 'Label of Radio1'
-        }, <IRadioButtonModel> {
-            value: 'val2',
-            name: 'exp6',
-            label: 'Label of Radio2'
-        }];
-        component.value = component.options.items[0].value;
-        expect(component.value).not.toEqual(component.options.items[0].value);
-    }));
-
     it('Normal flow', async(() =>{
         component.options.items = [ <IRadioButtonModel> {
             value: 'val1',
