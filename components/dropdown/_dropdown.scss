@@ -186,8 +186,8 @@ sdc-dropdown {
       }
       &.selected {
         background-color: $tlv-select;
-        color: $blue;
-        /*@include base-font-semibold;*/ /* added Michael */
+        color: $light-blue; /* $blue; */ /* added Michael */
+        /* @include base-font-semibold; */ /* added Michael */
       }
       &.sdc-dropdown__option--header {
         @include base-font-semibold;
@@ -238,7 +238,8 @@ sdc-dropdown {
   .sdc-dropdown__label {
     margin-bottom: 5px;
     display: block;
-    @include body-3;
+    @include body-3-emphasis; /*body-3;*/ /* added Michael */
+    color: $text-black; /* added Michael */
 
     &.required::before {
       content: '*';

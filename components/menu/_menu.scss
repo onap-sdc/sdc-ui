@@ -14,14 +14,14 @@
 
     .sdc-menu-item:not(.separator) {
         @include body-1;
-        height: 29px;
+        height: 40px; /* added Michael */
         color: $dark-gray;
         padding: 0 12px;
         display: flex;
         align-items: center;
 
         svg {
-            margin-right: 5px;
+            margin-right: 16px; /* added Michael */
             g, path {
                 fill: $dark-gray;
             }
@@ -49,7 +49,7 @@
 
         &.selected {
             background: $tlv-select;
-            color: $light-blue;
+            color: $blue; /* $light-blue; */ /* added Michael */
             g, path {
                 fill: $light-blue;
             }
