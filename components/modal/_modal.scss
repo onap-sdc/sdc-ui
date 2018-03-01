@@ -65,7 +65,7 @@
     &.sdc-modal-type-custom {
       padding: 0px;
       border-top: none;
-      .custom__header {
+      .sdc-custom__header {
         @include box-sizing;
         background-color: $blue;
         color: $white;

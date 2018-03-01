@@ -50,7 +50,7 @@ export class ModalConsumer {
             title: 'Title',
             type: ModalType.custom,
             buttons: [ 
-                      {text:"Save", size:'x-small', callback:this.customModalOnSave, closeModal:false}, 
+                      {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
                       {text:"Cancel", size:'x-small', type: 'secondary', closeModal:true}]
         };
         this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
