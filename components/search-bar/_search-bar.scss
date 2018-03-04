@@ -18,7 +18,7 @@ $inputHeight: 38px;
       height: $inputHeight - 2;
       border: solid 1px $light-gray;
       border-left: none;
-      background-color: $background-gray;
+      background-color: $light-silver;
       cursor: auto;
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
@@ -50,7 +50,7 @@ $inputHeight: 38px;
         }
       }
       .search-button{
-        background-color: $tlv-select;
+        background-color: $lighter-blue;
         border-color: $blue;
         cursor: pointer;
         svg path{

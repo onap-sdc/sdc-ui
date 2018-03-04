@@ -31,7 +31,7 @@
             &:not(.disabled) {
                 cursor: pointer;
                 &:not(.selected) {
-                    background: $background-gray;
+                    background: $light-silver;
                     color: $text-black;
                     g, path {
                         fill: $text-black;
@@ -48,7 +48,7 @@
         }
 
         &.selected {
-            background: $tlv-select;
+            background: $lighter-blue;
             color: $light-blue;
             g, path {
                 fill: $light-blue;

@@ -29,13 +29,13 @@
     height: 36px;
     width: 36px;
     text-align: center;
-    background-color: $tlv-select;
+    background-color: $lighter-blue;
     border: solid 1px $blue;
     border-left: none;
     border-top-right-radius: 2px;
     &.disabled{
       cursor: default;
-      background-color: $background-gray;
+      background-color: $light-silver;
       border-color: $light-gray;
       .plus-icon svg g{
         fill: $gray;
@@ -87,7 +87,7 @@
       color: $text-black;
       @include body-3;
       &.view-only{
-        border-color: $tlv-light-gray;
+        border-color: $silver;
       }
       .delete-item{
         cursor: pointer;
@@ -103,8 +103,8 @@
         }
       }
       &:hover:not(.view-only){
-        background-color: $tlv-select;
-        border-color: $tlv-select;
+        background-color: $lighter-blue;
+        border-color: $lighter-blue;
         .delete-item{
           svg g{
             fill: $blue;

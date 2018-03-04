@@ -90,7 +90,6 @@ export default experimentOn('Modals')
           title: 'Title',
           type: ModalType.standard,
           buttons: [
-                    {{ '{' }}text:"Close", size:"'x-small'", callback:this.customModalOnDone, closeModal:true{{ '}' }}, 
                     {{ '{' }}text:"Save", size:"'x-small'", callback:this.customModalOnSave, closeModal:false{{ '}' }}, 
                     {{ '{' }}text:"Cancel", size:"'x-small'", closeModal:true{{ '}' }}]
             {{ '}' }};
