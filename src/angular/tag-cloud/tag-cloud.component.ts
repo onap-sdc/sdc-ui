@@ -19,14 +19,13 @@ export class TagCloudComponent {
     private uniqueError: boolean;
     
     private onKeyup = (e): void => {
-        this.setUniqueError();
         if (e.keyCode === 13) {
             this.insertItemToList();
         }
     }
 
     private insertItemToList = (): void => {
-        this.setUniqueError();
+        this.validateTag();
         if (!this.uniqueError && this.newTagItem.length) {
             this.list.push(this.newTagItem);
             this.newTagItem = "";
@@ -41,10 +40,9 @@ export class TagCloudComponent {
                 return i > index ? i - 1 : i;
             });
         }
-        this.setUniqueError();
     }
 
-    private setUniqueError = (): void => {
+    private validateTag = (): void => {
         this.uniqueError = this.list && this.list.indexOf(this.newTagItem) > -1;
     }
 }
