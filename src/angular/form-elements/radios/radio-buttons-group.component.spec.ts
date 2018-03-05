@@ -1,10 +1,11 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RadioGroupComponent } from "./radio-buttons-group.component";
 import { FormsModule } from "@angular/forms";
-import { IRadioButtonModel } from "./radio-button.model"
+import { IRadioButtonModel } from "./radio-button.model";
+import { AnimationDirectivesModule } from "../../animations/animation-directives.module";
 
 
-describe("Test", ()=>{
+describe("Test forc Radio-Buttons Group component", ()=>{
     let component: RadioGroupComponent;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -12,7 +13,8 @@ describe("Test", ()=>{
                 RadioGroupComponent
             ],
             imports:[
-                FormsModule
+                FormsModule,
+                AnimationDirectivesModule
             ]
         }).compileComponents();
 
