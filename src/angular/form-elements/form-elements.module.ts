@@ -7,8 +7,6 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import {DropDownTriggerDirective} from "./dropdown/dropdown-trigger.directive";
-import {TagItemComponent} from "./tag-cloud/tag-item/tag-item.component";
-import {TagCloudComponent} from "./tag-cloud/tag-cloud.component";
 
 @NgModule({
     imports: [
@@ -23,8 +21,6 @@ import {TagCloudComponent} from "./tag-cloud/tag-cloud.component";
         InputComponent,
         CheckboxComponent,
         RadioGroupComponent,
-        TagItemComponent,
-        TagCloudComponent,
         DropDownTriggerDirective
     ],
     exports: [
@@ -32,8 +28,7 @@ import {TagCloudComponent} from "./tag-cloud/tag-cloud.component";
         DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent,
-        RadioGroupComponent,
-        TagCloudComponent
+        RadioGroupComponent
     ]
 })
 export class FormElementsModule {

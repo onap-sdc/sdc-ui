@@ -18,6 +18,11 @@ import { FilterBarModule } from "../../src/angular/filterbar/filter-bar.module";
 import { SearchBarModule } from "../../src/angular/searchbar/search-bar.module";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.module";
+import { NotificationModule } from "../../src/angular/notifications/notification.module";
+import { InnerNotifContent} from "../../src/angular/notifications/notification-inner-content-example.component";
+import { NotificationsExample } from "./components/notifications-example.component";
+import { TagCloudModule } from './../../src/angular/tag-cloud/tag-cloud.module';
+import { TabsModule } from "../../src/angular/tabs/tabs.module";
 
 @NgModule({
     declarations: [
@@ -25,6 +30,8 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         KeysPipe,
         ModalInnerContent,
         ModalConsumer,
+        InnerNotifContent,
+        NotificationsExample,
         KeysPipe,
         SearchFilterPipe
     ],
@@ -41,12 +48,17 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         SearchBarModule,
         InfiniteScrollModule,
         TooltipModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+        NotificationModule,
+        TagCloudModule,
+        TabsModule
     ],
-    entryComponents: [ModalInnerContent],
+    entryComponents: [ModalInnerContent, InnerNotifContent],
     exports: [
         CommonModule,
         ModalInnerContent,
+        InnerNotifContent,
+        NotificationsExample,
         ModalModule,
         ColorsTable,
         FormElementsModule,
@@ -62,7 +74,10 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         TooltipDirective,
         PopupMenuModule,
         ModalConsumer,
-        SearchFilterPipe
+        SearchFilterPipe,
+        NotificationModule,
+        TagCloudModule,
+        TabsModule
     ],
     providers: [KeysPipe]
 })

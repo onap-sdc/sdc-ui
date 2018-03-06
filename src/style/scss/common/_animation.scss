@@ -74,27 +74,42 @@ Enable to expend a folded block element
 /********************************************************************************
   SIMPLE FADE-IN KEYFRAMES ANIMATION (Used in tooltip for example)
 
-  we use 'mixin-keyframes-fade-in-from-bottom' to create css @keyframes rule that
+  we use 'mixin-keyframes-fade-in-vertically' to create css @keyframes rule that
   we later can use with animation property inside our prefered css rules:
       .our_class {
         ...
-          animation: keyframes-fade-in-from-bottom 1s ease-out;
+          animation: keyframes-fade-in-vertically 1s ease-out;
         ...
       }
 *********************************************************************************/
-@mixin mixin-keyframes-fade-in-from-bottom($fromRelativeHeight, $keyframesName:keyframes-fade-in-from-bottom){
+@mixin mixin-keyframes-fade-in-vertically($fromRelativeHeight, $keyframesName:keyframes-fade-in-vertically){
   @keyframes #{$keyframesName} {
     from {
       transform: translateY($fromRelativeHeight);
       opacity: 0;
     }
     to {
-      transform: translateY(0px);
+      transform: translateY(0);
       opacity: 1;
     }
   }
 }
 
+/********************************************************************************
+  SIMPLE FADE-OUT KEYFRAMES ANIMATION (Opposite of fade-in mixin above)
+*********************************************************************************/
+@mixin mixin-keyframes-fade-out-vertically($toRelativeHeight, $keyframesName:keyframes-fade-out-vertically){
+  @keyframes #{$keyframesName} {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY($toRelativeHeight);
+      opacity: 0;
+    }
+  }
+}
 
 
 
@@ -129,3 +144,6 @@ Enable to expend a folded block element
   pointer-events: none;
   opacity: 0;
 }
+
+
+
