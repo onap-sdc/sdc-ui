@@ -34,7 +34,7 @@
                     background: $background-gray;
                     color: $text-black;
                     g, path {
-                        fill: $text-black;
+                        fill: $dark-gray; /* $text-black; */ /* addded Michael */
                     }
                 }
             }
@@ -51,7 +51,7 @@
             background: $tlv-select;
             color: $blue; /* $light-blue; */ /* added Michael */
             g, path {
-                fill: $light-blue;
+                fill: $dark-gray; /* $light-blue; */ /* added Michael */
             }
         }
     }
@@ -62,8 +62,8 @@
 
     .separator {
         cursor: default;
-        border-top: 1px solid $gray;
-        margin: 0 12px;
+        border-top: 1px solid $tlv-light-gray; /*$gray;*/ /* added Michael */
+        margin: 0 0; /* 12px; */ /* added Michael */
         height: 0;
     }
 }
