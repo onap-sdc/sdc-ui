@@ -8,12 +8,14 @@ export const SdcUiComponentsNg1Module = angular.module('SdcUiComponentsNg1', [])
 // // Form Elements
 SdcUiComponentsNg1Module.directive('sdcInput', downgradeComponent({
     component: Components.InputComponent,
-    inputs: ['label', 'value', 'pattern', 'disabled', 'placeHolder', 'required', 'minLength', 'maxLength', 'debounceTime'],
+    inputs: ['label', 'value', 'pattern', 'disabled', 'placeHolder', 'required', 'minLength', 'maxLength',
+             'debounceTime'],
     outputs: ['valueChange']
 }));
 SdcUiComponentsNg1Module.directive('sdcDropdown', downgradeComponent({
     component: Components.DropDownComponent,
-    inputs: ['label', 'options', 'disabled', 'placeHolder', 'required', 'validate', 'headless', 'maxHeight', 'selectedOption'],
+    inputs: ['label', 'options', 'disabled', 'placeHolder', 'required', 'validate', 'headless', 'maxHeight',
+             'selectedOption'],
     outputs: ['changeEmitter']
 }));
 SdcUiComponentsNg1Module.directive('sdcCheckbox', downgradeComponent({

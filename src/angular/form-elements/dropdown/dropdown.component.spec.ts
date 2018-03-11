@@ -2,22 +2,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropDownComponent } from './dropdown.component';
 import {IDropDownOption} from "./dropdown-models";
 
+const label: string = "DropDown example";
+const placeHolder: string = "Please choose option";
+// const options:string[] = ['First Option', 'Second Option', 'Third Option'];
 
-const label:string = "DropDown example";
-const placeHolder:string = "Please choose option";
-//const options:string[] = ['First Option', 'Second Option', 'Third Option'];
-
-const options:IDropDownOption[] = [
+const options: IDropDownOption[] = [
     {
-        label:'First Option',
+        label: 'First Option',
         value: 'First Option'
     },
     {
-        label:'Second Option',
+        label: 'Second Option',
         value: 'Second Option'
     },
     {
-        label:'Third Option',
+        label: 'Third Option',
         value: 'Third Option'
     }
 ];
@@ -35,9 +34,7 @@ describe('DropDown component', () => {
 
     }));
 
-    beforeEach(()=>{
-
-
+    beforeEach(() => {
         component.label = label;
         component.placeHolder = placeHolder;
         component.options = options;

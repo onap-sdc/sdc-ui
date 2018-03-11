@@ -4,7 +4,7 @@ import {DropDownComponent} from "./dropdown.component";
 /**
  * Very simple directive that enables elements to toggle drop-down component
  */
-@Directive({ 
+@Directive({
     selector: '[dropdown-trigger]',
     host: {
         '(click)': 'onClickEvent()',
@@ -12,20 +12,20 @@ import {DropDownComponent} from "./dropdown.component";
     }
 })
 // Directive class
-export class DropDownTriggerDirective implements OnInit{
+export class DropDownTriggerDirective implements OnInit {
 
     /**
      * A reference to a drop-down component
      */
-    @Input() dropDown: DropDownComponent;
+    @Input() public dropDown: DropDownComponent;
 
-    ngOnInit(): void {
-        if(this.dropDown){
+    public ngOnInit(): void {
+        if (this.dropDown) {
             this.dropDown.headless = true;
         }
     }
 
-    private onClickEvent = ():void => {
+    private onClickEvent = (): void => {
         this.dropDown.toggleDropdown();
     }
 

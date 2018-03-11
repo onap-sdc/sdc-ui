@@ -8,13 +8,15 @@ import template from "./checklist.component.html";
 
 @Component({
     selector: 'sdc-checklist',
-    template: template
+    template
 })
 export class ChecklistComponent  {
     @Input() public checklistModel: ChecklistModel;
     @Output() public checkedChange: EventEmitter<ChecklistItemModel> = new EventEmitter<ChecklistItemModel>();
 
-    private checkboxCheckedChange(checkbox: ChecklistItemModel, currentChecklistModel: ChecklistModel, stopPropagation?: boolean) {
+    private checkboxCheckedChange(checkbox: ChecklistItemModel,
+                                  currentChecklistModel: ChecklistModel,
+                                  stopPropagation?: boolean) {
         // push/pop the checkbox value
         if (checkbox.isChecked) {
             currentChecklistModel.selectedValues.push(checkbox.value);
@@ -24,7 +26,8 @@ export class ChecklistComponent  {
         }
         if (!stopPropagation) {
             if (checkbox.subLevelChecklist &&
-                ((checkbox.isChecked && checkbox.subLevelChecklist.selectedValues.length < checkbox.subLevelChecklist.checkboxes.length) ||
+                ((checkbox.isChecked &&
+                  checkbox.subLevelChecklist.selectedValues.length < checkbox.subLevelChecklist.checkboxes.length) ||
                 (!checkbox.isChecked && checkbox.subLevelChecklist.selectedValues.length))) {
                 checkbox.subLevelChecklist.checkboxes.forEach((childCheckbox: ChecklistItemModel) => {
                     if (childCheckbox.isChecked !== checkbox.isChecked) {
@@ -39,8 +42,9 @@ export class ChecklistComponent  {
     }
 
     private childCheckboxChange(updatedCheckbox: ChecklistItemModel, parentCheckbox: ChecklistItemModel) {
-        let updatedValues: any[] = parentCheckbox.subLevelChecklist.selectedValues;
-        if (parentCheckbox.isChecked !== (updatedValues.length === parentCheckbox.subLevelChecklist.checkboxes.length)) {
+        const updatedValues: any[] = parentCheckbox.subLevelChecklist.selectedValues;
+        if (parentCheckbox.isChecked !==
+            (updatedValues.length === parentCheckbox.subLevelChecklist.checkboxes.length)) {
             parentCheckbox.isChecked = updatedValues.length === parentCheckbox.subLevelChecklist.checkboxes.length;
             this.checkboxCheckedChange(parentCheckbox, this.checklistModel, true);
         }

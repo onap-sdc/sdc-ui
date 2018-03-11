@@ -8,7 +8,6 @@ import {NotificationContainerComponent} from "./container/notifcontainer.compone
 import {NotificationsService} from "./services/notifications.service";
 import {CreateDynamicComponentService} from "../utils/create-dynamic-component.service";
 
-
 @NgModule({
     declarations: [
         NotificationComponent,

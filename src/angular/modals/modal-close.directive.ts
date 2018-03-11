@@ -9,11 +9,10 @@ import {ModalService} from "./modal.service";
 })
 export class ModalCloseDirective {
 
-    constructor(private modalService:ModalService) {
+    constructor(private modalService: ModalService) {
     }
 
-    public onButtonModalClicked = ():void => {
+    public onButtonModalClicked = (): void => {
         this.modalService.closeModal();
     }
-
 }

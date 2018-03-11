@@ -4,7 +4,7 @@ export default `
     <template ngFor let-item="$implicit" [ngForOf]="options.items">
         <div class="sdc-radio">
             <label class="sdc-radio__animation-wrapper" ripple-click-animation>
-                <input class="sdc-radio__input" 
+                <input class="sdc-radio__input"
                     type="radio"
                     name="{{item.name}}"
                     value="{{item.value}}"

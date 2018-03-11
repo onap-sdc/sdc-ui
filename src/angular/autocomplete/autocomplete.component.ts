@@ -1,4 +1,5 @@
-import {OnInit, animate, Component, EventEmitter, Input, Output, state, style, transition, trigger} from '@angular/core';
+import {OnInit, animate, Component, EventEmitter, Input, Output,
+        state, style, transition, trigger} from '@angular/core';
 import {FilterBarComponent} from "../filterbar/filter-bar.component";
 import {URLSearchParams, Http} from "@angular/http";
 import 'rxjs/add/operator/map';
@@ -12,7 +13,7 @@ export interface IDataSchema {
 
 @Component({
     selector: 'sdc-autocomplete',
-    template: template,
+    template,
     animations: [
         trigger('displayResultsAnimation', [
             state('true', style({

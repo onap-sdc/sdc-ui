@@ -3,7 +3,7 @@ import template from "./tab.component.html";
 
 @Component({
   selector: 'sdc-tab',
-  template: template
+  template
 })
 export class TabComponent {
   @Input() public title: string;

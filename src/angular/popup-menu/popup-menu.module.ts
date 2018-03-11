@@ -3,7 +3,6 @@ import {PopupMenuListComponent} from "./popup-menu-list.component";
 import {PopupMenuItemComponent} from "./popup-menu-item.component";
 import {CommonModule} from "@angular/common";
 
-
 @NgModule({
     declarations: [
         PopupMenuListComponent,

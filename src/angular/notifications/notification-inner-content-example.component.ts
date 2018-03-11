@@ -6,16 +6,15 @@ import {Component, Input} from "@angular/core";
         <div>
             <h4>Custom Notification</h4>
             <div>
-                <span>{{notifyTitle}}</span>
+                <span>{{ notifyTitle }}</span>
             </div>
             <div>
-                <span>{{notifyText}}</span>
+                <span>{{ notifyText }}</span>
             </div>
         </div>
 `
 })
 export class InnerNotifContent {
-
-    @Input() notifyTitle:string;
-    @Input() notifyText:string;
+    @Input() public notifyTitle: string;
+    @Input() public notifyText: string;
 }
