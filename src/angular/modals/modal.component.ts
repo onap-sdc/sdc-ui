@@ -38,7 +38,7 @@ export class ModalComponent{
     innerModalContent:ComponentRef<ModalComponent>;
     
     public modalToggled = (toggleEvent:any) => {
-        if(!toggleEvent.toState) this.closeAnimationComplete.emit();
+        if(!toggleEvent.toState) this.closeAnimationComplete.emit();       
     }
 
 }
