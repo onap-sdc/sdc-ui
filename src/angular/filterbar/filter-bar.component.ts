@@ -6,7 +6,7 @@ import template from "./filter-bar.component.html";
 @Component({
     selector: 'sdc-filter-bar',
     template,
-    host: {['class']: 'sdc-filter-bar'}
+    host: {'class': 'sdc-filter-bar'}
 })
 export class FilterBarComponent {
 

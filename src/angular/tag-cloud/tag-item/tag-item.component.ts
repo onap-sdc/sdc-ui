@@ -6,7 +6,7 @@ import template from "./tag-item.component.html";
 @Component({
     selector: 'sdc-tag-item',
     template,
-    host: {['class']: 'sdc-tag-item'}
+    host: {'class': 'sdc-tag-item'}
 })
 export class TagItemComponent {
     @Input() public text: string;

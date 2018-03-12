@@ -5,7 +5,7 @@ import template from './radio-buttons-group.component.html';
 @Component({
     selector: 'sdc-radio-group',
     template,
-    host: {['class']: 'sdc-radio-group'},
+    host: {'class': 'sdc-radio-group'},
     encapsulation: ViewEncapsulation.None
 })
 export class RadioGroupComponent {

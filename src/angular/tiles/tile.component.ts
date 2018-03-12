@@ -4,7 +4,7 @@ import template from "./tile.component.html";
 @Component({
     selector: "sdc-tile",
     template,
-    host: {['class']: 'sdc-tile'}
+    host: {'class': 'sdc-tile'}
 })
 
 export class TileComponent {

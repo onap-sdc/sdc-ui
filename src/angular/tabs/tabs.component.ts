@@ -5,7 +5,7 @@ import template from "./tabs.component.html";
 @Component({
     selector: 'sdc-tabs',
     template,
-    host: {['class']: 'sdc-tabs sdc-tabs-header'}
+    host: {'class': 'sdc-tabs sdc-tabs-header'}
 })
 
 export class TabsComponent implements AfterContentInit {

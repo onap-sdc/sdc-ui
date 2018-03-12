@@ -7,7 +7,7 @@ import template from "./search-bar.component.html";
 @Component({
     selector: 'sdc-search-bar',
     template,
-    host: {['class']: 'sdc-search-bar'}
+    host: {'class': 'sdc-search-bar'}
 })
 export class SearchBarComponent {
 
