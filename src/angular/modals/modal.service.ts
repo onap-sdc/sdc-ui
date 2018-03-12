@@ -62,8 +62,10 @@ export class ModalService {
     }
 
     public openModal = (customModalData:IModalConfig):ComponentRef<ModalComponent> => {
-
-        let modalInstance:ComponentRef<ModalComponent> = this.createDynamicComponentService.createComponentDynamically(ModalComponent, customModalData);
+        console.log('here ', this.createDynamicComponentService.createComponentDynamically);
+        let modalInstance:ComponentRef<ModalComponent> = 
+        this.createDynamicComponentService.createComponentDynamically(ModalComponent, customModalData);
+      
         modalInstance.instance.closeAnimationComplete.subscribe(() => {
             this.destroyModal();
         });

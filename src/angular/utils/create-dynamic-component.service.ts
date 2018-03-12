@@ -11,7 +11,9 @@ import { ViewContainerRef } from '@angular/core/src/linker/view_container_ref';
 @Injectable()
 export class CreateDynamicComponentService {
 
-    constructor(private componentFactoryResolver:ComponentFactoryResolver, private applicationRef:ApplicationRef, private injector:Injector) {
+    constructor(private componentFactoryResolver:ComponentFactoryResolver, 
+        private applicationRef:ApplicationRef, 
+        private injector:Injector) {
     }
 
     /**
@@ -71,7 +73,8 @@ export class CreateDynamicComponentService {
         return component;
     }
 
-    public createComponentDynamically<T>(componentClass:Type<T>, options:any = {}, location:Element = this.getRootViewContainerNode()):ComponentRef<any> {
+    public createComponentDynamically<T>(componentClass:Type<T>, options:any = {}):ComponentRef<any> {
+        console.log('here before root')
 
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
         let componentRef = componentFactory.create(this.injector);
@@ -85,7 +88,7 @@ export class CreateDynamicComponentService {
             this.applicationRef.detachView(componentRef.hostView);
         });
 
-        location.appendChild(componentRootNode);
+        // location.appendChild(componentRootNode);
 
         return componentRef;
     }
