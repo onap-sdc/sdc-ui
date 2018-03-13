@@ -1,110 +1,51 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, NgModule, ViewContainerRef, Inject, Injectable, Type, ApplicationRef, ComponentFactoryResolver, ComponentRef,
     EmbeddedViewRef, Injector } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ModalComponent } from './modal.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core/src/metadata/ng_module';
 import { ModalService } from './modal.service';
 import {CreateDynamicComponentService} from "../utils/create-dynamic-component.service";
 import {IModalConfig, ModalType, ModalSize} from "../../../src/angular/modals/models/modal-config";
-import { NgModel } from '@angular/forms/src/directives/ng_model';
 import { ModalInnerContent } from "../../../stories/ng2-component-lab/components/modal-inner-content-example.component";
 
 
-
-const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
-'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
-
-
-describe("Modal unit-tests", () => {
-    let fixture: ComponentFixture<ModalTestComponent>;
-    let component: ModalTestComponent;
+describe("Modal unit-tests", () => {                                                      
     let testService: ModalService;
-    
     const testInputModal = {
         size: 'xl', //'xl|l|md|sm|xsm'
         title: 'Test_Title',
-        message: 'Test_Message'
-    };
-    
-    const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
-    'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
-    
-    const onConfirmAction = ():void => {
-        alert("Action has been confirmed");
+        message: 'Test_Message',
+        modalVisible: true
     };
 
-    let modalExtension;
-    let modalConfig:IModalConfig = <IModalConfig> {
-            size: ModalSize.medium,
-            title: 'Title',
-            type: ModalType.custom,
-            buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true}, 
-                      {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
-                      {text:"Cancel", type: 'secondary', closeModal:true}]
-        };
-        
     beforeEach(async(() => {
         TestBed.configureTestingModule({
            providers:[
                 ModalService,
-                CreateDynamicComponentService,
-                //  Inject, ApplicationRef, ComponentFactoryResolver
+                { provide : CreateDynamicComponentService, useClass: CreateDynamicComponentServiceTest}      
             ],
             declarations: [],
-            imports:[ModalTestModule, CommonModule],
             schemas:[NO_ERRORS_SCHEMA]
-        }).compileComponents();
+        })
         testService = TestBed.get(ModalService);
-        fixture = TestBed.createComponent(ModalTestComponent);
-        component = fixture.componentInstance;
     }));
 
-    fit('Modal should be open', () => {
-        // const modalService = component.modalService.openModal(testInputModal)
-        console.log(component);
-        let componentInstance = component.modalService.openModal(testInputModal);
-        expect(componentInstance).toBeTruthy();
+    it('Modal should be open test', () => {
+        let modalInstance = testService.openModal(testInputModal);
+        expect(modalInstance).toBeTruthy();
     })
-})
 
+    it('Modal alert window test', () => {
+        let modalInstance = testService.openAlertModal('testAlert', 'testMessage');
+        expect(modalInstance).toBeTruthy();
+    })
+    
+    it('Modal info window test', () => {
+        let modalInstance = testService.openErrorModal('testMessage');
+        expect(modalInstance).toBeTruthy();
+    })
 
-
-@Component({
-    selector: 'modal-test',
-    template: `<div></div>`
-})
-
-export class ModalTestComponent {
- 
-    @Input() action:string; 
-
-    constructor(public modalService: ModalService){}
-
-    public openModal = ():void => {
-        if (this[this.action]) { 
-            this[this.action](); 
-        }
-    }
-
-    private openErrorModal = ():void => {
-        this.modalService.openErrorModal(MODAL_CONTENT);       
-    };
-
-    private openAlertModal = ():void => { 
-        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT);
-    };
-
-    private openActionModal = ():void => {
-        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "Yes", this.onConfirmAction);
-    };
-
-    private onConfirmAction = ():void => {
-        alert("Action has been confirmed");
-    };
-
-    private openCustomModal = ():void => {
-
+    
+    it('Custom Modal should be open', () => {
         let modalConfig:IModalConfig = <IModalConfig> {
             size: ModalSize.medium,
             title: 'Title',
@@ -113,27 +54,53 @@ export class ModalTestComponent {
                       {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
                       {text:"Cancel", type: 'secondary', closeModal:true}]
         };
-        this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
+        let modalInstance = testService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
+        expect(modalInstance).toBeTruthy();
+    })
+
+    it('Shoul close window', () => {
+        let modalInstance = testService.openModal(testInputModal);
+        testService.closeModal();
+        expect(modalInstance.instance.modalVisible).toBeFalsy();    
+    })
+})
+
+
+const testModalInstance = {
+    instance:{
+        closeAnimationComplete:{
+            subscribe:() => {
+                return true;
+            },
+        },
+        _createDynamicComponentService:{
+            insertComponentDynamically:() => {
+                return true;
+            }  
+        },
+        modalVisible:true
+    },
+   
+};    
+
+@Component({
+    selector: 'modal-test',
+    template: `<div></div>`
+})
+
+
+
+export class CreateDynamicComponentServiceTest {
+    modalVisble: true;
+    public createComponentDynamically = (modalInstance, customData) => {
+        return testModalInstance;
+    }
+    public insertComponentDynamically = () =>{
+        return testModalInstance;
     }
 
-    private customModalOnDone = ():void => {
-        let currentInstance:any = this.modalService.getCurrentInstance();
-        alert("Done with result: " + currentInstance.innerModalContent.instance.name);
-    };
-
-    private customModalOnSave = ():void => {
-        let currentInstance:any = this.modalService.getCurrentInstance();
-        alert("Save with result: " + currentInstance.innerModalContent.instance.name);
-        
-    };
 }
 
 
-@NgModule({
-    declarations:[ModalTestComponent, ModalInnerContent],
-    entryComponents:[ModalTestComponent, ModalInnerContent],
-    imports:[CommonModule], 
-    schemas:[NO_ERRORS_SCHEMA]
-})
 
-export class ModalTestModule  { }
+
