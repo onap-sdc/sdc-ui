@@ -73,8 +73,6 @@ export class CreateDynamicComponentService {
     }
 
     public createComponentDynamically<T>(componentClass:Type<T>, options:any = {}, location:Element = this.getRootViewContainerNode()):ComponentRef<any> {
-        console.log('here before root')
-
         let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
         let componentRef = componentFactory.create(this.injector);
         let componentRootNode = this.getComponentRootNode(componentRef);
