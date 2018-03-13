@@ -14,7 +14,7 @@ export class TooltipTemplateComponent implements AfterViewInit {
 
     public viewReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    ngAfterViewInit() : void {
+    public ngAfterViewInit(): void {
         this.viewReady.next(true);
     }
 }

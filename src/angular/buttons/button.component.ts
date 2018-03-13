@@ -1,14 +1,14 @@
 import {Component, Input} from "@angular/core";
 import template from "./button.component.html";
 
-export enum IconPosition{
+export enum IconPosition {
     right,
     left
 }
 
 @Component({
     selector: "sdc-button",
-    template: template
+    template
 })
 
 export class ButtonComponent {

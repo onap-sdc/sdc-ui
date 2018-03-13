@@ -13,11 +13,11 @@ import {Directive, Input} from "@angular/core";
 })
 export class RippleClickAnimationDirective {
 
-    @Input() rippleClickDisabled:boolean = false;
-    private animated:boolean = false;
+    @Input() public rippleClickDisabled: boolean = false;
+    private animated: boolean = false;
 
-    private onClickEvent = ():void => {
-        if(!this.rippleClickDisabled) {
+    private onClickEvent = (): void => {
+        if (!this.rippleClickDisabled) {
             this.animated = true;
         }
     }

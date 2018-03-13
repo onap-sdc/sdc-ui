@@ -4,7 +4,7 @@ import template from "./tabs.component.html";
 
 @Component({
     selector: 'sdc-tabs',
-    template: template,
+    template,
     host: {'class': 'sdc-tabs sdc-tabs-header'}
 })
 
@@ -14,7 +14,7 @@ export class TabsComponent implements AfterContentInit {
 
     public selectTab(tab: TabComponent) {
       // deactivate all tabs
-      this.tabs.toArray().forEach(tab => tab.active = false);
+      this.tabs.toArray().forEach((item) => item.active = false);
 
       // activate the tab the user has clicked on.
       tab.active = true;

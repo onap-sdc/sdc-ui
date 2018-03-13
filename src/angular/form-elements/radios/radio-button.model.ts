@@ -3,11 +3,11 @@ export interface IRadioButtonModel {
     disabled: boolean;
     name: string;
     value: string;
-};
+}
 
 export interface IOptionGroup {
     items: IRadioButtonModel[];
-};
+}
 
 export enum Direction {
     vertical,

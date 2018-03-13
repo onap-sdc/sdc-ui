@@ -6,26 +6,24 @@ import template from "./notifcontainer.component.html";
 
 @Component({
     selector: "sdc-notification-container",
-    template: template
+    template
 })
 export class NotificationContainerComponent implements OnInit {
-    notifications: NotificationSettings[] = [];
+    public notifications: NotificationSettings[] = [];
 
     constructor(private notify: NotificationsService) {
     }
 
-    public ngOnInit(){
-        this.notify.subscribe( (notif : NotificationSettings) => {
+    public ngOnInit() {
+        this.notify.subscribe( (notif: NotificationSettings) => {
             this.notifications.push(notif);
         });
     }
 
-
-    private onDestroyed = (event : any):void =>{
-        let index: number = this.notifications.indexOf(event);
+    private onDestroyed = (event: any): void => {
+        const index: number = this.notifications.indexOf(event);
         if (index !== -1) {
             this.notifications.splice(index, 1);
         }
     }
-
 }

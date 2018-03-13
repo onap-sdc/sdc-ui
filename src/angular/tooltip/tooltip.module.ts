@@ -1,5 +1,3 @@
-
-
 import {NgModule} from '@angular/core';
 import {TooltipDirective} from './tooltip.directive';
 import {TooltipTemplateComponent} from './tooltip-template.component';

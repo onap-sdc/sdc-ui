@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import 'rxjs/add/operator/debounceTime';
 import template from "./input.component.html";
@@ -6,7 +6,7 @@ import 'rxjs/add/operator/debounceTime';
 
 @Component({
     selector: 'sdc-input',
-    template: template,
+    template,
 })
 export class InputComponent implements OnInit {
     @Output('valueChange') public baseEmitter: EventEmitter<any> = new EventEmitter<any>();
@@ -25,7 +25,7 @@ export class InputComponent implements OnInit {
         this.control = new FormControl('', []);
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.control.valueChanges.
         debounceTime(this.debounceTime)
             .subscribe((newValue: any) => {

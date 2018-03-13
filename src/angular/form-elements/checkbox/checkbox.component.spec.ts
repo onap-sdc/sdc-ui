@@ -3,15 +3,14 @@ import { CheckboxComponent } from "./checkbox.component";
 import { AnimationDirectivesModule } from "../../animations/animation-directives.module";
 import { FormsModule } from "@angular/forms";
 
-
-describe("Test", ()=>{
+describe("Test", () => {
     let component: CheckboxComponent;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
                 CheckboxComponent
             ],
-            imports:[
+            imports: [
                 FormsModule,
                 AnimationDirectivesModule
             ]
@@ -20,16 +19,16 @@ describe("Test", ()=>{
         component = fixture.componentInstance;
     }));
 
-    it("Component Created", async(()=> {
+    it("Component Created", async(() => {
         expect(component).toBeDefined();
     }));
 
-    it( "Test Value suppose to be toggled", async( ()=> {
-        component.toggleState(true)
+    it( "Test Value suppose to be toggled", async( () => {
+        component.toggleState(true);
         expect(component.checked).toEqual(true);
     }));
 
-    it( "If disabled not toggled"), async(()=>{
+    it( "If disabled not toggled"), async(() => {
         component.disabled = true;
         component.toggleState(true);
         expect(component.checked).toEqual(false);

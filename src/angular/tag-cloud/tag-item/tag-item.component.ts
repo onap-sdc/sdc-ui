@@ -5,7 +5,7 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 import template from "./tag-item.component.html";
 @Component({
     selector: 'sdc-tag-item',
-    template: template,
+    template,
     host: {'class': 'sdc-tag-item'}
 })
 export class TagItemComponent {
