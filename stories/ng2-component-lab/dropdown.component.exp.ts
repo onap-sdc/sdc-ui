@@ -56,8 +56,8 @@ const options2: IDropDownOption[] = [
         type: DropDownOptionType.Simple
     },
     {
-        label: 'Forth Option',
-        value: 'forthOption',
+        label: 'Fourth Option',
+        value: 'FourthOption',
         type: DropDownOptionType.Simple
     },
     {
@@ -76,8 +76,8 @@ const options2: IDropDownOption[] = [
         type: DropDownOptionType.Simple
     },
     {
-        label: 'Forth Option',
-        value: 'forthOption',
+        label: 'Fourth Option',
+        value: 'FourthOption',
         type: DropDownOptionType.Simple
     },
     {
@@ -100,10 +100,10 @@ export default experimentOn('DropDown')
                     this.selectedOption = option.value;
                 }
             },
-            title: 'Normal dropDown',
-            description: 'Normal dropDown',
+            title: 'Normal DropDown',
+            description: 'Normal DropDown',
             template: `
-      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
+      <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
       <div style="margin: 10px 0 30px 0px; font-size:18px">Selected option:<strong style="font-weight: 900"> {{selectedOption}}</strong></div>
     `
         }, {
@@ -115,7 +115,7 @@ export default experimentOn('DropDown')
             title: 'DropDown with groups',
             description: 'DropDown with groups',
             template: `
-      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
+      <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
     `
         },
         {
@@ -127,7 +127,7 @@ export default experimentOn('DropDown')
             title: 'DropDown with groups and pre-selected value',
             description: 'DropDown with groups and pre-selected value',
             template: `
-      <sdc-dropdown label="DropDown example" placeHolder="Please choose option" [options]="options" [selectedOption]="options[1]"></sdc-dropdown>
+      <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" [options]="options" [selectedOption]="options[1]"></sdc-dropdown>
     `
         },
         {
@@ -136,7 +136,7 @@ export default experimentOn('DropDown')
             context: {
                 options: options2,
             },
-            title: 'Headless and labeless DropDown',
+            title: 'Headless and Labeless DropDown',
             description: 'Headless and labeless DropDown',
             template: `
             <div style="margin-bottom: 10px;">
@@ -153,7 +153,7 @@ export default experimentOn('DropDown')
             title: 'Disabled DropDown',
             description: 'Disabled DropDown',
             template: `
-            <sdc-dropdown label="Disabled dropDown example" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>`
+            <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>`
         },
         {
             id: 'requieredDropDown',
@@ -164,7 +164,7 @@ export default experimentOn('DropDown')
             title: 'Requiered DropDown',
             description: 'Requiered DropDown',
             template: `
-            <sdc-dropdown label="Requiered dropDown example" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
+            <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
             <div style="margin-top: 10px;">
                 <button (click)="dropDown2.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown2.isValid() }}</span>
              </div>`

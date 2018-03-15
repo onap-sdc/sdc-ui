@@ -14,14 +14,14 @@
 
     .sdc-menu-item:not(.separator) {
         @include body-1;
-        height: 29px;
+        height: 40px;
         color: $dark-gray;
         padding: 0 12px;
         display: flex;
         align-items: center;
 
         svg {
-            margin-right: 5px;
+            margin-right: 16px;
             g, path {
                 fill: $dark-gray;
             }
@@ -34,7 +34,7 @@
                     background: $background-gray;
                     color: $text-black;
                     g, path {
-                        fill: $text-black;
+                        fill: $dark-gray;
                     }
                 }
             }
@@ -49,9 +49,9 @@
 
         &.selected {
             background: $tlv-select;
-            color: $light-blue;
+            color: $blue;
             g, path {
-                fill: $light-blue;
+                fill: $dark-gray;
             }
         }
     }
@@ -62,8 +62,8 @@
 
     .separator {
         cursor: default;
-        border-top: 1px solid $gray;
-        margin: 0 12px;
+        border-top: 1px solid $tlv-light-gray;
+        margin: 0 0;
         height: 0;
     }
 }
