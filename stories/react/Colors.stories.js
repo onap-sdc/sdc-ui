@@ -4,7 +4,7 @@ const colorMap = {
 	'$white': '#ffffff',
 	'$blue': '#009fdb',
 	'$light-blue': '#1eb9f3',
-	'$silver': '#e6f6fb',
+	'$lighter-blue': '#e6f6fb',
 	'$blue-disabled': '#9dd9ef',
 	'$dark-blue': '#0568ae',
 	'$black': '#000000',
