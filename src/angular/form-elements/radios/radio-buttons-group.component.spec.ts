@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { IRadioButtonModel } from "./radio-button.model"
 
 
-describe("Test", ()=>{
+describe("Radio Buttons unit-tests", ()=>{
     let component: RadioGroupComponent;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
