@@ -66,18 +66,18 @@ sdc-dropdown {
     height: 40px;
   }
   .sdc-dropdown__header {
-    padding: 0px 10px; /* added Michael */
+    padding: 0px 10px;
     background: $white;
     text-align: left;
     position: relative;
     color: $dark-gray;
     @include base-font-regular;
-    font-size: 14px; /* added Michael */
+    font-size: 14px;
     text-indent: 6px;
     border: solid 1px $light-gray;
     width: 100%;
-    height: 40px; /* added Michael */
-    box-sizing: border-box; /* added Michael */
+    height: 40px;
+    box-sizing: border-box;
     border-radius: 2px;
     &.placeholder {
       @include base-font-italic;
@@ -163,13 +163,13 @@ sdc-dropdown {
 
     .sdc-dropdown__option {
       @include base-font-regular;
-      font-size: 14px; /* added Michael */
+      font-size: 14px;
       text-indent: 10px;
-      padding: 10px; /* added Michael */
+      padding: 10px;
       background: transparent;
       cursor: pointer;
-      height: 40px; /* added Michael */
-      box-sizing: border-box; /* added Michael */
+      height: 40px;
+      box-sizing: border-box;
       &.sdc-dropdown__option--hr {
         height: 1px;
         overflow: hidden;
@@ -182,12 +182,10 @@ sdc-dropdown {
       }
       &:hover {
         background-color: $background-gray;
-        /*@include base-font-semibold;*/ /* added Michael */
       }
       &.selected {
         background-color: $tlv-select;
-        color: $light-blue; /* $blue; */ /* added Michael */
-        /* @include base-font-semibold; */ /* added Michael */
+        color: $light-blue;
       }
       &.sdc-dropdown__option--header {
         @include base-font-semibold;
@@ -238,8 +236,8 @@ sdc-dropdown {
   .sdc-dropdown__label {
     margin-bottom: 5px;
     display: block;
-    @include body-3-emphasis; /*body-3;*/ /* added Michael */
-    color: $text-black; /* added Michael */
+    @include body-3-emphasis;
+    color: $text-black;
 
     &.required::before {
       content: '*';
@@ -285,13 +283,13 @@ sdc-dropdown {
       &.sdc-dropdown__options-list--animation-init {
         border-bottom: none;
         padding:0;
-        animation: bottom-to-top .0s forwards; /* added Michael (0s instead 5s) */
+        animation: bottom-to-top .0s forwards;
       }
     }
 
     &.sdc-dropdown__options-wrapper--uncollapsed {
       .sdc-dropdown__options-list {
-        animation: bottom-to-top-exp .0s forwards; /* added Michael (0s instead 5s) */
+        animation: bottom-to-top-exp .0s forwards;
       }
     }
   }
@@ -302,7 +300,7 @@ Fold animation from top to bottom
  */
 .sdc-dropdown {
   .sdc-dropdown__options-list.sdc-dropdown__options-list--animation-init {
-    animation: top-to-bottom .0s forwards; /* added Michael (0s instead 5s) */
+    animation: top-to-bottom .0s forwards;
   }
 }
 
@@ -312,7 +310,7 @@ Expend animation from top to bottom
 .sdc-dropdown {
   .sdc-dropdown__options-wrapper--uncollapsed {
     .sdc-dropdown__options-list.sdc-dropdown__options-list--animation-init {
-      animation: top-to-bottom-exp .0s forwards; /* added Michael (0s instead 5s) */
+      animation: top-to-bottom-exp .0s forwards;
     }
   }
 }
