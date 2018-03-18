@@ -5,7 +5,7 @@ import { IRadioButtonModel } from "./radio-button.model";
 import { AnimationDirectivesModule } from "../../animations/animation-directives.module";
 
 
-describe("Test forc Radio-Buttons Group component", ()=>{
+describe("Radio Buttons unit-tests", ()=>{
     let component: RadioGroupComponent;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
