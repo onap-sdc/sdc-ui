@@ -53,10 +53,10 @@ exports[`Button Button - Default - Primary 1`] = `
 </button>
 `;
 
-exports[`Button Button - Default - Warning 1`] = `
+exports[`Button Button - Default - Alert 1`] = `
 <button
   className="sdc-button sdc-button__primary   "
-  color="warning"
+  color="alert"
   disabled={false}
   onClick={undefined}
 >
