@@ -60,16 +60,16 @@ export default experimentOn('Radios')
         `
     }, 
     {
-        id: 'radioButtonsGroupPartialyDisabled',
-        title: 'Radio buttons group partialy disabled',
-        description: 'Radio buttons group partialy disabled',
+        id: 'radioButtonsGroupPartiallyDisabled',
+        title: 'Radio buttons group partially disabled',
+        description: 'Radio buttons group partially disabled',
         showSource: true,
         context: {
             selectedValue: "val2"
         },
         template: `
         <sdc-radio-group
-            [legend]="'Radio Buttons Group partialy disabled'"   
+            [legend]="'Radio Buttons Group partially disabled'"   
             [(value)]="selectedValue"
             [options] = "{
             items: [{

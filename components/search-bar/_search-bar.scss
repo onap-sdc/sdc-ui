@@ -3,7 +3,7 @@ $inputHeight: 38px;
   .search-bar-container{
     display: flex;
     align-items: flex-end;
-    sdc-input{
+    .sdc-input-wrapper{
       flex-grow: 1;
       .sdc-input{
         margin: 0;
@@ -39,15 +39,6 @@ $inputHeight: 38px;
     &.not-empty{
       .sdc-input__input {
         border-color: $blue;
-
-      }
-      .search-button:hover{
-        background-color: $light-blue;
-        svg{
-          path{
-            fill: $white;
-          }
-        }
       }
       .search-button{
         background-color: $lighter-blue;
@@ -55,6 +46,14 @@ $inputHeight: 38px;
         cursor: pointer;
         svg path{
           fill: $blue;
+        }
+        &:hover {
+            background-color: $light-blue;
+            svg{
+              path{
+                fill: $white;
+              }
+            }
         }
       }
     }
