@@ -48,8 +48,9 @@
 
     &:not(:disabled) {
       &:hover, &:active {
-        color: $light-blue;
-        border-color: $light-blue;
+        background-color: $light-blue;
+        color:$white;
+        border:none;
       }
       &:focus:not(:active) {
         color: $light-blue;
@@ -84,6 +85,30 @@
       color: $blue-disabled;
     }
   }
+
+
+  // alert button
+  &.sdc-button__alert {
+    border: none;
+    background-color: $red;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-red;
+      }
+      &:focus:not(:active) {
+        border: 0.5px solid $white;
+        background-color: $light-red;
+        box-shadow: 0px 0px 0px 1px $light-red;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-red;
+    }
+  }
+
 
   /*** Sizes ***/
   &.btn-large{

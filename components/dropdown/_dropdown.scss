@@ -86,7 +86,7 @@ sdc-dropdown {
 
     &.disabled {
       border: solid 1px $light-gray;
-      background-color: $background-gray;
+      background-color: $light-silver;
       color: $gray;
       cursor: default;
       &:focus {
@@ -181,11 +181,13 @@ sdc-dropdown {
         text-indent: 30px;
       }
       &:hover {
-        background-color: $background-gray;
+        background-color: $light-silver;
+        @include base-font-semibold;
       }
       &.selected {
-        background-color: $tlv-select;
-        color: $light-blue;
+        background-color: $lighter-blue;
+        color: $blue;
+        @include base-font-semibold;
       }
       &.sdc-dropdown__option--header {
         @include base-font-semibold;

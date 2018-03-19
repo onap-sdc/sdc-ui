@@ -12,6 +12,7 @@ Thumbs.db
 .idea
 .vscode
 .history
+package-lock.json
 # build files
 lib
 css

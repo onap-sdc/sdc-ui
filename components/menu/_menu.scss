@@ -1,6 +1,5 @@
 .sdc-menu-list {
     position: static;
-
     @include box-sizing;
     @include box-shadow(0 2px 4px 0 rgba($black, 0.3));
     @include border-radius(2px);
@@ -31,7 +30,7 @@
             &:not(.disabled) {
                 cursor: pointer;
                 &:not(.selected) {
-                    background: $background-gray;
+                    background: $light-silver;
                     color: $text-black;
                     g, path {
                         fill: $dark-gray;
@@ -48,8 +47,8 @@
         }
 
         &.selected {
-            background: $tlv-select;
-            color: $blue;
+            background: $lighter-blue;
+            color: $light-blue;
             g, path {
                 fill: $dark-gray;
             }
@@ -62,7 +61,7 @@
 
     .separator {
         cursor: default;
-        border-top: 1px solid $tlv-light-gray;
+        border-top: 1px solid $silver;
         margin: 0 0;
         height: 0;
     }

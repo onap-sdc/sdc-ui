@@ -22,7 +22,7 @@ export class RadioGroupComponent {
         return this._selectedValue;
     }
     set value(value:string) {
-        if(this.isOptionExists(value) && this.disabled !== true) {
+        if(this.isOptionExists(value)) {
             this._selectedValue=value;
         }
     }
