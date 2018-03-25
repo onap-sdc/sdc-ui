@@ -6,7 +6,7 @@ import * as Components from './components';
 
 let SdcUiComponentsNg1Module = null;
 
-if (angular) {
+if (typeof angular !== "undefined") {
 
     SdcUiComponentsNg1Module = angular.module('SdcUiComponentsNg1', []);
 
