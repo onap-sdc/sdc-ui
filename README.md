@@ -83,7 +83,6 @@ render(){
 	bootstrap: [AppComponent]
   })
   export class AppModule { }
-</pre>
 ```	
 
 
