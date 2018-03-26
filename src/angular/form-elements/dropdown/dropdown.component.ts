@@ -188,12 +188,10 @@ export class DropDownComponent implements OnChanges, OnInit{
     /**
      * When users clicks outside the drop-down it will be closed
      */
-    public onClickOutside(event){
-        if(this.optionsContainerElement && !this.optionsContainerElement.nativeElement.contains(event.target)
-            && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')){
+    public onClickOutside(event) {
+        if (this.show && !this.dropDownWrapper.nativeElement.contains(event.target)) {
             this.show = false;
         }
-        console.log("Target", event.target, event.target.classList.contains('js-sdc-dropdown--toggle-hook'));
     }
 
 }
