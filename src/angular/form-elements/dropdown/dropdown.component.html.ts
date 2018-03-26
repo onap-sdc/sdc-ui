@@ -1,3 +1,4 @@
+export default `
 <div class="sdc-dropdown" [ngClass]="{'sdc-dropdown__error': error, 'open-bottom': show && bottomVisible, 'open-top':show && !bottomVisible}" #dropDownWrapper>
     <label class="sdc-dropdown__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <div class="sdc-dropdown__component-container">
@@ -15,7 +16,7 @@
                 <!--</g>-->
             <!--</svg>-->
 
-            <svg  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" class="sdc-dropdown-handle js-sdc-dropdown--toggle-hook">
+            <svg  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" class="sdc-dropdown-handle js-sdc-dropdown--toggle-hook" style="padding-top: 2px;">
                 <g fill="none" fill-rule="evenodd" transform="translate(1 4)">
                     <path fill="#000" id="chevron-a" d="M5.2998,6.7002 C5.4998,6.9002 5.7998,7.0002 5.9998,7.0002 C6.1998,7.0002 6.4998,6.9002 6.6998,6.7002 L11.6998,1.7002 C12.0998,1.3002 12.0998,0.7002 11.6998,0.3002 C11.2998,-0.0998 10.6998,-0.0998 10.2998,0.3002 L5.9998,4.6002 L1.6998,0.3002 C1.2998,-0.0998 0.6998,-0.0998 0.2998,0.3002 C-0.1002,0.7002 -0.1002,1.3002 0.2998,1.7002 L5.2998,6.7002 Z"/>
                 </g>
@@ -60,6 +61,4 @@
     </div>
     <!--[DROP-DOWN ERROR MESSAGE END]-->
 </div>
-
-
-
+`;

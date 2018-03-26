@@ -90,9 +90,8 @@ export default experimentOn('Modals')
           title: 'Title',
           type: ModalType.standard,
           buttons: [
-                    {{ '{' }}text:"Save &amp; Close", callback:this.customModalOnDone, closeModal:true{{ '}' }}, 
-                    {{ '{' }}text:"Save", callback:this.customModalOnSave, closeModal:false{{ '}' }}, 
-                    {{ '{' }}text:"Cancel", closeModal:true{{ '}' }}]
+                    {{ '{' }}text:"Save", size:"'x-small'", callback:this.customModalOnSave, closeModal:false{{ '}' }}, 
+                    {{ '{' }}text:"Cancel", size:"'x-small'", closeModal:true{{ '}' }}]
             {{ '}' }};
 
           <span class="comment">//open modal with dynamically created 'modalInnerContent' example component. Send data object with input 'name'. </span>

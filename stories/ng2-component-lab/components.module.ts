@@ -1,13 +1,14 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { SdcUiComponentsModule } from "../../src/angular";
 import { KeysPipe } from "./utils/pipes/keys.pipe";
-import { CommonModule } from "@angular/common";
+import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { ColorsTable } from "./components/colors-table.component";
 import { ModalInnerContent } from "./components/modal-inner-content-example.component";
 import { ModalConsumer } from "./components/modal-consumer.component";
-import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
+import { NotificationsExample } from "./components/notifications-example.component";
 
 @NgModule({
     declarations: [
@@ -16,18 +17,19 @@ import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
         ModalInnerContent,
         ModalConsumer,
         SearchFilterPipe,
-        SvgIconsTableComponent
+        SvgIconsTableComponent,
+        NotificationsExample
     ],
     imports: [
         CommonModule,
         FormsModule,
         SdcUiComponentsModule
     ],
-    // entryComponents: [ModalInnerContent],
     exports: [
         CommonModule,
         SdcUiComponentsModule,
         ModalInnerContent,
+        NotificationsExample,
         ColorsTable,
         SvgIconsTableComponent,
         ModalConsumer,
