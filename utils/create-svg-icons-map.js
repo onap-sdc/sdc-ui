@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const svgFolder = path.resolve(__dirname + '/../assets/icons/');
-const iconMapFile = path.resolve(__dirname + '/../src/common/iconsMap.json');
-const iconMapTSFile = path.resolve(__dirname + '/../src/common/iconsMap.json.ts');
+const iconMapFile = path.resolve(__dirname + '/../src/common/icons-map.json');
+const iconMapTSFile = path.resolve(__dirname + '/../src/common/icons-map.ts');
 const disallowedSvgAttributes = ['fill', 'id', 'width', 'height'];
 const disallowedSvgStyle = ['fill'];
 const disallowedSvgInlineAttributes = ['fill', 'id'];

@@ -11,7 +11,7 @@
     "prebuild-clean": "rimraf lib",
     "build-demo": "node utils/build-demo.js",
     "build-icons": "node utils/create-icon-map.js",
-    "build-svg-icons": "node utils/create-icons-map.js",
+    "build-svg-icons": "node utils/create-svg-icons-map.js",
     "build-common": "npm run build-icons && npm run build-svg-icons && node-sass --include-path src/style/scss src/style/scss/style.scss css/style.css",
     "build-react": "babel src/react -d lib/react",
     "compile-angular": "ngc -p tsconfig.angular.build-es5.json",

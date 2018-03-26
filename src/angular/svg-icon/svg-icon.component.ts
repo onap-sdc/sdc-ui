@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {Mode, Size} from "../common/enums";
-import Icons from '../../common/iconsMap.json';
+import iconsMap from '../../common/icons-map';
 import template from './svg-icon.component.html';
 
 @Component({
@@ -15,7 +15,7 @@ import template from './svg-icon.component.html';
 })
 export class SvgIconComponent implements OnChanges {
     static get Icons(): {[key: string]: string} {
-        return Icons;
+        return iconsMap;
     }
 
     @Input() public name: string;
