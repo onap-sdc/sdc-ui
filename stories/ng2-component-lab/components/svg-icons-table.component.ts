@@ -11,13 +11,16 @@ import {SvgIconComponent} from "../../../src/angular/svg-icon/svg-icon.component
             </div>
         </div>
         <div class="icon-showcase">
+            <div>
+                <svg-icon [name]="selectedIcon" [mode]="defaultIconSettings.mode" [size]="defaultIconSettings.size"></svg-icon>
+                Selected icon: <b *ngIf="selectedIcon">{{selectedIcon}}</b><i *ngIf="!selectedIcon">None</i>
+            </div>
             <sdc-dropdown label="Mode" [selectedOption]="{'value': mode, 'label': mode}" [options]="modeOptions" (changed)="mode = $event.value"></sdc-dropdown>
             <sdc-dropdown label="Label Placement" [selectedOption]="{'value': labelPlacement, 'label': labelPlacement}" [options]="labelPlacementOptions" [selectedOption]="labelPlacement" (changed)="labelPlacement = $event.value"></sdc-dropdown>
             <sdc-dropdown label="Size" [selectedOption]="{'value': size, 'label': size}" [options]="sizeOptions" [selectedOption]="size" (changed)="size = $event.value"></sdc-dropdown>
             <sdc-checkbox label="Clickable" [checked]="clickable" (checkedChange)="clickable = $event"></sdc-checkbox>
             <sdc-checkbox label="Disabled" [checked]="disabled" (checkedChange)="disabled = $event"></sdc-checkbox>
             <sdc-input label="Label" [(value)]="label"></sdc-input>
-            <svg-icon [name]="selectedIcon" [mode]="mode" [size]="size" [clickable]="clickable" [disabled]="disabled"></svg-icon>
             <svg-icon-label [name]="selectedIcon" [mode]="mode" [size]="size" [clickable]="clickable" [disabled]="disabled" [label]="label" [labelPlacement]="labelPlacement"></svg-icon-label>
         </div>
 `,
@@ -72,6 +75,8 @@ export class SvgIconsTableComponent {
     private disabled: boolean;
     private label: string;
 
+    private defaultIconSettings: {mode: Mode, size: Size};
+
     constructor() {
         this.iconsNames = Object.keys(SvgIconComponent.Icons);
         this.mode = null;
@@ -80,6 +85,8 @@ export class SvgIconsTableComponent {
         this.clickable = false;
         this.disabled = false;
         this.label = '';
+
+        this.defaultIconSettings = { mode: Mode.info, size: Size.small };
 
         this.modeOptions = [{value: null, label: 'NONE'}].concat(Object.keys(Mode).map((modeKey) => ({
             value: modeKey,

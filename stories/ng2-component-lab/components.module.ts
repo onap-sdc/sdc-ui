@@ -4,7 +4,6 @@ import { SdcUiComponentsModule } from "../../src/angular";
 import { KeysPipe } from "./utils/pipes/keys.pipe";
 import { CommonModule } from "@angular/common";
 import { ColorsTable } from "./components/colors-table.component";
-import { IconSettingsComponent } from "./components/icon-settings.component";
 import { ModalInnerContent } from "./components/modal-inner-content-example.component";
 import { ModalConsumer } from "./components/modal-consumer.component";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
@@ -17,7 +16,6 @@ import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
         ModalInnerContent,
         ModalConsumer,
         SearchFilterPipe,
-        IconSettingsComponent,
         SvgIconsTableComponent
     ],
     imports: [
@@ -31,7 +29,6 @@ import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
         SdcUiComponentsModule,
         ModalInnerContent,
         ColorsTable,
-        IconSettingsComponent,
         SvgIconsTableComponent,
         ModalConsumer,
         SearchFilterPipe

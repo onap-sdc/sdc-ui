@@ -10,7 +10,6 @@ import {ChecklistModule} from "./checklist/checklist.module";
 import {SvgIconModule} from "./svg-icon/svg-icon.module";
 import {AutoCompleteModule} from "./autocomplete/autocomplete.module";
 import {FilterBarModule} from "./filterbar/filter-bar.module";
-import {IconsModule} from "./icons/icons.module";
 import {SearchBarModule} from "./searchbar/search-bar.module";
 import {TooltipModule} from "./tooltip/tooltip.module";
 
@@ -28,8 +27,7 @@ import {TooltipModule} from "./tooltip/tooltip.module";
         FilterBarModule,
         SearchBarModule,
         TooltipModule,
-        SvgIconModule,
-        IconsModule
+        SvgIconModule
     ],
     exports: [
         AnimationDirectivesModule,
@@ -44,8 +42,7 @@ import {TooltipModule} from "./tooltip/tooltip.module";
         FilterBarModule,
         SearchBarModule,
         TooltipModule,
-        SvgIconModule,
-        IconsModule
+        SvgIconModule
     ]
 })
 export class SdcUiComponentsModule {

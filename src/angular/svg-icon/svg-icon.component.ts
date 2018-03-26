@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {Mode, Size} from "../common/enums";
-import * as Icons from 'app/common/iconsMap.json';
+import Icons from '../../common/iconsMap.json';
 import template from './svg-icon.component.html';
 
 @Component({

@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const svgFolder = '../assets/icons/';
-const iconMapFile = '../src/common/iconsMap.json';
+const svgFolder = path.resolve(__dirname + '/../assets/icons/');
+const iconMapFile = path.resolve(__dirname + '/../src/common/iconsMap.json');
+const iconMapTSFile = path.resolve(__dirname + '/../src/common/iconsMap.json.ts');
 const disallowedSvgAttributes = ['fill', 'id', 'width', 'height'];
 const disallowedSvgStyle = ['fill'];
 const disallowedSvgInlineAttributes = ['fill', 'id'];
@@ -29,6 +30,8 @@ function addIcon(iconsObject, iconName, iconPath) {
         return;
     }
 
+    let iconInfoMsg = '';
+
     // clean the first <svg> tag
     iconContent = iconContent.replace(/<svg\b[^>]*>/, (svgTag) => {
         let cleanedNum = 0;
@@ -42,20 +45,23 @@ function addIcon(iconsObject, iconName, iconPath) {
             svgTag = svgTag.replace(disallowedSvgStyleRegex, '');
             cleanedNum += disallowedSvgStyleMatch.length;
         }
+        iconInfoMsg += 'ADDED';
         if (cleanedNum > 0) {
-            console.log(`# ${iconName}: Cleaned ${cleanedNum} attributes and styles.`);
+            iconInfoMsg += `\n\t(cleaned ${cleanedNum} attributes and styles)`;
         }
         return svgTag;
     });
 
     const disallowedSvgInlineAttributesMatch = iconContent.match(disallowedSvgInlineAttributesRegex);
     if (disallowedSvgInlineAttributesMatch) {
-        console.log(`*** ${iconName}: CHECK for ${disallowedSvgInlineAttributesMatch.length} inline attributes [${disallowedSvgInlineAttributes.join(', ')}]`);
+        iconInfoMsg += `\n\t* CHECK for ${disallowedSvgInlineAttributesMatch.length} inline attributes [${disallowedSvgInlineAttributes.join(', ')}]`;
     }
     const disallowedSvgInlineStyleMatch = iconContent.match(disallowedSvgInlineStyleRegex);
     if (disallowedSvgInlineStyleMatch) {
-        console.log(`*** ${iconName}: CHECK for ${disallowedSvgInlineStyleMatch.length} inline styles [${disallowedSvgInlineStyle.join(', ')}]`);
+        iconInfoMsg += `\n\t* CHECK for ${disallowedSvgInlineStyleMatch.length} inline styles [${disallowedSvgInlineStyle.join(', ')}]`;
     }
+
+    console.log(`# ${iconName}: ${iconInfoMsg}`);
 
     iconsObject[iconName] = iconContent;
 }
@@ -63,14 +69,13 @@ function addIcon(iconsObject, iconName, iconPath) {
 function main() {
     const iconMapDir = path.dirname(iconMapFile);
     if (!fs.existsSync(iconMapDir)) {
-        console.log('creating!');
         fs.mkdirSync(iconMapDir);
     }
 
     const iconsObject = {};
     fs.readdirSync(svgFolder).forEach((file) => {
         const fileName = file.split('.', 2)[0];
-        const filePath = svgFolder + file;
+        const filePath = svgFolder + '/' + file;
         if (fs.existsSync(filePath)) {
             addIcon(iconsObject, fileName, filePath);
         }
@@ -79,6 +84,7 @@ function main() {
     const dataToWrite = JSON.stringify(iconsObject);
 
     fs.writeFileSync(iconMapFile, dataToWrite);
+    fs.writeFileSync(iconMapTSFile, `export default ${dataToWrite};`);
 
     console.log(`Icons Map JSON created! [${iconMapFile}]`);
 }
