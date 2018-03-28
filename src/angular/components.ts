@@ -41,3 +41,7 @@ export {TagCloudComponent} from "./tag-cloud/tag-cloud.component";
 // Tabs
 export {TabsComponent} from "./tabs/tabs.component";
 export {TabComponent} from './tabs/children/tab.component';
+
+// Svg Icons
+export {SvgIconComponent} from "./svg-icon/svg-icon.component";
+export {SvgIconLabelComponent} from "./svg-icon/svg-icon-label.component";

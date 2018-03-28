@@ -114,6 +114,16 @@ if (typeof angular !== "undefined") {
         component: Components.TabComponent,
         inputs: ['title', 'active']
     }));
+
+    // Svg Icons
+    SdcUiComponentsNg1Module.directive('svgIcon', downgradeComponent({
+        component: Components.SvgIconComponent,
+        inputs: ['name', 'mode', 'size', 'disabled', 'clickable', 'className']
+    }));
+    SdcUiComponentsNg1Module.directive('svgIconLabel', downgradeComponent({
+        component: Components.SvgIconLabelComponent,
+        inputs: ['name', 'mode', 'size', 'disabled', 'clickable', 'className', 'label', 'labelPlacement', 'labelClassName']
+    }));
 }
 
 export {SdcUiComponentsNg1Module};

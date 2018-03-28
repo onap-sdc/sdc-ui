@@ -8,8 +8,13 @@ import {AnimationDirectivesModule} from "./animations/animation-directives.modul
 import {InfiniteScrollModule} from "./infinite-scroll/infinite-scroll.module";
 import {TileModule} from "./tiles/tile.module";
 import {ChecklistModule} from "./checklist/checklist.module";
-import { TagCloudModule } from './tag-cloud/tag-cloud.module';
-import { TabsModule } from "./tabs/tabs.module";
+import {SvgIconModule} from "./svg-icon/svg-icon.module";
+import {AutoCompleteModule} from "./autocomplete/autocomplete.module";
+import {FilterBarModule} from "./filterbar/filter-bar.module";
+import {SearchBarModule} from "./searchbar/search-bar.module";
+import {TooltipModule} from "./tooltip/tooltip.module";
+import {TagCloudModule} from './tag-cloud/tag-cloud.module';
+import {TabsModule} from "./tabs/tabs.module";
 
 @NgModule({
     imports: [
@@ -22,6 +27,11 @@ import { TabsModule } from "./tabs/tabs.module";
         InfiniteScrollModule,
         TileModule,
         ChecklistModule,
+        AutoCompleteModule,
+        FilterBarModule,
+        SearchBarModule,
+        TooltipModule,
+        SvgIconModule,
         TagCloudModule,
         TabsModule
     ],
@@ -35,6 +45,11 @@ import { TabsModule } from "./tabs/tabs.module";
         InfiniteScrollModule,
         TileModule,
         ChecklistModule,
+        AutoCompleteModule,
+        FilterBarModule,
+        SearchBarModule,
+        TooltipModule,
+        SvgIconModule,
         TagCloudModule,
         TabsModule
     ]

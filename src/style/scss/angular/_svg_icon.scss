@@ -1,0 +1,210 @@
+@mixin color-icon($primary-color) {
+    color: $primary-color;
+    fill: $primary-color;
+}
+
+@mixin color-icon-hover($secondary-color) {
+    &.clickable {
+        &:not([disabled]):hover, &:active, &:focus {
+            @include color-icon($secondary-color);
+        }
+    }
+}
+
+@mixin color-icon-label($primary-color) {
+    @include color-icon($primary-color);
+
+    .svg-icona {
+        @include color-icon($primary-color);
+    }
+}
+
+@mixin color-icon-label-hover($secondary-color) {
+    &.clickable {
+        &:not([disabled]):hover, &:active, &:focus {
+            @include color-icon-label($secondary-color);
+        }
+    }
+}
+
+.svg-icona {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+
+    & > svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.mode-primary {
+        @include color-icon($blue);
+        @include color-icon-hover($light-blue);
+    }
+
+    &.mode-secondary {
+        @include color-icon($gray);
+        @include color-icon-hover($dark-gray);
+    }
+
+    &.mode-success {
+        @include color-icon($green);
+    }
+
+    &.mode-error {
+        @include color-icon($red);
+    }
+
+    &.mode-warning {
+        @include color-icon($yellow);
+    }
+
+    &.mode-info {
+        @include color-icon($text-black);
+        @include color-icon-hover($rich-black);
+    }
+
+    &.size-x_small {
+        width: 10px;
+        height: 10px;
+    }
+
+    &.size-small {
+        width: 14px;
+        height: 14px;
+    }
+
+    &.size-medium {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.size-large {
+        width: 28px;
+        height: 28px;
+    }
+
+    &.size-x_large {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.svg-icona-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &.svg-icona-label {
+    }
+
+    &.svg-icona {
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.label-placement-bottom {
+        flex-direction: column;
+        .svg-icona-label {
+            margin-top: 0.25em;
+        }
+    }
+
+    &.label-placement-right {
+        .svg-icona-label {
+            margin-left: 0.25em;
+        }
+    }
+
+    &.label-placement-top {
+        flex-direction: column-reverse;
+        .svg-icona-label {
+            margin-bottom: 0.25em;
+        }
+    }
+
+    &.label-placement-left {
+        flex-direction: row-reverse;
+        .svg-icona-label {
+            margin-right: 0.25em;
+        }
+    }
+
+    &.mode-primary {
+        @include color-icon-label($blue);
+        @include color-icon-label-hover($light-blue);
+    }
+
+    &.mode-secondary {
+        @include color-icon-label($gray);
+        @include color-icon-label-hover($dark-gray);
+    }
+
+    &.mode-success {
+        @include color-icon-label($green);
+    }
+
+    &.mode-error {
+        @include color-icon-label($red);
+    }
+
+    &.mode-warning {
+        @include color-icon-label($yellow);
+    }
+
+    &.mode-info {
+        @include color-icon-label($text-black);
+        @include color-icon-label-hover($rich-black);
+    }
+
+    &.size-x_small {
+        font-size: 8px;
+        line-height: 10px;
+
+        .svg-icona {
+            @extend .svg-icona.size-x_small;
+        }
+    }
+
+    &.size-small {
+        font-size: 12px;
+        line-height: 14px;
+
+        .svg-icona {
+            @extend .svg-icona.size-small;
+        }
+    }
+
+    &.size-medium {
+        font-size: 16px;
+        line-height: 20px;
+
+        .svg-icona {
+            @extend .svg-icona.size-medium;
+        }
+    }
+
+    &.size-large {
+        font-size: 24px;
+        line-height: 28px;
+
+        .svg-icona {
+            @extend .svg-icona.size-large;
+        }
+    }
+
+    &.size-x_large {
+        font-size: 34px;
+        line-height: 40px;
+
+        .svg-icona {
+            @extend .svg-icona.size-x_large;
+        }
+    }
+}
