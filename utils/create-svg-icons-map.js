@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const svgFolder = path.resolve(__dirname + '/../assets/icons/');
+const svgFolder = path.resolve(__dirname + '/../assets/sdc-icons/');
 const iconMapFile = path.resolve(__dirname + '/../src/common/icons-map.json');
 const iconMapTSFile = path.resolve(__dirname + '/../src/common/icons-map.ts');
 const disallowedSvgAttributes = ['fill', 'id', 'width', 'height'];
@@ -75,9 +75,12 @@ function main() {
     const iconsObject = {};
     fs.readdirSync(svgFolder).forEach((file) => {
         const fileName = file.split('.', 2)[0];
-        const filePath = svgFolder + '/' + file;
-        if (fs.existsSync(filePath)) {
-            addIcon(iconsObject, fileName, filePath);
+        const fileExtension = file.split('.', 2)[1];
+        if (fileExtension === 'svg') {
+            const filePath = svgFolder + '/' + file;
+            if (fs.existsSync(filePath)) {
+                addIcon(iconsObject, fileName, filePath);
+            }
         }
     });
 
