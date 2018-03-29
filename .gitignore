@@ -22,3 +22,7 @@ src/react/utils/iconMap.js
 
 #coverage files
 coverage
+
+#ignore generated icons files
+src/common/icons-map.ts
+src/common/icons-map.json

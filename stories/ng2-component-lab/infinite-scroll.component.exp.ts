@@ -50,6 +50,7 @@ const basicStyle = `
         background: #dddddd;
         margin-top: 5px;
         padding: 5px;
+        user-select: text;
     }
 `;
 const makeBasicStyleDistance = (distance: number) => `

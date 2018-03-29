@@ -151,6 +151,7 @@ sdc-dropdown {
     background-color: white;
     padding-top: 10px;
     box-shadow: 0 3px 7px -3px $dark-gray;
+    z-index: 999;
 
     &.sdc-dropdown__options-wrapper--top {
       bottom:40px;
