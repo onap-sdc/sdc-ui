@@ -1,4 +1,4 @@
-import { Component, Input, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
+import { Component, Input, AfterContentInit, ContentChildren, QueryList, HostBinding } from '@angular/core';
 import { TabComponent } from './children/tab.component';
 import { SvgIconComponent } from "./../../../src/angular/svg-icon/svg-icon.component";
 import { Mode, Placement, Size } from './../common/enums';
@@ -6,21 +6,21 @@ import template from "./tabs.component.html";
 
 @Component({
     selector: 'sdc-tabs',
-    template: template,
-    host: {'class': 'sdc-tabs sdc-tabs-header'}
+    template: template
 })
 
 export class TabsComponent implements AfterContentInit {
 
+    @HostBinding('class') classes = 'sdc-tabs sdc-tabs-header';
     @ContentChildren(TabComponent) private tabs: QueryList<TabComponent>;
 
     public _size = Size.medium;
 
     public selectTab(tab: TabComponent) {
       // deactivate all tabs
-      this.tabs.toArray().forEach((tab) => {
-          tab.active = false;
-          tab.titleIconMode = Mode.secondary;
+      this.tabs.toArray().forEach((_tab: TabComponent) => {
+        _tab.active = false;
+        _tab.titleIconMode = Mode.secondary;
       });
 
       // activate the tab the user has clicked on.

@@ -8,6 +8,7 @@
     "test-coverage": "jest --coverage && start coverage/lcov-report/index.html",
     "karma-travis": "karma start --single-run --browsers PhantomJS",
     "karma-dev": "karma start",
+    "tslint": "tslint -c tslint.json",
     "prebuild-clean": "rimraf lib",
     "build-demo": "node utils/build-demo.js",
     "build-icons": "node utils/create-icon-map.js",
@@ -106,6 +107,7 @@
     "source-map-loader": "0.2.1",
     "style-loader": "^0.16.1",
     "tslint": "5.4.3",
+    "tslint-angular": "^1.1.1",
     "typescript": "^2.6.1",
     "uglify-js": "2.8.29",
     "url-parse": "^1.1.9"
