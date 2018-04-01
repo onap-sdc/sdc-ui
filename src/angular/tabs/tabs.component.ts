@@ -1,7 +1,7 @@
 import { Component, Input, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
 import { TabComponent } from './children/tab.component';
 import { SvgIconComponent } from "./../../../src/angular/svg-icon/svg-icon.component";
-import { Mode, Placement, Size } from "./../../../src/angular/common/enums";
+import { Mode, Placement, Size } from './../common/enums';
 import template from "./tabs.component.html";
 
 @Component({
