@@ -1,6 +1,6 @@
-import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
-import {Mode, Size} from "../common/enums";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { Mode, Size } from "../common/enums";
 import iconsMap from '../../common/icons-map';
 import template from './svg-icon.component.html';
 

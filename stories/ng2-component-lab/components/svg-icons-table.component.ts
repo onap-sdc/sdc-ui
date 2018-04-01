@@ -1,6 +1,6 @@
-import {Component} from "@angular/core";
-import {Mode, Placement, Size} from "../../../src/angular/common/enums";
-import {SvgIconComponent} from "../../../src/angular/svg-icon/svg-icon.component";
+import { Component } from "@angular/core";
+import { Mode, Placement, Size } from "../../../src/angular/common/enums";
+import { SvgIconComponent } from "../../../src/angular/svg-icon/svg-icon.component";
 
 @Component({
     selector: "svg-icons-table",

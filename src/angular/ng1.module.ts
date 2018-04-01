@@ -1,8 +1,7 @@
 import { SdcUiComponentsModule } from './index';
-declare const angular: any;
-
-import {downgradeComponent, downgradeInjectable} from "@angular/upgrade/static";
+import { downgradeComponent, downgradeInjectable } from "@angular/upgrade/static";
 import * as Components from './components';
+declare const angular: any;
 
 let SdcUiComponentsNg1Module = null;
 

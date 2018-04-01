@@ -1,7 +1,4 @@
-/**
- * Created by ng689e on 12/21/2017.
- */
-import {Directive, Input} from "@angular/core";
+import { Directive, Input } from "@angular/core";
 
 @Directive({
     selector: `[ripple-click-animation]`,

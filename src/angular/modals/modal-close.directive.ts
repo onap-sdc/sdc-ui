@@ -1,5 +1,5 @@
-import {Directive} from "@angular/core";
-import {ModalService} from "./modal.service";
+import { Directive } from "@angular/core";
+import { ModalService } from "./modal.service";
 
 @Directive({
     selector: `[modal-close-button]`,

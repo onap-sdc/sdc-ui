@@ -1,8 +1,6 @@
-/**
- * Created by rc2122 on 11/15/2017.
- */
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import template from "./filter-bar.component.html";
+
 @Component({
     selector: 'sdc-filter-bar',
     template: template,

@@ -1,6 +1,6 @@
-import {Directive, ElementRef, HostListener, OnInit, Input, Renderer, TemplateRef} from '@angular/core';
-import {TooltipTemplateComponent} from './tooltip-template.component';
-import {CreateDynamicComponentService} from '../utils/create-dynamic-component.service';
+import { Directive, ElementRef, HostListener, OnInit, Input, Renderer, TemplateRef } from '@angular/core';
+import { TooltipTemplateComponent } from './tooltip-template.component';
+import { CreateDynamicComponentService } from '../utils/create-dynamic-component.service';
 
 const pixel = 'px';
 const leftStyle = 'left';

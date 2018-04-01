@@ -1,4 +1,4 @@
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 export default experimentOn('Tabs').group('Tabs', [
     {

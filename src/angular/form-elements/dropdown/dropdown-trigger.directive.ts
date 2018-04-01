@@ -1,10 +1,10 @@
-import {Directive, Input, OnInit} from "@angular/core";
-import {DropDownComponent} from "./dropdown.component";
+import { Directive, Input, OnInit } from "@angular/core";
+import { DropDownComponent } from "./dropdown.component";
 
 /**
  * Very simple directive that enables elements to toggle drop-down component
  */
-@Directive({ 
+@Directive({
     selector: '[dropdown-trigger]',
     host: {
         '(click)': 'onClickEvent()',

@@ -1,12 +1,5 @@
-import {
-    Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit,
-    ElementRef, ViewChild, AfterViewInit
-} from '@angular/core'
-
-import {
-     IDropDownOption,
-    DropDownOptionType
-} from "./dropdown-models";
+import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core'
+import { IDropDownOption, DropDownOptionType } from "./dropdown-models";
 import template from './dropdown.component.html';
 
 @Component({

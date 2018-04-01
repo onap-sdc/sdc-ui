@@ -1,5 +1,4 @@
 export interface IModalConfig {
-
     size?: string; //'xl|l|md|sm|xsm'
     title?: string;
     message?: string;
