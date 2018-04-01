@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {NotificationSettings}  from '../utilities/notification.config'
+import { Injectable } from '@angular/core';
+import { NotificationSettings } from '../utilities/notification.config'
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 

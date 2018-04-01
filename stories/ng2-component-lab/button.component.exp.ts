@@ -1,5 +1,6 @@
-import {experimentOn} from '@islavi/ng2-component-lab';
-import {IconPosition} from  '../../src/angular/buttons/button.component';
+import { experimentOn } from '@islavi/ng2-component-lab';
+import { IconPosition } from '../../src/angular/buttons/button.component';
+
 const buttonTypes = ['primary', 'secondary', 'link', 'alert'];
 const buttonSizes = ['large', 'medium', 'small', 'x-small', 'default'];
 const experiment = experimentOn('Button');
@@ -28,7 +29,7 @@ experiment.group("Default button", [
                >
             </sdc-button>
 
-          
+
             `
     }
 ]);
@@ -74,7 +75,7 @@ experiment.group("Buttons with icons", [
         },
         title: "Default button",
         template: `
-       
+
 
             <sdc-button
                 text="Default button long text"
@@ -82,14 +83,14 @@ experiment.group("Buttons with icons", [
                 icon_name="arrow_left"
                >
             </sdc-button>
-            
+
             <sdc-button
                 text="Sample button"
                 (click)="buttonClicked()"
                 icon_name="arrow_right"
                 >
             </sdc-button>
-            
+
             <sdc-button
                 text="Sample button"
                  type="secondary"
@@ -97,7 +98,7 @@ experiment.group("Buttons with icons", [
                 icon_name="arrow_line_left"
                 >
             </sdc-button>
-            
+
             <sdc-button
                 text="Sample button"
                 type="secondary"
@@ -105,7 +106,7 @@ experiment.group("Buttons with icons", [
                 icon_name="arrow_line_right"
               >
             </sdc-button>
-            
+
            `
     }
 ]);

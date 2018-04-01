@@ -1,4 +1,4 @@
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 const colorMap = {
     'white': '#ffffff',
@@ -6,7 +6,7 @@ const colorMap = {
     'blue': '#009fdb',
     'light-blue': '#1eb9f3',
     'blue-disabled': '#9dd9ef',
-    'lighter-blue': '#e6f6fb',   
+    'lighter-blue': '#e6f6fb',
     'black': '#000000',
     'text-black': '#191919',
     'rich-black': '#323943',
@@ -23,23 +23,20 @@ const colorMap = {
     'yellow': '#ffb81c',
     'dark-purple': '#702f8a',
     'purple': '#9063cd',
-    'light-purple': '#caa2dd',
-    
-    
-
+    'light-purple': '#caa2dd'
 };
 
 export default experimentOn('Colors', 1)
     .group("Color palette", [
-      {
-        id: 'colorPalette',
-        showSource: true,
-        context: {
-            colorMap
-        },
-        title: 'Color palette',
-        description: 'Supported design colors',
-        template: `<colors-table [tableTitle]="'Colors'" [tableMapColors]="colorMap"></colors-table>`,
-      }
+        {
+            id: 'colorPalette',
+            showSource: true,
+            context: {
+                colorMap
+            },
+            title: 'Color palette',
+            description: 'Supported design colors',
+            template: `<colors-table [tableTitle]="'Colors'" [tableMapColors]="colorMap"></colors-table>`,
+        }
     ]
     );

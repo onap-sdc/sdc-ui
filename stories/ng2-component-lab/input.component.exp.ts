@@ -1,7 +1,4 @@
-/**
- * Created by ob0695 on 10/3/2017.
- */
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 const valueChange = (value: any): void => {
     console.log('The value was changed! >>>>', value);

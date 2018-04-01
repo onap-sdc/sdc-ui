@@ -1,12 +1,9 @@
-/**
- * Created by ob0695 on 6/27/2017.
- */
-import {Component, Input} from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
     selector: "colors-table",
     template: `
-   
+
         <h1>{{tableTitle}}</h1>
         <div class="colors-table">
               <div class="color-section"  *ngFor="let color of tableMapColors | keys">

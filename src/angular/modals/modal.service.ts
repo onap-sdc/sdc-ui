@@ -1,10 +1,8 @@
-import {
-    Injectable, Type, ComponentRef
-} from '@angular/core';
-import {ModalComponent} from "./modal.component";
-import {CreateDynamicComponentService} from "../utils/create-dynamic-component.service";
-import {IModalConfig, ModalType, ModalSize} from "./models/modal-config";
- 
+import { Injectable, Type, ComponentRef } from '@angular/core';
+import { ModalComponent } from "./modal.component";
+import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
+import { IModalConfig, ModalType, ModalSize } from "./models/modal-config";
+
 
 @Injectable()
 export class ModalService {
@@ -20,7 +18,7 @@ export class ModalService {
             size: ModalSize.small,
             title: title,
             message: message,
-            buttons: [{text:'Cancel', closeModal:true, size: 'small'}],
+            buttons: [{text:'Cancel', closeModal:true}],
             type: ModalType.alert
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -34,8 +32,8 @@ export class ModalService {
             title: title,
             message: message,
             type: ModalType.standard,
-            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true, size:'small'}, 
-                      {text: 'Cancel', type: 'secondary', closeModal:true, size:'small'}]
+            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true },
+                      {text: 'Cancel', type: 'secondary', closeModal:true}]
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
         this.currentModal = modalInstance;
@@ -47,7 +45,7 @@ export class ModalService {
             size: ModalSize.small,
             title: 'Error',
             message: errorMessage,
-            buttons: [{text: "Cancel", closeModal:true, size: 'small'}],
+            buttons: [{text: "Cancel", closeModal:true}],
             type: ModalType.error
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -57,7 +55,7 @@ export class ModalService {
 
     public openCustomModal = (modalConfig:IModalConfig, dynamicComponentType:Type<any>, dynamicComponentInput?:any) => {
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        modalInstance.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer);            
+        modalInstance.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer);
         return modalInstance;
     }
 

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropDownComponent } from './dropdown.component';
-import {IDropDownOption} from "./dropdown-models";
+import { IDropDownOption } from "./dropdown-models";
 
 
 const label:string = "DropDown example";
@@ -51,21 +51,21 @@ describe('DropDown component', () => {
     it('component should export the selected value', () => {
         const index = 1;
         const option = options[index];
-    
+
         component.selectOption(index, option);
         fixture.detectChanges();
         expect(component.selectedOption).toEqual(option);
     });
-    
+
     it('component should have a required flag', () => {
         component.required  = true;
         fixture.detectChanges();
         component.validateDropDown();
         expect(component.isValid()).toEqual(false);
-    
+
         const index = 2;
         const option = options[index];
-    
+
         component.selectOption(index, option);
         fixture.detectChanges();
         component.validateDropDown();

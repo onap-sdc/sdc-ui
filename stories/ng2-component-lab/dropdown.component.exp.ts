@@ -1,12 +1,5 @@
-/**
- * Created by ob0695 on 10/3/2017.
- */
-
-import {experimentOn} from '@islavi/ng2-component-lab';
-import {
-    IDropDownOption,
-    DropDownOptionType
-} from "../../src/angular/form-elements/dropdown/dropdown-models";
+import { experimentOn } from '@islavi/ng2-component-lab';
+import { IDropDownOption, DropDownOptionType } from "../../src/angular/form-elements/dropdown/dropdown-models";
 
 const options1: IDropDownOption[] = [
     {

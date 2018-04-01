@@ -1,8 +1,3 @@
-/**
- * Created by M.S.BIT on 19/11/2017.
- */
-
-
 export enum DropDownOptionType {
     Simple, //default
     Header,

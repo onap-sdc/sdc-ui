@@ -1,7 +1,4 @@
-/**
- * Created by rc2122 on 12/10/2017.
- */
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: "sdc-tile-header",

@@ -1,7 +1,4 @@
-/**
- * Created by ng689e on 12/11/2017.
- */
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 const sourceStyles:string =`
     .example-source {
