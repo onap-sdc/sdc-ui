@@ -9,6 +9,7 @@ import { ModalInnerContent } from "./components/modal-inner-content-example.comp
 import { ModalConsumer } from "./components/modal-consumer.component";
 import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
 import { NotificationsExample } from "./components/notifications-example.component";
+import { Mode, Placement, Size } from "./../../src/angular/common/enums";
 
 @NgModule({
     declarations: [
@@ -34,6 +35,9 @@ import { NotificationsExample } from "./components/notifications-example.compone
         SvgIconsTableComponent,
         ModalConsumer,
         SearchFilterPipe
+    ],
+    entryComponents: [
+        ModalInnerContent
     ],
     providers: [KeysPipe]
 })
