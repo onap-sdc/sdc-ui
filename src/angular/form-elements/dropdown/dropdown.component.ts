@@ -1,13 +1,10 @@
-import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core'
+import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core'
 import { IDropDownOption, DropDownOptionType } from "./dropdown-models";
 import template from './dropdown.component.html';
 
 @Component({
     selector: 'sdc-dropdown',
-    template: template,
-    host: {
-        '(document:click)': 'onClickOutside($event)',
-    }
+    template: template
 })
 export class DropDownComponent implements OnChanges, OnInit{
 
@@ -56,6 +53,8 @@ export class DropDownComponent implements OnChanges, OnInit{
     @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
 
     @Input() selectedOption: IDropDownOption;
+
+    @HostListener('document:click') onClick($event) { this.onClickOutside($event); }
 
     /**
      * Drop-down show/hide flag. default is false (closed)
