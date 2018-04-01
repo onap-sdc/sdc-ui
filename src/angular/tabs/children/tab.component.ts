@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Mode } from "./../../../../src/angular/common/enums";
+import { Mode } from './../../common/enums';
 import template from "./tab.component.html";
 
 @Component({
