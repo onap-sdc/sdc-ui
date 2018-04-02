@@ -7,14 +7,14 @@ import { DropDownComponent } from "./dropdown.component";
 
 export class DropDownTriggerDirective implements OnInit{
 
-    @HostBinding('class') classes = 'js-sdc-dropdown--toggle-hook';
+    @HostBinding('class.js-sdc-dropdown--toggle-hook') true;
     @Input() dropDown: DropDownComponent;
 
-    @HostListener('click') onClick() {
+    @HostListener('click') onClick = () => {
         this.dropDown.toggleDropdown();
     }
 
-    ngOnInit(): void {
+    ngOnInit = (): void => {
         if (this.dropDown) {
             this.dropDown.headless = true;
         }

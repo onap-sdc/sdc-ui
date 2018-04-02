@@ -9,14 +9,16 @@ export class RippleClickAnimationDirective {
 
     @Input() rippleClickDisabled: boolean;
 
-    @HostBinding('class') classes = 'sdc-ripple-click__animated'; // 'animated';
+    @HostBinding('class.sdc-ripple-click__animated') animationClass: string;
     @HostListener('click') onClick() {
         if (!this.rippleClickDisabled) {
             this.animated = true;
+            this.animationClass = 'sdc-ripple-click__animated';
         }
     }
     @HostListener('animationend') onAnimationComplete() {
         this.animated = false;
+        this.animationClass = '';
     }
 
     constructor() {
