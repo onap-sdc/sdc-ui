@@ -54,8 +54,6 @@ export class DropDownComponent implements OnChanges, OnInit {
 
     @Input() selectedOption: IDropDownOption;
 
-    @HostListener('document:click') onClick($event) { this.onClickOutside($event); }
-
     @HostListener('document:click', ['$event']) onClick(e) {
         this.onClickOutside(e);
     }
