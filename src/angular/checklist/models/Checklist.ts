@@ -1,7 +1,5 @@
-/**
- * Created by rc2122 on 11/5/2017.
- */
-import {ChecklistItemModel} from "./ChecklistItem";
+import { ChecklistItemModel } from "./ChecklistItem";
+
 export class ChecklistModel {
     public selectedValues: any[];
     public checkboxes: ChecklistItemModel[];

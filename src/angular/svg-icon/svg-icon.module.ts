@@ -1,7 +1,7 @@
-import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {SvgIconComponent} from "./svg-icon.component";
-import {SvgIconLabelComponent} from "./svg-icon-label.component";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { SvgIconComponent } from "./svg-icon.component";
+import { SvgIconLabelComponent } from "./svg-icon-label.component";
 
 @NgModule({
     declarations: [

@@ -1,18 +1,15 @@
-import {Directive} from "@angular/core";
-import {ModalService} from "./modal.service";
+import { Directive, HostListener } from "@angular/core";
+import { ModalService } from "./modal.service";
 
 @Directive({
-    selector: `[modal-close-button]`,
-    host: {
-        '(click)': 'onButtonModalClicked()'
-    }
+    selector: `[modal-close-button]`
 })
 export class ModalCloseDirective {
 
-    constructor(private modalService:ModalService) {
+    constructor(private modalService: ModalService) {
     }
 
-    public onButtonModalClicked = ():void => {
+    @HostListener('click') onClick() {
         this.modalService.closeModal();
     }
 

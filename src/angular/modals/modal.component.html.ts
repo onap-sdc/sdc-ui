@@ -1,6 +1,6 @@
 export default `
 <div class="sdc-modal {{size}}">
-    <div class="sdc-modal__wrapper sdc-modal-type-{{type}}" [@toggleModal]="modalVisible" (@toggleModal.done)="modalToggled($event)"> 
+    <div class="sdc-modal__wrapper sdc-modal-type-{{type}}" [@toggleModal]="modalVisible" (@toggleModal.done)="modalToggled($event)">
 
         <div class="sdc-modal__header sdc-{{type}}__header">
             <div class="sdc-modal__icon" *ngIf="type != 'custom'">
@@ -10,16 +10,16 @@ export default `
                     <g fill="none" fill-rule="evenodd" transform="translate(1 1)"><use class="sdc-modal__svg-use" xlink:href="#info-a"/></g></svg></div>
                 <div *ngIf="type == 'error'"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 24 24"><defs><path fill="#000" id="x-a" d="M11,20 C6,20 2,16 2,11 C2,6 6,2 11,2 C16,2 20,6 20,11 C20,16 16,20 11,20 M11,0 C4.9,0 0,4.9 0,11 C0,17.1 4.9,22 11,22 C17.1,22 22,17.1 22,11 C22,4.9 17.1,0 11,0 M14.2591,7.29935 C13.8591,6.90035 13.2591,6.90035 12.8591,7.29935 L10.5591,9.59935 L8.2591,7.29935 C7.8591,6.90035 7.2591,6.90035 6.8591,7.29935 C6.4591,7.69935 6.4591,8.29935 6.8591,8.69935 L9.1581,10.99935 L6.8591,13.29935 C6.4591,13.69935 6.4591,14.29935 6.8591,14.69935 C7.0591,14.90035 7.2591,14.99935 7.5591,14.99935 C7.8591,14.99935 8.0591,14.90035 8.2591,14.69935 L10.5591,12.40035 L12.8591,14.69935 C13.0591,14.90035 13.3591,14.99935 13.5591,14.99935 C13.7591,14.99935 14.0591,14.90035 14.2591,14.69935 C14.6581,14.29935 14.6581,13.69935 14.2591,13.29935 L11.9591,10.99935 L14.2591,8.69935 C14.6581,8.29935 14.6581,7.69935 14.2591,7.29935"/></defs>
                     <g fill="none" fill-rule="evenodd" transform="translate(1 1)"><use class="sdc-modal__svg-use" xlink:href="#x-a"/></g></svg></div>
-            </div>                       
+            </div>
             <div *ngIf="title" class="title" >{{ title }}</div>
-            <div class="sdc-modal__close-button"  modal-close-button ripple-click-animation>
+            <div class="sdc-modal__close-button"  modal-close-button SdcRippleClickAnimation>
                 <svg class="sdc-modal__close-button-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 24 24"><defs><path id="close-a" d="M13.5996,12 L19.6576,5.942 C20.1146,5.485 20.1146,4.8 19.6576,4.343 C19.2006,3.886 18.5146,3.886 18.0576,4.343 L11.9996,10.4 L5.9426,4.343 C5.4856,3.886 4.7996,3.886 4.3426,4.343 C3.8856,4.8 3.8856,5.485 4.3426,5.942 L10.4006,12 L4.3426,18.058 C3.8856,18.515 3.8856,19.2 4.3426,19.657 C4.5716,19.886 4.7996,20 5.1426,20 C5.4856,20 5.7136,19.886 5.9426,19.657 L11.9996,13.6 L18.0576,19.657 C18.2866,19.886 18.6286,20 18.8576,20 C19.0856,20 19.4286,19.886 19.6576,19.657 C20.1146,19.2 20.1146,18.515 19.6576,18.058 L13.5996,12 Z"/></defs>
                 <g fill="none" fill-rule="evenodd"><use class="sdc-modal__svg-use" fill="#000" xlink:href="#close-a"/></g></svg>
             </div>
         </div>
-        <div class="sdc-modal__content" >                        
+        <div class="sdc-modal__content" >
                 <div *ngIf="message">{{message}}</div>
-                <div #dynamicContentContainer></div>            
+                <div #dynamicContentContainer></div>
         </div>
         <div class="sdc-modal__footer">
             <sdc-modal-button *ngFor="let button of buttons" [text]="button.text" [type]="button.type || 'primary'" [disabled]="button.disabled" [size] = "button.size ? button.size : 'default'"  [closeModal]="button.closeModal" [callback]="button.callback"></sdc-modal-button>

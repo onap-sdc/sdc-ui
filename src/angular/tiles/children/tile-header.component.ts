@@ -1,13 +1,10 @@
-/**
- * Created by rc2122 on 12/10/2017.
- */
-import {Component} from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
     selector: "sdc-tile-header",
-    template: '<ng-content></ng-content>',
-    host: {'class': 'sdc-tile-header'}
+    template: '<ng-content></ng-content>'
 })
 
 export class TileHeaderComponent {
+    @HostBinding('class') classes = 'sdc-tile-header';
 }

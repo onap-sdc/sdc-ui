@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
-import {PopupMenuListComponent} from "./popup-menu-list.component";
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { PopupMenuListComponent } from "./popup-menu-list.component";
 
 @Component({
     selector: 'popup-menu-item',

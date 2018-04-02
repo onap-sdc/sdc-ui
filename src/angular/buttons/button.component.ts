@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import { Component, Input } from "@angular/core";
 import template from "./button.component.html";
 
 export enum IconPosition{

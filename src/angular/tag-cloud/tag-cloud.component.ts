@@ -1,8 +1,6 @@
-/**
- * Created by rc2122 on 11/21/2017.
- */
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import template from "./tag-cloud.component.html";
+
 @Component({
     selector: 'sdc-tag-cloud',
     template: template,
@@ -17,7 +15,7 @@ export class TagCloudComponent {
     @Output() public listChanged: EventEmitter<string[]> = new EventEmitter<string[]>();
     private newTagItem: string;
     private uniqueError: boolean;
-    
+
     private onKeyup = (e): void => {
         if (e.keyCode === 13) {
             this.insertItemToList();

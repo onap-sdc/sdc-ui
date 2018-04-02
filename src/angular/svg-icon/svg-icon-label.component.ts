@@ -1,5 +1,5 @@
-import {Component, Input} from "@angular/core";
-import {Mode, Size, Placement} from "../common/enums";
+import { Component, Input } from "@angular/core";
+import { Mode, Size, Placement } from "../common/enums";
 import template from './svg-icon-label.component.html';
 
 @Component({

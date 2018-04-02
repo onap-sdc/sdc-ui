@@ -1,27 +1,28 @@
-/**
- * Created by ng689e on 12/21/2017.
- */
-import {Directive, Input} from "@angular/core";
+import { Directive, Input, HostBinding, HostListener } from "@angular/core";
 
 @Directive({
-    selector: `[ripple-click-animation]`,
-    host: {
-        '(click)': 'onClickEvent()',
-        '[class.sdc-ripple-click__animated]' : 'animated',
-        '(animationend)' : 'onAnimationComplete()'
-    }
+    selector: `[SdcRippleClickAnimation]`
 })
 export class RippleClickAnimationDirective {
 
-    @Input() rippleClickDisabled:boolean = false;
-    private animated:boolean = false;
+    private animated: boolean;
 
-    private onClickEvent = ():void => {
-        if(!this.rippleClickDisabled) {
+    @Input() rippleClickDisabled: boolean;
+
+    @HostBinding('class.sdc-ripple-click__animated') animationClass: string;
+    @HostListener('click') onClick() {
+        if (!this.rippleClickDisabled) {
             this.animated = true;
+            this.animationClass = 'sdc-ripple-click__animated';
         }
     }
-    private onAnimationComplete = (): void => {
+    @HostListener('animationend') onAnimationComplete() {
+        this.animated = false;
+        this.animationClass = '';
+    }
+
+    constructor() {
+        this.rippleClickDisabled = false;
         this.animated = false;
     }
 

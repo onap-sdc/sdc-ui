@@ -1,22 +1,12 @@
-import {
-    Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit,
-    ElementRef, ViewChild, AfterViewInit
-} from '@angular/core'
-
-import {
-     IDropDownOption,
-    DropDownOptionType
-} from "./dropdown-models";
+import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { IDropDownOption, DropDownOptionType } from "./dropdown-models";
 import template from './dropdown.component.html';
 
 @Component({
     selector: 'sdc-dropdown',
-    template: template,
-    host: {
-        '(document:click)': 'onClickOutside($event)',
-    }
+    template: template
 })
-export class DropDownComponent implements OnChanges, OnInit{
+export class DropDownComponent implements OnChanges, OnInit {
 
     /**
      * Drop-down value changed event emitter
@@ -41,14 +31,14 @@ export class DropDownComponent implements OnChanges, OnInit{
     /**
      * The text users will see on the drop-down header when no option was selected
      */
-    @Input() placeHolder:string;
+    @Input() placeHolder: string;
 
     /**
      * Drop-down required flag
      */
-    @Input() required:boolean;
+    @Input() required: boolean;
 
-    @Input() validate:boolean;
+    @Input() validate: boolean;
 
     /**
      * Show or hie drop-down header flag
@@ -56,13 +46,17 @@ export class DropDownComponent implements OnChanges, OnInit{
      */
     @Input() headless = false;
 
-    @Input() maxHeight:number = 244;
+    @Input() maxHeight: number;
 
     @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
 
     @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
 
     @Input() selectedOption: IDropDownOption;
+
+    @HostListener('document:click', ['$event']) onClick(e) {
+        this.onClickOutside(e);
+    }
 
     /**
      * Drop-down show/hide flag. default is false (closed)
@@ -99,33 +93,37 @@ export class DropDownComponent implements OnChanges, OnInit{
     public animation_init = false;
 
 
+    constructor() {
+        this.maxHeight = 244;
+    }
+
     ngOnInit(): void {
-        if(this.options){
-            if(this.options.find(option => option.type === DropDownOptionType.Header)){
+        if (this.options) {
+            if (this.options.find(option => option.type === DropDownOptionType.Header)) {
                 this.isGroupDesign = true;
             }
         }
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(changes.selectedOption && this.options.indexOf(this.selectedOption) > -1){
+        if (changes.selectedOption && this.options.indexOf(this.selectedOption) > -1) {
             this.selectedOption = this.isSelectable(this.selectedOption) && this.selectedOption || null;
         }
     }
 
-    public isValid(){
+    public isValid() {
         return !this.error;
     }
 
-    private isSelectable(option: IDropDownOption){
-        return !(!!this.unselectableOptions.find(optionType => optionType == option.type))
+    private isSelectable(option: IDropDownOption) {
+        return !(!!this.unselectableOptions.find(optionType => optionType === option.type));
     }
 
     /**
      * Validate when required is enabled
      */
-    public validateDropDown(): void{
-        if(!this.disabled && this.required && (!this.selectedOption || this.selectedOption.value === '')){
+    public validateDropDown(): void {
+        if (!this.disabled && this.required && (!this.selectedOption || this.selectedOption.value === '')) {
             this.error = true;
             return;
         }
@@ -137,8 +135,8 @@ export class DropDownComponent implements OnChanges, OnInit{
      * @param index - number
      * @param option - IDropDownItem or string
      */
-    public selectOption(index: number, option:IDropDownOption):void{
-        if(!this.isSelectable(option)){
+    public selectOption(index: number, option: IDropDownOption): void {
+        if (!this.isSelectable(option)) {
             return;
         }
         this.updateSelected(index);
@@ -147,9 +145,9 @@ export class DropDownComponent implements OnChanges, OnInit{
     /**
      * Update the value, label and index of the drop down with new ones
      */
-    private updateSelected(index: number):void{
+    private updateSelected(index: number): void {
         const option = this.options[index];
-        if(option){
+        if (option) {
             this.selectedOption = option;
             this.show = false;
             this.validateDropDown();
@@ -162,25 +160,23 @@ export class DropDownComponent implements OnChanges, OnInit{
      */
     public bottomVisible = true;
 
-    public isBottomVisible(){
+    public isBottomVisible() {
         const windowPos = window.innerHeight + window.pageYOffset;
         const boundingRect = this.dropDownWrapper.nativeElement.getBoundingClientRect();
-        const dropDownPos = boundingRect.top
-            + boundingRect.height
-            + this.maxHeight;
+        const dropDownPos = boundingRect.top + boundingRect.height + this.maxHeight;
         return windowPos > dropDownPos;
     }
 
     /**
      * Toggle show/hide drop-down list
      */
-    public toggleDropdown(){
-        if(this.disabled){
+    public toggleDropdown() {
+        if (this.disabled) {
             return;
         }
         this.animation_init = true;
         this.bottomVisible = this.isBottomVisible();
-        if(!this.disabled){
+        if (!this.disabled) {
             this.show = !this.show;
         }
     }
