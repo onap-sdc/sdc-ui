@@ -130,6 +130,7 @@
       padding-left: 63px;
       padding-right: 68px;
       padding-bottom: 26px;
+      overflow-y: auto;      
     }
 
     .sdc-modal__footer {
@@ -170,21 +171,52 @@
 
 .xl {
   width: 1200px;
+  .sdc-modal__wrapper {
+    .sdc-modal__content {
+      max-height: 440px;
+      min-height: 64px;
+    }
+  }
 }
 
 .l {
-  width: 875px;
+  width: 80%;
+  .sdc-modal__wrapper {
+    .sdc-modal__content {
+      max-height: 440px;
+      min-height: 64px;
+    }
+  }
+ 
 }
 
 .md {
-  width: 650px;
+  width: 540px;
+  .sdc-modal__wrapper {
+    .sdc-modal__content {
+      max-height: 540px;
+      min-height: 64px;
+    }
+  }
 }
 
 .sm {
-  width: 500px;
+  width: 540px;
+  .sdc-modal__wrapper {
+    .sdc-modal__content {
+      max-height: 220px;
+      min-height: 64px;
+    }
+  }
 }
 
 .xsm {
-  width: 432px;
+  width: 500px;
+  .sdc-modal__wrapper {
+    .sdc-modal__content {
+      max-height: 540px;
+      min-height: 64px;
+    }
+  }
 }
 
