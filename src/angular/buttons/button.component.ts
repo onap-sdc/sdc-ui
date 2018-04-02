@@ -1,25 +1,34 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import template from "./button.component.html";
-
-export enum IconPosition{
-    right,
-    left
-}
 
 @Component({
     selector: "sdc-button",
     template: template
 })
 
-export class ButtonComponent {
+export class ButtonComponent implements OnInit {
     @Input() public text: string;
-    @Input() public disabled: boolean = false;
-    @Input() public type: string = "primary";
-    @Input() public size: string = "default";
+    @Input() public disabled: boolean;
+    @Input() public type: string;
+    @Input() public size: string;
     @Input() public preventDoubleClick: boolean;
     @Input() public icon_name: string;
-    @Input() public icon_positon: IconPosition;
+    @Input() public icon_position: string;
     private lastClick: Date;
+    private iconPositionClass: string;
+    private iconMode: string;
+
+    constructor() {
+        this.type = "primary";
+        this.size = "default";
+        this.disabled = false;
+        this.iconMode = 'primary';
+    }
+
+    public ngOnInit(): void {
+        this.iconPositionClass = 'sdc-icon-' + this.icon_position;
+        this.iconMode = (this.type === "primary") ? 'info' : 'primary';
+    }
 
     public onClick = (e): void => {
         const now: Date = new Date();

@@ -1,26 +1,29 @@
 .sdc-button {
-  @include box-sizing;
-  display: inline-block;
 
+  @include box-sizing;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   outline: none;
   border-radius: 2px;
   padding: 0 12px;
-
   height: 36px;
+  line-height: 36px;
   width: 120px;
   min-width: 90px;
-
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
   @include body-1;
+
   &:disabled {
     cursor: default;
   }
 
   // Primary button
   &.sdc-button__primary {
-    border: none;
+    border: 1px solid transparent;
     background-color: $blue;
     color: $white;
 
@@ -29,7 +32,7 @@
         background-color: $light-blue;
       }
       &:focus:not(:active) {
-        border: 0.5px solid $white;
+        border: 1px solid $white;
         background-color: $light-blue;
         box-shadow: 0px 0px 0px 1px $light-blue;
       }
@@ -50,11 +53,13 @@
       &:hover, &:active {
         background-color: $light-blue;
         color:$white;
-        border:none;
       }
       &:focus:not(:active) {
         color: $light-blue;
         box-shadow: inset 0px 0px 0px 0px $dark-blue, 0px 0px 0px 1px $blue;
+        &:hover {
+          color: $white;
+        }
       }
     }
 
@@ -132,12 +137,18 @@
   }
 
   /*** Buttons with icons ***/
-  .sdc-icon-right{
-    margin-left: 15px;
+  &.sdc-icon-right {
+    flex-direction: row-reverse;
+    .svg-icon {
+      margin-left: 15px;
+    }
   }
 
-  .sdc-icon-left{
-    margin-right: 15px;
+  &.sdc-icon-left {
+    flex-direction: row;
+    .svg-icon {
+      margin-right: 15px;
+    }
   }
 
   svg {
