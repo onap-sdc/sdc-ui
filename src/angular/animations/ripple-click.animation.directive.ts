@@ -1,7 +1,7 @@
 import { Directive, Input, HostBinding, HostListener } from "@angular/core";
 
 @Directive({
-    selector: `[ripple-click-animation]`
+    selector: `[SdcRippleClickAnimation]`
 })
 export class RippleClickAnimationDirective {
 
@@ -9,7 +9,7 @@ export class RippleClickAnimationDirective {
 
     @Input() rippleClickDisabled: boolean;
 
-    @HostBinding('class') classes = 'sdc-ripple-click__animated'; //'animated';
+    @HostBinding('class') classes = 'sdc-ripple-click__animated'; // 'animated';
     @HostListener('click') onClick() {
         if (!this.rippleClickDisabled) {
             this.animated = true;

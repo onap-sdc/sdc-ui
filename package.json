@@ -8,7 +8,7 @@
     "test-coverage": "jest --coverage && start coverage/lcov-report/index.html",
     "karma-travis": "karma start --single-run --browsers PhantomJS",
     "karma-dev": "karma start",
-    "tslint": "tslint -c tslint.json",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "prebuild-clean": "rimraf lib",
     "build-demo": "node utils/build-demo.js",
     "build-icons": "node utils/create-icon-map.js",
