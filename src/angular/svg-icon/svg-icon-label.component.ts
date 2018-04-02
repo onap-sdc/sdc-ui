@@ -1,5 +1,7 @@
 import { Component, Input } from "@angular/core";
+import { SvgIconComponent } from './svg-icon.component';
 import { Mode, Size, Placement } from "../common/enums";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import template from './svg-icon-label.component.html';
 
 @Component({
@@ -11,23 +13,14 @@ import template from './svg-icon-label.component.html';
         }
     `]
 })
-export class SvgIconLabelComponent {
-    // svg-icon attributes
-    @Input() public name: string;
-
-    @Input() public mode: Mode;
-    @Input() public size: Size;
-    @Input() public disabled: boolean;
-    @Input() public clickable: boolean;
-    @Input() public className: string;
+export class SvgIconLabelComponent extends SvgIconComponent {
 
     @Input() public label: string;
     @Input() public labelPlacement: Placement;
     @Input() public labelClassName: string;
 
-    constructor() {
-        this.size = Size.medium;
-        this.disabled = false;
+    constructor(protected domSanitizer: DomSanitizer) {
+        super(domSanitizer);
         this.labelPlacement = Placement.left;
     }
 }

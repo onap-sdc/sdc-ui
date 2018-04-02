@@ -14,7 +14,7 @@
 @mixin color-icon-label($primary-color) {
     @include color-icon($primary-color);
 
-    .svg-icona {
+    .svg-icon {
         @include color-icon($primary-color);
     }
 }
@@ -27,7 +27,7 @@
     }
 }
 
-.svg-icona {
+.svg-icon {
     display: inline-flex;
     width: 20px;
     height: 20px;
@@ -94,15 +94,15 @@
     }
 }
 
-.svg-icona-wrapper {
+.svg-icon-wrapper {
     display: inline-flex;
     justify-content: center;
     align-items: center;
 
-    &.svg-icona-label {
+    &.svg-icon-label {
     }
 
-    &.svg-icona {
+    &.svg-icon {
     }
 
     &[disabled] {
@@ -111,27 +111,27 @@
 
     &.label-placement-bottom {
         flex-direction: column;
-        .svg-icona-label {
+        .svg-icon-label {
             margin-top: 0.25em;
         }
     }
 
     &.label-placement-right {
-        .svg-icona-label {
+        .svg-icon-label {
             margin-left: 0.25em;
         }
     }
 
     &.label-placement-top {
         flex-direction: column-reverse;
-        .svg-icona-label {
+        .svg-icon-label {
             margin-bottom: 0.25em;
         }
     }
 
     &.label-placement-left {
         flex-direction: row-reverse;
-        .svg-icona-label {
+        .svg-icon-label {
             margin-right: 0.25em;
         }
     }
@@ -167,8 +167,8 @@
         font-size: 8px;
         line-height: 10px;
 
-        .svg-icona {
-            @extend .svg-icona.size-x_small;
+        .svg-icon {
+            @extend .svg-icon.size-x_small;
         }
     }
 
@@ -176,8 +176,8 @@
         font-size: 12px;
         line-height: 14px;
 
-        .svg-icona {
-            @extend .svg-icona.size-small;
+        .svg-icon {
+            @extend .svg-icon.size-small;
         }
     }
 
@@ -185,8 +185,8 @@
         font-size: 16px;
         line-height: 20px;
 
-        .svg-icona {
-            @extend .svg-icona.size-medium;
+        .svg-icon {
+            @extend .svg-icon.size-medium;
         }
     }
 
@@ -194,8 +194,8 @@
         font-size: 24px;
         line-height: 28px;
 
-        .svg-icona {
-            @extend .svg-icona.size-large;
+        .svg-icon {
+            @extend .svg-icon.size-large;
         }
     }
 
@@ -203,8 +203,8 @@
         font-size: 34px;
         line-height: 40px;
 
-        .svg-icona {
-            @extend .svg-icona.size-x_large;
+        .svg-icon {
+            @extend .svg-icon.size-x_large;
         }
     }
 }
