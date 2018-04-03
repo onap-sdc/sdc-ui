@@ -1,5 +1,7 @@
+import Accordion from './Accordion.js';
 import Button from './Button.js';
 import Checkbox from './Checkbox.js';
+import Checklist from './Checklist.js';
 import Input from './Input.js';
 import Modal from './Modal.js';
 import ModalBody from './ModalBody.js';
@@ -19,30 +21,34 @@ import TileFooter from './TileFooter.js';
 import TileFooterCell from './TileFooterCell.js';
 import PopupMenu from './PopupMenu.js';
 
-export {Button};
-export {Checkbox};
-export {Input};
-export {Modal};
-export {ModalBody};
-export {ModalFooter};
-export {ModalHeader};
-export {ModalTitle};
-export {Portal};
-export {Radio};
-export {RadioGroup};
-export {SVGIcon};
-export {Tab};
-export {Tabs};
-export {Tile};
-export {TileInfo};
-export {TileInfoLine};
-export {TileFooter};
-export {TileFooterCell};
-export {PopupMenu};
+export { Accordion };
+export { Button };
+export { Checkbox };
+export { Checklist };
+export { Input };
+export { Modal };
+export { ModalBody };
+export { ModalFooter };
+export { ModalHeader };
+export { ModalTitle };
+export { Portal };
+export { Radio };
+export { RadioGroup };
+export { SVGIcon };
+export { Tab };
+export { Tabs };
+export { Tile };
+export { TileInfo };
+export { TileInfoLine };
+export { TileFooter };
+export { TileFooterCell };
+export { PopupMenu };
 
 export default {
+	Accordion,
 	Button,
 	Checkbox,
+	Checklist,
 	Input,
 	Modal,
 	ModalBody,

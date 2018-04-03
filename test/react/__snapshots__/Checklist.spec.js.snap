@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checklist Checklist - Default  1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className="checkbox-item"
+  >
+    <div
+      className="sdc-checkbox "
+    >
+      <label>
+        <input
+          checked={true}
+          className="sdc-checkbox__input"
+          data-test-id="apple"
+          disabled={undefined}
+          name={undefined}
+          onChange={[Function]}
+          type="checkbox"
+          value="apple"
+        />
+        <span
+          className="sdc-checkbox__label"
+        >
+          apple
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    className="checkbox-item"
+  >
+    <div
+      className="sdc-checkbox "
+    >
+      <label>
+        <input
+          checked={false}
+          className="sdc-checkbox__input"
+          data-test-id="banana"
+          disabled={undefined}
+          name={undefined}
+          onChange={[Function]}
+          type="checkbox"
+          value="banana"
+        />
+        <span
+          className="sdc-checkbox__label"
+        >
+          banana
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    className="checkbox-item"
+  >
+    <div
+      className="sdc-checkbox "
+    >
+      <label>
+        <input
+          checked={true}
+          className="sdc-checkbox__input"
+          data-test-id="orange"
+          disabled={undefined}
+          name={undefined}
+          onChange={[Function]}
+          type="checkbox"
+          value="orange"
+        />
+        <span
+          className="sdc-checkbox__label"
+        >
+          orange
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Checklist Checklist - With disabled items  1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className="checkbox-item"
+  >
+    <div
+      className="sdc-checkbox "
+    >
+      <label>
+        <input
+          checked={true}
+          className="sdc-checkbox__input"
+          data-test-id="apple"
+          disabled={true}
+          name={undefined}
+          onChange={[Function]}
+          type="checkbox"
+          value="apple"
+        />
+        <span
+          className="sdc-checkbox__label"
+        >
+          apple
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    className="checkbox-item"
+  >
+    <div
+      className="sdc-checkbox "
+    >
+      <label>
+        <input
+          checked={false}
+          className="sdc-checkbox__input"
+          data-test-id="banana"
+          disabled={true}
+          name={undefined}
+          onChange={[Function]}
+          type="checkbox"
+          value="banana"
+        />
+        <span
+          className="sdc-checkbox__label"
+        >
+          banana
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    className="checkbox-item"
+  >
+    <div
+      className="sdc-checkbox "
+    >
+      <label>
+        <input
+          checked={false}
+          className="sdc-checkbox__input"
+          data-test-id="orange"
+          disabled={undefined}
+          name={undefined}
+          onChange={[Function]}
+          type="checkbox"
+          value="orange"
+        />
+        <span
+          className="sdc-checkbox__label"
+        >
+          orange
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+`;
