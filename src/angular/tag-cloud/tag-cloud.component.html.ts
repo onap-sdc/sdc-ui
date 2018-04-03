@@ -1,11 +1,11 @@
 export default `
-<div class="sdc-tag-cloud-new-item-field">
+<div class="sdc-tag-cloud-new-item-field" [ngClass]="{'not-empty': newTagItem}">
     <sdc-input [label]="label"
                [disabled]="(isViewOnly===true)"
                [placeHolder]="placeholder"
                [(value)]="newTagItem"
                (keyup)="onKeyup($event)"
-               [ngClass]="{'error': uniqueError, 'not-empty': newTagItem}"></sdc-input>
+               [ngClass]="{'error': uniqueError}"></sdc-input>
     <div class="add-button" (click)="newTagItem && insertItemToList()" [ngClass]="{'disabled': !newTagItem || uniqueError}">
         <span class="plus-icon">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">

@@ -1,6 +1,6 @@
-import {experimentOn} from '@islavi/ng2-component-lab';
-import {IconPosition} from  '../../src/angular/buttons/button.component';
-const buttonTypes = ['primary', 'secondary', 'link'];
+import { experimentOn } from '@islavi/ng2-component-lab';
+
+const buttonTypes = ['primary', 'secondary', 'link', 'alert'];
 const buttonSizes = ['large', 'medium', 'small', 'x-small', 'default'];
 const experiment = experimentOn('Button');
 
@@ -28,7 +28,7 @@ experiment.group("Default button", [
                >
             </sdc-button>
 
-          
+
             `
     }
 ]);
@@ -68,44 +68,46 @@ experiment.group("Buttons with icons", [
         showSource: true,
         description: `Buttons with icons forward`,
         context: {
-            buttonClicked: ():void => {
+            buttonClicked: (): void => {
                 window.alert("OK");
             }
         },
-        title: "Default button",
+        title: "Button with icons",
         template: `
-       
-
             <sdc-button
                 text="Default button long text"
                 (click)="buttonClicked()"
-                icon_name="arrow_left"
+                icon_name="settings-o"
+                icon_position="left"
                >
             </sdc-button>
-            
+
             <sdc-button
                 text="Sample button"
                 (click)="buttonClicked()"
-                icon_name="arrow_right"
+                icon_name="plus-circle-o"
+                icon_position="left"
                 >
             </sdc-button>
-            
+
             <sdc-button
                 text="Sample button"
                  type="secondary"
                 (click)="buttonClicked()"
-                icon_name="arrow_line_left"
+                icon_name="plus-circle"
+                icon_position="right"
                 >
             </sdc-button>
-            
+
             <sdc-button
                 text="Sample button"
                 type="secondary"
                 (click)="buttonClicked()"
-                icon_name="arrow_line_right"
+                icon_name="caret2-right-circle-o"
+                icon_position="right"
               >
             </sdc-button>
-            
+
            `
     }
 ]);

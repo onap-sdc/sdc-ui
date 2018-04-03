@@ -3,8 +3,8 @@ export default `
 <div class='sdc-radio-group__radios {{direction}}'>
     <template ngFor let-item="$implicit" [ngForOf]="options.items">
         <div class="sdc-radio">
-            <label class="sdc-radio__animation-wrapper" ripple-click-animation>
-                <input class="sdc-radio__input" 
+            <label class="sdc-radio__animation-wrapper" SdcRippleClickAnimation [rippleClickDisabled]="disabled">
+                <input class="sdc-radio__input"
                     type="radio"
                     name="{{item.name}}"
                     value="{{item.value}}"

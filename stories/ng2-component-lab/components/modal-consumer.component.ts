@@ -1,10 +1,7 @@
-/**
- * Created by ng689e on 12/10/2017.
- */
-import {Component, Input, Output, EventEmitter} from "@angular/core";
-import {ModalService} from "../../../src/angular/modals/modal.service";
-import {IModalConfig, ModalType, ModalSize} from "../../../src/angular/modals/models/modal-config";
-import {ModalInnerContent} from "./modal-inner-content-example.component";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { ModalService } from "../../../src/angular/modals/modal.service";
+import { IModalConfig, ModalType, ModalSize } from "../../../src/angular/modals/models/modal-config";
+import { ModalInnerContent } from "./modal-inner-content-example.component";
 import { ButtonComponent } from "../../../src/angular/buttons/button.component";
 
 const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
@@ -16,22 +13,22 @@ const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
     template: `<sdc-button [text]="'View Modal'" (click)="openModal()"></sdc-button>`
 })
 export class ModalConsumer {
-    @Input() action:string; 
+    @Input() action:string;
 
     constructor(private modalService: ModalService){
     }
 
     private openModal = ():void => {
-        if (this[this.action]) { 
-            this[this.action](); 
+        if (this[this.action]) {
+            this[this.action]();
         }
     }
 
     private openErrorModal = ():void => {
-        this.modalService.openErrorModal(MODAL_CONTENT);       
+        this.modalService.openErrorModal(MODAL_CONTENT);
     };
 
-    private openAlertModal = ():void => { 
+    private openAlertModal = ():void => {
         this.modalService.openAlertModal("Alert Title", MODAL_CONTENT);
     };
 
@@ -49,9 +46,9 @@ export class ModalConsumer {
             size: ModalSize.medium,
             title: 'Title',
             type: ModalType.custom,
-            buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true}, 
-                      {text:"Save", callback:this.customModalOnSave, closeModal:false}, 
-                      {text:"Cancel", type: 'secondary', closeModal:true}]
+            buttons: [
+                      {text:"Save", callback:this.customModalOnSave, closeModal:false},
+                      {text:"Cancel", size:'x-small', type: 'secondary', closeModal:true}]
         };
         this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }
@@ -64,6 +61,6 @@ export class ModalConsumer {
     private customModalOnSave = ():void => {
         let currentInstance:any = this.modalService.getCurrentInstance();
         alert("Save with result: " + currentInstance.innerModalContent.instance.name);
-        
+
     };
 }

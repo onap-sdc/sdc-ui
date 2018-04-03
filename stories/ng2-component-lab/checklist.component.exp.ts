@@ -1,9 +1,10 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
-import {ChecklistItemModel} from "../../src/angular/checklist/models/ChecklistItem";
-import {ChecklistModel} from "../../src/angular/checklist/models/Checklist";
+import { ChecklistItemModel } from "../../src/angular/checklist/models/ChecklistItem";
+import { ChecklistModel } from "../../src/angular/checklist/models/Checklist";
 
 const styleCode = 'h5{color:red;} pre{background-color: #d1d1d1; padding: 10px;}';
 const checklistValuesExample1 = [];
+
 const checkListExample1: ChecklistModel =  new ChecklistModel(checklistValuesExample1,
     [new ChecklistItemModel('apple'),
         new ChecklistItemModel('banana'),
@@ -162,8 +163,8 @@ export default experimentOn('Checklist')
             const checklistValues = [];
             const innerChecklistValues = [];
             const checklistModel: ChecklistModel =  new ChecklistModel(checklistValues,
-                        [new ChecklistItemModel('apple', false, false,new ChecklistModel(innerChecklistValues,[new ChecklistItemModel('red'), 
-                                                                                                                        new ChecklistItemModel('green'), 
+                        [new ChecklistItemModel('apple', false, false,new ChecklistModel(innerChecklistValues,[new ChecklistItemModel('red'),
+                                                                                                                        new ChecklistItemModel('green'),
                                                                                                                         new ChecklistItemModel('yellow')])),
                         new ChecklistItemModel('banana'),
                         new ChecklistItemModel('orange')]);</pre>

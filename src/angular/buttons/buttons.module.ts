@@ -1,17 +1,15 @@
-/**
- * Created by ob0695 on 10/9/2017.
- */
-import {NgModule} from "@angular/core";
-import {ButtonComponent} from "./button.component";
-import {CommonModule} from "@angular/common";
-
+import { NgModule } from "@angular/core";
+import { ButtonComponent } from "./button.component";
+import { CommonModule } from "@angular/common";
+import { SvgIconModule } from './../svg-icon/svg-icon.module';
 
 @NgModule({
     declarations: [
         ButtonComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        SvgIconModule
     ],
     exports: [
         ButtonComponent

@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter, OnInit, ViewContainerRef, ViewChild} from "@angular/core";
-import {NotificationSettings} from "../utilities/notification.config";
-import {CreateDynamicComponentService} from "../../utils/create-dynamic-component.service";
+import { Component, Input, Output, EventEmitter, OnInit, ViewContainerRef, ViewChild } from "@angular/core";
+import { NotificationSettings } from "../utilities/notification.config";
+import { CreateDynamicComponentService } from "../../utils/create-dynamic-component.service";
 import template from "./notification.component.html";
 
 @Component({

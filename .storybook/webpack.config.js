@@ -30,7 +30,7 @@ module.exports = {
 			}
 		]
 	},
-		plugins: [
+	plugins: [
 		new webpack.DefinePlugin({
 			'ICON_PATH': '"./"',
 			'ICON_NAMES':JSON.stringify(iconNames)
