@@ -7,15 +7,16 @@ import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import { DropDownTriggerDirective } from "./dropdown/dropdown-trigger.directive";
+import { ValidationModule } from './validation/validation.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        AnimationDirectivesModule
+        AnimationDirectivesModule,
+        ValidationModule
     ],
-
     declarations: [
         DropDownComponent,
         InputComponent,
@@ -28,7 +29,8 @@ import { DropDownTriggerDirective } from "./dropdown/dropdown-trigger.directive"
         DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent,
-        RadioGroupComponent
+        RadioGroupComponent,
+        ValidationModule
     ]
 })
 export class FormElementsModule {

@@ -13,6 +13,7 @@ export default `
         [pattern]="pattern"
         [formControl]="control"
         [attr.disabled]="disabled ? 'disabled' : null"
+        (input)="onKeyPress($event.target.value)"
     />
 </div>
 `;

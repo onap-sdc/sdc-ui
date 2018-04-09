@@ -1,0 +1,12 @@
+.sdc-validation {
+
+	font-size: $body-font-4;
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+
+    .sdc-validator {
+        color: red;
+    }
+
+}
