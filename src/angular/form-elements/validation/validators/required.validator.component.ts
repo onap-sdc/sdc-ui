@@ -13,12 +13,13 @@ export class RequiredValidatorComponent extends ValidatorComponent implements IV
         super();
     }
 
-    public validate(value: any): void {
+    public validate(value: any): boolean {
         if (value) {
             this.isValid = true;
         } else {
             this.isValid = false;
         }
+        return this.isValid;
     }
 
 }

@@ -4,20 +4,19 @@ import { IValidator } from './validator.interface';
 import template from "./base.validator.component.html";
 
 @Component({
-    selector: 'sdc-regex-validator',
+    selector: 'sdc-custom-validator',
     template: template
 })
-export class RegexValidatorComponent extends ValidatorComponent implements IValidator {
+export class CustomValidatorComponent extends ValidatorComponent implements IValidator {
 
-    @Input() public pattern: RegExp;
+    @Input() public callback: () => boolean;
 
     constructor() {
         super();
     }
 
     public validate(value: any): boolean {
-        const regexp = new RegExp(this.pattern);
-        this.isValid = regexp.test(value);
+        this.isValid = this.callback();
         return this.isValid;
     }
 

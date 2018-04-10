@@ -17,9 +17,9 @@ export abstract class ValidatorComponent {
     constructor() {
         this.disabled = false;
         this.isValid = true;
-        this.classes = 'sdc-validator';
+        this.classes = 'sdc-validator sdc-label__error';
     }
 
-    public abstract validate(value: any): void;
+    public abstract validate(value: any): boolean;
 
 }

@@ -4,6 +4,25 @@ import { RegexPatterns } from '../../src/angular/common/enums';
 export default experimentOn('Validation')
     .group("Validation", [
         {
+            id: 'validationExplain',
+            showSource: false,
+            title: 'How to use validation',
+            description: `
+                <pre>
+                Validation works on form elements that implememnts XXXXX (checkbox, radio buttons, dropdown, inputs).
+                In order to use validation, add to HTML sdc-validation element with reference id ("#"). In the element that is validate
+                add [validation]='reference id'.
+
+                Validation can have multiple validator:
+
+
+                </pre>
+            `,
+            context: {},
+            template: `
+            `
+        },
+        {
             id: 'validation1',
             showSource: true,
             title: 'Simple validation',
@@ -12,7 +31,7 @@ export default experimentOn('Validation')
                 emailPattern: RegexPatterns.email
             },
             template: `
-                <sdc-input label="Please enter valid email address" [validation]="emailValidator" [maxLength]="50"></sdc-input>
+                <sdc-input label="Please enter valid email address" [validation]="emailValidator" [maxLength]="50" required="true"></sdc-input>
                 <sdc-validation #emailValidator>
                     <sdc-required-validator message="Field is required!"></sdc-required-validator>
                     <sdc-regex-validator message="This is not a valid email!" [pattern]="emailPattern"></sdc-regex-validator>
@@ -28,9 +47,10 @@ export default experimentOn('Validation')
                 numbersPattern: RegexPatterns.numbers
             },
             template: `
-                <sdc-input label="Please enter valid email address" [validation]="numberValidator" [maxLength]="10"></sdc-input>
+                <sdc-input label="Please enter valid email address" [validation]="numberValidator" [maxLength]="10" required="true"></sdc-input>
                 <sdc-validation #numberValidator>
                     <sdc-regex-validator message="This is not a number!" [pattern]="numbersPattern"></sdc-regex-validator>
+                    <!--<sdc-custom-validator message="The number should be 100" callback="isValueHundred"></sdc-custom-validator>-->
                 </sdc-validation>
             `
         }
