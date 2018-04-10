@@ -2,7 +2,7 @@
   <defs>
     <rect id="sub-a" width="16" height="2" rx="1"/>
   </defs>
-  <g fill="none" fill-rule="evenodd" transform="translate(4 11)">
-    <use fill="#000" xlink:href="#sub-a"/>
+  <g fill-rule="evenodd" transform="translate(4 11)">
+    <use xlink:href="#sub-a"/>
   </g>
 </svg>

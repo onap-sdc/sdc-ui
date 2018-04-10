@@ -11,7 +11,7 @@
 	height: $tile-full-height;
 
 	padding: $tile-padding;
-	border: 1px solid $tlv-light-gray;
+	border: 1px solid $silver;
 	@include border-radius(2px);
 	@include box-sizing;
 
@@ -37,7 +37,7 @@
 
 	.blue {
 		color: $blue;
-		fill: $light-blue;
+		fill: $blue;
 	}
 
 	.purple {
@@ -46,11 +46,8 @@
 	}
 
 	.centered {
-		&.sdc-tile-footer {
+		&.sdc-tile-footer, .sdc-tile-info-line {
 			text-align: center;
-		}
-		.sdc-tile-info-line {
-			justify-content: center;
 		}
 	}
 
@@ -98,8 +95,7 @@
 
 			.sdc-tile-info-line {
 				text-transform: capitalize;
-				@include ellipsis($display: flex);
-				align-items: center;
+				@include ellipsis($display: inline-block);
 
 				button {
 					height: 1.67em;
@@ -136,7 +132,7 @@
 		height: $footer-height;
 		@include box-sizing;
 
-		border-top: 1px solid $tlv-light-gray;
+		border-top: 1px solid $silver;
 		padding-top: 8px;
 
 		color: $dark-gray;

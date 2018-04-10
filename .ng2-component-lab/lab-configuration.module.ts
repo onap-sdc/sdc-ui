@@ -1,6 +1,16 @@
-import './ng2-component-lab.scss';
 import { createLab } from '@islavi/ng2-component-lab';
 import { ComponentsModule } from './../stories/ng2-component-lab/components.module';
+
+const themeName:string = 'default';
+//const themeName:string = '1802';
+
+// Select the theme
+if (themeName === '1802') {
+  require('./themes/ng2-component-lab-theme-1802.scss');
+} else {
+  // Default theme
+  require('./ng2-component-lab.scss');
+}
 
 createLab({
   /**

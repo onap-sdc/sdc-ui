@@ -1,6 +1,3 @@
-/**
- * Created by rc2122 on 11/15/2017.
- */
 import { experimentOn } from '@islavi/ng2-component-lab';
 import { SearchFilterPipe } from './pipes/search-filter-pipe';
 
@@ -15,7 +12,7 @@ export default experimentOn('Filter Bar').group('FilterBar', [
         description: `
             The filter bar component text is updated (after debounce time,
             default 200 miliseconds) while user write something.
-            In this example the event on search query changed: 
+            In this example the event on search query changed:
             const action = (e): void => {
                 console.log("The search query was changed to: ", e);
             };

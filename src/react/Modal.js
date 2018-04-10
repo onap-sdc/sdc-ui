@@ -22,8 +22,8 @@ class Modal extends React.Component {
 		const {size, type, children, show} = this.props;				
 		return (           
             <Portal>  
-				<div>
-					{show && <div ref={(el) => this.modal = el} className={`sdc-modal ${modalSize[size]}`}>
+				<div ref={el => { this.modalRef = el;}}>
+					{show && <div className={`sdc-modal ${modalSize[size]}`}>
 						<div className={`sdc-modal__wrapper sdc-modal-type-${type}`}>
 							{children}
 						</div>

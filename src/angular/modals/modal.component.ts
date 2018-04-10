@@ -1,17 +1,11 @@
-/**
- * Created by rc2122 on 6/1/2017.
- */
-import {
-    Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef,
-    trigger, state, animate, transition, style
-} from '@angular/core';
-import template from './modal.component.html';
+import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
 import { EventEmitter } from '@angular/forms/src/facade/async';
+import template from './modal.component.html';
 
 @Component({
     selector: 'sdc-modal',
-    template: template, 
+    template: template,
     animations: [
         trigger('toggleBackground', [
             transition('* => 1', [style({opacity:0}), animate('.45s cubic-bezier(0.23, 1, 0.32, 1)')]),
@@ -36,7 +30,7 @@ export class ModalComponent{
     //Allows for custom component as body instead of simple message. See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer:ViewContainerRef;
     innerModalContent:ComponentRef<ModalComponent>;
-    
+
     public modalToggled = (toggleEvent:any) => {
         if(!toggleEvent.toState) this.closeAnimationComplete.emit();
     }

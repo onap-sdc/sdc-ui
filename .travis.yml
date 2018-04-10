@@ -3,19 +3,20 @@ node_js:
 - 6
 install: npm install
 script:
+- npm run build-common
 - npm test
 - npm run build
 - npm run build-gh-pages
 deploy:
   - provider: npm
-    email: ng689e@intl.att.com
+    email: onap.sdc@gmail.com
     api_key: $NPM_TOKEN
     skip_cleanup: true
     on:
       tags: true
-      repo: engordon/sdc-ui
+      repo: onap-sdc/sdc-ui
   - provider: pages
-    repo: engordon/sdc-ui
+    repo: onap-sdc/sdc-ui
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
     local_dir: .out

@@ -1,7 +1,9 @@
 @mixin color-icon($primary-color, $secondary-color) {
     color: $primary-color;
     fill: $primary-color;
-
+    span{
+        color: $primary-color;
+    }
     &:not([disabled]):hover, &:active, &:focus {
         &.clickable {
             color: $secondary-color;
@@ -48,11 +50,11 @@
     }
 
     &.__warning {
-        @include color-icon($yellow, $gold);
+        @include color-icon($yellow, $yellow);
     }
 
     &.__primary {
-        @include color-icon($blue, $dark-blue);
+        @include color-icon($blue, $light-blue);
     }
 
     &.__secondary {
@@ -60,11 +62,11 @@
     }
 
     &.__positive {
-        @include color-icon($green, $lima);
+        @include color-icon($green, $green);
     }
 
     &.__negative {
-        @include color-icon($red, $torch-red);
+        @include color-icon($red, $red);
     }
 }
 

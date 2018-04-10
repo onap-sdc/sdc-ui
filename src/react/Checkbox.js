@@ -19,9 +19,7 @@ class Checkbox extends React.Component {
 						value={value}
 						onChange={(e) => this.onChange(e)}
 						disabled={disabled} />
-					{label &&
-						<span className='sdc-checkbox__label'>{label}</span>
-					}
+					<span className='sdc-checkbox__label'>{label}</span>
 				</label>
 			</div>
 		);

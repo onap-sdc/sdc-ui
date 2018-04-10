@@ -1,8 +1,6 @@
-/**
- * Created by rc2122 on 11/5/2017.
- */
-import {ChecklistModel} from "./Checklist";
-import {isUndefined} from "util";
+import { ChecklistModel } from "./Checklist";
+import { isUndefined } from "util";
+
 export class ChecklistItemModel {
     public label: string;
     public value: any;

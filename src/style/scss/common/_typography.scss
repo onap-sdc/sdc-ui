@@ -1,0 +1,96 @@
+$heading-font-1: 28px;
+$heading-font-2: 24px;
+$heading-font-3: 20px;
+$heading-font-4: 16px;
+$heading-font-5: 14px;
+
+$body-font-1: 14px;
+$body-font-2: 13px;
+$body-font-3: 12px;
+$body-font-4: 10px;
+
+@mixin base-font-regular() {
+  font-family: OpenSans-Regular, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin base-font-italic(){
+  font-family: OpenSans-Italic, OpenSans-Regular, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin base-font-semibold() {
+  font-family: OpenSans-Semibold, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin font-error() {
+  color: $red;
+}
+
+@mixin heading-1() {
+  @include base-font-regular;
+  font-size: $heading-font-1;
+}
+
+@mixin heading-2() {
+  @include base-font-regular;
+  font-size: $heading-font-2;
+}
+
+@mixin heading-3 {
+  @include base-font-regular;
+  font-size: $heading-font-3;
+}
+
+@mixin heading-4 {
+  @include base-font-regular;
+  font-size: $heading-font-4;
+}
+
+@mixin heading-4-emphasis {
+  @include base-font-semibold;
+  font-size: $heading-font-4;
+}
+
+@mixin heading-5 {
+  @include base-font-semibold;
+  font-size: $heading-font-5;
+}
+
+@mixin body-1 {
+  @include base-font-regular;
+  font-size: $body-font-1;
+}
+
+@mixin body-1-italic {
+  @include base-font-italic;
+  font-size: $body-font-1;
+}
+
+@mixin body-2 {
+  @include base-font-regular;
+  font-size: $body-font-2;
+}
+
+@mixin body-2-emphasis {
+  @include base-font-semibold;
+  font-size: $body-font-2;
+}
+
+@mixin body-3 {
+  @include base-font-regular;
+  font-size: $body-font-3;
+}
+@mixin body-3-emphasis {
+  @include base-font-semibold;
+  font-size: $body-font-3;
+}
+
+@mixin body-4 {
+  @include base-font-regular;
+  font-size: $body-font-4;
+}

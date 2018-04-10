@@ -4,7 +4,7 @@ import { AnimationDirectivesModule } from "../../animations/animation-directives
 import { FormsModule } from "@angular/forms";
 
 
-describe("Test", ()=>{
+describe("Checbox Tests", ()=>{
     let component: CheckboxComponent;
     beforeEach(async(() => {
         TestBed.configureTestingModule({

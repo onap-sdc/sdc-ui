@@ -1,44 +1,34 @@
 import React, {Component} from 'react';
 
-const primaryColors = {
-	$blue: '#009fdb',
+const colorMap = {
+	'$white': '#ffffff',
+	'$blue': '#009fdb',
+	'$light-blue': '#1eb9f3',
+	'$lighter-blue': '#e6f6fb',
+	'$blue-disabled': '#9dd9ef',
 	'$dark-blue': '#0568ae',
-	'$light-blue': '#71c5e8',
-    '$hover-blue': '#1eb9f3',
-    '$blue-disabled': '#9dd9ef',
-	$green: '#4ca90c',
-	'$dark-green': '#007a3e',
-	'$light-green': '#b5bd00',
-	$orange: '#ea7400',
-	$yellow: '#ffb81c',
-	'$dark-purple': '#702f8a',
-	$purple: '#9063cd',
-	'$light-purple': '#caa2dd',
-	$black: '#000000',
-    '$rich-black': '#323943',
-	'$dark-gray': '#5a5a5a',
-	$gray: '#959595',
-	'$light-gray': '#d2d2d2',
-	$white: '#ffffff'
-};
-
-const secondaryColors = {
-	$red: '#cf2a2a',
-	'$background-gray': '#f2f2f2',
+	'$black': '#000000',
+	'$rich-black': '#323943',
 	'$text-black': '#191919',
-	'$link-blue': '#056bae',
-	'$functional-green': '#007a3e',
-	'$tlv-gray': '#f8f8f8',
-	'$tlv-light-gray': '#eaeaea',
-	'$tlv-hover': '#e6f6fb',
+	'$dark-gray': '#5a5a5a',
+	'$gray': '#959595',
+	'$light-gray': '#d2d2d2',
+	'$silver': '#eaeaea',
+	'$light-silver': '#f2f2f2',
+	'$green': '#4ca90c',
+	'$functional-red': '#cf2a2a',
+	'$yellow': '#ffb81c',
+	'$dark-purple': '#702f8a',
+	'$purple': '#9063cd',
+	'$light-purple': '#caa2dd'
 };
 
-function Color({colorName, palette}) {
+function Color({colorName, colorValue}) {
 	return (
 		<div key={colorName} className='color-section'>
-			<div className='color-circle' style={{backgroundColor: palette[colorName]}} />
+			<div className='color-circle' style={{backgroundColor: colorValue}} />
 			<div>{colorName.replace('$', '')}</div>
-			<div>{palette[colorName]}</div>
+			<div>{colorValue}</div>
 		</div>
 	);
 }
@@ -49,16 +39,9 @@ class Colors extends Component {
 		return (
 			<div>
 				<h1>Colors Palette</h1>
-					<h3>Primary Colors</h3>
 					<div className='colors-table'>
 						{
-							Object.keys(primaryColors).map(colorName => <Color key={colorName} palette={primaryColors} colorName={colorName}/>)
-						}
-					</div>
-					<h3>Secondary Colors</h3>
-					<div className='colors-table'>
-						{
-							Object.keys(secondaryColors).map(colorName => <Color key={colorName} palette={secondaryColors} colorName={colorName}/>)
+							Object.keys(colorMap).map(colorName => <Color key={colorName} colorValue={colorMap[colorName]} colorName={colorName}/>)
 						}
 					</div>
 			</div>

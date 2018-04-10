@@ -1,5 +1,5 @@
 export default `
-<div class="sdc-autocomplete-container">
+<div class="sdc-autocomplete-container" [ngClass]="{'results-shown': autoCompleteResults.length}">
     <sdc-filter-bar
         [placeholder]="placeholder"
         [label]="label"
