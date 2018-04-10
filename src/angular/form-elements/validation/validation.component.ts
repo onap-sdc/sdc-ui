@@ -6,6 +6,8 @@ import { IValidator } from './validators/validator.interface';
 import { ValidatorComponent } from './validators/base.validator.component';
 import { RegexValidatorComponent } from './validators/regex.validator.component';
 import { RequiredValidatorComponent } from './validators/required.validator.component';
+import { ValidatableComponent } from './validatable.component';
+import { CustomValidatorComponent } from './validators/custom.validator.component';
 import template from "./validation.component.html";
 
 @Component({
@@ -14,12 +16,14 @@ import template from "./validation.component.html";
 })
 export class ValidationComponent implements AfterContentInit {
 
+    @Input() public validateElement: ValidatableComponent;
     @Input() public disabled: boolean;
     @HostBinding('class') classes;
 
     // @ContentChildren does not recieve type any or IValidator or ValidatorComponent, so need to create @ContentChildren for each validator type.
     @ContentChildren(RegexValidatorComponent) public regexValidator: QueryList<ValidatorComponent>;
     @ContentChildren(RequiredValidatorComponent) public requireValidator: QueryList<ValidatorComponent>;
+    @ContentChildren(CustomValidatorComponent) public customValidator: QueryList<ValidatorComponent>;
 
     private supportedValidator: Array<QueryList<ValidatorComponent>>;
 
@@ -31,11 +35,20 @@ export class ValidationComponent implements AfterContentInit {
     ngAfterContentInit(): void {
         this.supportedValidator = [
             this.regexValidator,
-            this.requireValidator
+            this.requireValidator,
+            this.customValidator
         ];
+
+        this.validateElement.notifier.subscribe(
+            (value) => {
+                const validationResult = this.validate(value);
+                this.validateElement.valid = validationResult;
+            },
+            (error) => console.log('Validation subscribe error')
+        );
     }
 
-    public validate(value: any): boolean {
+    private validate(value: string): boolean {
 
         /**
          * Iterate over all validators types (required, regex, etc...), and inside each iterate over

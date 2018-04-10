@@ -9,14 +9,14 @@ import template from "./base.validator.component.html";
 })
 export class CustomValidatorComponent extends ValidatorComponent implements IValidator {
 
-    @Input() public callback: () => boolean;
+    @Input() public callback: (...args) => boolean;
 
     constructor() {
         super();
     }
 
     public validate(value: any): boolean {
-        this.isValid = this.callback();
+        this.isValid = this.callback(value);
         return this.isValid;
     }
 

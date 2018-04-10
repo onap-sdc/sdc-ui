@@ -31,8 +31,8 @@ export default experimentOn('Validation')
                 emailPattern: RegexPatterns.email
             },
             template: `
-                <sdc-input label="Please enter valid email address" [validation]="emailValidator" [maxLength]="50" required="true"></sdc-input>
-                <sdc-validation #emailValidator>
+                <sdc-input #email label="Please enter valid email address" [maxLength]="50" required="true"></sdc-input>
+                <sdc-validation [validateElement]="email">
                     <sdc-required-validator message="Field is required!"></sdc-required-validator>
                     <sdc-regex-validator message="This is not a valid email!" [pattern]="emailPattern"></sdc-regex-validator>
                 </sdc-validation>
@@ -44,13 +44,16 @@ export default experimentOn('Validation')
             title: 'Simple validation',
             description: 'Simple validation',
             context: {
-                numbersPattern: RegexPatterns.numbers
+                numbersPattern: RegexPatterns.numbers,
+                isValueHundred: (value: any) => {
+                    return (Number(value) === 100) ? true : false;
+                }
             },
             template: `
-                <sdc-input label="Please enter valid email address" [validation]="numberValidator" [maxLength]="10" required="true"></sdc-input>
-                <sdc-validation #numberValidator>
+                <sdc-input #numberValidator label="Please enter some number" [maxLength]="10" required="true"></sdc-input>
+                <sdc-validation [validateElement]="numberValidator">
                     <sdc-regex-validator message="This is not a number!" [pattern]="numbersPattern"></sdc-regex-validator>
-                    <!--<sdc-custom-validator message="The number should be 100" callback="isValueHundred"></sdc-custom-validator>-->
+                    <sdc-custom-validator message="The number should be 100" [callback]="isValueHundred"></sdc-custom-validator>
                 </sdc-validation>
             `
         }

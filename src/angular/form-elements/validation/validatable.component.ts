@@ -1,19 +1,22 @@
 import { Input, Component } from "@angular/core";
 import { ValidationComponent } from './validation.component';
+import { Subject } from 'rxjs/Subject';
 
 export class ValidatableComponent {
 
     // Each ValidatableComponent should handle the style in case of error, according to this boolean
-    protected valid = true;
+    public valid = true;
 
-    // Refernce to validation component, and activate validation for this input.
-    @Input() public validation: ValidationComponent;
+    // Each ValidatableComponent will notify when the value is changed.
+    public notifier: Subject<string>;
 
-    // Each ValidatableComponent should call the validate function.
-    public validate(value: string): void {
-        if (this.validation) {
-            this.valid = this.validation.validate(value);
-        }
+    constructor() {
+        this.notifier = new Subject();
+    }
+
+    // Each ValidatableComponent should call the valueChanged on value changed function.
+    protected valueChanged = (value: any): void => {
+        this.notifier.next(value);
     }
 
 }
