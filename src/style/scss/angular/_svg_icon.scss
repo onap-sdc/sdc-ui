@@ -65,7 +65,7 @@
 
     &.mode-info {
         @include color-icon($text-black);
-        @include color-icon-hover($rich-black);
+        @include color-icon-hover($dark-blue);
     }
 
     &.size-x_small {
@@ -160,7 +160,7 @@
 
     &.mode-info {
         @include color-icon-label($text-black);
-        @include color-icon-label-hover($rich-black);
+        @include color-icon-label-hover($dark-blue);
     }
 
     &.size-x_small {
