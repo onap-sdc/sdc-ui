@@ -39,6 +39,10 @@ export class InputComponent extends ValidatableComponent implements OnInit {
             });
     }
 
+    public getValue(): any {
+        return this.value;
+    }
+
     onKeyPress(value: string) {
         this.valueChanged(this.value);
     }

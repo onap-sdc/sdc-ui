@@ -1,99 +1,49 @@
 import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { IDropDownOption, DropDownOptionType } from "./dropdown-models";
+import { ValidatableComponent } from './../validation/validatable.component';
 import template from './dropdown.component.html';
 
 @Component({
     selector: 'sdc-dropdown',
     template: template
 })
-export class DropDownComponent implements OnChanges, OnInit {
+export class DropDownComponent extends ValidatableComponent implements OnChanges, OnInit {
 
-    /**
-     * Drop-down value changed event emitter
-     */
     @Output('changed') changeEmitter:EventEmitter<IDropDownOption> = new EventEmitter<IDropDownOption>();
-
-    /**
-     * The label that will show up above the drop-down
-     */
     @Input() label: string;
-
-    /**
-     * Option can be add by a list of IDropDownOption objects
-     */
     @Input() options: IDropDownOption[];
-
-    /**
-     * Drop-down disabled flag
-     */
     @Input() disabled: boolean;
-
-    /**
-     * The text users will see on the drop-down header when no option was selected
-     */
     @Input() placeHolder: string;
-
-    /**
-     * Drop-down required flag
-     */
     @Input() required: boolean;
-
     @Input() validate: boolean;
-
-    /**
-     * Show or hie drop-down header flag
-     * @type {boolean}
-     */
-    @Input() headless = false;
-
+    @Input() headless = false; // Show or hie drop-down header flag
     @Input() maxHeight: number;
-
-    @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
-
-    @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
-
     @Input() selectedOption: IDropDownOption;
-
+    @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
+    @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
     @HostListener('document:click', ['$event']) onClick(e) {
         this.onClickOutside(e);
     }
 
-    /**
-     * Drop-down show/hide flag. default is false (closed)
-     * @type {boolean}
-     */
+    // Drop-down show/hide flag. default is false (closed)
     public show = false;
 
-    /**
-     * Error flag
-     * @type {boolean}
-     */
-    public error: boolean;
-
-    /**
-     * Export DropDownOptionType enum so we can use it on the template
-     */
+    // Export DropDownOptionType enum so we can use it on the template
     public cIDropDownOptionType = DropDownOptionType;
 
-    /**
-     * Configure unselectable option types
-     */
+    // Configure unselectable option types
     private unselectableOptions = [
         DropDownOptionType.Disable,
         DropDownOptionType.Header,
         DropDownOptionType.HorizontalLine
     ];
 
-    /**
-     * Set or unset Group style on drop-down
-     * @type {boolean}
-     */
+    // Set or unset Group style on drop-down
     public isGroupDesign = false;
-
     public animation_init = false;
 
-
     constructor() {
+        super();
         this.maxHeight = 244;
     }
 
@@ -111,23 +61,12 @@ export class DropDownComponent implements OnChanges, OnInit {
         }
     }
 
-    public isValid() {
-        return !this.error;
+    public getValue(): any {
+        return this.selectedOption;
     }
 
     private isSelectable(option: IDropDownOption) {
         return !(!!this.unselectableOptions.find(optionType => optionType === option.type));
-    }
-
-    /**
-     * Validate when required is enabled
-     */
-    public validateDropDown(): void {
-        if (!this.disabled && this.required && (!this.selectedOption || this.selectedOption.value === '')) {
-            this.error = true;
-            return;
-        }
-        this.error = false;
     }
 
     /**
@@ -150,8 +89,8 @@ export class DropDownComponent implements OnChanges, OnInit {
         if (option) {
             this.selectedOption = option;
             this.show = false;
-            this.validateDropDown();
-            this.changeEmitter.next(option);
+            this.changeEmitter.next(option.value);
+            this.valueChanged(option.value);
         }
     }
 

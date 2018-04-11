@@ -1,27 +1,25 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 import { RegexPatterns } from '../../src/angular/common/enums';
+import { DropDownOptionType, IDropDownOption } from './../../src/angular/form-elements/dropdown/dropdown-models';
+
+const options1: IDropDownOption[] = [
+    {
+        label: 'First Option',
+        value: 'First Option',
+    },
+    {
+        label: 'Second Option',
+        value: 'Second Option',
+    },
+    {
+        label: 'Third Option',
+        value: 'Third Option',
+        type: DropDownOptionType.Simple
+    }
+];
 
 export default experimentOn('Validation')
     .group("Validation", [
-        {
-            id: 'validationExplain',
-            showSource: false,
-            title: 'How to use validation',
-            description: `
-                <pre>
-                Validation works on form elements that implememnts XXXXX (checkbox, radio buttons, dropdown, inputs).
-                In order to use validation, add to HTML sdc-validation element with reference id ("#"). In the element that is validate
-                add [validation]='reference id'.
-
-                Validation can have multiple validator:
-
-
-                </pre>
-            `,
-            context: {},
-            template: `
-            `
-        },
         {
             id: 'validation1',
             showSource: true,
@@ -55,6 +53,91 @@ export default experimentOn('Validation')
                     <sdc-regex-validator message="This is not a number!" [pattern]="numbersPattern"></sdc-regex-validator>
                     <sdc-custom-validator message="The number should be 100" [callback]="isValueHundred"></sdc-custom-validator>
                 </sdc-validation>
+            `
+        },
+        {
+            id: 'validation3',
+            showSource: true,
+            title: 'Disabled validation',
+            description: 'Disabled validation',
+            context: {
+                emailPattern: RegexPatterns.email
+            },
+            template: `
+                <sdc-input #email label="Please enter valid email address" [maxLength]="50" required="true"></sdc-input>
+                <sdc-validation [validateElement]="email" disabled='true'>
+                    <sdc-required-validator message="Field is required!"></sdc-required-validator>
+                    <sdc-regex-validator message="This is not a valid email!" [pattern]="emailPattern"></sdc-regex-validator>
+                </sdc-validation>
+            `
+        },
+        {
+            id: 'validation4',
+            showSource: true,
+            title: 'Validation with value already entered',
+            description: 'Validation with value already entered',
+            context: {
+                emailPattern: RegexPatterns.email
+            },
+            template: `
+                <sdc-input #email label="Please enter valid email address" [maxLength]="50" required="true" value="notvalidemail@"></sdc-input>
+                <sdc-validation [validateElement]="email">
+                    <sdc-required-validator message="Field is required!"></sdc-required-validator>
+                    <sdc-regex-validator message="This is not a valid email!" [pattern]="emailPattern"></sdc-regex-validator>
+                </sdc-validation>
+            `
+        },
+        {
+            id: 'dropdownWithValidation',
+            showSource: true,
+            context: {
+                options: options1,
+                isThirdOption: (value: any) => {
+                    return value === 'Third Option';
+                }
+            },
+            title: 'DropDown with validation',
+            description: 'DropDown with validation',
+            template: `
+            <sdc-dropdown #mydropdown label="Hi I am a label" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
+            <sdc-validation [validateElement]="mydropdown">
+                <sdc-required-validator message="Field is required!"></sdc-required-validator>
+                <sdc-custom-validator message="Please select the third option" [callback]="isThirdOption"></sdc-custom-validator>
+            </sdc-validation>
+            `
+        },
+        {
+            id: 'validationGroup',
+            showSource: true,
+            context: {
+                options: options1,
+                emailPattern: RegexPatterns.email,
+                isThirdOption: (value: any) => {
+                    return value === 'Third Option';
+                },
+                validateGroup: () => {
+                    console.log("validating");
+                }
+            },
+            title: 'Validation group',
+            description: 'Validation group',
+            template: `
+            <sdc-button text="validate group" (click)="validateGroup"></sdc-button>
+            <sdc-validation-group #validationGroup>
+
+                <sdc-input #email label="Please enter valid email address" [maxLength]="50" required="true"></sdc-input>
+                <sdc-validation [validateElement]="email">
+                    <sdc-required-validator message="Field is required!"></sdc-required-validator>
+                    <sdc-regex-validator message="This is not a valid email!" [pattern]="emailPattern"></sdc-regex-validator>
+                </sdc-validation>
+
+                <sdc-dropdown #mydropdown label="Hi I am a label" placeHolder="Please choose option" [options]="options"></sdc-dropdown>
+                <sdc-validation [validateElement]="mydropdown">
+                    <sdc-required-validator message="Field is required!"></sdc-required-validator>
+                    <sdc-custom-validator message="Please select the third option" [callback]="isThirdOption"></sdc-custom-validator>
+                </sdc-validation>
+
+            </sdc-validation-group>
             `
         }
     ]);

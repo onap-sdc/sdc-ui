@@ -41,14 +41,20 @@ export class ValidationComponent implements AfterContentInit {
 
         this.validateElement.notifier.subscribe(
             (value) => {
-                const validationResult = this.validate(value);
+                const validationResult = this.validateOnChange(value);
                 this.validateElement.valid = validationResult;
             },
             (error) => console.log('Validation subscribe error')
         );
     }
 
-    private validate(value: string): boolean {
+    public validate = (): boolean => {
+        const value = this.validateElement.getValue();
+        return this.validateOnChange(value);
+    }
+
+    private validateOnChange(value: any): boolean {
+        if (this.disabled) { return true; }
 
         /**
          * Iterate over all validators types (required, regex, etc...), and inside each iterate over

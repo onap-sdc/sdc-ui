@@ -87,10 +87,10 @@ export default experimentOn('DropDown')
             showSource: true,
             context: {
                 options: options1,
-                selectedOption:null,
-                onChange: function(option){
-                    console.log("Something was changed!", option.value);
-                    this.selectedOption = option.value;
+                selectedOption: null,
+                onChange: function(value){
+                    console.log("Something was changed!", value);
+                    this.selectedOption = value;
                 }
             },
             title: 'Normal DropDown',
