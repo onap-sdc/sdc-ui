@@ -115,14 +115,13 @@ export default experimentOn('Validation')
                 isThirdOption: (value: any) => {
                     return value === 'Third Option';
                 },
-                validateGroup: () => {
-                    console.log("validating");
+                validateGroup: (validationGroup) => {
+                    validationGroup.validate();
                 }
             },
             title: 'Validation group',
-            description: 'Validation group',
+            description: 'Validation group (activating validation from code)',
             template: `
-            <sdc-button text="validate group" (click)="validateGroup"></sdc-button>
             <sdc-validation-group #validationGroup>
 
                 <sdc-input #email label="Please enter valid email address" [maxLength]="50" required="true"></sdc-input>
@@ -138,6 +137,7 @@ export default experimentOn('Validation')
                 </sdc-validation>
 
             </sdc-validation-group>
+            <sdc-button text="validate group" (click)="validateGroup(validationGroup)"></sdc-button>
             `
         }
     ]);

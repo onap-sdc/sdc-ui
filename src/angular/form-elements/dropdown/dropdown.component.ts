@@ -62,7 +62,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
     }
 
     public getValue(): any {
-        return this.selectedOption;
+        return this.selectedOption && this.selectedOption.value;
     }
 
     private isSelectable(option: IDropDownOption) {

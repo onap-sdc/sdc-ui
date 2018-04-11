@@ -34,16 +34,14 @@ export class ValidationGroupComponent implements AfterContentInit {
     }
 
     public validate(): boolean {
-
-        /**
-         * Iterate over all validationComponent inside the group and return boolean result true in case all validations passed.
-         */
-        const validationResult: boolean = this.validationsComponents.reduce((sum, validationComponent) => {
-            return sum && validationComponent.validate();
-        }, true);
-
+        let validationResult = true;
+        // Iterate over all validationComponent inside the group and return boolean result true in case all validations passed.
+        this.validationsComponents.forEach((validationComponent) => {
+            if (validationComponent.validate()) {
+                validationResult = false;
+            }
+        });
         return validationResult;
-
     }
 
 }
