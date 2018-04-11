@@ -1,6 +1,5 @@
-import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style } from '@angular/core';
+import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
-import { EventEmitter } from '@angular/forms/src/facade/async';
 import template from './modal.component.html';
 
 @Component({
