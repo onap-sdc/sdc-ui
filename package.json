@@ -19,7 +19,7 @@
     "compile-angular": "ngc -p tsconfig.angular.build-es5.json",
     "rollup-angular:module": "rollup -c rollup.angular.module.config.js",
     "rollup-angular:umd": "rollup -c rollup.angular.umd.config.js",
-    "rollup-angular:metadata": "find build/* -type f -not -name '*.js' -not -name '*.js.*' -exec cp --parents {} lib ; && cp -rf lib/build/* lib/ && rm -r lib/build",
+    "rollup-angular:metadata": "find build/* -type f -not -name '*.js' -not -name '*.js.*' -exec cp --parents {} lib \\; && cp -rf lib/build/* lib/ && rm -r lib/build",
     "build-angular": "npm run compile-angular && npm run rollup-angular:module && npm run rollup-angular:umd && npm run rollup-angular:metadata",
     "build-style": "npm run build-style-scss && npm run build-style-less",
     "build-style-scss": "cp -rf src/style lib/",
