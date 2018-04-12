@@ -7,13 +7,15 @@ import { CheckboxComponent } from "./checkbox/checkbox.component";
 import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import { DropDownTriggerDirective } from "./dropdown/dropdown-trigger.directive";
+import {SvgIconModule} from "../svg-icon/svg-icon.module";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        AnimationDirectivesModule
+        AnimationDirectivesModule,
+        SvgIconModule
     ],
 
     declarations: [
@@ -21,7 +23,7 @@ import { DropDownTriggerDirective } from "./dropdown/dropdown-trigger.directive"
         InputComponent,
         CheckboxComponent,
         RadioGroupComponent,
-        DropDownTriggerDirective
+        DropDownTriggerDirective,
     ],
     exports: [
         DropDownComponent,

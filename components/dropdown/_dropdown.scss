@@ -1,12 +1,48 @@
 sdc-dropdown {
   display: block;
 }
+
 .sdc-dropdown {
   @include body-1;
   position: relative;
 
   .sdc-dropdown__error--block{
     display: none;
+  }
+  .tmp{
+    margin-left: -24px;
+    z-index: 100;
+  }
+  /*************************************
+  SDC Auto-DropDown styles
+   *************************************/
+  .sdc-dropdown-auto__wrapper{
+    display: flex;
+    .sdc-dropdown__header{
+      border-right: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      &:focus{
+        border-right: none;
+      }
+    }
+    .sdc-dropdown__header:focus + .btn-toggle{
+          border: solid 1px $light-blue;
+          outline: none;
+          border-left:none;
+    } 
+    .btn-toggle{
+      border: solid 1px #d2d2d2;
+      height: 40px;
+      box-sizing: border-box;
+      border-radius: 2px;
+      display: flex;
+      width: 38px;
+      justify-content: center;
+      border-left:none;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
   }
   /*************************************
   SDC Error styles
@@ -64,7 +100,12 @@ sdc-dropdown {
   .sdc-dropdown__component-container {
     position: relative;
     height: 40px;
+    // display: flex;
+    // align-items: center;  
   }
+ 
+
+
   .sdc-dropdown__header {
     padding: 0px 10px;
     background: $white;

@@ -44,6 +44,8 @@ export class DropDownComponent implements OnChanges, OnInit {
      * Show or hie drop-down header flag
      * @type {boolean}
      */
+
+    @Input() type: string;
     @Input() headless = false;
 
     @Input() maxHeight: number;
@@ -69,6 +71,8 @@ export class DropDownComponent implements OnChanges, OnInit {
      * @type {boolean}
      */
     public error: boolean;
+    public allOptions :  IDropDownOption[];
+    public filterValue:string = '';
 
     /**
      * Export DropDownOptionType enum so we can use it on the template
@@ -95,10 +99,12 @@ export class DropDownComponent implements OnChanges, OnInit {
 
     constructor() {
         this.maxHeight = 244;
+       
     }
 
     ngOnInit(): void {
         if (this.options) {
+            this.allOptions = this.options;
             if (this.options.find(option => option.type === DropDownOptionType.Header)) {
                 this.isGroupDesign = true;
             }
@@ -150,6 +156,7 @@ export class DropDownComponent implements OnChanges, OnInit {
         if (option) {
             this.selectedOption = option;
             this.show = false;
+            this.filterValue = option.value;
             this.validateDropDown();
             this.changeEmitter.next(option);
         }
@@ -190,4 +197,14 @@ export class DropDownComponent implements OnChanges, OnInit {
         }
     }
 
+    public filterOptions(filterValue){
+        console.log(filterValue)
+        if(filterValue.length <= 1)  this.toggleDropdown();
+        this.options = this.allOptions.filter((option)=>{
+            console.log ('herer', option.value.indexOf(filterValue))
+            return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+        })
+        console.log(this.options);
+
+    }
 }
