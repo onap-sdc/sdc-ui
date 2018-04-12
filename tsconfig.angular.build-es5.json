@@ -17,9 +17,8 @@
   ],
   "angularCompilerOptions": {
     "skipMetadataEmit": false,
-    "strictMetadataEmit": true,
+    "strictMetadataEmit": false,
     "skipTemplateCodegen": true,
-    "flatModuleOutFile": "index.js",
     "flatModuleId": "sdc-ui"
   }
 }

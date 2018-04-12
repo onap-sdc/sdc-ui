@@ -2,21 +2,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropDownComponent } from './dropdown.component';
 import { IDropDownOption } from "./dropdown-models";
 
+const label: string = "DropDown example";
+const placeHolder: string = "Please choose option";
 
-const label:string = "DropDown example";
-const placeHolder:string = "Please choose option";
-
-const options:IDropDownOption[] = [
+const options: IDropDownOption[] = [
     {
-        label:'First Option',
+        label: 'First Option',
         value: 'First Option'
     },
     {
-        label:'Second Option',
+        label: 'Second Option',
         value: 'Second Option'
     },
     {
-        label:'Third Option',
+        label: 'Third Option',
         value: 'Third Option'
     }
 ];
@@ -34,13 +33,10 @@ describe('DropDown component', () => {
 
     }));
 
-    beforeEach(()=>{
-
-
+    beforeEach(() => {
         component.label = label;
         component.placeHolder = placeHolder;
         component.options = options;
-
         fixture.detectChanges();
     });
 
@@ -55,21 +51,6 @@ describe('DropDown component', () => {
         component.selectOption(index, option);
         fixture.detectChanges();
         expect(component.selectedOption).toEqual(option);
-    });
-
-    it('component should have a required flag', () => {
-        component.required  = true;
-        fixture.detectChanges();
-        component.validateDropDown();
-        expect(component.isValid()).toEqual(false);
-
-        const index = 2;
-        const option = options[index];
-
-        component.selectOption(index, option);
-        fixture.detectChanges();
-        component.validateDropDown();
-        expect(component.isValid()).toEqual(true);
     });
 
 });

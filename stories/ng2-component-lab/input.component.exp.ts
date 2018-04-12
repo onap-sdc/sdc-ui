@@ -25,9 +25,18 @@ export default experimentOn('Input')
         `
       },
       {
+        id: 'InputTypeNumber',
+        showSource: true,
+        title: 'Input type number',
+        description: 'Input type number',
+        template: `
+        <sdc-input type='number'></sdc-input>
+        `
+      },
+      {
         id: 'Input required',
         title: 'Input required',
-        description: 'Input required',
+        description: 'Input required (this add red * to the label, but does not perform validation, use sdc-validation for validation)',
         showSource: true,
         template: `
         <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
@@ -41,15 +50,6 @@ export default experimentOn('Input')
         template: `
         <sdc-input [maxLength]="5"></sdc-input>
         `
-    },
-    {
-        id: 'integerInputWithValidationError',
-        title: 'Integer input with validation error',
-        description: 'Integer input with validation error',
-        showSource: true,
-        template: `
-        <sdc-input pattern="^(([-+]?\\d+)|([-+]?0x[0-9a-fA-F]+))$"></sdc-input>
-    `
     },
     {
         id: 'inputWithPlaceholder',
