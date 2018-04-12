@@ -147,21 +147,5 @@ export default experimentOn('DropDown')
             description: 'Disabled DropDown',
             template: `
             <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>`
-        },
-        {
-            id: 'requieredDropDown',
-            showSource: true,
-            context: {
-                options: options2,
-            },
-            title: 'Requiered DropDown',
-            description: 'Requiered DropDown',
-            template: `
-            <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" required="true" [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
-            <div style="margin-top: 10px;">
-                <button (click)="dropDown2.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown2.isValid() }}</span>
-             </div>`
-        },
+        }
     ]);
-
-
