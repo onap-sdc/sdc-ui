@@ -17,7 +17,8 @@ export class CreateDynamicComponentService {
      * @memberOf InjectionService
      */
     private getRootViewContainer():ComponentRef<any> {
-        const rootComponents = this.applicationRef['_rootComponents'];
+        // const rootComponents = this.applicationRef['_rootComponents'];
+        const rootComponents = this.applicationRef['components'];
         if (rootComponents.length) return rootComponents[0];
 
         throw new Error('View Container not found! ngUpgrade needs to manually set this via setRootViewContainer.');
