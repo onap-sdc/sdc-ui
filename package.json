@@ -1,6 +1,6 @@
 {
   "name": "sdc-ui",
-  "version": "1.6.29",
+  "version": "1.6.29-snapshot.2",
   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
   "scripts": {
     "test": "jest && npm run karma-travis",
@@ -53,11 +53,12 @@
     "@angular/core": "^2.4.8"
   },
   "devDependencies": {
-    "@angular/compiler": "^5.2.0",
-    "@angular/compiler-cli": "~5.2.0",
+    "@angular/compiler": "~2.4.8",
+    "@angular/compiler-cli": "~2.4.8",
     "@islavi/ng2-component-lab": "^1.0.28",
     "@types/jasmine": "2.5.47",
     "@types/node": "^7.0.27",
+    "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.1.3",
     "babel-cli": "^6.24.1",
@@ -112,14 +113,14 @@
     "url-parse": "^1.1.9"
   },
   "dependencies": {
-    "@angular/animations": "^5.2.9",
-    "@angular/common": "^5.2.0",
-    "@angular/core": "^5.2.0",
-    "@angular/forms": "^5.2.0",
-    "@angular/http": "^5.2.0",
-    "@angular/platform-browser": "^5.2.0",
-    "@angular/platform-browser-dynamic": "^5.2.0",
-    "@angular/upgrade": "^5.2.0",
+    "@angular/common": "~2.4.8",
+    "@angular/core": "~2.4.8",
+    "@angular/forms": "~2.4.8",
+    "@angular/http": "^2.4.8",
+    "@angular/platform-browser": "~2.4.8",
+    "@angular/platform-browser-dynamic": "~2.4.8",
+    "@angular/router": "~3.2.1",
+    "@angular/upgrade": "^2.4.8",
     "@storybook/react": "^3.1.5",
     "http-loader": "0.0.1",
     "prop-types": "^15.6.0",
