@@ -33,11 +33,14 @@ export default experimentOn('Modals')
         title: 'Standard modal',
         description: 'Opens a modal with a custom title, message, and confirm button with a callback.',
         template: `
+
         <modal-consumer [action]="'openActionModal'"></modal-consumer>
         <div class="example-source">Source Code:
         <pre>
-
-          this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', "Yes", this.onConfirmAction);
+          const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
+            'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
+            
+          this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "Yes", this.onConfirmAction);
 
           private onConfirmAction = ():void => {{ '{' }}
             alert("Action has been confirmed");
@@ -51,11 +54,15 @@ export default experimentOn('Modals')
         title: 'Alert modal',
         description: 'Opens a standard alert modal with a custom title and message.',
         template: `
+
+
         <modal-consumer [action]="'openAlertModal'"></modal-consumer>
         <div class="example-source">Source Code:
         <pre>
+          const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
+          'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
 
-          this.modalService.openAlertModal("Alert Title", "An alert message.");
+          this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, "Continue", this.onConfirmAction);
         </pre></div>`,
         styles: [sourceStyles]
       },
