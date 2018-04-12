@@ -3,7 +3,7 @@ import { ModalComponent } from "./modal.component";
 import { ModalService } from "./modal.service";
 import { CommonModule } from "@angular/common";
 import { ButtonsModule } from "../buttons/buttons.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnimationDirectivesModule } from "../animations/animation-directives.module";
 import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
 import { ModalCloseDirective } from "./modal-close.directive";
 import { ModalButtonComponent } from "./modal-button.component";
@@ -17,7 +17,7 @@ import { ModalButtonComponent } from "./modal-button.component";
     imports: [
         CommonModule,
         ButtonsModule,
-        BrowserAnimationsModule
+        AnimationDirectivesModule
     ],
     entryComponents: [
         ModalComponent
