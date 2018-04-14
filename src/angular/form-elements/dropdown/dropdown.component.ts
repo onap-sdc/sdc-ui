@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
-import { IDropDownOption, DropDownOptionType } from "./dropdown-models";
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "./dropdown-models";
 import template from './dropdown.component.html';
 
 @Component({
@@ -9,7 +9,7 @@ import template from './dropdown.component.html';
 export class DropDownComponent implements OnChanges, OnInit {
 
     /**
-     * Drop-down value changed event emitter
+     * Drop-down value changed event emivtter
      */
     @Output('changed') changeEmitter:EventEmitter<IDropDownOption> = new EventEmitter<IDropDownOption>();
 
@@ -45,7 +45,7 @@ export class DropDownComponent implements OnChanges, OnInit {
      * @type {boolean}
      */
 
-    @Input() type: string;
+    @Input() type: DropDownTypes = DropDownTypes.Regular;
     @Input() headless = false;
 
     @Input() maxHeight: number;
@@ -78,6 +78,7 @@ export class DropDownComponent implements OnChanges, OnInit {
      * Export DropDownOptionType enum so we can use it on the template
      */
     public cIDropDownOptionType = DropDownOptionType;
+    public cIDropDownTypes = DropDownTypes;
 
     /**
      * Configure unselectable option types
@@ -204,7 +205,5 @@ export class DropDownComponent implements OnChanges, OnInit {
             console.log ('herer', option.value.indexOf(filterValue))
             return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
         })
-        console.log(this.options);
-
     }
 }

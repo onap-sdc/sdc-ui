@@ -4,7 +4,7 @@ export default `
 <label class="sdc-dropdown__label" *ngIf="label"  [ngClass]="{'required':required}">{{label}}</label>
     <div class="sdc-dropdown__component-container">
     <!--[DROP-DOWN HEADER START]-->
-    <div class = "sdc-dropdown-auto__wrapper" *ngIf = "type == 'Auto'">
+    <div class = "sdc-dropdown-auto__wrapper" *ngIf = "type === cIDropDownTypes.Auto">
         <input  class="sdc-dropdown__header js-sdc-dropdown--toggle-hook" [(ngModel)]="this.filterValue" (ngModelChange)="filterOptions(this.filterValue)" placeholder = "{{this.selectedOption?.label || this.selectedOption?.value || placeHolder}}">
         <div class = "btn-toggle"  (click)="toggleDropdown()">
             <svg-icon-label
@@ -17,7 +17,7 @@ export default `
             </svg-icon-label>
         </div>
     </div>
-    <button *ngIf="type == 'Regular'" 
+    <button *ngIf="type === cIDropDownTypes.Regular" 
             class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"
             (click)="toggleDropdown()" (blur)="validateDropDown()"
             [ngClass]="{'disabled': disabled, 'placeholder':!this.selectedOption}">{{ this.selectedOption?.label || this.selectedOption?.value || placeHolder}}
@@ -35,7 +35,7 @@ export default `
      'sdc-dropdown__options-wrapper--uncollapsed':show
     }">
         <ul #optionsContainerElement *ngIf="true" class="sdc-dropdown__options-list" [ngClass]="{
-        'sdc-dropdown__options-list--headless': type != 'Regular' && type != 'Auto' ,
+        'sdc-dropdown__options-list--headless': type === cIDropDownTypes.Headless ,
         'sdc-dropdown__options-list--animation-init':animation_init
         }">
             <ng-container  *ngFor="let option of options; let i = index">

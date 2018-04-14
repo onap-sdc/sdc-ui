@@ -1,5 +1,5 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
-import { IDropDownOption, DropDownOptionType } from "../../src/angular/form-elements/dropdown/dropdown-models";
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "../../src/angular/form-elements/dropdown/dropdown-models";
 
 const options1: IDropDownOption[] = [
     {
@@ -91,12 +91,13 @@ export default experimentOn('DropDown')
                 onChange: function(option){
                     console.log("Something was changed!", option.value);
                     this.selectedOption = option.value;
-                }
+                },
+                dropDownType:DropDownTypes.Regular
             },
             title: 'Normal DropDown',
             description: 'Normal DropDown',
             template: `
-      <sdc-dropdown label="Hi I am a label" type="Regular" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
+      <sdc-dropdown label="Hi I am a label" [type]="dropDownType" placeHolder="Please choose option" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
       <div style="margin: 10px 0 30px 0px; font-size:18px">Selected option:<strong style="font-weight: 900"> {{selectedOption}}</strong></div>
     `
         }, {
@@ -128,14 +129,15 @@ export default experimentOn('DropDown')
             showSource: true,
             context: {
                 options: options2,
+                dropDownType:DropDownTypes.Headless
             },
             title: 'Headless and Labeless DropDown',
             description: 'Headless and labeless DropDown',
             template: `
             <div style="margin-bottom: 10px;">
-                <button dropdown-trigger [dropDown]="dropDown1">Click to toggle!</button><span> Selected value: {{ dropDown1.selectedOption?.value }}</span>
+                <button dropdown-trigger [dropDown]="dropDown1" >Click to toggle!</button><span> Selected value: {{ dropDown1.selectedOption?.value }}</span>
             </div>
-            <sdc-dropdown [options]="options" #dropDown1 type="'Headless'"></sdc-dropdown>`
+            <sdc-dropdown [options]="options" #dropDown1 type="dropDownType"></sdc-dropdown>`
         },
         {
             id: 'disabledDropDown',
@@ -146,7 +148,7 @@ export default experimentOn('DropDown')
             title: 'Disabled DropDown',
             description: 'Disabled DropDown',
             template: `
-            <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option"  type="Regular" disabled="true" [options]="options"></sdc-dropdown>`
+            <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>`
         },
         {
             id: 'requieredDropDown',
@@ -157,7 +159,7 @@ export default experimentOn('DropDown')
             title: 'Requiered DropDown',
             description: 'Requiered DropDown',
             template: `
-            <sdc-dropdown label="Hi I am a label"  placeHolder="Please choose option" type="Regular" required="true"  [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
+            <sdc-dropdown label="Hi I am a label"  placeHolder="Please choose option" required="true"  [options]="options" [validate]="validateState"  #dropDown2></sdc-dropdown>
             <div style="margin-top: 10px;">
                 <button (click)="dropDown2.validateDropDown(); validateState = true">Validate!</button> <span>Is valid: {{ dropDown2.isValid() }}</span>
              </div>`
