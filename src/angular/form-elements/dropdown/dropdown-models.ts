@@ -2,6 +2,7 @@ export enum DropDownOptionType {
     Simple, //default
     Header,
     Disable,
+    
     HorizontalLine
 }
 
