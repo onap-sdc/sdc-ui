@@ -8,6 +8,7 @@ import { RadioGroupComponent } from "./radios/radio-buttons-group.component";
 import { AnimationDirectivesModule } from '../animations/animation-directives.module';
 import { DropDownTriggerDirective } from "./dropdown/dropdown-trigger.directive";
 import {SvgIconModule} from "../svg-icon/svg-icon.module";
+import { ValidationModule } from './validation/validation.module';
 
 @NgModule({
     imports: [
@@ -17,7 +18,6 @@ import {SvgIconModule} from "../svg-icon/svg-icon.module";
         AnimationDirectivesModule,
         SvgIconModule
     ],
-
     declarations: [
         DropDownComponent,
         InputComponent,
@@ -30,7 +30,8 @@ import {SvgIconModule} from "../svg-icon/svg-icon.module";
         DropDownTriggerDirective,
         InputComponent,
         CheckboxComponent,
-        RadioGroupComponent
+        RadioGroupComponent,
+        ValidationModule
     ]
 })
 export class FormElementsModule {

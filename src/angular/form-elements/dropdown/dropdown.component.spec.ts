@@ -61,20 +61,6 @@ describe('DropDown component', () => {
         expect(component.selectedOption).toEqual(option);
     });
 
-    it('component should have a required flag', () => {
-        component.required  = true;
-        fixture.detectChanges();
-        component.validateDropDown();
-        expect(component.isValid()).toEqual(false);
-
-        const index = 2;
-        const option = options[index];
-        component.selectOption(index, option);
-        fixture.detectChanges();
-        component.validateDropDown();
-        expect(component.isValid()).toEqual(true);
-    });
-
     it('component should have autocomplite', () =>{
         expect(component.options.length).toEqual(3);
         component.type = DropDownTypes.Auto;

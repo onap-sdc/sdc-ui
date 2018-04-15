@@ -69,6 +69,7 @@
         "trailing-comma": [
             false
         ],
+        "arrow-parens": false,
         "object-literal-sort-keys": false,
         "object-literal-shorthand": false,
         "max-line-length": [true, 160, "^import |^export | implements "]
