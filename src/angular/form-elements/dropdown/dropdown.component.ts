@@ -199,10 +199,8 @@ export class DropDownComponent implements OnChanges, OnInit {
     }
 
     public filterOptions(filterValue){
-        console.log(filterValue)
         if(filterValue.length <= 1)  this.toggleDropdown();
         this.options = this.allOptions.filter((option)=>{
-            console.log ('herer', option.value.indexOf(filterValue))
             return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
         })
     }
