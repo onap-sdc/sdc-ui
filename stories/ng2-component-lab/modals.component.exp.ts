@@ -37,7 +37,7 @@ export default experimentOn('Modals')
         <div class="example-source">Source Code:
         <pre>
 
-          this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', "Yes", this.onConfirmAction);
+          this.modalService.openActionModal('Standard Modal', 'Do you want to continue?', "OK", this.onConfirmAction);
 
           private onConfirmAction = ():void => {{ '{' }}
             alert("Action has been confirmed");

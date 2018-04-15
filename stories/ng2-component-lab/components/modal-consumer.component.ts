@@ -33,7 +33,7 @@ export class ModalConsumer {
     };
 
     private openActionModal = ():void => {
-        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "Yes", this.onConfirmAction);
+        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction);
     };
 
     private onConfirmAction = ():void => {
