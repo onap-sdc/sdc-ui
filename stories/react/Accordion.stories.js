@@ -4,7 +4,7 @@ import Accordion from '../../src/react/Accordion.js';
 import HTMLBasic from '../../components/accordion/accordion-basic.html';
 let examples = {
     Basic: {
-        jsx: <Accordion title='Accordion Title'><div>Accordion body</div></Accordion>,
+        jsx: <Accordion data-test-id='kuku' title='Accordion Title'><div>Accordion body</div></Accordion>,
         html: HTMLBasic
     }
 };
