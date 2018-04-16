@@ -3,6 +3,7 @@
 exports[`Accordion Accordion - Default 1`] = `
 <div
   className="sdc-accordion "
+  data-test-id={undefined}
 >
   <div
     className="sdc-accordion-header"
