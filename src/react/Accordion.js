@@ -13,8 +13,8 @@ class Accordion extends React.Component {
     const { children, title, className, dataTestId } = this.props;
     const { open } = this.state;
     return (
-      <div className={`sdc-accordion ${className}`} data-test-id={dataTestId}>
-        <div onClick={() => this.setState({ open: !open })} className='sdc-accordion-header'>
+      <div className={`sdc-accordion ${className}`}>
+        <div data-test-id={dataTestId} onClick={() => this.setState({ open: !open })} className='sdc-accordion-header'>
           <SVGIcon name='chevronUp' iconClassName={open ? 'down' : ''} />
           <div className='title'>{title}</div>
         </div>
