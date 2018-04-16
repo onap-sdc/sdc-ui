@@ -10,10 +10,10 @@ class Accordion extends React.Component {
     };
   }
   render() {
-    const { children, title, className } = this.props;
+    const { children, title, className, dataTestId } = this.props;
     const { open } = this.state;
     return (
-      <div className={`sdc-accordion ${className}`} data-test-id={this.props['data-test-id']}>
+      <div className={`sdc-accordion ${className}`} data-test-id={dataTestId}>
         <div onClick={() => this.setState({ open: !open })} className='sdc-accordion-header'>
           <SVGIcon name='chevronUp' iconClassName={open ? 'down' : ''} />
           <div className='title'>{title}</div>
@@ -27,7 +27,8 @@ class Accordion extends React.Component {
 Accordion.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
-  expandByDefault: PropTypes.bool
+  expandByDefault: PropTypes.bool,
+  dataTestId: PropTypes.string
 };
 
 Accordion.defaultProps = {
