@@ -6,14 +6,14 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: props.expandByDefault
     };
   }
   render() {
-    const { children, title, className } = this.props;
+    const { children, title, className, ...other } = this.props;
     const { open } = this.state;
     return (
-      <div className={`sdc-accordion ${className}`}>
+      <div className={`sdc-accordion ${className}`} {...other}>
         <div onClick={() => this.setState({ open: !open })} className='sdc-accordion-header'>
           <SVGIcon name='chevronUp' iconClassName={open ? 'down' : ''} />
           <div className='title'>{title}</div>
@@ -26,12 +26,14 @@ class Accordion extends React.Component {
 
 Accordion.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  expandByDefault: PropTypes.bool
 };
 
 Accordion.defaultProps = {
   title: '',
-  className: ''
+  className: '',
+  expandByDefault: false
 };
 
 export default Accordion;
