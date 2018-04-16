@@ -28,7 +28,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
 
     // Drop-down show/hide flag. default is false (closed)
     public show = false;
-
+    public active_header:boolean = false;
     // Export DropDownOptionType enum so we can use it on the template
     public cIDropDownOptionType = DropDownOptionType;
     public cIDropDownTypes = DropDownTypes;
@@ -80,6 +80,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
      * @param option - IDropDownItem or string
      */
     public selectOption(index: number, option: IDropDownOption): void {
+        if(this.type == DropDownTypes.Auto) this.filterValue = option.value;
         if (!this.isSelectable(option)) {
             return;
         }
@@ -94,6 +95,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
         if (option) {
             this.selectedOption = option;
             this.show = false;
+            this.active_header = false;
             this.changeEmitter.next(option.value);
             this.valueChanged(option.value);
         }
@@ -115,28 +117,31 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
      * Toggle show/hide drop-down list
      */
     public toggleDropdown() {
-        if (this.disabled) {
-            return;
-        }
+        if (this.disabled) return;
         this.animation_init = true;
         this.bottomVisible = this.isBottomVisible();
-        if (!this.disabled) {
             this.show = !this.show;
-        }
+            this.show ? this.activateHeader(): this.active_header = false; 
     }
 
     /**
      * When users clicks outside the drop-down it will be closed
      */
     public onClickOutside(event) {
-        if (this.show && !this.dropDownWrapper.nativeElement.contains(event.target)) {
-            this.show = false;
-        }
+        if (!this.dropDownWrapper.nativeElement.contains(event.target)) {
+            this.active_header = false;
+            if(this.show)this.show = false;
+        }        
+    }
+
+    public activateHeader(){
+        this.active_header = true; 
     }
 
 
     public filterOptions(filterValue){
-        if(filterValue.length <= 1)  this.toggleDropdown();
+        if (filterValue.length >= 1 && !this.show) this.toggleDropdown();
+        if (this.selectedOption) this.selectedOption = null; 
         this.options = this.allOptions.filter((option)=>{
             return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
         })

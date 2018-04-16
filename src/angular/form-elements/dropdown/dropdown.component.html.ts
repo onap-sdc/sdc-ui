@@ -3,8 +3,8 @@ export default `
 <label class="sdc-dropdown__label" *ngIf="label"  [ngClass]="{'required':required}">{{label}}</label>
     <div class="sdc-dropdown__component-container">
     <!--[DROP-DOWN HEADER START]-->
-    <div class = "sdc-dropdown-auto__wrapper" *ngIf = "type === cIDropDownTypes.Auto">
-        <input  class="sdc-dropdown__header js-sdc-dropdown--toggle-hook" [(ngModel)]="this.filterValue" (ngModelChange)="filterOptions(this.filterValue)" placeholder = "{{this.selectedOption?.label || this.selectedOption?.value || placeHolder}}">
+    <div class = "sdc-dropdown-auto__wrapper" (click) = "activateHeader()" *ngIf = "type === cIDropDownTypes.Auto" [ngClass]="{'active_header':active_header}">
+        <input  class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"   [(ngModel)]="this.filterValue" (ngModelChange)="filterOptions(this.filterValue)" placeholder = "{{this.selectedOption?.label || this.selectedOption?.value || placeHolder}}">
         <div class = "btn-toggle"  (click)="toggleDropdown()">
             <svg-icon-label
                 [name]="'caret1-down-o'"

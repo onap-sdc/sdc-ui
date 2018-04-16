@@ -14,24 +14,24 @@ sdc-dropdown {
    *************************************/
   .sdc-dropdown-auto__wrapper{
     display: flex;
+    border: solid 1px $light-gray;
+    border-radius: 2px;
     .sdc-dropdown__header{
-      border-right: none;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-      &:focus{
-        border-right: none;
-      }
+      border: none;
     }
-    .sdc-dropdown__header:focus + .btn-toggle{
-          border: solid 1px $light-blue;
-          outline: none;
-          border-left:none;
-    } 
-    .btn-toggle{
-      border: solid 1px #d2d2d2;
-      height: 40px;
-      box-sizing: border-box;
+    .sdc-dropdown__header:focus{
+      border: none;
+      border-right: none;
+      outline: none;
+    }
+    &.active_header{
+      border:1px solid $light-blue;
       border-radius: 2px;
+      box-sizing:border-box;
+    }
+    .btn-toggle{
+      border: none;
+      height: 40px;
       display: flex;
       width: 38px;
       justify-content: center;
