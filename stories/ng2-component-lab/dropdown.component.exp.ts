@@ -155,8 +155,7 @@ export default experimentOn('DropDown')
                 options: options1,
                 selectedOption: null,
                 onChange: function(option){
-                    console.log("Something was changed!", option.value);
-                    this.selectedOption = option.value;
+                    this.selectedOption = option;
                 },
                 dropDownType:DropDownTypes.Auto
             },
