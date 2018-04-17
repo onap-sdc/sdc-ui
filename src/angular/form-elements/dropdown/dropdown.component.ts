@@ -128,7 +128,9 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
      * When users clicks outside the drop-down it will be closed
      */
     public onClickOutside(event) {
-        if (!this.dropDownWrapper.nativeElement.contains(event.target) && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')) {
+        console.log("Click outside", event);
+        if (!this.dropDownWrapper.nativeElement.contains(event.target)
+            && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')) {
             this.active_header = false;
             if(this.show)this.show = false;
         }
