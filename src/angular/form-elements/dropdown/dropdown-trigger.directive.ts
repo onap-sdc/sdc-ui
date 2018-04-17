@@ -12,12 +12,11 @@ export class DropDownTriggerDirective implements OnInit{
 
     @HostListener('click') onClick = () => {
         this.dropDown.toggleDropdown();
-    }
+    };
 
-    ngOnInit = (): void => {
+    ngOnInit(): void {
         if (this.dropDown) {
             this.dropDown.headless = true;
         }
     }
-
 }

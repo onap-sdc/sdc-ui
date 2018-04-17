@@ -32,7 +32,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
     // Export DropDownOptionType enum so we can use it on the template
     public cIDropDownOptionType = DropDownOptionType;
     public cIDropDownTypes = DropDownTypes;
-    
+
     // Configure unselectable option types
     private unselectableOptions = [
         DropDownOptionType.Disable,
@@ -121,27 +121,28 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
         this.animation_init = true;
         this.bottomVisible = this.isBottomVisible();
             this.show = !this.show;
-            this.show ? this.activateHeader(): this.active_header = false; 
+            this.show ? this.activateHeader(): this.active_header = false;
     }
 
     /**
      * When users clicks outside the drop-down it will be closed
      */
     public onClickOutside(event) {
-        if (!this.dropDownWrapper.nativeElement.contains(event.target)) {
+        if (!this.dropDownWrapper.nativeElement.contains(event.target) && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')) {
             this.active_header = false;
             if(this.show)this.show = false;
-        }        
+        }
     }
 
+
     public activateHeader(){
-        this.active_header = true; 
+        this.active_header = true;
     }
 
 
     public filterOptions(filterValue){
         if (filterValue.length >= 1 && !this.show) this.toggleDropdown();
-        if (this.selectedOption) this.selectedOption = null; 
+        if (this.selectedOption) this.selectedOption = null;
         this.options = this.allOptions.filter((option)=>{
             return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
         })
