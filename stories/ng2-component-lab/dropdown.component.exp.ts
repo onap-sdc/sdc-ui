@@ -1,5 +1,5 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
-import { IDropDownOption, DropDownOptionType } from "../../src/angular/form-elements/dropdown/dropdown-models";
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "../../src/angular/form-elements/dropdown/dropdown-models";
 
 const options1: IDropDownOption[] = [
     {
@@ -147,5 +147,23 @@ export default experimentOn('DropDown')
             description: 'Disabled DropDown',
             template: `
             <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" disabled="true" [options]="options"></sdc-dropdown>`
+        },
+        {
+            id: 'normalAutoDropDown',
+            showSource: true,
+            context: {
+                options: options1,
+                selectedOption: null,
+                onChange: function(option){
+                    this.selectedOption = option;
+                },
+                dropDownType:DropDownTypes.Auto
+            },
+            title: 'Normal Auto DropDown',
+            description: 'Normal Auto DropDown',
+            template: `
+      <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" [type]="dropDownType" [options]="options" (changed)="onChange($event)"></sdc-dropdown>
+      <div style="margin: 10px 0 30px 0px; font-size:18px">Selected option:<strong style="font-weight: 900"> {{selectedOption}}</strong></div>
+    `
         }
     ]);

@@ -1,3 +1,9 @@
+export enum DropDownTypes {
+    Regular,
+    Headless,
+    Auto
+}
+
 export enum DropDownOptionType {
     Simple, //default
     Header,
