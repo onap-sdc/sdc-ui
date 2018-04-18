@@ -1,12 +1,40 @@
 sdc-dropdown {
   display: block;
 }
+
 .sdc-dropdown {
   @include body-1;
   position: relative;
 
   .sdc-dropdown__error--block{
     display: none;
+  }
+  /*************************************
+  SDC Auto-DropDown styles
+   *************************************/
+  .sdc-dropdown-auto__wrapper{
+    display: flex;
+    border: solid 1px $light-gray;
+    border-radius: 2px;
+    .sdc-dropdown__header{
+      border: none;
+    }
+    .sdc-dropdown__header:focus{
+      border: none;
+      outline: none;
+    }
+    &.active_header{
+      border:1px solid $light-blue;
+      border-radius: 2px;
+      box-sizing:border-box;
+    }
+    .btn-toggle{
+      border: none;
+      height: 40px;
+      display: flex;
+      width: 38px;
+      justify-content: center;
+    }
   }
   /*************************************
   SDC Error styles
@@ -53,9 +81,7 @@ sdc-dropdown {
 
     }
   }
-
-
-    .svg-icon.__exclamationTriangleFull {
+  .svg-icon.__exclamationTriangleFull {
       width: 12px;
       height: 10px;
       margin-right: 6px;
@@ -65,6 +91,7 @@ sdc-dropdown {
     position: relative;
     height: 40px;
   }
+ 
   .sdc-dropdown__header {
     padding: 0px 10px;
     background: $white;

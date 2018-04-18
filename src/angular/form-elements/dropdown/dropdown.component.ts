@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
-import { IDropDownOption, DropDownOptionType } from "./dropdown-models";
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "./dropdown-models";
 import { ValidatableComponent } from './../validation/validatable.component';
 import template from './dropdown.component.html';
 
@@ -19,6 +19,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
     @Input() headless = false; // Show or hie drop-down header flag
     @Input() maxHeight: number;
     @Input() selectedOption: IDropDownOption;
+    @Input() type: DropDownTypes = DropDownTypes.Regular;
     @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
     @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
     @HostListener('document:click', ['$event']) onClick(e) {
@@ -27,10 +28,11 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
 
     // Drop-down show/hide flag. default is false (closed)
     public show = false;
-
+    public active_header:boolean = false;
     // Export DropDownOptionType enum so we can use it on the template
     public cIDropDownOptionType = DropDownOptionType;
-
+    public cIDropDownTypes = DropDownTypes;
+    
     // Configure unselectable option types
     private unselectableOptions = [
         DropDownOptionType.Disable,
@@ -41,6 +43,8 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
     // Set or unset Group style on drop-down
     public isGroupDesign = false;
     public animation_init = false;
+    public allOptions :  IDropDownOption[];
+    public filterValue:string = '';
 
     constructor() {
         super();
@@ -49,6 +53,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
 
     ngOnInit(): void {
         if (this.options) {
+            this.allOptions = this.options;
             if (this.options.find(option => option.type === DropDownOptionType.Header)) {
                 this.isGroupDesign = true;
             }
@@ -75,6 +80,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
      * @param option - IDropDownItem or string
      */
     public selectOption(index: number, option: IDropDownOption): void {
+        if(this.type == DropDownTypes.Auto) this.filterValue = option.value;
         if (!this.isSelectable(option)) {
             return;
         }
@@ -89,6 +95,7 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
         if (option) {
             this.selectedOption = option;
             this.show = false;
+            this.active_header = false;
             this.changeEmitter.next(option.value);
             this.valueChanged(option.value);
         }
@@ -110,23 +117,33 @@ export class DropDownComponent extends ValidatableComponent implements OnChanges
      * Toggle show/hide drop-down list
      */
     public toggleDropdown() {
-        if (this.disabled) {
-            return;
-        }
+        if (this.disabled) return;
         this.animation_init = true;
         this.bottomVisible = this.isBottomVisible();
-        if (!this.disabled) {
             this.show = !this.show;
-        }
+            this.show ? this.activateHeader(): this.active_header = false; 
     }
 
     /**
      * When users clicks outside the drop-down it will be closed
      */
     public onClickOutside(event) {
-        if (this.show && !this.dropDownWrapper.nativeElement.contains(event.target)) {
-            this.show = false;
-        }
+        if (!this.dropDownWrapper.nativeElement.contains(event.target)) {
+            this.active_header = false;
+            if(this.show)this.show = false;
+        }        
     }
 
+    public activateHeader(){
+        this.active_header = true; 
+    }
+
+
+    public filterOptions(filterValue){
+        if (filterValue.length >= 1 && !this.show) this.toggleDropdown();
+        if (this.selectedOption) this.selectedOption = null; 
+        this.options = this.allOptions.filter((option)=>{
+            return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+        })
+    }
 }
