@@ -81,9 +81,7 @@ sdc-dropdown {
 
     }
   }
-
-
-    .svg-icon.__exclamationTriangleFull {
+  .svg-icon.__exclamationTriangleFull {
       width: 12px;
       height: 10px;
       margin-right: 6px;
@@ -92,12 +90,8 @@ sdc-dropdown {
   .sdc-dropdown__component-container {
     position: relative;
     height: 40px;
-    // display: flex;
-    // align-items: center;  
   }
  
-
-
   .sdc-dropdown__header {
     padding: 0px 10px;
     background: $white;
