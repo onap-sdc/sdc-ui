@@ -18,12 +18,9 @@ sdc-dropdown {
     border-radius: 2px;
     .sdc-dropdown__header{
       border: none;
-      height: 39px;
-      margin-left: 1px;
     }
     .sdc-dropdown__header:focus{
       border: none;
-      border-right: none;
       outline: none;
     }
     &.active_header{
