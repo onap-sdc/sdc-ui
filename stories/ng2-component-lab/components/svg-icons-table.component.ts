@@ -1,6 +1,23 @@
 import { Component } from "@angular/core";
 import { Mode, Placement, Size } from "../../../src/angular/common/enums";
 import { SvgIconComponent } from "../../../src/angular/svg-icon/svg-icon.component";
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "../../../src/angular/form-elements/dropdown/dropdown-models";
+
+const options1: IDropDownOption[] = [
+    {
+        label: 'First Option',
+        value: 'First Option',
+    },
+    {
+        label: 'Second Option',
+        value: 'Second Option',
+    },
+    {
+        label: 'Third Option',
+        value: 'Third Option',
+        type: DropDownOptionType.Simple
+    }
+];
 
 @Component({
     selector: "svg-icons-table",
@@ -137,10 +154,8 @@ export class SvgIconsTableComponent {
         this.iconsNames = Object.keys(SvgIconComponent.Icons);
         this.mode = null;
         this.size = Size.medium;
-        this.labelPlacement;
         this.clickable = false;
         this.disabled = false;
-        this.label;
         this.defaultIconSettings = { mode: Mode.info, size: Size.small };
 
         this.modeOptions = [{value: null, label: 'NONE'}].concat(Object.keys(Mode).map((modeKey) => ({
@@ -161,7 +176,7 @@ export class SvgIconsTableComponent {
         this.setDefaults();
     }
 
-    private setDefaults = ():void => {
+    private setDefaults = (): void => {
         this.label = 'Some label';
         this.selectedIcon = "attachment";
         this.mode = Mode.primary;
