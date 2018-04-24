@@ -41,10 +41,9 @@ export class ModalComponent{
 
     public modalToggled = (toggleEvent:any) => {
         if(!toggleEvent.toState) this.closeAnimationComplete.emit();
-    }
+    };
 
     public hoverAnimation(evn: MouseEvent){
-        console.log("Event", <HTMLElement> evn.target['classList']);
         this.renderer.setElementClass(<HTMLElement> evn.target, 'sdc-ripple-click__animated', true);
         //evn.taregt.classList.add('sdc-ripple-click__animated');
     }
