@@ -13,7 +13,6 @@ const centerMiddleSuffix = 'center__middle';
     selector: '[sdc-tooltip]'
 })
 export class TooltipDirective implements OnInit {
-
     @Input('tooltip-text') public text = 'tooltip';
     @Input('tooltip-placement') public placement: TooltipPlacement = TooltipPlacement.Top;
     @Input('tooltip-css-class') public customCssClass: string;
