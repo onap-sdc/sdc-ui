@@ -1,6 +1,7 @@
-import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter } from '@angular/core';
+import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
 import template from './modal.component.html';
+import {RippleAnimationAction} from "../animations/ripple-click.animation.directive";
 
 @Component({
     selector: 'sdc-modal',
@@ -30,8 +31,16 @@ export class ModalComponent{
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer:ViewContainerRef;
     innerModalContent:ComponentRef<ModalComponent>;
 
+    public rippleAnimationAction:RippleAnimationAction = RippleAnimationAction.MOUSE_ENTER;
+
+    constructor(private renderer:Renderer){}
+
     public modalToggled = (toggleEvent:any) => {
         if(!toggleEvent.toState) this.closeAnimationComplete.emit();
-    }
+    };
 
+    public hoverAnimation(evn: MouseEvent){
+        this.renderer.setElementClass(<HTMLElement> evn.target, 'sdc-ripple-click__animated', true);
+        //evn.taregt.classList.add('sdc-ripple-click__animated');
+    }
 }
