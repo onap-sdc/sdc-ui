@@ -1,5 +1,11 @@
+export enum DropDownTypes {
+    Regular,
+    Headless,
+    Auto
+}
+
 export enum DropDownOptionType {
-    Simple, //default
+    Simple, // default
     Header,
     Disable,
     HorizontalLine

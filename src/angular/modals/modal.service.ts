@@ -1,7 +1,7 @@
 import { Injectable, Type, ComponentRef } from '@angular/core';
 import { ModalComponent } from "./modal.component";
 import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
-import { IModalConfig, ModalType, ModalSize } from "./models/modal-config";
+import { IModalConfig, ModalType, ModalSize, IModalButtonComponent } from "./models/modal-config";
 
 
 @Injectable()
@@ -13,12 +13,12 @@ export class ModalService {
     }
 
     /* Shortcut method to open an alert modal with title, message, and close button that simply closes the modal. */
-    public openAlertModal(title:string, message:string) {
+    public openAlertModal(title:string, message:string, actionButtonText?:string, actionButtonCallback?:Function) {
         let modalConfig:IModalConfig = <IModalConfig> {
             size: ModalSize.small,
             title: title,
             message: message,
-            buttons: [{text:'OK', closeModal:true}],
+            buttons: this.createButtons('secondary', actionButtonText, actionButtonCallback),
             type: ModalType.alert
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -26,14 +26,14 @@ export class ModalService {
         return modalInstance;
     }
 
-    public openActionModal = (title:string, message:string, actionButtonText:string, actionButtonCallback:Function):ComponentRef<ModalComponent> => {
+    public openActionModal = (title:string, message:string, actionButtonText?:string, actionButtonCallback?:Function):ComponentRef<ModalComponent> => {
+
         let modalConfig:IModalConfig = <IModalConfig> {
             size: ModalSize.small,
             title: title,
             message: message,
             type: ModalType.standard,
-            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true },
-                      {text: 'Cancel', type: 'secondary', closeModal:true}]
+            buttons: this.createButtons('primary', actionButtonText, actionButtonCallback)
         };
         let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
         this.currentModal = modalInstance;
@@ -75,6 +75,18 @@ export class ModalService {
     public closeModal = ():void => { //triggers closeModal animation, which then triggers toggleModal.done and the subscription to destroyModal
         this.currentModal.instance.modalVisible = false;
     };
+
+    private createButtons = (type:string, actionButtonText?:string, actionButtonCallback?:Function):Array<IModalButtonComponent> => {
+        let buttons:Array<IModalButtonComponent> = [];
+        if(actionButtonText && actionButtonCallback) {
+            buttons.push({text:actionButtonText, type: type, callback: actionButtonCallback, closeModal: true});
+            buttons.push({text: 'Cancel', type: 'secondary', closeModal:true});
+        } else {
+            buttons.push({text: 'Cancel', type: type, closeModal:true});
+        }
+
+        return buttons;
+    }
 
     private destroyModal = ():void => {
         this.currentModal.destroy();

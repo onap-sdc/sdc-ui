@@ -29,7 +29,7 @@ export class ModalConsumer {
     };
 
     private openAlertModal = ():void => {
-        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT);
+        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'Continue', this.onConfirmAction);
     };
 
     private openActionModal = ():void => {

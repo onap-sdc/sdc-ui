@@ -1,9 +1,5 @@
-import {
-    Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style,
-    Renderer
-} from '@angular/core';
+import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
-import { EventEmitter } from '@angular/forms/src/facade/async';
 import template from './modal.component.html';
 import {RippleAnimationAction} from "../animations/ripple-click.animation.directive";
 
