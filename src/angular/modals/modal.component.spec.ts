@@ -49,7 +49,7 @@ describe("Modal unit-tests", () => {
             size: ModalSize.medium,
             title: 'Title',
             type: ModalType.custom,
-            buttons: [{text:"Save & Close", callback:this.customModalOnDone, closeModal:true},
+            buttons: [{text:"Save & Close", closeModal:true},
                       {text:"Save", callback:this.customModalOnSave, closeModal:false},
                       {text:"Cancel", type: 'secondary', closeModal:true}]
         };
