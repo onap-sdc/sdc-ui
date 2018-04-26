@@ -1,6 +1,31 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 import { ArrowPlacement, TooltipPlacement } from '../../src/angular/tooltip/tooltip.directive';
 
+const customTemplate = `
+    .sdc-custom-tooltip-template-title {
+        font-size: 20px;
+        font-weight: bold;
+        background-color: $black;
+        color: $white;
+        text-align: center;
+    }
+
+    .sdc-custom-tooltip-template-content {
+        background-color: $black;
+        color: $white;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .sdc-custom-tooltip-template-image {
+        width: 100%;
+        height:100%;
+        display: inline-block;
+        text-align: center;
+        background-color: #ffffff;
+    }
+`;
+
 export default experimentOn('Tooltip')
     .group("Tooltip",[
         {
@@ -85,6 +110,7 @@ export default experimentOn('Tooltip')
                 placement: TooltipPlacement.Right,
                 arrowPlacement: ArrowPlacement.LeftTop
             },
+            styles: [customTemplate],
             template: `
                 Template Input:
                 <pre><![CDATA[
@@ -119,6 +145,7 @@ export default experimentOn('Tooltip')
                 placement: TooltipPlacement.Right,
                 arrowPlacement: ArrowPlacement.LeftTop
             },
+            styles: [customTemplate],
             template: `
                 Template Input:
                 <pre><![CDATA[
