@@ -55,25 +55,24 @@ export default experimentOn('Tooltip')
                 `
         },
         {
-            id: 'leftAlignmentCustomStyleTooltip',
+            id: 'customStyleTooltip',
             showSource: true,
-            title: 'Tooltip with custom style (left placement)',
-            description: 'left placement',
+            title: 'Tooltip with custom style',
+            description: 'Tooltip with custom style, define your class and style it via css.',
             context: {
-                placement: TooltipPlacement.Left,
-                arrowPlacement: ArrowPlacement.LeftTop
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non, pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra'
             },
             template: `
+                <![CDATA[
+                    .sdc-custom-tooltip {
+                        background-color: $dark-blue;
+                        border-color: $dark-blue;
+                        border-radius: 10px;
+                    }
+                ]]>
                 <div style="padding-bottom: 20px;">
-                    The is text example,
-                    <span  style="color: #009fdb"
-                        sdc-tooltip
-                            tooltip-text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non, pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra'
-                            [tooltip-placement]= 'placement'
-                            tooltip-css-class = 'sdc-custom-tooltip'
-                            [tooltip-arrow-placement] = 'arrowPlacement'>show tooltip
-                    </span>
-                    , more text
+                    Some text example,
+                    <span style="color: #009fdb" sdc-tooltip [tooltip-text]=text tooltip-css-class='sdc-custom-tooltip'>show tooltip</span>, more text
                 </div>
                 `
         },

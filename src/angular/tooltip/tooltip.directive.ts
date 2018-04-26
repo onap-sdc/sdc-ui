@@ -21,13 +21,12 @@ export class TooltipDirective implements OnInit {
     @Input('tooltip-arrow-placement') public arrowPlacement: ArrowPlacement = ArrowPlacement.LeftTop;
     @Input('tooltip-offset') public tooltipOffset: number = 3;
 
-
     private cssClass: string = 'sdc-tooltip'; // default css class
     private tooltip: any; // tooltip html element
     private elemPosition: any;
     private tooltipTemplateContainer: any;
 
-    private scrollEventHandler = function(){};
+    private scrollEventHandler = () => {};
 
     constructor(
         private elementRef: ElementRef,
@@ -90,8 +89,8 @@ export class TooltipDirective implements OnInit {
         /**
          *  View is ready (AfterViewInit event in template component)
          */
-        this.tooltipTemplateContainer.instance.viewReady.subscribe((isReady)=>{
-           if(isReady){
+        this.tooltipTemplateContainer.instance.viewReady.subscribe((isReady) => {
+           if (isReady) {
                this.setPosition();
                this.toggleShowCssClass(true); // add css class
            }
@@ -127,9 +126,9 @@ export class TooltipDirective implements OnInit {
     }
 
     private setAdditionalCssClass(placementSuffix: string) {
-        if (this.arrowPlacement == ArrowPlacement.RightBottom) {
+        if (this.arrowPlacement === ArrowPlacement.RightBottom) {
             this.setCssClass(true, '-' + placementSuffix + '-' + rightBottomSuffix);
-        } else if (this.arrowPlacement == ArrowPlacement.CenterMiddle) {
+        } else if (this.arrowPlacement === ArrowPlacement.CenterMiddle) {
             this.setCssClass(true, '-' + placementSuffix + '-' + centerMiddleSuffix);
         }
     }
@@ -222,7 +221,6 @@ export class TooltipDirective implements OnInit {
         };
     }
 
-
     /**
      * Returns tooltip position data
      * @param {TooltipPlacement} placement (left, top, right, bottom)
@@ -246,8 +244,8 @@ export class TooltipDirective implements OnInit {
      * @returns {IPlacementData}
      */
     private getCenterMiddlePosition(placement: TooltipPlacement): IPlacementData {
-        let left: number = 0;
-        let top: number = 0;
+        let left = 0;
+        let top = 0;
 
         const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
         switch (placement) {
@@ -272,14 +270,14 @@ export class TooltipDirective implements OnInit {
                 break;
         }
 
-        return <IPlacementData> {
+        return {
             height: inputPos.tooltipHeight,
             left,
             placement,
             top,
             width: inputPos.tooltipWidth,
             pageYOffset: inputPos.pageYOffset
-        };
+        } as IPlacementData;
     }
 
     /**
@@ -288,8 +286,8 @@ export class TooltipDirective implements OnInit {
      * @returns {IPlacementData}
      */
     private getLeftTopPosition(placement: TooltipPlacement): IPlacementData {
-        let left: number = 0;
-        let top: number = 0;
+        let left = 0;
+        let top = 0;
 
         const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
         switch (placement) {
@@ -314,14 +312,14 @@ export class TooltipDirective implements OnInit {
                 break;
         }
 
-        return <IPlacementData> {
+        return {
             height: inputPos.tooltipHeight,
             left,
             placement,
             top,
             width: inputPos.tooltipWidth,
             pageYOffset: inputPos.pageYOffset
-        };
+        } as IPlacementData;
     }
 
     /**
@@ -330,8 +328,8 @@ export class TooltipDirective implements OnInit {
      * @returns {IPlacementData}
      */
     private getRightBottomPosition(placement: TooltipPlacement): IPlacementData {
-        let left: number = 0;
-        let top: number = 0;
+        let left = 0;
+        let top = 0;
 
         const inputPos: ITooltipPositionParams = this.getPlacementInputParams();
         switch (placement) {
@@ -356,14 +354,14 @@ export class TooltipDirective implements OnInit {
                 break;
         }
 
-        return <IPlacementData> {
+        return {
             height: inputPos.tooltipHeight,
             left,
             placement,
             top,
             width: inputPos.tooltipWidth,
             pageYOffset: inputPos.pageYOffset
-        };
+        } as IPlacementData;
     }
 
     /**
@@ -387,37 +385,42 @@ export class TooltipDirective implements OnInit {
      * Scrolling
      */
 
-    private debounce(func:Function, wait:number, immediate?:boolean){
-        var timeout;
+    private debounce(func: Function, wait: number, immediate?: boolean) {
+        let timeout;
         return function() {
-            var context = this, args = arguments;
-            var later = function() {
+            const context = this;
+            const args = arguments;
+            const later = () => {
                 timeout = null;
-                if (!immediate) func.apply(context, args);
+                if (!immediate) {
+                    func.apply(context, args);
+                }
             };
-            var callNow = immediate && !timeout;
+            const callNow = immediate && !timeout;
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
+            if (callNow) {
+                func.apply(context, args);
+            }
         };
     }
 
     private initScrollEvent() {
-        this.scrollEventHandler = this.debounce(()=>{
+        this.scrollEventHandler = this.debounce(() => {
             try {
                 this.setPosition();
-            } catch(e) {
+            } catch (e) {
 
             }
-        },10);
+        }, 10);
     }
 
     private activateScrollEvent() {
-        window.addEventListener('scroll',this.scrollEventHandler , true);
+        window.addEventListener('scroll', this.scrollEventHandler , true);
     }
 
     private deactivateScrollEvent() {
-        window.removeEventListener('scroll',this.scrollEventHandler , true);
+        window.removeEventListener('scroll', this.scrollEventHandler , true);
     }
 }
 
