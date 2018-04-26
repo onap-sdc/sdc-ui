@@ -53,15 +53,13 @@ describe('DropDown component', () => {
     });
 
     it('component should export the selected value', () => {
-        const index = 1;
-        const option = options[index];
-
-        component.selectOption(index, option);
+        const option = options[1];
+        component.selectOption(option);
         fixture.detectChanges();
         expect(component.selectedOption).toEqual(option);
     });
 
-    it('component should have autocomplite', () =>{
+    it('component should have autocomplite', () => {
         expect(component.options.length).toEqual(3);
         component.type = DropDownTypes.Auto;
         component.filterValue = 'testERrorotesttresadfadfasdfasf';

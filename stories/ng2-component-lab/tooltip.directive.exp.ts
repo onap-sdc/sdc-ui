@@ -55,25 +55,24 @@ export default experimentOn('Tooltip')
                 `
         },
         {
-            id: 'leftAlignmentCustomStyleTooltip',
+            id: 'customStyleTooltip',
             showSource: true,
-            title: 'Tooltip with custom style (left placement)',
-            description: 'left placement',
+            title: 'Tooltip with custom style',
+            description: 'Tooltip with custom style, define your class and style it via css.',
             context: {
-                placement: TooltipPlacement.Left,
-                arrowPlacement: ArrowPlacement.LeftTop
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non, pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra'
             },
             template: `
+                <![CDATA[
+                    .sdc-custom-tooltip {
+                        background-color: $dark-blue;
+                        border-color: $dark-blue;
+                        border-radius: 10px;
+                    }
+                ]]>
                 <div style="padding-bottom: 20px;">
-                    The is text example,
-                    <span  style="color: #009fdb"
-                        sdc-tooltip
-                            tooltip-text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non, pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra'
-                            [tooltip-placement]= 'placement'
-                            tooltip-css-class = 'sdc-custom-tooltip'
-                            [tooltip-arrow-placement] = 'arrowPlacement'>show tooltip
-                    </span>
-                    , more text
+                    Some text example,
+                    <span style="color: #009fdb" sdc-tooltip [tooltip-text]=text tooltip-css-class='sdc-custom-tooltip'>show tooltip</span>, more text
                 </div>
                 `
         },
@@ -89,8 +88,8 @@ export default experimentOn('Tooltip')
             template: `
                 Template Input:
                 <pre><![CDATA[
-                    <p class="sdc-tooltip-template-title">A long text name,</p>
-                    <p class="sdc-tooltip-template-content">very long, long text</p>
+                    <img src="../../../assets/images/logo_onap.png" class="sdc-custom-tooltip-template-image" />
+                    <p class="sdc-tooltip-template-content">A long text name, very long, long text ...</p>
                 ]]></pre>
 
                 <div style="padding-bottom: 20px;">
@@ -106,8 +105,8 @@ export default experimentOn('Tooltip')
                 </div>
 
                 <template #template>
-                    <p class="sdc-tooltip-template-title">A long text name,</p>
-                    <p class="sdc-tooltip-template-content">very long, long text</p>
+                    <img src="../../../assets/images/logo_onap.png" class="sdc-custom-tooltip-template-image" />
+                    <p class="sdc-tooltip-template-content">A long text name, very long, long text ...</p>
                 </template>
                 `
         },
@@ -123,8 +122,9 @@ export default experimentOn('Tooltip')
             template: `
                 Template Input:
                 <pre><![CDATA[
-                    <p class="sdc-custom-tooltip-template-title">Title... Title... Title... Title... Title...</p>
-                    <p class="sdc-custom-tooltip-template-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    <p class="sdc-custom-tooltip-template-title sdc-tooltip-template-big-title">Title... Title... Title... Title... Title...</p>
+                    <img src="../../../assets/images/logo_onap.png" class="sdc-custom-tooltip-template-image" />
+                    <p class="sdc-custom-tooltip-template-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non, pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra</p>
                 ]]></pre>
 
                 <div style="padding-bottom: 20px;">
@@ -142,6 +142,7 @@ export default experimentOn('Tooltip')
 
                 <template #template>
                     <p class="sdc-custom-tooltip-template-title sdc-tooltip-template-big-title">Title... Title... Title... Title... Title...</p>
+                    <img src="../../../assets/images/logo_onap.png" class="sdc-custom-tooltip-template-image" />
                     <p class="sdc-custom-tooltip-template-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non, pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra</p>
                 </template>
                 `
@@ -180,8 +181,8 @@ export default experimentOn('Tooltip')
             template: `
                 Template Input:
                 <pre><![CDATA[
-                    <p class="sdc-tooltip-template-title">A long text name,</p>
-                    <p class="sdc-tooltip-template-content">very long, long text</p>
+                    <div class="sdc-tooltip-template-content">A long text name,</div>
+                    <div class="sdc-tooltip-template-content">very long, long text</div>
                 ]]></pre>
 
                 <div style="width:30%; height: 30px; text-align: center;">
@@ -195,8 +196,8 @@ export default experimentOn('Tooltip')
                     , more text
                 </div>
                 <template #template>
-                    <p class="sdc-tooltip-template-title">A long text name,</p>
-                    <p class="sdc-tooltip-template-content">very long, long text</p>
+                    <div class="sdc-tooltip-template-content">A long text name,</div>
+                    <div class="sdc-tooltip-template-content">very long, long text</div>
                 </template>
                 `
         },

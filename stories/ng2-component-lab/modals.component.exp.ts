@@ -40,7 +40,7 @@ export default experimentOn('Modals')
           const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
             'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
             
-          this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "Yes", this.onConfirmAction);
+          this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction);
 
           private onConfirmAction = ():void => {{ '{' }}
             alert("Action has been confirmed");
