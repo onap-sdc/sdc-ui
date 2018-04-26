@@ -1,19 +1,26 @@
-/* Tooltop styles */
+/*
+These styles should not be part of SDC-UI
+This is a workaroud until find solution how to add styles to component lab.
+*/
+
+/* Custom style tooltip sample */
 .sdc-custom-tooltip {
-    text-align: center;
+    background-color: $black;
+    border-color: $black;
+    border-radius: 10px;
 }
 
-/* Tooltip template */
+/* Template tooltip sample */
 .sdc-custom-tooltip-template-title {
     font-size: 20px;
     font-weight: bold;
-    background-color: $dark-blue;
+    background-color: $black;
     color: $white;
     text-align: center;
 }
 
 .sdc-custom-tooltip-template-content {
-    background-color: $dark-blue;
+    background-color: $black;
     color: $white;
     display: inline-block;
     text-align: center;
