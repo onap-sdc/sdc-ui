@@ -1,0 +1,14 @@
+
+.sdc-accordion-custom-class {
+  .sdc-accordion-header, .sdc-accordion-body.open {
+    padding: 10px;
+    border-radius: 3px;
+  }
+  .sdc-accordion-header{
+    background-color: $light-gray;
+  }
+  .sdc-accordion-body.open {
+    border: 1px solid $light-gray;
+    margin-top: 1px;
+  }
+}
