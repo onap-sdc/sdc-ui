@@ -1,5 +1,5 @@
 .sdc-button {
-
+  order:1;
   @include box-sizing;
   display: inline-flex;
   align-items: center;
@@ -156,4 +156,17 @@
     vertical-align: middle;
   }
 }
-
+.sdc-button--wrapper {
+  display: inline-flex;
+}
+.sdc-button--spinner {
+  width:36px;
+  height: 13px;
+  padding: 11px 0;
+  display: inline-block;
+  background: url('/../../assets/images/Spinner-1s-64px.svg') top left no-repeat;
+  background-size: contain;
+  &.left {
+    order:2;
+  }
+}
