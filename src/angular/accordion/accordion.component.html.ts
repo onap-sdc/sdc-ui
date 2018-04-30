@@ -1,5 +1,6 @@
+export default `
 <div class="sdc-accordion" [ngClass]="customCSSClass">
-    <div class="sdc-accordion-header" (click)="toggleAccordion()" [ngClass]="{'arrow-right': arrowDirection === accordionArrowDirection.RIGHT}">
+    <div class="sdc-accordion-header" (click)="toggleAccordion()" [ngClass]="{'arrow-right': arrowDirection === accordionArrowDirection.right}">
         <div class="svg-icon-wrapper bottom" [ngClass]="{'down': open}">
             <svg class="svg-icon __chevronUp" version="1.1" id="chevron-up_icon" x="0px" y="0px" viewBox="0 0 10 6.3" style="enable-background:new 0 0 10 6.3;"
                 xml:space="preserve">
@@ -17,4 +18,4 @@
     <div class="sdc-accordion-body" [ngClass]="{open: open}">
         <ng-content></ng-content>
     </div>
-</div>
+</div>`;
