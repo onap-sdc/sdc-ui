@@ -29,8 +29,8 @@
 
 .svg-icon {
     display: inline-flex;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 
     & > svg {
         width: 100%;
@@ -65,32 +65,32 @@
 
     &.mode-info {
         @include color-icon($text-black);
-        @include color-icon-hover($rich-black);
+        @include color-icon-hover($dark-blue);
     }
 
     &.size-x_small {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
     }
 
     &.size-small {
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
     }
 
     &.size-medium {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
     }
 
     &.size-large {
-        width: 28px;
-        height: 28px;
+        width: 36px;
+        height: 36px;
     }
 
     &.size-x_large {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
     }
 }
 
@@ -160,7 +160,7 @@
 
     &.mode-info {
         @include color-icon-label($text-black);
-        @include color-icon-label-hover($rich-black);
+        @include color-icon-label-hover($dark-blue);
     }
 
     &.size-x_small {
