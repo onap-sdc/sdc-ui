@@ -23,7 +23,7 @@ export class ButtonComponent implements OnInit {
     private iconPositionClass: string;
     private iconMode: string;
 
-    @HostBinding('class.sdc-button--wrapper') true;
+    @HostBinding('class.sdc-button__wrapper') true;
 
     constructor() {
         this.type = "primary";

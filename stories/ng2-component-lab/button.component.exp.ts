@@ -151,7 +151,6 @@ experiment.group("Buttons with spinners", [
             <sdc-button
                 text="Click to show spinner"
                 (click)="buttonClicked(button)"
-                [show_spinner]="false"
                 spinner_position="left"
                 #button
                >
@@ -160,5 +159,4 @@ experiment.group("Buttons with spinners", [
            `
     }
 ]);
-
 export default experiment;

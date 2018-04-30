@@ -10,5 +10,5 @@ export default `
         </svg-icon>
         {{ text }}
 </button>
-<div *ngIf="show_spinner" class="sdc-button--spinner" [ngClass]="{left: spinner_position === placement.right}" ></div>
+<svg-icon *ngIf="show_spinner" name="spinner" [size]="'medium'" class="sdc-button__spinner" [ngClass]="{left: spinner_position === placement.right}"></svg-icon>
 `;

@@ -156,16 +156,12 @@
     vertical-align: middle;
   }
 }
-.sdc-button--wrapper {
+.sdc-button__wrapper {
   display: inline-flex;
 }
-.sdc-button--spinner {
-  width:36px;
-  height: 13px;
-  padding: 11px 0;
-  display: inline-block;
-  background: url('/../../assets/images/Spinner-1s-64px.svg') top left no-repeat;
-  background-size: contain;
+.sdc-button__spinner {
+  padding-top: 6px;
+  margin:0 2px;
   &.left {
     order:2;
   }
