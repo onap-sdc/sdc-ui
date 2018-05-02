@@ -14,6 +14,8 @@ export class InputComponent extends ValidatableComponent implements OnInit {
     @Output('valueChange') public baseEmitter: EventEmitter<any> = new EventEmitter<any>();
     @Input() public label: string;
     @Input() public value: any;
+    @Input() public name: string;
+    @Input() public classNames: string;
     @Input() public disabled: boolean;
     @Input() public type: string;
     @Input() public placeHolder: string;
@@ -21,6 +23,7 @@ export class InputComponent extends ValidatableComponent implements OnInit {
     @Input() public minLength: number;
     @Input() public maxLength: number;
     @Input() public debounceTime: number;
+    @Input() public testsId: string;
 
     protected control: FormControl;
 
