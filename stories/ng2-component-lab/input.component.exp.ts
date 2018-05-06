@@ -53,11 +53,11 @@ export default experimentOn('Input')
     },
     {
         id: 'inputWithPlaceholder',
-        title: 'Input with placeholder',
+        title: 'Input with placeholder, custom class, and tests ID',
         description: 'Input with placeholder',
         showSource: true,
         template: `
-      <sdc-input placeHolder="Text..."></sdc-input>
+      <sdc-input placeHolder="Text..." [classNames]="'my-custom-class another-class'" [testsId]="'customTestsId'"></sdc-input>
     `
     },
     {
