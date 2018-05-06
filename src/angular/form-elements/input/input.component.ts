@@ -32,6 +32,7 @@ export class InputComponent extends ValidatableComponent implements OnInit {
         this.control = new FormControl('', []);
         this.debounceTime = 0;
         this.placeHolder = '';
+        this.type = 'text';
     }
 
     ngOnInit() {

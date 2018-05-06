@@ -9,7 +9,7 @@ export default `
         [(ngModel)]="value"
         [maxlength]="maxLength"
         [minlength]="minLength"
-        [type]="type || 'text'"
+        [type]="type"
         [formControl]="control"
         [attr.disabled]="disabled ? 'disabled' : null"
         (input)="onKeyPress($event.target.value)"
