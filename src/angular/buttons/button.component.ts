@@ -14,6 +14,7 @@ export class ButtonComponent implements OnInit {
     @Input() public preventDoubleClick: boolean;
     @Input() public icon_name: string;
     @Input() public icon_position: string;
+    @Input() public testsId: string;
     private lastClick: Date;
     private iconPositionClass: string;
     private iconMode: string;
