@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import {Component, HostBinding, Input, OnInit} from "@angular/core";
 import template from "./button.component.html";
+import {Placement} from "../common/enums";
 
 @Component({
     selector: "sdc-button",
@@ -14,10 +15,16 @@ export class ButtonComponent implements OnInit {
     @Input() public preventDoubleClick: boolean;
     @Input() public icon_name: string;
     @Input() public icon_position: string;
+    @Input() public show_spinner: boolean;
+    @Input() public spinner_position: Placement;
     @Input() public testsId: string;
+
+    public placement = Placement;
     private lastClick: Date;
     private iconPositionClass: string;
     private iconMode: string;
+
+    @HostBinding('class.sdc-button__wrapper') true;
 
     constructor() {
         this.type = "primary";
