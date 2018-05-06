@@ -17,8 +17,9 @@ export class ButtonComponent implements OnInit {
     @Input() public icon_position: string;
     @Input() public show_spinner: boolean;
     @Input() public spinner_position: Placement;
-    public placement = Placement;
+    @Input() public testsId: string;
 
+    public placement = Placement;
     private lastClick: Date;
     private iconPositionClass: string;
     private iconMode: string;

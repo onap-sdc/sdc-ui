@@ -25,6 +25,7 @@ experiment.group("Default button", [
             <sdc-button
                 text="Sample button"
                 (click)="buttonClicked()"
+                [testsId]="'defaultButtonTestsId'"
                >
             </sdc-button>
 
