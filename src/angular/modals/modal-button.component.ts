@@ -8,18 +8,20 @@ import template from "./modal-button.component.html";
     template: template
 })
 export class ModalButtonComponent extends ButtonComponent {
-    @Input() public callback: Function;
-    @Input() public closeModal: boolean = false;
 
-    constructor(private modalService:ModalService){
+    @Input() public callback: Function;
+    @Input() public closeModal: boolean;
+
+    constructor(private modalService: ModalService) {
         super();
+        this.closeModal = false;
     }
 
-    public invokeCallback = ():void => {
-        if(this.callback){
+    public invokeCallback = (): void => {
+        if (this.callback) {
             this.callback();
         }
-        if(this.closeModal){
+        if (this.closeModal) {
             this.modalService.closeModal();
         }
     }

@@ -25,15 +25,15 @@ export class ModalConsumer {
     }
 
     private openErrorModal = (): void => {
-        this.modalService.openErrorModal(MODAL_CONTENT);
+        this.modalService.openErrorModal(MODAL_CONTENT, "sampleTestId");
     }
 
     private openAlertModal = (): void => {
-        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'Continue', this.onConfirmAction);
+        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'sampleTestId', 'Continue', this.onConfirmAction);
     }
 
     private openActionModal = (): void => {
-        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction);
+        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "sampleTestId", "OK", this.onConfirmAction);
     }
 
     private onConfirmAction = (): void => {
@@ -45,6 +45,7 @@ export class ModalConsumer {
             size: ModalSize.medium,
             title: 'Title',
             type: ModalType.custom,
+            testId: 'sampleTestId',
             buttons: [
                       {text: "Save", callback: this.customModalOnSave1, closeModal: false},
                       {text: "Cancel", size: 'x-small', type: 'secondary', closeModal: true}

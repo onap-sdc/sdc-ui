@@ -20,12 +20,13 @@ experiment.group("Default button", [
         template: `
             <sdc-button
                 text="Default button long text"
+                testId="longButton"
                 (click)="buttonClicked()">
             </sdc-button>
             <sdc-button
                 text="Sample button"
                 (click)="buttonClicked()"
-                [testsId]="'defaultButtonTestsId'"
+                [testId]="'defaultButtonTestId'"
                >
             </sdc-button>
 

@@ -12,7 +12,7 @@ export default experimentOn('Input')
         title: 'Normal input',
         description: 'Normal input',
         template: `
-        <sdc-input label="Please Enter value"></sdc-input>
+        <sdc-input label="Please Enter value" name="myValue" testId="myTestId"></sdc-input>
         `
       },
       {
@@ -57,7 +57,7 @@ export default experimentOn('Input')
         description: 'Input with placeholder',
         showSource: true,
         template: `
-      <sdc-input placeHolder="Text..." [classNames]="'my-custom-class another-class'" [testsId]="'customTestsId'"></sdc-input>
+      <sdc-input placeHolder="Text..." [classNames]="'my-custom-class another-class'" [testId]="'customTestId'"></sdc-input>
     `
     },
     {

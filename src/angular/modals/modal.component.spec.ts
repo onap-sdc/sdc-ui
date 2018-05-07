@@ -39,7 +39,7 @@ describe("Modal unit-tests", () => {
     })
 
     it('Modal info window test', () => {
-        let modalInstance = testService.openErrorModal('testMessage');
+        let modalInstance = testService.openErrorModal('testMessage', 'sampleTestId');
         expect(modalInstance).toBeTruthy();
     })
 

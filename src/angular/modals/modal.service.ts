@@ -13,11 +13,12 @@ export class ModalService {
     }
 
     /* Shortcut method to open an alert modal with title, message, and close button that simply closes the modal. */
-    public openAlertModal(title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function) {
+    public openAlertModal(title: string, message: string, testId?: string, actionButtonText?: string, actionButtonCallback?: Function) {
         const modalConfig = {
             size: ModalSize.small,
             title: title,
             message: message,
+            testId: testId,
             buttons: this.createButtons('secondary', actionButtonText, actionButtonCallback),
             type: ModalType.alert
         } as IModalConfig;
@@ -26,11 +27,12 @@ export class ModalService {
         return modalInstance;
     }
 
-    public openActionModal = (title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function): ComponentRef<ModalComponent> => {
+    public openActionModal = (title: string, message: string, testId?: string, actionButtonText?: string, actionButtonCallback?: Function): ComponentRef<ModalComponent> => {
         const modalConfig = {
             size: ModalSize.small,
             title: title,
             message: message,
+            testId: testId,
             type: ModalType.standard,
             buttons: this.createButtons('primary', actionButtonText, actionButtonCallback)
         } as IModalConfig;
@@ -39,11 +41,12 @@ export class ModalService {
         return modalInstance;
     }
 
-    public openErrorModal = (errorMessage?: string): ComponentRef<ModalComponent> => {
+    public openErrorModal = (errorMessage?: string, testId?: string): ComponentRef<ModalComponent> => {
         const modalConfig = {
             size: ModalSize.small,
             title: 'Error',
             message: errorMessage,
+            testId: testId,
             buttons: [{text: "OK", type: "alert", closeModal: true}],
             type: ModalType.error
         } as IModalConfig;
