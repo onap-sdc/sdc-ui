@@ -29,11 +29,11 @@ export class ModalConsumer {
     }
 
     private openAlertModal = (): void => {
-        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'sampleTestId', 'Continue', this.onConfirmAction);
+        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'Continue', this.onConfirmAction, 'sampleTestId');
     }
 
     private openActionModal = (): void => {
-        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "sampleTestId", "OK", this.onConfirmAction);
+        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction, "sampleTestId");
     }
 
     private onConfirmAction = (): void => {

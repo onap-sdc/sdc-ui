@@ -13,7 +13,7 @@ export class ModalService {
     }
 
     /* Shortcut method to open an alert modal with title, message, and close button that simply closes the modal. */
-    public openAlertModal(title: string, message: string, testId?: string, actionButtonText?: string, actionButtonCallback?: Function) {
+    public openAlertModal(title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function, testId?: string) {
         const modalConfig = {
             size: ModalSize.small,
             title: title,
@@ -27,7 +27,7 @@ export class ModalService {
         return modalInstance;
     }
 
-    public openActionModal = (title: string, message: string, testId?: string, actionButtonText?: string, actionButtonCallback?: Function): ComponentRef<ModalComponent> => {
+    public openActionModal = (title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function, testId?: string): ComponentRef<ModalComponent> => {
         const modalConfig = {
             size: ModalSize.small,
             title: title,
