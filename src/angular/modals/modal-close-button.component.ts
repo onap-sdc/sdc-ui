@@ -10,7 +10,7 @@ import { RippleAnimationAction } from "../animations/ripple-click.animation.dire
         SdcRippleClickAnimation
         [ngClass]="disabled ? 'disabled' : ''"
         [rippleOnAction]="!disabled && rippleAnimationAction"
-        [attr.data-test-id]="testId"
+        [attr.data-tests-id]="testId"
         (click)="!disabled && closeModal()"
         >
         <svg-icon name="close" [mode]="disabled? 'secondary' : 'info'" size="small"></svg-icon>
