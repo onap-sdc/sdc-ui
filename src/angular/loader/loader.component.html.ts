@@ -1,0 +1,8 @@
+export default `
+<div data-ng-if="display" data-tests-id="tlv-loader">
+    <div class="tlv-loader-back " data-ng-class="{'tlv-loader-relative':relative}"></div>
+    <div class="tlv-loader {{size}}"></div>
+    <ng-content></ng-content>
+</div>
+`;
+
