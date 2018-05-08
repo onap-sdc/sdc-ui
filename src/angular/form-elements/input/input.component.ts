@@ -23,7 +23,7 @@ export class InputComponent extends ValidatableComponent implements OnInit {
     @Input() public minLength: number;
     @Input() public maxLength: number;
     @Input() public debounceTime: number;
-    @Input() public testsId: string;
+    @Input() public testId: string;
 
     protected control: FormControl;
 

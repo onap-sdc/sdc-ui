@@ -4,7 +4,7 @@ export default `
     <input
         class="sdc-input__input {{classNames}}"
         [ngClass]="{'error': !valid, 'disabled':disabled}"
-        [name]="name"
+        [attr.name]="name ? name : null"
         [placeholder]="placeHolder"
         [(ngModel)]="value"
         [maxlength]="maxLength"
@@ -13,7 +13,7 @@ export default `
         [formControl]="control"
         [attr.disabled]="disabled ? 'disabled' : null"
         (input)="onKeyPress($event.target.value)"
-        [attr.data-tests-id]="testsId"
+        [attr.data-test-id]="testId"
     />
 </div>
 `;
