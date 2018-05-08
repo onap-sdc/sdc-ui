@@ -76,6 +76,9 @@
           width: 16px;
           height: 16px;
           line-height: 16px;
+          &.disabled {
+            cursor: default;
+          }
         }
         .sdc-modal__close-button-svg {
           width: 16px;
@@ -117,6 +120,9 @@
         cursor: pointer;
         .sdc-modal__svg-use {
           fill: $black;
+        }
+        &.disabled {
+          cursor: default;
         }
       }
     }

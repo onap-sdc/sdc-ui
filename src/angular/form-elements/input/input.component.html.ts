@@ -13,7 +13,7 @@ export default `
         [formControl]="control"
         [attr.disabled]="disabled ? 'disabled' : null"
         (input)="onKeyPress($event.target.value)"
-        [attr.data-test-id]="testId"
+        [attr.data-tests-id]="testId"
     />
 </div>
 `;

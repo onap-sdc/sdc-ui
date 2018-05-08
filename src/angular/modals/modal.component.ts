@@ -1,6 +1,5 @@
 import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
-import { RippleAnimationAction } from "../animations/ripple-click.animation.directive";
 import { LowerCasePipe } from '@angular/common';
 import template from './modal.component.html';
 
@@ -34,10 +33,11 @@ export class ModalComponent {
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer: ViewContainerRef;
     innerModalContent: ComponentRef<ModalComponent>;
 
-    public rippleAnimationAction: RippleAnimationAction = RippleAnimationAction.MOUSE_ENTER;
     public calculatedTestId: string;
 
-    constructor(private renderer: Renderer, private lowerCasePipe: LowerCasePipe) {
+    constructor(private renderer: Renderer,
+                private lowerCasePipe: LowerCasePipe
+            ) {
         this.modalVisible = true;
     }
 

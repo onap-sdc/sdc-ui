@@ -3,7 +3,6 @@ import { ModalComponent } from "./modal.component";
 import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
 import { IModalConfig, ModalType, ModalSize, IModalButtonComponent } from "./models/modal-config";
 
-
 @Injectable()
 export class ModalService {
 

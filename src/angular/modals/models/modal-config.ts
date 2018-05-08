@@ -1,3 +1,5 @@
+import { Placement } from "../../common/enums";
+
 export interface IModalConfig {
     size?: string; // xl|l|md|sm|xsm
     title?: string;
@@ -12,6 +14,11 @@ export interface IButtonComponent {
     disabled?: boolean;
     type?: string;
     testId?: string;
+    preventDoubleClick?: boolean;
+    icon_name?: string;
+    icon_position?: string;
+    show_spinner?: boolean;
+    spinner_position?: Placement;
     size?: string;
 }
 

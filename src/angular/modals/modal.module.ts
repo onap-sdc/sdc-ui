@@ -5,24 +5,27 @@ import { CommonModule, LowerCasePipe } from "@angular/common";
 import { ButtonsModule } from "../buttons/buttons.module";
 import { AnimationDirectivesModule } from "../animations/animation-directives.module";
 import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
-import { ModalCloseDirective } from "./modal-close.directive";
 import { ModalButtonComponent } from "./modal-button.component";
+import { ModalCloseButtonComponent } from "./modal-close-button.component";
+import { SvgIconModule } from "../svg-icon/svg-icon.module";
 
 @NgModule({
     declarations: [
         ModalComponent,
         ModalButtonComponent,
-        ModalCloseDirective
+        ModalCloseButtonComponent
     ],
     imports: [
         CommonModule,
         ButtonsModule,
-        AnimationDirectivesModule
+        AnimationDirectivesModule,
+        SvgIconModule
     ],
     entryComponents: [
-        ModalComponent
+        ModalComponent,
+        ModalCloseButtonComponent
     ],
-    exports: [ModalCloseDirective, ModalButtonComponent],
+    exports: [ModalButtonComponent],
     providers: [CreateDynamicComponentService, ModalService, LowerCasePipe]
 })
 export class ModalModule {

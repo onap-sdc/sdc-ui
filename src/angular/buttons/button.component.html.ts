@@ -1,7 +1,7 @@
 export default `
 <button class="sdc-button sdc-button__{{ type }} btn-{{ size }} {{ iconPositionClass }}"
         [disabled] = "disabled || show_spinner"
-        [attr.data-test-id]="testId">
+        [attr.data-tests-id]="testId">
         <svg-icon
                 *ngIf="icon_name"
                 [name]="icon_name"
