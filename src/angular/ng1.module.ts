@@ -123,6 +123,13 @@ if (typeof angular !== "undefined") {
         component: Components.SvgIconLabelComponent,
         inputs: ['name', 'mode', 'size', 'disabled', 'clickable', 'className', 'label', 'labelPlacement', 'labelClassName']
     }));
+
+    // Accordion
+    SdcUiComponentsNg1Module.directive('sdcAccordion', downgradeComponent({
+        component: Components.AccordionComponent,
+        inputs: ['arrow-direction', 'css-class', 'title', 'open'],
+        outputs: ['accordionChanged']
+    }));
 }
 
 export {SdcUiComponentsNg1Module};

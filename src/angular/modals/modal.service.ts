@@ -3,7 +3,6 @@ import { ModalComponent } from "./modal.component";
 import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
 import { IModalConfig, ModalType, ModalSize, IModalButtonComponent } from "./models/modal-config";
 
-
 @Injectable()
 export class ModalService {
 
@@ -13,11 +12,12 @@ export class ModalService {
     }
 
     /* Shortcut method to open an alert modal with title, message, and close button that simply closes the modal. */
-    public openAlertModal(title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function) {
+    public openAlertModal(title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function, testId?: string) {
         const modalConfig = {
             size: ModalSize.small,
             title: title,
             message: message,
+            testId: testId,
             buttons: this.createButtons('secondary', actionButtonText, actionButtonCallback),
             type: ModalType.alert
         } as IModalConfig;
@@ -26,11 +26,12 @@ export class ModalService {
         return modalInstance;
     }
 
-    public openActionModal = (title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function): ComponentRef<ModalComponent> => {
+    public openActionModal = (title: string, message: string, actionButtonText?: string, actionButtonCallback?: Function, testId?: string): ComponentRef<ModalComponent> => {
         const modalConfig = {
             size: ModalSize.small,
             title: title,
             message: message,
+            testId: testId,
             type: ModalType.standard,
             buttons: this.createButtons('primary', actionButtonText, actionButtonCallback)
         } as IModalConfig;
@@ -39,11 +40,12 @@ export class ModalService {
         return modalInstance;
     }
 
-    public openErrorModal = (errorMessage?: string): ComponentRef<ModalComponent> => {
+    public openErrorModal = (errorMessage?: string, testId?: string): ComponentRef<ModalComponent> => {
         const modalConfig = {
             size: ModalSize.small,
             title: 'Error',
             message: errorMessage,
+            testId: testId,
             buttons: [{text: "OK", type: "alert", closeModal: true}],
             type: ModalType.error
         } as IModalConfig;
@@ -54,12 +56,12 @@ export class ModalService {
 
     public openCustomModal = (modalConfig: IModalConfig, dynamicComponentType: Type<any>, dynamicComponentInput?: any) => {
         const modalInstance: ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        this.createInnnerComponent(modalInstance, dynamicComponentType, dynamicComponentInput);
+        this.createInnnerComponent(dynamicComponentType, dynamicComponentInput);
         return modalInstance;
     }
 
-    public createInnnerComponent = (modalInstance: ComponentRef<ModalComponent> , dynamicComponentType: Type<any>, dynamicComponentInput?: any): void => {
-        modalInstance.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer);
+    public createInnnerComponent = (dynamicComponentType: Type<any>, dynamicComponentInput?: any): void => {
+        this.currentModal.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, this.currentModal.instance.dynamicContentContainer);
     }
 
     public openModal = (customModalData: IModalConfig): ComponentRef<ModalComponent> => {

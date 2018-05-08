@@ -15,6 +15,7 @@ import { SearchBarModule } from "./searchbar/search-bar.module";
 import { TooltipModule } from "./tooltip/tooltip.module";
 import { TagCloudModule } from './tag-cloud/tag-cloud.module';
 import { TabsModule } from "./tabs/tabs.module";
+import {AccordionModule} from "./accordion/accordion.module";
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { TabsModule } from "./tabs/tabs.module";
         TooltipModule,
         SvgIconModule,
         TagCloudModule,
-        TabsModule
+        TabsModule,
+        AccordionModule
     ],
     exports: [
         AnimationDirectivesModule,
@@ -51,7 +53,8 @@ import { TabsModule } from "./tabs/tabs.module";
         TooltipModule,
         SvgIconModule,
         TagCloudModule,
-        TabsModule
+        TabsModule,
+        AccordionModule
     ]
 })
 export class SdcUiComponentsModule {

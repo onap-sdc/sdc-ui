@@ -1,7 +1,7 @@
 import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
+import { LowerCasePipe } from '@angular/common';
 import template from './modal.component.html';
-import {RippleAnimationAction} from "../animations/ripple-click.animation.directive";
 
 @Component({
     selector: 'sdc-modal',
@@ -18,13 +18,14 @@ import {RippleAnimationAction} from "../animations/ripple-click.animation.direct
     ]
 })
 
-export class ModalComponent{
+export class ModalComponent {
 
     @Input() size: string; 'xl|l|md|sm|xsm';
     @Input() title: string;
     @Input() message: string;
     @Input() buttons: ModalButtonComponent[];
     @Input() type: string; 'info|error|alert|custom';
+    @Input() testId: string;
     @Output() closeAnimationComplete: EventEmitter<any> = new EventEmitter<any>();
     modalVisible: boolean;
     // Allows for custom component as body instead of simple message.
@@ -32,10 +33,20 @@ export class ModalComponent{
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer: ViewContainerRef;
     innerModalContent: ComponentRef<ModalComponent>;
 
-    public rippleAnimationAction: RippleAnimationAction = RippleAnimationAction.MOUSE_ENTER;
+    public calculatedTestId: string;
 
-    constructor(private renderer: Renderer) {
+    constructor(private renderer: Renderer,
+                private lowerCasePipe: LowerCasePipe
+            ) {
         this.modalVisible = true;
+    }
+
+    getCalculatedTestId = (buttonText: string): string => {
+        // TODO: Replace this
+        if (this.testId) {
+            return this.testId + '-' + this.lowerCasePipe.transform(buttonText);
+        }
+        return null;
     }
 
     public modalToggled = (toggleEvent: any) => {
