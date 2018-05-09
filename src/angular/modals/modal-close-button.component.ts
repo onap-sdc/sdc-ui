@@ -1,4 +1,4 @@
-import { Component, Input} from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ButtonComponent } from "../buttons/button.component";
 import { ModalService } from "./modal.service";
 import { RippleAnimationAction } from "../animations/ripple-click.animation.directive";
