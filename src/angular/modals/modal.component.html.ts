@@ -12,7 +12,7 @@ export default `
                     <g fill="none" fill-rule="evenodd" transform="translate(1 1)"><use class="sdc-modal__svg-use" xlink:href="#x-a"/></g></svg></div>
             </div>
             <div *ngIf="title" class="title" >{{ title }}</div>
-            <sdc-modal-close-button testId="getCalculatedTestId('close')"></sdc-modal-close-button>
+            <sdc-modal-close-button [testId]="getCalculatedTestId('close')"></sdc-modal-close-button>
         </div>
         <div class="sdc-modal__content" >
                 <div *ngIf="message">{{message}}</div>
@@ -25,6 +25,8 @@ export default `
                 [disabled]="button.disabled"
                 [size] = "button.size ? button.size : 'default'"
                 [closeModal]="button.closeModal"
+                [spinner_position]="button.spinner_position"
+                [show_spinner]="button.show_spinner"
                 [callback]="button.callback"
                 [testId]="getCalculatedTestId('button-' + button.text)"
                 >

@@ -15,7 +15,7 @@ import { SearchBarModule } from "./searchbar/search-bar.module";
 import { TooltipModule } from "./tooltip/tooltip.module";
 import { TagCloudModule } from './tag-cloud/tag-cloud.module';
 import { TabsModule } from "./tabs/tabs.module";
-import {AccordionModule} from "./accordion/accordion.module";
+import { AccordionModule } from "./accordion/accordion.module";
 
 @NgModule({
     imports: [
@@ -60,7 +60,9 @@ import {AccordionModule} from "./accordion/accordion.module";
 export class SdcUiComponentsModule {
 }
 
-export {SdcUiComponentsNg1Module} from './ng1.module';
-
 import * as SdcUiComponents from './components';
-export {SdcUiComponents};
+import * as SdcUiCommon from './common';
+
+export { SdcUiComponentsNg1Module } from './ng1.module';
+export { SdcUiComponents };
+export { SdcUiCommon };
