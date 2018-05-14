@@ -11,16 +11,17 @@ export default experimentOn('Loader')
         description: 'Simple Fixed loader',       
         context: {
             showLoaderFlag: false,
+            relativeValue: true,
             showLoaderFunc: function(){
                 this.showLoaderFlag = !this.showLoaderFlag;
                 let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag = false; 
-                }, 3000);
+                // setTimeout(function(){ 
+                //   vm.showLoaderFlag = false; 
+                // }, 1000);
             },
 
         },
-        template: `<div style = "width:200px; height:200px;"><sdc-loader [showLoader] = "showLoaderFlag" [position] = "'fixed'"><button (click) = "showLoaderFunc()"> Show Loader {{showLoaderFlag}}</button></sdc-loader></div>`,
+        template: `<div style = "width:200px; height:200px; background:green; border:1px solid black;"><sdc-loader [display] = "showLoaderFlag" [size] = "'medium'" [relative] = "relativeValue"><button (click) = "showLoaderFunc()"> Show Loader {{showLoaderFlag}}</button></sdc-loader></div>`,
       },
       {
         id: 'Simple Loader',
@@ -29,16 +30,17 @@ export default experimentOn('Loader')
         description: 'Simple loader',       
         context: {
             showLoaderFlag: false,
+            relativeValue: false,
             showLoaderFunc: function(){
                 this.showLoaderFlag = !this.showLoaderFlag;
                 let vm = this;
                 setTimeout(function(){ 
                   vm.showLoaderFlag = false; 
-                }, 3000);
+                }, 1000);
             },
 
         },
-        template: `<sdc-loader [showLoader] = "showLoaderFlag"><button (click) = "showLoaderFunc()"> Show Loader {{showLoaderFlag}}</button></sdc-loader>`,
+        template: `<sdc-loader [display] = "showLoaderFlag" [relative] = "relativeValue"><button (click) = "showLoaderFunc()"> Show Loader {{showLoaderFlag}}</button></sdc-loader>`,
       },
  
     ])

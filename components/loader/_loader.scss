@@ -1,15 +1,7 @@
-.tlv-loader {
-    height: 63px;
-    width: 63px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-.tlv-loader-back {
+.sdc-loader-back {
     background-color: #ffffff;
     position: fixed;
-    top: 50px;
+    top: 0px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -17,9 +9,9 @@
     opacity: 0.5;
 }
 
-.tlv-loader-relative { position: absolute; top: 0;}
+.sdc-loader-relative { position: absolute; top: 0;}
 
-.tlv-loader {
+.sdc-loader {
     z-index: 10002;
 }
 
@@ -97,25 +89,33 @@
     to   { opacity: 0; }
 }
 
-.tlv-loader.small {
+.sdc-loader {
+    height: 63px;
+    width: 63px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.sdc-loader.small {
     transform: scale(0.26);
     margin-top: -36.5px;
     margin-left: -36.5px;
 }
 
-.tlv-loader.medium {
+.sdc-loader.medium {
     transform: scale(0.5);
     margin-top: -26.5px;
     margin-left: -26.5px;
 }
 
-.tlv-loader.large {
+.sdc-loader.large {
     transform: scale(1);
     margin-top: -10.5px;
     margin-left: -10.5px;
 }
 
-.tlv-loader::before {
+.sdc-loader::before {
     background-color: #eaeaea;
     border-radius: 50%;
     box-shadow: 21px 21px 0px 0px #eaeaea, 0px 42px 0px 0px #eaeaea, -21px 21px 0px 0px #eaeaea;
@@ -128,7 +128,7 @@
     margin-left: -10.5px;
 }
 
-.tlv-loader::after {
+.sdc-loader::after {
     border-radius: 50%;
     content: '';
     display: block;
