@@ -1,199 +1,149 @@
-import {
-    Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit,
-    ElementRef, ViewChild, AfterViewInit
-} from '@angular/core'
-
-import {
-     IDropDownOption,
-    DropDownOptionType
-} from "./dropdown-models";
-
+import { Component, EventEmitter, Input, Output, forwardRef, OnChanges, SimpleChanges, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener, Renderer } from '@angular/core';
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "./dropdown-models";
+import { ValidatableComponent } from './../validation/validatable.component';
+import template from './dropdown.component.html';
 
 @Component({
     selector: 'sdc-dropdown',
-    templateUrl: './dropdown.component.html',
-    host: {
-        '(document:click)': 'onClickOutside($event)',
-    }
+    template: template
 })
-export class DropDownComponent implements OnChanges, OnInit{
+export class DropDownComponent extends ValidatableComponent implements OnChanges, OnInit {
 
-    /**
-     * Drop-down value changed event emitter
-     */
     @Output('changed') changeEmitter:EventEmitter<IDropDownOption> = new EventEmitter<IDropDownOption>();
-
-    /**
-     * The label that will show up above the drop-down
-     */
     @Input() label: string;
-
-    /**
-     * Option can be add by a list of IDropDownOption objects
-     */
     @Input() options: IDropDownOption[];
-
-    /**
-     * Drop-down disabled flag
-     */
     @Input() disabled: boolean;
-
-    /**
-     * The text users will see on the drop-down header when no option was selected
-     */
-    @Input() placeHolder:string;
-
-    /**
-     * Drop-down required flag
-     */
-    @Input() required:boolean;
-
-    @Input() validate:boolean;
-
-    /**
-     * Show or hie drop-down header flag
-     * @type {boolean}
-     */
-    @Input() headless = false;
-
-    @Input() maxHeight:number = 244;
-
-    @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
-
-    @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
-
+    @Input() placeHolder: string;
+    @Input() required: boolean;
+    @Input() maxHeight: number;
     @Input() selectedOption: IDropDownOption;
+    @Input() type: DropDownTypes = DropDownTypes.Regular;
+    @ViewChild('dropDownWrapper') dropDownWrapper: ElementRef;
+    @ViewChild('optionsContainerElement') optionsContainerElement: ElementRef;
+    @HostListener('document:click', ['$event']) onClick(e) {
+        this.onClickDocument(e);
+    }
 
-    /**
-     * Drop-down show/hide flag. default is false (closed)
-     * @type {boolean}
-     */
+    private bottomVisible = true;
+    private myRenderer: Renderer;
+
+    // Drop-down show/hide flag. default is false (closed)
     public show = false;
 
-    /**
-     * Error flag
-     * @type {boolean}
-     */
-    public error: boolean;
-
-    /**
-     * Export DropDownOptionType enum so we can use it on the template
-     */
+    // Export DropDownOptionType enum so we can use it on the template
     public cIDropDownOptionType = DropDownOptionType;
+    public cIDropDownTypes = DropDownTypes;
 
-    /**
-     * Configure unselectable option types
-     */
+    // Configure unselectable option types
     private unselectableOptions = [
         DropDownOptionType.Disable,
         DropDownOptionType.Header,
         DropDownOptionType.HorizontalLine
     ];
 
-    /**
-     * Set or unset Group style on drop-down
-     * @type {boolean}
-     */
+    // Set or unset Group style on drop-down
     public isGroupDesign = false;
-
     public animation_init = false;
+    public allOptions: IDropDownOption[];
+    public filterValue: string;
 
+    constructor(public renderer: Renderer) {
+        super();
+        this.myRenderer = renderer;
+        this.maxHeight = 244;
+        this.filterValue = '';
+    }
 
     ngOnInit(): void {
-        if(this.options){
-            if(this.options.find(option => option.type === DropDownOptionType.Header)){
+        if (this.options) {
+            this.allOptions = this.options;
+            if (this.options.find(option => option.type === DropDownOptionType.Header)) {
                 this.isGroupDesign = true;
             }
         }
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if(changes.selectedOption && this.options.indexOf(this.selectedOption) > -1){
-            this.selectedOption = this.isSelectable(this.selectedOption) && this.selectedOption || null;
+        console.log("ngOnChanges");
+        if (changes.selectedOption && changes.selectedOption.currentValue !== changes.selectedOption.previousValue) {
+            if (typeof changes.selectedOption.currentValue === 'string' && this.isSelectable(changes.selectedOption.currentValue)) {
+                this.setSelected(changes.selectedOption.currentValue);
+            } else if (this.isSelectable(changes.selectedOption.currentValue.value)) {
+                this.setSelected(changes.selectedOption.currentValue.value);
+            } else {
+                this.setSelected(undefined);
+            }
         }
     }
 
-    public isValid(){
-        return !this.error;
+    public getValue(): any {
+        return this.selectedOption && this.selectedOption.value;
     }
 
-    private isSelectable(option: IDropDownOption){
-        return !(!!this.unselectableOptions.find(optionType => optionType == option.type))
-    }
-
-    /**
-     * Validate when required is enabled
-     */
-    public validateDropDown(): void{
-        if(!this.disabled && this.required && (!this.selectedOption || this.selectedOption.value === '')){
-            this.error = true;
-            return;
+    public selectOption = (option: IDropDownOption | string, event?): void => {
+        if (event) { event.stopPropagation(); }
+        if (this.type === DropDownTypes.Headless) {
+            // Hide the options when in headless mode and user select option.
+            this.myRenderer.setElementStyle(this.dropDownWrapper.nativeElement, 'display', 'none');
         }
-        this.error = false;
-    }
-
-    /**
-     * Set option as selected and saves it's index on the list
-     * @param index - number
-     * @param option - IDropDownItem or string
-     */
-    public selectOption(index: number, option:IDropDownOption):void{
-        if(!this.isSelectable(option)){
-            return;
-        }
-        this.updateSelected(index);
-    }
-
-    /**
-     * Update the value, label and index of the drop down with new ones
-     */
-    private updateSelected(index: number):void{
-        const option = this.options[index];
-        if(option){
-            this.selectedOption = option;
-            this.show = false;
-            this.validateDropDown();
-            this.changeEmitter.next(option);
+        if (typeof option === 'string' && this.isSelectable(option)) {
+            this.setSelected(option);
+        } else if (this.isSelectable((option as IDropDownOption).value)) {
+            this.setSelected((option as IDropDownOption).value);
         }
     }
 
-    /**
-     * Get the label of the selected option
-     */
-    public bottomVisible = true;
+    public toggleDropdown = (event?): void => {
+        if (event) { event.stopPropagation(); }
+        if (this.type === DropDownTypes.Headless) {
+            // Show the options when in headless mode.
+            this.myRenderer.setElementStyle(this.dropDownWrapper.nativeElement, 'display', 'block');
+        }
+        if (this.disabled) { return; }
+        this.animation_init = true;
+        this.bottomVisible = this.isBottomVisible();
+        this.show = !this.show;
+    }
 
-    public isBottomVisible(){
+    public filterOptions = (filterValue): void => {
+        if (filterValue.length >= 1 && !this.show) { this.toggleDropdown(); }
+        if (this.selectedOption) { this.selectedOption = null; }
+        this.options = this.allOptions.filter((option) => {
+            return option.value.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+        });
+    }
+
+    private isSelectable = (value: string): boolean => {
+        const option: IDropDownOption = this.options.find(o => o.value === value);
+        if (!option) { return false; }
+        if (!option.type) { return true; }
+        return !this.unselectableOptions.find(optionType => optionType === option.type);
+    }
+
+    private setSelected = (value: string): void => {
+        this.selectedOption = this.options.find(o => o.value === value);
+        if (this.type === DropDownTypes.Auto) { this.filterValue = value; }
+        this.show = false;
+        this.changeEmitter.next(this.selectedOption);
+    }
+
+    private isBottomVisible = (): boolean => {
         const windowPos = window.innerHeight + window.pageYOffset;
         const boundingRect = this.dropDownWrapper.nativeElement.getBoundingClientRect();
-        const dropDownPos = boundingRect.top
-            + boundingRect.height
-            + this.maxHeight;
+        const dropDownPos = boundingRect.top + boundingRect.height + this.maxHeight;
         return windowPos > dropDownPos;
     }
 
-    /**
-     * Toggle show/hide drop-down list
-     */
-    public toggleDropdown(){
-        if(this.disabled){
-            return;
+    private onClickDocument = (event): void => {
+        if (this.type === DropDownTypes.Headless) {
+            if (!this.optionsContainerElement.nativeElement.contains(event.target)) {
+                this.show = false;
+            }
+        } else {
+            if (!this.dropDownWrapper.nativeElement.contains(event.target)) {
+                this.show = false;
+            }
         }
-        this.animation_init = true;
-        this.bottomVisible = this.isBottomVisible();
-        if(!this.disabled){
-            this.show = !this.show;
-        }
-    }
-
-    /**
-     * When users clicks outside the drop-down it will be closed
-     */
-    public onClickOutside(event){
-        if(this.optionsContainerElement && !this.optionsContainerElement.nativeElement.contains(event.target)
-            && !event.target.classList.contains('js-sdc-dropdown--toggle-hook')){
-            this.show = false;
-        }
-        console.log("Target", event.target, event.target.classList.contains('js-sdc-dropdown--toggle-hook'));
     }
 
 }

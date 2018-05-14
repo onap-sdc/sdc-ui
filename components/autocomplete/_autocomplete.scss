@@ -1,6 +1,13 @@
 .sdc-autocomplete-container{
     position: relative;
 
+    &.results-shown{
+      .sdc-input__input{
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
     ul.autocomplete-results {
       opacity: 0;
       border: solid 1px $blue;
@@ -9,7 +16,7 @@
       border-top:none;
       background-color: $white;
       max-height: 200px;
-      box-shadow: 0px 1px 5px 0px $dark-gray;
+      box-shadow: 0 3px 7px -3px $dark-gray;
       overflow-y: scroll;
       overflow-x: hidden;
       position: absolute;
@@ -26,7 +33,7 @@
         @include body-1;
 
         &:hover {
-          background-color: $tlv-hover;
+          background-color: $lighter-blue;
           color: $blue;
         }
       }

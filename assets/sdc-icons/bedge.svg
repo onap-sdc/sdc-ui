@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="20" viewBox="0 0 30 20">
-  <defs>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 30 20">
+  <g fill-rule="evenodd">
     <rect id="bedge-a" width="30" height="20" rx="8"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <use fill="#000" xlink:href="#bedge-a"/>
   </g>
 </svg>

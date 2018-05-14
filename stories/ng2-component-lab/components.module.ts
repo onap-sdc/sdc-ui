@@ -1,23 +1,15 @@
-import { NgModule, Injector } from "@angular/core";
-import { KeysPipe } from "./utils/pipes/keys.pipe";
+import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ColorsTable } from "./components/colors-table.component";
-import { FormElementsModule } from "../../src/angular/form-elements/form-elements.module";
-import { ButtonsModule } from "../../src/angular/buttons/buttons.module";
-import { TileModule } from "../../src/angular/tiles/tile.module";
-import { ModalModule } from "../../src/angular/modals/modal.module";
-import { ModalInnerContent } from "./components/modal-inner-content-example.component";
-import { PopupMenuModule } from "../../src/angular/popup-menu/popup-menu.module";
-import { ChecklistModule } from "../../src/angular/checklist/checklist.module";
-import { InfiniteScrollModule } from "../../src/angular/infinite-scroll/infinite-scroll.module";
-import { TooltipDirective } from '../../src/angular/tooltip/tooltip.directive';
-import { TooltipTemplateComponent } from '../../src/angular/tooltip/tooltip-template.component';
-import { TooltipModule } from '../../src/angular/tooltip/tooltip.module';
-import { ModalConsumer } from "./components/modal-consumer.component";
-import { FilterBarModule } from "../../src/angular/filterbar/filter-bar.module";
-import { SearchBarModule } from "../../src/angular/searchbar/search-bar.module";
+import { FormsModule } from "@angular/forms";
+import { SdcUiComponentsModule } from "../../src/angular";
+import { KeysPipe } from "./utils/pipes/keys.pipe";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
-import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.module";
+import { ColorsTable } from "./components/colors-table.component";
+import { ModalInnerContent } from "./components/modal-inner-content-example.component";
+import { ModalConsumer } from "./components/modal-consumer.component";
+import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
+import { NotificationsExample } from "./components/notifications-example.component";
+import { Mode, Placement, Size } from "./../../src/angular/common/enums";
 
 @NgModule({
     declarations: [
@@ -25,44 +17,27 @@ import { AutoCompleteModule } from "../../src/angular/autocomplete/autocomplete.
         KeysPipe,
         ModalInnerContent,
         ModalConsumer,
-        KeysPipe,
-        SearchFilterPipe
+        SearchFilterPipe,
+        SvgIconsTableComponent,
+        NotificationsExample
     ],
     imports: [
-        ModalModule,
         CommonModule,
-        FormElementsModule,
-        ButtonsModule,
-        TileModule,
-        ButtonsModule,
-        ChecklistModule,
-        PopupMenuModule,
-        FilterBarModule,
-        SearchBarModule,
-        InfiniteScrollModule,
-        TooltipModule,
-        AutoCompleteModule
+        FormsModule,
+        SdcUiComponentsModule
     ],
-    entryComponents: [ModalInnerContent],
     exports: [
         CommonModule,
+        SdcUiComponentsModule,
         ModalInnerContent,
-        ModalModule,
+        NotificationsExample,
         ColorsTable,
-        FormElementsModule,
-        ButtonsModule,
-        TileModule,
-        ButtonsModule,
-        ChecklistModule,
-        PopupMenuModule,
-        FilterBarModule,
-        SearchBarModule,
-        InfiniteScrollModule,
-        AutoCompleteModule,
-        TooltipDirective,
-        PopupMenuModule,
+        SvgIconsTableComponent,
         ModalConsumer,
         SearchFilterPipe
+    ],
+    entryComponents: [
+        ModalInnerContent
     ],
     providers: [KeysPipe]
 })

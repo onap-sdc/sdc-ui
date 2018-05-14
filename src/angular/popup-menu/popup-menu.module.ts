@@ -1,7 +1,7 @@
-import {NgModule} from "@angular/core";
-import {PopupMenuListComponent} from "./popup-menu-list.component";
-import {PopupMenuItemComponent} from "./popup-menu-item.component";
-import {CommonModule} from "@angular/common";
+import { NgModule } from "@angular/core";
+import { PopupMenuListComponent } from "./popup-menu-list.component";
+import { PopupMenuItemComponent } from "./popup-menu-item.component";
+import { CommonModule } from "@angular/common";
 
 
 @NgModule({

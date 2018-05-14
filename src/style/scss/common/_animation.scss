@@ -1,0 +1,149 @@
+/***********************************************************************************
+ VERTICAL COLLAPSE-EXPEND TRANSITION ANIMATION PAIR.
+
+ We use the 'transition-vertical-collapse' for the collapse/idle block element,
+ and the 'transition-vertical-expand' to expend that element.
+
+ -important: The element that will be used for the animation should be
+ a block element, adn  have a content or width and height settings for it to work.
+*********************************************************************************/
+
+/**
+Enable to fold an expended block element
+@param $offsetY - The top position from which the drop down should fold
+ */
+@mixin keyframes-expand-animation($name, $maxHeight, $boxShadow:0 0 12px 0px rgba(0,0,0,.3), $margin:0){
+  @keyframes #{$name} {
+    0% {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
+      margin:0;
+    }
+    10% {
+      opacity: 1;
+      margin: $margin;
+    }
+    50% {
+      box-shadow: $boxShadow;
+    }
+    99%{
+      max-height:$maxHeight;
+
+      overflow: hidden;
+    }
+    100%{
+      opacity: 1;
+      max-height:$maxHeight;
+      overflow: auto;
+    }
+  }
+}
+
+/**
+Enable to expend a folded block element
+@param $maxHeight - most of the animation is done over the max-height property
+                    so we have to set the maximum height the expended element can expend to.
+ */
+@mixin keyframes-collapse-animation($name, $maxHeight, $boxShadow:0 0 12px 0px rgba(0,0,0,.3)){
+  @keyframes #{$name} {
+    0% {
+      opacity: 1;
+      max-height:$maxHeight;
+      box-shadow: $boxShadow;
+      overflow: hidden;
+    }
+    40%{
+      opacity: 1;
+    }
+    99%{
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      box-shadow: 0 0 0px 0px rgba(0,0,0,.3);
+    }
+    100%{
+      opacity: 0;
+      max-height: 0;
+      overflow: auto;
+    }
+  }
+}
+
+/********************************************************************************
+  SIMPLE FADE-IN KEYFRAMES ANIMATION (Used in tooltip for example)
+
+  we use 'mixin-keyframes-fade-in-vertically' to create css @keyframes rule that
+  we later can use with animation property inside our prefered css rules:
+      .our_class {
+        ...
+          animation: keyframes-fade-in-vertically 1s ease-out;
+        ...
+      }
+*********************************************************************************/
+@mixin mixin-keyframes-fade-in-vertically($fromRelativeHeight, $keyframesName:keyframes-fade-in-vertically){
+  @keyframes #{$keyframesName} {
+    from {
+      transform: translateY($fromRelativeHeight);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/********************************************************************************
+  SIMPLE FADE-OUT KEYFRAMES ANIMATION (Opposite of fade-in mixin above)
+*********************************************************************************/
+@mixin mixin-keyframes-fade-out-vertically($toRelativeHeight, $keyframesName:keyframes-fade-out-vertically){
+  @keyframes #{$keyframesName} {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY($toRelativeHeight);
+      opacity: 0;
+    }
+  }
+}
+
+
+
+/********************************************************************************
+  RIPPLE ANIMATION (Used for ripple-click directive)
+*********************************************************************************/
+@keyframes ripple-animation {
+  from {
+    transform: scale(0,0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(2,2);
+    opacity: 0;
+  }
+}
+
+.sdc-ripple-click__animated {
+  position:relative;
+}
+.sdc-ripple-click__animated::before{
+  display: inline-block;
+  position:absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  animation: ripple-animation .3s ease-out; 
+  background-color: $blue;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+

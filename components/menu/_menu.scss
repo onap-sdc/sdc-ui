@@ -1,6 +1,5 @@
 .sdc-menu-list {
     position: static;
-
     @include box-sizing;
     @include box-shadow(0 2px 4px 0 rgba($black, 0.3));
     @include border-radius(2px);
@@ -14,14 +13,14 @@
 
     .sdc-menu-item:not(.separator) {
         @include body-1;
-        height: 29px;
+        height: 40px;
         color: $dark-gray;
         padding: 0 12px;
         display: flex;
         align-items: center;
 
         svg {
-            margin-right: 5px;
+            margin-right: 16px;
             g, path {
                 fill: $dark-gray;
             }
@@ -31,10 +30,10 @@
             &:not(.disabled) {
                 cursor: pointer;
                 &:not(.selected) {
-                    background: $background-gray;
+                    background: $light-silver;
                     color: $text-black;
                     g, path {
-                        fill: $text-black;
+                        fill: $dark-gray;
                     }
                 }
             }
@@ -48,10 +47,10 @@
         }
 
         &.selected {
-            background: $tlv-hover;
-            color: $hover-blue;
+            background: $lighter-blue;
+            color: $light-blue;
             g, path {
-                fill: $hover-blue;
+                fill: $dark-gray;
             }
         }
     }
@@ -62,8 +61,8 @@
 
     .separator {
         cursor: default;
-        border-top: 1px solid $gray;
-        margin: 0 12px;
+        border-top: 1px solid $silver;
+        margin: 0 0;
         height: 0;
     }
 }

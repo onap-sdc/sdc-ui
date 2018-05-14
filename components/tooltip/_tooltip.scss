@@ -11,13 +11,12 @@
 }
 
 /* Tooltop styles */
-
 .sdc-tooltip {
     @include base-font-regular;
     line-height: 14px;
     font-size: 12px;
     max-width: 223px;
-    background-color: $rich-black;
+    background-color: $black;
     color: $white;
     text-align: left;
     border-radius: 2px;
@@ -27,7 +26,7 @@
     display: block;
     opacity: 0;
     transition: opacity 300ms;
-    border: solid 1px $rich-black;
+    border: solid 1px $black;
     animation: animation-fade-in-from-bottom .75s ease-in-out; /* tooltip animation */
 }
 
@@ -46,7 +45,7 @@
     left: 10px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: $rich-black transparent transparent transparent;
+    border-color: $black transparent transparent transparent;
 }
 .sdc-tooltip-top-right__bottom::after {
     right: 10px;
@@ -61,7 +60,7 @@
     left: 10px;
     margin-left: -5px;
     border-width: 5px;
-    border-color: transparent transparent $rich-black transparent;
+    border-color: transparent transparent $black transparent;
 }
 .sdc-tooltip-bottom-right__bottom::after {
     right: 10px;
@@ -76,7 +75,7 @@
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent transparent transparent $rich-black;
+    border-color: transparent transparent transparent $black;
 }
 .sdc-tooltip-left-right__bottom::after {
     bottom: 10px;
@@ -91,7 +90,7 @@
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent $rich-black transparent transparent;
+    border-color: transparent $black transparent transparent;
 }
 .sdc-tooltip-right-right__bottom::after {
     bottom: 10px;
@@ -106,8 +105,8 @@
     @include base-font-regular;
     font-size: 12px;
     font-weight: normal;
-    background-color: $rich-black; /* rich-black */
-    color: $white; /* tlv-light-gray */
+    background-color: $black;
+    color: $white; /* silver */
 }
 
 .sdc-tooltip-template-big-title {
@@ -119,9 +118,7 @@
     @include base-font-regular;
     font-size: 12px;
     font-weight: normal;
-    background-color: $rich-black;
+    background-color: $black;
     color: $white;
     line-height: 14px;
 }
-
-@import 'custom_tooltip';

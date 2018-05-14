@@ -1,5 +1,5 @@
-import {Component, ViewChild, ViewContainerRef, AfterViewInit} from '@angular/core';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Component, ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     selector: 'tooltip-template',

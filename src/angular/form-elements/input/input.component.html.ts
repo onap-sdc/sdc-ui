@@ -1,18 +1,19 @@
 export default `
-<div class="sdc-input">
+<div class="sdc-input ">
     <label class="sdc-input__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <input
-        class="sdc-input__input"
-        [ngClass]="{'error': control.invalid, 'disabled':disabled}"
-        type="text"
-        [name]="name"
+        class="sdc-input__input {{classNames}}"
+        [ngClass]="{'error': !valid, 'disabled':disabled}"
+        [attr.name]="name ? name : null"
         [placeholder]="placeHolder"
         [(ngModel)]="value"
         [maxlength]="maxLength"
         [minlength]="minLength"
-        [pattern]="pattern"
+        [type]="type"
         [formControl]="control"
         [attr.disabled]="disabled ? 'disabled' : null"
+        (input)="onKeyPress($event.target.value)"
+        [attr.data-tests-id]="testId"
     />
 </div>
 `;

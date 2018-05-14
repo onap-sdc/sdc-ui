@@ -1,0 +1,9 @@
+.sdc-custom-tooltip {
+    background-color: $dark-blue;
+    border-color: $dark-blue;
+    border-radius: 10px;
+
+    &:after {
+        border-color: $dark-blue transparent transparent transparent;
+    }
+}

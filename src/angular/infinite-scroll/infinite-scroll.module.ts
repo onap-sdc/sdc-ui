@@ -1,5 +1,5 @@
-import {NgModule} from "@angular/core";
-import {InfiniteScrollDirective} from "./infinite-scroll.directive";
+import { NgModule } from "@angular/core";
+import { InfiniteScrollDirective } from "./infinite-scroll.directive";
 
 @NgModule({
     declarations: [

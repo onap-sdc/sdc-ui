@@ -2,7 +2,8 @@ $inputHeight: 38px;
 .sdc-search-bar{
   .search-bar-container{
     display: flex;
-    sdc-input{
+    align-items: flex-end;
+    .sdc-input-wrapper{
       flex-grow: 1;
       .sdc-input{
         margin: 0;
@@ -17,9 +18,11 @@ $inputHeight: 38px;
       height: $inputHeight - 2;
       border: solid 1px $light-gray;
       border-left: none;
-      background-color: $background-gray;
-      margin-top: 17px;
+      background-color: $light-silver;
       cursor: auto;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      
       svg{
         height: 20px;
         width: 20px;
@@ -32,16 +35,25 @@ $inputHeight: 38px;
         }
       }
     }
+
     &.not-empty{
       .sdc-input__input {
         border-color: $blue;
       }
       .search-button{
-        background-color: $tlv-hover;
+        background-color: $lighter-blue;
         border-color: $blue;
         cursor: pointer;
         svg path{
           fill: $blue;
+        }
+        &:hover {
+            background-color: $light-blue;
+            svg{
+              path{
+                fill: $white;
+              }
+            }
         }
       }
     }
