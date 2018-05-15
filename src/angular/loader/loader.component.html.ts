@@ -1,8 +1,13 @@
 export default `
-<div *ngIf="isVisible"  [ngClass]="relative ? 'loader-relative' : 'loader-fixed'" 
-        [style.top]="offset.top" [style.left]="offset.left" [style.width]="offset.width"  [style.height]="offset.height">
-    <div class="sdc-loader-back" [ngClass]="{'sdc-loader-relative':relative}"></div>
-    <div class="sdc-loader {{size}}"></div>
+<div class = "sdc-loader-wrapper" *ngIf="!global">
+    <div class="sdc-loader-background" [ngClass]="{'sdc-hide-loader':!display}">
+     <div class="sdc-loader loader" [ngClass]="{'sdc-hide-loader':!display}"></div>
+    </div>
+    <ng-content></ng-content>
 </div>
-<ng-content></ng-content>
+<div  *ngIf="global&&display">
+    <div class="sdc-loader-global-wrapper sdc-loader-background" >
+    <div class="sdc-loader loader"></div>
+    </div>   
+</div>
 `;

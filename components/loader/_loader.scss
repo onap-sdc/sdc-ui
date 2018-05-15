@@ -1,22 +1,34 @@
-.sdc-loader-back {
-    background-color: #ffffff;
-    position: fixed;
+.sdc-loader-background {
+    background-color: #000000;
+    position: absolute;
     top: 0px;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 9999;
     opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sdc-loader-relative { position: absolute; top: 0;}
+.sdc-loader-wrapper{
+    position: relative;
+    width: 100%;
+    height:100%;
+}
+
+.sdc-loader-wrapper-absolute { position: absolute; top: 0;}
 
 .sdc-loader {
     z-index: 10002;
 }
 
-.loader-relative {
-    display: block;
+.sdc-hide-loader{
+    z-index:-1;
+}
+
+.sdc-loader-global-wrapper{
     position:absolute;
     width: 100%;
     height:100%;
@@ -93,8 +105,6 @@
     height: 63px;
     width: 63px;
     position: absolute;
-    top: 50%;
-    left: 50%;
 }
 
 .sdc-loader.small {

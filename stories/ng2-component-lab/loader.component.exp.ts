@@ -11,17 +11,32 @@ export default experimentOn('Loader')
         description: 'Simple Fixed loader',       
         context: {
             showLoaderFlag: false,
-            relativeValue: true,
+            global: false,
             showLoaderFunc: function(){
                 this.showLoaderFlag = !this.showLoaderFlag;
                 let vm = this;
-                // setTimeout(function(){ 
-                //   vm.showLoaderFlag = false; 
-                // }, 1000);
+                setTimeout(function(){ 
+                  vm.showLoaderFlag = false; 
+                }, 2000);
             },
 
         },
-        template: `<div style = "width:200px; height:200px; background:green; border:1px solid black;"><sdc-loader [display] = "showLoaderFlag" [size] = "'medium'" [relative] = "relativeValue"><button (click) = "showLoaderFunc()"> Show Loader {{showLoaderFlag}}</button></sdc-loader></div>`,
+        template: `
+                <sdc-loader [display]="showLoaderFlag" [size]="'medium'" [global]="global">
+                  <div style="border:1px solid black; padding:20px 100px;">
+                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+                  </div>
+                </sdc-loader>
+                
+                <sdc-button
+                  text="Discrete loader"
+                  (click)="showLoaderFunc()">
+                </sdc-button>
+                `,
       },
       {
         id: 'Simple Loader',
@@ -30,17 +45,22 @@ export default experimentOn('Loader')
         description: 'Simple loader',       
         context: {
             showLoaderFlag: false,
-            relativeValue: false,
+            global: true,
             showLoaderFunc: function(){
                 this.showLoaderFlag = !this.showLoaderFlag;
                 let vm = this;
                 setTimeout(function(){ 
                   vm.showLoaderFlag = false; 
-                }, 1000);
+                }, 2000);
             },
 
         },
-        template: `<sdc-loader [display] = "showLoaderFlag" [relative] = "relativeValue"><button (click) = "showLoaderFunc()"> Show Loader {{showLoaderFlag}}</button></sdc-loader>`,
+        template: `
+                  <sdc-loader [display] = "showLoaderFlag" [global] = "global"></sdc-loader> 
+                  <sdc-button
+                      text="Global Loader"
+                      (click)="showLoaderFunc()">
+                  </sdc-button>`,
       },
  
     ])
