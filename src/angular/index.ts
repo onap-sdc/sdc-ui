@@ -15,7 +15,11 @@ import { SearchBarModule } from "./searchbar/search-bar.module";
 import { TooltipModule } from "./tooltip/tooltip.module";
 import { TagCloudModule } from './tag-cloud/tag-cloud.module';
 import { TabsModule } from "./tabs/tabs.module";
+<<<<<<< HEAD
 import { LoaderModule } from "./loader/loader.module";
+=======
+import { AccordionModule } from "./accordion/accordion.module";
+>>>>>>> master
 
 @NgModule({
     imports: [
@@ -35,7 +39,11 @@ import { LoaderModule } from "./loader/loader.module";
         SvgIconModule,
         TagCloudModule,
         TabsModule,
+<<<<<<< HEAD
         LoaderModule
+=======
+        AccordionModule
+>>>>>>> master
     ],
     exports: [
         AnimationDirectivesModule,
@@ -54,13 +62,19 @@ import { LoaderModule } from "./loader/loader.module";
         SvgIconModule,
         TagCloudModule,
         TabsModule,
+<<<<<<< HEAD
         LoaderModule
+=======
+        AccordionModule
+>>>>>>> master
     ]
 })
 export class SdcUiComponentsModule {
 }
 
-export {SdcUiComponentsNg1Module} from './ng1.module';
-
 import * as SdcUiComponents from './components';
-export {SdcUiComponents};
+import * as SdcUiCommon from './common/index';
+
+export { SdcUiComponentsNg1Module } from './ng1.module';
+export { SdcUiComponents };
+export { SdcUiCommon };

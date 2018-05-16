@@ -26,21 +26,20 @@ const sourceStyles:string =`
 `;
 
 export default experimentOn('Modals')
-    .group("Modals",[
+    .group("Modals", [
       {
         id: 'standardModal',
         showSource: false,
         title: 'Standard modal',
         description: 'Opens a modal with a custom title, message, and confirm button with a callback.',
         template: `
-
         <modal-consumer [action]="'openActionModal'"></modal-consumer>
         <div class="example-source">Source Code:
         <pre>
           const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
             'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
-            
-          this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "Yes", this.onConfirmAction);
+
+          this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction, "sampleTestId");
 
           private onConfirmAction = ():void => {{ '{' }}
             alert("Action has been confirmed");
@@ -62,7 +61,7 @@ export default experimentOn('Modals')
           const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
           'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
 
-          this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, "Continue", this.onConfirmAction);
+          this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, "Continue", this.onConfirmAction, "sampleTestId");
         </pre></div>`,
         styles: [sourceStyles]
       },
@@ -75,17 +74,17 @@ export default experimentOn('Modals')
         <div class="example-source">Source Code:
         <pre>
 
-          this.modalService.openErrorModal("An error has occurred!");
+          this.modalService.openErrorModal("An error has occurred!", "sampleTestId");
         </pre></div>`,
         styles: [sourceStyles]
       },
       {
-        id: 'customModal',
+        id: 'customModal1',
         showSource: false,
-        title: 'Custom modal',
+        title: 'Custom modal 1',
         description: 'Opens a modal with dynamic inner content and customizable title, buttons, and callbacks.',
         template: `
-        <modal-consumer [action]="'openCustomModal'"></modal-consumer>
+        <modal-consumer [action]="'openCustomModal1'"></modal-consumer>
         <div class="example-source">Source Code:
         <pre>
 
@@ -112,6 +111,16 @@ export default experimentOn('Modals')
               alert("Save with result: " + currentInstance.innerModalContent.instance.name);
           {{ '}' }};
         </pre></div>`,
+        styles: [sourceStyles]
+      },
+      {
+        id: 'customModal2',
+        showSource: false,
+        title: 'Custom modal 2',
+        description: 'Opens a modal with, and change his buttons and title',
+        template: `
+        <modal-consumer [action]="'openCustomModal2'"></modal-consumer>
+        `,
         styles: [sourceStyles]
       }
     ]);

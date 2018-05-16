@@ -26,6 +26,13 @@
         height: 8px;
       }
     }
+    &.arrow-right {
+      justify-content: space-between;
+      .svg-icon-wrapper{
+        order:1;
+        margin:0;
+      }
+    }
   }
   .sdc-accordion-body {
     padding-left: 10px;

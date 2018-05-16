@@ -45,3 +45,6 @@ export { TabComponent } from './tabs/children/tab.component';
 // Svg Icons
 export { SvgIconComponent } from "./svg-icon/svg-icon.component";
 export { SvgIconLabelComponent } from "./svg-icon/svg-icon-label.component";
+
+// Accordion
+export { AccordionComponent } from './accordion/accordion.component';

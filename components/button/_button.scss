@@ -1,5 +1,5 @@
 .sdc-button {
-
+  order:1;
   @include box-sizing;
   display: inline-flex;
   align-items: center;
@@ -156,4 +156,13 @@
     vertical-align: middle;
   }
 }
-
+.sdc-button__wrapper {
+  display: inline-flex;
+}
+.sdc-button__spinner {
+  padding-top: 6px;
+  margin:0 2px;
+  &.left {
+    order:2;
+  }
+}
