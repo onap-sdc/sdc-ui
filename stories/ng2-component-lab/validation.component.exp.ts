@@ -24,7 +24,8 @@ export default experimentOn('Validation')
             id: 'validation1',
             showSource: true,
             title: 'Simple validation',
-            description: 'Simple validation (validating that email is valid and that user inserted something in the field). By default the validation starts after first key press',
+            description: 'Simple validation (validating that email is valid and that user inserted something in the field). \
+                            By default the validation starts after first key press',
             context: {
                 emailPattern: RegexPatterns.email
             },
@@ -84,6 +85,24 @@ export default experimentOn('Validation')
                 <sdc-validation [validateElement]="email">
                     <sdc-required-validator message="Field is required!"></sdc-required-validator>
                     <sdc-regex-validator message="This is not a valid email!" [pattern]="emailPattern"></sdc-regex-validator>
+                </sdc-validation>
+            `
+        },
+        {
+            id: 'validation5',
+            showSource: true,
+            title: 'Validation with validity changed callback',
+            description: 'Simple validation with alert when validity changes',
+            context: {
+                numbersPattern: RegexPatterns.numbers,
+                validityChanged: (newState: boolean) => {
+                    alert("Validity has changed to " + newState);
+                }
+            },
+            template: `
+                <sdc-input #validatorWithCallback label="Please enter a number" [maxLength]="10" required="true"></sdc-input>
+                <sdc-validation [validateElement]="validatorWithCallback" (validityChanged)="validityChanged($event)">
+                    <sdc-regex-validator message="This is not a number!" [pattern]="numbersPattern"></sdc-regex-validator>
                 </sdc-validation>
             `
         },
