@@ -4,6 +4,7 @@ import { IModalConfig, ModalType, ModalSize } from "../../../src/angular/modals/
 import { ModalInnerContent } from "./modal-inner-content-example.component";
 import { ButtonComponent } from "../../../src/angular/buttons/button.component";
 import { ModalButtonComponent } from './../../../src/angular/modals/modal-button.component';
+import { Placement } from "../../../src/angular/common/enums";
 
 const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
 'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
@@ -25,15 +26,15 @@ export class ModalConsumer {
     }
 
     private openErrorModal = (): void => {
-        this.modalService.openErrorModal(MODAL_CONTENT);
+        this.modalService.openErrorModal(MODAL_CONTENT, "sampleTestId");
     }
 
     private openAlertModal = (): void => {
-        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'Continue', this.onConfirmAction);
+        this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, 'Continue', this.onConfirmAction, 'sampleTestId');
     }
 
     private openActionModal = (): void => {
-        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction);
+        this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction, "sampleTestId");
     }
 
     private onConfirmAction = (): void => {
@@ -45,6 +46,7 @@ export class ModalConsumer {
             size: ModalSize.medium,
             title: 'Title',
             type: ModalType.custom,
+            testId: 'sampleTestIdModal1',
             buttons: [
                       {text: "Save", callback: this.customModalOnSave1, closeModal: false},
                       {text: "Cancel", size: 'x-small', type: 'secondary', closeModal: true}
@@ -55,7 +57,17 @@ export class ModalConsumer {
 
     private customModalOnSave1 = (): void => {
         const currentInstance: any = this.modalService.getCurrentInstance();
-        alert("Save with result: " + currentInstance.innerModalContent.instance.name);
+        const buttons: ModalButtonComponent[] = currentInstance.getButtons();
+        const saveButton: ModalButtonComponent = buttons.find(button => button.text === 'Save');
+        saveButton.show_spinner = true;
+        saveButton.spinner_position = Placement.right;
+
+        // Show spinner for 2 seconds
+        console.log('Saving example, please wait ...');
+        window.setTimeout((button: ModalButtonComponent) => {
+            button.show_spinner = false;
+            console.log('Finish saving');
+        }, 2000, saveButton);
     }
 
     private openCustomModal2 = (): void => {
@@ -63,6 +75,7 @@ export class ModalConsumer {
             size: ModalSize.medium,
             title: 'Title',
             type: ModalType.custom,
+            testId: 'sampleTestIdModal2',
             buttons: [
                       {text: "Change title", callback: this.customModalChangeTitle2, closeModal: false},
                       {text: "Change buttons", callback: this.customModalUpdateButtons2, closeModal: false}

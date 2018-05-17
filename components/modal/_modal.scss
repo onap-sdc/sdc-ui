@@ -76,6 +76,17 @@
           width: 16px;
           height: 16px;
           line-height: 16px;
+          .svg-icon > svg {
+            fill: $white;
+            color: $white;
+          }
+          &.disabled {
+            cursor: default;
+            .svg-icon > svg {
+              fill: $silver;
+              color: $silver;
+            }
+          }
         }
         .sdc-modal__close-button-svg {
           width: 16px;
@@ -117,6 +128,9 @@
         cursor: pointer;
         .sdc-modal__svg-use {
           fill: $black;
+        }
+        &.disabled {
+          cursor: default;
         }
       }
     }

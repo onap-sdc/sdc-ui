@@ -20,11 +20,13 @@ experiment.group("Default button", [
         template: `
             <sdc-button
                 text="Default button long text"
+                testId="longButton"
                 (click)="buttonClicked()">
             </sdc-button>
             <sdc-button
                 text="Sample button"
                 (click)="buttonClicked()"
+                [testId]="'defaultButtonTestId'"
                >
             </sdc-button>
 
@@ -112,4 +114,51 @@ experiment.group("Buttons with icons", [
     }
 ]);
 
+experiment.group("Buttons with spinners", [
+    {
+        id: "buttonsWithSpinnersRight",
+        showSource: true,
+        description: `Click the button to see the spinner shows for 2 seconds`,
+        context: {
+            buttonClicked: (button): void => {
+                button.show_spinner = true;
+                setTimeout(() => {button.show_spinner = false},2000);
+            },
+        },
+        title: "Button with spinner on the right",
+        template: `
+            <sdc-button
+                text="Click to show spinner"
+                (click)="buttonClicked(button)"
+                [show_spinner]="false"
+                spinner_position="right"
+                #button
+               >
+            </sdc-button>
+
+           `
+    },
+    {
+        id: "buttonsWithSpinnersLeft",
+        showSource: true,
+        description: `Click the button to see the spinner shows for 2 seconds`,
+        context: {
+            buttonClicked: (button): void => {
+                button.show_spinner = true;
+                setTimeout(() => {button.show_spinner = false},2000);
+            },
+        },
+        title: "Button with spinner on the left",
+        template: `
+            <sdc-button
+                text="Click to show spinner"
+                (click)="buttonClicked(button)"
+                spinner_position="left"
+                #button
+               >
+            </sdc-button>
+
+           `
+    }
+]);
 export default experiment;
