@@ -18,6 +18,7 @@ export class ValidationComponent implements AfterContentInit {
 
     @Input() public validateElement: ValidatableComponent;
     @Input() public disabled: boolean;
+    @Output() public validityChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
     @HostBinding('class') classes;
 
     // @ContentChildren does not recieve type any or IValidator or ValidatorComponent, so need to create @ContentChildren for each validator type.
@@ -66,6 +67,10 @@ export class ValidationComponent implements AfterContentInit {
             }, true);
             return sum && response;
         }, true);
+
+        if (this.validateElement.valid !== validationResult) {
+            this.validityChanged.emit(validationResult);
+        }
 
         return validationResult;
 
