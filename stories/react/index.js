@@ -19,6 +19,7 @@ import Modals from './Modal.stories.js';
 import PopupMenu from './PopupMenu.stories.js';
 import Accordion from './Accordion.stories.js';
 import Panel from './Panel.stories.js';
+import Notifications from './Notification.stories.js';
 
 storiesOf('Colors', module)
 	.add('Color Palette', () => <Colors />);
@@ -64,3 +65,5 @@ storiesOf('Tabs', module)
 
 storiesOf('Tiles', module)
 	.add('Tiles', () => <Tiles />);
+storiesOf('Notifications', module)
+	.add('Notifications', () => <Notifications />);

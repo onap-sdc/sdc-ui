@@ -8,6 +8,7 @@ import ModalBody from './ModalBody.js';
 import ModalFooter from './ModalFooter.js';
 import ModalHeader from './ModalHeader.js';
 import ModalTitle from './ModalTitle.js';
+import Notification from './Notification.js';
 import Panel from './Panel.js';
 import PopupMenu from './PopupMenu.js';
 import Portal from './Portal.js';
@@ -33,6 +34,7 @@ export { ModalBody };
 export { ModalFooter };
 export { ModalHeader };
 export { ModalTitle };
+export { Notification };
 export { Panel };
 export { PopupMenu };
 export { Portal };
@@ -58,6 +60,7 @@ export default {
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
+	Notification,
 	Panel,
 	PopupMenu,
 	Portal,

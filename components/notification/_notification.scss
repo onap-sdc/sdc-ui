@@ -3,34 +3,50 @@
 
 .sdc-notification {
 	position:relative;
-
+	&.react-transition-exit-active {
+		animation: keyframes-slide-notif-out 0.8s
+	}
 	.sdc-notification__wrapper {
 		padding: 10px;
 		margin-top:10px;
 		width: 212px;
 		animation: keyframes-slide-notif-in 1s;
-
+		box-shadow: 0 3px 7px -3px $dark-gray;
 		&.fade-out__animated {
 			animation: keyframes-slide-notif-out 0.8s
 		}
 
 		&.type-info {
-			background-color: #0e90d2; }
+			background-color: $blue; }
 	
 		&.type-error {
-			background-color: #dd514c; }
+			background-color: $red; }
 	
 		&.type-success {
-			background-color: #5eb95e; }
+			background-color: $green; }
 	
 		&.type-warn {
-			background-color: #f37b1d; }
+			background-color: $yellow; }
 	}
 
 	.sdc-notification__content {
 		display:flex;
 		flex-direction:row;
-
+		.sdc-nitification__icon_container {
+			border-radius: 42px;			
+			flex: 0 0 auto;
+			height: 38px;
+			width: 38px;
+			background-color: rgba($white, 0.3);
+			margin-right: 5px;
+			.sdc-notification_svg-icon {								
+				height: 32px;
+				width: 32px;
+				fill: $white;
+				margin-left: 3px;
+    			margin-top: 3px;
+			}
+		}		
 		.sdc-notification__icon {
 			flex: 0 0 auto;
 			height: 32px;
@@ -42,14 +58,16 @@
 		.sdc-notification__message {
 			flex: 1;
 			text-align: left;
+			margin-left: 5px;
 
 			.sdc-notification__title {
-				font-size:13px;
+				font-size:16px;
 				color: white;
+				font-weight: bolder;
 			}
 		
 			.sdc-notification__text {
-				font-size: 12px;
+				font-size: 14px;
 				color: white;
 			}
 		}
