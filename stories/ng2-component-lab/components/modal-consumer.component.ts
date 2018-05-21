@@ -5,6 +5,7 @@ import { ModalInnerContent } from "./modal-inner-content-example.component";
 import { ButtonComponent } from "../../../src/angular/buttons/button.component";
 import { ModalButtonComponent } from './../../../src/angular/modals/modal-button.component';
 import { Placement } from "../../../src/angular/common/enums";
+import { ModalComponent } from "../../../src/angular/components";
 
 const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
 'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
@@ -78,19 +79,25 @@ export class ModalConsumer {
             testId: 'sampleTestIdModal2',
             buttons: [
                       {text: "Change title", callback: this.customModalChangeTitle2, closeModal: false},
-                      {text: "Change buttons", callback: this.customModalUpdateButtons2, closeModal: false}
+                      {text: "Change buttons", callback: this.customModalUpdateButtons2, closeModal: false},
+                      {text: "Disable close", callback: this.customModalUDisableClose2, closeModal: false}
                     ]
         } as IModalConfig;
         this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }
 
+    private customModalUDisableClose2 = (): void => {
+        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
+        currentInstance.getCloseButton().disabled = true;
+    }
+
     private customModalChangeTitle2 = (): void => {
-        const currentInstance: any = this.modalService.getCurrentInstance();
+        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
         currentInstance.setTitle('New title');
     }
 
     private customModalUpdateButtons2 = (): void => {
-        const currentInstance: any = this.modalService.getCurrentInstance();
+        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
         const newButtons = [
             {text: "Change title", callback: this.customModalChangeTitle2, closeModal: false},
             {text: "Do nothing", closeModal: false}
