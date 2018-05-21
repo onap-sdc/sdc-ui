@@ -67,6 +67,12 @@ export class ModalComponent {
         return this.modalCloseButton;
     }
 
+    public getButtonById = (id: string): ModalButtonComponent => {
+        return this.buttons.find((button) => {
+            return button.id && button.id === id;
+        });
+    }
+
     public getButtons = (): ModalButtonComponent[] => {
         return this.buttons;
     }
