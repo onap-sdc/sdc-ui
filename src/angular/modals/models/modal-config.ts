@@ -23,6 +23,7 @@ export interface IButtonComponent {
 }
 
 export interface IModalButtonComponent extends IButtonComponent{
+    id?: string;
     callback?: Function;
     closeModal?: boolean;
 }

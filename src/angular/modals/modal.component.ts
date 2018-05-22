@@ -1,6 +1,7 @@
-import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer } from '@angular/core';
+import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer, ElementRef } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
 import { LowerCasePipe } from '@angular/common';
+import { ModalCloseButtonComponent } from './modal-close-button.component';
 import template from './modal.component.html';
 
 @Component({
@@ -27,6 +28,12 @@ export class ModalComponent {
     @Input() type: string; 'info|error|alert|custom';
     @Input() testId: string;
     @Output() closeAnimationComplete: EventEmitter<any> = new EventEmitter<any>();
+
+    @ViewChild('modalCloseButton')
+    set refCloseButton(_modalCloseButton: ModalCloseButtonComponent) {
+        this.modalCloseButton = _modalCloseButton;
+    }
+
     modalVisible: boolean;
     // Allows for custom component as body instead of simple message.
     // See ModalService.createActionModal for implementation details, and HttpService's catchError() for example.
@@ -34,6 +41,7 @@ export class ModalComponent {
     innerModalContent: ComponentRef<ModalComponent>;
 
     public calculatedTestId: string;
+    public modalCloseButton: ModalCloseButtonComponent;
 
     constructor(private renderer: Renderer,
                 private lowerCasePipe: LowerCasePipe
@@ -53,6 +61,16 @@ export class ModalComponent {
         if (!toggleEvent.toState) {
             this.closeAnimationComplete.emit();
         }
+    }
+
+    public getCloseButton = (): ModalCloseButtonComponent => {
+        return this.modalCloseButton;
+    }
+
+    public getButtonById = (id: string): ModalButtonComponent => {
+        return this.buttons.find((button) => {
+            return button.id && button.id === id;
+        });
     }
 
     public getButtons = (): ModalButtonComponent[] => {
