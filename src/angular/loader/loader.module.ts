@@ -14,6 +14,4 @@ import { CommonModule } from "@angular/common";
     ],
 })
 
-export class LoaderModule {
-
-}
+export class LoaderModule {}

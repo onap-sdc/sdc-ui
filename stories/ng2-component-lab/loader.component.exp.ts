@@ -1,23 +1,19 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 
-
-
 export default experimentOn('Loader')
-    .group("Loader",[
+    .group("Loader", [
       {
         id: 'Small Fixed Loader',
         showSource: true,
         title: 'Regular loader',
-        description: 'Simple Fixed loader',       
+        description: 'Simple Fixed loader',
         context: {
             showLoaderFlag: false,
             global: false,
-            showLoaderFunc: function(){
+            showLoaderFunc: function() {
                 this.showLoaderFlag = !this.showLoaderFlag;
-                let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag = false; 
-                }, 2000);
+                const that = this;
+                setTimeout(() => { that.showLoaderFlag = false; }, 2000);
             },
 
         },
@@ -43,21 +39,19 @@ export default experimentOn('Loader')
         id: 'Simple Loader',
         showSource: true,
         title: 'Regular Simple Loader',
-        description: 'Simple loader',       
+        description: 'Simple loader',
         context: {
             showLoaderFlag: false,
             global: true,
-            showLoaderFunc: function(){
-                this.showLoaderFlag = !this.showLoaderFlag;
-                let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag = false; 
-                }, 2000);
-            },
+            showLoaderFunc: function() {
+              this.showLoaderFlag = !this.showLoaderFlag;
+              const that = this;
+              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+          },
 
         },
         template: `
-                  <sdc-loader [display] = "showLoaderFlag" [global] = "global"></sdc-loader> 
+                  <sdc-loader [display] = "showLoaderFlag" [global] = "global"></sdc-loader>
                   <sdc-button
                       text="Global Loader"
                       (click)="showLoaderFunc()">
@@ -67,18 +61,15 @@ export default experimentOn('Loader')
         id: 'Fixed Different Size Loader',
         showSource: true,
         title: 'Fixed Different Size Loader',
-        description: 'Fixed Different Size Loader',       
+        description: 'Fixed Different Size Loader',
         context: {
             showLoaderFlag: false,
             global: false,
-            showLoaderFunc: function(){
-                this.showLoaderFlag = !this.showLoaderFlag;
-                let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag = false; 
-                }, 2000);
-            },
-
+            showLoaderFunc: function() {
+              this.showLoaderFlag = !this.showLoaderFlag;
+              const that = this;
+              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+          }
         },
         template: `
                 <sdc-loader [display]="showLoaderFlag" [size]="'small'" [global]="global">
@@ -100,18 +91,15 @@ export default experimentOn('Loader')
         id: 'Fixed Different Size Loader',
         showSource: true,
         title: 'Fixed Different Size Loader',
-        description: 'Fixed Different Size Loader',       
+        description: 'Fixed Different Size Loader',
         context: {
             showLoaderFlag: false,
             global: false,
-            showLoaderFunc: function(){
-                this.showLoaderFlag = !this.showLoaderFlag;
-                let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag = false; 
-                }, 2000);
-            },
-
+            showLoaderFunc: function() {
+              this.showLoaderFlag = !this.showLoaderFlag;
+              const that = this;
+              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+          }
         },
         template: `
                 <sdc-loader [display]="showLoaderFlag" [size]="'small'" [global]="global">
@@ -133,27 +121,21 @@ export default experimentOn('Loader')
         id: 'Loader Div Inside Div',
         showSource: true,
         title: 'Fixed Different Size Loader',
-        description: 'Fixed Different Size Loader',       
+        description: 'Fixed Different Size Loader',
         context: {
             showLoaderFlag: false,
             global: false,
-            showLoaderFunc: function(){
-                this.showLoaderFlag = !this.showLoaderFlag;
-                let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag = false; 
-                }, 2000);
-            },
-            showLoaderFlag2: false,
-
-            showLoaderFunc2: function(){
-                this.showLoaderFlag2 = !this.showLoaderFlag;
-                let vm = this;
-                setTimeout(function(){ 
-                  vm.showLoaderFlag2 = false; 
-                }, 2000);
-            },
-
+            showLoaderFunc: function() {
+              this.showLoaderFlag = !this.showLoaderFlag;
+              const that = this;
+              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+          },
+          showLoaderFlag2: false,
+          showLoaderFunc2: function() {
+            this.showLoaderFlag2 = !this.showLoaderFlag2;
+            const that = this;
+            setTimeout(() => { that.showLoaderFlag2 = false; }, 2000);
+          }
         },
         template: `
         <sdc-loader [display]="showLoaderFlag" [size]="'large'" [global]="global">
@@ -182,6 +164,4 @@ export default experimentOn('Loader')
         </div>
                 `,
       }
- 
-    ])
-      
+    ]);

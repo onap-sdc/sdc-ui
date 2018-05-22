@@ -7,7 +7,7 @@ export default `
 </div>
 <div  *ngIf="global&&display">
     <div class="sdc-loader-global-wrapper sdc-loader-background" >
-    <div class="sdc-loader {{ size }}"></div>
-    </div>   
+        <div class="sdc-loader {{ size }}"></div>
+    </div>
 </div>
 `;
