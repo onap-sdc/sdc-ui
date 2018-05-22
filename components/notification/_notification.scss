@@ -8,10 +8,10 @@
 	min-height: 45px;
 	animation: keyframes-slide-notif-in 1s;
 	margin: 2px;
-	//transition: top 2s, bottom 2s;
 	box-shadow: 0 3px 7px -3px $dark-gray;
 	display:flex;
 	flex-direction:row;
+	align-items: center;
 	&.fade-out__animated {
 		animation: keyframes-slide-notif-out 0.8s
 	}
