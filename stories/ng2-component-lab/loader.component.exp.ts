@@ -94,7 +94,6 @@ export default experimentOn('Loader')
         description: 'Fixed Different Size Loader',
         context: {
             showLoaderFlag: false,
-            global: false,
             showLoaderFunc: function() {
               this.showLoaderFlag = !this.showLoaderFlag;
               const that = this;
@@ -102,7 +101,7 @@ export default experimentOn('Loader')
           }
         },
         template: `
-                <sdc-loader [display]="showLoaderFlag" [size]="'small'" [global]="global">
+                <sdc-loader [display]="showLoaderFlag" [size]="'medium'">
                   <div style="border:1px solid black; padding:20px 100px;">
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
