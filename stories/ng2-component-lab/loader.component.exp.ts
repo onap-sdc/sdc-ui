@@ -1,4 +1,5 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
+import { IDropDownOption, DropDownOptionType, DropDownTypes } from "../../src/angular/form-elements/dropdown/dropdown-models";
 
 export default experimentOn('Loader')
     .group("Loader", [
@@ -15,7 +16,23 @@ export default experimentOn('Loader')
                 const that = this;
                 setTimeout(() => { that.showLoaderFlag = false; }, 2000);
             },
-
+            onChange: function() {
+              this.showLoaderFlag = !this.showLoaderFlag;
+              const that = this;
+              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+            },
+            options: [
+                {
+                  label: 'Third Option Label',
+                  value: 'thirdOptionValue',
+                  type: DropDownOptionType.Simple
+                },
+                {
+                    label: 'Fourth Option Label',
+                    value: 'FourthOptionValue',
+                    type: DropDownOptionType.Simple
+                }
+          ]
         },
         template: `
                 <sdc-loader [display]="showLoaderFlag" [size]="'large'" [global]="global">
@@ -24,7 +41,7 @@ export default experimentOn('Loader')
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+                    <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" [options] = "options" (changed)="onChange($event)"></sdc-dropdown>
                   </div>
                 </sdc-loader>
                 <div style="margin:10px 0px;">

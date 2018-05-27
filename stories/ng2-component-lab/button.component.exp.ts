@@ -12,7 +12,7 @@ experiment.group("Default button", [
         <br>The size of the button set to 'default' so it will shrink or expand according to the content.
         `,
         context: {
-            buttonClicked: ():void => {
+            buttonClicked: (): void => {
                 window.alert("OK");
             }
         },
