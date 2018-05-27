@@ -10,7 +10,7 @@ import { Component, Input } from "@angular/core";
                 <div class="color-section" *ngFor="let color of colorGroup | keys">
                     <div class='sdc-bc-{{color}} color-circle'></div>
                     <div>{{color}}</div>
-                    <div>{{tableMapColors[color]}}</div>
+                    <div>{{colorGroup[color]}}</div>
                 </div>
             </div>
         </div>
