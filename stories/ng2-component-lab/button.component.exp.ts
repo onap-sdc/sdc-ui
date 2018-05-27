@@ -1,7 +1,7 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 import { LowerCasePipe } from '@angular/common';
 
-const buttonTypes = ['primary', 'secondary', 'link', 'success', 'danger', 'warning', 'info'];
+const buttonTypes = ['primary', 'secondary', 'link', 'success', 'error', 'warning', 'info'];
 const buttonSizes = ['large', 'medium', 'small', 'x-small', 'default'];
 const experiment = experimentOn('Button');
 
