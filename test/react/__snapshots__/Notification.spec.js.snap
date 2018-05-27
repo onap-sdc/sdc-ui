@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification Notification - error 1`] = `
+<div
+  className="sdc-notification type-error "
+  data-test-id=""
+  onClick={undefined}
+>
+  <div
+    className="sdc-notification__icon_container"
+  >
+    <div
+      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
+      disabled={undefined}
+      onClick={undefined}
+    >
+      <svg />
+      
+    </div>
+  </div>
+  <div
+    className="sdc-notification__message"
+  >
+    <div
+      className="sdc-notification__title"
+    >
+      title
+    </div>
+    <div
+      className="sdc-notification__text"
+    >
+      message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification Notification - info 1`] = `
+<div
+  className="sdc-notification type-info "
+  data-test-id=""
+  onClick={undefined}
+>
+  <div
+    className="sdc-notification__icon_container"
+  >
+    <div
+      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
+      disabled={undefined}
+      onClick={undefined}
+    >
+      <svg />
+      
+    </div>
+  </div>
+  <div
+    className="sdc-notification__message"
+  >
+    <div
+      className="sdc-notification__title"
+    >
+      title
+    </div>
+    <div
+      className="sdc-notification__text"
+    >
+      message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification Notification - success 1`] = `
+<div
+  className="sdc-notification type-success "
+  data-test-id=""
+  onClick={undefined}
+>
+  <div
+    className="sdc-notification__icon_container"
+  >
+    <div
+      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
+      disabled={undefined}
+      onClick={undefined}
+    >
+      <svg />
+      
+    </div>
+  </div>
+  <div
+    className="sdc-notification__message"
+  >
+    <div
+      className="sdc-notification__title"
+    >
+      title
+    </div>
+    <div
+      className="sdc-notification__text"
+    >
+      message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Notification Notification - warning 1`] = `
+<div
+  className="sdc-notification type-warning "
+  data-test-id=""
+  onClick={undefined}
+>
+  <div
+    className="sdc-notification__icon_container"
+  >
+    <div
+      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
+      disabled={undefined}
+      onClick={undefined}
+    >
+      <svg />
+      
+    </div>
+  </div>
+  <div
+    className="sdc-notification__message"
+  >
+    <div
+      className="sdc-notification__title"
+    >
+      title
+    </div>
+    <div
+      className="sdc-notification__text"
+    >
+      message
+    </div>
+  </div>
+</div>
+`;
