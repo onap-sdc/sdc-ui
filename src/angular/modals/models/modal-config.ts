@@ -1,4 +1,5 @@
 import { Placement } from "../../common/enums";
+import { IButtonComponent } from "../../buttons/ibutton.interface";
 
 export interface IModalConfig {
     size?: string; // xl|l|md|sm|xsm
@@ -9,20 +10,7 @@ export interface IModalConfig {
     type?: string; // 'info|error|alert';
 }
 
-export interface IButtonComponent {
-    text: string;
-    disabled?: boolean;
-    type?: string;
-    testId?: string;
-    preventDoubleClick?: boolean;
-    icon_name?: string;
-    icon_position?: string;
-    show_spinner?: boolean;
-    spinner_position?: Placement;
-    size?: string;
-}
-
-export interface IModalButtonComponent extends IButtonComponent{
+export interface IModalButtonComponent extends IButtonComponent {
     id?: string;
     callback?: Function;
     closeModal?: boolean;
