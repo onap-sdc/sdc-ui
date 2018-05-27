@@ -2,6 +2,7 @@ import { Injectable, Type, ComponentRef } from '@angular/core';
 import { ModalComponent } from "./modal.component";
 import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
 import { IModalConfig, ModalType, ModalSize, IModalButtonComponent } from "./models/modal-config";
+import { ButtonType } from '../common/enums';
 
 @Injectable()
 export class ModalService {
@@ -18,7 +19,7 @@ export class ModalService {
             title: title,
             message: message,
             testId: testId,
-            buttons: this.createButtons('secondary', actionButtonText, actionButtonCallback),
+            buttons: this.createButtons(ButtonType.secondary, actionButtonText, actionButtonCallback),
             type: ModalType.alert
         } as IModalConfig;
         const modalInstance: ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -33,7 +34,7 @@ export class ModalService {
             message: message,
             testId: testId,
             type: ModalType.standard,
-            buttons: this.createButtons('primary', actionButtonText, actionButtonCallback)
+            buttons: this.createButtons(ButtonType.primary, actionButtonText, actionButtonCallback)
         } as IModalConfig;
         const modalInstance: ComponentRef<ModalComponent> = this.openModal(modalConfig);
         this.currentModal = modalInstance;
@@ -46,7 +47,7 @@ export class ModalService {
             title: 'Error',
             message: errorMessage,
             testId: testId,
-            buttons: [{text: "OK", type: "alert", closeModal: true}],
+            buttons: [{text: "OK", type: ButtonType.error, closeModal: true}],
             type: ModalType.error
         } as IModalConfig;
         const modalInstance: ComponentRef<ModalComponent> = this.openModal(modalConfig);
@@ -81,11 +82,11 @@ export class ModalService {
         this.currentModal.instance.modalVisible = false;
     }
 
-    private createButtons = (type: string, actionButtonText?: string, actionButtonCallback?: Function): Array<IModalButtonComponent> => {
+    private createButtons = (type: ButtonType, actionButtonText?: string, actionButtonCallback?: Function): Array<IModalButtonComponent> => {
         const buttons: Array<IModalButtonComponent> = [];
         if (actionButtonText && actionButtonCallback) {
             buttons.push({text: actionButtonText, type: type, callback: actionButtonCallback, closeModal: true});
-            buttons.push({text: 'Cancel', type: 'secondary', closeModal: true});
+            buttons.push({text: 'Cancel', type: ButtonType.secondary, closeModal: true});
         } else {
             buttons.push({text: 'Cancel', type: type, closeModal: true});
         }

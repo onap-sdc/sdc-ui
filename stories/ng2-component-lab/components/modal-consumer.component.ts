@@ -4,7 +4,7 @@ import { IModalConfig, ModalType, ModalSize } from "../../../src/angular/modals/
 import { ModalInnerContent } from "./modal-inner-content-example.component";
 import { ButtonComponent } from "../../../src/angular/buttons/button.component";
 import { ModalButtonComponent } from './../../../src/angular/modals/modal-button.component';
-import { Placement } from "../../../src/angular/common/enums";
+import { Placement, ButtonType } from "../../../src/angular/common/enums";
 import { ModalComponent } from "../../../src/angular/components";
 
 const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
@@ -50,7 +50,7 @@ export class ModalConsumer {
             testId: 'sampleTestIdModal1',
             buttons: [
                       {id: "saveButton", text: "Save", callback: this.customModalOnSave1, closeModal: false},
-                      {id: "cancelButton", text: "Cancel", size: 'x-small', type: 'secondary', closeModal: true}
+                      {id: "cancelButton", text: "Cancel", size: 'x-small', type: ButtonType.secondary , closeModal: true}
                     ] as ModalButtonComponent[]
         } as IModalConfig;
         this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
