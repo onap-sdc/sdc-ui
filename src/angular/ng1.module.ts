@@ -30,11 +30,6 @@ if (typeof angular !== "undefined") {
         inputs: ['legend', 'options', 'disabled', 'value', 'direction'],
         outputs: ['valueChange']
     }));
-    SdcUiComponentsNg1Module.directive('sdcTextarea', downgradeComponent({
-        component: Components.InputComponent,
-        inputs: ['label', 'value', 'pattern', 'disabled', 'placeHolder', 'required', 'minLength', 'maxLength', 'debounceTime'],
-        outputs: ['valueChange']
-    }));
 
     // Buttons
     SdcUiComponentsNg1Module.directive('sdcButton', downgradeComponent({

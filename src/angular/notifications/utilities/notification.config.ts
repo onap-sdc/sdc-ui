@@ -1,7 +1,7 @@
 import { Type, ComponentRef } from '@angular/core';
 
 export type NotificationType =
-    "info" | "warning" | "error" | "success";
+    "info" | "warn" | "error" | "success";
 
 export class NotificationSettings {
     

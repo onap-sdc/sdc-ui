@@ -1,14 +1,15 @@
-/**
- * Created by rc2122 on 5/27/2018.
- */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from "@angular/forms";
+import { ValidationComponent } from '../validation/validation.component';
+import { ValidatableComponent } from './../validation/validatable.component';
 import 'rxjs/add/operator/debounceTime';
-import {ValidatableComponent} from "../validation/validatable.component";
+import template from "./input.component.html";
 
 @Component({
+    selector: 'sdc-input',
+    template: template,
 })
-export class BaseTextElementComponent extends ValidatableComponent implements OnInit {
+export class InputComponent extends ValidatableComponent implements OnInit {
 
     @Output('valueChange') public baseEmitter: EventEmitter<any> = new EventEmitter<any>();
     @Input() public label: string;
@@ -16,6 +17,7 @@ export class BaseTextElementComponent extends ValidatableComponent implements On
     @Input() public name: string;
     @Input() public classNames: string;
     @Input() public disabled: boolean;
+    @Input() public type: string;
     @Input() public placeHolder: string;
     @Input() public required: boolean;
     @Input() public minLength: number;
@@ -30,6 +32,7 @@ export class BaseTextElementComponent extends ValidatableComponent implements On
         this.control = new FormControl('', []);
         this.debounceTime = 0;
         this.placeHolder = '';
+        this.type = 'text';
     }
 
     ngOnInit() {
