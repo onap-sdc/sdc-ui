@@ -9,6 +9,7 @@ import template from "./../buttons/button.component.html";
 })
 export class ModalButtonComponent extends ButtonComponent {
 
+    @Input() public id?: string;
     @Input() public callback: Function;
     @Input() public closeModal: boolean;
     @HostListener('click') invokeCallback = (): void => {
