@@ -7,20 +7,22 @@ export interface IModalConfig {
     message?: string;
     buttons?: IModalButtonComponent[];
     testId?: string;
-    type?: string; // 'info|error|alert';
+    type?: ModalType;
 }
 
 export interface IModalButtonComponent extends IButtonComponent {
     id?: string;
-    callback?: Function;
+    callback?: () => void;
     closeModal?: boolean;
 }
 
 export enum ModalType {
-    alert = "alert",
-    error = "error",
-    standard = "info",
-    custom = "custom"
+    info = 'info',
+    warning = 'warning',
+    error = 'error',
+    success = 'success',
+    action = 'action',
+    custom = 'custom'
 }
 
 export enum ModalSize {

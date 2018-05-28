@@ -1,6 +1,6 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
 
-const sourceStyles:string =`
+const sourceStyles: string = `
     .example-source {
       background: #eeeeee;
       padding: 10px;
@@ -28,54 +28,101 @@ const sourceStyles:string =`
 export default experimentOn('Modals')
     .group("Modals", [
       {
-        id: 'standardModal',
+        id: 'infoModal',
         showSource: false,
-        title: 'Standard modal',
-        description: 'Opens a modal with a custom title, message, and confirm button with a callback.',
+        title: 'Info modal',
+        description: `Opens info modal with one 'OK' button by default that close the modal.`,
         template: `
-        <modal-consumer [action]="'openActionModal'"></modal-consumer>
+        <modal-consumer [action]="'openInfoModal'"></modal-consumer>
         <div class="example-source">Source Code:
-        <pre>
-          const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
-            'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
-
-          this.modalService.openActionModal('Standard Modal', MODAL_CONTENT, "OK", this.onConfirmAction, "sampleTestId");
-
-          private onConfirmAction = ():void => {{ '{' }}
-            alert("Action has been confirmed");
-          {{ '}' }};
-        </pre></div>`,
+        <pre>this.modalService.openInfoModal('Info modal title', 'Info modal content', 'infoModalTestId');</pre>
+        </div>`,
         styles: [sourceStyles]
       },
       {
-        id: 'alertModal',
+        id: 'warningModal',
         showSource: false,
-        title: 'Alert modal',
-        description: 'Opens a standard alert modal with a custom title and message.',
+        title: 'Warning modal',
+        description: `Opens warning modal with one 'OK' button by default that close the modal.`,
         template: `
-
-
-        <modal-consumer [action]="'openAlertModal'"></modal-consumer>
+        <modal-consumer [action]="'openWarningModal'"></modal-consumer>
         <div class="example-source">Source Code:
-        <pre>
-          const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed risus nisl, egestas vitae erat non,' +
-          'pulvinar lacinia libero. Integer pulvinar pellentesque accumsan. Sed hendrerit lacus eu tempus pharetra';
-
-          this.modalService.openAlertModal("Alert Title", MODAL_CONTENT, "Continue", this.onConfirmAction, "sampleTestId");
-        </pre></div>`,
+        <pre>this.modalService.openWarningModal('Warning modal title', 'Warning modal content', 'warningModalTestId');</pre>
+        </div>`,
         styles: [sourceStyles]
       },
       {
         id: 'errorModal',
         showSource: false,
         title: 'Error modal',
-        description: `Opens a standard error modal with a custom message.`,
-        template: `<modal-consumer [action]="'openErrorModal'"></modal-consumer>
+        description: `Opens error modal with one 'OK' button by default that close the modal.`,
+        template: `
+        <modal-consumer [action]="'openErrorModal'"></modal-consumer>
+        <div class="example-source">Source Code:
+        <pre>this.modalService.openErrorModal('Error modal title', 'Error modal content', 'errorModalTestId');</pre>
+        </div>`,
+        styles: [sourceStyles]
+      },
+      {
+        id: 'successModal',
+        showSource: false,
+        title: 'Success modal',
+        description: `Opens succsess modal with one 'OK' button by default that close the modal.`,
+        template: `
+        <modal-consumer [action]="'openSuccessModal'"></modal-consumer>
+        <div class="example-source">Source Code:
+        <pre>this.modalService.openSuccessModal('Success modal title', 'Success modal content', 'successModalTestId');</pre>
+        </div>`,
+        styles: [sourceStyles]
+      },
+      {
+        id: 'infoModalWithCustomButtons',
+        showSource: false,
+        title: 'Info modal with custom buttons',
+        description: `Same as info modal but with custom buttons and callbacks`,
+        template: `
+        <modal-consumer [action]="'openInfoModalWithCustomButtons'"></modal-consumer>
         <div class="example-source">Source Code:
         <pre>
-
-          this.modalService.openErrorModal("An error has occurred!", "sampleTestId");
-        </pre></div>`,
+          <![CDATA[
+          const buttons = [
+            { text: 'CONFIRM', type: ButtonType.info, callback: this.onConfirmAction, closeModal: true },
+            { text: 'CANCEL', type: ButtonType.info, closeModal: true }
+          ] as ModalButtonComponent[];
+          this.modalService.openInfoModal('Info modal title', 'Info modal content', "infoModalTestId", buttons);
+          private onConfirmAction = ():void => {{ '{' }}
+            alert("Action has been confirmed");
+          {{ '}' }};
+          ]]>
+        </pre>
+        </div>`,
+        styles: [sourceStyles]
+      },
+      {
+        id: 'warningModalWithCustomButtons',
+        showSource: false,
+        title: 'Warning modal with custom buttons',
+        description: `Same as warning modal but with custom buttons and callbacks`,
+        template: `
+        <modal-consumer [action]="'openWarningModalWithCustomButtons'"></modal-consumer>
+        <div class="example-source">Source Code:
+        <pre>
+          <![CDATA[
+          const buttons = [
+            { text: 'SAVE', type: ButtonType.warning, callback: this.onSaveAction, closeModal: true },
+            { text: 'APPLY', type: ButtonType.warning, callback: this.onApplyAction },
+            { text: 'CANCEL', type: ButtonType.warning, closeModal: true }
+          ] as ModalButtonComponent[];
+          this.modalService.openInfoModal('Info modal title', 'Info modal content', "infoModalTestId", buttons);
+          private onSaveAction = (): void => {
+            alert("Action has been saved, modal will be close");
+          }
+          private onApplyAction = (): void => {
+              alert("Action has been applied, modal will not be close");
+          }
+          ]]>
+        </pre>
+        </div>`,
         styles: [sourceStyles]
       },
       {
