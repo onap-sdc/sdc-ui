@@ -10,7 +10,6 @@ export default experimentOn('Loader')
         description: 'Simple Fixed loader',
         context: {
             showLoaderFlag: false,
-            global: false,
             showLoaderFunc: function() {
                 this.showLoaderFlag = !this.showLoaderFlag;
                 const that = this;
@@ -35,22 +34,33 @@ export default experimentOn('Loader')
           ]
         },
         template: `
-                <sdc-loader [display]="showLoaderFlag" [size]="'large'" [global]="global">
+                <sdc-loader size="large" #loader1 name="test2">
                   <div style="border:1px solid black; padding:20px 100px;">
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                    <sdc-dropdown label="Hi I am a label" placeHolder="Please choose option" [options] = "options" (changed)="onChange($event)"></sdc-dropdown>
                   </div>
-                </sdc-loader>
+                </sdc-loader >
                 <div style="margin:10px 0px;">
                   <sdc-button
-                    text="Discrete loader"
-                    (click)="showLoaderFunc()">
+                    text="Show loader"
+                    (click)="loader1.activate()">
+                  </sdc-button>
+                  <sdc-button
+                    text="Hide loader"
+                    (click)="loader1.deactivate()">
                   </sdc-button>
                 </div>
                 `,
+      },
+      {
+        id: 'General loader with service',
+        showSource: true,
+        title: 'General loader with service',
+        description: '',
+        context: {},
+        template: `<general-loader-example></general-loader-example>`
       },
       {
         id: 'Simple Loader',
@@ -68,116 +78,120 @@ export default experimentOn('Loader')
 
         },
         template: `
-                  <sdc-loader [display] = "showLoaderFlag" [global] = "global"></sdc-loader>
+                  <sdc-loader [global] = "global" name= "global" #globalLoader></sdc-loader>
                   <sdc-button
-                      text="Global Loader"
-                      (click)="showLoaderFunc()">
+                      text="Global Loader Activate"
+                      (click)="globalLoader.activate()">
+                  </sdc-button>,
+                  <sdc-button
+                      text="Global Loader Activate"
+                      (click)="globalLoader.deactivate()">
                   </sdc-button>`,
       },
-      {
-        id: 'Fixed Different Size Loader',
-        showSource: true,
-        title: 'Fixed Different Size Loader',
-        description: 'Fixed Different Size Loader',
-        context: {
-            showLoaderFlag: false,
-            global: false,
-            showLoaderFunc: function() {
-              this.showLoaderFlag = !this.showLoaderFlag;
-              const that = this;
-              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
-          }
-        },
-        template: `
-                <sdc-loader [display]="showLoaderFlag" [size]="'small'" [global]="global">
-                  <div style="border:1px solid black; padding:20px 100px;">
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                  </div>
-                </sdc-loader>
-                <div style="margin:10px 0px;">
-                  <sdc-button
-                    text="Discrete loader"
-                    (click)="showLoaderFunc()">
-                  </sdc-button>
-                </div>
-                `,
-      },
-       {
-        id: 'Fixed Different Size Loader',
-        showSource: true,
-        title: 'Fixed Different Size Loader',
-        description: 'Fixed Different Size Loader',
-        context: {
-            showLoaderFlag: false,
-            showLoaderFunc: function() {
-              this.showLoaderFlag = !this.showLoaderFlag;
-              const that = this;
-              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
-          }
-        },
-        template: `
-                <sdc-loader [display]="showLoaderFlag" [size]="'medium'">
-                  <div style="border:1px solid black; padding:20px 100px;">
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                    <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                  </div>
-                </sdc-loader>
-                <div style="margin:10px 0px;">
-                  <sdc-button
-                    text="Discrete loader"
-                    (click)="showLoaderFunc()">
-                  </sdc-button>
-                </div>
-                `,
-      },
-      {
-        id: 'Loader Div Inside Div',
-        showSource: true,
-        title: 'Fixed Different Size Loader',
-        description: 'Fixed Different Size Loader',
-        context: {
-            showLoaderFlag: false,
-            global: false,
-            showLoaderFunc: function() {
-              this.showLoaderFlag = !this.showLoaderFlag;
-              const that = this;
-              setTimeout(() => { that.showLoaderFlag = false; }, 2000);
-          },
-          showLoaderFlag2: false,
-          showLoaderFunc2: function() {
-            this.showLoaderFlag2 = !this.showLoaderFlag2;
-            const that = this;
-            setTimeout(() => { that.showLoaderFlag2 = false; }, 2000);
-          }
-        },
-        template: `
-        <sdc-loader [display]="showLoaderFlag" [size]="'large'" [global]="global">
-            <div style="border:1px solid black; padding:20px 100px;">
-              <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-              <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-              <sdc-loader [display]="showLoaderFlag2" [size]="'large'" [global]="global">
-                <div style="border:1px solid black; padding:20px 100px;">
-                  <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                  <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
-                </div>
-              </sdc-loader>
-              <div style="margin:10px 0px;">
-                <sdc-button
-                  text="Discrete loader"
-                  (click)="showLoaderFunc2()">
-                </sdc-button>
-              </div>
-            </div>
-        </sdc-loader>
-        <div style="margin:10px 0px;">
-          <sdc-button
-            text="Discrete loader"
-            (click)="showLoaderFunc()">
-          </sdc-button>
-        </div>
-                `,
-      }
+      // {
+      //   id: 'Fixed Different Size Loader',
+      //   showSource: true,
+      //   title: 'Fixed Different Size Loader',
+      //   description: 'Fixed Different Size Loader',
+      //   context: {
+      //       showLoaderFlag: false,
+      //       global: false,
+      //       showLoaderFunc: function() {
+      //         this.showLoaderFlag = !this.showLoaderFlag;
+      //         const that = this;
+      //         setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+      //     }
+      //   },
+      //   template: `
+      //           <sdc-loader  [size]="'small'" [global]="global">
+      //             <div style="border:1px solid black; padding:20px 100px;">
+      //               <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //               <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //               <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //             </div>
+      //           </sdc-loader>
+      //           <div style="margin:10px 0px;">
+      //             <sdc-button
+      //               text="Discrete loader"
+      //               (click)="showLoaderFunc()">
+      //             </sdc-button>
+      //           </div>
+      //           `,
+      // }
+      //  {
+      //   id: 'Fixed Different Size Loader',
+      //   showSource: true,
+      //   title: 'Fixed Different Size Loader',
+      //   description: 'Fixed Different Size Loader',
+      //   context: {
+      //       showLoaderFlag: false,
+      //       showLoaderFunc: function() {
+      //         this.showLoaderFlag = !this.showLoaderFlag;
+      //         const that = this;
+      //         setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+      //     }
+      //   },
+      //   template: `
+      //           <sdc-loader [display]="showLoaderFlag" [size]="'medium'">
+      //             <div style="border:1px solid black; padding:20px 100px;">
+      //               <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //               <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //               <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //             </div>
+      //           </sdc-loader>
+      //           <div style="margin:10px 0px;">
+      //             <sdc-button
+      //               text="Discrete loader"
+      //               (click)="showLoaderFunc()">
+      //             </sdc-button>
+      //           </div>
+      //           `,
+      // },
+      // {
+      //   id: 'Loader Div Inside Div',
+      //   showSource: true,
+      //   title: 'Fixed Different Size Loader',
+      //   description: 'Fixed Different Size Loader',
+      //   context: {
+      //       showLoaderFlag: false,
+      //       global: false,
+      //       showLoaderFunc: function() {
+      //         this.showLoaderFlag = !this.showLoaderFlag;
+      //         const that = this;
+      //         setTimeout(() => { that.showLoaderFlag = false; }, 2000);
+      //     },
+      //     showLoaderFlag2: false,
+      //     showLoaderFunc2: function() {
+      //       this.showLoaderFlag2 = !this.showLoaderFlag2;
+      //       const that = this;
+      //       setTimeout(() => { that.showLoaderFlag2 = false; }, 2000);
+      //     }
+      //   },
+      //   template: `
+      //   <sdc-loader [display]="showLoaderFlag" [size]="'large'" [global]="global">
+      //       <div style="border:1px solid black; padding:20px 100px;">
+      //         <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //         <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //         <sdc-loader [display]="showLoaderFlag2" [size]="'large'" [global]="global">
+      //           <div style="border:1px solid black; padding:20px 100px;">
+      //             <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //             <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
+      //           </div>
+      //         </sdc-loader>
+      //         <div style="margin:10px 0px;">
+      //           <sdc-button
+      //             text="Discrete loader"
+      //             (click)="showLoaderFunc2()">
+      //           </sdc-button>
+      //         </div>
+      //       </div>
+      //   </sdc-loader>
+      //   <div style="margin:10px 0px;">
+      //     <sdc-button
+      //       text="Discrete loader"
+      //       (click)="showLoaderFunc()">
+      //     </sdc-button>
+      //   </div>
+      //           `,
+      // }
     ]);

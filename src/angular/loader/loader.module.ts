@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { LoaderComponent } from "./loader.component";
 import { CommonModule } from "@angular/common";
+import { LoaderService } from "./loader.service";
 
 @NgModule({
     declarations: [
@@ -12,6 +13,9 @@ import { CommonModule } from "@angular/common";
     exports: [
         LoaderComponent
     ],
+    providers: [
+        LoaderService
+    ]
 })
 
 export class LoaderModule {}

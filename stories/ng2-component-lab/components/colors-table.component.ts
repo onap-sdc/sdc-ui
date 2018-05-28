@@ -16,7 +16,7 @@ import { Component, Input } from "@angular/core";
 })
 export class ColorsTable {
 
-    @Input() tableTitle:string;
+    @Input() tableTitle :string;
     @Input() tableMapColors: Object;
 
     constructor() {

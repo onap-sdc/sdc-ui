@@ -10,6 +10,7 @@ import { ModalConsumer } from "./components/modal-consumer.component";
 import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
 import { NotificationsExample } from "./components/notifications-example.component";
 import { Mode, Placement, Size } from "./../../src/angular/common/enums";
+import { GeneralLoaderExampleComponent } from "./components/general-loader-example.component";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { Mode, Placement, Size } from "./../../src/angular/common/enums";
         ModalConsumer,
         SearchFilterPipe,
         SvgIconsTableComponent,
-        NotificationsExample
+        NotificationsExample,
+        GeneralLoaderExampleComponent
     ],
     imports: [
         CommonModule,
@@ -31,6 +33,7 @@ import { Mode, Placement, Size } from "./../../src/angular/common/enums";
         SdcUiComponentsModule,
         ModalInnerContent,
         NotificationsExample,
+        GeneralLoaderExampleComponent,
         ColorsTable,
         SvgIconsTableComponent,
         ModalConsumer,
