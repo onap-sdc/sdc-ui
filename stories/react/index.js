@@ -19,6 +19,7 @@ import Modals from './Modal.stories.js';
 import PopupMenu from './PopupMenu.stories.js';
 import Accordion from './Accordion.stories.js';
 import Panel from './Panel.stories.js';
+import Notifications from './Notification.stories.js';
 
 storiesOf('Colors', module)
 	.add('Color Palette', () => <Colors />);
@@ -51,7 +52,8 @@ storiesOf('Menu', module)
 
 storiesOf('Modals', module)
 	.add('Modal examples', () => <Modals />);
-
+storiesOf('Notifications', module)
+	.add('Notifications', () => <Notifications />);
 storiesOf('Radios', module)
 	.add('Radio Buttons', () => <Radios />)
 	.add('Radio Button Groups', () => <RadioGroups />);
