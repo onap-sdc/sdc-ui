@@ -1,0 +1,77 @@
+.sdc-textarea {
+  margin-bottom: 10px;
+
+  .sdc-textarea__label {
+    margin-bottom: 5px;
+    display: block;
+    @include body-3-emphasis;
+
+    &.required::before {
+      content: '*';
+      color: $red;
+      margin: 0 4px 0 0;
+    }
+  }
+
+  .sdc-textarea__textarea {
+    @include box-sizing;
+    padding: 0 10px;
+    width: 100%;
+    border: solid 1px $light-gray;
+    border-radius:2px;
+    color: $dark-gray;
+
+    &.error, &.error:focus, &.error:disabled  {
+      border: solid 1px $red;
+      color: $red;
+      outline: none;
+    }
+
+    &:read-only{
+      border: none;
+      outline: none;
+      color: $text-black
+    }
+    &:-moz-read-only { /* For Firefox */
+      border: none;
+      outline: none;
+      color: $text-black
+    }
+
+    &:focus {
+      border-color: $blue;
+      outline: 0 none;
+      color: $text-black;
+    }
+
+    &:disabled {
+      background: $light-silver;
+      color: $gray;
+    }
+
+    &::-webkit-input-placeholder /* Chrome/Opera/Safari */  {
+      color: $gray;
+      @include base-font-italic;
+    }
+    &::-moz-placeholder  /* Firefox 19+ */  {
+      color: $gray;
+      @include base-font-italic;
+    }
+    &:-moz-placeholder  /* Firefox 18- */  {
+      color: $gray;
+      @include base-font-italic;
+    }
+    &:-ms-input-placeholder  /* IE 10+ */
+    {
+      color: $gray;
+      @include base-font-italic;
+    }
+  }
+
+  .sdc-label__error{
+    margin-top: 2px;
+    margin-left: 2px;
+    @include body-3;
+  }
+
+}
