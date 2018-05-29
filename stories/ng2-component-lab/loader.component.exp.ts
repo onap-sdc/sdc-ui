@@ -78,4 +78,22 @@ export default experimentOn('Loader')
                   </sdc-button>,
                 `,
       },
+      {
+        id: 'Simple Output Loader',
+        showSource: true,
+        title: 'Regular Simple Loader',
+        description: 'Simple loader',
+        context: {
+            global: true,
+            showLoaderFunc: (loader) => {
+              loader.loaderService.activate(loader.name);
+              setTimeout(() => {
+                loader.loaderService.deactivate(loader.name);
+              }, 2000);
+          }
+        },
+        template: `
+                 <loader-output-example></loader-output-example>
+                `,
+      },
     ]);

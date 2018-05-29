@@ -13,6 +13,8 @@ import { Mode, Placement, Size } from "./../../src/angular/common/enums";
 import { GeneralLoaderExampleComponent } from "./components/general-loader-example.component";
 import { MultipleLoaderExampleComponent } from "./components/multiple-loader-example.component";
 import { MultipleLoaderSecondExampleComponent } from "./components/multiple-second-loader-example.component";
+import { LoaderOutputExapleCompnent } from "./components/loader-output-example-component";
+import { LoaderPerfomanceItem } from "./components/loader-performance-item";
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import { MultipleLoaderSecondExampleComponent } from "./components/multiple-seco
         NotificationsExample,
         GeneralLoaderExampleComponent,
         MultipleLoaderExampleComponent,
-        MultipleLoaderSecondExampleComponent
+        MultipleLoaderSecondExampleComponent,
+        LoaderOutputExapleCompnent,
+        LoaderPerfomanceItem
     ],
     imports: [
         CommonModule,
@@ -43,7 +47,9 @@ import { MultipleLoaderSecondExampleComponent } from "./components/multiple-seco
         ColorsTable,
         SvgIconsTableComponent,
         ModalConsumer,
-        SearchFilterPipe
+        SearchFilterPipe,
+        LoaderOutputExapleCompnent,
+        LoaderPerfomanceItem
     ],
     entryComponents: [
         ModalInnerContent
