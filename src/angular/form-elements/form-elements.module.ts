@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { InputComponent } from "./input/input.component";
+import { InputComponent } from "./text-elements/input/input.component";
 import { DropDownComponent } from "./dropdown/dropdown.component";
 import { CommonModule } from "@angular/common";
 import { CheckboxComponent } from "./checkbox/checkbox.component";
@@ -9,6 +9,7 @@ import { AnimationDirectivesModule } from '../animations/animation-directives.mo
 import { DropDownTriggerDirective } from "./dropdown/dropdown-trigger.directive";
 import {SvgIconModule} from "../svg-icon/svg-icon.module";
 import { ValidationModule } from './validation/validation.module';
+import {TextareaComponent} from "./text-elements/textarea/textarea.component";
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { ValidationModule } from './validation/validation.module';
         CheckboxComponent,
         RadioGroupComponent,
         DropDownTriggerDirective,
+        TextareaComponent
     ],
     exports: [
         DropDownComponent,
@@ -31,7 +33,8 @@ import { ValidationModule } from './validation/validation.module';
         InputComponent,
         CheckboxComponent,
         RadioGroupComponent,
-        ValidationModule
+        ValidationModule,
+        TextareaComponent
     ]
 })
 export class FormElementsModule {

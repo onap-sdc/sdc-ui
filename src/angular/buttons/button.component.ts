@@ -46,4 +46,17 @@ export class ButtonComponent implements OnInit {
         }
         this.lastClick = now;
     }
+
+    public disableButton = () => {
+        if (!this.disabled) {
+            this.disabled = true;
+        }
+    }
+
+    public enableButton = () => {
+        if (this.disabled) {
+            this.disabled = false;
+        }
+    }
+
 }
