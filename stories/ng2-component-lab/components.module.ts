@@ -11,6 +11,8 @@ import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
 import { NotificationsExample } from "./components/notifications-example.component";
 import { Mode, Placement, Size } from "./../../src/angular/common/enums";
 import { GeneralLoaderExampleComponent } from "./components/general-loader-example.component";
+import { MultipleLoaderExampleComponent } from "./components/multiple-loader-example.component";
+import { MultipleLoaderSecondExampleComponent } from "./components/multiple-second-loader-example.component";
 
 @NgModule({
     declarations: [
@@ -21,7 +23,9 @@ import { GeneralLoaderExampleComponent } from "./components/general-loader-examp
         SearchFilterPipe,
         SvgIconsTableComponent,
         NotificationsExample,
-        GeneralLoaderExampleComponent
+        GeneralLoaderExampleComponent,
+        MultipleLoaderExampleComponent,
+        MultipleLoaderSecondExampleComponent
     ],
     imports: [
         CommonModule,
@@ -34,6 +38,8 @@ import { GeneralLoaderExampleComponent } from "./components/general-loader-examp
         ModalInnerContent,
         NotificationsExample,
         GeneralLoaderExampleComponent,
+        MultipleLoaderExampleComponent,
+        MultipleLoaderSecondExampleComponent,
         ColorsTable,
         SvgIconsTableComponent,
         ModalConsumer,

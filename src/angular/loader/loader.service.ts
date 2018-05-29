@@ -1,12 +1,10 @@
 import { Injectable, Type, ComponentRef } from '@angular/core';
 import { LoaderComponent } from './loader.component';
-declare const window:any;
+
 @Injectable()
 export class LoaderService {
 
-    constructor() {
-        window.loaderService = this;
-    }
+    constructor() {}
 
     public registeredLoaders = {};
 
