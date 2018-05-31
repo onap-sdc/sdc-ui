@@ -15,7 +15,7 @@
     "build-themes": "node-sass --include-path src/style/scss/themes src/style/scss/themes/1802/style.scss css/theme_1802.css",
     "build-svg-icons": "node utils/create-svg-icons-map.js",
     "build-common": "npm run build-icons && npm run build-svg-icons && node-sass --include-path src/style/scss src/style/scss/style.scss css/style.css && npm run build-themes",
-    "build-react": "babel src/react -d lib/react",
+    "build-react": "npm run lint && babel src/react -d lib/react",
     "compile-angular": "ngc -p tsconfig.angular.build-es5.json",
     "rollup-angular:module": "rollup -c rollup.angular.module.config.js",
     "rollup-angular:umd": "rollup -c rollup.angular.umd.config.js",
@@ -31,7 +31,9 @@
     "build-storybook": "npm run build-common && build-storybook -c .storybook -o .out/react && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html && ncp assets .out/assets",
     "lab": "npm run build-common && ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature",
     "build-lab": "set NODE_ENV=build&& ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js --build -- feature",
-    "build-gh-pages": "npm run build-storybook && npm run build-lab && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html && ncp assets .out/assets"
+    "build-gh-pages": "npm run build-storybook && npm run build-lab && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html && ncp assets .out/assets",
+    "lint": "eslint \"src/react/**/*.js\" --ignore-pattern \"src/react/utils/*\"",
+    "lint-fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
@@ -72,7 +74,9 @@
     "css-loader": "^0.28.0",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.0.1",
     "html-loader": "^0.4.5",
     "html-replace-webpack-plugin": "^2.2.6",
@@ -97,6 +101,7 @@
     "lite-server": "^2.3.0",
     "ncp": "^2.0.0",
     "node-sass": "^4.5.3",
+    "prettier": "1.13.3",
     "prismjs": "^1.6.0",
     "protractor": "5.1.1",
     "react-test-renderer": "^15.5.4",
