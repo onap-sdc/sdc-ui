@@ -56,7 +56,7 @@ SVGIcon.propTypes = {
     className: PropTypes.string,
     iconClassName: PropTypes.string,
     labelClassName: PropTypes.string,
-    color: PropTypes.string
+    color: PropTypes.string,
 };
 
 SVGIcon.defaultProps = {
@@ -66,7 +66,7 @@ SVGIcon.defaultProps = {
     iconClassName: '',
     labelClassName: '',
     labelPosition: 'bottom',
-    color: ''
+    color: '',
 };
 
 export default SVGIcon;

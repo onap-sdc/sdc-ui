@@ -8,7 +8,7 @@ class Tabs extends React.Component {
             children = [],
             activeTab,
             onTabClick,
-            className
+            className,
         } = this.props;
         return (
             <div
@@ -22,7 +22,7 @@ class Tabs extends React.Component {
                         React.cloneElement(child, {
                             key: child.props.tabId,
                             onClick: () => onTabClick(child.props.tabId),
-                            activeTab
+                            activeTab,
                         })
                     )}
                 </ul>

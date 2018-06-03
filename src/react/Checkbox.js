@@ -9,7 +9,7 @@ class Checkbox extends React.Component {
             label,
             inputRef,
             className,
-            name
+            name,
         } = this.props;
         let dataTestId = this.props['data-test-id'];
 

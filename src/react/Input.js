@@ -13,7 +13,7 @@ class Input extends React.Component {
             name,
             type,
             placeholder,
-            isRequired
+            isRequired,
         } = this.props;
         let dataTestId = this.props['data-test-id'];
         let inputClasses = `sdc-input__input ${errorMessage ? 'error' : ''} ${
@@ -94,13 +94,13 @@ Input.propTypes = {
     isRequired: PropTypes.bool,
     disabled: PropTypes.bool,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    className: PropTypes.string
+    className: PropTypes.string,
 };
 
 Input.defaultProps = {
     type: 'text',
     readOnly: false,
     isRequired: false,
-    disabled: false
+    disabled: false,
 };
 export default Input;

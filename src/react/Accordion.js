@@ -6,7 +6,7 @@ class Accordion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: props.defaultExpanded
+            open: props.defaultExpanded,
         };
     }
     render() {
@@ -36,13 +36,13 @@ Accordion.propTypes = {
     title: PropTypes.string,
     children: PropTypes.node,
     expandByDefault: PropTypes.bool,
-    dataTestId: PropTypes.string
+    dataTestId: PropTypes.string,
 };
 
 Accordion.defaultProps = {
     title: '',
     className: '',
-    defaultExpanded: false
+    defaultExpanded: false,
 };
 
 export default Accordion;

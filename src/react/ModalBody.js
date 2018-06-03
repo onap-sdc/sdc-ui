@@ -7,11 +7,11 @@ const ModalBody = ({ children, className }) => (
 
 ModalBody.propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
 };
 
 ModalBody.defaultProps = {
-    className: ''
+    className: '',
 };
 
 export default ModalBody;
