@@ -7,10 +7,10 @@ const Panel = ({ className, children }) => (
 
 Panel.propTypes = {
     className: PropTypes.string,
-    children: PropTypes.node
+    children: PropTypes.node,
 };
 
 Panel.defaultProps = {
-    className: ''
+    className: '',
 };
 export default Panel;

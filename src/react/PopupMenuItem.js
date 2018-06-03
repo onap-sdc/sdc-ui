@@ -29,12 +29,12 @@ PopupMenuItem.propTypes = {
     value: PropTypes.any,
     selected: PropTypes.bool,
     onClick: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
 };
 
 PopupMenuItem.defaultProps = {
     selected: false,
-    disabled: false
+    disabled: false,
 };
 
 export default PopupMenuItem;

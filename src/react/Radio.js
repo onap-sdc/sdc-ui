@@ -10,7 +10,7 @@ class Radio extends React.Component {
             label,
             className,
             inputRef,
-            name
+            name,
         } = this.props;
         let dataTestId = this.props['data-test-id'];
         return (
@@ -56,12 +56,12 @@ Radio.propTypes = {
     className: PropTypes.string,
     inputRef: PropTypes.func,
     name: PropTypes.string,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
 };
 
 Radio.defaultProps = {
     checked: false,
-    className: ''
+    className: '',
 };
 
 export default Radio;
