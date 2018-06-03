@@ -32,7 +32,7 @@
     "lab": "npm run build-common && ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js -- feature",
     "build-lab": "set NODE_ENV=build&& ng2-component-lab --config .ng2-component-lab/ng2-component-lab.config.js --build -- feature",
     "build-gh-pages": "npm run build-storybook && npm run build-lab && ncp utils/index-for-gh-pages.html .out/index.html && ncp utils/main-page.html .out/main-page.html && ncp assets .out/assets",
-    "lint": "eslint -c .eslintrc.rules \"src/react/**/*.js\" --ignore-pattern \"src/react/utils/*\"",
+    "lint": "eslint \"src/react/**/*.js\" --ignore-pattern \"src/react/utils/*\"",
     "lint-fix": "npm run lint -- --fix"
   },
   "repository": {
@@ -113,7 +113,7 @@
     "style-loader": "^0.16.1",
     "tslint": "5.9.1",
     "tslint-angular": "^1.1.1",
-    "typescript": "^2.6.1",
+    "typescript": "2.8.4",
     "uglify-js": "2.8.29",
     "url-parse": "^1.1.9"
   },
