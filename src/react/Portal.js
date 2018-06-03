@@ -44,7 +44,7 @@ class Portal extends React.Component {
 }
 
 Portal.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired
 };
 
 export default Portal;

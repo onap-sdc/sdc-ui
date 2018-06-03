@@ -12,7 +12,7 @@ const Tile = ({
     className,
     onClick,
     children,
-    dataTestId,
+    dataTestId
 }) => {
     let childrenArr = Children.toArray(children);
     return (
@@ -41,7 +41,7 @@ Tile.propTypes = {
     iconColor: PropTypes.string,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    dataTestId: PropTypes.string,
+    dataTestId: PropTypes.string
 };
 
 export default Tile;

@@ -32,8 +32,7 @@
     "prettier/prettier": ["error", {
       "singleQuote": true,
       "jsxBracketSameLine": true,
-      "tabWidth": 4,
-      "trailingComma": "es5"
+      "tabWidth": 4
     }],
     "linebreak-style": 0,
     "no-unused-vars": 2,

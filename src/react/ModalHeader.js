@@ -5,14 +5,14 @@ import SVGIcon from './SVGIcon.js';
 const iconMaper = {
     error: 'error',
     info: 'errorCircle',
-    alert: 'exclamationTriangleLine',
+    alert: 'exclamationTriangleLine'
 };
 
 const headerTypes = {
     error: 'sdc-error__header',
     info: 'sdc-info__header',
     alert: 'sdc-alert__header',
-    custom: 'sdc-custom__header',
+    custom: 'sdc-custom__header'
 };
 
 const Header = ({ children, onClose, type }) => (
@@ -36,11 +36,11 @@ const Header = ({ children, onClose, type }) => (
 
 Header.propTypes = {
     children: PropTypes.node,
-    onClose: PropTypes.func,
+    onClose: PropTypes.func
 };
 
 Header.defaultProps = {
-    type: 'info',
+    type: 'info'
 };
 
 export default Header;
