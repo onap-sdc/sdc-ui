@@ -8,7 +8,7 @@ const Notification = ({
     type,
     onClick,
     className,
-    dataTestId,
+    dataTestId
 }) => {
     return (
         <div
@@ -30,7 +30,7 @@ Notification.propTypes = {
     title: PropTypes.string,
     message: PropTypes.string,
     type: PropTypes.string,
-    dataTestId: PropTypes.string,
+    dataTestId: PropTypes.string
 };
 
 Notification.defaultProps = {
@@ -38,7 +38,7 @@ Notification.defaultProps = {
     type: 'info',
     title: '',
     message: '',
-    dataTestId: '',
+    dataTestId: ''
 };
 
 export default Notification;

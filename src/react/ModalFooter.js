@@ -8,7 +8,7 @@ const Footer = ({
     actionButtonText,
     actionButtonClick,
     withButtons,
-    children,
+    children
 }) => {
     const closeBtnType = actionButtonClick ? 'secondary' : 'primary';
     return (
@@ -36,12 +36,12 @@ Footer.propTypes = {
     actionButtonText: PropTypes.string,
     actionButtonClick: PropTypes.func,
     withButtons: PropTypes.bool,
-    children: PropTypes.node,
+    children: PropTypes.node
 };
 
 Footer.defaultProps = {
     closeButtonText: 'Close',
-    withButtons: true,
+    withButtons: true
 };
 
 export default Footer;

@@ -33,11 +33,11 @@ Checklist.propTypes = {
             value: PropTypes.string,
             checked: PropTypes.bool,
             disabled: PropTypes.bool,
-            dataTestId: PropTypes.string,
+            dataTestId: PropTypes.string
         })
     ),
     className: PropTypes.string,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func
 };
 
 export default Checklist;

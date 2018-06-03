@@ -8,7 +8,7 @@ class PopupMenu extends React.Component {
             children = [],
             onMenuItemClick,
             position = {},
-            relative,
+            relative
         } = this.props;
         const style = relative ? { left: position.x, top: position.y } : {};
 
@@ -19,7 +19,7 @@ class PopupMenu extends React.Component {
                 {React.Children.toArray(children).map((child, i) =>
                     React.cloneElement(child, {
                         onClick: child.props.onClick || onMenuItemClick,
-                        key: i,
+                        key: i
                     })
                 )}
             </ul>
@@ -31,13 +31,13 @@ PopupMenu.propTypes = {
     relative: PropTypes.bool,
     position: PropTypes.shape({
         x: PropTypes.number,
-        y: PropTypes.number,
+        y: PropTypes.number
     }),
-    onMenuItemClick: PropTypes.func,
+    onMenuItemClick: PropTypes.func
 };
 
 PopupMenu.defaultProps = {
-    relative: false,
+    relative: false
 };
 
 export const PopupMenuSeparator = () => <li className="separator" />;

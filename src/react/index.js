@@ -72,5 +72,5 @@ export default {
     TileInfo,
     TileInfoLine,
     TileFooter,
-    TileFooterCell,
+    TileFooterCell
 };

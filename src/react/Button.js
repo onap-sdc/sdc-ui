@@ -34,12 +34,12 @@ Button.propTypes = {
         'x-small',
         'small',
         'medium',
-        'large',
+        'large'
     ]),
     className: PropTypes.string,
     iconName: PropTypes.string,
     onClick: PropTypes.func,
-    disabled: PropTypes.bool,
+    disabled: PropTypes.bool
 };
 
 Button.defaultProps = {
@@ -47,7 +47,7 @@ Button.defaultProps = {
     size: '',
     className: '',
     iconName: '',
-    disabled: false,
+    disabled: false
 };
 
 export default Button;

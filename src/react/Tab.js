@@ -8,7 +8,7 @@ class Tab extends React.Component {
             title,
             onClick,
             disabled,
-            className = '',
+            className = ''
         } = this.props;
         const dataTestId = this.props['data-test-id'];
         return (

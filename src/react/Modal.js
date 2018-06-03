@@ -12,7 +12,7 @@ export const modalSize = {
     large: 'l',
     extraLarge: 'xl',
     small: 'sm',
-    extraSmall: 'xsm',
+    extraSmall: 'xsm'
 };
 
 class Modal extends React.Component {
@@ -42,14 +42,14 @@ class Modal extends React.Component {
 Modal.defaultProps = {
     show: false,
     size: 'medium',
-    type: 'info',
+    type: 'info'
 };
 
 Modal.propTypes = {
     show: PropTypes.bool,
     size: PropTypes.string,
     children: PropTypes.node,
-    type: PropTypes.string,
+    type: PropTypes.string
 };
 
 Modal.Body = Body;
