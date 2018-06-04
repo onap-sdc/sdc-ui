@@ -3,7 +3,7 @@ export default `
     <label class="sdc-input__label" *ngIf="label" [ngClass]="{'required':required}">{{label}}</label>
     <input
         class="sdc-input__input {{classNames}}"
-        [ngClass]="{'error': !valid, 'disabled':disabled}"
+        [ngClass]="{'error': (!valid && dirty), 'disabled':disabled}"
         [attr.name]="name ? name : null"
         [placeholder]="placeHolder"
         [(ngModel)]="value"
