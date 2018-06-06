@@ -9,7 +9,7 @@ export default `
         </div>
 
         <div class="sdc-modal__content" >
-                <div *ngIf="message">{{message}}</div>
+                <div *ngIf="message" [innerHtml]="message"></div>
                 <div #dynamicContentContainer></div>
         </div>
 

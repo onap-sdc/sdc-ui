@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 20">
+  <defs>
+    <style>
+      .a {
+        fill: #fff;
+      }
+
+      .b {
+        mask: url(#a);
+      }
+    </style>
+    <mask id="a" x="0" y="0" width="22" height="20" maskUnits="userSpaceOnUse">
+      <g transform="translate(0 0)">
+        <path class="a" d="M21,0H1A1,1,0,0,0,0,1V6A1,1,0,0,0,1,7H2V19a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V7h1a.94.94,0,0,0,1-1V1A.92.92,0,0,0,21,0ZM17,18H5.05a1,1,0,0,1-1-1V7.17H18V17A1,1,0,0,1,17,18ZM20,5H2V2.05H20ZM8,11h6c.55,0,1-.3,1-.67V9.67C15,9.3,14.55,9,14,9H8c-.55,0-1,.3-1,.67v.67C7,10.7,7.45,11,8,11Z"/>
+      </g>
+    </mask>
+  </defs>
+  <title>archive box</title>
+  <g>
+    <path d="M8,11h6c.55,0,1-.3,1-.67V9.67C15,9.3,14.55,9,14,9H8c-.55,0-1,.3-1,.67v.67C7,10.7,7.45,11,8,11Z" transform="translate(0 0)"/>
+    <path d="M22,6V1a.92.92,0,0,0-1-1H1A1,1,0,0,0,0,1V6A1,1,0,0,0,1,7H2V19a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V7h1A.94.94,0,0,0,22,6ZM18,17a1,1,0,0,1-1,1H5.05a1,1,0,0,1-1-1V7.17H18ZM20,5H2V2.05H20Z" transform="translate(0 0)"/>
+  </g>
+</svg>
