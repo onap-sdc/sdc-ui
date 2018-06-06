@@ -114,7 +114,7 @@
   }
 
   // error
-  &.sdc-button__error {
+  &.sdc-button__error, &.sdc-button__alert {
     border: 1px solid transparent;
     background-color: $red;
     color: $white;

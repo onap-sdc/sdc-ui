@@ -88,7 +88,7 @@
 
 
   // error button
-  &.sdc-button__error {
+  &.sdc-button__error, &.sdc-button__alert {
     border: none;
     background-color: $red;
     color: $white;

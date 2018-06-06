@@ -46,7 +46,7 @@
       }
     }
 
-    &.sdc-modal-type-warning {
+    &.sdc-modal-type-warning, &.sdc-modal-type-alert {
       border-top: solid 6px $yellow;
       .sdc-modal__svg-use {
         fill: $yellow;
