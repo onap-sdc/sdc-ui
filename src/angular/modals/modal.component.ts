@@ -1,4 +1,7 @@
-import { Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style, EventEmitter, Renderer, ElementRef, OnInit } from '@angular/core';
+import {
+    Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style,
+    EventEmitter, Renderer, OnInit, OnDestroy
+} from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
 import { LowerCasePipe } from '@angular/common';
 import { ModalCloseButtonComponent } from './modal-close-button.component';
@@ -31,7 +34,7 @@ export class ModalComponent implements OnInit {
     @Input() buttons: ModalButtonComponent[];
     @Input() type: ModalType;
     @Input() testId: string;
-    @Output() closeAnimationComplete: EventEmitter<any> = new EventEmitter<any>();
+    @Input() instanceRef: ComponentRef<ModalComponent>;
 
     @ViewChild('modalCloseButton')
     set refCloseButton(_modalCloseButton: ModalCloseButtonComponent) {
@@ -111,7 +114,7 @@ export class ModalComponent implements OnInit {
 
     public modalToggled = (toggleEvent: any) => {
         if (!toggleEvent.toState) {
-            this.closeAnimationComplete.emit();
+            this.instanceRef.destroy();
         }
     }
 
@@ -144,5 +147,9 @@ export class ModalComponent implements OnInit {
     public hoverAnimation(evn: MouseEvent) {
         this.renderer.setElementClass(evn.target as HTMLElement, 'sdc-ripple-click__animated', true);
         // evn.taregt.classList.add('sdc-ripple-click__animated');
+    }
+
+    public closeModal = (): void => {
+        this.modalVisible = false;
     }
 }

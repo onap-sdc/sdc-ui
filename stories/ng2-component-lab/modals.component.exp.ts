@@ -146,16 +146,19 @@ export default experimentOn('Modals')
             {{ '}' }};
 
           <span class="comment">//open modal with dynamically created 'modalInnerContent' example component. Send data object with input 'name'. </span>
-          this.modalService.openCustomModal(modalConfig, ModalInnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
-
-          private customModalOnDone = ():void => {{ '{' }}
-              let currentInstance:any = this.modalService.getCurrentInstance();
-              alert("Save with result: " + currentInstance.innerModalContent.instance.name);
-          {{ '}' }};
+          let myModal = this.modalService.openCustomModal(modalConfig, ModalInnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
 
           private customModalOnSave = ():void => {{ '{' }}
-              let currentInstance:any = this.modalService.getCurrentInstance();
-              alert("Save with result: " + currentInstance.innerModalContent.instance.name);
+                const saveButton: ModalButtonComponent = myModal.instance.getButtonById("saveButton");
+                saveButton.show_spinner = true;
+                saveButton.spinner_position = Placement.right;
+
+                // Show spinner for 2 seconds
+                console.log('Saving example, please wait ...');
+                window.setTimeout((button: ModalButtonComponent) => {{ '{' }}
+                    button.show_spinner = false;
+                    console.log('Finish saving');
+                {{ '}' }}, 2000, saveButton);
           {{ '}' }};
         </pre></div>`,
         styles: [sourceStyles]
@@ -169,5 +172,15 @@ export default experimentOn('Modals')
         <modal-consumer [action]="'openCustomModal2'"></modal-consumer>
         `,
         styles: [sourceStyles]
-      }
+      },
+        {
+            id: 'multipleModals',
+            showSource: false,
+            title: 'Multiple Modals',
+            description: 'Opens a modal from modal',
+            template: `
+            <modal-consumer [action]="'openCustomModal3'"></modal-consumer>
+            `,
+            styles: [sourceStyles]
+        }
     ]);

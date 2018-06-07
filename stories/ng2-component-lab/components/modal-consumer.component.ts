@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import {Component, Input, Output, EventEmitter, ComponentRef} from "@angular/core";
 import { ModalService } from "../../../src/angular/modals/modal.service";
 import { IModalConfig, ModalType, ModalSize } from "../../../src/angular/modals/models/modal-config";
 import { ModalInnerContent } from "./modal-inner-content-example.component";
@@ -16,6 +16,8 @@ const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 })
 export class ModalConsumerComponent {
     @Input() action: string;
+    private customModal1: ComponentRef<ModalComponent>;
+    private customModal2: ComponentRef<ModalComponent>;
 
     constructor(private modalService: ModalService) {
     }
@@ -82,12 +84,11 @@ export class ModalConsumerComponent {
                       {id: "cancelButton", text: "Cancel", size: 'x-small', type: ButtonType.secondary , closeModal: true}
                     ]
         } as IModalConfig;
-        this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
+        this.customModal1 = this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }
 
     private customModalOnSave1 = (): void => {
-        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
-        const saveButton: ModalButtonComponent = currentInstance.getButtonById("saveButton");
+        const saveButton: ModalButtonComponent = this.customModal1.instance.getButtonById("saveButton");
         saveButton.show_spinner = true;
         saveButton.spinner_position = Placement.right;
 
@@ -111,25 +112,40 @@ export class ModalConsumerComponent {
                       {text: "Disable close", callback: this.customModalUDisableClose2, closeModal: false}
                     ]
         } as IModalConfig;
-        this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
+        this.customModal2 = this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
     }
 
     private customModalUDisableClose2 = (): void => {
-        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
-        currentInstance.getCloseButton().disabled = true;
+        this.customModal2.instance.getCloseButton().disabled = true;
     }
 
     private customModalChangeTitle2 = (): void => {
-        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
-        currentInstance.setTitle('New title');
+        this.customModal2.instance.setTitle('New title');
     }
 
     private customModalUpdateButtons2 = (): void => {
-        const currentInstance: ModalComponent = this.modalService.getCurrentInstance();
         const newButtons = [
             {text: "Change title", callback: this.customModalChangeTitle2, closeModal: false},
             {text: "Do nothing", closeModal: false}
           ] as ModalButtonComponent[];
-        currentInstance.setButtons(newButtons);
+        this.customModal2.instance.setButtons(newButtons);
     }
+
+    private openErrorModalFromModal = ():void => {
+        this.modalService.openErrorModal("Error", "Error example!!", "second-modal");
+    }
+
+    private openCustomModal3 = (): void => {
+        const modalConfig = {
+            size: ModalSize.medium,
+            title: 'Title',
+            type: ModalType.custom,
+            testId: 'sampleTestIdModal3',
+            buttons: [
+                {text: "Open Error", callback: this.openErrorModalFromModal, closeModal: false}
+            ]
+        } as IModalConfig;
+        this.modalService.openCustomModal(modalConfig, ModalInnerContent, {name: "Sample Content"});
+    }
+
 }

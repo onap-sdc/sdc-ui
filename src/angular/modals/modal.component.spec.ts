@@ -57,7 +57,7 @@ describe("Modal unit-tests", () => {
 
     it('Should close window', () => {
         const modalInstance = testService.openModal(testInputModal);
-        testService.closeModal();
+        modalInstance.instance.closeModal();
         expect(modalInstance.instance.modalVisible).toBeFalsy();
     });
 });
