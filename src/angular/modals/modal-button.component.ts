@@ -1,4 +1,4 @@
-import { Component, Input, HostListener } from "@angular/core";
+import {Component, Input, HostListener, EventEmitter, Output} from "@angular/core";
 import { ButtonComponent } from "../buttons/button.component";
 import { ModalService } from "./modal.service";
 import template from "./../buttons/button.component.html";
@@ -12,12 +12,13 @@ export class ModalButtonComponent extends ButtonComponent {
     @Input() public id?: string;
     @Input() public callback: Function;
     @Input() public closeModal: boolean;
+    @Output() closeModalEvent: EventEmitter<any> = new EventEmitter<any>();
     @HostListener('click') invokeCallback = (): void => {
         if (this.callback) {
             this.callback();
         }
         if (this.closeModal) {
-            this.modalService.closeModal();
+            this.closeModalEvent.emit();
         }
     }
 

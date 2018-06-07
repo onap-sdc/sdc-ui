@@ -1,5 +1,6 @@
 import { Component, HostBinding, Input, OnInit } from "@angular/core";
-import { Placement } from "../common/enums";
+import { Placement, ButtonType } from "../common/enums";
+import { IButtonComponent } from './ibutton.interface';
 import template from "./button.component.html";
 
 @Component({
@@ -7,10 +8,10 @@ import template from "./button.component.html";
     template: template
 })
 
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnInit, IButtonComponent {
     @Input() public text: string;
     @Input() public disabled: boolean;
-    @Input() public type: string;
+    @Input() public type: ButtonType;
     @Input() public size: string;
     @Input() public preventDoubleClick: boolean;
     @Input() public icon_name: string;
@@ -22,20 +23,17 @@ export class ButtonComponent implements OnInit {
     public placement = Placement;
     private lastClick: Date;
     private iconPositionClass: string;
-    private iconMode: string;
 
     @HostBinding('class.sdc-button__wrapper') true;
 
     constructor() {
-        this.type = "primary";
+        this.type = ButtonType.primary;
         this.size = "default";
         this.disabled = false;
-        this.iconMode = 'primary';
     }
 
     public ngOnInit(): void {
         this.iconPositionClass = this.icon_position ? 'sdc-icon-' + this.icon_position : '';
-        this.iconMode = (this.type === "primary") ? 'info' : 'primary';
     }
 
     public onClick = (e): void => {
