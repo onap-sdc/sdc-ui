@@ -47,6 +47,9 @@ export class ValidationComponent implements AfterContentInit {
             },
             (error) => console.log('Validation subscribe error')
         );
+        // init validateElement.valid.
+        const value = this.validateElement.getValue();
+        this.validateElement.notifier.next(value);
     }
 
     public validate = (): boolean => {

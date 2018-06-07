@@ -192,7 +192,7 @@ export class TooltipDirective implements OnInit {
      * @returns {IPlacementData}
      */
     private getPlacement(placement: TooltipPlacement,
-                         ...additionalPlacements: TooltipPlacement[],
+                         ...additionalPlacements: TooltipPlacement[]
                          ): IPlacementData {
         const placements: TooltipPlacement[] = [placement, ...additionalPlacements];
         const filterPlacements = placements

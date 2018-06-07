@@ -1,3 +1,3 @@
 export default `
-<ng-content *ngIf="!disabled"></ng-content>
+<ng-content *ngIf="!disabled && (validateElement && validateElement.dirty)"></ng-content>
 `;
