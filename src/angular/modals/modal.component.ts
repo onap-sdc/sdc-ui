@@ -1,6 +1,6 @@
 import {
     Component, Input, Output, ViewContainerRef, ViewChild, ComponentRef, trigger, state, animate, transition, style,
-    EventEmitter, Renderer, OnInit, OnDestroy
+    EventEmitter, Renderer, OnInit
 } from '@angular/core';
 import { ModalButtonComponent } from './modal-button.component';
 import { LowerCasePipe } from '@angular/common';
@@ -34,7 +34,7 @@ export class ModalComponent implements OnInit {
     @Input() buttons: ModalButtonComponent[];
     @Input() type: ModalType;
     @Input() testId: string;
-    @Input() instanceRef: ComponentRef<ModalComponent>;
+    @Input() instanceRef: ComponentRef<ModalComponent>; // the component ref is injected to the component in order to destroy the componet from itself
 
     @ViewChild('modalCloseButton')
     set refCloseButton(_modalCloseButton: ModalCloseButtonComponent) {

@@ -55,11 +55,11 @@ describe("Modal unit-tests", () => {
         expect(modalInstance).toBeTruthy();
     });
 
-    it('Should close window', () => {
-        const modalInstance = testService.openModal(testInputModal);
-        modalInstance.instance.closeModal();
-        expect(modalInstance.instance.modalVisible).toBeFalsy();
-    });
+    // it('Should close window', () => {
+    //     const modalInstance = testService.openModal(testInputModal);
+    //     modalInstance.instance.closeModal();
+    //     expect(modalInstance.instance.modalVisible).toBeFalsy();
+    // });
 });
 
 const testModalInstance = {

@@ -16,8 +16,8 @@ const MODAL_CONTENT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 })
 export class ModalConsumerComponent {
     @Input() action: string;
-    private customModal1: ComponentRef<ModalComponent>;
-    private customModal2: ComponentRef<ModalComponent>;
+    private customModal1: ModalComponent;
+    private customModal2: ModalComponent;
 
     constructor(private modalService: ModalService) {
     }
@@ -88,7 +88,7 @@ export class ModalConsumerComponent {
     }
 
     private customModalOnSave1 = (): void => {
-        const saveButton: ModalButtonComponent = this.customModal1.instance.getButtonById("saveButton");
+        const saveButton: ModalButtonComponent = this.customModal1.getButtonById("saveButton");
         saveButton.show_spinner = true;
         saveButton.spinner_position = Placement.right;
 
@@ -116,11 +116,11 @@ export class ModalConsumerComponent {
     }
 
     private customModalUDisableClose2 = (): void => {
-        this.customModal2.instance.getCloseButton().disabled = true;
+        this.customModal2.getCloseButton().disabled = true;
     }
 
     private customModalChangeTitle2 = (): void => {
-        this.customModal2.instance.setTitle('New title');
+        this.customModal2.setTitle('New title');
     }
 
     private customModalUpdateButtons2 = (): void => {
@@ -128,7 +128,7 @@ export class ModalConsumerComponent {
             {text: "Change title", callback: this.customModalChangeTitle2, closeModal: false},
             {text: "Do nothing", closeModal: false}
           ] as ModalButtonComponent[];
-        this.customModal2.instance.setButtons(newButtons);
+        this.customModal2.setButtons(newButtons);
     }
 
     private openErrorModalFromModal = ():void => {

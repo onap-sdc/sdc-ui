@@ -149,7 +149,7 @@ export default experimentOn('Modals')
           let myModal = this.modalService.openCustomModal(modalConfig, ModalInnerContent, {{ '{' }}name: "Sample Content"{{ '}' }});
 
           private customModalOnSave = ():void => {{ '{' }}
-                const saveButton: ModalButtonComponent = myModal.instance.getButtonById("saveButton");
+                const saveButton: ModalButtonComponent = myModal.getButtonById("saveButton");
                 saveButton.show_spinner = true;
                 saveButton.spinner_position = Placement.right;
 
