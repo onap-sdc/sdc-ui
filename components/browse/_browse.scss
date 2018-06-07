@@ -10,7 +10,7 @@ input[type="file"] {
   }
   &.disabled{
     .browse-button {
-      background-color: $background-gray;
+      background-color: $light-silver;
       div svg g{
         fill: $gray;
       }
@@ -26,7 +26,7 @@ input[type="file"] {
         cursor: pointer;
       }
       &:hover{
-        background-color: $tlv-hover;
+        background-color: $lighter-blue;
         g{
           fill: $blue;
         }
@@ -53,7 +53,7 @@ input[type="file"] {
   }
   .browse-button {
     border: solid 1px $light-gray;
-    background-color: $background-gray;
+    background-color: $light-silver;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
     height: 36px;
