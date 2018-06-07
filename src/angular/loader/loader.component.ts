@@ -1,4 +1,4 @@
-import { Component, Input, ViewContainerRef, Inject, OnInit, OnDestroy } from "@angular/core";
+import { Component, Input, ViewContainerRef, Inject, OnInit, OnDestroy, Output, EventEmitter } from "@angular/core";
 import template from "./loader.component.html";
 import { LoaderService } from "./loader.service";
 
@@ -18,6 +18,7 @@ export class LoaderComponent implements OnInit, OnDestroy {
     @Input() size?: LoaderSize; // small || medium || large
     @Input() global?: boolean; // If is relative is set to true, loader will appear over parent element. Otherwise, will be fixed over the entire page.
     @Input() name?: string;
+    @Output() activeChange: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private loaderService: LoaderService) {
         this.active = 0;
@@ -39,11 +40,13 @@ export class LoaderComponent implements OnInit, OnDestroy {
 
     public activate() {
         this.active++;
+        this.activeChange.emit(this.active);
     }
 
     public deactivate() {
         if (this.active > 0) {
             this.active--;
+            this.activeChange.emit(this.active);
         }
     }
 

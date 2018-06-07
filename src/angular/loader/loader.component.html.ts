@@ -1,7 +1,7 @@
 export default `
 <div class = "sdc-loader-wrapper" *ngIf="!global">
-    <div class="sdc-loader-background" [ngClass]="{'sdc-hide-loader':active < 1}">
-     <div class="sdc-loader {{ size }}" [ngClass]="{'sdc-hide-loader':active < 1}"></div>
+    <div class="sdc-loader-background" *ngIf="active">
+        <div class="sdc-loader {{ size }}" *ngIf="active"></div>
     </div>
     <ng-content></ng-content>
 </div>

@@ -6,6 +6,8 @@ export class LoaderService {
 
     constructor() {}
 
+    private mainLoaderName = 'general';
+
     public registeredLoaders = {};
 
     public register(name: string, loader: LoaderComponent) {
@@ -20,15 +22,12 @@ export class LoaderService {
         }
     }
 
-    public activate(name: string = 'general') {
-        if (this.registeredLoaders[name]) {
-            this.registeredLoaders[name].activate();
-        }
+    public activate(name: string) {
+        this.registeredLoaders[name] ? this.registeredLoaders[name].activate() : this.registeredLoaders[this.mainLoaderName].activate(); 
     }
 
-    public deactivate(name: string = 'general') {
-        if (this.registeredLoaders[name]) {
-            this.registeredLoaders[name].deactivate();
-        }
+    public deactivate(name: string) {
+        this.registeredLoaders[name] ? this.registeredLoaders[name].deactivate() : this.registeredLoaders[this.mainLoaderName].deactivate();
     }
+
 }

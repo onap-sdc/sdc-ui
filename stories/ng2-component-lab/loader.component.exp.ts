@@ -9,9 +9,11 @@ export default experimentOn('Loader')
         title: 'Regular loader',
         description: 'Simple Fixed loader',
         context: {
+          showLoaderFlag : false
         },
         template: `
-                <sdc-loader size="large" #loader1 name="test2">
+                <h3>We show loader : <h2 *ngIf = "!showLoaderFlag" style="color:red">NO</h2> <h2 *ngIf = "showLoaderFlag" style="color:green">Yes</h2></h3>
+                <sdc-loader size="large" #loader1 name="test2" [(active)] = "showLoaderFlag">
                   <div style="border:1px solid black; padding:20px 100px;">
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
                     <sdc-input label="Please Enter Value" required="true" [maxLength]="5"></sdc-input>
