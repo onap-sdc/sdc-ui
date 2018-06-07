@@ -1,5 +1,6 @@
 .sdc-tag-cloud-new-item-field{
-  display: flex;
+    display: flex;
+    align-items: flex-end;
   sdc-input{
     flex-grow: 1;
     .sdc-input{
@@ -14,6 +15,7 @@
     .sdc-input__input {
       border-color: $blue;
     }
+   
   }
   .error{
     .sdc-input__input {
@@ -27,13 +29,13 @@
     height: 36px;
     width: 36px;
     text-align: center;
-    background-color: $tlv-hover;
+    background-color: $lighter-blue;
     border: solid 1px $blue;
     border-left: none;
-    margin-top: 17px;
+    border-top-right-radius: 2px;
     &.disabled{
       cursor: default;
-      background-color: $background-gray;
+      background-color: $light-silver;
       border-color: $light-gray;
       .plus-icon svg g{
         fill: $gray;
@@ -50,7 +52,19 @@
       }
     }
   }
+
+  &.not-empty{
+    .add-button:hover{
+      background-color: $light-blue;
+      svg{
+        g{
+          fill: $white;
+        }
+      }
+    }
+  }
 }
+
 .sdc-list-container{
   height: 120px;
   overflow-y: auto;
@@ -73,7 +87,7 @@
       color: $text-black;
       @include body-3;
       &.view-only{
-        border-color: $tlv-light-gray;
+        border-color: $silver;
       }
       .delete-item{
         cursor: pointer;
@@ -89,8 +103,8 @@
         }
       }
       &:hover:not(.view-only){
-        background-color: $tlv-hover;
-        border-color: $tlv-hover;
+        background-color: $lighter-blue;
+        border-color: $lighter-blue;
         .delete-item{
           svg g{
             fill: $blue;

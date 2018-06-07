@@ -1,39 +1,40 @@
 .sdc-button {
+  order:1;
   @include box-sizing;
-  display: inline-block;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   outline: none;
   border-radius: 2px;
   padding: 0 12px;
-
   height: 36px;
+  line-height: 36px;
   width: 120px;
   min-width: 90px;
-
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
   @include body-1;
+
   &:disabled {
     cursor: default;
   }
 
   // Primary button
   &.sdc-button__primary {
-    border: none;
+    border: 1px solid transparent;
     background-color: $blue;
     color: $white;
 
     &:not(:disabled) {
       &:hover, &:active {
-        background-color: $hover-blue;
-        @include font-hover;
+        background-color: $light-blue;
       }
       &:focus:not(:active) {
-        border: 0.5px solid $white;
-        background-color: $hover-blue;
-        box-shadow: 0px 0px 0px 1px $hover-blue;
-        @include font-focus;
+        border: 1px solid $white;
+        background-color: $light-blue;
+        box-shadow: 0px 0px 0px 1px $light-blue;
       }
     }
 
@@ -50,14 +51,15 @@
 
     &:not(:disabled) {
       &:hover, &:active {
-        color: $hover-blue;
-        border-color: $hover-blue;
-        @include font-hover;
+        background-color: $light-blue;
+        color:$white;
       }
       &:focus:not(:active) {
-        color: $hover-blue;
-        box-shadow: inset 0px 0px 0px 0px $link-blue, 0px 0px 0px 1px $blue;
-        @include font-focus;
+        color: $light-blue;
+        box-shadow: inset 0px 0px 0px 0px $dark-blue, 0px 0px 0px 1px $blue;
+        &:hover {
+          color: $white;
+        }
       }
     }
 
@@ -76,13 +78,11 @@
 
     &:not(:disabled) {
       &:hover, &:active {
-        color: $hover-blue;
-        @include font-hover;
+        color: $light-blue;
       }
       &:focus:not(:active) {
-        border: 1px solid $link-blue;
-        color: $hover-blue;
-        @include font-focus;
+        border: 1px solid $dark-blue;
+        color: $light-blue;
       }
     }
 
@@ -90,6 +90,30 @@
       color: $blue-disabled;
     }
   }
+
+
+  // alert button
+  &.sdc-button__alert {
+    border: none;
+    background-color: $red;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-red;
+      }
+      &:focus:not(:active) {
+        border: 0.5px solid $white;
+        background-color: $light-red;
+        box-shadow: 0px 0px 0px 1px $light-red;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-red;
+    }
+  }
+
 
   /*** Sizes ***/
   &.btn-large{
@@ -113,12 +137,18 @@
   }
 
   /*** Buttons with icons ***/
-  .sdc-icon-right{
-    margin-left: 15px;
+  &.sdc-icon-right {
+    flex-direction: row-reverse;
+    .svg-icon {
+      margin-left: 15px;
+    }
   }
 
-  .sdc-icon-left{
-    margin-right: 15px;
+  &.sdc-icon-left {
+    flex-direction: row;
+    .svg-icon {
+      margin-right: 15px;
+    }
   }
 
   svg {
@@ -126,5 +156,13 @@
     vertical-align: middle;
   }
 }
-
-
+.sdc-button__wrapper {
+  display: inline-flex;
+}
+.sdc-button__spinner {
+  padding-top: 6px;
+  margin:0 2px;
+  &.left {
+    order:2;
+  }
+}

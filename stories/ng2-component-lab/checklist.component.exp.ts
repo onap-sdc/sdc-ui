@@ -1,9 +1,10 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
-import {ChecklistItemModel} from "../../src/angular/checklist/models/ChecklistItem";
-import {ChecklistModel} from "../../src/angular/checklist/models/Checklist";
+import { ChecklistItemModel } from "../../src/angular/checklist/models/ChecklistItem";
+import { ChecklistModel } from "../../src/angular/checklist/models/Checklist";
 
 const styleCode = 'h5{color:red;} pre{background-color: #d1d1d1; padding: 10px;}';
 const checklistValuesExample1 = [];
+
 const checkListExample1: ChecklistModel =  new ChecklistModel(checklistValuesExample1,
     [new ChecklistItemModel('apple'),
         new ChecklistItemModel('banana'),
@@ -23,7 +24,7 @@ const checkListExample3: ChecklistModel =  new ChecklistModel(checklistValuesExa
 
 const checklistValuesExample4 = [];
 const checkListExample4: ChecklistModel =  new ChecklistModel(checklistValuesExample4,
-    [new ChecklistItemModel('apple', true),
+    [new ChecklistItemModel('apple', true, true),
         new ChecklistItemModel('banana', true),
         new ChecklistItemModel('orange')]);
 
@@ -136,7 +137,7 @@ export default experimentOn('Checklist')
             <pre><h5>The checklistModel parameter:</h5>
             const checklistValues = [];
             const checklistModel: ChecklistModel =  new ChecklistModel(checklistValues,
-                [new ChecklistItemModel('apple', true),
+                [new ChecklistItemModel('apple', true, true),
                 new ChecklistItemModel('banana', true),
                 new ChecklistItemModel('orange')]);
             </pre>
@@ -162,8 +163,8 @@ export default experimentOn('Checklist')
             const checklistValues = [];
             const innerChecklistValues = [];
             const checklistModel: ChecklistModel =  new ChecklistModel(checklistValues,
-                        [new ChecklistItemModel('apple', false, false,new ChecklistModel(innerChecklistValues,[new ChecklistItemModel('red'), 
-                                                                                                                        new ChecklistItemModel('green'), 
+                        [new ChecklistItemModel('apple', false, false,new ChecklistModel(innerChecklistValues,[new ChecklistItemModel('red'),
+                                                                                                                        new ChecklistItemModel('green'),
                                                                                                                         new ChecklistItemModel('yellow')])),
                         new ChecklistItemModel('banana'),
                         new ChecklistItemModel('orange')]);</pre>

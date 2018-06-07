@@ -9,7 +9,7 @@ class PopupMenu extends React.Component {
 
 		return (
 			<ul className={`sdc-menu-list ${relative ? 'relative' : ''}`} style={style}>
-					{children.map((child, i) => React.cloneElement(child,
+					{React.Children.toArray(children).map((child, i) => React.cloneElement(child,
 						{
 							onClick: child.props.onClick || onMenuItemClick,
 							key: i

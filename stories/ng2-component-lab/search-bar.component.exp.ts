@@ -1,7 +1,5 @@
-/**
- * Created by rc2122 on 11/15/2017.
- */
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
+
 export default experimentOn('Search Bar').group('SearchBar', [
     {
         id: 'search-bar',

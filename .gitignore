@@ -12,6 +12,7 @@ Thumbs.db
 .idea
 .vscode
 .history
+package-lock.json
 # build files
 lib
 css
@@ -21,3 +22,7 @@ src/react/utils/iconMap.js
 
 #coverage files
 coverage
+
+#ignore generated icons files
+src/common/icons-map.ts
+src/common/icons-map.json

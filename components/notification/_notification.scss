@@ -1,0 +1,78 @@
+@include mixin-keyframes-fade-in-vertically(-50px, 'keyframes-slide-notif-in');
+@include mixin-keyframes-fade-out-vertically(20px, 'keyframes-slide-notif-out');
+
+.sdc-notification {
+	position:relative;
+	padding: 10px;
+	width: 300px;
+	min-height: 45px;
+	animation: keyframes-slide-notif-in 1s;
+	margin: 2px;
+	box-shadow: 0 3px 7px -3px $dark-gray;
+	display:flex;
+	flex-direction:row;
+	align-items: center;
+	&.fade-out__animated {
+		animation: keyframes-slide-notif-out 0.8s
+	}
+
+	&.type-info {
+		background-color: $blue; }
+
+	&.type-error {
+		background-color: $red; }
+
+	&.type-success {
+		background-color: $green; }
+
+	&.type-warning {
+		background-color: $yellow; }
+
+
+	&.react-transition-exit-active {
+		animation: keyframes-slide-notif-out 0.8s
+	}
+	
+
+	
+	.sdc-notification__icon_container {
+		border-radius: 42px;			
+		flex: 0 0 auto;
+		height: 38px;
+		width: 38px;
+		background-color: rgba($white, 0.3);
+		margin-right: 5px;
+		.sdc-notification_svg-icon {								
+			height: 32px;
+			width: 32px;
+			fill: $white;
+			margin-left: 3px;
+			margin-top: 3px;
+		}
+	}			
+	
+	.sdc-notification__icon {
+		flex: 0 0 auto;
+		height: 32px;
+		width: 32px;
+		margin-left: 3px;
+		margin-top: 3px;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style=''%3E%3Crect id='backgroundrect' width='100%25' height='100%25' x='0' y='0' fill='none' stroke='none'/%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%2382c355;%7D.cls-2%7Bfill:none;stroke:%23ebf5e4;stroke-miterlimit:10;%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Evicon%3C/title%3E%3Cg class='currentLayer' style=''%3E%3Ctitle%3ELayer 1%3C/title%3E%3Cg id='Layer_4' data-name='Layer 4'%3E%3Cpolyline class='cls-2' points='7.46 17.43 15.36 21.74 22.54 8.57' id='svg_2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+	}
+	.sdc-notification__message {
+		flex: 1;
+		text-align: left;
+		margin-left: 20px;
+
+		.sdc-notification__title {
+			font-size:16px;
+			color: white;
+			font-weight: bolder;
+		}
+	
+		.sdc-notification__text {
+			font-size: 14px;
+			color: white;
+		}
+	}
+}

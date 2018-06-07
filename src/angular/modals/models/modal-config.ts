@@ -1,27 +1,36 @@
-export interface IModalConfig {
+import { Placement } from "../../common/enums";
 
-    size?: string; //'xl|l|md|sm|xsm'
+export interface IModalConfig {
+    size?: string; // xl|l|md|sm|xsm
     title?: string;
     message?: string;
-    buttons?: Array<IModalButtonComponent>;
-    type?: string; //'info|error|alert';
+    buttons?: IModalButtonComponent[];
+    testId?: string;
+    type?: string; // 'info|error|alert';
 }
 
 export interface IButtonComponent {
-    text:string;
-    disabled?:boolean;
-    type?:string;
-    size?:string;
+    text: string;
+    disabled?: boolean;
+    type?: string;
+    testId?: string;
+    preventDoubleClick?: boolean;
+    icon_name?: string;
+    icon_position?: string;
+    show_spinner?: boolean;
+    spinner_position?: Placement;
+    size?: string;
 }
 
 export interface IModalButtonComponent extends IButtonComponent{
-    callback?:Function;
-    closeModal?:boolean;
+    id?: string;
+    callback?: Function;
+    closeModal?: boolean;
 }
 
 export enum ModalType {
     alert = "alert",
-    error ="error",
+    error = "error",
     standard = "info",
     custom = "custom"
 }

@@ -1,16 +1,13 @@
-/**
- * Created by rc2122 on 11/15/2017.
- */
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 import template from "./search-bar.component.html";
 
 @Component({
     selector: 'sdc-search-bar',
-    template: template,
-    host: {'class': 'sdc-search-bar'}
+    template: template
 })
 export class SearchBarComponent {
 
+    @HostBinding('class') classes = 'sdc-search-bar';
     @Input() public placeholder: string;
     @Input() public label: string;
     @Input() public searchQuery: string;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalHeader basic test 1`] = `
+<div
+  className="sdc-info__header sdc-modal__header"
+>
+  <div
+    className="svg-icon-wrapper sdc-modal__icon sdc-modal__svg-use   bottom"
+    disabled={undefined}
+    onClick={undefined}
+  >
+    <svg />
+    
+  </div>
+  <div
+    className="svg-icon-wrapper sdc-modal__close-button-svg sdc-modal__close-button   bottom"
+    disabled={undefined}
+    onClick={undefined}
+  >
+    <svg />
+    
+  </div>
+</div>
+`;

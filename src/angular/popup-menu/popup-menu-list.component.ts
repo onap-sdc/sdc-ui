@@ -1,8 +1,5 @@
-import {
-    Component, Input, Output, ContentChildren, SimpleChanges, QueryList, EventEmitter,
-    OnChanges, AfterContentInit
-} from '@angular/core';
-import {PopupMenuItemComponent} from "./popup-menu-item.component";
+import { Component, Input, Output, ContentChildren, SimpleChanges, QueryList, EventEmitter, OnChanges, AfterContentInit } from '@angular/core';
+import { PopupMenuItemComponent } from "./popup-menu-item.component";
 
 export interface IPoint {
     x: number;

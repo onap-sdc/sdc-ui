@@ -34,6 +34,12 @@ var webpackConfig = {
                 include: path.resolve(__dirname, '../')
             },
             {
+                test: /\.json$/,
+                loader: 'json',
+                include: path.resolve(__dirname, '../')
+
+            },
+            {
                 test: /\.svg$/,
                 use: 'svg-sprite-loader',
                 options: {
@@ -45,8 +51,12 @@ var webpackConfig = {
     },
 
     resolve: {
-        extensions: ['.ts', '.js'],
-        modules: [path.resolve(__dirname, 'node_modules')]
+        extensions: ['.ts', '.js', '.json'],
+        modules: [path.resolve(__dirname, 'node_modules')],
+        alias: {
+            root: path.resolve(__dirname),
+            app: path.resolve(__dirname, 'src')
+        }
     }
 };
 

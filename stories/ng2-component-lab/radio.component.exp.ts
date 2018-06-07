@@ -1,4 +1,4 @@
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 export default experimentOn('Radios')
     .group("Radios",[
@@ -10,7 +10,7 @@ export default experimentOn('Radios')
         },
         title: 'Radio buttons group (two ways binding)',
         description: 'Radio buttons group (two ways binding)',
-        template: 
+        template:
         `
         <sdc-radio-group
             [legend]="'Radio Buttons Group legend'"
@@ -31,7 +31,7 @@ export default experimentOn('Radios')
             ></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }, 
+    },
     {
         id: 'radioButtonsGroupDisabled',
         title: 'Radio buttons group disabled',
@@ -58,18 +58,18 @@ export default experimentOn('Radios')
         }"></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }, 
+    },
     {
-        id: 'radioButtonsGroupPartialyDisabled',
-        title: 'Radio buttons group partialy disabled',
-        description: 'Radio buttons group partialy disabled',
+        id: 'radioButtonsGroupPartiallyDisabled',
+        title: 'Radio buttons group partially disabled',
+        description: 'Radio buttons group partially disabled',
         showSource: true,
         context: {
-            selectedValue: "val1"
+            selectedValue: "val2"
         },
         template: `
         <sdc-radio-group
-            [legend]="'Radio Buttons Group Disabled legend'"
+            [legend]="'Radio Buttons Group partially disabled'"
             [(value)]="selectedValue"
             [options] = "{
             items: [{
@@ -89,7 +89,7 @@ export default experimentOn('Radios')
         }"></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }, 
+    },
     {
         id: 'radioButtonsGroupVertical',
         title: 'Radio buttons group vertical',
@@ -116,7 +116,7 @@ export default experimentOn('Radios')
         }"></sdc-radio-group>
         <br><div>Selected Radio: {{selectedValue}}</div>
         `
-    }, 
+    },
     {
         id: 'radioButtonsGroupGetValue',
         title: 'Radio buttons group get value',
@@ -147,7 +147,7 @@ export default experimentOn('Radios')
         <br><div>Selected Radio: {{selectedValue}}</div>
         <br><button (click)="getSelectedValue(myRadioGroup.value)">Get selected value</button>
         `
-    }, 
+    },
     {
         id: 'radioButtonsGroupSelectValue',
         title: 'Radio buttons group select value',

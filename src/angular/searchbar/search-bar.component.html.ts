@@ -1,6 +1,6 @@
 export default `
 <div class="search-bar-container" [ngClass]="{'not-empty': searchQuery}">
-    <sdc-input class="search-bar-input"
+    <sdc-input class="sdc-input-wrapper"
                [label]="label"
                [placeHolder]="placeholder"
                [debounceTime]="debounceTime"
