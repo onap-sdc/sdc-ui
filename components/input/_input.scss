@@ -20,8 +20,9 @@
     width: 100%;//415px;
     border: solid 1px $light-gray;
     border-radius:2px;
+    height: 38px;
+    background-color: $white;
     color: $dark-gray;
-
     &.error, &.error:focus, &.error:disabled  {
       border: solid 1px $red;
       color: $red;

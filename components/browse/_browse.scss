@@ -1,0 +1,84 @@
+input[type="file"] {
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.sdc-browse {
+  position: relative;
+  .sdc-input__input{
+    padding-right: 67px;
+  }
+  &.disabled{
+    .browse-button {
+      background-color: $light-silver;
+      div svg g{
+        fill: $gray;
+      }
+    }
+  }
+  &:not(.disabled){
+    .sdc-input__input{
+      background-color: $white;
+      color: $dark-gray;
+    }
+    .browse-button{
+      div{
+        cursor: pointer;
+      }
+      &:hover{
+        background-color: $lighter-blue;
+        g{
+          fill: $blue;
+        }
+      }
+    }
+  }
+  .delete-icon {
+    position: absolute;
+    top: 30px;
+    right: 47px;
+    cursor: pointer;
+    svg {
+      height: 14px;
+      width: 14px;
+      g{
+        fill: $dark-gray;
+      }
+    }
+    &:hover{
+      g{
+        fill: $blue;
+      }
+    }
+  }
+  .browse-button {
+    border: solid 1px $light-gray;
+    background-color: $light-silver;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    height: 36px;
+    width: 36px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    div{
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      top: 0;
+      svg{
+        top: 6px;
+        left: 6px;
+        position: relative;
+        g{
+          fill: $dark-gray;
+        }
+      }
+    }
+  }
+  input[type="file"] {
+    height: 36px;
+    width: 36px;
+  }
+}
+
