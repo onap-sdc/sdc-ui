@@ -1,6 +1,5 @@
 import {Component, Input, HostListener, EventEmitter, Output} from "@angular/core";
 import { ButtonComponent } from "../buttons/button.component";
-import { ModalService } from "./modal.service";
 import template from "./../buttons/button.component.html";
 
 @Component({
@@ -22,7 +21,7 @@ export class ModalButtonComponent extends ButtonComponent {
         }
     }
 
-    constructor(private modalService: ModalService) {
+    constructor() {
         super();
         this.closeModal = false;
     }
