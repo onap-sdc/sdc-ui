@@ -63,12 +63,13 @@
 	.sdc-tile-content {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: flex-end;
 		height: $content-height;
 
 		.sdc-tile-content-icon {
-			margin-top: 27px;
-			text-align: center;
+			position: absolute;
+			top: 8px;
+			right: 8px;
 
 			svg {
 				width: 50px;
@@ -94,6 +95,7 @@
 			flex-direction: column;
 
 			.sdc-tile-info-line {
+				display: inline-block;
 				text-transform: capitalize;
 				@include ellipsis($display: inline-block);
 
