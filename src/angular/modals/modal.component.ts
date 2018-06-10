@@ -44,7 +44,7 @@ export class ModalComponent implements OnInit {
     modalVisible: boolean;
     // Allows for custom component as body instead of simple message.
     @ViewChild('dynamicContentContainer', {read: ViewContainerRef}) dynamicContentContainer: ViewContainerRef;
-    innerModalContent: ComponentRef<ModalComponent>;
+    innerModalContent: ComponentRef<any>;
 
     public calculatedTestId: string;
     public modalCloseButton: ModalCloseButtonComponent;
