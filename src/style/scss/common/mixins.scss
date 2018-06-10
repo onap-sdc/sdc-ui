@@ -3,25 +3,30 @@
 .sdc-bc-blue            { background-color: $blue; }
 .sdc-bc-light-blue      { background-color: $light-blue; }
 .sdc-bc-lighter-blue    { background-color: $lighter-blue; }
-.sdc-bc-blue-disabled   { background-color: $blue-disabled; }
+.sdc-bc-disabled-blue   { background-color: $disabled-blue; }
 .sdc-bc-dark-blue       { background-color: $dark-blue; }
+.sdc-bc-darker-blue     { background-color: $darker-blue; }
 .sdc-bc-black           { background-color: $black; }
-.sdc-bc-rich-black      { background-color: $rich-black; }
 .sdc-bc-text-black      { background-color: $text-black; }
 .sdc-bc-dark-gray       { background-color: $dark-gray; }
 .sdc-bc-gray            { background-color: $gray; }
 .sdc-bc-light-gray      { background-color: $light-gray; }
-.sdc-bc-silver  { background-color: $silver; }
-.sdc-bc-light-silver { background-color: $light-silver; }
+.sdc-bc-silver          { background-color: $silver; }
+.sdc-bc-light-silver    { background-color: $light-silver; }
 .sdc-bc-green           { background-color: $green; }
+.sdc-bc-light-green     { background-color: $light-green; }
+.sdc-bc-disabled-green  { background-color: $disabled-green; }
 .sdc-bc-red             { background-color: $red; }
 .sdc-bc-disabled-red    { background-color: $disabled-red; }
 .sdc-bc-light-red       { background-color: $light-red; }
 .sdc-bc-yellow          { background-color: $yellow; }
+.sdc-bc-light-yellow    { background-color: $light-yellow; }
+.sdc-bc-disabled-yellow { background-color: $disabled-yellow; }
 .sdc-bc-dark-purple     { background-color: $dark-purple; }
 .sdc-bc-purple          { background-color: $purple; }
 .sdc-bc-light-purple    { background-color: $light-purple; }
-.sdc-bc-lighter-silver        { background-color: $lighter-silver; }
+.sdc-bc-lighter-silver  { background-color: $lighter-silver; }
+
 /* Prefix */
 $box-sizing-prefix: webkit moz spec;
 $border-radius-prefix: webkit spec;

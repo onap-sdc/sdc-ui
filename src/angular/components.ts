@@ -3,11 +3,10 @@
  */
 
 // Form Elements
-export { InputComponent } from "./form-elements/text-elements/input/input.component";
+export { InputComponent } from "./form-elements/input/input.component";
 export { DropDownComponent } from "./form-elements/dropdown/dropdown.component";
 export { CheckboxComponent } from "./form-elements/checkbox/checkbox.component";
 export { RadioGroupComponent } from "./form-elements/radios/radio-buttons-group.component";
-export { TextareaComponent } from "./form-elements/text-elements/textarea/textarea.component";
 
 // Buttons
 export { ButtonComponent } from "./buttons/button.component";

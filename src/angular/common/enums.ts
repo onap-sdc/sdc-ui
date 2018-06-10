@@ -12,7 +12,17 @@ export enum Size {
     x_small = 'x_small'
 }
 
+// TODO: Replace this with type
 export enum Mode {
+    primary = 'primary',
+    secondary = 'secondary',
+    success = 'success',
+    error = 'error',
+    warning = 'warning',
+    info = 'info'
+}
+
+export enum ButtonType {
     primary = 'primary',
     secondary = 'secondary',
     success = 'success',
