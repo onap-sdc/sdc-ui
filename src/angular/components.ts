@@ -48,3 +48,6 @@ export { SvgIconLabelComponent } from "./svg-icon/svg-icon-label.component";
 
 // Accordion
 export { AccordionComponent } from './accordion/accordion.component';
+
+// Multiline Ellipsis
+export { MultilineEllipsisComponent } from './multiline-ellipsis/multiline-ellipsis.component';
