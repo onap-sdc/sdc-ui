@@ -16,6 +16,7 @@ import { TooltipModule } from "./tooltip/tooltip.module";
 import { TagCloudModule } from './tag-cloud/tag-cloud.module';
 import { TabsModule } from "./tabs/tabs.module";
 import { AccordionModule } from "./accordion/accordion.module";
+import { MultilineEllipsisModule } from "./multiline-ellipsis/multiline-ellipsis.module";
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { AccordionModule } from "./accordion/accordion.module";
         SvgIconModule,
         TagCloudModule,
         TabsModule,
-        AccordionModule
+        AccordionModule,
+        MultilineEllipsisModule
     ],
     exports: [
         AnimationDirectivesModule,
@@ -54,7 +56,8 @@ import { AccordionModule } from "./accordion/accordion.module";
         SvgIconModule,
         TagCloudModule,
         TabsModule,
-        AccordionModule
+        AccordionModule,
+        MultilineEllipsisModule
     ]
 })
 export class SdcUiComponentsModule {
