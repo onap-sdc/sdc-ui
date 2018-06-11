@@ -9,7 +9,7 @@ export default experimentOn('Loader')
         title: 'Regular loader',
         description: 'Simple Fixed loader',
         context: {
-          showLoaderFlag : false
+          showLoaderFlag : 0
         },
         template: `
                 <h3>We show loader : <h2 *ngIf = "!showLoaderFlag" style="color:red">NO</h2> <h2 *ngIf = "showLoaderFlag" style="color:green">Yes</h2></h3>

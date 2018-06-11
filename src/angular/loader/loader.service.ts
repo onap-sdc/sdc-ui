@@ -22,12 +22,16 @@ export class LoaderService {
         }
     }
 
-    public activate(name: string) {
-        this.registeredLoaders[name] ? this.registeredLoaders[name].activate() : this.registeredLoaders[this.mainLoaderName].activate(); 
+    public activate(name: string = this.mainLoaderName) {
+        if (this.registeredLoaders[name]) {
+            this.registeredLoaders[name].activate();
+        }
     }
 
-    public deactivate(name: string) {
-        this.registeredLoaders[name] ? this.registeredLoaders[name].deactivate() : this.registeredLoaders[this.mainLoaderName].deactivate();
+    public deactivate(name: string = this.mainLoaderName) {
+        if (this.registeredLoaders[name]) {
+            this.registeredLoaders[name].deactivate();
+        }
     }
 
 }
