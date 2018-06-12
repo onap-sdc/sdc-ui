@@ -40,18 +40,16 @@ import { LoaderPerfomanceItem } from "./components/loader-performance-item";
         CommonModule,
         SdcUiComponentsModule,
         ModalInnerContent,
+        ModalConsumerComponent,
         NotificationsExample,
         GeneralLoaderExampleComponent,
         MultipleLoaderExampleComponent,
         MultipleLoaderSecondExampleComponent,
         ColorsTable,
         SvgIconsTableComponent,
-        ModalConsumer,
         SearchFilterPipe,
         LoaderOutputExapleCompnent,
         LoaderPerfomanceItem,
-        ModalConsumerComponent,
-        SearchFilterPipe
     ],
     entryComponents: [
         ModalInnerContent
