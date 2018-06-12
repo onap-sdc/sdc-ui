@@ -130,6 +130,13 @@ if (typeof angular !== "undefined") {
         inputs: ['arrow-direction', 'css-class', 'title', 'open'],
         outputs: ['accordionChanged']
     }));
+
+    // Multiline Ellipsis
+    SdcUiComponentsNg1Module.directive('multilineEllipsis', downgradeComponent({
+        component: Components.MultilineEllipsisComponent,
+        inputs: ['lines', 'line-height', 'className'],
+        outputs: ['hasEllipsisChanged']
+    }));
 }
 
 export {SdcUiComponentsNg1Module};
