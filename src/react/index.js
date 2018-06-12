@@ -23,7 +23,6 @@ import TileInfoLine from './TileInfoLine.js';
 import TileFooter from './TileFooter.js';
 import TileFooterCell from './TileFooterCell.js';
 
-
 export { Accordion };
 export { Button };
 export { Checkbox };
@@ -50,28 +49,28 @@ export { TileFooter };
 export { TileFooterCell };
 
 export default {
-	Accordion,
-	Button,
-	Checkbox,
-	Checklist,
-	Input,
-	Modal,
-	ModalBody,
-	ModalFooter,
-	ModalHeader,
-	ModalTitle,
-	Notification,
-	Panel,
-	PopupMenu,
-	Portal,
-	Radio,
-	RadioGroup,
-	SVGIcon,
-	Tab,
-	Tabs,
-	Tile,
-	TileInfo,
-	TileInfoLine,
-	TileFooter,
-	TileFooterCell
+    Accordion,
+    Button,
+    Checkbox,
+    Checklist,
+    Input,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalTitle,
+    Notification,
+    Panel,
+    PopupMenu,
+    Portal,
+    Radio,
+    RadioGroup,
+    SVGIcon,
+    Tab,
+    Tabs,
+    Tile,
+    TileInfo,
+    TileInfoLine,
+    TileFooter,
+    TileFooterCell
 };

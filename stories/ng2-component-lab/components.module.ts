@@ -6,7 +6,7 @@ import { KeysPipe } from "./utils/pipes/keys.pipe";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { ColorsTable } from "./components/colors-table.component";
 import { ModalInnerContent } from "./components/modal-inner-content-example.component";
-import { ModalConsumer } from "./components/modal-consumer.component";
+import { ModalConsumerComponent } from "./components/modal-consumer.component";
 import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
 import { NotificationsExample } from "./components/notifications-example.component";
 import { Mode, Placement, Size } from "./../../src/angular/common/enums";
@@ -21,7 +21,7 @@ import { LoaderPerfomanceItem } from "./components/loader-performance-item";
         ColorsTable,
         KeysPipe,
         ModalInnerContent,
-        ModalConsumer,
+        ModalConsumerComponent,
         SearchFilterPipe,
         SvgIconsTableComponent,
         NotificationsExample,
@@ -49,7 +49,9 @@ import { LoaderPerfomanceItem } from "./components/loader-performance-item";
         ModalConsumer,
         SearchFilterPipe,
         LoaderOutputExapleCompnent,
-        LoaderPerfomanceItem
+        LoaderPerfomanceItem,
+        ModalConsumerComponent,
+        SearchFilterPipe
     ],
     entryComponents: [
         ModalInnerContent

@@ -39,7 +39,7 @@
     }
 
     &:disabled{
-      background: $blue-disabled;
+      background: $disabled-blue;
     }
   }
 
@@ -64,8 +64,8 @@
     }
 
     &:disabled {
-      color: $blue-disabled;
-      border-color: $blue-disabled;
+      color: $disabled-blue;
+      border-color: $disabled-blue;
     }
   }
 
@@ -87,14 +87,35 @@
     }
 
     &:disabled{
-      color: $blue-disabled;
+      color: $disabled-blue;
     }
   }
 
+  // success
+  &.sdc-button__success {
+    border: 1px solid transparent;
+    background-color: $green;
+    color: $white;
 
-  // alert button
-  &.sdc-button__alert {
-    border: none;
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-green;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-green;
+        box-shadow: 0px 0px 0px 1px $light-green;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-green;
+    }
+  }
+
+  // error
+  &.sdc-button__error, &.sdc-button__alert {
+    border: 1px solid transparent;
     background-color: $red;
     color: $white;
 
@@ -103,7 +124,7 @@
         background-color: $light-red;
       }
       &:focus:not(:active) {
-        border: 0.5px solid $white;
+        border: 1px solid $white;
         background-color: $light-red;
         box-shadow: 0px 0px 0px 1px $light-red;
       }
@@ -114,6 +135,49 @@
     }
   }
 
+  // warning
+  &.sdc-button__warning {
+    border: 1px solid transparent;
+    background-color: $yellow;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-yellow;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-yellow;
+        box-shadow: 0px 0px 0px 1px $light-yellow;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-yellow;
+    }
+  }
+
+  // info
+  &.sdc-button__info {
+    border: 1px solid transparent;
+    background-color: $blue;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-blue;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-blue;
+        box-shadow: 0px 0px 0px 1px $light-blue;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-blue;
+    }
+  }
 
   /*** Sizes ***/
   &.btn-large{

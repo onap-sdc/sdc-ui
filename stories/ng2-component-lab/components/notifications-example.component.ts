@@ -44,7 +44,7 @@ export class NotificationsExample {
     }
 
     sendWarnNotif() {
-        this.notifsService.push(new NotificationSettings("warning", 'notif warn message test', 'Notif Title Warn'));
+        this.notifsService.push(new NotificationSettings("warn", 'notif warn message test', 'Notif Title Warn'));
     }
 
     sendInfoNotif() {

@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Panel = ({ className, children }) => (
-    <div className={`sdc-panel ${className}`}>
-        {children}
-    </div>
+    <div className={`sdc-panel ${className}`}>{children}</div>
 );
 
 Panel.propTypes = {
