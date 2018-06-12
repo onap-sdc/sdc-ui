@@ -1,7 +1,8 @@
-import { Component, Input } from "@angular/core";
+import {Component, ComponentRef, Input} from "@angular/core";
 import { ButtonComponent } from "../buttons/button.component";
 import { ModalService } from "./modal.service";
 import { RippleAnimationAction } from "../animations/ripple-click.animation.directive";
+import {ModalComponent} from "./modal.component";
 
 @Component({
     selector: "sdc-modal-close-button",
@@ -21,6 +22,7 @@ export class ModalCloseButtonComponent {
 
     @Input() testId: string;
     @Input() disabled: boolean;
+    @Input() modalInstanceRef: ComponentRef<ModalComponent>;
 
     public rippleAnimationAction: RippleAnimationAction = RippleAnimationAction.MOUSE_ENTER;
 
@@ -28,7 +30,7 @@ export class ModalCloseButtonComponent {
     }
 
     public closeModal = (): void => {
-        this.modalService.closeModal();
+        this.modalInstanceRef.instance.closeModal();
     }
 
 }

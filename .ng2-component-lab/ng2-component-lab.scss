@@ -32,27 +32,31 @@
 @import '../src/style/scss/style.scss';
 
 .colors-table {
-  width: 75%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+
   font-size: 13px;
-  .color-section {
+
+  .color-group {
+
     display: flex;
-    flex-direction: column;
-    margin: 10px 0;
-    min-width: 150px;
-    div {
-      align-self: center;
-      user-select: text;
-    }
-    $circle-size: 40px;
-    .color-circle {
-      height: $circle-size;
-      width: $circle-size;
-      border-radius: $circle-size;
-      padding: 10px;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .color-section {
+
+      margin: 0 20px 20px 0;
       text-align: center;
+      
+      div {
+        align-self: center;
+        user-select: text;
+      }
+      $circle-size: 80px;
+      .color-circle {
+        height: $circle-size;
+        width: $circle-size;
+        border-radius: $circle-size;
+        text-align: center;
+      }
     }
   }
 }

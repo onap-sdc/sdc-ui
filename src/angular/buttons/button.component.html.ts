@@ -5,7 +5,7 @@ export default `
         <svg-icon
                 *ngIf="icon_name"
                 [name]="icon_name"
-                [mode]="iconMode"
+                [mode]="type"
                 [size]="'medium'"
                 >
         </svg-icon>
