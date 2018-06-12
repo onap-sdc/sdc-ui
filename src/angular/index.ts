@@ -15,6 +15,7 @@ import { SearchBarModule } from "./searchbar/search-bar.module";
 import { TooltipModule } from "./tooltip/tooltip.module";
 import { TagCloudModule } from './tag-cloud/tag-cloud.module';
 import { TabsModule } from "./tabs/tabs.module";
+import { LoaderModule } from "./loader/loader.module";
 import { AccordionModule } from "./accordion/accordion.module";
 import { MultilineEllipsisModule } from "./multiline-ellipsis/multiline-ellipsis.module";
 
@@ -36,6 +37,7 @@ import { MultilineEllipsisModule } from "./multiline-ellipsis/multiline-ellipsis
         SvgIconModule,
         TagCloudModule,
         TabsModule,
+        LoaderModule,
         AccordionModule,
         MultilineEllipsisModule
     ],
@@ -56,6 +58,7 @@ import { MultilineEllipsisModule } from "./multiline-ellipsis/multiline-ellipsis
         SvgIconModule,
         TagCloudModule,
         TabsModule,
+        LoaderModule,
         AccordionModule,
         MultilineEllipsisModule
     ]
