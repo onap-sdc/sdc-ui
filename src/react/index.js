@@ -8,6 +8,7 @@ import ModalBody from './ModalBody.js';
 import ModalFooter from './ModalFooter.js';
 import ModalHeader from './ModalHeader.js';
 import ModalTitle from './ModalTitle.js';
+import Notification from './Notification.js';
 import Panel from './Panel.js';
 import PopupMenu from './PopupMenu.js';
 import Portal from './Portal.js';
@@ -22,7 +23,6 @@ import TileInfoLine from './TileInfoLine.js';
 import TileFooter from './TileFooter.js';
 import TileFooterCell from './TileFooterCell.js';
 
-
 export { Accordion };
 export { Button };
 export { Checkbox };
@@ -33,6 +33,7 @@ export { ModalBody };
 export { ModalFooter };
 export { ModalHeader };
 export { ModalTitle };
+export { Notification };
 export { Panel };
 export { PopupMenu };
 export { Portal };
@@ -48,27 +49,28 @@ export { TileFooter };
 export { TileFooterCell };
 
 export default {
-	Accordion,
-	Button,
-	Checkbox,
-	Checklist,
-	Input,
-	Modal,
-	ModalBody,
-	ModalFooter,
-	ModalHeader,
-	ModalTitle,
-	Panel,
-	PopupMenu,
-	Portal,
-	Radio,
-	RadioGroup,
-	SVGIcon,
-	Tab,
-	Tabs,
-	Tile,
-	TileInfo,
-	TileInfoLine,
-	TileFooter,
-	TileFooterCell
+    Accordion,
+    Button,
+    Checkbox,
+    Checklist,
+    Input,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalTitle,
+    Notification,
+    Panel,
+    PopupMenu,
+    Portal,
+    Radio,
+    RadioGroup,
+    SVGIcon,
+    Tab,
+    Tabs,
+    Tile,
+    TileInfo,
+    TileInfoLine,
+    TileFooter,
+    TileFooterCell
 };
