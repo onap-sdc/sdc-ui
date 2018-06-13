@@ -10,6 +10,11 @@ import { ModalConsumerComponent } from "./components/modal-consumer.component";
 import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
 import { NotificationsExample } from "./components/notifications-example.component";
 import { Mode, Placement, Size } from "./../../src/angular/common/enums";
+import { GeneralLoaderExampleComponent } from "./components/general-loader-example.component";
+import { MultipleLoaderExampleComponent } from "./components/multiple-loader-example.component";
+import { MultipleLoaderSecondExampleComponent } from "./components/multiple-second-loader-example.component";
+import { LoaderOutputExapleCompnent } from "./components/loader-output-example-component";
+import { LoaderPerfomanceItem } from "./components/loader-performance-item";
 
 @NgModule({
     declarations: [
@@ -19,7 +24,12 @@ import { Mode, Placement, Size } from "./../../src/angular/common/enums";
         ModalConsumerComponent,
         SearchFilterPipe,
         SvgIconsTableComponent,
-        NotificationsExample
+        NotificationsExample,
+        GeneralLoaderExampleComponent,
+        MultipleLoaderExampleComponent,
+        MultipleLoaderSecondExampleComponent,
+        LoaderOutputExapleCompnent,
+        LoaderPerfomanceItem
     ],
     imports: [
         CommonModule,
@@ -30,11 +40,16 @@ import { Mode, Placement, Size } from "./../../src/angular/common/enums";
         CommonModule,
         SdcUiComponentsModule,
         ModalInnerContent,
+        ModalConsumerComponent,
         NotificationsExample,
+        GeneralLoaderExampleComponent,
+        MultipleLoaderExampleComponent,
+        MultipleLoaderSecondExampleComponent,
         ColorsTable,
         SvgIconsTableComponent,
-        ModalConsumerComponent,
-        SearchFilterPipe
+        SearchFilterPipe,
+        LoaderOutputExapleCompnent,
+        LoaderPerfomanceItem,
     ],
     entryComponents: [
         ModalInnerContent
