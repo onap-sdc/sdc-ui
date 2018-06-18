@@ -36,7 +36,7 @@
     }
 
     &:disabled{
-      background: $blue-disabled;
+      background: $disabled-blue;
     }
   }
 
@@ -59,8 +59,8 @@
     }
 
     &:disabled {
-      color: $blue-disabled;
-      border-color: $blue-disabled;
+      color: $disabled-blue;
+      border-color: $disabled-blue;
     }
   }
 
@@ -82,13 +82,13 @@
     }
 
     &:disabled{
-      color: $blue-disabled;
+      color: $disabled-blue;
     }
   }
 
 
-  // alert button
-  &.sdc-button__alert {
+  // error button
+  &.sdc-button__error, &.sdc-button__alert {
     border: none;
     background-color: $red;
     color: $white;

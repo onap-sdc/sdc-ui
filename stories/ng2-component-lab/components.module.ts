@@ -6,20 +6,30 @@ import { KeysPipe } from "./utils/pipes/keys.pipe";
 import { SearchFilterPipe } from "./pipes/search-filter-pipe";
 import { ColorsTable } from "./components/colors-table.component";
 import { ModalInnerContent } from "./components/modal-inner-content-example.component";
-import { ModalConsumer } from "./components/modal-consumer.component";
+import { ModalConsumerComponent } from "./components/modal-consumer.component";
 import { SvgIconsTableComponent } from "./components/svg-icons-table.component";
 import { NotificationsExample } from "./components/notifications-example.component";
 import { Mode, Placement, Size } from "./../../src/angular/common/enums";
+import { GeneralLoaderExampleComponent } from "./components/general-loader-example.component";
+import { MultipleLoaderExampleComponent } from "./components/multiple-loader-example.component";
+import { MultipleLoaderSecondExampleComponent } from "./components/multiple-second-loader-example.component";
+import { LoaderOutputExapleCompnent } from "./components/loader-output-example-component";
+import { LoaderPerfomanceItem } from "./components/loader-performance-item";
 
 @NgModule({
     declarations: [
         ColorsTable,
         KeysPipe,
         ModalInnerContent,
-        ModalConsumer,
+        ModalConsumerComponent,
         SearchFilterPipe,
         SvgIconsTableComponent,
-        NotificationsExample
+        NotificationsExample,
+        GeneralLoaderExampleComponent,
+        MultipleLoaderExampleComponent,
+        MultipleLoaderSecondExampleComponent,
+        LoaderOutputExapleCompnent,
+        LoaderPerfomanceItem
     ],
     imports: [
         CommonModule,
@@ -30,11 +40,16 @@ import { Mode, Placement, Size } from "./../../src/angular/common/enums";
         CommonModule,
         SdcUiComponentsModule,
         ModalInnerContent,
+        ModalConsumerComponent,
         NotificationsExample,
+        GeneralLoaderExampleComponent,
+        MultipleLoaderExampleComponent,
+        MultipleLoaderSecondExampleComponent,
         ColorsTable,
         SvgIconsTableComponent,
-        ModalConsumer,
-        SearchFilterPipe
+        SearchFilterPipe,
+        LoaderOutputExapleCompnent,
+        LoaderPerfomanceItem,
     ],
     entryComponents: [
         ModalInnerContent

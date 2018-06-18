@@ -6,7 +6,7 @@ const Checklist = ({ items = [], className, onChange }) => (
     <div className={className}>
         {items.map((item, index) => {
             return (
-                <div key={`checkbox-item-${index}`} className='checkbox-item'>
+                <div key={`checkbox-item-${index}`} className="checkbox-item">
                     <Checkbox
                         key={`${item.label}${index}`}
                         label={item.label}

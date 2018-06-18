@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges, HostBinding } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { Mode, Size } from "../common/enums";
+import { Mode, Size, BackgroundShape, BackgroundColor } from "../common/enums";
 import iconsMap from '../../common/icons-map';
 import template from './svg-icon.component.html';
 
@@ -18,6 +18,8 @@ export class SvgIconComponent implements OnChanges {
     @Input() public name: string;
     @Input() public mode: Mode;
     @Input() public size: Size;
+    @Input() public backgroundShape: BackgroundShape;
+    @Input() public backgroundColor: BackgroundColor;
     @Input() public disabled: boolean;
     @Input() public clickable: boolean;
     @Input() public className: any;
@@ -37,10 +39,8 @@ export class SvgIconComponent implements OnChanges {
     }
 
     public ngOnChanges(changes: SimpleChanges) {
-        if (changes.name) {
-            this.updateSvgIconByName();
-            this.buildClasses();
-        }
+        this.updateSvgIconByName();
+        this.buildClasses();
     }
 
     protected updateSvgIconByName() {
@@ -55,22 +55,17 @@ export class SvgIconComponent implements OnChanges {
     }
 
     private buildClasses = (): void => {
-        const _classes = [];
-        _classes.push('svg-icon');
-        if (this.mode) {
-            _classes.push('mode-' + this.mode);
-        }
-        if (this.size) {
-            _classes.push('size-' + this.size);
-        }
-        if (this.clickable) {
-            _classes.push('clickable');
-        }
-        if (this.svgIconCustomClassName) {
-            _classes.push(this.svgIconCustomClassName);
-        }
-        if (this.className) {
-            _classes.push(this.className);
+        const _classes = ['svg-icon'];
+        if (this.mode) { _classes.push('mode-' + this.mode); }
+        if (this.size) { _classes.push('size-' + this.size); }
+        if (this.clickable) { _classes.push('clickable'); }
+        if (this.svgIconCustomClassName) { _classes.push(this.svgIconCustomClassName); }
+        if (this.className) { _classes.push(this.className); }
+        if (this.backgroundShape) { _classes.push('bg-type-' + this.backgroundShape); }
+        if (this.backgroundShape && this.backgroundColor) {
+            _classes.push('bg-color-' + this.backgroundColor);
+        } else if (this.backgroundShape && !this.backgroundColor) {
+            _classes.push('bg-color-primary');
         }
         this.classes = _classes.join(" ");
     }

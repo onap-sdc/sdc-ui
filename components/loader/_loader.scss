@@ -1,0 +1,255 @@
+.sdc-loader-background {
+    background-color: $black;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sdc-loader-wrapper{
+    position: relative;
+    width: 100%;
+    height:100%;
+}
+
+.sdc-loader-wrapper-absolute { position: absolute; top: 0;}
+
+.sdc-loader {
+    z-index: 10002;
+}
+
+.sdc-loader-global-wrapper{
+    position:fixed;
+    width: 100%;
+    height:100%;
+}
+
+.loader-fixed {
+    display: block;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+@keyframes fadeout {
+    from { opacity: 0.8; }
+    to   { opacity: 0; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeout {
+    from { opacity: 0.8; }
+    to   { opacity: 0; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeout {
+    from { opacity: 0.8; }
+    to   { opacity: 0; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+    from { opacity: 0.8; }
+    to   { opacity: 0; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeout {
+    from { opacity: 0.8; }
+    to   { opacity: 0; }
+}
+
+.sdc-loader {
+    height: 63px;
+    width: 63px;
+    position: absolute;
+}
+
+.sdc-loader.small {
+    transform: scale(0.26);
+}
+
+.sdc-loader.medium {
+    transform: scale(0.5);
+}
+
+.sdc-loader.large {
+    transform: scale(1);
+}
+
+.sdc-loader::before {
+    background-color: $silver;
+    border-radius: 50%;
+    box-shadow: 21px 21px 0px 0px $silver, 0px 42px 0px 0px $silver, -21px 21px 0px 0px $silver;
+    content: '';
+    display: block;
+    height: 21px;
+    width: 21px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10.5px;
+}
+
+.sdc-loader::after {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    position: absolute;
+    height: 21px;
+    width: 21px;
+    animation: dot-move-2 4.5s infinite ease-in;
+}
+
+@keyframes dot-move {
+    0% {
+        background-color: $light-blue;
+        left: 21px;
+        top: 0;
+    }
+    25% {
+        background-color: $yellow;
+        left: 42px;
+        top: 21px;
+    }
+    50% {
+        background-color: $light-purple;
+        left: 21px;
+        top: 42px;
+    }
+    75% {
+        background-color: $light-yellow;
+        left: 0;
+        top: 21px;
+    }
+    100% {
+        background-color: $light-blue;
+        left: 21px;
+        top: 0;
+    }
+}
+
+@keyframes dot-move-2 {
+    0% {
+        background-color: $light-blue;
+        left: 21px;
+        top: 0;
+    }
+    6.25% {
+        background-color: $light-blue;
+        left: 42px;
+        top: 21px;
+    }
+    12.5% {
+        background-color: $light-blue;
+        left: 21px;
+        top: 42px;
+    }
+    18.75% {
+        background-color: $light-blue;
+        left: 0;
+        top: 21px;
+    }
+    25% {
+        background-color: $yellow;
+        left: 21px;
+        top: 0;
+    }
+    31.25% {
+        background-color: $yellow;
+        left: 42px;
+        top: 21px;
+    }
+    37.5% {
+        background-color: $yellow;
+        left: 21px;
+        top: 42px;
+    }
+    43.75% {
+        background-color: $yellow;
+        left: 0;
+        top: 21px;
+    }
+    50% {
+        background-color: $light-purple;
+        left: 21px;
+        top: 0;
+    }
+    56.25% {
+        background-color: $light-purple;
+        left: 42px;
+        top: 21px;
+    }
+    62.5% {
+        background-color: $light-purple;
+        left: 21px;
+        top: 42px;
+    }
+    68.75% {
+        background-color: $light-purple;
+        left: 0;
+        top: 21px;
+    }
+    75% {
+        background-color: $light-yellow;
+        left: 21px;
+        top: 0;
+    }
+    81.25% {
+        background-color: $light-yellow;
+        left: 42px;
+        top: 21px;
+    }
+    87.5% {
+        background-color: $light-yellow;
+        left: 21px;
+        top: 42px;
+    }
+    93.75% {
+        background-color: $light-yellow;
+        left: 0;
+        top: 21px;
+    }
+    100% {
+        background-color: $light-blue;
+        left: 21px;
+        top: 0;
+    }
+}
