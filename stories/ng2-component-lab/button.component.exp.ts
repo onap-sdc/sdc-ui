@@ -1,6 +1,7 @@
 import { experimentOn } from '@islavi/ng2-component-lab';
+import { LowerCasePipe } from '@angular/common';
 
-const buttonTypes = ['primary', 'secondary', 'link', 'alert'];
+const buttonTypes = ['primary', 'secondary', 'link', 'success', 'error', 'warning', 'info'];
 const buttonSizes = ['large', 'medium', 'small', 'x-small', 'default'];
 const experiment = experimentOn('Button');
 
@@ -12,7 +13,7 @@ experiment.group("Default button", [
         <br>The size of the button set to 'default' so it will shrink or expand according to the content.
         `,
         context: {
-            buttonClicked: ():void => {
+            buttonClicked: (): void => {
                 window.alert("OK");
             }
         },
@@ -36,32 +37,53 @@ experiment.group("Default button", [
 ]);
 
 buttonTypes.forEach((buttonType) => {
-    [false, true].forEach((buttonDisabled) => {
-        experiment.group(`Button ${buttonType} ${buttonDisabled ? ' disabled' : ''}`, [   {
-            id: `Button ${buttonType}${buttonDisabled ? ' disabled' : ''}`,
-            showSource: true,
-            context: {
-                buttonClicked: ():void => {
-                    window.alert("OK");
-                }
-            },
-            title: `Button ${buttonType}${buttonDisabled ? ' disabled' : ''}`,
-            template: buttonSizes.map((buttonSize) =>
-                `
-                <span style="display: inline-block;">
-                <div>${buttonSize}</div><br>
-                <sdc-button
-                    text="Sample"
-                    type="${buttonType}"
-                    size="${buttonSize}"
-                    (click)="buttonClicked()"
-                    ${buttonDisabled ? ' [disabled]="true"' : ''}>
-                </sdc-button>
-                </span>
-                `).join('\n')
-        }
-        ]);
-    });
+    experiment.group(`${buttonType} button`, [
+    {
+        id: `${buttonType} button`,
+        showSource: true,
+        context: {
+            buttonClicked: (): void => {
+                window.alert("OK");
+            }
+        },
+        title: `Button ${buttonType}`,
+        template: buttonSizes.map((buttonSize) =>
+            `
+            <span style="display: inline-block;">
+            <div>${buttonSize}</div><br>
+            <sdc-button
+                text="Sample"
+                type="${buttonType}"
+                size="${buttonSize}"
+                (click)="buttonClicked()">
+            </sdc-button>
+            </span>
+            `).join('\n')
+    },
+    {
+        id: `${buttonType} button disabled`,
+        showSource: true,
+        context: {
+            buttonClicked: (): void => {
+                window.alert("OK");
+            }
+        },
+        title: `${buttonType} button disabled`,
+        template: buttonSizes.map((buttonSize) =>
+            `
+            <span style="display: inline-block;">
+            <div>${buttonSize}</div><br>
+            <sdc-button
+                text="Sample"
+                type="${buttonType}"
+                size="${buttonSize}"
+                (click)="buttonClicked()"
+                [disabled]="true">
+            </sdc-button>
+            </span>
+            `).join('\n')
+    }
+    ]);
 });
 
 experiment.group("Buttons with icons", [

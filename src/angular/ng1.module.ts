@@ -30,11 +30,6 @@ if (typeof angular !== "undefined") {
         inputs: ['legend', 'options', 'disabled', 'value', 'direction'],
         outputs: ['valueChange']
     }));
-    SdcUiComponentsNg1Module.directive('sdcTextarea', downgradeComponent({
-        component: Components.InputComponent,
-        inputs: ['label', 'value', 'pattern', 'disabled', 'placeHolder', 'required', 'minLength', 'maxLength', 'debounceTime'],
-        outputs: ['valueChange']
-    }));
 
     // Buttons
     SdcUiComponentsNg1Module.directive('sdcButton', downgradeComponent({
@@ -134,6 +129,13 @@ if (typeof angular !== "undefined") {
         component: Components.AccordionComponent,
         inputs: ['arrow-direction', 'css-class', 'title', 'open'],
         outputs: ['accordionChanged']
+    }));
+
+    // Multiline Ellipsis
+    SdcUiComponentsNg1Module.directive('multilineEllipsis', downgradeComponent({
+        component: Components.MultilineEllipsisComponent,
+        inputs: ['lines', 'line-height', 'className'],
+        outputs: ['hasEllipsisChanged']
     }));
 }
 

@@ -1,3 +1,6 @@
+sdc-modal{
+  position: fixed;
+}
 .sdc-modal {
   position: fixed;
   top: 0;
@@ -32,7 +35,21 @@
         }
       }
     }
-    &.sdc-modal-type-alert {
+
+    &.sdc-modal-type-info {
+      border-top: solid 6px $blue;
+      .sdc-modal__svg-use {
+        fill: $blue;
+      }
+      .svg-icon {
+        &.__exclamationTriangleLine {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    &.sdc-modal-type-warning, &.sdc-modal-type-alert {
       border-top: solid 6px $yellow;
       .sdc-modal__svg-use {
         fill: $yellow;
@@ -44,6 +61,20 @@
         }
       }
     }
+
+    &.sdc-modal-type-success {
+      border-top: solid 6px $green;
+      .sdc-modal__svg-use {
+        fill: $green;
+      }
+      .svg-icon {
+        &.__success {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
     &.sdc-modal-type-error {
       border-top: solid 6px $red;
       .sdc-modal__svg-use {
@@ -56,6 +87,7 @@
         }
       }
     }
+
     &.sdc-modal-type-custom {
       padding: 0px;
       border-top: none;

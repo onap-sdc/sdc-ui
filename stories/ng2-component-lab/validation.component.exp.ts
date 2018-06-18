@@ -92,11 +92,11 @@ export default experimentOn('Validation')
             id: 'validation5',
             showSource: true,
             title: 'Validation with validity changed callback',
-            description: 'Simple validation with alert when validity changes',
+            description: 'Simple validation with log in the console when validity changes',
             context: {
                 numbersPattern: RegexPatterns.numbers,
                 validityChanged: (newState: boolean) => {
-                    alert("Validity has changed to " + newState);
+                    console.log("Validity has changed to " + newState);
                 }
             },
             template: `

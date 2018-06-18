@@ -92,6 +92,39 @@
         width: 48px;
         height: 48px;
     }
+
+    &.bg-type-circle {
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    &.bg-type-rectangle {
+        padding: 10px;
+    }
+
+    &.bg-color-primary {
+        background-color: $purple;
+    }
+
+    &.bg-color-secondary {
+        background-color: $gray;
+    }
+
+    &.bg-color-success {
+        background-color: $green;
+    }
+
+    &.bg-color-error {
+        background-color: $red;
+    }
+
+    &.bg-color-warning {
+        background-color: $yellow;
+    }
+
+    &.bg-color-info {
+        background-color: $blue;
+    }
 }
 
 .svg-icon-wrapper {
