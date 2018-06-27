@@ -1,5 +1,6 @@
 {
   "singleQuote": true,
   "jsxBracketSameLine": true,
-  "tabWidth": 4
+  "tabWidth": 4,
+  "parset": "typescript"
 }
