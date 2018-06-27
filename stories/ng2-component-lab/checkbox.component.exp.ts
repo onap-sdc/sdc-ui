@@ -14,14 +14,14 @@ export default experimentOn('Checkbox')
         showSource: true,
         title: 'Regular Checked Checkbox',
         description: 'Simple checked checkbox',
-        template: `<sdc-checkbox label="Checked" [checked]="true"></sdc-checkbox>`,
+        template: `<sdc-checkbox label="Checked" [checked]="true" [testId]="'checkedCheckboxID'"></sdc-checkbox>`,
       },
       {
         id: 'disabledCheckbox',
         showSource: true,
         title: 'Disabled checkbox',
         description: 'Simple disabled checkbox',
-        template: `<sdc-checkbox label="Disabled"[disabled]="true"></sdc-checkbox>`,
+        template: `<sdc-checkbox label="Disabled" [disabled]="true"></sdc-checkbox>`,
       },
       {
         id: 'disabledCheckboxChecked',

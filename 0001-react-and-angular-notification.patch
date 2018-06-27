@@ -1,0 +1,671 @@
+From ceb408caa40cde0fac8d7d4171703b6aa27e91d7 Mon Sep 17 00:00:00 2001
+From: Stanislav Vishnevetskiy <svishnev@svishnev01-mac.local>
+Date: Tue, 26 Jun 2018 15:37:22 +0300
+Subject: [PATCH 1/1] react and angular notification
+
+---
+ components/notification/_notification.scss         | 101 +++++++++------
+ components/notification/notification-error.html    |  21 +++
+ components/notification/notification-info.html     |  24 +++-
+ components/notification/notification-success.html  |  21 +++
+ components/notification/notification-warning.html  |  21 +++
+ .../_notifications-container.scss                  |   4 +-
+ package.json                                       |   2 +-
+ .../notification/notification.component.html.ts    |  24 ++--
+ .../notifications/utilities/notification.config.ts |   2 +-
+ src/react/Notification.js                          |  40 ++++++
+ src/react/index.js                                 |   3 +
+ .../components/notifications-example.component.ts  |   2 +-
+ stories/react/Notification.stories.js              |  31 +++++
+ stories/react/index.js                             |   4 +-
+ test/react/Notification.spec.js                    |  26 ++++
+ test/react/__snapshots__/Notification.spec.js.snap | 141 +++++++++++++++++++++
+ 16 files changed, 405 insertions(+), 62 deletions(-)
+ create mode 100644 components/notification/notification-error.html
+ create mode 100644 components/notification/notification-success.html
+ create mode 100644 components/notification/notification-warning.html
+ create mode 100644 src/react/Notification.js
+ create mode 100644 stories/react/Notification.stories.js
+ create mode 100644 test/react/Notification.spec.js
+ create mode 100644 test/react/__snapshots__/Notification.spec.js.snap
+
+diff --git a/components/notification/_notification.scss b/components/notification/_notification.scss
+index dafe8d4..1c46ac2 100644
+--- a/components/notification/_notification.scss
++++ b/components/notification/_notification.scss
+@@ -3,57 +3,76 @@
+ 
+ .sdc-notification {
+ 	position:relative;
++	padding: 10px;
++	width: 300px;
++	min-height: 45px;
++	animation: keyframes-slide-notif-in 1s;
++	margin: 2px;
++	box-shadow: 0 3px 7px -3px $dark-gray;
++	display:flex;
++	flex-direction:row;
++	align-items: center;
++	&.fade-out__animated {
++		animation: keyframes-slide-notif-out 0.8s
++	}
+ 
+-	.sdc-notification__wrapper {
+-		padding: 10px;
+-		margin-top:10px;
+-		width: 212px;
+-		animation: keyframes-slide-notif-in 1s;
++	&.type-info {
++		background-color: $blue; }
+ 
+-		&.fade-out__animated {
+-			animation: keyframes-slide-notif-out 0.8s
+-		}
++	&.type-error {
++		background-color: $red; }
+ 
+-		&.type-info {
+-			background-color: #0e90d2; }
+-	
+-		&.type-error {
+-			background-color: #dd514c; }
+-	
+-		&.type-success {
+-			background-color: #5eb95e; }
+-	
+-		&.type-warn {
+-			background-color: #f37b1d; }
+-	}
++	&.type-success {
++		background-color: $green; }
+ 
+-	.sdc-notification__content {
+-		display:flex;
+-		flex-direction:row;
++	&.type-warning {
++		background-color: $yellow; }
+ 
+-		.sdc-notification__icon {
+-			flex: 0 0 auto;
++
++	&.react-transition-exit-active {
++		animation: keyframes-slide-notif-out 0.8s
++	}
++	
++
++	
++	.sdc-notification__icon_container {
++		border-radius: 42px;			
++		flex: 0 0 auto;
++		height: 38px;
++		width: 38px;
++		background-color: rgba($white, 0.3);
++		margin-right: 5px;
++		.sdc-notification_svg-icon {								
+ 			height: 32px;
+ 			width: 32px;
+-			margin: 0 14px 0 7px;
+-			background: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%2382c355%3B%7D.cls-2%7Bfill%3Anone%3Bstroke%3A%23ebf5e4%3Bstroke-miterlimit%3A10%3B%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Evicon%3C/title%3E%3Cg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%3E%3Ccircle%20class%3D%22cls-1%22%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2216%22/%3E%3C/g%3E%3Cg%20id%3D%22Layer_4%22%20data-name%3D%22Layer%204%22%3E%3Cpolyline%20class%3D%22cls-2%22%20points%3D%227.46%2017.43%2015.36%2021.74%2022.54%208.57%22/%3E%3C/g%3E%3C/svg%3E')
++			fill: $white;
++			margin-left: 3px;
++			margin-top: 3px;
+ 		}
++	}			
+ 	
+-		.sdc-notification__message {
+-			flex: 1;
+-			text-align: left;
+-
+-			.sdc-notification__title {
+-				font-size:13px;
+-				color: white;
+-			}
+-		
+-			.sdc-notification__text {
+-				font-size: 12px;
+-				color: white;
+-			}
++	.sdc-notification__icon {
++		flex: 0 0 auto;
++		height: 32px;
++		width: 32px;
++		margin-left: 3px;
++		margin-top: 3px;
++		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style=''%3E%3Crect id='backgroundrect' width='100%25' height='100%25' x='0' y='0' fill='none' stroke='none'/%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%2382c355;%7D.cls-2%7Bfill:none;stroke:%23ebf5e4;stroke-miterlimit:10;%7D%3C/style%3E%3C/defs%3E%3Ctitle%3Evicon%3C/title%3E%3Cg class='currentLayer' style=''%3E%3Ctitle%3ELayer 1%3C/title%3E%3Cg id='Layer_4' data-name='Layer 4'%3E%3Cpolyline class='cls-2' points='7.46 17.43 15.36 21.74 22.54 8.57' id='svg_2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
++	}
++	.sdc-notification__message {
++		flex: 1;
++		text-align: left;
++		margin-left: 20px;
++
++		.sdc-notification__title {
++			font-size:16px;
++			color: white;
++			font-weight: bolder;
+ 		}
+ 	
++		.sdc-notification__text {
++			font-size: 14px;
++			color: white;
++		}
+ 	}
+-
+ }
+diff --git a/components/notification/notification-error.html b/components/notification/notification-error.html
+new file mode 100644
+index 0000000..b3a6d77
+--- /dev/null
++++ b/components/notification/notification-error.html
+@@ -0,0 +1,21 @@
++<div class="sdc-notification type-error " data-test-id="">
++  <div class="sdc-notification__icon_container">
++    <div class="svg-icon-wrapper sdc-notification_svg-icon bottom">
++      <svg class="svg-icon __check" version="1.1" id="check_icon" x="0px" y="0px" viewBox="0 0 14 10" style="enable-background:new 0 0 14 10;" xml:space="preserve">
++        <g transform="translate(0,-952.36218)">
++          <path d="M13.6,952.4c-0.1,0-0.2,0.1-0.3,0.2c-2.8,2.9-5.6,5.8-8.4,8.7l-4-3.5c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7l0,0l4.4,3.7
++		c0.2,0.2,0.5,0.1,0.6,0c2.9-3,5.8-6,8.7-9.1c0.2-0.2,0.2-0.5,0-0.7C13.8,952.4,13.6,952.4,13.6,952.4L13.6,952.4z">
++          </path>
++        </g>
++      </svg>
++    </div>
++  </div>
++  <div class="sdc-notification__message">
++    <div class="sdc-notification__title">
++      Title
++    </div>
++    <div class="sdc-notification__text">
++      message
++    </div>
++  </div>
++</div>
+\ No newline at end of file
+diff --git a/components/notification/notification-info.html b/components/notification/notification-info.html
+index 6eab4c0..8916947 100644
+--- a/components/notification/notification-info.html
++++ b/components/notification/notification-info.html
+@@ -1,3 +1,21 @@
+-<div class="sdc-notification">
+-
+-</div>
++<div class="sdc-notification type-info " data-test-id="">
++  <div class="sdc-notification__icon_container">
++    <div class="svg-icon-wrapper sdc-notification_svg-icon bottom">
++      <svg class="svg-icon __check" version="1.1" id="check_icon" x="0px" y="0px" viewBox="0 0 14 10" style="enable-background:new 0 0 14 10;" xml:space="preserve">
++        <g transform="translate(0,-952.36218)">
++          <path d="M13.6,952.4c-0.1,0-0.2,0.1-0.3,0.2c-2.8,2.9-5.6,5.8-8.4,8.7l-4-3.5c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7l0,0l4.4,3.7
++		c0.2,0.2,0.5,0.1,0.6,0c2.9-3,5.8-6,8.7-9.1c0.2-0.2,0.2-0.5,0-0.7C13.8,952.4,13.6,952.4,13.6,952.4L13.6,952.4z">
++          </path>
++        </g>
++      </svg>
++    </div>
++  </div>
++  <div class="sdc-notification__message">
++    <div class="sdc-notification__title">
++      Title
++    </div>
++    <div class="sdc-notification__text">
++      message
++    </div>
++  </div>
++</div>
+\ No newline at end of file
+diff --git a/components/notification/notification-success.html b/components/notification/notification-success.html
+new file mode 100644
+index 0000000..a7f38fd
+--- /dev/null
++++ b/components/notification/notification-success.html
+@@ -0,0 +1,21 @@
++<div class="sdc-notification type-success " data-test-id="">
++  <div class="sdc-notification__icon_container">
++    <div class="svg-icon-wrapper sdc-notification_svg-icon bottom">
++      <svg class="svg-icon __check" version="1.1" id="check_icon" x="0px" y="0px" viewBox="0 0 14 10" style="enable-background:new 0 0 14 10;" xml:space="preserve">
++        <g transform="translate(0,-952.36218)">
++          <path d="M13.6,952.4c-0.1,0-0.2,0.1-0.3,0.2c-2.8,2.9-5.6,5.8-8.4,8.7l-4-3.5c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7l0,0l4.4,3.7
++		c0.2,0.2,0.5,0.1,0.6,0c2.9-3,5.8-6,8.7-9.1c0.2-0.2,0.2-0.5,0-0.7C13.8,952.4,13.6,952.4,13.6,952.4L13.6,952.4z">
++          </path>
++        </g>
++      </svg>
++    </div>
++  </div>
++  <div class="sdc-notification__message">
++    <div class="sdc-notification__title">
++      Title
++    </div>
++    <div class="sdc-notification__text">
++      message
++    </div>
++  </div>
++</div>
+\ No newline at end of file
+diff --git a/components/notification/notification-warning.html b/components/notification/notification-warning.html
+new file mode 100644
+index 0000000..e0fa4d9
+--- /dev/null
++++ b/components/notification/notification-warning.html
+@@ -0,0 +1,21 @@
++<div class="sdc-notification type-warning " data-test-id="">
++  <div class="sdc-notification__icon_container">
++    <div class="svg-icon-wrapper sdc-notification_svg-icon bottom">
++      <svg class="svg-icon __check" version="1.1" id="check_icon" x="0px" y="0px" viewBox="0 0 14 10" style="enable-background:new 0 0 14 10;" xml:space="preserve">
++        <g transform="translate(0,-952.36218)">
++          <path d="M13.6,952.4c-0.1,0-0.2,0.1-0.3,0.2c-2.8,2.9-5.6,5.8-8.4,8.7l-4-3.5c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7l0,0l4.4,3.7
++		c0.2,0.2,0.5,0.1,0.6,0c2.9-3,5.8-6,8.7-9.1c0.2-0.2,0.2-0.5,0-0.7C13.8,952.4,13.6,952.4,13.6,952.4L13.6,952.4z">
++          </path>
++        </g>
++      </svg>
++    </div>
++  </div>
++  <div class="sdc-notification__message">
++    <div class="sdc-notification__title">
++      Title
++    </div>
++    <div class="sdc-notification__text">
++      message
++    </div>
++  </div>
++</div>
+\ No newline at end of file
+diff --git a/components/notifications-container/_notifications-container.scss b/components/notifications-container/_notifications-container.scss
+index 7a7a907..2db6005 100644
+--- a/components/notifications-container/_notifications-container.scss
++++ b/components/notifications-container/_notifications-container.scss
+@@ -3,6 +3,6 @@
+ 
+ 	position:absolute;
+ 	top: 10px;
+-	right: 10px;
+-	width: 232px;
++	right: 40px;
++	width: 300px;
+ }
+diff --git a/package.json b/package.json
+index a796dbb..4045792 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "sdc-ui",
+-  "version": "1.6.40",
++  "version": "1.6.43",
+   "description": "This project aims to create a unified UI styled components for multiple development teams who work on the same web-based applications.",
+   "scripts": {
+     "test": "jest && npm run karma-travis",
+diff --git a/src/angular/notifications/notification/notification.component.html.ts b/src/angular/notifications/notification/notification.component.html.ts
+index 450972e..d3a876f 100644
+--- a/src/angular/notifications/notification/notification.component.html.ts
++++ b/src/angular/notifications/notification/notification.component.html.ts
+@@ -1,19 +1,19 @@
+ export default `
+-<div class="sdc-notification" (click)="fadeOut()">
+-    <div class="sdc-notification__wrapper {{'type-' + notificationSetting.type}}" [class.fade-out__animated]="fade" (animationend)="destroyMe()">
+-        <div *ngIf="!notificationSetting.hasCustomContent" class="sdc-notification__content">
++<div class="sdc-notification {{'type-' + notificationSetting.type}}" (click)="fadeOut()" [class.fade-out__animated]="fade" (animationend)="destroyMe()">
++    
++        <div *ngIf="!notificationSetting.hasCustomContent" class="sdc-notification__icon_container">
+             <div class="sdc-notification__icon" >
+             </div>
+-            <div class="sdc-notification__message">
+-                <div class="sdc-notification__title">
+-                    {{notificationSetting.notifyTitle}}
+-                </div>
+-                <div class="sdc-notification__text" >
+-                    {{notificationSetting.notifyText}}
+-                </div>
++        </div>    
++        <div *ngIf="!notificationSetting.hasCustomContent" class="sdc-notification__message">
++            <div class="sdc-notification__title">
++                {{notificationSetting.notifyTitle}}
++            </div>
++            <div class="sdc-notification__text" >
++                {{notificationSetting.notifyText}}
+             </div>
+         </div>
+-        <div #dynamicContentContainer></div>
+-    </div>
++        <div *ngIf="notificationSetting.hasCustomContent" #dynamicContentContainer></div>
++    
+ </div>
+ `;
+diff --git a/src/angular/notifications/utilities/notification.config.ts b/src/angular/notifications/utilities/notification.config.ts
+index f469b7d..d320472 100644
+--- a/src/angular/notifications/utilities/notification.config.ts
++++ b/src/angular/notifications/utilities/notification.config.ts
+@@ -1,7 +1,7 @@
+ import { Type, ComponentRef } from '@angular/core';
+ 
+ export type NotificationType =
+-    "info" | "warn" | "error" | "success";
++    "info" | "warning" | "error" | "success";
+ 
+ export class NotificationSettings {
+     
+diff --git a/src/react/Notification.js b/src/react/Notification.js
+new file mode 100644
+index 0000000..9783ade
+--- /dev/null
++++ b/src/react/Notification.js
+@@ -0,0 +1,40 @@
++import React from 'react';
++import PropTypes from 'prop-types';
++import SVGIcon from './SVGIcon';
++
++const Notification = ({ title, message, type, onClick, className, dataTestId }) => {
++	return (
++		<div className={`sdc-notification type-${type} ${className}`} data-test-id={dataTestId} onClick={onClick}>
++
++			<div className='sdc-notification__icon_container'>
++				<SVGIcon name='check' className='sdc-notification_svg-icon' />
++			</div>
++			<div className='sdc-notification__message'>
++				<div className='sdc-notification__title'>
++					{title}
++				</div>
++				<div className='sdc-notification__text'>
++					{message}
++				</div>
++			</div>
++		</div>
++	);
++
++};
++
++Notification.propTypes = {
++	title: PropTypes.string,
++	message: PropTypes.string,
++	type: PropTypes.string,
++	dataTestId: PropTypes.string
++};
++
++Notification.defaultProps = {
++	className: '',
++	type: 'info',
++	title: '',
++	message: '',
++	dataTestId: ''
++};
++
++export default Notification;
+\ No newline at end of file
+diff --git a/src/react/index.js b/src/react/index.js
+index cbe0161..4262146 100644
+--- a/src/react/index.js
++++ b/src/react/index.js
+@@ -8,6 +8,7 @@ import ModalBody from './ModalBody.js';
+ import ModalFooter from './ModalFooter.js';
+ import ModalHeader from './ModalHeader.js';
+ import ModalTitle from './ModalTitle.js';
++import Notification from './Notification.js';
+ import Panel from './Panel.js';
+ import PopupMenu from './PopupMenu.js';
+ import Portal from './Portal.js';
+@@ -33,6 +34,7 @@ export { ModalBody };
+ export { ModalFooter };
+ export { ModalHeader };
+ export { ModalTitle };
++export { Notification };
+ export { Panel };
+ export { PopupMenu };
+ export { Portal };
+@@ -58,6 +60,7 @@ export default {
+ 	ModalFooter,
+ 	ModalHeader,
+ 	ModalTitle,
++	Notification,
+ 	Panel,
+ 	PopupMenu,
+ 	Portal,
+diff --git a/stories/ng2-component-lab/components/notifications-example.component.ts b/stories/ng2-component-lab/components/notifications-example.component.ts
+index 91dd95e..2459736 100644
+--- a/stories/ng2-component-lab/components/notifications-example.component.ts
++++ b/stories/ng2-component-lab/components/notifications-example.component.ts
+@@ -44,7 +44,7 @@ export class NotificationsExample {
+     }
+ 
+     sendWarnNotif() {
+-        this.notifsService.push(new NotificationSettings("warn", 'notif warn message test', 'Notif Title Warn'));
++        this.notifsService.push(new NotificationSettings("warning", 'notif warn message test', 'Notif Title Warn'));
+     }
+ 
+     sendInfoNotif() {
+diff --git a/stories/react/Notification.stories.js b/stories/react/Notification.stories.js
+new file mode 100644
+index 0000000..b57879a
+--- /dev/null
++++ b/stories/react/Notification.stories.js
+@@ -0,0 +1,31 @@
++import React from 'react';
++import Examples from './utils/Examples.js';
++import Notification from '../../src/react/Notification.js';
++import HTMLNotificationInfo from '../../components/notification/notification-info.html';
++import HTMLNotificationSuccess from '../../components/notification/notification-success.html';
++import HTMLNotificationWarning from '../../components/notification/notification-warning.html';
++import HTMLNotificationError from '../../components/notification/notification-error.html';
++
++let examples = {
++	Success: {
++		jsx: <Notification title='Title' message='message' type='success' />,
++		html: HTMLNotificationSuccess
++	},
++	Warning: {
++		jsx: <Notification title='Title' message='message' type='warning' />,
++		html: HTMLNotificationWarning
++	},
++	Info: {
++		jsx: <Notification title='Title' message='message' type='info' />,
++		html: HTMLNotificationInfo
++	},
++	Error: {
++		jsx: <Notification title='Title' message='message' type='error' />,
++		html: HTMLNotificationError
++	}
++
++};
++
++const Notifications = () => <Examples examples={examples} />;
++
++export default Notifications;
+diff --git a/stories/react/index.js b/stories/react/index.js
+index 6d425ba..dc9ce33 100644
+--- a/stories/react/index.js
++++ b/stories/react/index.js
+@@ -19,6 +19,7 @@ import Modals from './Modal.stories.js';
+ import PopupMenu from './PopupMenu.stories.js';
+ import Accordion from './Accordion.stories.js';
+ import Panel from './Panel.stories.js';
++import Notifications from './Notification.stories.js';
+ 
+ storiesOf('Colors', module)
+ 	.add('Color Palette', () => <Colors />);
+@@ -51,7 +52,8 @@ storiesOf('Menu', module)
+ 
+ storiesOf('Modals', module)
+ 	.add('Modal examples', () => <Modals />);
+-
++storiesOf('Notifications', module)
++	.add('Notifications', () => <Notifications />);
+ storiesOf('Radios', module)
+ 	.add('Radio Buttons', () => <Radios />)
+ 	.add('Radio Button Groups', () => <RadioGroups />);
+diff --git a/test/react/Notification.spec.js b/test/react/Notification.spec.js
+new file mode 100644
+index 0000000..ca6c9e6
+--- /dev/null
++++ b/test/react/Notification.spec.js
+@@ -0,0 +1,26 @@
++import React from 'react';
++import Notification from '../../src/react/Notification.js';
++
++import renderer from 'react-test-renderer';
++
++describe('Notification', () => {
++	test('Notification - info', () => {
++		const button = renderer.create(<Notification type='info' message='message' title='title' />).toJSON();
++		expect(button).toMatchSnapshot();
++	});
++
++	test('Notification - success', () => {
++		const button = renderer.create(<Notification type='success' message='message' title='title' />).toJSON();
++		expect(button).toMatchSnapshot();
++	});
++
++	test('Notification - warning', () => {
++		const button = renderer.create(<Notification type='warning' message='message' title='title' />).toJSON();
++		expect(button).toMatchSnapshot();
++	});
++
++	test('Notification - error', () => {
++		const button = renderer.create(<Notification type='error' message='message' title='title' />).toJSON();
++		expect(button).toMatchSnapshot();
++	});
++});
+\ No newline at end of file
+diff --git a/test/react/__snapshots__/Notification.spec.js.snap b/test/react/__snapshots__/Notification.spec.js.snap
+new file mode 100644
+index 0000000..964f52b
+--- /dev/null
++++ b/test/react/__snapshots__/Notification.spec.js.snap
+@@ -0,0 +1,141 @@
++// Jest Snapshot v1, https://goo.gl/fbAQLP
++
++exports[`Notification Notification - error 1`] = `
++<div
++  className="sdc-notification type-error "
++  data-test-id=""
++  onClick={undefined}
++>
++  <div
++    className="sdc-notification__icon_container"
++  >
++    <div
++      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
++      disabled={undefined}
++      onClick={undefined}
++    >
++      <svg />
++      
++    </div>
++  </div>
++  <div
++    className="sdc-notification__message"
++  >
++    <div
++      className="sdc-notification__title"
++    >
++      title
++    </div>
++    <div
++      className="sdc-notification__text"
++    >
++      message
++    </div>
++  </div>
++</div>
++`;
++
++exports[`Notification Notification - info 1`] = `
++<div
++  className="sdc-notification type-info "
++  data-test-id=""
++  onClick={undefined}
++>
++  <div
++    className="sdc-notification__icon_container"
++  >
++    <div
++      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
++      disabled={undefined}
++      onClick={undefined}
++    >
++      <svg />
++      
++    </div>
++  </div>
++  <div
++    className="sdc-notification__message"
++  >
++    <div
++      className="sdc-notification__title"
++    >
++      title
++    </div>
++    <div
++      className="sdc-notification__text"
++    >
++      message
++    </div>
++  </div>
++</div>
++`;
++
++exports[`Notification Notification - success 1`] = `
++<div
++  className="sdc-notification type-success "
++  data-test-id=""
++  onClick={undefined}
++>
++  <div
++    className="sdc-notification__icon_container"
++  >
++    <div
++      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
++      disabled={undefined}
++      onClick={undefined}
++    >
++      <svg />
++      
++    </div>
++  </div>
++  <div
++    className="sdc-notification__message"
++  >
++    <div
++      className="sdc-notification__title"
++    >
++      title
++    </div>
++    <div
++      className="sdc-notification__text"
++    >
++      message
++    </div>
++  </div>
++</div>
++`;
++
++exports[`Notification Notification - warning 1`] = `
++<div
++  className="sdc-notification type-warning "
++  data-test-id=""
++  onClick={undefined}
++>
++  <div
++    className="sdc-notification__icon_container"
++  >
++    <div
++      className="svg-icon-wrapper  sdc-notification_svg-icon   bottom"
++      disabled={undefined}
++      onClick={undefined}
++    >
++      <svg />
++      
++    </div>
++  </div>
++  <div
++    className="sdc-notification__message"
++  >
++    <div
++      className="sdc-notification__title"
++    >
++      title
++    </div>
++    <div
++      className="sdc-notification__text"
++    >
++      message
++    </div>
++  </div>
++</div>
++`;
+-- 
+2.15.0
+

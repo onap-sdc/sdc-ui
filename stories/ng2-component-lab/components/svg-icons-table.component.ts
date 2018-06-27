@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Mode, Placement, Size } from "../../../src/angular/common/enums";
+import { Mode, Placement, Size, BackgroundShape, ButtonType, BackgroundColor } from "../../../src/angular/common/enums";
 import { SvgIconComponent } from "../../../src/angular/svg-icon/svg-icon.component";
 import { IDropDownOption, DropDownOptionType, DropDownTypes } from "../../../src/angular/form-elements/dropdown/dropdown-models";
 
@@ -31,36 +31,78 @@ const options1: IDropDownOption[] = [
             <div class="icon-options-wrapper">
 
                 <div class="icon-options">
-                    <div class="icon-options-dropdowns">
+
+                    <div class="icon-options-dropdowns box">
                         <sdc-dropdown label="Mode" [selectedOption]="{'value': mode, 'label': mode}" [options]="modeOptions" (changed)="mode = $event.value"></sdc-dropdown>
-                        <sdc-dropdown label="Label Placement" [selectedOption]="{'value': labelPlacement, 'label': labelPlacement}" [options]="labelPlacementOptions" [selectedOption]="labelPlacement" (changed)="labelPlacement = $event.value"></sdc-dropdown>
-                        <sdc-dropdown label="Size" [selectedOption]="{'value': size, 'label': size}" [options]="sizeOptions" [selectedOption]="size" (changed)="size = $event.value"></sdc-dropdown>
+                        <sdc-dropdown label="Label Placement" [options]="labelPlacementOptions" [selectedOption]="labelPlacement" (changed)="labelPlacement = $event.value"></sdc-dropdown>
+                        <sdc-dropdown label="Size" [options]="sizeOptions" [selectedOption]="size" (changed)="size = $event.value"></sdc-dropdown>
+                        <sdc-dropdown label="BackgroundShape" [options]="backgroundShapeOptions" [selectedOption]="backgroundShape" (changed)="backgroundShape = $event.value"></sdc-dropdown>
+                        <sdc-dropdown label="BackgroundColor" [options]="backgroundColorOptions" [selectedOption]="backgroundColor" (changed)="backgroundColor = $event.value"></sdc-dropdown>
                     </div>
-                    <div class="icon-options-checkboxes-wrapper">
-                        <div class="icon-options-checkboxes">
-                            <sdc-checkbox label="Clickable" [checked]="clickable" (checkedChange)="clickable = $event"></sdc-checkbox>
-                            <sdc-checkbox label="Disabled" [checked]="disabled" (checkedChange)="disabled = $event"></sdc-checkbox>
+
+                    <div class="icon-options-checkboxes-wrapper box">
+                        <div>
+                            <div class="icon-options-label">
+                                <sdc-input label="Label" [(value)]="label"></sdc-input>
+                            </div>
+                            <div class="icon-options-checkboxes">
+                                <sdc-checkbox label="Clickable" [checked]="clickable" (checkedChange)="clickable = $event"></sdc-checkbox>
+                                <sdc-checkbox label="Disabled" [checked]="disabled" (checkedChange)="disabled = $event"></sdc-checkbox>
+                            </div>
                         </div>
-                        <div class="icon-options-label">
-                            <sdc-input label="Label" [(value)]="label"></sdc-input>
-                        </div>
-                        <svg-icon-label [name]="selectedIcon" [mode]="mode" [size]="size" [clickable]="clickable" [disabled]="disabled" [label]="label" [labelPlacement]="labelPlacement"></svg-icon-label>
                     </div>
+
+                    <div class="box">
+                        <h2>With Label:</h2>
+                        <svg-icon-label
+                            [name]="selectedIcon"
+                            [mode]="mode"
+                            [size]="size"
+                            [clickable]="clickable"
+                            [disabled]="disabled"
+                            [label]="label"
+                            [labelPlacement]="labelPlacement"
+                            ></svg-icon-label>
+                        <div class="icon-code">
+<pre>
+&lt;svg-icon-label
+    [name]="{{selectedIcon}}"
+    [mode]="{{mode}}"
+    [size]="{{size}}"
+    [clickable]="{{clickable}}"
+    [disabled]="{{disabled}}"
+    [label]="{{label}}"
+    [labelPlacement]="{{labelPlacement}}"&gt;
+&lt;/svg-icon-label&gt;
+</pre>
+                        </div>
+                    </div>
+                    
+                    <div class="box">
+                        <h2>Without Label:</h2>
+                        <svg-icon
+                            [name]="selectedIcon"
+                            [mode]="mode"
+                            [size]="size"
+                            [backgroundShape]="backgroundShape"
+                            [backgroundColor]="backgroundColor"
+                            ></svg-icon>
+                        <div class="icon-code">
+<pre>
+&lt;svg-icon
+    [name]="{{selectedIcon}}"
+    [mode]="{{mode}}"
+    [size]="{{size}}"
+    [backgroundShape]="{{backgroundShape}}"
+    [backgroundColor]="{{backgroundColor}}"
+    &gt;
+&lt;/svg-icon&gt;
+</pre>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="icon-code">
-                    <pre>
-                        &lt;svg-icon-label
-                            [name]="{{selectedIcon}}"
-                            [mode]="{{mode}}"
-                            [size]="{{size}}"
-                            [clickable]="{{clickable}}"
-                            [disabled]="{{disabled}}"
-                            [label]="{{label}}"
-                            [labelPlacement]="{{labelPlacement}}"&gt;
-                        &lt;/svg-icon-label&gt;
-                    </pre>
-                </div>
             </div>
 
         </div>
@@ -71,6 +113,14 @@ const options1: IDropDownOption[] = [
         </div>
 `,
     styles: [`
+    .box {
+        background-color: #ffffff;
+        border-radius: 10px;
+        border: solid 1px #555555;
+        padding: 10px;
+        margin-right: 20px;
+        box-shadow: 4px 4px 10px -1px rgba(0,0,0,0.75);
+    }
     .svg-icons-table {
         display: flex;
         flex-flow: row wrap;
@@ -93,24 +143,26 @@ const options1: IDropDownOption[] = [
         background-color: #1eb9f3;
     }
     .icon-showcase {
-        margin: 20px 10px;
-        padding: 10px;
-        border: 1px solid #999;
-        background: #eee;
+
     }
     .icon-options-wrapper {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
-        margin-top: 10px;
+        margin: 10px 0 20px 0;
     }
-
+    .icon-options-dropdowns {
+        display: flex;
+        flex-flow: column;
+    }
     .icon-options-checkboxes-wrapper {
         display: flex;
         flex-flow: row;
-        margin-top: 10px;
     }
-
+    .icon-options {
+        display: flex;
+        flex-direction: row;
+    }
     .icon-options-checkboxes {
         margin-top: 27px;
         margin-right: 30px;
@@ -140,9 +192,13 @@ export class SvgIconsTableComponent {
     public modeOptions;
     public sizeOptions;
     public labelPlacementOptions;
+    public backgroundShapeOptions;
+    public backgroundColorOptions;
 
     private mode: Mode;
     private size: Size;
+    private backgroundShape: BackgroundShape;
+    private backgroundColor: BackgroundColor;
     private labelPlacement: Placement;
     private clickable: boolean;
     private disabled: boolean;
@@ -154,6 +210,8 @@ export class SvgIconsTableComponent {
         this.iconsNames = Object.keys(SvgIconComponent.Icons);
         this.mode = null;
         this.size = Size.medium;
+        this.backgroundShape = BackgroundShape.circle;
+        this.backgroundColor = BackgroundColor.success;
         this.clickable = false;
         this.disabled = false;
         this.defaultIconSettings = { mode: Mode.info, size: Size.small };
@@ -171,6 +229,16 @@ export class SvgIconsTableComponent {
         this.labelPlacementOptions = Object.keys(Placement).map((placementKey) => ({
             value: placementKey,
             label: Placement[placementKey]
+        }));
+
+        this.backgroundShapeOptions = Object.keys(BackgroundShape).map((backgroundShapeKey) => ({
+            value: backgroundShapeKey,
+            label: BackgroundShape[backgroundShapeKey]
+        }));
+
+        this.backgroundColorOptions = Object.keys(BackgroundColor).map((backgroundColorKey) => ({
+            value: backgroundColorKey,
+            label: BackgroundColor[backgroundColorKey]
         }));
 
         this.setDefaults();
