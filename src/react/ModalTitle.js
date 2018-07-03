@@ -5,7 +5,7 @@ const Title = ({ children, className }) => (
     <div className={`title ${className}`}>{children}</div>
 );
 
-Title.PropTypes = {
+Title.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string
 };
