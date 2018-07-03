@@ -95,7 +95,7 @@ let examples = {
                 <TileInfo align="center">
                     <TileInfoLine type="title">Vendor name</TileInfoLine>
                     <TileInfoLine>
-                        <Button btnType="primary" onClick={() => {}}>
+                        <Button btnType="primary" onClick={() => { }}>
                             100 VSPs
                         </Button>
                     </TileInfoLine>
@@ -106,7 +106,7 @@ let examples = {
                             btnType="link"
                             color="primary"
                             iconName="plusThin"
-                            onClick={() => {}}>
+                            onClick={() => { }}>
                             Create new VSP
                         </Button>
                     </TileFooterCell>
