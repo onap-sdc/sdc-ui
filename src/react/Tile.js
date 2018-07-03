@@ -4,6 +4,9 @@ import TileInfo from './TileInfo.js';
 import TileFooter from './TileFooter.js';
 import SVGIcon from './SVGIcon.js';
 
+const tileInfoType = (() => <TileInfo />)().type;
+const tileFooterType = (() => <TileFooter />)().type;
+
 const Tile = ({
     headerText,
     headerColor,
@@ -27,9 +30,9 @@ const Tile = ({
                 <div className={`sdc-tile-content-icon ${iconColor || ''}`}>
                     {iconName && <SVGIcon name={iconName} />}
                 </div>
-                {childrenArr.find(e => e.type === TileInfo)}
+                {childrenArr.find(e => e.type === tileInfoType)}
             </div>
-            {childrenArr.find(e => e.type === TileFooter)}
+            {childrenArr.find(e => e.type === tileFooterType)}
         </div>
     );
 };
