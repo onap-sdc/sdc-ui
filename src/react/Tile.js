@@ -27,9 +27,15 @@ const Tile = ({
                 <div className={`sdc-tile-content-icon ${iconColor || ''}`}>
                     {iconName && <SVGIcon name={iconName} />}
                 </div>
-                {childrenArr.find(e => e.type === TileInfo)}
+                {childrenArr.find(
+                    e =>
+                        e.type.displayName === 'TileInfo' || e.type === TileInfo
+                )}
             </div>
-            {childrenArr.find(e => e.type === TileFooter)}
+            {childrenArr.find(
+                e =>
+                    e.type.displayName === 'TileFooter' || e.type === TileFooter
+            )}
         </div>
     );
 };

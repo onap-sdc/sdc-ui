@@ -6,7 +6,10 @@ const TileInfo = ({ align, children }) => (
         className={`sdc-tile-content-info ${
             align === 'center' ? 'centered' : ''
         }`}>
-        {Children.toArray(children).filter(e => e.type === TileInfoLine)}
+        {Children.toArray(children).filter(
+            e =>
+                e.type.displayName === 'TileInfoLine' || e.type === TileInfoLine
+        )}
     </div>
 );
 
