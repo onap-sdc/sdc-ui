@@ -29,7 +29,8 @@ const Tile = ({
                 </div>
                 {childrenArr.find(
                     e =>
-                        e.type.displayName === 'TileInfo' || e.type === TileInfo
+                        (e.type && e.type.displayName === 'TileInfo') ||
+                        e.type === TileInfo
                 )}
             </div>
             {childrenArr.find(
