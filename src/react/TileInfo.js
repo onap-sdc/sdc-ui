@@ -8,7 +8,8 @@ const TileInfo = ({ align, children }) => (
         }`}>
         {Children.toArray(children).filter(
             e =>
-                e.type.displayName === 'TileInfoLine' || e.type === TileInfoLine
+                (e.type && e.type.displayName === 'TileInfoLine') ||
+                e.type === TileInfoLine
         )}
     </div>
 );
