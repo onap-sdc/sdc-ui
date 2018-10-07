@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
     selector: 'sdc-tile-footer',
-    template: '<ng-content></ng-content>',
-    host: {'class':'sdc-tile-footer'}
+    template: '<ng-content></ng-content>'
 })
 
 export class TileFooterComponent {
+    @HostBinding('class') classes = 'sdc-tile-footer';
 }

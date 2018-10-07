@@ -1,7 +1,4 @@
-/**
- * Created by rc2122 on 11/21/2017.
- */
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 export default experimentOn('Tag Cloud').group('Tag Cloud', [
     {
@@ -10,10 +7,10 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
         description: 'Simple tag-cloud',
         showSource: true,
         template: `
-        <sdc-tag-cloud label="Please Enter value" 
+        <sdc-tag-cloud label="Please Enter value"
                 placeholder="Type a value and then click enter or '+'"
                 [list]="['aaa', 'bbb']">
-      
+
         </sdc-tag-cloud>
     `
     },
@@ -23,12 +20,12 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
         description: 'List with unique validation',
         showSource: true,
         template: `
-        <sdc-tag-cloud label="Please Enter value" 
+        <sdc-tag-cloud label="Please Enter value"
                 placeholder="Type a value and then click enter or '+'"
                 [list]="['aaa', 'bbb']"
                 [isUniqueList]="true"
                 [uniqueErrorMessage]="'This value is already in the list'">
-      
+
         </sdc-tag-cloud>
     `
     },
@@ -38,11 +35,11 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
         description: 'When the parameter isViewOnly = true, the tag-cloud control is disabled',
         showSource: true,
         template: `
-        <sdc-tag-cloud label="Please Enter value" 
+        <sdc-tag-cloud label="Please Enter value"
                 placeholder="Type a value and then click enter or '+'"
                 [list]="['aaa', 'bbb']"
                 [isViewOnly]="true">
-      
+
         </sdc-tag-cloud>
     `
     },
@@ -52,11 +49,11 @@ export default experimentOn('Tag Cloud').group('Tag Cloud', [
         description: 'The parameter isViewOnly can get an array of indexes of tag-cloud items.',
         showSource: true,
         template: `
-        <sdc-tag-cloud label="Please Enter value" 
+        <sdc-tag-cloud label="Please Enter value"
                 placeholder="Type a value and then click enter or '+'"
                 [list]="['aaa', 'bbb', 'ccc', 'ddd']"
                 [isViewOnly]="[1,3]">
-      
+
         </sdc-tag-cloud>
     `
     }

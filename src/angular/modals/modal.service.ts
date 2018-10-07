@@ -1,88 +1,60 @@
-import {
-    Injectable, Type, ComponentRef
-} from '@angular/core';
-import {ModalComponent} from "./modal.component";
-import {CreateDynamicComponentService} from "../utils/create-dynamic-component.service";
-import {IModalConfig, ModalType, ModalSize} from "./models/modal-config";
- 
+import { Injectable, Type, ComponentRef } from '@angular/core';
+import { ModalComponent } from "./modal.component";
+import { CreateDynamicComponentService } from "../utils/create-dynamic-component.service";
+import { IModalConfig, ModalType, ModalSize, IModalButtonComponent } from "./models/modal-config";
+import { ButtonType } from '../common/enums';
+import { ModalButtonComponent } from './modal-button.component';
 
 @Injectable()
 export class ModalService {
 
-    private currentModal:ComponentRef<any>;
-
-    constructor(private createDynamicComponentService:CreateDynamicComponentService) {
+    constructor(private createDynamicComponentService: CreateDynamicComponentService) {
     }
 
-    /* Shortcut method to open an alert modal with title, message, and close button that simply closes the modal. */
-    public openAlertModal(title:string, message:string) {
-        let modalConfig:IModalConfig = <IModalConfig> {
+    private getBaseModal = (type: ModalType | ButtonType, title: string, message: string, testId: string, buttons?: ModalButtonComponent[]): ModalComponent => {
+        const modalConfig = {
             size: ModalSize.small,
             title: title,
             message: message,
-            buttons: [{text:'Cancel', closeModal:true, size: 'small'}],
-            type: ModalType.alert
-        };
-        let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        this.currentModal = modalInstance;
+            testId: testId,
+            buttons: buttons ? buttons : [{ text: 'OK', type: type, closeModal: true }],
+            type: type
+        } as IModalConfig;
+        const modalInstance: ComponentRef<ModalComponent> = this.openModal(modalConfig);
+        return modalInstance.instance;
+    }
+
+    /* Shortcut method to open basic modals with title, message, and OK button that simply closes the modal. */
+    public openInfoModal = (title: string, message: string, testId: string, buttons?: ModalButtonComponent[]): ModalComponent => {
+        return this.getBaseModal(ModalType.info, title, message, testId, buttons);
+    }
+
+    public openWarningModal = (title: string, message: string, testId: string, buttons?: ModalButtonComponent[]): ModalComponent => {
+        return this.getBaseModal(ModalType.warning, title, message, testId, buttons);
+    }
+
+    public openErrorModal = (title: string, message: string, testId: string, buttons?: ModalButtonComponent[]): ModalComponent => {
+        return this.getBaseModal(ModalType.error, title, message, testId, buttons);
+    }
+
+    public openSuccessModal = (title: string, message: string, testId: string, buttons?: ModalButtonComponent[]): ModalComponent => {
+        return this.getBaseModal(ModalType.success, title, message, testId, buttons);
+    }
+
+    public openCustomModal = (modalConfig: IModalConfig, dynamicComponentType: Type<any>, dynamicComponentInput?: any) => {
+        const modalInstance: ComponentRef<ModalComponent> = this.openModal(modalConfig);
+        this.createInnnerComponent(modalInstance, dynamicComponentType, dynamicComponentInput);
+        return modalInstance.instance;
+    }
+
+    private createInnnerComponent = (modalInstance: ComponentRef<ModalComponent>, dynamicComponentType: Type<any>, dynamicComponentInput?: any): void => {
+        modalInstance.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer);
+    }
+
+    public openModal = (customModalData: IModalConfig): ComponentRef<ModalComponent> => {
+        let modalInstance: ComponentRef<ModalComponent> = this.createDynamicComponentService.createComponentDynamically(ModalComponent, customModalData);
+        modalInstance.instance.instanceRef = modalInstance;
         return modalInstance;
     }
-
-    public openActionModal = (title:string, message:string, actionButtonText:string, actionButtonCallback:Function):ComponentRef<ModalComponent> => {
-        let modalConfig:IModalConfig = <IModalConfig> {
-            size: ModalSize.small,
-            title: title,
-            message: message,
-            type: ModalType.standard,
-            buttons: [{text: actionButtonText, callback: actionButtonCallback, closeModal:true, size:'small'}, 
-                      {text: 'Cancel', type: 'secondary', closeModal:true, size:'small'}]
-        };
-        let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        this.currentModal = modalInstance;
-        return modalInstance;
-    }
-
-    public openErrorModal = (errorMessage?:string):ComponentRef<ModalComponent> => {
-        let modalConfig:IModalConfig = <IModalConfig> {
-            size: ModalSize.small,
-            title: 'Error',
-            message: errorMessage,
-            buttons: [{text: "Cancel", closeModal:true, size: 'small'}],
-            type: ModalType.error
-        };
-        let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        this.currentModal = modalInstance;
-        return modalInstance;
-    }
-
-    public openCustomModal = (modalConfig:IModalConfig, dynamicComponentType:Type<any>, dynamicComponentInput?:any) => {
-        let modalInstance:ComponentRef<ModalComponent> = this.openModal(modalConfig);
-        modalInstance.instance.innerModalContent = this.createDynamicComponentService.insertComponentDynamically(dynamicComponentType, dynamicComponentInput, modalInstance.instance.dynamicContentContainer);            
-        return modalInstance;
-    }
-
-    public openModal = (customModalData:IModalConfig):ComponentRef<ModalComponent> => {
-
-        let modalInstance:ComponentRef<ModalComponent> = this.createDynamicComponentService.createComponentDynamically(ModalComponent, customModalData);
-        modalInstance.instance.closeAnimationComplete.subscribe(() => {
-            this.destroyModal();
-        });
-        this.currentModal = modalInstance;
-        return modalInstance;
-    }
-
-    public getCurrentInstance = ()=> {
-        return this.currentModal.instance;
-    }
-
-    public closeModal = ():void => { //triggers closeModal animation, which then triggers toggleModal.done and the subscription to destroyModal
-        this.currentModal.instance.modalVisible = false;
-    };
-
-    private destroyModal = ():void => {
-        this.currentModal.destroy();
-    };
 
 }
-
-

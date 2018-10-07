@@ -2,7 +2,7 @@
 
 exports[`ModalHeader basic test 1`] = `
 <div
-  className="sdc-modal__header"
+  className="sdc-info__header sdc-modal__header"
 >
   <div
     className="svg-icon-wrapper sdc-modal__icon sdc-modal__svg-use   bottom"

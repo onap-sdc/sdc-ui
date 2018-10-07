@@ -1,0 +1,148 @@
+.sdc-button {
+  @include box-sizing;
+  display: inline-block;
+
+  outline: none;
+  border-radius: 2px;
+  padding: 0 16px;
+
+  height: 32px;
+  line-height: 32px;
+  width: 120px;
+  min-width: 90px;
+
+  cursor: pointer;
+  text-align: center;
+  @include body-1;
+  &:disabled {
+    cursor: default;
+  }
+
+  // Primary button
+  &.sdc-button__primary {
+    border: none;
+    background-color: $blue;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-blue;
+      }
+      &:focus:not(:active) {
+        border: 0.5px solid $white;
+        background-color: $light-blue;
+        box-shadow: 0px 0px 0px 1px $light-blue;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-blue;
+    }
+  }
+
+  // Secondary button
+  &.sdc-button__secondary {
+    border: 1px solid $light-gray;
+    background-color: transparent;
+    color: $text-black;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: transparent;
+        color:$text-black;
+        border: 1px solid $gray;
+      }
+      &:focus:not(:active) {
+        color: $text-black;
+        box-shadow: inset 0px 0px 0px 0px $light-gray, 0px 0px 0px 1px $gray;
+      }
+    }
+
+    &:disabled {
+      color: $disabled-blue;
+      border-color: $disabled-blue;
+    }
+  }
+
+  // Link button
+  &.sdc-button__link {
+    background-color: transparent;
+    color: $blue;
+    fill: $blue;
+    border: none;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        color: $light-blue;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $dark-blue;
+        color: $light-blue;
+      }
+    }
+
+    &:disabled{
+      color: $disabled-blue;
+    }
+  }
+
+
+  // error button
+  &.sdc-button__error, &.sdc-button__alert {
+    border: none;
+    background-color: $red;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-red;
+      }
+      &:focus:not(:active) {
+        border: 0.5px solid $white;
+        background-color: $light-red;
+        box-shadow: 0px 0px 0px 1px $light-red;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-red;
+    }
+  }
+
+
+  /*** Sizes ***/
+  &.btn-large{
+    width: $btn-large;
+  }
+
+  &.btn-medium{
+    width: $btn-medium;
+  }
+
+  &.btn-small{
+    width: $btn-small;
+  }
+
+  &.btn-x-small{
+    width: $btn-extra-small;
+  }
+
+  &.btn-default{
+    width: $btn-default;
+  }
+
+  /*** Buttons with icons ***/
+  .sdc-icon-right{
+    margin-left: 15px;
+  }
+
+  .sdc-icon-left{
+    margin-right: 15px;
+  }
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+

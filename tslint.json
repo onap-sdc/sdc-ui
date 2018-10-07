@@ -1,9 +1,15 @@
 {
-    "extends": "tslint:recommended",
+    "extends": [
+        "tslint:recommended",
+        "tslint-angular"
+    ],
     "rulesDirectory": [
         "node_modules/codelyzer"
     ],
     "rules": {
+        "member-ordering": [
+            false
+        ],
         "angular-whitespace": [
             true,
             "check-interpolation",
@@ -13,17 +19,15 @@
         "templates-no-negated-async": true,
         "directive-selector": [
             true,
-            "attribute",
-            [
-                "dir-prefix1",
-                "dir-prefix2"
+            "attribute", [
+                "Sdc",
+                "Onap"
             ],
             "camelCase"
         ],
         "component-selector": [
             true,
-            "element",
-            [
+            "element", [
                 "sdc",
                 "onap"
             ],
@@ -65,6 +69,9 @@
         "trailing-comma": [
             false
         ],
-        "object-literal-sort-keys": false
+        "arrow-parens": false,
+        "object-literal-sort-keys": false,
+        "object-literal-shorthand": false,
+        "max-line-length": [true, 240, "^import |^export | implements "]
     }
 }

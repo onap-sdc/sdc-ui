@@ -1,0 +1,243 @@
+@mixin color-icon($primary-color) {
+    color: $primary-color;
+    fill: $primary-color;
+}
+
+@mixin color-icon-hover($secondary-color) {
+    &.clickable {
+        &:not([disabled]):hover, &:active, &:focus {
+            @include color-icon($secondary-color);
+        }
+    }
+}
+
+@mixin color-icon-label($primary-color) {
+    @include color-icon($primary-color);
+
+    .svg-icon {
+        @include color-icon($primary-color);
+    }
+}
+
+@mixin color-icon-label-hover($secondary-color) {
+    &.clickable {
+        &:not([disabled]):hover, &:active, &:focus {
+            @include color-icon-label($secondary-color);
+        }
+    }
+}
+
+.svg-icon {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+
+    & > svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.mode-primary {
+        @include color-icon($blue);
+        @include color-icon-hover($light-blue);
+    }
+
+    &.mode-secondary {
+        @include color-icon($gray);
+        @include color-icon-hover($dark-gray);
+    }
+
+    &.mode-success {
+        @include color-icon($green);
+    }
+
+    &.mode-error {
+        @include color-icon($red);
+    }
+
+    &.mode-warning {
+        @include color-icon($yellow);
+    }
+
+    &.mode-info {
+        @include color-icon($text-black);
+        @include color-icon-hover($dark-blue);
+    }
+
+    &.size-x_small {
+        width: 12px;
+        height: 12px;
+    }
+
+    &.size-small {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.size-medium {
+        width: 24px;
+        height: 24px;
+    }
+
+    &.size-large {
+        width: 36px;
+        height: 36px;
+    }
+
+    &.size-x_large {
+        width: 48px;
+        height: 48px;
+    }
+
+    &.bg-type-circle {
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    &.bg-type-rectangle {
+        padding: 10px;
+    }
+
+    &.bg-color-primary {
+        background-color: $purple;
+    }
+
+    &.bg-color-secondary {
+        background-color: $gray;
+    }
+
+    &.bg-color-success {
+        background-color: $green;
+    }
+
+    &.bg-color-error {
+        background-color: $red;
+    }
+
+    &.bg-color-warning {
+        background-color: $yellow;
+    }
+
+    &.bg-color-info {
+        background-color: $blue;
+    }
+}
+
+.svg-icon-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &.svg-icon-label {
+    }
+
+    &.svg-icon {
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.label-placement-bottom {
+        flex-direction: column;
+        .svg-icon-label {
+            margin-top: 0.25em;
+        }
+    }
+
+    &.label-placement-right {
+        .svg-icon-label {
+            margin-left: 0.25em;
+        }
+    }
+
+    &.label-placement-top {
+        flex-direction: column-reverse;
+        .svg-icon-label {
+            margin-bottom: 0.25em;
+        }
+    }
+
+    &.label-placement-left {
+        flex-direction: row-reverse;
+        .svg-icon-label {
+            margin-right: 0.25em;
+        }
+    }
+
+    &.mode-primary {
+        @include color-icon-label($blue);
+        @include color-icon-label-hover($light-blue);
+    }
+
+    &.mode-secondary {
+        @include color-icon-label($gray);
+        @include color-icon-label-hover($dark-gray);
+    }
+
+    &.mode-success {
+        @include color-icon-label($green);
+    }
+
+    &.mode-error {
+        @include color-icon-label($red);
+    }
+
+    &.mode-warning {
+        @include color-icon-label($yellow);
+    }
+
+    &.mode-info {
+        @include color-icon-label($text-black);
+        @include color-icon-label-hover($dark-blue);
+    }
+
+    &.size-x_small {
+        font-size: 8px;
+        line-height: 10px;
+
+        .svg-icon {
+            @extend .svg-icon.size-x_small;
+        }
+    }
+
+    &.size-small {
+        font-size: 12px;
+        line-height: 14px;
+
+        .svg-icon {
+            @extend .svg-icon.size-small;
+        }
+    }
+
+    &.size-medium {
+        font-size: 16px;
+        line-height: 20px;
+
+        .svg-icon {
+            @extend .svg-icon.size-medium;
+        }
+    }
+
+    &.size-large {
+        font-size: 24px;
+        line-height: 28px;
+
+        .svg-icon {
+            @extend .svg-icon.size-large;
+        }
+    }
+
+    &.size-x_large {
+        font-size: 34px;
+        line-height: 40px;
+
+        .svg-icon {
+            @extend .svg-icon.size-x_large;
+        }
+    }
+}

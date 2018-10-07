@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion Accordion - Default 1`] = `
+<div
+  className="sdc-accordion "
+>
+  <div
+    className="sdc-accordion-header"
+    data-test-id={undefined}
+    onClick={[Function]}
+  >
+    <div
+      className="svg-icon-wrapper     bottom"
+      disabled={undefined}
+      onClick={undefined}
+    >
+      <svg />
+      
+    </div>
+    <div
+      className="title"
+    >
+      Accordion
+    </div>
+  </div>
+  <div
+    className="sdc-accordion-body "
+  >
+    Accordion body
+  </div>
+</div>
+`;

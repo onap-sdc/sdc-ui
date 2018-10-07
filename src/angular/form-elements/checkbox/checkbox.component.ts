@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ViewEncapsulation} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import template from "./checkbox.component.html";
 
 @Component({
@@ -10,6 +10,7 @@ export class CheckboxComponent {
     @Input() label:string;
     @Input() checked:boolean;
     @Input() disabled:boolean;
+    @Input() testId: string;
     @Output() checkedChange:EventEmitter<any> = new EventEmitter<any>();
 
     public toggleState(newState:boolean) {

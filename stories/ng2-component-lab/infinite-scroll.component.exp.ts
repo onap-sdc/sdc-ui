@@ -1,4 +1,4 @@
-import {experimentOn} from '@islavi/ng2-component-lab';
+import { experimentOn } from '@islavi/ng2-component-lab';
 
 const basicContext = {
     scrollContainerId: 'scrollContainer',
@@ -50,6 +50,7 @@ const basicStyle = `
         background: #dddddd;
         margin-top: 5px;
         padding: 5px;
+        user-select: text;
     }
 `;
 const makeBasicStyleDistance = (distance: number) => `

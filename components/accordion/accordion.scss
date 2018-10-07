@@ -1,0 +1,50 @@
+.sdc-accordion {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  &.disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+  &:not(.disabled) {
+    .sdc-accordion-header {
+      cursor: pointer;
+    }
+  }
+  .sdc-accordion-header {
+    display: flex;
+    flex-direction: row;
+    .svg-icon-wrapper {
+      margin-right: 20px;
+      transition: transform 0.4s;
+      &.down {
+        transform: rotate(180deg);
+      }
+      .svg-icon {
+        fill: $gray;
+        width: 14px;
+        height: 8px;
+      }
+    }
+    &.arrow-right {
+      justify-content: space-between;
+      .svg-icon-wrapper{
+        order:1;
+        margin:0;
+      }
+    }
+  }
+  .sdc-accordion-body {
+    padding-left: 10px;
+    opacity: 0;
+    overflow-y: hidden;
+    max-height: 0;
+    padding-top: 0px;
+    transition: opacity 0.33s linear, padding-top 0.3s linear;
+    &.open {
+      padding-top: 5px;
+      opacity: 1;
+      max-height: 9999px;
+    }
+  }
+}

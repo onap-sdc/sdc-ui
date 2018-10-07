@@ -1,26 +1,29 @@
 .sdc-button {
+  order:1;
   @include box-sizing;
-  display: inline-block;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   outline: none;
   border-radius: 2px;
   padding: 0 12px;
-
   height: 36px;
+  line-height: 36px;
   width: 120px;
   min-width: 90px;
-
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
   @include body-1;
+
   &:disabled {
     cursor: default;
   }
 
   // Primary button
   &.sdc-button__primary {
-    border: none;
+    border: 1px solid transparent;
     background-color: $blue;
     color: $white;
 
@@ -29,14 +32,14 @@
         background-color: $light-blue;
       }
       &:focus:not(:active) {
-        border: 0.5px solid $white;
+        border: 1px solid $white;
         background-color: $light-blue;
         box-shadow: 0px 0px 0px 1px $light-blue;
       }
     }
 
     &:disabled{
-      background: $blue-disabled;
+      background: $disabled-blue;
     }
   }
 
@@ -48,18 +51,21 @@
 
     &:not(:disabled) {
       &:hover, &:active {
-        color: $light-blue;
-        border-color: $light-blue;
+        background-color: $light-blue;
+        color:$white;
       }
       &:focus:not(:active) {
         color: $light-blue;
         box-shadow: inset 0px 0px 0px 0px $dark-blue, 0px 0px 0px 1px $blue;
+        &:hover {
+          color: $white;
+        }
       }
     }
 
     &:disabled {
-      color: $blue-disabled;
-      border-color: $blue-disabled;
+      color: $disabled-blue;
+      border-color: $disabled-blue;
     }
   }
 
@@ -81,7 +87,95 @@
     }
 
     &:disabled{
-      color: $blue-disabled;
+      color: $disabled-blue;
+    }
+  }
+
+  // success
+  &.sdc-button__success {
+    border: 1px solid transparent;
+    background-color: $green;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-green;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-green;
+        box-shadow: 0px 0px 0px 1px $light-green;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-green;
+    }
+  }
+
+  // error
+  &.sdc-button__error, &.sdc-button__alert {
+    border: 1px solid transparent;
+    background-color: $red;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-red;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-red;
+        box-shadow: 0px 0px 0px 1px $light-red;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-red;
+    }
+  }
+
+  // warning
+  &.sdc-button__warning {
+    border: 1px solid transparent;
+    background-color: $yellow;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-yellow;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-yellow;
+        box-shadow: 0px 0px 0px 1px $light-yellow;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-yellow;
+    }
+  }
+
+  // info
+  &.sdc-button__info {
+    border: 1px solid transparent;
+    background-color: $blue;
+    color: $white;
+
+    &:not(:disabled) {
+      &:hover, &:active {
+        background-color: $light-blue;
+      }
+      &:focus:not(:active) {
+        border: 1px solid $white;
+        background-color: $light-blue;
+        box-shadow: 0px 0px 0px 1px $light-blue;
+      }
+    }
+
+    &:disabled{
+      background: $disabled-blue;
     }
   }
 
@@ -107,12 +201,18 @@
   }
 
   /*** Buttons with icons ***/
-  .sdc-icon-right{
-    margin-left: 15px;
+  &.sdc-icon-right {
+    flex-direction: row-reverse;
+    .svg-icon {
+      margin-left: 15px;
+    }
   }
 
-  .sdc-icon-left{
-    margin-right: 15px;
+  &.sdc-icon-left {
+    flex-direction: row;
+    .svg-icon {
+      margin-right: 15px;
+    }
   }
 
   svg {
@@ -120,5 +220,13 @@
     vertical-align: middle;
   }
 }
-
-
+.sdc-button__wrapper {
+  display: inline-flex;
+}
+.sdc-button__spinner {
+  padding-top: 6px;
+  margin:0 2px;
+  &.left {
+    order:2;
+  }
+}

@@ -1,9 +1,6 @@
-/**
- * Created by rc2122 on 11/2/2017.
- */
-import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {ChecklistModel} from "./models/Checklist";
-import {ChecklistItemModel} from "./models/ChecklistItem";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChecklistModel } from "./models/Checklist";
+import { ChecklistItemModel } from "./models/ChecklistItem";
 import template from "./checklist.component.html";
 
 @Component({

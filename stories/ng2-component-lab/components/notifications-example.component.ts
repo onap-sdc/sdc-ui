@@ -1,10 +1,7 @@
-/**
- * Created by ob0695 on 10/16/2017.
- */
-import {Component, Input, ViewChild} from "@angular/core";
-import {NotificationsService} from "../../../src/angular/notifications/services/notifications.service";
-import {NotificationSettings} from "../../../src/angular/notifications/utilities/notification.config";
-import {InnerNotifContent} from "../../../src/angular/notifications/notification-inner-content-example.component";
+import { Component, Input, ViewChild } from "@angular/core";
+import { NotificationsService } from "../../../src/angular/notifications/services/notifications.service";
+import { NotificationSettings } from "../../../src/angular/notifications/utilities/notification.config";
+import { InnerNotifContent } from "../../../src/angular/notifications/notification-inner-content-example.component";
 
 @Component({
     selector: "notifications-example",
@@ -47,7 +44,7 @@ export class NotificationsExample {
     }
 
     sendWarnNotif() {
-        this.notifsService.push(new NotificationSettings("warn", 'notif warn message test', 'Notif Title Warn'));
+        this.notifsService.push(new NotificationSettings("warning", 'notif warn message test', 'Notif Title Warn'));
     }
 
     sendInfoNotif() {
