@@ -1,4 +1,4 @@
-import { Component, Input, AfterContentInit, ContentChildren, QueryList, HostBinding } from '@angular/core';
+import { Component, Input, Output, AfterContentInit, ContentChildren, QueryList, HostBinding, EventEmitter } from '@angular/core';
 import { TabComponent } from './children/tab.component';
 import { SvgIconComponent } from "./../../../src/angular/svg-icon/svg-icon.component";
 import { Mode, Placement, Size } from './../common/enums';
@@ -14,6 +14,8 @@ export class TabsComponent implements AfterContentInit {
     @HostBinding('class') classes = 'sdc-tabs sdc-tabs-header';
     @ContentChildren(TabComponent) private tabs: QueryList<TabComponent>;
 
+    @Output() public action: EventEmitter<any> = new EventEmitter<any>();
+
     public _size = Size.medium;
 
     public selectTab(tab: TabComponent) {
@@ -26,6 +28,10 @@ export class TabsComponent implements AfterContentInit {
       // activate the tab the user has clicked on.
       tab.active = true;
       tab.titleIconMode = Mode.primary;
+
+      if (this.action) {
+        this.action.emit(tab);
+      }
     }
 
     public ngAfterContentInit() {
