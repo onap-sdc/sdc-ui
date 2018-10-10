@@ -14,11 +14,12 @@ export class TabsComponent implements AfterContentInit {
     @HostBinding('class') classes = 'sdc-tabs sdc-tabs-header';
     @ContentChildren(TabComponent) private tabs: QueryList<TabComponent>;
 
-    @Output() public action: EventEmitter<any> = new EventEmitter<any>();
+    @Output() public selectedTab: EventEmitter<any> = new EventEmitter<any>();
 
     public _size = Size.medium;
 
     public selectTab(tab: TabComponent) {
+      this.selectedTab.emit(tab);
       // deactivate all tabs
       this.tabs.toArray().forEach((_tab: TabComponent) => {
         _tab.active = false;
@@ -28,10 +29,6 @@ export class TabsComponent implements AfterContentInit {
       // activate the tab the user has clicked on.
       tab.active = true;
       tab.titleIconMode = Mode.primary;
-
-      if (this.action) {
-        this.action.emit(tab);
-      }
     }
 
     public ngAfterContentInit() {

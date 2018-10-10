@@ -12,7 +12,7 @@ export default experimentOn('Tabs').group('Tabs', [
             }
         },
         template: `
-        <sdc-tabs (action)="onSelectTab($event)">
+        <sdc-tabs (selectedTab)="onSelectTab($event)">
             <sdc-tab title="tab1">This is tab 1</sdc-tab>
             <sdc-tab title="tab2">This is tab 2</sdc-tab>
         </sdc-tabs>
@@ -29,7 +29,7 @@ export default experimentOn('Tabs').group('Tabs', [
             }
         },
         template: `
-        <sdc-tabs (action)="onSelectTab($event)">
+        <sdc-tabs (selectedTab)="onSelectTab($event)">
             <sdc-tab titleIcon="inputs-o">This is tab 1</sdc-tab>
             <sdc-tab titleIcon="edit-file-o">This is tab 2</sdc-tab>
         </sdc-tabs>
