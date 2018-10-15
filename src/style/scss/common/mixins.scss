@@ -333,10 +333,9 @@ $browserPrefixes: webkit moz o ms;
   @include box-shadow($xShadow $yShadow $blur $spread rgba($color, $opacity));
 }
 
-%noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+@mixin text-select($value: 'text') {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
 }
