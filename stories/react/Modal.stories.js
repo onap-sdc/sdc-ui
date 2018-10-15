@@ -79,7 +79,8 @@ let examples = {
 			</Example>,
 		html: HTMLStandardModal,		
 		exclude: 'Example',
-		renderFromJsx: true
+		renderFromJsx: true,
+		serverRender: false
 	},
 	Alert: {
 		jsx: <Example>
@@ -93,7 +94,8 @@ let examples = {
 			</Example>,
 		html: HTMLAlertModal,
 		exclude: 'Example',
-		renderFromJsx: true
+		renderFromJsx: true,
+		serverRender: false
 	},
 	Error: {
 		jsx: <Example>
@@ -107,7 +109,8 @@ let examples = {
 			</Example>,
 		html: HTMLErrorModal,
 		exclude: 'Example',
-		renderFromJsx: true
+		renderFromJsx: true,
+		serverRender: false
 	},
 	
 	Custom: {
@@ -122,7 +125,8 @@ let examples = {
 			</Example>,
 		html: HTMLCustomModal,	
 		exclude: 'Example',
-		renderFromJsx: true					 
+		renderFromJsx: true,
+		serverRender: false					 
 	}
 };
 

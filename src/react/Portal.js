@@ -3,43 +3,28 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 class Portal extends React.Component {
-    componentDidMount() {
-        this.renderPortal();
+    constructor(props) {
+        super(props);
+        this.el = document.createElement('div');
+        this.el.className = 'onap-sdc-portal';
     }
-    componentDidUpdate() {
-        this.renderPortal();
+
+    componentDidMount() {
+        document.body.appendChild(this.el);
     }
 
     componentWillUnmount() {
-        if (this.defaultNode) {
-            document.body.removeChild(this.defaultNode);
-        }
-        this.defaultNode = null;
-        this.portal = null;
+        document.body.removeChild(this.el);
     }
 
-    renderPortal() {
-        if (!this.defaultNode) {
-            this.defaultNode = document.createElement('div');
-            this.defaultNode.className = 'onap-sdc-portal';
-            document.body.appendChild(this.defaultNode);
-        }
-
-        let children = this.props.children;
-        if (typeof this.props.children.type === 'function') {
-            children = React.cloneElement(this.props.children);
-        }
-        /**
-         * Change this to ReactDOM.CreatePortal after upgrading to React 16
-         */
-        this.portal = ReactDOM.unstable_renderSubtreeIntoContainer(
-            this,
-            children,
-            this.defaultNode
-        );
-    }
     render() {
-        return null;
+        let { children } = this.props;
+
+        if (typeof children.type === 'function') {
+            children = React.cloneElement(children);
+        }
+
+        return ReactDOM.createPortal(children, this.el);
     }
 }
 

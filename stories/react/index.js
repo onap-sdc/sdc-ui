@@ -21,48 +21,38 @@ import Accordion from './Accordion.stories.js';
 import Panel from './Panel.stories.js';
 import Notifications from './Notification.stories.js';
 
-storiesOf('Colors', module)
-	.add('Color Palette', () => <Colors />);
+storiesOf('Colors', module).add('Color Palette', () => <Colors />);
 
-storiesOf('Typography', module)
-	.add('Typography', () => <Typography />);
+storiesOf('Typography', module).add('Typography', () => <Typography />);
 
-storiesOf('Accordion', module)
-	.add('Accordion', () => <Accordion />);
+storiesOf('Accordion', module).add('Accordion', () => <Accordion />);
 
 storiesOf('Buttons', module)
-	.add('Primary', () => <PrimaryButtons />)
-	.add('Secondary', () => <SecondaryButtons />)
-	.add('Link', () => <LinkButtons />);
+    .add('Primary', () => <PrimaryButtons />)
+    .add('Secondary', () => <SecondaryButtons />)
+    .add('Link', () => <LinkButtons />);
 
-storiesOf('Checkboxes', module)
-	.add('Checkboxes', () => <Checkboxes />);
+storiesOf('Checkboxes', module).add('Checkboxes', () => <Checkboxes />);
 
-storiesOf('Checklist', module)
-	.add('Checklist', () => <Checklist />);
+storiesOf('Checklist', module).add('Checklist', () => <Checklist />);
 
-storiesOf('Input Fields', module)
-	.add('Input Text', () => <Input />);
+storiesOf('Input Fields', module).add('Input Text', () => <Input />);
 
-storiesOf('Icons', module)
-	.add('SVG Icons', () => <Icons />);
+storiesOf('Icons', module).add('SVG Icons', () => <Icons />);
 
-storiesOf('Menu', module)
-	.add('Popup Menu', () => <PopupMenu />);
+storiesOf('Menu', module).add('Popup Menu', () => <PopupMenu />);
 
-storiesOf('Modals', module)
-	.add('Modal examples', () => <Modals />);
-storiesOf('Notifications', module)
-	.add('Notifications', () => <Notifications />);
+storiesOf('Modals', module).add('Modal examples', () => <Modals />);
+
+storiesOf('Notifications', module).add('Notifications', () => (
+    <Notifications />
+));
 storiesOf('Radios', module)
-	.add('Radio Buttons', () => <Radios />)
-	.add('Radio Button Groups', () => <RadioGroups />);
+    .add('Radio Buttons', () => <Radios />)
+    .add('Radio Button Groups', () => <RadioGroups />);
 
-storiesOf('Panel', module)
-	.add('Panel', () => <Panel />);
+storiesOf('Panel', module).add('Panel', () => <Panel />);
 
-storiesOf('Tabs', module)
-	.add('Tabs', () => <Tabs />);
+storiesOf('Tabs', module).add('Tabs', () => <Tabs />);
 
-storiesOf('Tiles', module)
-	.add('Tiles', () => <Tiles />);
+storiesOf('Tiles', module).add('Tiles', () => <Tiles />);

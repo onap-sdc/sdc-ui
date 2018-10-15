@@ -3,6 +3,7 @@ module.exports = {
 		'js',
 		'html'
 	],
+	setupFiles: ['<rootDir>/test/react/utils/testSetup.js'],
 	globals: {
 		ICON_PATH: './'
 	},
