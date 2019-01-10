@@ -11,7 +11,7 @@ body {
   scrollbar-arrow-color: $gray;
 
   height: 100%;
-  @extend %noselect;
+  @include text-select;
 }
 
 /* scrollbar styling for Google Chrome | Safari | Opera */
