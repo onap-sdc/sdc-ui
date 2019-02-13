@@ -8,7 +8,9 @@ const Footer = ({
     actionButtonText,
     actionButtonClick,
     withButtons,
-    children
+    children,
+    confirmDataTestId,
+    cancelDataTestId
 }) => {
     const closeBtnType = actionButtonClick ? 'secondary' : 'primary';
     return (
@@ -17,11 +19,16 @@ const Footer = ({
             {withButtons && (
                 <div>
                     {actionButtonClick && (
-                        <Button onClick={actionButtonClick}>
+                        <Button
+                            onClick={actionButtonClick}
+                            data-test-id={confirmDataTestId}>
                             {actionButtonText}
                         </Button>
                     )}
-                    <Button btnType={closeBtnType} onClick={onClose}>
+                    <Button
+                        btnType={closeBtnType}
+                        onClick={onClose}
+                        data-test-id={cancelDataTestId}>
                         {closeButtonText}
                     </Button>
                 </div>
@@ -36,7 +43,9 @@ Footer.propTypes = {
     actionButtonText: PropTypes.string,
     actionButtonClick: PropTypes.func,
     withButtons: PropTypes.bool,
-    children: PropTypes.node
+    children: PropTypes.node,
+    confirmDataTestId: PropTypes.string,
+    cancelDataTestId: PropTypes.string
 };
 
 Footer.defaultProps = {

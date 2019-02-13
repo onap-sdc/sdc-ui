@@ -7,6 +7,7 @@ exports[`ModalFooter basic test 1`] = `
   <div>
     <button
       className="sdc-button sdc-button__primary   "
+      data-test-id={undefined}
       disabled={false}
       onClick={undefined}
     >
