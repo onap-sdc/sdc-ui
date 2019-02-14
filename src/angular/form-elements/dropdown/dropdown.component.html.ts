@@ -11,6 +11,7 @@ export default `
         <!--[DROP-DOWN AUTO HEADER START]-->
         <div *ngIf="type===cIDropDownTypes.Auto" class="sdc-dropdown-auto__wrapper">
             <input class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"
+                    [attr.data-tests-id]="testId"
                     [(ngModel)]="this.filterValue"
                     (ngModelChange)="filterOptions(this.filterValue)"
                     placeholder="{{this.selectedOption?.label || this.selectedOption?.value || placeHolder}}">
@@ -21,6 +22,7 @@ export default `
         <!--[DROP-DOWN REGULAR HEADER START]-->
         <button *ngIf="type===cIDropDownTypes.Regular"
                 class="sdc-dropdown__header js-sdc-dropdown--toggle-hook"
+                [attr.data-tests-id]="testId"
                 (click)="toggleDropdown($event)"
                 [ngClass]="{'disabled': disabled, 'placeholder':!this.selectedOption}">
                 {{ this.selectedOption?.label || this.selectedOption?.value || placeHolder}}
