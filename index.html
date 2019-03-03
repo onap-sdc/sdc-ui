@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <title>Storybook</title>
+  <style>
+    body, html {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    .header {
+      display: flex;
+      padding: 18px 40px 0 40px;
+    }
+    .logo {
+      margin-right: 95px;
+      cursor: pointer;
+    }
+    img {
+      width: 125px;
+      height: 26px;
+    }
+    .showcase-header {
+      display: flex;
+    }
+    .case-tab-name {
+      font-family: OpenSans, OpenSans-Regular, 'Open Sans', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.71;
+      letter-spacing: -0.2px;
+      margin: 0 20px;
+      padding: 4px 8px 12px 8px;
+      color: #5a5a5a;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .case-tab-name[active=true] {
+      color: #009fdb;
+      border-bottom: solid 2px #009fdb;
+    }
+    .showcase-wrapper {
+      height: calc(100% - 60px);
+      display: flex;
+      flex-direction: column;
+      background-color: #FFFFFF;
+    }
+    .showcase-iframe {
+      height: 100%;
+      border-top: solid 1px #aaaaaa;
+    }
+  </style>
+
+  <script>
+    var shows = {
+      mainPage: "main-page.html",
+      react: "react/index.html",
+      angular: "angular/index.html"
+    };
+    function show(type){
+      document.getElementById('showcase').src = shows[type];
+      setActiveTab(type);
+    }
+    function setActiveTab(type) {
+      var allTabs = document.getElementsByClassName('case-tab-name');
+      for(var i = 0; i < allTabs.length; i++ ) {
+        if(allTabs[i].getAttribute('id') === type+'-tab') {
+          allTabs[i].setAttribute('active', true);
+        }
+        else {
+          allTabs[i].setAttribute('active', false);
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo" onClick="show('mainPage')"><img src="assets/images/logo_onap.png"/></div>
+    <div class="showcase-header">
+      <div class="case-tab-name" id="react-tab" onClick="show('react')">React</div>
+      <div class="case-tab-name" id="angular-tab" onClick="show('angular')">Angular</div>
+    </div>
+  </div>
+
+  <div class="showcase-wrapper">
+    <iframe id="showcase" src="main-page.html" class="showcase-iframe">
+    </iframe>
+  </div>
+</body>
+
+</html>
